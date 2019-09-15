@@ -1,0 +1,4 @@
+rspec/*
+tmp/*
+log/*
+.idea/*
