@@ -28,6 +28,16 @@ RSpec.describe JobApiController, type: :controller do
       expect(response).not_to have_http_status(:success)
     end
 
+    it "returns http failure from duplicate job name" do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, user: user)
+      job2 = create(:job2, user: user)
+
+      put :update, params: { id: job.id, name: job2.name }
+      expect(response.status).to eq(403)
+    end
+
     it "returns http success" do
       user = create(:admin1)
       authenticated_header(user)

@@ -2,7 +2,7 @@ class JobApiController < ApplicationController
   before_action :get_job, only: [:show, :update, :destroy, :failures, :runs]
 
   def index
-    jobs = Job.all.where(user: current_user)
+    jobs = Job.all.mine(current_user)
     render json: jobs
   end
 
@@ -14,7 +14,7 @@ class JobApiController < ApplicationController
     job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command], timezone: params[:timezone], user: current_user)
     render json: job, status: :created
   rescue ActiveRecord::RecordNotUnique
-    render json: { error: 'A job with this name already exists' }, status: 403
+    not_unique
   end
 
   def update
@@ -26,6 +26,8 @@ class JobApiController < ApplicationController
 
     @job.save
     render json: @job
+  rescue ActiveRecord::RecordNotUnique
+    not_unique
   end
 
   def destroy
@@ -56,5 +58,9 @@ class JobApiController < ApplicationController
   def get_job
     @job = Job.where(id: params[:id]).mine(current_user).first
     render json: { error: 'Job not found' }, status: :not_found and return if @job.blank?
+  end
+
+  def not_unique
+    render json: { error: 'A job with this name already exists' }, status: 403
   end
 end
