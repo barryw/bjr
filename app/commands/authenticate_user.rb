@@ -1,7 +1,7 @@
 class AuthenticateUser
   prepend SimpleCommand
 
-  def initialize(username, password, locale='en-US')
+  def initialize(username, password)
     @username = username
     @password = password
   end
