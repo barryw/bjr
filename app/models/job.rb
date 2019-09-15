@@ -7,7 +7,7 @@ class Job < ApplicationRecord
   has_many :job_runs, dependent: :destroy
 
   scope :mine, ->(user_id) { where("user_id = ?", user_id) }
-  scope :disabled, ->(disabled) { where('disabled = ?', disabled) }
+  scope :enabled, ->(enabled) { where('enabled = ?', enabled) }
 
   before_validation(on: [:create, :update]) do
     self.timezone = 'UTC' if timezone.blank?

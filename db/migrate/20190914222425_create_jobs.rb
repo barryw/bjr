@@ -7,7 +7,7 @@ class CreateJobs < ActiveRecord::Migration[6.0]
       t.datetime :next_run, null: false
       t.string :command, null: false
       t.string :timezone, default: 'UTC', limit: 50
-      t.boolean :disabled, default: false
+      t.boolean :enabled, default: true
 
       t.references :user, null: false, index: true, foreign_key: { on_delete: :cascade }
       t.timestamps

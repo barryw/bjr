@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_09_15_003507) do
+
   create_table "job_runs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "success"
     t.integer "return_code"
@@ -41,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_003507) do
     t.datetime "next_run", null: false
     t.string "command", null: false
     t.string "timezone", limit: 50, default: "UTC"
-    t.boolean "disabled", default: false
+    t.boolean "enabled", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

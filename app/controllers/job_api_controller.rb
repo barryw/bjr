@@ -22,7 +22,7 @@ class JobApiController < ApplicationController
     @job.cron = params[:cron] unless @job.cron == params[:cron] or params["cron"].blank?
     @job.command = params[:command] unless @job.command == params[:command] or params[:command].blank?
     @job.timezone = params[:timezone] unless @job.timezone == params[:timezone] or params[:timezone].blank?
-    @job.disabled = params[:disabled] unless @job.disabled == params[:disabled] or params[:disabled].blank?
+    @job.enabled = params[:enabled] unless @job.enabled == params[:enabled] or params[:enabled].blank?
 
     @job.save
     render json: @job
@@ -42,12 +42,12 @@ class JobApiController < ApplicationController
   end
 
   def disabled
-    jobs = Job.all.mine(current_user).disabled(true)
+    jobs = Job.all.mine(current_user).enabled(false)
     render json: jobs
   end
 
   def enabled
-    jobs = Job.all.mine(current_user).disabled(true)
+    jobs = Job.all.mine(current_user).enabled(true)
     render json: jobs
   end
 

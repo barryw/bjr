@@ -32,10 +32,10 @@ RSpec.describe JobApiController, type: :controller do
       user = create(:admin1)
       authenticated_header(user)
       job = create(:job1, user: user)
-      put :update, params: { id: job.id, disabled: true }
+      put :update, params: { id: job.id, enabled: true }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json['disabled']).to eq(true)
+      expect(json['enabled']).to eq(true)
     end
   end
 
@@ -96,5 +96,39 @@ RSpec.describe JobApiController, type: :controller do
       delete :destroy, params: { 'id': job.id }
       expect(response).to have_http_status(:success)
     end
+  end
+
+  describe "GET #enabled" do
+    it "returns http failure" do
+      get :enabled
+      expect(response).not_to have_http_status(:success)
+    end
+
+    it "returns http success for getting enabled jobs" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, enabled: true)
+      job2 = create(:job2, user: user, enabled: false)
+      authenticated_header(user)
+      get :enabled
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(job1.id)
+    end
+
+    it "returns http success for getting disabled jobs" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, enabled: true)
+      job2 = create(:job2, user: user, enabled: false)
+      authenticated_header(user)
+      get :disabled
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(job2.id)
+    end
+  end
+
+  describe "GET #job_api_disabled" do
   end
 end
