@@ -5,7 +5,7 @@ MAINTAINER Barry Walker <barrywalker@gmail.com>
 RUN apk update && apk upgrade \
     && apk add ruby-nokogiri ruby-dev build-base bash \
         libxml2-dev libxslt-dev libffi-dev mariadb-dev \
-        tzdata
+        tzdata mariadb-connector-c
 
 WORKDIR /app
 ADD Gemfile /app
@@ -13,5 +13,6 @@ ADD Gemfile.lock /app
 RUN bundle install --without=development --without=test
 
 ADD . /app
+RUN mkdir ./lib/mariadb && ln -s /usr/lib/mariadb/plugin ./lib/mariadb/plugin
 
-CMD ["bundle exec rails s"]
+ENTRYPOINT ["/app/entrypoint.sh"]

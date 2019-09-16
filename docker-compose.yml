@@ -4,14 +4,11 @@ services:
     image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-      MYSQL_USER: bjr
-      MYSQL_PASSWORD: bjr
+      MYSQL_ROOT_PASSWORD: bjr
     volumes:
       - mysql:/var/lib/mysql
   api:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
       - "3000:3000"
     depends_on:
@@ -20,11 +17,19 @@ services:
     environment:
       REDIS_HOST: redis
       BJR_DATABASE_HOST: db
+      BJR_DATABASE_USERNAME: root
+      BJR_DATABASE_PASSWORD: bjr
+      SERVER_TYPE: api
+      RAILS_ENV: development
   sidekiq:
     build: .
-    command: bash -c "bundle exec sidekiq"
     environment:
       REDIS_HOST: redis
+      BJR_DATABASE_HOST: db
+      BJR_DATABASE_USERNAME: root
+      BJR_DATABASE_PASSWORD: bjr
+      SERVER_TYPE: worker
+      RAILS_ENV: development
   redis:
     image: redis:latest
 
