@@ -57,10 +57,10 @@ class JobApiController < ApplicationController
 
   def get_job
     @job = Job.where(id: params[:id]).mine(current_user).first
-    render json: { error: 'Job not found' }, status: :not_found and return if @job.blank?
+    error 'Job not found', :not_found and return if @job.blank?
   end
 
   def not_unique
-    render json: { error: 'A job with this name already exists' }, status: 403
+    error 'A job with this name already exists', :forbidden
   end
 end
