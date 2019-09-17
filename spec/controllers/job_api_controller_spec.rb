@@ -20,6 +20,16 @@ RSpec.describe JobApiController, type: :controller do
       post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST' }
       expect(response).to have_http_status(:success)
     end
+
+    it "returns http success and creates a job with tags" do
+      authenticated_header(create(:admin1))
+      post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST', tags: [{'name': 'customer_id', 'value': 1}] }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['job_tags'].length).to eq(1)
+      expect(json['job_tags'][0]['name']).to eq('customer_id')
+      expect(json['job_tags'][0]['value']).to eq('1')
+    end
   end
 
   describe "PUT #update" do
@@ -126,6 +136,37 @@ RSpec.describe JobApiController, type: :controller do
       expect(json[0]['id']).to eq(job1.id)
     end
 
+    it "returns http success for getting enabled jobs" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, enabled: true)
+      job2 = create(:job2, user: user, enabled: false)
+      authenticated_header(user)
+      get :disabled
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(job2.id)
+    end
+  end
+
+  describe "GET #disabled" do
+    it "returns http failure" do
+      get :disabled
+      expect(response).not_to have_http_status(:success)
+    end
+
+    it "returns http success for getting disabled jobs" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, enabled: true)
+      job2 = create(:job2, user: user, enabled: false)
+      authenticated_header(user)
+      get :disabled
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(job2.id)
+    end
+
     it "returns http success for getting disabled jobs" do
       user = create(:admin1)
       job1 = create(:job1, user: user, enabled: true)
@@ -139,6 +180,20 @@ RSpec.describe JobApiController, type: :controller do
     end
   end
 
-  describe "GET #job_api_disabled" do
+  describe "GET #occurrences" do
+    it "returns http failure" do
+      get :occurrences, params: {'id': 1, 'end_date': Time.current}
+      expect(response).not_to have_http_status(:success)
+    end
+
+    it "returns http success for getting job occurrences" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, enabled: true, cron: '0 0 * * *')
+      authenticated_header(user)
+      get :occurrences, params: {'id': job1.id, 'end_date': Time.current + 1.hour}
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+    end
   end
 end

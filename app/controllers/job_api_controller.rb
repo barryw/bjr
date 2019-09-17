@@ -1,5 +1,5 @@
 class JobApiController < ApplicationController
-  before_action :get_job, only: [:show, :update, :destroy, :failures, :runs]
+  before_action :get_job, only: [:show, :update, :destroy, :failures, :runs, :occurrences]
 
   def index
     jobs = Job.all.mine(current_user)
@@ -12,6 +12,7 @@ class JobApiController < ApplicationController
 
   def create
     job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command], timezone: params[:timezone], user: current_user)
+    add_tags job
     render json: job, status: :created
   rescue ActiveRecord::RecordNotUnique
     not_unique
@@ -53,7 +54,23 @@ class JobApiController < ApplicationController
     render json: jobs
   end
 
+  def occurrences
+    error 'You must supply an end date parameter', :forbidden and return unless params[:end_date]
+    render json: @job.occurrences(params[:end_date])
+  end
+
   private
+
+  def add_tags(job)
+    if params.include? :tags and !params[:tags].empty?
+      tags = []
+      params[:tags].each do |tag|
+        tags << {'name': tag['name'], 'value': tag['value']}
+      end
+      job.set_tags tags
+      job.reload
+    end
+  end
 
   def get_job
     @job = Job.where(id: params[:id]).mine(current_user).first

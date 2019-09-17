@@ -15,4 +15,29 @@ class Job < ApplicationRecord
     schedule = ::IceCube::Schedule.from_cron(date, self.cron)
     self.next_run = schedule.next_occurrence
   end
+
+  def occurs_between(start_date, end_date)
+    schedule.occurs_between? start_date, end_date
+  end
+
+  def occurrences(end_date)
+    schedule.occurrences(end_date)
+  end
+
+  def set_tags(tags)
+    job_tags.clear
+    tags.each do |tag|
+      JobTag.create!(job: self, name: tag[:name], value: tag[:value])
+    end
+  end
+
+  def as_json(options={})
+    h = super(only: [:id, :name, :cron, :enabled, :command, :next_run], include: [job_tags: {only: [:name, :value]}])
+  end
+private
+
+  def schedule
+    date = Date.current.in_time_zone(self.timezone)
+    ::IceCube::Schedule.from_cron(date, self.cron)
+  end
 end
