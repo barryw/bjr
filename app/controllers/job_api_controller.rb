@@ -1,5 +1,5 @@
 class JobApiController < ApplicationController
-  before_action :get_job, only: [:show, :update, :destroy, :failures, :runs, :occurrences]
+  before_action :get_job, only: [:show, :update, :destroy, :failures, :runs, :occurrences, :disable, :enable]
 
   def index
     jobs = Job.all.mine(current_user)
@@ -12,7 +12,6 @@ class JobApiController < ApplicationController
 
   def create
     job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command], timezone: params[:timezone], user: current_user)
-    add_tags job
     render json: job, status: :created
   rescue ActiveRecord::RecordNotUnique
     not_unique
@@ -41,17 +40,32 @@ class JobApiController < ApplicationController
     render json: runs
   end
 
+  # Search for failures across all jobs
   def failures
   end
 
-  def disabled
-    jobs = Job.all.mine(current_user).enabled(false)
-    render json: jobs
+  # Search for failed runs of a single job
+  def job_failures
   end
 
+  # Find disabled jobs
+  def disabled
+    render json: enabled_disabled_jobs(false)
+  end
+
+  # Disable a job
+  def disable
+    enable_disable_job(false)
+  end
+
+  # Find enabled jobs
   def enabled
-    jobs = Job.all.mine(current_user).enabled(true)
-    render json: jobs
+    render json: enabled_disabled_jobs(true)
+  end
+
+  # Enable a job
+  def enable
+    enable_disable_job(true)
   end
 
   def occurrences
@@ -59,17 +73,17 @@ class JobApiController < ApplicationController
     render json: @job.occurrences(params[:end_date])
   end
 
-  private
+private
 
-  def add_tags(job)
-    if params.include? :tags and !params[:tags].empty?
-      tags = []
-      params[:tags].each do |tag|
-        tags << {'name': tag['name'], 'value': tag['value']}
-      end
-      job.set_tags tags
-      job.reload
-    end
+  def enabled_disabled_jobs(enabled)
+    Job.all.mine(current_user).enabled(enabled)
+  end
+
+  def enable_disable_job(enabled)
+    @job.enabled = enabled
+    @job.save
+
+    head :no_content
   end
 
   def get_job

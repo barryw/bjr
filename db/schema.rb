@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_003507) do
     t.string "command", null: false
     t.string "timezone", limit: 50, default: "UTC"
     t.boolean "enabled", default: true
+    t.boolean "running", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -16,7 +16,6 @@ gem 'simple_command'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'rufus-scheduler'
-gem 'parse-cron'
 gem 'ice_cube'
 gem 'ice_cube_cron'
 

@@ -20,15 +20,29 @@ RSpec.describe JobApiController, type: :controller do
       post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST' }
       expect(response).to have_http_status(:success)
     end
+  end
 
-    it "returns http success and creates a job with tags" do
-      authenticated_header(create(:admin1))
-      post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST', tags: [{'name': 'customer_id', 'value': 1}] }
+  describe "POST #enable" do
+    it "returns http success when we enable a job" do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, enabled: false, user: user)
+      post :enable, params: { 'id': job.id }
       expect(response).to have_http_status(:success)
-      json = JSON.parse(response.body)
-      expect(json['job_tags'].length).to eq(1)
-      expect(json['job_tags'][0]['name']).to eq('customer_id')
-      expect(json['job_tags'][0]['value']).to eq('1')
+      job.reload
+      expect(job.enabled).to be true
+    end
+  end
+
+  describe "POST #disable" do
+    it "returns http success when we disable a job" do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, enabled: true, user: user)
+      post :disable, params: { 'id': job.id }
+      expect(response).to have_http_status(:success)
+      job.reload
+      expect(job.enabled).to be false
     end
   end
 
@@ -182,7 +196,7 @@ RSpec.describe JobApiController, type: :controller do
 
   describe "GET #occurrences" do
     it "returns http failure" do
-      get :occurrences, params: {'id': 1, 'end_date': Time.current}
+      get :occurrences, params: { 'id': 1, 'end_date': Time.current }
       expect(response).not_to have_http_status(:success)
     end
 
@@ -190,7 +204,7 @@ RSpec.describe JobApiController, type: :controller do
       user = create(:admin1)
       job1 = create(:job1, user: user, enabled: true, cron: '0 0 * * *')
       authenticated_header(user)
-      get :occurrences, params: {'id': job1.id, 'end_date': Time.current + 1.hour}
+      get :occurrences, params: { 'id': job1.id, 'end_date': Time.current + 1.hour }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json.length).to eq(1)
