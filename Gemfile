@@ -8,6 +8,7 @@ gem 'mysql2', '>= 0.4.4'
 gem 'puma', '~> 3.11'
 gem 'redis', '~> 4.0'
 gem 'sidekiq'
+gem 'sidekiq-cron'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'simple_command'
@@ -15,7 +16,6 @@ gem 'simple_command'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'rufus-scheduler'
 gem 'ice_cube'
 gem 'ice_cube_cron'
 
