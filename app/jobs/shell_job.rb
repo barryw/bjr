@@ -1,6 +1,8 @@
 require 'open3'
 
 class ShellJob < ApplicationJob
+  queue_as :job_runner
+
   def perform(jobid)
     job = Job.find(jobid)
     run = job.start_job
@@ -16,7 +18,7 @@ class ShellJob < ApplicationJob
     job.stop_job(run, return_code, success, error_message, stdout, stderr)
   end
 
-private
+  private
 
   def run_task(job)
     Open3.capture3(job.command)

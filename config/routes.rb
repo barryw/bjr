@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   resources :user_api
   resources :job_api
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end

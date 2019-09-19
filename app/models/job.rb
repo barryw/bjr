@@ -2,13 +2,15 @@ require 'active_support/time'
 require 'ice_cube_cron'
 
 class Job < ApplicationRecord
+  acts_as_taggable
+
   belongs_to :user
   has_many :job_runs, dependent: :destroy
 
   scope :schedulable, -> { where("next_run < ? and enabled = ? and running = ?", Time.current, true, false) }
-  scope :mine, -> (user_id) { where('user_id = ?', user_id) }
-  scope :enabled, -> (enabled) { where('enabled = ?', enabled) }
-  scope :running, -> (running) { where('running = ?', running) }
+  scope :mine, ->(user_id) { where('user_id = ?', user_id) }
+  scope :enabled, ->(enabled) { where('enabled = ?', enabled) }
+  scope :running, ->(running) { where('running = ?', running) }
 
   before_validation(on: [:create, :update]) do
     self.timezone = 'UTC' if timezone.blank?
@@ -26,7 +28,8 @@ class Job < ApplicationRecord
   end
 
   def as_json(options = {})
-    h = super(only: [:id, :name, :cron, :enabled, :command, :next_run, :running, :created_at, :updated_at])
+    h = super(only: [:id, :name, :cron, :enabled, :command, :next_run, :running, :created_at, :updated_at],
+              include: { tags: { only: [:name] } })
   end
 
   def start_job
@@ -48,7 +51,7 @@ class Job < ApplicationRecord
     save
   end
 
-private
+  private
 
   def schedule
     date = Date.current.in_time_zone(self.timezone)

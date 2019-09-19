@@ -20,6 +20,16 @@ RSpec.describe JobApiController, type: :controller do
       post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST' }
       expect(response).to have_http_status(:success)
     end
+
+    it "returns http success and tags a job" do
+      authenticated_header(create(:admin1))
+      post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST', tags: "customer1,job1" }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['tags'].length).to eq(2)
+      expect(json['tags']).to include({ 'name' => 'customer1' })
+      expect(json['tags']).to include({ 'name' => 'job1' })
+    end
   end
 
   describe "POST #enable" do
@@ -70,6 +80,17 @@ RSpec.describe JobApiController, type: :controller do
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['enabled']).to eq(true)
+    end
+
+    it "returns http success when it updates the job's tags" do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, user: user, tag_list: 'tag1')
+      put :update, params: { id: job.id, enabled: true, tags: 'tag2' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['enabled']).to eq(true)
+      expect(json['tags']).to include({ 'name' => 'tag2' })
     end
   end
 

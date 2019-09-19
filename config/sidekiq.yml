@@ -1,0 +1,5 @@
+---
+:concurrency: 10
+:queues:
+  - job_finder
+  - job_runner

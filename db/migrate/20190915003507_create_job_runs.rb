@@ -1,4 +1,4 @@
-class CreateJobRuns < ActiveRecord::Migration[6.0]
+class CreateJobRuns < ActiveRecord::Migration[5.2]
   def change
     create_table :job_runs do |t|
       t.boolean :success, null: true

@@ -1,3 +1,4 @@
 job_finder:
   cron: "* * * * *"
   class: "JobFinderJob"
+  queue: job_finder

@@ -12,6 +12,8 @@ class JobApiController < ApplicationController
 
   def create
     job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command], timezone: params[:timezone], user: current_user)
+    add_tags(job)
+    job.save
     render json: job, status: :created
   rescue ActiveRecord::RecordNotUnique
     not_unique
@@ -23,7 +25,7 @@ class JobApiController < ApplicationController
     @job.command = params[:command] unless @job.command == params[:command] or params[:command].blank?
     @job.timezone = params[:timezone] unless @job.timezone == params[:timezone] or params[:timezone].blank?
     @job.enabled = params[:enabled] unless @job.enabled == params[:enabled] or params[:enabled].blank?
-
+    add_tags(@job)
     @job.save
     render json: @job
   rescue ActiveRecord::RecordNotUnique
@@ -73,7 +75,13 @@ class JobApiController < ApplicationController
     render json: @job.occurrences(params[:end_date])
   end
 
-private
+  private
+
+  def add_tags(job)
+    if params.has_key? :tags
+      job.tag_list = params[:tags]
+    end
+  end
 
   def enabled_disabled_jobs(enabled)
     Job.all.mine(current_user).enabled(enabled)

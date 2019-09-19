@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 5.2.0'
 gem 'mysql2', '>= 0.4.4'
 gem 'puma', '~> 3.11'
 gem 'redis', '~> 4.0'
@@ -12,6 +12,7 @@ gem 'sidekiq-cron'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'simple_command'
+gem 'acts-as-taggable-on'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
