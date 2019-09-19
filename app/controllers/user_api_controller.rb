@@ -14,7 +14,7 @@ class UserApiController < ApplicationController
     user = User.create!(username: params[:username], password: params[:password], password_confirmation: params[:password])
     render json: user, status: :created
   rescue ActiveRecord::RecordNotUnique
-    error 'A user with this username already exists', :forbidden
+    error I18n.t('users.errors.already_exists'), :forbidden
   end
 
   def update
@@ -25,7 +25,7 @@ class UserApiController < ApplicationController
   end
 
   def destroy
-    error 'Cannot delete yourself', :forbidden and return if current_user.id == @user.id
+    error I18n.t('users.errors.cant_delete_yourself'), :forbidden and return if current_user.id == @user.id
     @user.destroy
     head :no_content
   end
@@ -34,6 +34,6 @@ class UserApiController < ApplicationController
 
   def get_user
     @user = User.where(id: params[:id]).first
-    error 'User not found', :not_found and return if @user.blank?
+    error I18n.t('users.errors.not_found'), :not_found and return if @user.blank?
   end
 end

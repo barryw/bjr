@@ -122,6 +122,8 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(create(:admin1))
       get :show, params: { 'id': 1 }
       expect(response.status).to eq(404)
+      json = JSON.parse(response.body)
+      expect(json['error']).to eq(I18n.t('jobs.errors.not_found'))
     end
 
     it "returns http success" do

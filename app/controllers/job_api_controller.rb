@@ -71,7 +71,7 @@ class JobApiController < ApplicationController
   end
 
   def occurrences
-    error 'You must supply an end date parameter', :forbidden and return unless params[:end_date]
+    error I18n.t('jobs.errors.end_date_required'), :forbidden and return unless params[:end_date]
     render json: @job.occurrences(params[:end_date])
   end
 
@@ -96,10 +96,10 @@ class JobApiController < ApplicationController
 
   def get_job
     @job = Job.where(id: params[:id]).mine(current_user).first
-    error 'Job not found', :not_found and return if @job.blank?
+    error I18n.t('jobs.errors.not_found'), :not_found and return if @job.blank?
   end
 
   def not_unique
-    error 'A job with this name already exists', :forbidden
+    error I18n.t('jobs.errors.already_exists'), :forbidden
   end
 end
