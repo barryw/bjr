@@ -13,6 +13,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'simple_command'
 gem 'acts-as-taggable-on'
+gem 'kaminari'
+gem 'api-pagination'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

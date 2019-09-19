@@ -1,9 +1,13 @@
+TAG_SEARCH = ['any', 'all', 'exclude']
+
 class JobApiController < ApplicationController
   before_action :get_job, only: [:show, :update, :destroy, :failures, :runs, :occurrences, :disable, :enable]
 
   def index
-    jobs = Job.all.mine(current_user)
-    render json: jobs
+    params.permit(:tags).permit(:incexc)
+    jobs = search_tags(Job.all.mine(current_user))
+
+    paginate json: jobs
   end
 
   def show
@@ -81,6 +85,23 @@ class JobApiController < ApplicationController
     if params.has_key? :tags
       job.tag_list = params[:tags]
     end
+  end
+
+  def search_tags(jobs)
+    if params.has_key? :tags
+      tags = params[:tags].split(',')
+      incexc = (params.has_key?(:incexc) and TAG_SEARCH.include?(params[:incexc])) ? params[:incexc].downcase : 'all'
+      case incexc
+      when 'all'
+        jobs = jobs.tagged_with(tags, match_all: true)
+      when 'any'
+        jobs = jobs.tagged_with(tags, any: true)
+      when 'exclude'
+        jobs = jobs.tagged_with(tags, exclude: true)
+      end
+    end
+
+    jobs
   end
 
   def enabled_disabled_jobs(enabled)
