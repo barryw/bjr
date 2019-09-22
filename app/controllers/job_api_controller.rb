@@ -1,7 +1,7 @@
 TAG_SEARCH = ['any', 'all', 'exclude']
 
 class JobApiController < ApplicationController
-  before_action :get_job, only: [:show, :update, :destroy, :failures, :runs, :occurrences, :disable, :enable]
+  before_action :get_job, only: [:show, :update, :destroy, :failures, :runs, :occurrences, :disable, :enable, :runs]
 
   def index
     params.permit(:tags).permit(:incexc)
@@ -42,11 +42,6 @@ class JobApiController < ApplicationController
     message I18n.t('jobs.messages.deleted', id: @job.id), :ok
   end
 
-  def runs
-    runs = @job.job_runs
-    paginate json: runs
-  end
-
   # Search for failures across all jobs
   def failures
   end
@@ -73,6 +68,16 @@ class JobApiController < ApplicationController
   # Enable a job
   def enable
     enable_disable_job(true)
+  end
+
+  # Return the runs for a job
+  def runs
+    start_date = params[:start_date] ||= nil
+    end_date = params[:end_date] ||= nil
+    succeeded = params[:succeeded] ||= nil
+
+    runs = @job.filter_runs(current_user, start_date, end_date, succeeded)
+    paginate json: runs
   end
 
   def occurrences

@@ -22,6 +22,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'ice_cube'
 gem 'ice_cube_cron'
+gem 'chronic'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,10 +1,5 @@
 require 'rails_helper'
 
-def authenticated_header(user)
-  command = AuthenticateUser.call(user.username, user.password)
-  request.headers.merge!({ 'Authorization': command.result })
-end
-
 RSpec.describe UserApiController, type: :controller do
   describe "POST #create" do
     it "returns http failure" do

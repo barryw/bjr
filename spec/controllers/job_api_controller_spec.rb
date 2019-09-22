@@ -309,4 +309,78 @@ RSpec.describe JobApiController, type: :controller do
       # expect(json.length).to eq(1)
     end
   end
+
+  describe "GET #runs" do
+    it "returns http failure" do
+      get :runs, params: { 'id': 1 }
+      expect(response).not_to have_http_status(:success)
+    end
+
+    it "returns http success and return 0 runs matching a bad start date" do
+      user = create(:admin1)
+      job = create(:job1, user: user)
+      run1 = create(:job_run, job: job, start_time: Time.current - 11.hours)
+      authenticated_header(user)
+      get :runs, params: { 'id': job.id, 'start_date': Time.current - 10.hours }
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(0)
+    end
+
+    it "returns http success while trying to get runs that started after a date" do
+      user = create(:admin1)
+      job = create(:job1, user: user)
+      run1 = create(:job_run, job: job, start_time: Time.current - 11.hours)
+      run2 = create(:job_run, job: job, start_time: Time.current - 13.hours)
+      authenticated_header(user)
+      get :runs, params: { 'id': job.id, 'start_date': Time.current - 12.hours }
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+    end
+
+    it "returns http success while trying to get runs that ended before a date" do
+      user = create(:admin1)
+      job = create(:job1, user: user)
+      run1 = create(:job_run, job: job, end_time: Time.current - 11.hours, start_time: Time.current - 12.hours)
+      run2 = create(:job_run, job: job, end_time: Time.current - 13.hours, start_time: Time.current - 12.hours)
+      authenticated_header(user)
+      get :runs, params: { 'id': job.id, 'end_date': Time.current - 12.hours }
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+    end
+
+    it "returns http success while trying to get runs that started after a date and finished before a date" do
+      user = create(:admin1)
+      job = create(:job1, user: user)
+      run1 = create(:job_run, job: job, start_time: Time.current - 3.hours, end_time: Time.current - 2.hours)
+      run2 = create(:job_run, job: job, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
+      authenticated_header(user)
+      get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours }
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+    end
+
+    it "returns http success while trying to get runs that succeeded" do
+      user = create(:admin1)
+      job = create(:job1, user: user)
+      run1 = create(:job_run, job: job, success: true, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
+      run2 = create(:job_run, job: job, success: false, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
+      authenticated_header(user)
+      get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': true }
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(run1.id)
+    end
+
+    it "returns http success while trying to get runs that failed" do
+      user = create(:admin1)
+      job = create(:job1, user: user)
+      run1 = create(:job_run, job: job, success: true, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
+      run2 = create(:job_run, job: job, success: false, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
+      authenticated_header(user)
+      get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': false }
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(run2.id)
+    end
+  end
 end

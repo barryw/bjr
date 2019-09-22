@@ -1,5 +1,6 @@
 require 'active_support/time'
 require 'ice_cube_cron'
+require 'chronic'
 
 class Job < ApplicationRecord
   acts_as_taggable
@@ -19,19 +20,17 @@ class Job < ApplicationRecord
     self.next_run = schedule.next_occurrence
   end
 
+  # Determines whether this job has a schedule ocurrence between 2 dates
   def occurs_between(start_date, end_date)
     schedule.occurs_between? start_date, end_date
   end
 
+  # Get a list of ocurrences until end_date
   def occurrences(end_date)
     schedule.occurrences(end_date)
   end
 
-  def as_json(options = {})
-    h = super(only: [:id, :name, :cron, :enabled, :command, :next_run, :running, :created_at, :updated_at],
-              include: { tags: { only: [:name] } })
-  end
-
+  # When a job starts, this is called to mark the job as running and create a run
   def start_job
     run = JobRun.create(job: self, start_time: Time.current)
     self.running = true
@@ -39,17 +38,32 @@ class Job < ApplicationRecord
     run
   end
 
+  # When a job completes, this is called to update the job and the run
   def stop_job(run, return_code, success, error_message, stdout, stderr)
     self.running = false
     self.last_run = Time.current
-    run.success = success
-    run.return_code = return_code
-    run.error_message = error_message
-    run.end_time = self.last_run
-    run.stdout = stdout
-    run.stderr = stderr
-    run.save
+    run.update_run(return_code, success, error_message, stdout, stderr)
     save
+  end
+
+  # Look for job runs that fit a set of criteria. This allows us to fetch runs
+  # that ran between dates, that succeeded, failed, etc.
+  def filter_runs(user, start_dt, end_dt, success)
+    start_dt = Chronic.parse(start_dt) unless start_dt.blank?
+    end_dt = Chronic.parse(end_dt) unless end_dt.blank?
+
+    query = self.job_runs
+    query = query.started_after(start_dt) unless start_dt.blank?
+    query = query.ended_before(end_dt) unless end_dt.blank?
+    query = query.succeeded(success) if success
+
+    query
+  end
+
+  # Called when the job is rendered as JSON
+  def as_json(options = {})
+    super(only: [:id, :name, :cron, :enabled, :command, :next_run, :running, :created_at, :updated_at],
+          include: { tags: { only: [:name] } })
   end
 
   private
