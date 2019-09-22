@@ -6,7 +6,7 @@ describe 'Job API' do
       consumes 'application/json'
 
       response '201', 'job created' do
-        let(:job) { { name: 'job1', cron: '* * * * *', command: 'ls -l' }}
+        let(:job) { { name: 'job1', cron: '* * * * *', command: 'ls -l' } }
       end
     end
   end

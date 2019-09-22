@@ -8,8 +8,8 @@ describe 'Authentication' do
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
-          username: {type: :string},
-          password: {type: :string}
+          username: { type: :string },
+          password: { type: :string }
         }
       }
 
