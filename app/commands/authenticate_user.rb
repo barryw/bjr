@@ -18,7 +18,7 @@ class AuthenticateUser
     user = User.find_by_username(username)
     return user if user && user.authenticate(password)
 
-    errors.add :user_authentication, 'invalid credentials'
+    errors.add :user_authentication, I18n.t('users.errors.invalid_credentials')
     nil
   end
 end

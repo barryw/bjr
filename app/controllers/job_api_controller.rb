@@ -18,32 +18,33 @@ class JobApiController < ApplicationController
     job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command], timezone: params[:timezone], user: current_user)
     add_tags(job)
     job.save
-    render json: job, status: :created
+    message I18n.t('jobs.messages.created', id: job.id), :created, job
   rescue ActiveRecord::RecordNotUnique
     not_unique
   end
 
   def update
+    params.permit(:name, :cron, :command, :timezone, :enabled, :tags)
     @job.name = params[:name] unless @job.name == params[:name] or params[:name].blank?
-    @job.cron = params[:cron] unless @job.cron == params[:cron] or params["cron"].blank?
+    @job.cron = params[:cron] unless @job.cron == params[:cron] or params[:cron].blank?
     @job.command = params[:command] unless @job.command == params[:command] or params[:command].blank?
     @job.timezone = params[:timezone] unless @job.timezone == params[:timezone] or params[:timezone].blank?
     @job.enabled = params[:enabled] unless @job.enabled == params[:enabled] or params[:enabled].blank?
     add_tags(@job)
     @job.save
-    render json: @job
+    message I18n.t('jobs.messages.updated', id: @job.id), :ok, @job
   rescue ActiveRecord::RecordNotUnique
     not_unique
   end
 
   def destroy
     @job.destroy
-    head :no_content
+    message I18n.t('jobs.messages.deleted', id: @job.id), :ok
   end
 
   def runs
     runs = @job.job_runs
-    render json: runs
+    paginate json: runs
   end
 
   # Search for failures across all jobs
@@ -89,7 +90,7 @@ class JobApiController < ApplicationController
 
   def search_tags(jobs)
     if params.has_key? :tags
-      tags = params[:tags].split(',')
+      tags = params[:tags].split(',').map(&:strip)
       incexc = (params.has_key?(:incexc) and TAG_SEARCH.include?(params[:incexc])) ? params[:incexc].downcase : 'all'
       case incexc
       when 'all'
@@ -116,7 +117,7 @@ class JobApiController < ApplicationController
   end
 
   def get_job
-    @job = Job.where(id: params[:id]).mine(current_user).first
+    @job = Job.mine(current_user).where(id: params[:id]).first
     error I18n.t('jobs.errors.not_found'), :not_found and return if @job.blank?
   end
 

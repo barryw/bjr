@@ -15,6 +15,7 @@ gem 'simple_command'
 gem 'acts-as-taggable-on'
 gem 'kaminari'
 gem 'api-pagination'
+gem 'rswag'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

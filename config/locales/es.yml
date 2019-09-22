@@ -1,22 +1,22 @@
-en:
+es:
   jobs:
     messages:
       created: Job %{id} created successfully.
       deleted: Job %{id} deleted successfully.
       updated: Job %{id} updated successfully.
     errors:
-      not_found: Job not found.
-      already_exists: A job with this name already exists.
-      end_date_required: You must supply an end date parameter.
+      not_found: Trabajo no encontrado.
+      already_exists: Ya existe un trabajo con este nombre.
+      end_date_required: Debe proporcionar un parámetro de fecha de finalización.
   users:
     messages:
       created: User %{id} created successfully.
       deleted: User %{id} deleted successfully.
       updated: User %{id} updated successfully.
     errors:
-      not_found: User not found.
+      not_found: Usuario no encontrado.
       already_exists: A user with this username already exists.
-      cant_delete_yourself: You cannot delete yourself.
+      cant_delete_yourself: Cannot delete yourself.
       invalid_credentials: Invalid credentials
       not_authorized: Not authorized
       invalid_token: Invalid token

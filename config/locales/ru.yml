@@ -1,0 +1,23 @@
+ru:
+  jobs:
+    messages:
+      created: Задача %{id} успешно создана.
+      deleted: Задача %{id} удалена успешно.
+      updated: Задача %{id} успешно обновлена.
+    errors:
+      not_found: Задача не найдена.
+      already_exists: Задача с таким именем уже существует.
+      end_date_required: Для этого поиска необходимо указать параметр даты окончания.
+  users:
+    messages:
+      created: Пользователь %{id} успешно создан.
+      deleted: Пользователь %{id} успешно удален.
+      updated: Пользователь %{id} успешно обновлен.
+    errors:
+      not_found: Пользователь не найден.
+      already_exists: Пользователь с таким именем уже существует.
+      cant_delete_yourself: Вы не можете удалить себя.
+      invalid_credentials: Вы указали неверное имя пользователя или пароль.
+      not_authorized: Вы не авторизованы
+      invalid_token: Недопустимый токен
+      missing_token: Отсутствующий токен

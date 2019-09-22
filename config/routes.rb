@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   post 'authenticate', to: 'authentication#authenticate'
 
   get '/job_api/disabled', to: 'job_api#disabled'

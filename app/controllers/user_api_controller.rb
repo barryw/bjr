@@ -21,13 +21,13 @@ class UserApiController < ApplicationController
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
     @user.save
-    head :no_content
+    message I18n.t('users.messages.updated', id: @user.id), :ok
   end
 
   def destroy
     error I18n.t('users.errors.cant_delete_yourself'), :forbidden and return if current_user.id == @user.id
     @user.destroy
-    head :no_content
+    message I18n.t('users.messages.deleted', id: @user.id), :ok
   end
 
   private

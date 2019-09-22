@@ -26,9 +26,10 @@ RSpec.describe JobApiController, type: :controller do
       post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST', tags: "customer1,job1" }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json['tags'].length).to eq(2)
-      expect(json['tags']).to include({ 'name' => 'customer1' })
-      expect(json['tags']).to include({ 'name' => 'job1' })
+      expect(json['status_code']).to eq(201)
+      expect(json['object']['tags'].length).to eq(2)
+      expect(json['object']['tags']).to include({ 'name' => 'customer1' })
+      expect(json['object']['tags']).to include({ 'name' => 'job1' })
     end
   end
 
@@ -79,7 +80,8 @@ RSpec.describe JobApiController, type: :controller do
       put :update, params: { id: job.id, enabled: true }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json['enabled']).to eq(true)
+      expect(json['status_code']).to eq(200)
+      expect(json['object']['enabled']).to eq(true)
     end
 
     it "returns http success when it updates the job's tags" do
@@ -89,8 +91,9 @@ RSpec.describe JobApiController, type: :controller do
       put :update, params: { id: job.id, enabled: true, tags: 'tag2' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json['enabled']).to eq(true)
-      expect(json['tags']).to include({ 'name' => 'tag2' })
+      expect(json['status_code']).to eq(200)
+      expect(json['object']['enabled']).to eq(true)
+      expect(json['object']['tags']).to include({ 'name' => 'tag2' })
     end
   end
 

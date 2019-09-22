@@ -1,0 +1,62 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/authenticate": {
+      "post": {
+        "summary": "Authenticates a user and returns a token",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "params",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User authenticated successfully"
+          },
+          "401": {
+            "description": "User failed authentication"
+          }
+        }
+      }
+    },
+    "/user_api": {
+      "get": {
+        "summary": "Retrieves users",
+        "description": "Get a list of users",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Users found"
+          }
+        }
+      }
+    }
+  }
+}

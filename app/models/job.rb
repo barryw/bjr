@@ -39,10 +39,11 @@ class Job < ApplicationRecord
     run
   end
 
-  def stop_job(run, success, error_message, stdout, stderr)
+  def stop_job(run, return_code, success, error_message, stdout, stderr)
     self.running = false
     self.last_run = Time.current
     run.success = success
+    run.return_code = return_code
     run.error_message = error_message
     run.end_time = self.last_run
     run.stdout = stdout
