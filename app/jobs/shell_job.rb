@@ -8,7 +8,7 @@ class ShellJob < ApplicationJob
     run = job.start_job
     success = true
     error_message = ''
-    stdout, stderr, status = run_task(job)
+    stdout, stderr, status = Open3.capture3(job.command)
     return_code = status.exitstatus
     success = (return_code == 0)
   rescue
@@ -16,11 +16,5 @@ class ShellJob < ApplicationJob
     error_message = $!
   ensure
     job.stop_job(run, return_code, success, error_message, stdout, stderr)
-  end
-
-  private
-
-  def run_task(job)
-    Open3.capture3(job.command)
   end
 end

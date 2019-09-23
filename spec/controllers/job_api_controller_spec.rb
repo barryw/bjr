@@ -219,6 +219,18 @@ RSpec.describe JobApiController, type: :controller do
       expect(json.length).to eq(1)
       expect(json[0]['id']).to eq(job2.id)
     end
+
+    it "returns http success looking for running jobs that are tagged and match our occurrence check" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, name: 'job1', running: false, tag_list: 'tag1', cron: '0 0 * * *')
+      job2 = create(:job1, user: user, name: 'job2', running: true, tag_list: 'tag1', cron: '0 0 * * *')
+      authenticated_header(user)
+      get :index, params: { running: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow'}
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(job2.id)
+    end
   end
 
   describe "GET #show" do

@@ -14,9 +14,8 @@ class JobApiController < ApplicationController
   end
 
   def create
-    job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command], timezone: params[:timezone], user: current_user)
-    add_tags(job)
-    job.save
+    job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command],
+                      timezone: params[:timezone], user: current_user, tag_list: params[:tags])
     message I18n.t('jobs.messages.created', id: job.id), :created, job
   rescue ActiveRecord::RecordNotUnique
     not_unique
@@ -28,7 +27,7 @@ class JobApiController < ApplicationController
     @job.command = params[:command] unless @job.command == params[:command] or params[:command].blank?
     @job.timezone = params[:timezone] unless @job.timezone == params[:timezone] or params[:timezone].blank?
     @job.enabled = params[:enabled] if params[:enabled].present?
-    add_tags(@job)
+    @job.tag_list = params[:tags] if params[:tags].present?
     @job.save
     message I18n.t('jobs.messages.updated', id: @job.id), :ok, @job
   rescue ActiveRecord::RecordNotUnique
@@ -61,12 +60,6 @@ class JobApiController < ApplicationController
   end
 
   private
-
-  def add_tags(job)
-    if params.has_key? :tags
-      job.tag_list = params[:tags]
-    end
-  end
 
   def get_job
     @job = Job.mine(current_user).where(id: params[:id]).first
