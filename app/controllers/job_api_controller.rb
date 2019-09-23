@@ -1,11 +1,10 @@
-TAG_SEARCH = ['any', 'all', 'exclude']
-
 class JobApiController < ApplicationController
-  before_action :get_job, only: [:show, :update, :destroy, :failures, :runs, :occurrences, :disable, :enable, :runs]
+  before_action :get_job, only: [:show, :update, :destroy, :failures, :runs, :occurrences, :runs]
 
   def index
-    params.permit(:tags).permit(:incexc)
-    jobs = search_tags(Job.all.mine(current_user))
+    jobs = Job.find_jobs(current_user, params[:start_date], params[:end_date],
+                         params[:tags], params[:incexc], params[:enabled],
+                         params[:succeeded], params[:running])
 
     paginate json: jobs
   end
@@ -24,12 +23,11 @@ class JobApiController < ApplicationController
   end
 
   def update
-    params.permit(:name, :cron, :command, :timezone, :enabled, :tags)
     @job.name = params[:name] unless @job.name == params[:name] or params[:name].blank?
     @job.cron = params[:cron] unless @job.cron == params[:cron] or params[:cron].blank?
     @job.command = params[:command] unless @job.command == params[:command] or params[:command].blank?
     @job.timezone = params[:timezone] unless @job.timezone == params[:timezone] or params[:timezone].blank?
-    @job.enabled = params[:enabled] unless @job.enabled == params[:enabled] or params[:enabled].blank?
+    @job.enabled = params[:enabled] if params[:enabled].present?
     add_tags(@job)
     @job.save
     message I18n.t('jobs.messages.updated', id: @job.id), :ok, @job
@@ -42,46 +40,23 @@ class JobApiController < ApplicationController
     message I18n.t('jobs.messages.deleted', id: @job.id), :ok
   end
 
-  # Search for failures across all jobs
-  def failures
-  end
-
-  # Search for failed runs of a single job
-  def job_failures
-  end
-
-  # Find disabled jobs
-  def disabled
-    render json: enabled_disabled_jobs(false)
-  end
-
-  # Disable a job
-  def disable
-    enable_disable_job(false)
-  end
-
-  # Find enabled jobs
-  def enabled
-    render json: enabled_disabled_jobs(true)
-  end
-
-  # Enable a job
-  def enable
-    enable_disable_job(true)
-  end
-
   # Return the runs for a job
   def runs
     start_date = params[:start_date] ||= nil
     end_date = params[:end_date] ||= nil
-    succeeded = params[:succeeded] ||= nil
+    succeeded = params[:succeeded]
 
-    runs = @job.filter_runs(current_user, start_date, end_date, succeeded)
+    runs = @job.filter_runs(start_date, end_date, succeeded)
     paginate json: runs
   end
 
+  def jobs_with_occurrences
+    no_end_date and return unless params[:end_date]
+    render json: Job.occurrences(params[:end_date])
+  end
+
   def occurrences
-    error I18n.t('jobs.errors.end_date_required'), :forbidden and return unless params[:end_date]
+    no_end_date and return unless params[:end_date]
     render json: @job.occurrences(params[:end_date])
   end
 
@@ -93,34 +68,6 @@ class JobApiController < ApplicationController
     end
   end
 
-  def search_tags(jobs)
-    if params.has_key? :tags
-      tags = params[:tags].split(',').map(&:strip)
-      incexc = (params.has_key?(:incexc) and TAG_SEARCH.include?(params[:incexc])) ? params[:incexc].downcase : 'all'
-      case incexc
-      when 'all'
-        jobs = jobs.tagged_with(tags, match_all: true)
-      when 'any'
-        jobs = jobs.tagged_with(tags, any: true)
-      when 'exclude'
-        jobs = jobs.tagged_with(tags, exclude: true)
-      end
-    end
-
-    jobs
-  end
-
-  def enabled_disabled_jobs(enabled)
-    Job.all.mine(current_user).enabled(enabled)
-  end
-
-  def enable_disable_job(enabled)
-    @job.enabled = enabled
-    @job.save
-
-    head :no_content
-  end
-
   def get_job
     @job = Job.mine(current_user).where(id: params[:id]).first
     error I18n.t('jobs.errors.not_found'), :not_found and return if @job.blank?
@@ -128,5 +75,9 @@ class JobApiController < ApplicationController
 
   def not_unique
     error I18n.t('jobs.errors.already_exists'), :forbidden
+  end
+
+  def no_end_date
+    error I18n.t('jobs.errors.end_date_required'), :forbidden
   end
 end

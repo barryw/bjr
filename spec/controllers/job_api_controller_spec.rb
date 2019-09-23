@@ -33,30 +33,6 @@ RSpec.describe JobApiController, type: :controller do
     end
   end
 
-  describe "POST #enable" do
-    it "returns http success when we enable a job" do
-      user = create(:admin1)
-      authenticated_header(user)
-      job = create(:job1, enabled: false, user: user)
-      post :enable, params: { 'id': job.id }
-      expect(response).to have_http_status(:success)
-      job.reload
-      expect(job.enabled).to be true
-    end
-  end
-
-  describe "POST #disable" do
-    it "returns http success when we disable a job" do
-      user = create(:admin1)
-      authenticated_header(user)
-      job = create(:job1, enabled: true, user: user)
-      post :disable, params: { 'id': job.id }
-      expect(response).to have_http_status(:success)
-      job.reload
-      expect(job.enabled).to be false
-    end
-  end
-
   describe "PUT #update" do
     it "returns http failure" do
       put :update, params: { 'name': 'foo', 'id': 1 }
@@ -185,6 +161,64 @@ RSpec.describe JobApiController, type: :controller do
       expect(json.length).to eq(1)
       expect(json[0]['id']).to eq(job2.id)
     end
+
+    it "returns http success gets a job due to execute within a timeframe" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, name: 'job1', cron: '0 0 * * *')
+      authenticated_header(user)
+      get :index, params: { start_date: 'yesterday', end_date: 'tomorrow' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(job1.id)
+    end
+
+    it "returns http success gets a job due to execute within a timeframe and tagged" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, name: 'job1', cron: '0 0 * * *', tag_list: 'tag1')
+      job2 = create(:job1, user: user, name: 'job2', cron: '0 0 * * *', tag_list: 'tag2')
+      authenticated_header(user)
+      get :index, params: { start_date: 'yesterday', end_date: 'tomorrow', tags: 'tag1' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(job1.id)
+    end
+
+    it "returns http success does not get a job because it falls outside the occurrence check" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, name: 'job1', cron: '0 0 * * *')
+      job2 = create(:job1, user: user, name: 'job2', cron: '0 0 * * *')
+      authenticated_header(user)
+      get :index, params: { start_date: 'today at 2pm', end_date: 'today at 3pm' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(0)
+    end
+
+    it "returns http success looking for enabled jobs" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, name: 'job1', enabled: true)
+      job2 = create(:job1, user: user, name: 'job2', enabled: false)
+      authenticated_header(user)
+      get :index, params: { enabled: true }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(job1.id)
+    end
+
+    it "returns http success looking for enabled jobs that are tagged and match our occurrence check" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, name: 'job1', enabled: false, tag_list: 'tag1', cron: '0 0 * * *')
+      job2 = create(:job1, user: user, name: 'job2', enabled: true, tag_list: 'tag1', cron: '0 0 * * *')
+      authenticated_header(user)
+      get :index, params: { enabled: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow'}
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(1)
+      expect(json[0]['id']).to eq(job2.id)
+    end
   end
 
   describe "GET #show" do
@@ -227,68 +261,6 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       delete :destroy, params: { 'id': job.id }
       expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #enabled" do
-    it "returns http failure" do
-      get :enabled
-      expect(response).not_to have_http_status(:success)
-    end
-
-    it "returns http success for getting enabled jobs" do
-      user = create(:admin1)
-      job1 = create(:job1, user: user, enabled: true)
-      job2 = create(:job2, user: user, enabled: false)
-      authenticated_header(user)
-      get :enabled
-      expect(response).to have_http_status(:success)
-      json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(job1.id)
-    end
-
-    it "returns http success for getting enabled jobs" do
-      user = create(:admin1)
-      job1 = create(:job1, user: user, enabled: true)
-      job2 = create(:job2, user: user, enabled: false)
-      authenticated_header(user)
-      get :disabled
-      expect(response).to have_http_status(:success)
-      json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(job2.id)
-    end
-  end
-
-  describe "GET #disabled" do
-    it "returns http failure" do
-      get :disabled
-      expect(response).not_to have_http_status(:success)
-    end
-
-    it "returns http success for getting disabled jobs" do
-      user = create(:admin1)
-      job1 = create(:job1, user: user, enabled: true)
-      job2 = create(:job2, user: user, enabled: false)
-      authenticated_header(user)
-      get :disabled
-      expect(response).to have_http_status(:success)
-      json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(job2.id)
-    end
-
-    it "returns http success for getting disabled jobs" do
-      user = create(:admin1)
-      job1 = create(:job1, user: user, enabled: true)
-      job2 = create(:job2, user: user, enabled: false)
-      authenticated_header(user)
-      get :disabled
-      expect(response).to have_http_status(:success)
-      json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(job2.id)
     end
   end
 

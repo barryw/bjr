@@ -1,23 +1,23 @@
 es:
   jobs:
     messages:
-      created: Job %{id} created successfully.
-      deleted: Job %{id} deleted successfully.
-      updated: Job %{id} updated successfully.
+      created: El trabajo %{id} se ha creado correctamente.
+      deleted: El trabajo %{id} se ha eliminado correctamente.
+      updated: El trabajo %{id} se ha actualizado correctamente.
     errors:
       not_found: Trabajo no encontrado.
       already_exists: Ya existe un trabajo con este nombre.
       end_date_required: Debe proporcionar un parámetro de fecha de finalización.
   users:
     messages:
-      created: User %{id} created successfully.
-      deleted: User %{id} deleted successfully.
-      updated: User %{id} updated successfully.
+      created: El usuario %{id} se ha creado correctamente.
+      deleted: El usuario %{id} se ha eliminado correctamente.
+      updated: El usuario %{id} se ha actualizado correctamente.
     errors:
       not_found: Usuario no encontrado.
-      already_exists: A user with this username already exists.
-      cant_delete_yourself: Cannot delete yourself.
-      invalid_credentials: Invalid credentials
-      not_authorized: Not authorized
-      invalid_token: Invalid token
-      missing_token: Missing token
+      already_exists: Ya existe un usuario con este nombre de usuario.
+      cant_delete_yourself: No puedes eliminarte tú mismo.
+      invalid_credentials: Ha utilizado credenciales no válidas
+      not_authorized: Usted no está autorizado
+      invalid_token: Ha utilizado un token no válido
+      missing_token: Falta el token

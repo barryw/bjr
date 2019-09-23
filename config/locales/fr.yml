@@ -1,0 +1,23 @@
+fr:
+  jobs:
+    messages:
+      created: La tâche de %{id} a été créée avec succès.
+      deleted: La tâche de %{id} a été supprimée avec succès.
+      updated: Le travail %{id} a été mis à jour avec succès.
+    errors:
+      not_found: Travail introuvable.
+      already_exists: Une tâche portant ce nom existe déjà.
+      end_date_required: Vous devez fournir un paramètre de date de fin.
+  users:
+    messages:
+      created: L'utilisateur %{id} a été créé avec succès.
+      deleted: L'utilisateur %{id} a été supprimé avec succès.
+      updated: L'utilisateur %{id} a été mis à jour avec succès.
+    errors:
+      not_found: Utilisateur introuvable.
+      already_exists: Un utilisateur avec ce nom d'utilisateur existe déjà.
+      cant_delete_yourself: Vous ne pouvez pas vous effacer vous-même.
+      invalid_credentials: Vous avez utilisé des informations d'identification non valides
+      not_authorized: Vous n'êtes pas autorisé
+      invalid_token: Vous avez utilisé un jeton non valide
+      missing_token: Le jeton est manquant
