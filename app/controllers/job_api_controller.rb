@@ -41,19 +41,15 @@ class JobApiController < ApplicationController
 
   # Return the runs for a job
   def runs
-    start_date = params[:start_date] ||= nil
-    end_date = params[:end_date] ||= nil
+    start_date = params[:start_date]
+    end_date = params[:end_date]
     succeeded = params[:succeeded]
 
     runs = @job.filter_runs(start_date, end_date, succeeded)
     paginate json: runs
   end
 
-  def jobs_with_occurrences
-    no_end_date and return unless params[:end_date]
-    render json: Job.occurrences(params[:end_date])
-  end
-
+  # Return the occurrences for this job up to a certain date
   def occurrences
     no_end_date and return unless params[:end_date]
     render json: @job.occurrences(params[:end_date])

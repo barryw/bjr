@@ -34,9 +34,6 @@ class Job < ApplicationRecord
     schedule.occurrences(end_date)
   end
 
-  def self.occurrences(end_date)
-  end
-
   # When a job starts, this is called to mark the job as running and create a run
   def start_job
     run = JobRun.create(job: self, start_time: Time.current)
