@@ -37,5 +37,5 @@ jobs:
         DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
       run: |
         docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
-        docker build -t barrywalker71/bjr:latest
+        docker build -t barrywalker71/bjr:latest .
         docker push barrywalker71/bjr:latest
