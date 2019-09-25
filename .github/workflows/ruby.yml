@@ -21,11 +21,21 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.3
-    - name: Build and test with Rake
+    - name: Install MySQL client libs
+      run: |
+        sudo apt-get install -y libmysqlclient-dev
+    - name: Execute RSpec tests
       env:
         BJR_DATABASE_PORT: "3307"
       run: |
-        sudo apt-get install -y libmysqlclient-dev
         gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rspec
+    - name: Build docker image
+      env:
+        DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      run: |
+        docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+        docker build -t barrywalker71/bjr:latest .
+        docker push barrywalker71/bjr:latest
