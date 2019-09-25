@@ -1,4 +1,4 @@
-FROM ruby:2.6.4-alpine
+FROM ruby:2.6.3-alpine
 
 MAINTAINER Barry Walker <barrywalker@gmail.com>
 
