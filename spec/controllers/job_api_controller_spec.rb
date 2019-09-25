@@ -288,10 +288,6 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :occurrences, params: { 'id': job1.id, 'end_date': Time.current + 1.minutes }
       expect(response).to have_http_status(:success)
-      puts response.body
-      # TODO
-      # json = JSON.parse(response.body)
-      # expect(json.length).to eq(1)
     end
 
     it "returns http failure because we didn't specify an end date" do
