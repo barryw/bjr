@@ -17,6 +17,7 @@ RSpec.describe Job, type: :model do
     job.stop_job(run, 0, true, "error message", "stdout", "stderr")
     expect(job.running).to be false
     expect(job.success).to be true
+    expect(job.last_run).not_to be_nil
     expect(run.return_code).to eq(0)
     expect(run.success).to be true
     expect(run.error_message).to eq("error message")
