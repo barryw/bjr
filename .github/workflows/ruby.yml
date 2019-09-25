@@ -6,8 +6,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    steps:
+    
     steps:
     - uses: mirromutth/mysql-action@v1.1
       with:
