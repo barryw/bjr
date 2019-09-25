@@ -16,6 +16,7 @@ default: &default
   username: <%= ENV.fetch('BJR_DATABASE_USERNAME', 'bjr') %>
   password: <%= ENV.fetch('BJR_DATABASE_PASSWORD', 'bjr') %>
   host: <%= ENV.fetch('BJR_DATABASE_HOST', '127.0.0.1') %>
+  port: <%= ENV.fetch('BJR_DATABASE_PORT', 3306) %>
 
 development:
   <<: *default
