@@ -51,8 +51,9 @@ class JobApiController < ApplicationController
 
   # Return the occurrences for this job up to a certain date
   def occurrences
-    no_end_date and return unless params[:end_date]
-    render json: @job.occurrences(params[:end_date])
+    end_date = Chronic.parse(params[:end_date])
+    no_end_date and return if end_date.nil?
+    render json: @job.occurrences(end_date)
   end
 
   private

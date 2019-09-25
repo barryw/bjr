@@ -284,13 +284,26 @@ RSpec.describe JobApiController, type: :controller do
 
     it "returns http success for getting job occurrences" do
       user = create(:admin1)
-      job1 = create(:job1, user: user, enabled: true, cron: '0 0 * * *')
+      job1 = create(:job1, user: user, enabled: true, cron: '*/5 * * * *')
       authenticated_header(user)
-      get :occurrences, params: { 'id': job1.id, 'end_date': Time.current + 1.hour }
+      get :occurrences, params: { 'id': job1.id, 'end_date': Time.current + 1.minutes }
       expect(response).to have_http_status(:success)
+      puts response.body
       # TODO
       # json = JSON.parse(response.body)
       # expect(json.length).to eq(1)
+    end
+
+    it "returns http failure because we didn't specify an end date" do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, enabled: true, cron: '0 0 * * *')
+      authenticated_header(user)
+      get :occurrences, params: { 'id': job1.id, 'end_date': '' }
+      expect(response).not_to have_http_status(:success)
+      expect(response.status).to eq(403)
+      json = JSON.parse(response.body)
+      expect(json['error']).to eq(I18n.t('jobs.errors.end_date_required'))
+      expect(json['status_code']).to eq(403)
     end
   end
 

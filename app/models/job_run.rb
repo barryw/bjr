@@ -5,7 +5,7 @@ class JobRun < ApplicationRecord
   scope :ended_before, ->(end_dt) { where('end_time <= ?', end_dt) }
   scope :succeeded, ->(success) { where(success: success) }
 
-  def update_run(success, return_code, error_message, stdout, stderr)
+  def update_run(return_code, success, error_message, stdout, stderr)
     self.success = success
     self.return_code = return_code
     self.error_message = error_message
