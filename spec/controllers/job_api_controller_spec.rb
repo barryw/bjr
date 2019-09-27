@@ -213,7 +213,7 @@ RSpec.describe JobApiController, type: :controller do
       job1 = create(:job1, user: user, name: 'job1', enabled: false, tag_list: 'tag1', cron: '0 0 * * *')
       job2 = create(:job1, user: user, name: 'job2', enabled: true, tag_list: 'tag1', cron: '0 0 * * *')
       authenticated_header(user)
-      get :index, params: { enabled: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow'}
+      get :index, params: { enabled: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json.length).to eq(1)
@@ -225,7 +225,7 @@ RSpec.describe JobApiController, type: :controller do
       job1 = create(:job1, user: user, name: 'job1', running: false, tag_list: 'tag1', cron: '0 0 * * *')
       job2 = create(:job1, user: user, name: 'job2', running: true, tag_list: 'tag1', cron: '0 0 * * *')
       authenticated_header(user)
-      get :index, params: { running: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow'}
+      get :index, params: { running: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json.length).to eq(1)
@@ -244,7 +244,8 @@ RSpec.describe JobApiController, type: :controller do
       get :show, params: { 'id': 1 }
       expect(response.status).to eq(404)
       json = JSON.parse(response.body)
-      expect(json['error']).to eq(I18n.t('jobs.errors.not_found'))
+      expect(json['message']).to eq(I18n.t('jobs.errors.not_found'))
+      expect(json['is_error']).to be true
     end
 
     it "returns http success" do
@@ -298,7 +299,8 @@ RSpec.describe JobApiController, type: :controller do
       expect(response).not_to have_http_status(:success)
       expect(response.status).to eq(403)
       json = JSON.parse(response.body)
-      expect(json['error']).to eq(I18n.t('jobs.errors.end_date_required'))
+      expect(json['message']).to eq(I18n.t('jobs.errors.end_date_required'))
+      expect(json['is_error']).to be true
       expect(json['status_code']).to eq(403)
     end
   end

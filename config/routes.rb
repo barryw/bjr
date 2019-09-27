@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :user_api
 
   get '/static_api/timezones', to: 'static_api#timezones', as: 'static_api_timezones'
+  get '/static_api/tags', to: 'static_api#tags', as: 'static_api_tags'
 
   mount Sidekiq::Web => '/sidekiq'
   mount Rswag::Ui::Engine => '/api-docs'

@@ -16,6 +16,6 @@ class JobRun < ApplicationRecord
   end
 
   def as_json(options = {})
-    super(only: [:id, :success, :return_code, :error_message, :stdout, :stderr, :start_time, :end_time, :job_id])
+    super(only: [:id, :success, :return_code, :error_message, :stdout, :stderr, :start_time, :end_time, :job_id, :created_at, :updated_at])
   end
 end

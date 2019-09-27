@@ -16,6 +16,7 @@ gem 'acts-as-taggable-on'
 gem 'kaminari'
 gem 'api-pagination'
 gem 'rswag'
+gem 'http_accept_language'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -32,6 +33,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'foreman'
   gem 'rubocop-rails'
+  gem 'brakeman'
 end
 
 group :development do

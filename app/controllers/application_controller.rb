@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  around_action :switch_locale
+  include HttpAcceptLanguage::AutoLocale
   before_action :authenticate_request
 
   attr_reader :current_user
@@ -12,19 +12,14 @@ class ApplicationController < ActionController::API
   end
 
   def error(message, status)
-    render json: { error: message, status_code: status_msg_to_number(status) }, status: status
+    message(message, status, true)
   end
 
-  def message(message, status, object = {})
-    render json: { message: message, object: object, status_code: status_msg_to_number(status) }, status: status
+  def message(message, status, is_error = false, object = {})
+    render json: { message: message, is_error: is_error, object: object, status_code: status_msg_to_number(status) }, status: status
   end
 
   def status_msg_to_number(status)
     Rack::Utils::SYMBOL_TO_STATUS_CODE[status]
-  end
-
-  def switch_locale(&action)
-    language = params[:language] || I18n.default_locale
-    I18n.with_locale(language, &action)
   end
 end
