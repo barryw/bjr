@@ -17,7 +17,11 @@ class Job < ApplicationRecord
 
   before_validation(on: [:create, :update]) do
     self.timezone = 'UTC' if timezone.blank?
-    date = Date.current.in_time_zone(self.timezone)
+    begin
+      date = Date.current.in_time_zone(self.timezone)
+    rescue
+      raise TZInfo::InvalidTimezoneIdentifier.new
+    end
     schedule = ::IceCube::Schedule.from_cron(date, self.cron)
     self.next_run = schedule.next_occurrence
   end

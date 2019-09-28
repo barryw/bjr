@@ -37,11 +37,13 @@ RSpec.describe StaticApiController, type: :controller do
       expect(response).to have_http_status(:success)
       json1 = JSON.parse(response.body)
       expect(json1.length).to eq(3)
+      expect(json1).to eq(job1.tags.as_json)
       authenticated_header(user2)
       get :tags
       expect(response).to have_http_status(:success)
       json2 = JSON.parse(response.body)
       expect(json2.length).to eq(2)
+      expect(json2).to eq(job2.tags.as_json)
     end
   end
 end

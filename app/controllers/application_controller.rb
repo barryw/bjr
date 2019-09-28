@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   include HttpAcceptLanguage::AutoLocale
   before_action :authenticate_request
+  before_action :set_timezone
 
   attr_reader :current_user
 
@@ -9,6 +10,15 @@ class ApplicationController < ActionController::API
   def authenticate_request
     @current_user = AuthorizeApiRequest.call(request.headers).result
     error I18n.t('users.errors.not_authorized'), :unauthorized unless @current_user
+  end
+
+  def set_timezone
+    if params.key? :timezone
+      Time.zone = params[:timezone]
+    end
+  rescue
+    logger.warn I18n.t('common.errors.invalid_timezone', timezone: params[:timezone],
+                       timezone_list_url: static_api_timezones_url)
   end
 
   def error(message, status)

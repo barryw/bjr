@@ -31,6 +31,20 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['object']['tags']).to include({ 'name' => 'customer1' })
       expect(json['object']['tags']).to include({ 'name' => 'job1' })
     end
+
+    it "returns http success and creates jobs that run in the specified timezone" do
+      Time.zone = 'Samoa'
+      today = Time.current.in_time_zone("Samoa").midnight
+      travel_to today - 2.minutes
+      admin = create(:admin1)
+      authenticated_header(admin)
+      post :create, params: { name: 'job1', cron: '0 0 * * *', command: 'ls -ltr', timezone: 'Samoa' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json["object"]["next_run"]).to eq(today.as_json)
+      travel_back
+      Time.zone = 'UTC'
+    end
   end
 
   describe "PUT #update" do

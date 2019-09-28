@@ -1,4 +1,7 @@
 en:
+  common:
+    errors:
+      invalid_timezone: "Invalid timezone '%{timezone}' specified. Acceptable timezone list: %{timezone_list_url}"
   jobs:
     messages:
       created: Job %{id} created successfully.
