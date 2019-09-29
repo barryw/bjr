@@ -12,7 +12,7 @@ class UserApiController < ApplicationController
 
   def create
     user = User.create!(username: params[:username], password: params[:password], password_confirmation: params[:password])
-    render json: user, status: :created
+    message I18n.t('users.messages.created', id: user.id), :created, false, user
   rescue ActiveRecord::RecordNotUnique
     error I18n.t('users.errors.already_exists'), :forbidden
   end
@@ -20,8 +20,10 @@ class UserApiController < ApplicationController
   def update
     @user.password = params[:password]
     @user.password_confirmation = params[:password_confirmation]
-    @user.save
-    message I18n.t('users.messages.updated', id: @user.id), :ok
+    @user.save!
+    message I18n.t('users.messages.updated', id: @user.id), :ok, false, @user
+  rescue
+    error I18n.t('users.errors.update_failed', id: @user.id, error: $!), :forbidden
   end
 
   def destroy

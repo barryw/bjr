@@ -18,6 +18,7 @@ en:
       updated: User %{id} updated successfully.
     errors:
       not_found: User not found.
+      update_failed: "Failed to update user '%{id}': %{error}"
       already_exists: A user with this username already exists.
       cant_delete_yourself: You cannot delete yourself.
       invalid_credentials: Invalid credentials
