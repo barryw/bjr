@@ -17,7 +17,7 @@ class JobApiController < ApplicationController
     job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command],
                       timezone: params[:timezone], user: current_user)
     current_user.tag job, with: params[:tags], on: :tags if params[:tags].present?
-    message I18n.t('jobs.messages.created', id: job.id), :created, false, job
+    message I18n.t('jobs.messages.created', id: job.id), :created, false, job, 'job'
   rescue ActiveRecord::RecordNotUnique
     not_unique
   rescue TZInfo::InvalidTimezoneIdentifier
@@ -32,10 +32,12 @@ class JobApiController < ApplicationController
     @job.timezone = params[:timezone] unless @job.timezone == params[:timezone] or params[:timezone].blank?
     @job.enabled = params[:enabled] if params[:enabled].present?
     current_user.tag @job, with: params[:tags], on: :tags if params[:tags].present?
-    @job.save
-    message I18n.t('jobs.messages.updated', id: @job.id), :ok, false, @job
+    @job.save!
+    message I18n.t('jobs.messages.updated', id: @job.id), :ok, false, @job, 'job'
   rescue ActiveRecord::RecordNotUnique
     not_unique
+  rescue
+    error I18n.t('jobs.errors.update_failed', id: @job.id, error: $!), :forbidden
   end
 
   def destroy

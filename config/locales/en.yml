@@ -9,6 +9,7 @@ en:
       updated: Job %{id} updated successfully.
     errors:
       not_found: Job not found.
+      update_failed: "Failed to update job '%{id}': %{error}"
       already_exists: A job with this name already exists.
       end_date_required: You must supply an end date parameter.
   users:
