@@ -106,8 +106,18 @@ class Job < ApplicationRecord
 
   # Called when the job is rendered as JSON
   def as_json(options = {})
-    super(only: [:id, :name, :cron, :enabled, :command, :next_run, :running, :created_at, :updated_at],
-          include: { tags: { only: [:name] } })
+    {
+      id: self.id,
+      name: self.name,
+      cron: self.cron,
+      enabled: self.enabled,
+      command: self.command,
+      next_run: self.next_run,
+      running: self.running,
+      created_at: self.created_at,
+      updated_at: self.updated_at,
+      tags: self.tags.collect { |t| t.name }
+    }
   end
 
   private

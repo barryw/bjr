@@ -18,7 +18,7 @@ class ApplicationController < ActionController::API
     end
   rescue
     logger.warn I18n.t('common.errors.invalid_timezone', timezone: params[:timezone],
-                       timezone_list_url: static_api_timezones_url)
+                                                         timezone_list_url: static_api_timezones_url)
   end
 
   def error(message, status)

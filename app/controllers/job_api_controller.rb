@@ -22,7 +22,7 @@ class JobApiController < ApplicationController
     not_unique
   rescue TZInfo::InvalidTimezoneIdentifier
     error I18n.t('common.errors.invalid_timezone', timezone: params[:timezone],
-                 timezone_list_url: static_api_timezones_url), :forbidden
+                                                   timezone_list_url: static_api_timezones_url), :forbidden
   end
 
   def update
