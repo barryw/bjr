@@ -28,8 +28,8 @@ RSpec.describe JobApiController, type: :controller do
       json = JSON.parse(response.body)
       expect(json['status_code']).to eq(201)
       expect(json['object']['tags'].length).to eq(2)
-      expect(json['object']['tags']).to include({ 'name' => 'customer1' })
-      expect(json['object']['tags']).to include({ 'name' => 'job1' })
+      expect(json['object']['tags']).to include('customer1')
+      expect(json['object']['tags']).to include('job1')
     end
 
     it "returns http success and creates jobs that run in the specified timezone" do
@@ -83,7 +83,7 @@ RSpec.describe JobApiController, type: :controller do
       json = JSON.parse(response.body)
       expect(json['status_code']).to eq(200)
       expect(json['object']['enabled']).to eq(true)
-      expect(json['object']['tags']).to include({ 'name' => 'tag2' })
+      expect(json['object']['tags']).to include('tag2')
     end
   end
 
@@ -113,7 +113,7 @@ RSpec.describe JobApiController, type: :controller do
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json.length).to eq(1)
-      expect(json[0]['tags']).to include({ 'name' => 'tag1' })
+      expect(json[0]['tags']).to include('tag1')
     end
 
     it "returns http success and gets a tagged job on all tags" do
@@ -125,7 +125,7 @@ RSpec.describe JobApiController, type: :controller do
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json.length).to eq(1)
-      expect(json[0]['tags']).to include({ 'name' => 'tag1' })
+      expect(json[0]['tags']).to include('tag1')
     end
 
     it "returns http success and gets a job tagged with multiple tags" do
@@ -137,8 +137,8 @@ RSpec.describe JobApiController, type: :controller do
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json.length).to eq(1)
-      expect(json[0]['tags']).to include({ 'name' => 'tag1' })
-      expect(json[0]['tags']).to include({ 'name' => 'tag2' })
+      expect(json[0]['tags']).to include('tag1')
+      expect(json[0]['tags']).to include('tag2')
     end
 
     it "returns http success and does not get a job tagged with multiple tags" do
