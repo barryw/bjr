@@ -51,15 +51,15 @@ class JobApiController < ApplicationController
     end_date = params[:end_date]
     succeeded = params[:succeeded]
 
-    runs = @job.filter_runs(start_date, end_date, succeeded)
-    paginate json: runs
+    runs = @job.filter_runs(start_date, end_date, succeeded).page params[:page]
+    message I18n.t('jobs.messages.runs', id: @job.id), :ok, false, runs, 'job_runs'
   end
 
   # Return the occurrences for this job up to a certain date
   def occurrences
     end_date = Chronic.parse(params[:end_date])
     no_end_date and return if end_date.nil?
-    render json: @job.occurrences(end_date)
+    paginate json: @job.occurrences(end_date)
   end
 
   private

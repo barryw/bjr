@@ -7,6 +7,7 @@ en:
       created: Job %{id} created successfully.
       deleted: Job %{id} deleted successfully.
       updated: Job %{id} updated successfully.
+      runs: Runs for job %{id}
     errors:
       not_found: Job not found.
       update_failed: "Failed to update job '%{id}': %{error}"

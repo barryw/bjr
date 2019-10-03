@@ -6,7 +6,7 @@ class Job < ApplicationRecord
   acts_as_taggable
 
   belongs_to :user
-  has_many :job_runs, dependent: :destroy
+  has_many :job_runs, dependent: :delete_all
 
   scope :schedulable, -> { where("next_run < ? and enabled = ? and running = ?", Time.current, true, false) }
   scope :mine, ->(user_id) { where(user_id: user_id) }

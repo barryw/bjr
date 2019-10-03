@@ -332,7 +332,7 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 10.hours }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(0)
+      expect(json['object'].length).to eq(0)
     end
 
     it "returns http success while trying to get runs that started after a date" do
@@ -343,7 +343,7 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 12.hours }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
+      expect(json['object'].length).to eq(1)
     end
 
     it "returns http success while trying to get runs that ended before a date" do
@@ -354,7 +354,7 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'end_date': Time.current - 12.hours }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
+      expect(json['object'].length).to eq(1)
     end
 
     it "returns http success while trying to get runs that started after a date and finished before a date" do
@@ -365,7 +365,7 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
+      expect(json['object'].length).to eq(1)
     end
 
     it "returns http success while trying to get runs that succeeded" do
@@ -376,8 +376,8 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': true }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(run1.id)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(run1.id)
     end
 
     it "returns http success while trying to get runs that failed" do
@@ -388,8 +388,8 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': false }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(run2.id)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(run2.id)
     end
   end
 end
