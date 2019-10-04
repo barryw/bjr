@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'sidekiq/testing'
 
 RSpec.describe StaticApiController, type: :controller do
   describe "GET #timezones" do
@@ -44,6 +45,13 @@ RSpec.describe StaticApiController, type: :controller do
       json2 = JSON.parse(response.body)
       expect(json2.length).to eq(2)
       expect(json2).to eq(job2.tags.as_json)
+    end
+  end
+
+  describe "GET #health" do
+    it "returns http success" do
+      get :health
+      expect(response).to have_http_status(:success)
     end
   end
 end

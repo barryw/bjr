@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :user_api
 
+  get '/health', to: 'static_api#health', as: 'static_api_health'
   get '/static_api/timezones', to: 'static_api#timezones', as: 'static_api_timezones'
   get '/static_api/tags', to: 'static_api#tags', as: 'static_api_tags'
 

@@ -47,7 +47,7 @@ class JobApiController < ApplicationController
 
   # Return the runs for a job
   def runs
-    runs = @job.filter_runs(params[:start_date], params[:end_date], params[:succeeded])
+    runs = @job.filter_runs(params[:start_date], params[:end_date], params[:succeeded]).page params[:page]
     message I18n.t('jobs.messages.runs', id: @job.id), :ok, false, runs, 'job_runs'
   end
 
