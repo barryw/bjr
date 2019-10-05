@@ -93,6 +93,24 @@ RSpec.describe JobApiController, type: :controller do
       expect(response).not_to have_http_status(:success)
     end
 
+    it "properly times out our JWT" do
+      user = create(:admin1)
+      authenticated_header(user)
+      travel_to Time.current + 3601.seconds
+      get :index
+      expect(response).not_to have_http_status(:success)
+      travel_back
+    end
+
+    it "allows our JWT to stay live for the default duration" do
+      user = create(:admin1)
+      authenticated_header(user)
+      travel_to Time.current + 3590.seconds
+      get :index
+      expect(response).to have_http_status(:success)
+      travel_back
+    end
+
     it "returns http success" do
       user = create(:admin1)
       job1 = create(:job1, user: user, name: 'job1')
