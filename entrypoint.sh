@@ -10,7 +10,7 @@ echo "MySQL is up and running!"
 if [[ $SERVER_TYPE == "api" ]];
 then
   echo Starting BJR API server
-  rake db:create db:migrate
+  bundle exec rake db:create db:migrate db:seed
   rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'
 else
   echo Starting BJR worker

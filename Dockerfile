@@ -10,7 +10,7 @@ RUN apk update && apk upgrade \
 WORKDIR /app
 ADD Gemfile /app
 ADD Gemfile.lock /app
-RUN bundle install --without=development --without=test
+RUN bundle install #--without=development test
 
 ADD . /app
 RUN mkdir ./lib/mariadb && ln -s /usr/lib/mariadb/plugin ./lib/mariadb/plugin

@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "bjr.fullname" . }}-api
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "bjr.fullname" . }}-api
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+{{- with .Values.deploymentAnnotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  replicas: {{ .Values.apiNode.replicas }}
+  selector:
+    matchLabels:
+      app: {{ template "bjr.fullname" . }}-api
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "bjr.fullname" . }}-api
+        release: {{ .Release.Name }}
+{{- with .Values.podLabels }}
+{{ toYaml . | indent 8 }}
+{{- end }}
+{{- with .Values.podAnnotations }}
+      annotations:
+{{ toYaml . | indent 8 }}
+{{- end }}
+    spec:
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+{{ toYaml .Values.imagePullSecrets | indent 8 }}
+      {{- end }}
+      {{- if .Values.apiNode.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.apiNode.nodeSelector | indent 8 }}
+      {{- end }}
+      {{- if .Values.tolerations }}
+      tolerations:
+{{ toYaml .Values.tolerations | indent 8 }}
+      {{- end }}
+      containers:
+      - name: {{ template "bjr.fullname" . }}-api
+        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+        imagePullPolicy: {{ .Values.imagePullPolicy | quote }}
+        resources:
+{{ toYaml .Values.apiNode.resources | indent 10 }}
+        env:
+        - name: RAILS_ENV
+          value: production
+        - name: RAILS_LOG_TO_STDOUT
+          value: "true"
+        - name: SECRET_KEY_BASE
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "bjr.secretName" . }}
+              key: secret-key-base
+        {{- include "bjr.mysql" . | nindent 8 -}}
+        {{- include "bjr.redis" . | nindent 8 }}
+        - name: SERVER_TYPE
+          value: api
+        - name: JWT_EXPIRY_SECONDS
+          value: {{ .Values.serverSettings.jwtLifetime | quote }}
+        - name: INITIAL_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "bjr.secretName" . }}
+              key: admin-password
+        ports:
+        - name: api
+          containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 120
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 120
+          periodSeconds: 3

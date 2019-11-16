@@ -1,0 +1,64 @@
+#
+# BJR Server image and tag
+#
+image: "barrywalker71/bjr"
+imageTag: "latest"
+imagePullPolicy: Always
+
+apiNode:
+  nodeSelector: {}
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 100m
+    limits:
+      memory: 128Mi
+      cpu: 100m
+  replicas: 2
+
+workerNode:
+  nodeSelector: {}
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 200m
+    limits:
+      memory: 128Mi
+      cpu: 200m
+  replicas: 2
+
+#
+# MySQL settings
+#
+mysql:
+  mysqlDatabase: bjr_production
+  mysqlUser: bjr
+  timezone: UTC
+  livenessProbe:
+    initialDelaySeconds: 120
+  readinessProbe:
+    initialDelaySeconds: 120
+  external:
+    disabled: true
+    secretName: bjr-mysql
+    usernameKey: mysql-username
+    passwordKey: mysql-password
+    address: ""
+    database: ""
+
+#
+# Redis settings
+#
+redis:
+  usePassword: false
+  external:
+    disabled: true
+    address: ""
+    port: 6379
+    sidekiqDb: 0
+
+#
+# BJR Settings
+#
+serverSettings:
+  jwtLifetime: 3600

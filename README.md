@@ -1,4 +1,8 @@
 
+#### Configuring
+
+`JWT_EXPIRY_SECONDS` : Set to the number of seconds that a JWT should live. The default is 3600 seconds.
+
 ##### Authenticate
 
 ```bash

@@ -1,0 +1,7 @@
+apiVersion: v1
+name: bjr
+version: 1.0.0
+description: Barry's Job Runner. A simple job scheduling system with a REST API
+maintainers:
+  - name: Barry Walker
+    email: barrywalker@gmail.com

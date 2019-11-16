@@ -1,0 +1,9 @@
+dependencies:
+  - name: mysql
+    repository: "@stable"
+    version: 1.4.0
+    condition: mysql.external.disabled
+  - name: redis
+    repository: "@stable"
+    version: 9.2.2
+    condition: redis.external.disabled

@@ -22,3 +22,5 @@
 /config/master.key
 coverage/*
 dump.rdb
+
+deploy/bjr/charts
