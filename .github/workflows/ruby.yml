@@ -25,7 +25,6 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        RAILS_ENV=test bundle exec rake db:setup
         bundle exec rake
 
     - name: Build docker image
