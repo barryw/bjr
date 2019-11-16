@@ -7,6 +7,17 @@ jobs:
 
     runs-on: self-hosted
 
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_DATABASE: bjr_test
+          MYSQL_USER: bjr
+          MYSQL_PASSWORD: ${{ secrets.BJR_DATABASE_PASSWORD }}
+          MYSQL_RANDOM_ROOT_PASSWORD: yes
+        ports:
+        - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
     - uses: actions/checkout@v1
 
