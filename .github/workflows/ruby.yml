@@ -5,10 +5,7 @@ on: [push]
 jobs:
   build:
 
-    runs-on: self-hosted
-
-    container:
-      image: ruby:2.6.3
+    runs-on: ubuntu-latest
 
     steps:
     - uses: mirromutth/mysql-action@v1.1
@@ -20,6 +17,10 @@ jobs:
         mysql user: 'bjr' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Of course you can use secrets, too
         mysql password: 'bjr' # Required if "mysql user" exists. The password for the "mysql user"
     - uses: actions/checkout@v1
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.4
     - name: Install MySQL client libs
       run: |
         sudo apt-get install -y libmysqlclient-dev
