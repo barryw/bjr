@@ -17,9 +17,6 @@ jobs:
         mysql user: 'bjr' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Of course you can use secrets, too
         mysql password: 'bjr' # Required if "mysql user" exists. The password for the "mysql user"
     - uses: actions/checkout@v1
-    - name: Install MySQL client libs
-      run: |
-        sudo apt-get install -y libmysqlclient-dev
     - name: Execute RSpec tests
       env:
         BJR_DATABASE_PORT: "3307"
