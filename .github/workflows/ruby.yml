@@ -8,22 +8,16 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - uses: mirromutth/mysql-action@v1.1
-      with:
-        host port: 3307 # Optional, default value is 3306. The port of host
-        container port: 3307 # Optional, default value is 3306. The port of container
-        mysql version: '8.0' # Optional, default value is "latest". The version of the MySQL
-        mysql database: 'bjr_test' # Optional, default value is "test". The specified database which will be create
-        mysql user: 'bjr' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Of course you can use secrets, too
-        mysql password: 'bjr' # Required if "mysql user" exists. The password for the "mysql user"
     - uses: actions/checkout@v1
+
     - name: Execute RSpec tests
       env:
-        BJR_DATABASE_PORT: "3307"
+        BJR_DATABASE_PASSWORD: ${{ secrets.BJR_DATABASE_PASSWORD }}
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rspec
+        bundle exec rake
+
     - name: Build docker image
       env:
         DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
