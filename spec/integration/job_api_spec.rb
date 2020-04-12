@@ -114,9 +114,38 @@ describe 'Job API' do
       }
 
       response '200', 'Job updated successfully.' do
+        let(:admin) { create(:admin1) }
+        let(:job) { create(:job1, user: admin)}
+        let(:Authorization) { auth_token(admin) }
+        let(:id) { job.id }
+        let(:params) { { name: 'Updated Job', cron: '*/60 * * * *', command: 'ls -l' } }
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json['object']['id']).to eq(job.id)
+          expect(json['object']['name']).to eq('Updated Job')
+          expect(json['object']['cron']).to eq('*/60 * * * *')
+          expect(json['object']['command']).to eq('ls -l')
+        end
       end
 
       response '403', 'Job could not be updated.' do
+        let(:admin) { create(:admin1) }
+        let(:job) { create(:job1, user: admin)}
+        let(:Authorization) { auth_token(admin) }
+        let(:id) { job.id }
+        let(:params) { { name: 'job2', cron: '*/60 * * * *', command: 'ls -l' } }
+
+        before do |request|
+          create(:job2, user: admin)
+          submit_request(request.metadata)
+        end
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json['is_error']).to be true
+          expect(json['status_code']).to eq(403)
+        end
       end
 
       response '404', I18n.t('jobs.errors.not_found') do
