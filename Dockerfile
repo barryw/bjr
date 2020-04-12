@@ -1,4 +1,4 @@
-FROM ruby:2.4.4-alpine
+FROM ruby:2.6.6-alpine
 
 MAINTAINER Barry Walker <barrywalker@gmail.com>
 
@@ -10,7 +10,7 @@ RUN apk update && apk upgrade \
 WORKDIR /app
 ADD Gemfile /app
 ADD Gemfile.lock /app
-RUN bundle install --without=development test
+RUN gem install bundler && bundle install --without=development test
 
 ADD . /app
 RUN mkdir ./lib/mariadb && ln -s /usr/lib/mariadb/plugin ./lib/mariadb/plugin
