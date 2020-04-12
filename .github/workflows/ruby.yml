@@ -24,10 +24,10 @@ jobs:
       with:
         ruby-version: '2.6.4'
     - name: Install Rubocop
-        run: gem install rubocop
+      run: gem install rubocop
 
     - name: Check code
-        run: rubocop
+      run: rubocop
 
     - name: Execute RSpec tests
       run: |
