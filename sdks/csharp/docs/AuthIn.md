@@ -1,4 +1,4 @@
-# IO.Swagger.BJR.Model.AuthIn
+# BJR.Model.AuthIn
 ## Properties
 
 Name | Type | Description | Notes

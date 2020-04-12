@@ -1,4 +1,4 @@
-# IO.Swagger.BJR.Model.JobOut
+# BJR.Model.JobOut
 ## Properties
 
 Name | Type | Description | Notes

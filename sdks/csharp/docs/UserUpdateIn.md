@@ -1,4 +1,4 @@
-# IO.Swagger.BJR.Model.UserUpdateIn
+# BJR.Model.UserUpdateIn
 ## Properties
 
 Name | Type | Description | Notes

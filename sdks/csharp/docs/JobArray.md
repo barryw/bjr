@@ -1,4 +1,4 @@
-# IO.Swagger.BJR.Model.JobArray
+# BJR.Model.JobArray
 ## Properties
 
 Name | Type | Description | Notes

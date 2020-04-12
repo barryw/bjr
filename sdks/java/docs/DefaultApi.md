@@ -26,7 +26,7 @@ Authenticates a user and returns a token
 ```java
 // Import classes:
 //import BJR.ApiException;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 
 DefaultApi apiInstance = new DefaultApi();
@@ -74,7 +74,7 @@ Retrieves jobs
 //import BJR.ApiException;
 //import BJR.Configuration;
 //import BJR.auth.*;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -130,7 +130,7 @@ Deletes a job
 //import BJR.ApiException;
 //import BJR.Configuration;
 //import BJR.auth.*;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -179,7 +179,7 @@ Retrieves a single job
 //import BJR.ApiException;
 //import BJR.Configuration;
 //import BJR.auth.*;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -229,7 +229,7 @@ Updates a single job
 //import BJR.ApiException;
 //import BJR.Configuration;
 //import BJR.auth.*;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -281,7 +281,7 @@ Creates a job
 //import BJR.ApiException;
 //import BJR.Configuration;
 //import BJR.auth.*;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -331,7 +331,7 @@ Get a list of users
 //import BJR.ApiException;
 //import BJR.Configuration;
 //import BJR.auth.*;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -377,7 +377,7 @@ Deletes a user
 //import BJR.ApiException;
 //import BJR.Configuration;
 //import BJR.auth.*;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -427,7 +427,7 @@ Retrieve a single user
 //import BJR.ApiException;
 //import BJR.Configuration;
 //import BJR.auth.*;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -477,7 +477,7 @@ Update a single user
 //import BJR.ApiException;
 //import BJR.Configuration;
 //import BJR.auth.*;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -529,7 +529,7 @@ Create a new user
 //import BJR.ApiException;
 //import BJR.Configuration;
 //import BJR.auth.*;
-//import BJR.Api.DefaultApi;
+//import Api.DefaultApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 

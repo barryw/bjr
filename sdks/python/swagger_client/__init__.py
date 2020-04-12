@@ -15,19 +15,19 @@
 from __future__ import absolute_import
 
 # import apis into sdk package
-from swagger_client.BJR.Api.default_api import DefaultApi
+from swagger_client.Api.default_api import DefaultApi
 # import ApiClient
 from swagger_client.api_client import ApiClient
 from swagger_client.configuration import Configuration
 # import models into sdk package
-from swagger_client.BJR.Model.auth_in import AuthIn
-from swagger_client.BJR.Model.auth_out import AuthOut
-from swagger_client.BJR.Model.job_array import JobArray
-from swagger_client.BJR.Model.job_in import JobIn
-from swagger_client.BJR.Model.job_out import JobOut
-from swagger_client.BJR.Model.single_job import SingleJob
-from swagger_client.BJR.Model.single_user import SingleUser
-from swagger_client.BJR.Model.user_array import UserArray
-from swagger_client.BJR.Model.user_new_in import UserNewIn
-from swagger_client.BJR.Model.user_out import UserOut
-from swagger_client.BJR.Model.user_update_in import UserUpdateIn
+from swagger_client.Model.auth_in import AuthIn
+from swagger_client.Model.auth_out import AuthOut
+from swagger_client.Model.job_array import JobArray
+from swagger_client.Model.job_in import JobIn
+from swagger_client.Model.job_out import JobOut
+from swagger_client.Model.single_job import SingleJob
+from swagger_client.Model.single_user import SingleUser
+from swagger_client.Model.user_array import UserArray
+from swagger_client.Model.user_new_in import UserNewIn
+from swagger_client.Model.user_out import UserOut
+from swagger_client.Model.user_update_in import UserUpdateIn

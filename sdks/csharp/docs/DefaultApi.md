@@ -1,4 +1,4 @@
-# IO.Swagger.BJR.Api.DefaultApi
+# BJR.Api.DefaultApi
 
 All URIs are relative to */*
 
@@ -26,9 +26,9 @@ Authenticates a user and returns a token
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {
@@ -86,9 +86,9 @@ Retrieves jobs
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {
@@ -153,9 +153,9 @@ Deletes a job
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {
@@ -213,9 +213,9 @@ Retrieves a single job
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {
@@ -274,9 +274,9 @@ Updates a single job
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {
@@ -337,9 +337,9 @@ Creates a job
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {
@@ -398,9 +398,9 @@ Get a list of users
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {
@@ -455,9 +455,9 @@ Deletes a user
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {
@@ -516,9 +516,9 @@ Retrieve a single user
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {
@@ -577,9 +577,9 @@ Update a single user
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {
@@ -640,9 +640,9 @@ Create a new user
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.BJR.Api;
-using IO.Swagger.Client;
-using IO.Swagger.BJR.Model;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
 
 namespace Example
 {

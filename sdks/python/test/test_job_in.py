@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from BJR.Model.job_in import JobIn  # noqa: E501
+from Model.job_in import JobIn  # noqa: E501
 from swagger_client.rest import ApiException
 
 

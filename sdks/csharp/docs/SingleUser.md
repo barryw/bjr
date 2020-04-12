@@ -1,4 +1,4 @@
-# IO.Swagger.BJR.Model.SingleUser
+# BJR.Model.SingleUser
 ## Properties
 
 Name | Type | Description | Notes

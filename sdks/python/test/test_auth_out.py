@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from BJR.Model.auth_out import AuthOut  # noqa: E501
+from Model.auth_out import AuthOut  # noqa: E501
 from swagger_client.rest import ApiException
 
 

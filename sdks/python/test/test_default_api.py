@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from BJR.Api.default_api import DefaultApi  # noqa: E501
+from Api.default_api import DefaultApi  # noqa: E501
 from swagger_client.rest import ApiException
 
 
@@ -23,7 +23,7 @@ class TestDefaultApi(unittest.TestCase):
     """DefaultApi unit test stubs"""
 
     def setUp(self):
-        self.api = BJR.Api.default_api.DefaultApi()  # noqa: E501
+        self.api = Api.default_api.DefaultApi()  # noqa: E501
 
     def tearDown(self):
         pass

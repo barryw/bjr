@@ -1,4 +1,4 @@
-# IO.Swagger.BJR.Model.UserNewIn
+# BJR.Model.UserNewIn
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# IO.Swagger.BJR.Model.UserOut
+# BJR.Model.UserOut
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# IO.Swagger.BJR.Model.AuthOut
+# BJR.Model.AuthOut
 ## Properties
 
 Name | Type | Description | Notes

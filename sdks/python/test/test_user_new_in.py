@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from BJR.Model.user_new_in import UserNewIn  # noqa: E501
+from Model.user_new_in import UserNewIn  # noqa: E501
 from swagger_client.rest import ApiException
 
 

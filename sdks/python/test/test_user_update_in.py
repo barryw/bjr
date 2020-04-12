@@ -15,7 +15,7 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from BJR.Model.user_update_in import UserUpdateIn  # noqa: E501
+from Model.user_update_in import UserUpdateIn  # noqa: E501
 from swagger_client.rest import ApiException
 
 

@@ -1,4 +1,4 @@
-# IO.Swagger.BJR.Model.UserArray
+# BJR.Model.UserArray
 ## Properties
 
 Name | Type | Description | Notes
