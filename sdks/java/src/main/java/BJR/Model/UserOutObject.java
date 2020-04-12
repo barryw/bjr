@@ -23,18 +23,42 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 /**
- * DateFields
+ * UserOutObject
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T14:56:07.085-04:00[America/New_York]")
-public class DateFields {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:07:05.406-04:00[America/New_York]")
+public class UserOutObject {
+  @SerializedName("id")
+  private Integer id = null;
+
   @SerializedName("created_at")
   private OffsetDateTime createdAt = null;
 
   @SerializedName("updated_at")
   private OffsetDateTime updatedAt = null;
 
-  public DateFields createdAt(OffsetDateTime createdAt) {
+  @SerializedName("username")
+  private String username = null;
+
+  public UserOutObject id(Integer id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The object&#x27;s primary key. This uniquely identifies the object in the system.
+   * @return id
+  **/
+  @Schema(description = "The object's primary key. This uniquely identifies the object in the system.")
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public UserOutObject createdAt(OffsetDateTime createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -52,7 +76,7 @@ public class DateFields {
     this.createdAt = createdAt;
   }
 
-  public DateFields updatedAt(OffsetDateTime updatedAt) {
+  public UserOutObject updatedAt(OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -70,6 +94,24 @@ public class DateFields {
     this.updatedAt = updatedAt;
   }
 
+  public UserOutObject username(String username) {
+    this.username = username;
+    return this;
+  }
+
+   /**
+   * Get username
+   * @return username
+  **/
+  @Schema(description = "")
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -79,24 +121,28 @@ public class DateFields {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DateFields dateFields = (DateFields) o;
-    return Objects.equals(this.createdAt, dateFields.createdAt) &&
-        Objects.equals(this.updatedAt, dateFields.updatedAt);
+    UserOutObject userOutObject = (UserOutObject) o;
+    return Objects.equals(this.id, userOutObject.id) &&
+        Objects.equals(this.createdAt, userOutObject.createdAt) &&
+        Objects.equals(this.updatedAt, userOutObject.updatedAt) &&
+        Objects.equals(this.username, userOutObject.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, updatedAt);
+    return Objects.hash(id, createdAt, updatedAt, username);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DateFields {\n");
+    sb.append("class UserOutObject {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -12,15 +12,14 @@
  */
 
 import ApiClient from './ApiClient';
-import AnyOfoutModelObject from './BJR.Model/AnyOfoutModelObject';
 import AuthIn from './BJR.Model/AuthIn';
 import AuthOut from './BJR.Model/AuthOut';
-import DateFields from './BJR.Model/DateFields';
 import JobIn from './BJR.Model/JobIn';
 import JobOut from './BJR.Model/JobOut';
-import Out from './BJR.Model/Out';
+import JobOutObject from './BJR.Model/JobOutObject';
 import UserNewIn from './BJR.Model/UserNewIn';
 import UserOut from './BJR.Model/UserOut';
+import UserOutObject from './BJR.Model/UserOutObject';
 import UserUpdateIn from './BJR.Model/UserUpdateIn';
 import DefaultApi from './BJR.Api/DefaultApi';
 
@@ -63,12 +62,6 @@ export {
     ApiClient,
 
     /**
-     * The AnyOfoutModelObject model constructor.
-     * @property {module:BJR/BJR.Model/AnyOfoutModelObject}
-     */
-    AnyOfoutModelObject,
-
-    /**
      * The AuthIn model constructor.
      * @property {module:BJR/BJR.Model/AuthIn}
      */
@@ -79,12 +72,6 @@ export {
      * @property {module:BJR/BJR.Model/AuthOut}
      */
     AuthOut,
-
-    /**
-     * The DateFields model constructor.
-     * @property {module:BJR/BJR.Model/DateFields}
-     */
-    DateFields,
 
     /**
      * The JobIn model constructor.
@@ -99,10 +86,10 @@ export {
     JobOut,
 
     /**
-     * The Out model constructor.
-     * @property {module:BJR/BJR.Model/Out}
+     * The JobOutObject model constructor.
+     * @property {module:BJR/BJR.Model/JobOutObject}
      */
-    Out,
+    JobOutObject,
 
     /**
      * The UserNewIn model constructor.
@@ -115,6 +102,12 @@ export {
      * @property {module:BJR/BJR.Model/UserOut}
      */
     UserOut,
+
+    /**
+     * The UserOutObject model constructor.
+     * @property {module:BJR/BJR.Model/UserOutObject}
+     */
+    UserOutObject,
 
     /**
      * The UserUpdateIn model constructor.

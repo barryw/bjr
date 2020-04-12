@@ -23,21 +23,14 @@ RSpec.configure do |config|
       },
       components: {
         schemas: {
-          date_fields: {
-            type: :object,
-            properties: {
-              created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
-              updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' }
-            }
-          },
-          auth_in: {
+          AuthIn: {
             type: :object,
             properties: {
               username: { type: :string, description: 'The username of the user to authenticate as', required: true },
               password: { type: :string, description: 'The password of the user to authenticate as', required: true }
             }
           },
-          auth_out: {
+          AuthOut: {
             type: :object,
             properties: {
               auth_token: { type: :string, description: 'The JWT authentication token. This must be passed in the Authorization header on subsequent requests.' },
@@ -45,29 +38,39 @@ RSpec.configure do |config|
               is_error: { type: :boolean, description: 'This will be true if the authentication was successful, and false if not.' }
             }
           },
-          user_new_in: {
+          UserNewIn: {
             type: :object,
             properties: {
               username: { type: :string, description: "The new user's username. Must be unique." },
-              allOf: [ { "$ref": "#/components/schemas/user_update_in" } ]
+              password: { type: :string, description: "The new user's password." },
+              password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'." }
             }
           },
-          user_update_in: {
+          UserUpdateIn: {
             type: :object,
             properties: {
               password: { type: :string, description: "The new user's password." },
               password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'." }
             }
           },
-          user_out: {
+          UserOut: {
             type: :object,
             properties: {
-              id: { type: :integer },
-              username: { type: :string },
-              allOf: [ { "$ref": "#/components/schemas/date_fields" } ]
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { type: :object,
+                properties: {
+                  id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
+                  created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
+                  updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' },
+                  username: { type: :string }
+                }
+              }
             }
           },
-          job_in: {
+          JobIn: {
             type: :object,
             properties: {
               name: { type: :string, description: 'The new name of the job. Must be unique.', required: true },
@@ -78,29 +81,28 @@ RSpec.configure do |config|
               tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.', required: false }
             }
           },
-          job_out: {
-            type: :object,
-            properties: {
-              id: { type: :integer, description: 'The unique id of the job.' },
-              name: { type: :string, description: 'The name of the job.' },
-              cron: { type: :string, description: 'The cron expression for the job.' },
-              enabled: { type: :boolean, description: 'Whether the job is enabled or not.' },
-              command: { type: :string, description: 'The command that is executed when the job fires.' },
-              next_run: { type: :string, description: 'The date and time of the job\'s next run.' },
-              running: { type: :boolean, description: 'Whether the job is currently running.' },
-              timezone: { type: :string, description: 'The timezone that the job will run in.' },
-              tags: { type: :array, description: 'An array of tags associated with the job.', items: { type: :string } },
-              allOf: [ { "$ref": "#/components/schemas/date_fields" } ]
-            }
-          },
-          out: {
+          JobOut: {
             type: :object,
             properties: {
               message: { type: :string, description: 'The status message returned from the API call.' },
               is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
               object_type: { type: :string, description: 'The type of object being returned.' },
               status_code: { type: :integer, description: 'The HTTP status code returned.' },
-              object: { anyOf: [ { "$ref": "#/components/schemas/job_out" }, { "$ref": "#/components/schemas/user_out" } ] }
+              object: { type: :object,
+                properties: {
+                  id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
+                  created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
+                  updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' },
+                  name: { type: :string, description: 'The name of the job.' },
+                  cron: { type: :string, description: 'The cron expression for the job.' },
+                  enabled: { type: :boolean, description: 'Whether the job is enabled or not.' },
+                  command: { type: :string, description: 'The command that is executed when the job fires.' },
+                  next_run: { type: :string, description: 'The date and time of the job\'s next run.' },
+                  running: { type: :boolean, description: 'Whether the job is currently running.' },
+                  timezone: { type: :string, description: 'The timezone that the job will run in.' },
+                  tags: { type: :array, description: 'An array of tags associated with the job.', items: { type: :string } }
+                }
+              }
             }
           }
         },
@@ -112,17 +114,7 @@ RSpec.configure do |config|
           }
         }
       },
-      paths: {},
-      servers: [
-        {
-          url: 'http://{defaultHost}',
-          variables: {
-            defaultHost: {
-              default: 'localhost:3000'
-            }
-          }
-        }
-      ]
+      paths: {}
     }
   }
 

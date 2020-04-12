@@ -66,76 +66,44 @@ namespace IO.Swagger.Test
 
 
         /// <summary>
-        /// Test the property 'Id'
+        /// Test the property 'Message'
         /// </summary>
         [Test]
-        public void IdTest()
+        public void MessageTest()
         {
-            // TODO unit test for the property 'Id'
+            // TODO unit test for the property 'Message'
         }
         /// <summary>
-        /// Test the property 'Name'
+        /// Test the property 'IsError'
         /// </summary>
         [Test]
-        public void NameTest()
+        public void IsErrorTest()
         {
-            // TODO unit test for the property 'Name'
+            // TODO unit test for the property 'IsError'
         }
         /// <summary>
-        /// Test the property 'Cron'
+        /// Test the property 'ObjectType'
         /// </summary>
         [Test]
-        public void CronTest()
+        public void ObjectTypeTest()
         {
-            // TODO unit test for the property 'Cron'
+            // TODO unit test for the property 'ObjectType'
         }
         /// <summary>
-        /// Test the property 'Enabled'
+        /// Test the property 'StatusCode'
         /// </summary>
         [Test]
-        public void EnabledTest()
+        public void StatusCodeTest()
         {
-            // TODO unit test for the property 'Enabled'
+            // TODO unit test for the property 'StatusCode'
         }
         /// <summary>
-        /// Test the property 'Command'
+        /// Test the property 'Object'
         /// </summary>
         [Test]
-        public void CommandTest()
+        public void ObjectTest()
         {
-            // TODO unit test for the property 'Command'
-        }
-        /// <summary>
-        /// Test the property 'NextRun'
-        /// </summary>
-        [Test]
-        public void NextRunTest()
-        {
-            // TODO unit test for the property 'NextRun'
-        }
-        /// <summary>
-        /// Test the property 'Running'
-        /// </summary>
-        [Test]
-        public void RunningTest()
-        {
-            // TODO unit test for the property 'Running'
-        }
-        /// <summary>
-        /// Test the property 'Timezone'
-        /// </summary>
-        [Test]
-        public void TimezoneTest()
-        {
-            // TODO unit test for the property 'Timezone'
-        }
-        /// <summary>
-        /// Test the property 'Tags'
-        /// </summary>
-        [Test]
-        public void TagsTest()
-        {
-            // TODO unit test for the property 'Tags'
+            // TODO unit test for the property 'Object'
         }
 
     }

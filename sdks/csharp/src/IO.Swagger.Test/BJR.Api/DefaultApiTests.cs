@@ -115,7 +115,7 @@ namespace IO.Swagger.Test
             //int? id = null;
             //JobIn body = null;
             //var response = instance.JobApiIdPut(id, body);
-            //Assert.IsInstanceOf<ModelOut> (response, "response is ModelOut");
+            //Assert.IsInstanceOf<JobOut> (response, "response is JobOut");
         }
         /// <summary>
         /// Test JobApiPost
@@ -126,7 +126,7 @@ namespace IO.Swagger.Test
             // TODO uncomment below to test the method and replace null with proper value
             //JobIn body = null;
             //var response = instance.JobApiPost(body);
-            //Assert.IsInstanceOf<ModelOut> (response, "response is ModelOut");
+            //Assert.IsInstanceOf<JobOut> (response, "response is JobOut");
         }
         /// <summary>
         /// Test UserApiGet
@@ -147,7 +147,7 @@ namespace IO.Swagger.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.UserApiIdDelete(id);
-            //Assert.IsInstanceOf<ModelOut> (response, "response is ModelOut");
+            //Assert.IsInstanceOf<UserOut> (response, "response is UserOut");
         }
         /// <summary>
         /// Test UserApiIdGet
@@ -158,7 +158,7 @@ namespace IO.Swagger.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.UserApiIdGet(id);
-            //Assert.IsInstanceOf<ModelOut> (response, "response is ModelOut");
+            //Assert.IsInstanceOf<UserOut> (response, "response is UserOut");
         }
         /// <summary>
         /// Test UserApiIdPut
@@ -170,7 +170,7 @@ namespace IO.Swagger.Test
             //int? id = null;
             //UserUpdateIn body = null;
             //var response = instance.UserApiIdPut(id, body);
-            //Assert.IsInstanceOf<ModelOut> (response, "response is ModelOut");
+            //Assert.IsInstanceOf<UserOut> (response, "response is UserOut");
         }
         /// <summary>
         /// Test UserApiPost
@@ -181,7 +181,7 @@ namespace IO.Swagger.Test
             // TODO uncomment below to test the method and replace null with proper value
             //UserNewIn body = null;
             //var response = instance.UserApiPost(body);
-            //Assert.IsInstanceOf<ModelOut> (response, "response is ModelOut");
+            //Assert.IsInstanceOf<UserOut> (response, "response is UserOut");
         }
     }
 

@@ -29,19 +29,29 @@ class UserNewIn(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'username': 'str'
+        'username': 'str',
+        'password': 'str',
+        'password_confirmation': 'str'
     }
 
     attribute_map = {
-        'username': 'username'
+        'username': 'username',
+        'password': 'password',
+        'password_confirmation': 'password_confirmation'
     }
 
-    def __init__(self, username=None):  # noqa: E501
+    def __init__(self, username=None, password=None, password_confirmation=None):  # noqa: E501
         """UserNewIn - a model defined in Swagger"""  # noqa: E501
         self._username = None
+        self._password = None
+        self._password_confirmation = None
         self.discriminator = None
         if username is not None:
             self.username = username
+        if password is not None:
+            self.password = password
+        if password_confirmation is not None:
+            self.password_confirmation = password_confirmation
 
     @property
     def username(self):
@@ -65,6 +75,52 @@ class UserNewIn(object):
         """
 
         self._username = username
+
+    @property
+    def password(self):
+        """Gets the password of this UserNewIn.  # noqa: E501
+
+        The new user's password.  # noqa: E501
+
+        :return: The password of this UserNewIn.  # noqa: E501
+        :rtype: str
+        """
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        """Sets the password of this UserNewIn.
+
+        The new user's password.  # noqa: E501
+
+        :param password: The password of this UserNewIn.  # noqa: E501
+        :type: str
+        """
+
+        self._password = password
+
+    @property
+    def password_confirmation(self):
+        """Gets the password_confirmation of this UserNewIn.  # noqa: E501
+
+        The new user's password confirmation. Must match 'password'.  # noqa: E501
+
+        :return: The password_confirmation of this UserNewIn.  # noqa: E501
+        :rtype: str
+        """
+        return self._password_confirmation
+
+    @password_confirmation.setter
+    def password_confirmation(self, password_confirmation):
+        """Sets the password_confirmation of this UserNewIn.
+
+        The new user's password confirmation. Must match 'password'.  # noqa: E501
+
+        :param password_confirmation: The password_confirmation of this UserNewIn.  # noqa: E501
+        :type: str
+        """
+
+        self._password_confirmation = password_confirmation
 
     def to_dict(self):
         """Returns the model properties as a dict"""

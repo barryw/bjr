@@ -114,8 +114,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ModelOut</returns>
-        ModelOut JobApiIdPut (int? id, JobIn body = null);
+        /// <returns>JobOut</returns>
+        JobOut JobApiIdPut (int? id, JobIn body = null);
 
         /// <summary>
         /// Updates a single job
@@ -126,8 +126,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        ApiResponse<ModelOut> JobApiIdPutWithHttpInfo (int? id, JobIn body = null);
+        /// <returns>ApiResponse of JobOut</returns>
+        ApiResponse<JobOut> JobApiIdPutWithHttpInfo (int? id, JobIn body = null);
         /// <summary>
         /// Creates a job
         /// </summary>
@@ -136,8 +136,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ModelOut</returns>
-        ModelOut JobApiPost (JobIn body = null);
+        /// <returns>JobOut</returns>
+        JobOut JobApiPost (JobIn body = null);
 
         /// <summary>
         /// Creates a job
@@ -147,8 +147,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        ApiResponse<ModelOut> JobApiPostWithHttpInfo (JobIn body = null);
+        /// <returns>ApiResponse of JobOut</returns>
+        ApiResponse<JobOut> JobApiPostWithHttpInfo (JobIn body = null);
         /// <summary>
         /// Retrieves users
         /// </summary>
@@ -176,8 +176,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ModelOut</returns>
-        ModelOut UserApiIdDelete (int? id);
+        /// <returns>UserOut</returns>
+        UserOut UserApiIdDelete (int? id);
 
         /// <summary>
         /// Deletes a user
@@ -187,8 +187,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        ApiResponse<ModelOut> UserApiIdDeleteWithHttpInfo (int? id);
+        /// <returns>ApiResponse of UserOut</returns>
+        ApiResponse<UserOut> UserApiIdDeleteWithHttpInfo (int? id);
         /// <summary>
         /// Retrieve a single user
         /// </summary>
@@ -197,8 +197,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ModelOut</returns>
-        ModelOut UserApiIdGet (int? id);
+        /// <returns>UserOut</returns>
+        UserOut UserApiIdGet (int? id);
 
         /// <summary>
         /// Retrieve a single user
@@ -208,8 +208,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        ApiResponse<ModelOut> UserApiIdGetWithHttpInfo (int? id);
+        /// <returns>ApiResponse of UserOut</returns>
+        ApiResponse<UserOut> UserApiIdGetWithHttpInfo (int? id);
         /// <summary>
         /// Update a single user
         /// </summary>
@@ -219,8 +219,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ModelOut</returns>
-        ModelOut UserApiIdPut (int? id, UserUpdateIn body = null);
+        /// <returns>UserOut</returns>
+        UserOut UserApiIdPut (int? id, UserUpdateIn body = null);
 
         /// <summary>
         /// Update a single user
@@ -231,8 +231,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        ApiResponse<ModelOut> UserApiIdPutWithHttpInfo (int? id, UserUpdateIn body = null);
+        /// <returns>ApiResponse of UserOut</returns>
+        ApiResponse<UserOut> UserApiIdPutWithHttpInfo (int? id, UserUpdateIn body = null);
         /// <summary>
         /// Creates a user
         /// </summary>
@@ -241,8 +241,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ModelOut</returns>
-        ModelOut UserApiPost (UserNewIn body = null);
+        /// <returns>UserOut</returns>
+        UserOut UserApiPost (UserNewIn body = null);
 
         /// <summary>
         /// Creates a user
@@ -252,8 +252,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        ApiResponse<ModelOut> UserApiPostWithHttpInfo (UserNewIn body = null);
+        /// <returns>ApiResponse of UserOut</returns>
+        ApiResponse<UserOut> UserApiPostWithHttpInfo (UserNewIn body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -347,8 +347,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ModelOut</returns>
-        System.Threading.Tasks.Task<ModelOut> JobApiIdPutAsync (int? id, JobIn body = null);
+        /// <returns>Task of JobOut</returns>
+        System.Threading.Tasks.Task<JobOut> JobApiIdPutAsync (int? id, JobIn body = null);
 
         /// <summary>
         /// Updates a single job
@@ -359,8 +359,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelOut>> JobApiIdPutAsyncWithHttpInfo (int? id, JobIn body = null);
+        /// <returns>Task of ApiResponse (JobOut)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JobOut>> JobApiIdPutAsyncWithHttpInfo (int? id, JobIn body = null);
         /// <summary>
         /// Creates a job
         /// </summary>
@@ -369,8 +369,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ModelOut</returns>
-        System.Threading.Tasks.Task<ModelOut> JobApiPostAsync (JobIn body = null);
+        /// <returns>Task of JobOut</returns>
+        System.Threading.Tasks.Task<JobOut> JobApiPostAsync (JobIn body = null);
 
         /// <summary>
         /// Creates a job
@@ -380,8 +380,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelOut>> JobApiPostAsyncWithHttpInfo (JobIn body = null);
+        /// <returns>Task of ApiResponse (JobOut)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JobOut>> JobApiPostAsyncWithHttpInfo (JobIn body = null);
         /// <summary>
         /// Retrieves users
         /// </summary>
@@ -409,8 +409,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ModelOut</returns>
-        System.Threading.Tasks.Task<ModelOut> UserApiIdDeleteAsync (int? id);
+        /// <returns>Task of UserOut</returns>
+        System.Threading.Tasks.Task<UserOut> UserApiIdDeleteAsync (int? id);
 
         /// <summary>
         /// Deletes a user
@@ -420,8 +420,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelOut>> UserApiIdDeleteAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (UserOut)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserOut>> UserApiIdDeleteAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Retrieve a single user
         /// </summary>
@@ -430,8 +430,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ModelOut</returns>
-        System.Threading.Tasks.Task<ModelOut> UserApiIdGetAsync (int? id);
+        /// <returns>Task of UserOut</returns>
+        System.Threading.Tasks.Task<UserOut> UserApiIdGetAsync (int? id);
 
         /// <summary>
         /// Retrieve a single user
@@ -441,8 +441,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelOut>> UserApiIdGetAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (UserOut)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserOut>> UserApiIdGetAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Update a single user
         /// </summary>
@@ -452,8 +452,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ModelOut</returns>
-        System.Threading.Tasks.Task<ModelOut> UserApiIdPutAsync (int? id, UserUpdateIn body = null);
+        /// <returns>Task of UserOut</returns>
+        System.Threading.Tasks.Task<UserOut> UserApiIdPutAsync (int? id, UserUpdateIn body = null);
 
         /// <summary>
         /// Update a single user
@@ -464,8 +464,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelOut>> UserApiIdPutAsyncWithHttpInfo (int? id, UserUpdateIn body = null);
+        /// <returns>Task of ApiResponse (UserOut)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserOut>> UserApiIdPutAsyncWithHttpInfo (int? id, UserUpdateIn body = null);
         /// <summary>
         /// Creates a user
         /// </summary>
@@ -474,8 +474,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ModelOut</returns>
-        System.Threading.Tasks.Task<ModelOut> UserApiPostAsync (UserNewIn body = null);
+        /// <returns>Task of UserOut</returns>
+        System.Threading.Tasks.Task<UserOut> UserApiPostAsync (UserNewIn body = null);
 
         /// <summary>
         /// Creates a user
@@ -485,8 +485,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelOut>> UserApiPostAsyncWithHttpInfo (UserNewIn body = null);
+        /// <returns>Task of ApiResponse (UserOut)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserOut>> UserApiPostAsyncWithHttpInfo (UserNewIn body = null);
         #endregion Asynchronous Operations
     }
 
@@ -1150,10 +1150,10 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ModelOut</returns>
-        public ModelOut JobApiIdPut (int? id, JobIn body = null)
+        /// <returns>JobOut</returns>
+        public JobOut JobApiIdPut (int? id, JobIn body = null)
         {
-             ApiResponse<ModelOut> localVarResponse = JobApiIdPutWithHttpInfo(id, body);
+             ApiResponse<JobOut> localVarResponse = JobApiIdPutWithHttpInfo(id, body);
              return localVarResponse.Data;
         }
 
@@ -1163,8 +1163,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        public ApiResponse< ModelOut > JobApiIdPutWithHttpInfo (int? id, JobIn body = null)
+        /// <returns>ApiResponse of JobOut</returns>
+        public ApiResponse< JobOut > JobApiIdPutWithHttpInfo (int? id, JobIn body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1221,9 +1221,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<JobOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (JobOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobOut)));
         }
 
         /// <summary>
@@ -1232,10 +1232,10 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ModelOut</returns>
-        public async System.Threading.Tasks.Task<ModelOut> JobApiIdPutAsync (int? id, JobIn body = null)
+        /// <returns>Task of JobOut</returns>
+        public async System.Threading.Tasks.Task<JobOut> JobApiIdPutAsync (int? id, JobIn body = null)
         {
-             ApiResponse<ModelOut> localVarResponse = await JobApiIdPutAsyncWithHttpInfo(id, body);
+             ApiResponse<JobOut> localVarResponse = await JobApiIdPutAsyncWithHttpInfo(id, body);
              return localVarResponse.Data;
 
         }
@@ -1246,8 +1246,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelOut>> JobApiIdPutAsyncWithHttpInfo (int? id, JobIn body = null)
+        /// <returns>Task of ApiResponse (JobOut)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JobOut>> JobApiIdPutAsyncWithHttpInfo (int? id, JobIn body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1304,9 +1304,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<JobOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (JobOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobOut)));
         }
 
         /// <summary>
@@ -1314,10 +1314,10 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ModelOut</returns>
-        public ModelOut JobApiPost (JobIn body = null)
+        /// <returns>JobOut</returns>
+        public JobOut JobApiPost (JobIn body = null)
         {
-             ApiResponse<ModelOut> localVarResponse = JobApiPostWithHttpInfo(body);
+             ApiResponse<JobOut> localVarResponse = JobApiPostWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -1326,8 +1326,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        public ApiResponse< ModelOut > JobApiPostWithHttpInfo (JobIn body = null)
+        /// <returns>ApiResponse of JobOut</returns>
+        public ApiResponse< JobOut > JobApiPostWithHttpInfo (JobIn body = null)
         {
 
             var localVarPath = "/job_api";
@@ -1380,9 +1380,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<JobOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (JobOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobOut)));
         }
 
         /// <summary>
@@ -1390,10 +1390,10 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ModelOut</returns>
-        public async System.Threading.Tasks.Task<ModelOut> JobApiPostAsync (JobIn body = null)
+        /// <returns>Task of JobOut</returns>
+        public async System.Threading.Tasks.Task<JobOut> JobApiPostAsync (JobIn body = null)
         {
-             ApiResponse<ModelOut> localVarResponse = await JobApiPostAsyncWithHttpInfo(body);
+             ApiResponse<JobOut> localVarResponse = await JobApiPostAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -1403,8 +1403,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelOut>> JobApiPostAsyncWithHttpInfo (JobIn body = null)
+        /// <returns>Task of ApiResponse (JobOut)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JobOut>> JobApiPostAsyncWithHttpInfo (JobIn body = null)
         {
 
             var localVarPath = "/job_api";
@@ -1457,9 +1457,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<JobOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (JobOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobOut)));
         }
 
         /// <summary>
@@ -1594,10 +1594,10 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ModelOut</returns>
-        public ModelOut UserApiIdDelete (int? id)
+        /// <returns>UserOut</returns>
+        public UserOut UserApiIdDelete (int? id)
         {
-             ApiResponse<ModelOut> localVarResponse = UserApiIdDeleteWithHttpInfo(id);
+             ApiResponse<UserOut> localVarResponse = UserApiIdDeleteWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -1606,8 +1606,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        public ApiResponse< ModelOut > UserApiIdDeleteWithHttpInfo (int? id)
+        /// <returns>ApiResponse of UserOut</returns>
+        public ApiResponse< UserOut > UserApiIdDeleteWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1655,9 +1655,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<UserOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
         }
 
         /// <summary>
@@ -1665,10 +1665,10 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ModelOut</returns>
-        public async System.Threading.Tasks.Task<ModelOut> UserApiIdDeleteAsync (int? id)
+        /// <returns>Task of UserOut</returns>
+        public async System.Threading.Tasks.Task<UserOut> UserApiIdDeleteAsync (int? id)
         {
-             ApiResponse<ModelOut> localVarResponse = await UserApiIdDeleteAsyncWithHttpInfo(id);
+             ApiResponse<UserOut> localVarResponse = await UserApiIdDeleteAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -1678,8 +1678,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelOut>> UserApiIdDeleteAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (UserOut)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserOut>> UserApiIdDeleteAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1727,9 +1727,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<UserOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
         }
 
         /// <summary>
@@ -1737,10 +1737,10 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ModelOut</returns>
-        public ModelOut UserApiIdGet (int? id)
+        /// <returns>UserOut</returns>
+        public UserOut UserApiIdGet (int? id)
         {
-             ApiResponse<ModelOut> localVarResponse = UserApiIdGetWithHttpInfo(id);
+             ApiResponse<UserOut> localVarResponse = UserApiIdGetWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -1749,8 +1749,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        public ApiResponse< ModelOut > UserApiIdGetWithHttpInfo (int? id)
+        /// <returns>ApiResponse of UserOut</returns>
+        public ApiResponse< UserOut > UserApiIdGetWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1798,9 +1798,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<UserOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
         }
 
         /// <summary>
@@ -1808,10 +1808,10 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ModelOut</returns>
-        public async System.Threading.Tasks.Task<ModelOut> UserApiIdGetAsync (int? id)
+        /// <returns>Task of UserOut</returns>
+        public async System.Threading.Tasks.Task<UserOut> UserApiIdGetAsync (int? id)
         {
-             ApiResponse<ModelOut> localVarResponse = await UserApiIdGetAsyncWithHttpInfo(id);
+             ApiResponse<UserOut> localVarResponse = await UserApiIdGetAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -1821,8 +1821,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelOut>> UserApiIdGetAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (UserOut)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserOut>> UserApiIdGetAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1870,9 +1870,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<UserOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
         }
 
         /// <summary>
@@ -1881,10 +1881,10 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ModelOut</returns>
-        public ModelOut UserApiIdPut (int? id, UserUpdateIn body = null)
+        /// <returns>UserOut</returns>
+        public UserOut UserApiIdPut (int? id, UserUpdateIn body = null)
         {
-             ApiResponse<ModelOut> localVarResponse = UserApiIdPutWithHttpInfo(id, body);
+             ApiResponse<UserOut> localVarResponse = UserApiIdPutWithHttpInfo(id, body);
              return localVarResponse.Data;
         }
 
@@ -1894,8 +1894,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        public ApiResponse< ModelOut > UserApiIdPutWithHttpInfo (int? id, UserUpdateIn body = null)
+        /// <returns>ApiResponse of UserOut</returns>
+        public ApiResponse< UserOut > UserApiIdPutWithHttpInfo (int? id, UserUpdateIn body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1952,9 +1952,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<UserOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
         }
 
         /// <summary>
@@ -1963,10 +1963,10 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ModelOut</returns>
-        public async System.Threading.Tasks.Task<ModelOut> UserApiIdPutAsync (int? id, UserUpdateIn body = null)
+        /// <returns>Task of UserOut</returns>
+        public async System.Threading.Tasks.Task<UserOut> UserApiIdPutAsync (int? id, UserUpdateIn body = null)
         {
-             ApiResponse<ModelOut> localVarResponse = await UserApiIdPutAsyncWithHttpInfo(id, body);
+             ApiResponse<UserOut> localVarResponse = await UserApiIdPutAsyncWithHttpInfo(id, body);
              return localVarResponse.Data;
 
         }
@@ -1977,8 +1977,8 @@ namespace IO.Swagger.BJR.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelOut>> UserApiIdPutAsyncWithHttpInfo (int? id, UserUpdateIn body = null)
+        /// <returns>Task of ApiResponse (UserOut)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserOut>> UserApiIdPutAsyncWithHttpInfo (int? id, UserUpdateIn body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2035,9 +2035,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<UserOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
         }
 
         /// <summary>
@@ -2045,10 +2045,10 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ModelOut</returns>
-        public ModelOut UserApiPost (UserNewIn body = null)
+        /// <returns>UserOut</returns>
+        public UserOut UserApiPost (UserNewIn body = null)
         {
-             ApiResponse<ModelOut> localVarResponse = UserApiPostWithHttpInfo(body);
+             ApiResponse<UserOut> localVarResponse = UserApiPostWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -2057,8 +2057,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of ModelOut</returns>
-        public ApiResponse< ModelOut > UserApiPostWithHttpInfo (UserNewIn body = null)
+        /// <returns>ApiResponse of UserOut</returns>
+        public ApiResponse< UserOut > UserApiPostWithHttpInfo (UserNewIn body = null)
         {
 
             var localVarPath = "/user_api";
@@ -2111,9 +2111,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<UserOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
         }
 
         /// <summary>
@@ -2121,10 +2121,10 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ModelOut</returns>
-        public async System.Threading.Tasks.Task<ModelOut> UserApiPostAsync (UserNewIn body = null)
+        /// <returns>Task of UserOut</returns>
+        public async System.Threading.Tasks.Task<UserOut> UserApiPostAsync (UserNewIn body = null)
         {
-             ApiResponse<ModelOut> localVarResponse = await UserApiPostAsyncWithHttpInfo(body);
+             ApiResponse<UserOut> localVarResponse = await UserApiPostAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -2134,8 +2134,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (ModelOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelOut>> UserApiPostAsyncWithHttpInfo (UserNewIn body = null)
+        /// <returns>Task of ApiResponse (UserOut)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserOut>> UserApiPostAsyncWithHttpInfo (UserNewIn body = null)
         {
 
             var localVarPath = "/user_api";
@@ -2188,9 +2188,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelOut>(localVarStatusCode,
+            return new ApiResponse<UserOut>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ModelOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelOut)));
+                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
         }
 
     }

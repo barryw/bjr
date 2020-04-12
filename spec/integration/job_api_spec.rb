@@ -9,13 +9,13 @@ describe 'Job API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :params, in: :body, schema: { "$ref" => "#/components/schemas/job_in" }
+      parameter name: :params, in: :body, schema: { "$ref" => "#/components/schemas/JobIn" }
 
       response '201', 'Job created successfully.' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:params) { { name: 'My New Job', cron: '*/5 * * * *', command: 'echo Hello World', timezone: 'UTC', enabled: 'true', tags: 'tag1, tag2' } }
-        schema '$ref' => '#/components/schemas/out'
+        schema '$ref' => '#/components/schemas/JobOut'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -93,7 +93,7 @@ describe 'Job API' do
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer
-      parameter name: :params, in: :body, schema: { "$ref" => "#/components/schemas/job_in" }
+      parameter name: :params, in: :body, schema: { "$ref" => "#/components/schemas/JobIn" }
 
       response '200', 'Job updated successfully.' do
         let(:admin) { create(:admin1) }
@@ -101,7 +101,7 @@ describe 'Job API' do
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
         let(:params) { { name: 'Updated Job', cron: '*/60 * * * *', command: 'ls -l' } }
-        schema '$ref' => '#/components/schemas/out'
+        schema '$ref' => '#/components/schemas/JobOut'
 
         run_test! do |response|
           json = JSON.parse(response.body)

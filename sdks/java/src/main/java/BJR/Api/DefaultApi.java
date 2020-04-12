@@ -29,8 +29,9 @@ import java.io.IOException;
 import BJR.Model.AuthIn;
 import BJR.Model.AuthOut;
 import BJR.Model.JobIn;
-import BJR.Model.Out;
+import BJR.Model.JobOut;
 import BJR.Model.UserNewIn;
+import BJR.Model.UserOut;
 import BJR.Model.UserUpdateIn;
 
 import java.lang.reflect.Type;
@@ -604,11 +605,11 @@ public class DefaultApi {
      * Updates a single job
      * @param id  (required)
      * @param body  (optional)
-     * @return Out
+     * @return JobOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Out jobApiIdPut(Integer id, JobIn body) throws ApiException {
-        ApiResponse<Out> resp = jobApiIdPutWithHttpInfo(id, body);
+    public JobOut jobApiIdPut(Integer id, JobIn body) throws ApiException {
+        ApiResponse<JobOut> resp = jobApiIdPutWithHttpInfo(id, body);
         return resp.getData();
     }
 
@@ -617,12 +618,12 @@ public class DefaultApi {
      * Updates a single job
      * @param id  (required)
      * @param body  (optional)
-     * @return ApiResponse&lt;Out&gt;
+     * @return ApiResponse&lt;JobOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Out> jobApiIdPutWithHttpInfo(Integer id, JobIn body) throws ApiException {
+    public ApiResponse<JobOut> jobApiIdPutWithHttpInfo(Integer id, JobIn body) throws ApiException {
         com.squareup.okhttp.Call call = jobApiIdPutValidateBeforeCall(id, body, null, null);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<JobOut>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -635,7 +636,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call jobApiIdPutAsync(Integer id, JobIn body, final ApiCallback<Out> callback) throws ApiException {
+    public com.squareup.okhttp.Call jobApiIdPutAsync(Integer id, JobIn body, final ApiCallback<JobOut> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -657,7 +658,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = jobApiIdPutValidateBeforeCall(id, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<JobOut>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -726,11 +727,11 @@ public class DefaultApi {
      * Creates a job
      * Creates a job
      * @param body  (optional)
-     * @return Out
+     * @return JobOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Out jobApiPost(JobIn body) throws ApiException {
-        ApiResponse<Out> resp = jobApiPostWithHttpInfo(body);
+    public JobOut jobApiPost(JobIn body) throws ApiException {
+        ApiResponse<JobOut> resp = jobApiPostWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -738,12 +739,12 @@ public class DefaultApi {
      * Creates a job
      * Creates a job
      * @param body  (optional)
-     * @return ApiResponse&lt;Out&gt;
+     * @return ApiResponse&lt;JobOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Out> jobApiPostWithHttpInfo(JobIn body) throws ApiException {
+    public ApiResponse<JobOut> jobApiPostWithHttpInfo(JobIn body) throws ApiException {
         com.squareup.okhttp.Call call = jobApiPostValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<JobOut>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -755,7 +756,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call jobApiPostAsync(JobIn body, final ApiCallback<Out> callback) throws ApiException {
+    public com.squareup.okhttp.Call jobApiPostAsync(JobIn body, final ApiCallback<JobOut> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -777,7 +778,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = jobApiPostValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<JobOut>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -963,11 +964,11 @@ public class DefaultApi {
      * Deletes a user
      * Deletes a user
      * @param id  (required)
-     * @return Out
+     * @return UserOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Out userApiIdDelete(Integer id) throws ApiException {
-        ApiResponse<Out> resp = userApiIdDeleteWithHttpInfo(id);
+    public UserOut userApiIdDelete(Integer id) throws ApiException {
+        ApiResponse<UserOut> resp = userApiIdDeleteWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -975,12 +976,12 @@ public class DefaultApi {
      * Deletes a user
      * Deletes a user
      * @param id  (required)
-     * @return ApiResponse&lt;Out&gt;
+     * @return ApiResponse&lt;UserOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Out> userApiIdDeleteWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<UserOut> userApiIdDeleteWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = userApiIdDeleteValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserOut>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -992,7 +993,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiIdDeleteAsync(Integer id, final ApiCallback<Out> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiIdDeleteAsync(Integer id, final ApiCallback<UserOut> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1014,7 +1015,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = userApiIdDeleteValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserOut>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1088,11 +1089,11 @@ public class DefaultApi {
      * Retrieve a single user
      * Retrieve a single user
      * @param id  (required)
-     * @return Out
+     * @return UserOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Out userApiIdGet(Integer id) throws ApiException {
-        ApiResponse<Out> resp = userApiIdGetWithHttpInfo(id);
+    public UserOut userApiIdGet(Integer id) throws ApiException {
+        ApiResponse<UserOut> resp = userApiIdGetWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -1100,12 +1101,12 @@ public class DefaultApi {
      * Retrieve a single user
      * Retrieve a single user
      * @param id  (required)
-     * @return ApiResponse&lt;Out&gt;
+     * @return ApiResponse&lt;UserOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Out> userApiIdGetWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<UserOut> userApiIdGetWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = userApiIdGetValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserOut>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1117,7 +1118,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiIdGetAsync(Integer id, final ApiCallback<Out> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiIdGetAsync(Integer id, final ApiCallback<UserOut> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1139,7 +1140,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = userApiIdGetValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserOut>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1215,11 +1216,11 @@ public class DefaultApi {
      * Update a single user
      * @param id  (required)
      * @param body  (optional)
-     * @return Out
+     * @return UserOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Out userApiIdPut(Integer id, UserUpdateIn body) throws ApiException {
-        ApiResponse<Out> resp = userApiIdPutWithHttpInfo(id, body);
+    public UserOut userApiIdPut(Integer id, UserUpdateIn body) throws ApiException {
+        ApiResponse<UserOut> resp = userApiIdPutWithHttpInfo(id, body);
         return resp.getData();
     }
 
@@ -1228,12 +1229,12 @@ public class DefaultApi {
      * Update a single user
      * @param id  (required)
      * @param body  (optional)
-     * @return ApiResponse&lt;Out&gt;
+     * @return ApiResponse&lt;UserOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Out> userApiIdPutWithHttpInfo(Integer id, UserUpdateIn body) throws ApiException {
+    public ApiResponse<UserOut> userApiIdPutWithHttpInfo(Integer id, UserUpdateIn body) throws ApiException {
         com.squareup.okhttp.Call call = userApiIdPutValidateBeforeCall(id, body, null, null);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserOut>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1246,7 +1247,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiIdPutAsync(Integer id, UserUpdateIn body, final ApiCallback<Out> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiIdPutAsync(Integer id, UserUpdateIn body, final ApiCallback<UserOut> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1268,7 +1269,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = userApiIdPutValidateBeforeCall(id, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserOut>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1337,11 +1338,11 @@ public class DefaultApi {
      * Creates a user
      * Create a new user
      * @param body  (optional)
-     * @return Out
+     * @return UserOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Out userApiPost(UserNewIn body) throws ApiException {
-        ApiResponse<Out> resp = userApiPostWithHttpInfo(body);
+    public UserOut userApiPost(UserNewIn body) throws ApiException {
+        ApiResponse<UserOut> resp = userApiPostWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -1349,12 +1350,12 @@ public class DefaultApi {
      * Creates a user
      * Create a new user
      * @param body  (optional)
-     * @return ApiResponse&lt;Out&gt;
+     * @return ApiResponse&lt;UserOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Out> userApiPostWithHttpInfo(UserNewIn body) throws ApiException {
+    public ApiResponse<UserOut> userApiPostWithHttpInfo(UserNewIn body) throws ApiException {
         com.squareup.okhttp.Call call = userApiPostValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserOut>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1366,7 +1367,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiPostAsync(UserNewIn body, final ApiCallback<Out> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiPostAsync(UserNewIn body, final ApiCallback<UserOut> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1388,7 +1389,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = userApiPostValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Out>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserOut>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -16,8 +16,9 @@ import BJR.ApiException;
 import BJR.Model.AuthIn;
 import BJR.Model.AuthOut;
 import BJR.Model.JobIn;
-import BJR.Model.Out;
+import BJR.Model.JobOut;
 import BJR.Model.UserNewIn;
+import BJR.Model.UserOut;
 import BJR.Model.UserUpdateIn;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -106,7 +107,7 @@ public class DefaultApiTest {
     public void jobApiIdPutTest() throws ApiException {
         Integer id = null;
         JobIn body = null;
-        Out response = api.jobApiIdPut(id, body);
+        JobOut response = api.jobApiIdPut(id, body);
 
         // TODO: test validations
     }
@@ -121,7 +122,7 @@ public class DefaultApiTest {
     @Test
     public void jobApiPostTest() throws ApiException {
         JobIn body = null;
-        Out response = api.jobApiPost(body);
+        JobOut response = api.jobApiPost(body);
 
         // TODO: test validations
     }
@@ -150,7 +151,7 @@ public class DefaultApiTest {
     @Test
     public void userApiIdDeleteTest() throws ApiException {
         Integer id = null;
-        Out response = api.userApiIdDelete(id);
+        UserOut response = api.userApiIdDelete(id);
 
         // TODO: test validations
     }
@@ -165,7 +166,7 @@ public class DefaultApiTest {
     @Test
     public void userApiIdGetTest() throws ApiException {
         Integer id = null;
-        Out response = api.userApiIdGet(id);
+        UserOut response = api.userApiIdGet(id);
 
         // TODO: test validations
     }
@@ -181,7 +182,7 @@ public class DefaultApiTest {
     public void userApiIdPutTest() throws ApiException {
         Integer id = null;
         UserUpdateIn body = null;
-        Out response = api.userApiIdPut(id, body);
+        UserOut response = api.userApiIdPut(id, body);
 
         // TODO: test validations
     }
@@ -196,7 +197,7 @@ public class DefaultApiTest {
     @Test
     public void userApiPostTest() throws ApiException {
         UserNewIn body = null;
-        Out response = api.userApiPost(body);
+        UserOut response = api.userApiPost(body);
 
         // TODO: test validations
     }

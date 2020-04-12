@@ -14,13 +14,12 @@
 from __future__ import absolute_import
 
 # import models into model package
-from swagger_client.BJR.Model.any_ofout_object import AnyOfoutObject
 from swagger_client.BJR.Model.auth_in import AuthIn
 from swagger_client.BJR.Model.auth_out import AuthOut
-from swagger_client.BJR.Model.date_fields import DateFields
 from swagger_client.BJR.Model.job_in import JobIn
 from swagger_client.BJR.Model.job_out import JobOut
-from swagger_client.BJR.Model.out import Out
+from swagger_client.BJR.Model.job_out_object import JobOutObject
 from swagger_client.BJR.Model.user_new_in import UserNewIn
 from swagger_client.BJR.Model.user_out import UserOut
+from swagger_client.BJR.Model.user_out_object import UserOutObject
 from swagger_client.BJR.Model.user_update_in import UserUpdateIn

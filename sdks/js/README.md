@@ -84,7 +84,7 @@ api.authenticatePost(, callback);
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://{defaultHost}*
+All URIs are relative to */*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -102,15 +102,14 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [BjrApiV1.AnyOfoutModelObject](docs/AnyOfoutModelObject.md)
  - [BjrApiV1.AuthIn](docs/AuthIn.md)
  - [BjrApiV1.AuthOut](docs/AuthOut.md)
- - [BjrApiV1.DateFields](docs/DateFields.md)
  - [BjrApiV1.JobIn](docs/JobIn.md)
  - [BjrApiV1.JobOut](docs/JobOut.md)
- - [BjrApiV1.Out](docs/Out.md)
+ - [BjrApiV1.JobOutObject](docs/JobOutObject.md)
  - [BjrApiV1.UserNewIn](docs/UserNewIn.md)
  - [BjrApiV1.UserOut](docs/UserOut.md)
+ - [BjrApiV1.UserOutObject](docs/UserOutObject.md)
  - [BjrApiV1.UserUpdateIn](docs/UserUpdateIn.md)
 
 ## Documentation for Authorization

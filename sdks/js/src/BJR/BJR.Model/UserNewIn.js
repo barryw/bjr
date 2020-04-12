@@ -46,6 +46,12 @@ export default class UserNewIn {
             if (data.hasOwnProperty('username')) {
                 obj['username'] = ApiClient.convertToType(data['username'], 'String');
             }
+            if (data.hasOwnProperty('password')) {
+                obj['password'] = ApiClient.convertToType(data['password'], 'String');
+            }
+            if (data.hasOwnProperty('password_confirmation')) {
+                obj['password_confirmation'] = ApiClient.convertToType(data['password_confirmation'], 'String');
+            }
         }
         return obj;
     }
@@ -55,6 +61,16 @@ export default class UserNewIn {
     * @member {String} username
     */
     username = undefined;
+    /**
+    * The new user's password.
+    * @member {String} password
+    */
+    password = undefined;
+    /**
+    * The new user's password confirmation. Must match 'password'.
+    * @member {String} password_confirmation
+    */
+    password_confirmation = undefined;
 
 
 

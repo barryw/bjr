@@ -1,6 +1,6 @@
 # BjrApiV1.DefaultApi
 
-All URIs are relative to *http://{defaultHost}*
+All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -188,7 +188,7 @@ null (empty response body)
 
 <a name="jobApiIdPut"></a>
 # **jobApiIdPut**
-> Out jobApiIdPut(id)
+> JobOut jobApiIdPut(id)
 
 Updates a single job
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**JobOut**](JobOut.md)
 
 ### Authorization
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 <a name="jobApiPost"></a>
 # **jobApiPost**
-> Out jobApiPost()
+> JobOut jobApiPost()
 
 Creates a job
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**JobOut**](JobOut.md)
 
 ### Authorization
 
@@ -318,7 +318,7 @@ null (empty response body)
 
 <a name="userApiIdDelete"></a>
 # **userApiIdDelete**
-> Out userApiIdDelete(id)
+> UserOut userApiIdDelete(id)
 
 Deletes a user
 
@@ -350,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 <a name="userApiIdGet"></a>
 # **userApiIdGet**
-> Out userApiIdGet(id)
+> UserOut userApiIdGet(id)
 
 Retrieve a single user
 
@@ -395,7 +395,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -408,7 +408,7 @@ Name | Type | Description  | Notes
 
 <a name="userApiIdPut"></a>
 # **userApiIdPut**
-> Out userApiIdPut(id)
+> UserOut userApiIdPut(id)
 
 Update a single user
 
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -454,7 +454,7 @@ Name | Type | Description  | Notes
 
 <a name="userApiPost"></a>
 # **userApiPost**
-> Out userApiPost()
+> UserOut userApiPost()
 
 Creates a user
 
@@ -485,7 +485,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 

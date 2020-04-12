@@ -90,7 +90,7 @@ namespace Example
 <a name="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://{defaultHost}*
+All URIs are relative to */*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -109,15 +109,14 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [BJR.Model.AnyOfOutObject](docs/AnyOfOutObject.md)
  - [BJR.Model.AuthIn](docs/AuthIn.md)
  - [BJR.Model.AuthOut](docs/AuthOut.md)
- - [BJR.Model.DateFields](docs/DateFields.md)
  - [BJR.Model.JobIn](docs/JobIn.md)
  - [BJR.Model.JobOut](docs/JobOut.md)
- - [BJR.Model.ModelOut](docs/ModelOut.md)
+ - [BJR.Model.JobOutObject](docs/JobOutObject.md)
  - [BJR.Model.UserNewIn](docs/UserNewIn.md)
  - [BJR.Model.UserOut](docs/UserOut.md)
+ - [BJR.Model.UserOutObject](docs/UserOutObject.md)
  - [BJR.Model.UserUpdateIn](docs/UserUpdateIn.md)
 
 <a name="documentation-for-authorization"></a>

@@ -32,25 +32,53 @@ namespace IO.Swagger.BJR.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserOut" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="username">username.</param>
-        public UserOut(int? id = default(int?), string username = default(string))
+        /// <param name="message">The status message returned from the API call..</param>
+        /// <param name="isError">True if there was an error performing the API call..</param>
+        /// <param name="objectType">The type of object being returned..</param>
+        /// <param name="statusCode">The HTTP status code returned..</param>
+        /// <param name="_object">_object.</param>
+        public UserOut(string message = default(string), bool? isError = default(bool?), string objectType = default(string), int? statusCode = default(int?), UserOutObject _object = default(UserOutObject))
         {
-            this.Id = id;
-            this.Username = username;
+            this.Message = message;
+            this.IsError = isError;
+            this.ObjectType = objectType;
+            this.StatusCode = statusCode;
+            this.Object = _object;
         }
         
         /// <summary>
-        /// Gets or Sets Id
+        /// The status message returned from the API call.
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public int? Id { get; set; }
+        /// <value>The status message returned from the API call.</value>
+        [DataMember(Name="message", EmitDefaultValue=false)]
+        public string Message { get; set; }
 
         /// <summary>
-        /// Gets or Sets Username
+        /// True if there was an error performing the API call.
         /// </summary>
-        [DataMember(Name="username", EmitDefaultValue=false)]
-        public string Username { get; set; }
+        /// <value>True if there was an error performing the API call.</value>
+        [DataMember(Name="is_error", EmitDefaultValue=false)]
+        public bool? IsError { get; set; }
+
+        /// <summary>
+        /// The type of object being returned.
+        /// </summary>
+        /// <value>The type of object being returned.</value>
+        [DataMember(Name="object_type", EmitDefaultValue=false)]
+        public string ObjectType { get; set; }
+
+        /// <summary>
+        /// The HTTP status code returned.
+        /// </summary>
+        /// <value>The HTTP status code returned.</value>
+        [DataMember(Name="status_code", EmitDefaultValue=false)]
+        public int? StatusCode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Object
+        /// </summary>
+        [DataMember(Name="object", EmitDefaultValue=false)]
+        public UserOutObject Object { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,8 +88,11 @@ namespace IO.Swagger.BJR.Model
         {
             var sb = new StringBuilder();
             sb.Append("class UserOut {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  IsError: ").Append(IsError).Append("\n");
+            sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
+            sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
+            sb.Append("  Object: ").Append(Object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -97,14 +128,29 @@ namespace IO.Swagger.BJR.Model
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.Message == input.Message ||
+                    (this.Message != null &&
+                    this.Message.Equals(input.Message))
                 ) && 
                 (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
+                    this.IsError == input.IsError ||
+                    (this.IsError != null &&
+                    this.IsError.Equals(input.IsError))
+                ) && 
+                (
+                    this.ObjectType == input.ObjectType ||
+                    (this.ObjectType != null &&
+                    this.ObjectType.Equals(input.ObjectType))
+                ) && 
+                (
+                    this.StatusCode == input.StatusCode ||
+                    (this.StatusCode != null &&
+                    this.StatusCode.Equals(input.StatusCode))
+                ) && 
+                (
+                    this.Object == input.Object ||
+                    (this.Object != null &&
+                    this.Object.Equals(input.Object))
                 );
         }
 
@@ -117,10 +163,16 @@ namespace IO.Swagger.BJR.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
+                if (this.Message != null)
+                    hashCode = hashCode * 59 + this.Message.GetHashCode();
+                if (this.IsError != null)
+                    hashCode = hashCode * 59 + this.IsError.GetHashCode();
+                if (this.ObjectType != null)
+                    hashCode = hashCode * 59 + this.ObjectType.GetHashCode();
+                if (this.StatusCode != null)
+                    hashCode = hashCode * 59 + this.StatusCode.GetHashCode();
+                if (this.Object != null)
+                    hashCode = hashCode * 59 + this.Object.GetHashCode();
                 return hashCode;
             }
         }

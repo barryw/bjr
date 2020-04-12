@@ -12,7 +12,7 @@
 
 package BJR;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T14:56:07.085-04:00[America/New_York]")public class Pair {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:07:05.406-04:00[America/New_York]")public class Pair {
     private String name = "";
     private String value = "";
 

@@ -29,266 +29,152 @@ class JobOut(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'id': 'int',
-        'name': 'str',
-        'cron': 'str',
-        'enabled': 'bool',
-        'command': 'str',
-        'next_run': 'str',
-        'running': 'bool',
-        'timezone': 'str',
-        'tags': 'list[str]'
+        'message': 'str',
+        'is_error': 'bool',
+        'object_type': 'str',
+        'status_code': 'int',
+        'object': 'JobOutObject'
     }
 
     attribute_map = {
-        'id': 'id',
-        'name': 'name',
-        'cron': 'cron',
-        'enabled': 'enabled',
-        'command': 'command',
-        'next_run': 'next_run',
-        'running': 'running',
-        'timezone': 'timezone',
-        'tags': 'tags'
+        'message': 'message',
+        'is_error': 'is_error',
+        'object_type': 'object_type',
+        'status_code': 'status_code',
+        'object': 'object'
     }
 
-    def __init__(self, id=None, name=None, cron=None, enabled=None, command=None, next_run=None, running=None, timezone=None, tags=None):  # noqa: E501
+    def __init__(self, message=None, is_error=None, object_type=None, status_code=None, object=None):  # noqa: E501
         """JobOut - a model defined in Swagger"""  # noqa: E501
-        self._id = None
-        self._name = None
-        self._cron = None
-        self._enabled = None
-        self._command = None
-        self._next_run = None
-        self._running = None
-        self._timezone = None
-        self._tags = None
+        self._message = None
+        self._is_error = None
+        self._object_type = None
+        self._status_code = None
+        self._object = None
         self.discriminator = None
-        if id is not None:
-            self.id = id
-        if name is not None:
-            self.name = name
-        if cron is not None:
-            self.cron = cron
-        if enabled is not None:
-            self.enabled = enabled
-        if command is not None:
-            self.command = command
-        if next_run is not None:
-            self.next_run = next_run
-        if running is not None:
-            self.running = running
-        if timezone is not None:
-            self.timezone = timezone
-        if tags is not None:
-            self.tags = tags
+        if message is not None:
+            self.message = message
+        if is_error is not None:
+            self.is_error = is_error
+        if object_type is not None:
+            self.object_type = object_type
+        if status_code is not None:
+            self.status_code = status_code
+        if object is not None:
+            self.object = object
 
     @property
-    def id(self):
-        """Gets the id of this JobOut.  # noqa: E501
+    def message(self):
+        """Gets the message of this JobOut.  # noqa: E501
 
-        The unique id of the job.  # noqa: E501
+        The status message returned from the API call.  # noqa: E501
 
-        :return: The id of this JobOut.  # noqa: E501
+        :return: The message of this JobOut.  # noqa: E501
+        :rtype: str
+        """
+        return self._message
+
+    @message.setter
+    def message(self, message):
+        """Sets the message of this JobOut.
+
+        The status message returned from the API call.  # noqa: E501
+
+        :param message: The message of this JobOut.  # noqa: E501
+        :type: str
+        """
+
+        self._message = message
+
+    @property
+    def is_error(self):
+        """Gets the is_error of this JobOut.  # noqa: E501
+
+        True if there was an error performing the API call.  # noqa: E501
+
+        :return: The is_error of this JobOut.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_error
+
+    @is_error.setter
+    def is_error(self, is_error):
+        """Sets the is_error of this JobOut.
+
+        True if there was an error performing the API call.  # noqa: E501
+
+        :param is_error: The is_error of this JobOut.  # noqa: E501
+        :type: bool
+        """
+
+        self._is_error = is_error
+
+    @property
+    def object_type(self):
+        """Gets the object_type of this JobOut.  # noqa: E501
+
+        The type of object being returned.  # noqa: E501
+
+        :return: The object_type of this JobOut.  # noqa: E501
+        :rtype: str
+        """
+        return self._object_type
+
+    @object_type.setter
+    def object_type(self, object_type):
+        """Sets the object_type of this JobOut.
+
+        The type of object being returned.  # noqa: E501
+
+        :param object_type: The object_type of this JobOut.  # noqa: E501
+        :type: str
+        """
+
+        self._object_type = object_type
+
+    @property
+    def status_code(self):
+        """Gets the status_code of this JobOut.  # noqa: E501
+
+        The HTTP status code returned.  # noqa: E501
+
+        :return: The status_code of this JobOut.  # noqa: E501
         :rtype: int
         """
-        return self._id
+        return self._status_code
 
-    @id.setter
-    def id(self, id):
-        """Sets the id of this JobOut.
+    @status_code.setter
+    def status_code(self, status_code):
+        """Sets the status_code of this JobOut.
 
-        The unique id of the job.  # noqa: E501
+        The HTTP status code returned.  # noqa: E501
 
-        :param id: The id of this JobOut.  # noqa: E501
+        :param status_code: The status_code of this JobOut.  # noqa: E501
         :type: int
         """
 
-        self._id = id
+        self._status_code = status_code
 
     @property
-    def name(self):
-        """Gets the name of this JobOut.  # noqa: E501
+    def object(self):
+        """Gets the object of this JobOut.  # noqa: E501
 
-        The name of the job.  # noqa: E501
 
-        :return: The name of this JobOut.  # noqa: E501
-        :rtype: str
+        :return: The object of this JobOut.  # noqa: E501
+        :rtype: JobOutObject
         """
-        return self._name
+        return self._object
 
-    @name.setter
-    def name(self, name):
-        """Sets the name of this JobOut.
+    @object.setter
+    def object(self, object):
+        """Sets the object of this JobOut.
 
-        The name of the job.  # noqa: E501
 
-        :param name: The name of this JobOut.  # noqa: E501
-        :type: str
+        :param object: The object of this JobOut.  # noqa: E501
+        :type: JobOutObject
         """
 
-        self._name = name
-
-    @property
-    def cron(self):
-        """Gets the cron of this JobOut.  # noqa: E501
-
-        The cron expression for the job.  # noqa: E501
-
-        :return: The cron of this JobOut.  # noqa: E501
-        :rtype: str
-        """
-        return self._cron
-
-    @cron.setter
-    def cron(self, cron):
-        """Sets the cron of this JobOut.
-
-        The cron expression for the job.  # noqa: E501
-
-        :param cron: The cron of this JobOut.  # noqa: E501
-        :type: str
-        """
-
-        self._cron = cron
-
-    @property
-    def enabled(self):
-        """Gets the enabled of this JobOut.  # noqa: E501
-
-        Whether the job is enabled or not.  # noqa: E501
-
-        :return: The enabled of this JobOut.  # noqa: E501
-        :rtype: bool
-        """
-        return self._enabled
-
-    @enabled.setter
-    def enabled(self, enabled):
-        """Sets the enabled of this JobOut.
-
-        Whether the job is enabled or not.  # noqa: E501
-
-        :param enabled: The enabled of this JobOut.  # noqa: E501
-        :type: bool
-        """
-
-        self._enabled = enabled
-
-    @property
-    def command(self):
-        """Gets the command of this JobOut.  # noqa: E501
-
-        The command that is executed when the job fires.  # noqa: E501
-
-        :return: The command of this JobOut.  # noqa: E501
-        :rtype: str
-        """
-        return self._command
-
-    @command.setter
-    def command(self, command):
-        """Sets the command of this JobOut.
-
-        The command that is executed when the job fires.  # noqa: E501
-
-        :param command: The command of this JobOut.  # noqa: E501
-        :type: str
-        """
-
-        self._command = command
-
-    @property
-    def next_run(self):
-        """Gets the next_run of this JobOut.  # noqa: E501
-
-        The date and time of the job's next run.  # noqa: E501
-
-        :return: The next_run of this JobOut.  # noqa: E501
-        :rtype: str
-        """
-        return self._next_run
-
-    @next_run.setter
-    def next_run(self, next_run):
-        """Sets the next_run of this JobOut.
-
-        The date and time of the job's next run.  # noqa: E501
-
-        :param next_run: The next_run of this JobOut.  # noqa: E501
-        :type: str
-        """
-
-        self._next_run = next_run
-
-    @property
-    def running(self):
-        """Gets the running of this JobOut.  # noqa: E501
-
-        Whether the job is currently running.  # noqa: E501
-
-        :return: The running of this JobOut.  # noqa: E501
-        :rtype: bool
-        """
-        return self._running
-
-    @running.setter
-    def running(self, running):
-        """Sets the running of this JobOut.
-
-        Whether the job is currently running.  # noqa: E501
-
-        :param running: The running of this JobOut.  # noqa: E501
-        :type: bool
-        """
-
-        self._running = running
-
-    @property
-    def timezone(self):
-        """Gets the timezone of this JobOut.  # noqa: E501
-
-        The timezone that the job will run in.  # noqa: E501
-
-        :return: The timezone of this JobOut.  # noqa: E501
-        :rtype: str
-        """
-        return self._timezone
-
-    @timezone.setter
-    def timezone(self, timezone):
-        """Sets the timezone of this JobOut.
-
-        The timezone that the job will run in.  # noqa: E501
-
-        :param timezone: The timezone of this JobOut.  # noqa: E501
-        :type: str
-        """
-
-        self._timezone = timezone
-
-    @property
-    def tags(self):
-        """Gets the tags of this JobOut.  # noqa: E501
-
-        An array of tags associated with the job.  # noqa: E501
-
-        :return: The tags of this JobOut.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._tags
-
-    @tags.setter
-    def tags(self, tags):
-        """Sets the tags of this JobOut.
-
-        An array of tags associated with the job.  # noqa: E501
-
-        :param tags: The tags of this JobOut.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._tags = tags
+        self._object = object
 
     def to_dict(self):
         """Returns the model properties as a dict"""

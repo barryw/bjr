@@ -33,9 +33,13 @@ namespace IO.Swagger.BJR.Model
         /// Initializes a new instance of the <see cref="UserNewIn" /> class.
         /// </summary>
         /// <param name="username">The new user&#x27;s username. Must be unique..</param>
-        public UserNewIn(string username = default(string))
+        /// <param name="password">The new user&#x27;s password..</param>
+        /// <param name="passwordConfirmation">The new user&#x27;s password confirmation. Must match &#x27;password&#x27;..</param>
+        public UserNewIn(string username = default(string), string password = default(string), string passwordConfirmation = default(string))
         {
             this.Username = username;
+            this.Password = password;
+            this.PasswordConfirmation = passwordConfirmation;
         }
         
         /// <summary>
@@ -46,6 +50,20 @@ namespace IO.Swagger.BJR.Model
         public string Username { get; set; }
 
         /// <summary>
+        /// The new user&#x27;s password.
+        /// </summary>
+        /// <value>The new user&#x27;s password.</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
+
+        /// <summary>
+        /// The new user&#x27;s password confirmation. Must match &#x27;password&#x27;.
+        /// </summary>
+        /// <value>The new user&#x27;s password confirmation. Must match &#x27;password&#x27;.</value>
+        [DataMember(Name="password_confirmation", EmitDefaultValue=false)]
+        public string PasswordConfirmation { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -54,6 +72,8 @@ namespace IO.Swagger.BJR.Model
             var sb = new StringBuilder();
             sb.Append("class UserNewIn {\n");
             sb.Append("  Username: ").Append(Username).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  PasswordConfirmation: ").Append(PasswordConfirmation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,6 +112,16 @@ namespace IO.Swagger.BJR.Model
                     this.Username == input.Username ||
                     (this.Username != null &&
                     this.Username.Equals(input.Username))
+                ) && 
+                (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
+                ) && 
+                (
+                    this.PasswordConfirmation == input.PasswordConfirmation ||
+                    (this.PasswordConfirmation != null &&
+                    this.PasswordConfirmation.Equals(input.PasswordConfirmation))
                 );
         }
 
@@ -106,6 +136,10 @@ namespace IO.Swagger.BJR.Model
                 int hashCode = 41;
                 if (this.Username != null)
                     hashCode = hashCode * 59 + this.Username.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
+                if (this.PasswordConfirmation != null)
+                    hashCode = hashCode * 59 + this.PasswordConfirmation.GetHashCode();
                 return hashCode;
             }
         }

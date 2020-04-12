@@ -181,7 +181,7 @@ except ApiException as e:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://{defaultHost}*
+All URIs are relative to */*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -199,15 +199,14 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AnyOfoutObject](docs/AnyOfoutObject.md)
  - [AuthIn](docs/AuthIn.md)
  - [AuthOut](docs/AuthOut.md)
- - [DateFields](docs/DateFields.md)
  - [JobIn](docs/JobIn.md)
  - [JobOut](docs/JobOut.md)
- - [Out](docs/Out.md)
+ - [JobOutObject](docs/JobOutObject.md)
  - [UserNewIn](docs/UserNewIn.md)
  - [UserOut](docs/UserOut.md)
+ - [UserOutObject](docs/UserOutObject.md)
  - [UserUpdateIn](docs/UserUpdateIn.md)
 
 ## Documentation For Authorization

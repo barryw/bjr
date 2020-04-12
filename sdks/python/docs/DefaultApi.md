@@ -1,6 +1,6 @@
 # swagger_client.DefaultApi
 
-All URIs are relative to *http://{defaultHost}*
+All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -203,7 +203,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **job_api_id_put**
-> Out job_api_id_put(id, body=body)
+> JobOut job_api_id_put(id, body=body)
 
 Updates a single job
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**JobOut**](JobOut.md)
 
 ### Authorization
 
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **job_api_post**
-> Out job_api_post(body=body)
+> JobOut job_api_post(body=body)
 
 Creates a job
 
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**JobOut**](JobOut.md)
 
 ### Authorization
 
@@ -347,7 +347,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_id_delete**
-> Out user_api_id_delete(id)
+> UserOut user_api_id_delete(id)
 
 Deletes a user
 
@@ -382,7 +382,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_id_get**
-> Out user_api_id_get(id)
+> UserOut user_api_id_get(id)
 
 Retrieve a single user
 
@@ -431,7 +431,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -445,7 +445,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_id_put**
-> Out user_api_id_put(id, body=body)
+> UserOut user_api_id_put(id, body=body)
 
 Update a single user
 
@@ -482,7 +482,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -496,7 +496,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_post**
-> Out user_api_post(body=body)
+> UserOut user_api_post(body=body)
 
 Creates a user
 
@@ -531,7 +531,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 

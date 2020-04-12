@@ -31,9 +31,9 @@ export default class ApiClient {
         /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default http://{defaultHost}
+         * @default /
          */
-        this.basePath = 'http://{defaultHost}'.replace(/\/+$/, '');
+        this.basePath = '/'.replace(/\/+$/, '');
 
         /**
          * The authentication methods to be included for all API calls.

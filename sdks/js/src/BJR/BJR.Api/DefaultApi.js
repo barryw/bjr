@@ -15,8 +15,9 @@ import ApiClient from "../ApiClient";
 import AuthIn from '../BJR.Model/AuthIn';
 import AuthOut from '../BJR.Model/AuthOut';
 import JobIn from '../BJR.Model/JobIn';
-import Out from '../BJR.Model/Out';
+import JobOut from '../BJR.Model/JobOut';
 import UserNewIn from '../BJR.Model/UserNewIn';
+import UserOut from '../BJR.Model/UserOut';
 import UserUpdateIn from '../BJR.Model/UserUpdateIn';
 
 /**
@@ -187,7 +188,7 @@ export default class DefaultApi {
      * Callback function to receive the result of the jobApiIdPut operation.
      * @callback module:BJR/BJR.Api/DefaultApi~jobApiIdPutCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/BJR.Model/Out} data The data returned by the service call.
+     * @param {module:BJR/BJR.Model/JobOut} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -195,7 +196,7 @@ export default class DefaultApi {
      * Updates a single job
      * Updates a single job
      * @param {module:BJR/BJR.Api/DefaultApi~jobApiIdPutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/BJR.Model/Out}
+     * data is of type: {@link module:BJR/BJR.Model/JobOut}
      */
     jobApiIdPut(id, opts, callback) {
       let postBody = opts['body'];
@@ -213,7 +214,7 @@ export default class DefaultApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = Out;
+      let returnType = JobOut;
 
       return this.apiClient.callApi(
         '/job_api/{id}', 'PUT',
@@ -225,7 +226,7 @@ export default class DefaultApi {
      * Callback function to receive the result of the jobApiPost operation.
      * @callback module:BJR/BJR.Api/DefaultApi~jobApiPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/BJR.Model/Out} data The data returned by the service call.
+     * @param {module:BJR/BJR.Model/JobOut} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -233,7 +234,7 @@ export default class DefaultApi {
      * Creates a job
      * Creates a job
      * @param {module:BJR/BJR.Api/DefaultApi~jobApiPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/BJR.Model/Out}
+     * data is of type: {@link module:BJR/BJR.Model/JobOut}
      */
     jobApiPost(opts, callback) {
       let postBody = opts['body'];
@@ -250,7 +251,7 @@ export default class DefaultApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = Out;
+      let returnType = JobOut;
 
       return this.apiClient.callApi(
         '/job_api', 'POST',
@@ -298,7 +299,7 @@ export default class DefaultApi {
      * Callback function to receive the result of the userApiIdDelete operation.
      * @callback module:BJR/BJR.Api/DefaultApi~userApiIdDeleteCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/BJR.Model/Out} data The data returned by the service call.
+     * @param {module:BJR/BJR.Model/UserOut} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -306,7 +307,7 @@ export default class DefaultApi {
      * Deletes a user
      * Deletes a user
      * @param {module:BJR/BJR.Api/DefaultApi~userApiIdDeleteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/BJR.Model/Out}
+     * data is of type: {@link module:BJR/BJR.Model/UserOut}
      */
     userApiIdDelete(id, callback) {
       let postBody = null;
@@ -324,7 +325,7 @@ export default class DefaultApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = Out;
+      let returnType = UserOut;
 
       return this.apiClient.callApi(
         '/user_api/{id}', 'DELETE',
@@ -336,7 +337,7 @@ export default class DefaultApi {
      * Callback function to receive the result of the userApiIdGet operation.
      * @callback module:BJR/BJR.Api/DefaultApi~userApiIdGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/BJR.Model/Out} data The data returned by the service call.
+     * @param {module:BJR/BJR.Model/UserOut} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -344,7 +345,7 @@ export default class DefaultApi {
      * Retrieve a single user
      * Retrieve a single user
      * @param {module:BJR/BJR.Api/DefaultApi~userApiIdGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/BJR.Model/Out}
+     * data is of type: {@link module:BJR/BJR.Model/UserOut}
      */
     userApiIdGet(id, callback) {
       let postBody = null;
@@ -362,7 +363,7 @@ export default class DefaultApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = Out;
+      let returnType = UserOut;
 
       return this.apiClient.callApi(
         '/user_api/{id}', 'GET',
@@ -374,7 +375,7 @@ export default class DefaultApi {
      * Callback function to receive the result of the userApiIdPut operation.
      * @callback module:BJR/BJR.Api/DefaultApi~userApiIdPutCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/BJR.Model/Out} data The data returned by the service call.
+     * @param {module:BJR/BJR.Model/UserOut} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -382,7 +383,7 @@ export default class DefaultApi {
      * Update a single user
      * Update a single user
      * @param {module:BJR/BJR.Api/DefaultApi~userApiIdPutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/BJR.Model/Out}
+     * data is of type: {@link module:BJR/BJR.Model/UserOut}
      */
     userApiIdPut(id, opts, callback) {
       let postBody = opts['body'];
@@ -400,7 +401,7 @@ export default class DefaultApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = Out;
+      let returnType = UserOut;
 
       return this.apiClient.callApi(
         '/user_api/{id}', 'PUT',
@@ -412,7 +413,7 @@ export default class DefaultApi {
      * Callback function to receive the result of the userApiPost operation.
      * @callback module:BJR/BJR.Api/DefaultApi~userApiPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/BJR.Model/Out} data The data returned by the service call.
+     * @param {module:BJR/BJR.Model/UserOut} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -420,7 +421,7 @@ export default class DefaultApi {
      * Creates a user
      * Create a new user
      * @param {module:BJR/BJR.Api/DefaultApi~userApiPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/BJR.Model/Out}
+     * data is of type: {@link module:BJR/BJR.Model/UserOut}
      */
     userApiPost(opts, callback) {
       let postBody = opts['body'];
@@ -437,7 +438,7 @@ export default class DefaultApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = Out;
+      let returnType = UserOut;
 
       return this.apiClient.callApi(
         '/user_api', 'POST',

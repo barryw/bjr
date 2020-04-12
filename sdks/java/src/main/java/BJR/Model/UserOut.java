@@ -14,6 +14,7 @@ package BJR.Model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import BJR.Model.UserOutObject;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,48 +26,111 @@ import java.io.IOException;
  * UserOut
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T14:56:07.085-04:00[America/New_York]")
-public class UserOut implements AnyOfoutObject {
-  @SerializedName("id")
-  private Integer id = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:07:05.406-04:00[America/New_York]")
+public class UserOut {
+  @SerializedName("message")
+  private String message = null;
 
-  @SerializedName("username")
-  private String username = null;
+  @SerializedName("is_error")
+  private Boolean isError = null;
 
-  public UserOut id(Integer id) {
-    this.id = id;
+  @SerializedName("object_type")
+  private String objectType = null;
+
+  @SerializedName("status_code")
+  private Integer statusCode = null;
+
+  @SerializedName("object")
+  private UserOutObject object = null;
+
+  public UserOut message(String message) {
+    this.message = message;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * The status message returned from the API call.
+   * @return message
   **/
-  @Schema(description = "")
-  public Integer getId() {
-    return id;
+  @Schema(description = "The status message returned from the API call.")
+  public String getMessage() {
+    return message;
   }
 
-  public void setId(Integer id) {
-    this.id = id;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
-  public UserOut username(String username) {
-    this.username = username;
+  public UserOut isError(Boolean isError) {
+    this.isError = isError;
     return this;
   }
 
    /**
-   * Get username
-   * @return username
+   * True if there was an error performing the API call.
+   * @return isError
   **/
-  @Schema(description = "")
-  public String getUsername() {
-    return username;
+  @Schema(description = "True if there was an error performing the API call.")
+  public Boolean isIsError() {
+    return isError;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setIsError(Boolean isError) {
+    this.isError = isError;
+  }
+
+  public UserOut objectType(String objectType) {
+    this.objectType = objectType;
+    return this;
+  }
+
+   /**
+   * The type of object being returned.
+   * @return objectType
+  **/
+  @Schema(description = "The type of object being returned.")
+  public String getObjectType() {
+    return objectType;
+  }
+
+  public void setObjectType(String objectType) {
+    this.objectType = objectType;
+  }
+
+  public UserOut statusCode(Integer statusCode) {
+    this.statusCode = statusCode;
+    return this;
+  }
+
+   /**
+   * The HTTP status code returned.
+   * @return statusCode
+  **/
+  @Schema(description = "The HTTP status code returned.")
+  public Integer getStatusCode() {
+    return statusCode;
+  }
+
+  public void setStatusCode(Integer statusCode) {
+    this.statusCode = statusCode;
+  }
+
+  public UserOut object(UserOutObject object) {
+    this.object = object;
+    return this;
+  }
+
+   /**
+   * Get object
+   * @return object
+  **/
+  @Schema(description = "")
+  public UserOutObject getObject() {
+    return object;
+  }
+
+  public void setObject(UserOutObject object) {
+    this.object = object;
   }
 
 
@@ -79,13 +143,16 @@ public class UserOut implements AnyOfoutObject {
       return false;
     }
     UserOut userOut = (UserOut) o;
-    return Objects.equals(this.id, userOut.id) &&
-        Objects.equals(this.username, userOut.username);
+    return Objects.equals(this.message, userOut.message) &&
+        Objects.equals(this.isError, userOut.isError) &&
+        Objects.equals(this.objectType, userOut.objectType) &&
+        Objects.equals(this.statusCode, userOut.statusCode) &&
+        Objects.equals(this.object, userOut.object);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, username);
+    return Objects.hash(message, isError, objectType, statusCode, object);
   }
 
 
@@ -94,8 +161,11 @@ public class UserOut implements AnyOfoutObject {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserOut {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
+    sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
+    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("}");
     return sb.toString();
   }

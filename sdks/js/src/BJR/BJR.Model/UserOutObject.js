@@ -14,14 +14,14 @@
 import ApiClient from '../ApiClient';
 
 /**
-* The DateFields model module.
-* @module BJR/BJR.Model/DateFields
+* The UserOutObject model module.
+* @module BJR/BJR.Model/UserOutObject
 * @version v1
 */
-export default class DateFields {
+export default class UserOutObject {
     /**
-    * Constructs a new <code>DateFields</code>.
-    * @alias module:BJR/BJR.Model/DateFields
+    * Constructs a new <code>UserOutObject</code>.
+    * @alias module:BJR/BJR.Model/UserOutObject
     * @class
     */
 
@@ -32,27 +32,38 @@ export default class DateFields {
     }
 
     /**
-    * Constructs a <code>DateFields</code> from a plain JavaScript object, optionally creating a new instance.
+    * Constructs a <code>UserOutObject</code> from a plain JavaScript object, optionally creating a new instance.
     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
     * @param {Object} data The plain JavaScript object bearing properties of interest.
-    * @param {module:BJR/BJR.Model/DateFields} obj Optional instance to populate.
-    * @return {module:BJR/BJR.Model/DateFields} The populated <code>DateFields</code> instance.
+    * @param {module:BJR/BJR.Model/UserOutObject} obj Optional instance to populate.
+    * @return {module:BJR/BJR.Model/UserOutObject} The populated <code>UserOutObject</code> instance.
     */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new DateFields();
+            obj = obj || new UserOutObject();
                         
             
+            if (data.hasOwnProperty('id')) {
+                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+            }
             if (data.hasOwnProperty('created_at')) {
                 obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
             }
             if (data.hasOwnProperty('updated_at')) {
                 obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
             }
+            if (data.hasOwnProperty('username')) {
+                obj['username'] = ApiClient.convertToType(data['username'], 'String');
+            }
         }
         return obj;
     }
 
+    /**
+    * The object's primary key. This uniquely identifies the object in the system.
+    * @member {Number} id
+    */
+    id = undefined;
     /**
     * The UTC date and time that the object was created.
     * @member {Date} created_at
@@ -63,6 +74,10 @@ export default class DateFields {
     * @member {Date} updated_at
     */
     updated_at = undefined;
+    /**
+    * @member {String} username
+    */
+    username = undefined;
 
 
 

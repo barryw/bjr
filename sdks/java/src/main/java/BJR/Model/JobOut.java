@@ -14,6 +14,7 @@ package BJR.Model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import BJR.Model.JobOutObject;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,209 +22,115 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 /**
  * JobOut
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T14:56:07.085-04:00[America/New_York]")
-public class JobOut implements AnyOfoutObject {
-  @SerializedName("id")
-  private Integer id = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:07:05.406-04:00[America/New_York]")
+public class JobOut {
+  @SerializedName("message")
+  private String message = null;
 
-  @SerializedName("name")
-  private String name = null;
+  @SerializedName("is_error")
+  private Boolean isError = null;
 
-  @SerializedName("cron")
-  private String cron = null;
+  @SerializedName("object_type")
+  private String objectType = null;
 
-  @SerializedName("enabled")
-  private Boolean enabled = null;
+  @SerializedName("status_code")
+  private Integer statusCode = null;
 
-  @SerializedName("command")
-  private String command = null;
+  @SerializedName("object")
+  private JobOutObject object = null;
 
-  @SerializedName("next_run")
-  private String nextRun = null;
-
-  @SerializedName("running")
-  private Boolean running = null;
-
-  @SerializedName("timezone")
-  private String timezone = null;
-
-  @SerializedName("tags")
-  private List<String> tags = null;
-
-  public JobOut id(Integer id) {
-    this.id = id;
+  public JobOut message(String message) {
+    this.message = message;
     return this;
   }
 
    /**
-   * The unique id of the job.
-   * @return id
+   * The status message returned from the API call.
+   * @return message
   **/
-  @Schema(description = "The unique id of the job.")
-  public Integer getId() {
-    return id;
+  @Schema(description = "The status message returned from the API call.")
+  public String getMessage() {
+    return message;
   }
 
-  public void setId(Integer id) {
-    this.id = id;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
-  public JobOut name(String name) {
-    this.name = name;
+  public JobOut isError(Boolean isError) {
+    this.isError = isError;
     return this;
   }
 
    /**
-   * The name of the job.
-   * @return name
+   * True if there was an error performing the API call.
+   * @return isError
   **/
-  @Schema(description = "The name of the job.")
-  public String getName() {
-    return name;
+  @Schema(description = "True if there was an error performing the API call.")
+  public Boolean isIsError() {
+    return isError;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setIsError(Boolean isError) {
+    this.isError = isError;
   }
 
-  public JobOut cron(String cron) {
-    this.cron = cron;
+  public JobOut objectType(String objectType) {
+    this.objectType = objectType;
     return this;
   }
 
    /**
-   * The cron expression for the job.
-   * @return cron
+   * The type of object being returned.
+   * @return objectType
   **/
-  @Schema(description = "The cron expression for the job.")
-  public String getCron() {
-    return cron;
+  @Schema(description = "The type of object being returned.")
+  public String getObjectType() {
+    return objectType;
   }
 
-  public void setCron(String cron) {
-    this.cron = cron;
+  public void setObjectType(String objectType) {
+    this.objectType = objectType;
   }
 
-  public JobOut enabled(Boolean enabled) {
-    this.enabled = enabled;
+  public JobOut statusCode(Integer statusCode) {
+    this.statusCode = statusCode;
     return this;
   }
 
    /**
-   * Whether the job is enabled or not.
-   * @return enabled
+   * The HTTP status code returned.
+   * @return statusCode
   **/
-  @Schema(description = "Whether the job is enabled or not.")
-  public Boolean isEnabled() {
-    return enabled;
+  @Schema(description = "The HTTP status code returned.")
+  public Integer getStatusCode() {
+    return statusCode;
   }
 
-  public void setEnabled(Boolean enabled) {
-    this.enabled = enabled;
+  public void setStatusCode(Integer statusCode) {
+    this.statusCode = statusCode;
   }
 
-  public JobOut command(String command) {
-    this.command = command;
+  public JobOut object(JobOutObject object) {
+    this.object = object;
     return this;
   }
 
    /**
-   * The command that is executed when the job fires.
-   * @return command
+   * Get object
+   * @return object
   **/
-  @Schema(description = "The command that is executed when the job fires.")
-  public String getCommand() {
-    return command;
+  @Schema(description = "")
+  public JobOutObject getObject() {
+    return object;
   }
 
-  public void setCommand(String command) {
-    this.command = command;
-  }
-
-  public JobOut nextRun(String nextRun) {
-    this.nextRun = nextRun;
-    return this;
-  }
-
-   /**
-   * The date and time of the job&#x27;s next run.
-   * @return nextRun
-  **/
-  @Schema(description = "The date and time of the job's next run.")
-  public String getNextRun() {
-    return nextRun;
-  }
-
-  public void setNextRun(String nextRun) {
-    this.nextRun = nextRun;
-  }
-
-  public JobOut running(Boolean running) {
-    this.running = running;
-    return this;
-  }
-
-   /**
-   * Whether the job is currently running.
-   * @return running
-  **/
-  @Schema(description = "Whether the job is currently running.")
-  public Boolean isRunning() {
-    return running;
-  }
-
-  public void setRunning(Boolean running) {
-    this.running = running;
-  }
-
-  public JobOut timezone(String timezone) {
-    this.timezone = timezone;
-    return this;
-  }
-
-   /**
-   * The timezone that the job will run in.
-   * @return timezone
-  **/
-  @Schema(description = "The timezone that the job will run in.")
-  public String getTimezone() {
-    return timezone;
-  }
-
-  public void setTimezone(String timezone) {
-    this.timezone = timezone;
-  }
-
-  public JobOut tags(List<String> tags) {
-    this.tags = tags;
-    return this;
-  }
-
-  public JobOut addTagsItem(String tagsItem) {
-    if (this.tags == null) {
-      this.tags = new ArrayList<String>();
-    }
-    this.tags.add(tagsItem);
-    return this;
-  }
-
-   /**
-   * An array of tags associated with the job.
-   * @return tags
-  **/
-  @Schema(description = "An array of tags associated with the job.")
-  public List<String> getTags() {
-    return tags;
-  }
-
-  public void setTags(List<String> tags) {
-    this.tags = tags;
+  public void setObject(JobOutObject object) {
+    this.object = object;
   }
 
 
@@ -236,20 +143,16 @@ public class JobOut implements AnyOfoutObject {
       return false;
     }
     JobOut jobOut = (JobOut) o;
-    return Objects.equals(this.id, jobOut.id) &&
-        Objects.equals(this.name, jobOut.name) &&
-        Objects.equals(this.cron, jobOut.cron) &&
-        Objects.equals(this.enabled, jobOut.enabled) &&
-        Objects.equals(this.command, jobOut.command) &&
-        Objects.equals(this.nextRun, jobOut.nextRun) &&
-        Objects.equals(this.running, jobOut.running) &&
-        Objects.equals(this.timezone, jobOut.timezone) &&
-        Objects.equals(this.tags, jobOut.tags);
+    return Objects.equals(this.message, jobOut.message) &&
+        Objects.equals(this.isError, jobOut.isError) &&
+        Objects.equals(this.objectType, jobOut.objectType) &&
+        Objects.equals(this.statusCode, jobOut.statusCode) &&
+        Objects.equals(this.object, jobOut.object);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, cron, enabled, command, nextRun, running, timezone, tags);
+    return Objects.hash(message, isError, objectType, statusCode, object);
   }
 
 
@@ -258,15 +161,11 @@ public class JobOut implements AnyOfoutObject {
     StringBuilder sb = new StringBuilder();
     sb.append("class JobOut {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    cron: ").append(toIndentedString(cron)).append("\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    command: ").append(toIndentedString(command)).append("\n");
-    sb.append("    nextRun: ").append(toIndentedString(nextRun)).append("\n");
-    sb.append("    running: ").append(toIndentedString(running)).append("\n");
-    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
+    sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
+    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
+    sb.append("    object: ").append(toIndentedString(object)).append("\n");
     sb.append("}");
     return sb.toString();
   }

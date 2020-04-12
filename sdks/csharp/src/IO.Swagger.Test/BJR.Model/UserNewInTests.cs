@@ -73,6 +73,22 @@ namespace IO.Swagger.Test
         {
             // TODO unit test for the property 'Username'
         }
+        /// <summary>
+        /// Test the property 'Password'
+        /// </summary>
+        [Test]
+        public void PasswordTest()
+        {
+            // TODO unit test for the property 'Password'
+        }
+        /// <summary>
+        /// Test the property 'PasswordConfirmation'
+        /// </summary>
+        [Test]
+        public void PasswordConfirmationTest()
+        {
+            // TODO unit test for the property 'PasswordConfirmation'
+        }
 
     }
 

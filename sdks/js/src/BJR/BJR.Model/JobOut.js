@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import JobOutObject from './JobOutObject';
 
 /**
 * The JobOut model module.
@@ -27,7 +28,7 @@ export default class JobOut {
 
     constructor() {
         
-        AnyOfoutModelObject.call(this);
+        
         
     }
 
@@ -43,85 +44,51 @@ export default class JobOut {
             obj = obj || new JobOut();
                         
             
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+            if (data.hasOwnProperty('message')) {
+                obj['message'] = ApiClient.convertToType(data['message'], 'String');
             }
-            if (data.hasOwnProperty('name')) {
-                obj['name'] = ApiClient.convertToType(data['name'], 'String');
+            if (data.hasOwnProperty('is_error')) {
+                obj['is_error'] = ApiClient.convertToType(data['is_error'], 'Boolean');
             }
-            if (data.hasOwnProperty('cron')) {
-                obj['cron'] = ApiClient.convertToType(data['cron'], 'String');
+            if (data.hasOwnProperty('object_type')) {
+                obj['object_type'] = ApiClient.convertToType(data['object_type'], 'String');
             }
-            if (data.hasOwnProperty('enabled')) {
-                obj['enabled'] = ApiClient.convertToType(data['enabled'], 'Boolean');
+            if (data.hasOwnProperty('status_code')) {
+                obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
             }
-            if (data.hasOwnProperty('command')) {
-                obj['command'] = ApiClient.convertToType(data['command'], 'String');
-            }
-            if (data.hasOwnProperty('next_run')) {
-                obj['next_run'] = ApiClient.convertToType(data['next_run'], 'String');
-            }
-            if (data.hasOwnProperty('running')) {
-                obj['running'] = ApiClient.convertToType(data['running'], 'Boolean');
-            }
-            if (data.hasOwnProperty('timezone')) {
-                obj['timezone'] = ApiClient.convertToType(data['timezone'], 'String');
-            }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
+            if (data.hasOwnProperty('object')) {
+                obj['object'] = JobOutObject.constructFromObject(data['object']);
             }
         }
         return obj;
     }
 
     /**
-    * The unique id of the job.
-    * @member {Number} id
+    * The status message returned from the API call.
+    * @member {String} message
     */
-    id = undefined;
+    message = undefined;
     /**
-    * The name of the job.
-    * @member {String} name
+    * True if there was an error performing the API call.
+    * @member {Boolean} is_error
     */
-    name = undefined;
+    is_error = undefined;
     /**
-    * The cron expression for the job.
-    * @member {String} cron
+    * The type of object being returned.
+    * @member {String} object_type
     */
-    cron = undefined;
+    object_type = undefined;
     /**
-    * Whether the job is enabled or not.
-    * @member {Boolean} enabled
+    * The HTTP status code returned.
+    * @member {Number} status_code
     */
-    enabled = undefined;
+    status_code = undefined;
     /**
-    * The command that is executed when the job fires.
-    * @member {String} command
+    * @member {module:BJR/BJR.Model/JobOutObject} object
     */
-    command = undefined;
-    /**
-    * The date and time of the job's next run.
-    * @member {String} next_run
-    */
-    next_run = undefined;
-    /**
-    * Whether the job is currently running.
-    * @member {Boolean} running
-    */
-    running = undefined;
-    /**
-    * The timezone that the job will run in.
-    * @member {String} timezone
-    */
-    timezone = undefined;
-    /**
-    * An array of tags associated with the job.
-    * @member {Array.<String>} tags
-    */
-    tags = undefined;
+    object = undefined;
 
-    // Implement AnyOfoutModelObject interface:
-    
+
 
 
 }

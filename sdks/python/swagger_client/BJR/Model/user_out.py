@@ -29,66 +29,152 @@ class UserOut(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'id': 'int',
-        'username': 'str'
+        'message': 'str',
+        'is_error': 'bool',
+        'object_type': 'str',
+        'status_code': 'int',
+        'object': 'UserOutObject'
     }
 
     attribute_map = {
-        'id': 'id',
-        'username': 'username'
+        'message': 'message',
+        'is_error': 'is_error',
+        'object_type': 'object_type',
+        'status_code': 'status_code',
+        'object': 'object'
     }
 
-    def __init__(self, id=None, username=None):  # noqa: E501
+    def __init__(self, message=None, is_error=None, object_type=None, status_code=None, object=None):  # noqa: E501
         """UserOut - a model defined in Swagger"""  # noqa: E501
-        self._id = None
-        self._username = None
+        self._message = None
+        self._is_error = None
+        self._object_type = None
+        self._status_code = None
+        self._object = None
         self.discriminator = None
-        if id is not None:
-            self.id = id
-        if username is not None:
-            self.username = username
+        if message is not None:
+            self.message = message
+        if is_error is not None:
+            self.is_error = is_error
+        if object_type is not None:
+            self.object_type = object_type
+        if status_code is not None:
+            self.status_code = status_code
+        if object is not None:
+            self.object = object
 
     @property
-    def id(self):
-        """Gets the id of this UserOut.  # noqa: E501
+    def message(self):
+        """Gets the message of this UserOut.  # noqa: E501
 
+        The status message returned from the API call.  # noqa: E501
 
-        :return: The id of this UserOut.  # noqa: E501
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this UserOut.
-
-
-        :param id: The id of this UserOut.  # noqa: E501
-        :type: int
-        """
-
-        self._id = id
-
-    @property
-    def username(self):
-        """Gets the username of this UserOut.  # noqa: E501
-
-
-        :return: The username of this UserOut.  # noqa: E501
+        :return: The message of this UserOut.  # noqa: E501
         :rtype: str
         """
-        return self._username
+        return self._message
 
-    @username.setter
-    def username(self, username):
-        """Sets the username of this UserOut.
+    @message.setter
+    def message(self, message):
+        """Sets the message of this UserOut.
 
+        The status message returned from the API call.  # noqa: E501
 
-        :param username: The username of this UserOut.  # noqa: E501
+        :param message: The message of this UserOut.  # noqa: E501
         :type: str
         """
 
-        self._username = username
+        self._message = message
+
+    @property
+    def is_error(self):
+        """Gets the is_error of this UserOut.  # noqa: E501
+
+        True if there was an error performing the API call.  # noqa: E501
+
+        :return: The is_error of this UserOut.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_error
+
+    @is_error.setter
+    def is_error(self, is_error):
+        """Sets the is_error of this UserOut.
+
+        True if there was an error performing the API call.  # noqa: E501
+
+        :param is_error: The is_error of this UserOut.  # noqa: E501
+        :type: bool
+        """
+
+        self._is_error = is_error
+
+    @property
+    def object_type(self):
+        """Gets the object_type of this UserOut.  # noqa: E501
+
+        The type of object being returned.  # noqa: E501
+
+        :return: The object_type of this UserOut.  # noqa: E501
+        :rtype: str
+        """
+        return self._object_type
+
+    @object_type.setter
+    def object_type(self, object_type):
+        """Sets the object_type of this UserOut.
+
+        The type of object being returned.  # noqa: E501
+
+        :param object_type: The object_type of this UserOut.  # noqa: E501
+        :type: str
+        """
+
+        self._object_type = object_type
+
+    @property
+    def status_code(self):
+        """Gets the status_code of this UserOut.  # noqa: E501
+
+        The HTTP status code returned.  # noqa: E501
+
+        :return: The status_code of this UserOut.  # noqa: E501
+        :rtype: int
+        """
+        return self._status_code
+
+    @status_code.setter
+    def status_code(self, status_code):
+        """Sets the status_code of this UserOut.
+
+        The HTTP status code returned.  # noqa: E501
+
+        :param status_code: The status_code of this UserOut.  # noqa: E501
+        :type: int
+        """
+
+        self._status_code = status_code
+
+    @property
+    def object(self):
+        """Gets the object of this UserOut.  # noqa: E501
+
+
+        :return: The object of this UserOut.  # noqa: E501
+        :rtype: UserOutObject
+        """
+        return self._object
+
+    @object.setter
+    def object(self, object):
+        """Sets the object of this UserOut.
+
+
+        :param object: The object of this UserOut.  # noqa: E501
+        :type: UserOutObject
+        """
+
+        self._object = object
 
     def to_dict(self):
         """Returns the model properties as a dict"""

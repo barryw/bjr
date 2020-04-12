@@ -53,14 +53,32 @@
       //expect(instance).to.be.a(BjrApiV1.UserOut);
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
+    it('should have the property message (base name: "message")', function() {
+      // uncomment below and update the code to test the property message
       //var instane = new BjrApiV1.UserOut();
       //expect(instance).to.be();
     });
 
-    it('should have the property username (base name: "username")', function() {
-      // uncomment below and update the code to test the property username
+    it('should have the property isError (base name: "is_error")', function() {
+      // uncomment below and update the code to test the property isError
+      //var instane = new BjrApiV1.UserOut();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property objectType (base name: "object_type")', function() {
+      // uncomment below and update the code to test the property objectType
+      //var instane = new BjrApiV1.UserOut();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property statusCode (base name: "status_code")', function() {
+      // uncomment below and update the code to test the property statusCode
+      //var instane = new BjrApiV1.UserOut();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property _object (base name: "object")', function() {
+      // uncomment below and update the code to test the property _object
       //var instane = new BjrApiV1.UserOut();
       //expect(instance).to.be();
     });

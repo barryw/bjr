@@ -53,56 +53,32 @@
       //expect(instance).to.be.a(BjrApiV1.JobOut);
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
+    it('should have the property message (base name: "message")', function() {
+      // uncomment below and update the code to test the property message
       //var instane = new BjrApiV1.JobOut();
       //expect(instance).to.be();
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
+    it('should have the property isError (base name: "is_error")', function() {
+      // uncomment below and update the code to test the property isError
       //var instane = new BjrApiV1.JobOut();
       //expect(instance).to.be();
     });
 
-    it('should have the property cron (base name: "cron")', function() {
-      // uncomment below and update the code to test the property cron
+    it('should have the property objectType (base name: "object_type")', function() {
+      // uncomment below and update the code to test the property objectType
       //var instane = new BjrApiV1.JobOut();
       //expect(instance).to.be();
     });
 
-    it('should have the property enabled (base name: "enabled")', function() {
-      // uncomment below and update the code to test the property enabled
+    it('should have the property statusCode (base name: "status_code")', function() {
+      // uncomment below and update the code to test the property statusCode
       //var instane = new BjrApiV1.JobOut();
       //expect(instance).to.be();
     });
 
-    it('should have the property command (base name: "command")', function() {
-      // uncomment below and update the code to test the property command
-      //var instane = new BjrApiV1.JobOut();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property nextRun (base name: "next_run")', function() {
-      // uncomment below and update the code to test the property nextRun
-      //var instane = new BjrApiV1.JobOut();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property running (base name: "running")', function() {
-      // uncomment below and update the code to test the property running
-      //var instane = new BjrApiV1.JobOut();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property timezone (base name: "timezone")', function() {
-      // uncomment below and update the code to test the property timezone
-      //var instane = new BjrApiV1.JobOut();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property tags (base name: "tags")', function() {
-      // uncomment below and update the code to test the property tags
+    it('should have the property _object (base name: "object")', function() {
+      // uncomment below and update the code to test the property _object
       //var instane = new BjrApiV1.JobOut();
       //expect(instance).to.be();
     });

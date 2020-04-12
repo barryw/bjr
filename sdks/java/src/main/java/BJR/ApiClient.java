@@ -51,7 +51,7 @@ import BJR.auth.OAuth;
 
 public class ApiClient {
 
-    private String basePath = "http://{defaultHost}";
+    private String basePath = "/";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -105,7 +105,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g http://{defaultHost}
+     * @param basePath Base path of the URL (e.g /
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {

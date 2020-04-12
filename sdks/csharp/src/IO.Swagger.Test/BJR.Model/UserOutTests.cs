@@ -66,20 +66,44 @@ namespace IO.Swagger.Test
 
 
         /// <summary>
-        /// Test the property 'Id'
+        /// Test the property 'Message'
         /// </summary>
         [Test]
-        public void IdTest()
+        public void MessageTest()
         {
-            // TODO unit test for the property 'Id'
+            // TODO unit test for the property 'Message'
         }
         /// <summary>
-        /// Test the property 'Username'
+        /// Test the property 'IsError'
         /// </summary>
         [Test]
-        public void UsernameTest()
+        public void IsErrorTest()
         {
-            // TODO unit test for the property 'Username'
+            // TODO unit test for the property 'IsError'
+        }
+        /// <summary>
+        /// Test the property 'ObjectType'
+        /// </summary>
+        [Test]
+        public void ObjectTypeTest()
+        {
+            // TODO unit test for the property 'ObjectType'
+        }
+        /// <summary>
+        /// Test the property 'StatusCode'
+        /// </summary>
+        [Test]
+        public void StatusCodeTest()
+        {
+            // TODO unit test for the property 'StatusCode'
+        }
+        /// <summary>
+        /// Test the property 'Object'
+        /// </summary>
+        [Test]
+        public void ObjectTest()
+        {
+            // TODO unit test for the property 'Object'
         }
 
     }

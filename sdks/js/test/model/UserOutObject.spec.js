@@ -27,7 +27,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new BjrApiV1.DateFields();
+    instance = new BjrApiV1.UserOutObject();
   });
 
   var getProperty = function(object, getter, property) {
@@ -46,22 +46,34 @@
       object[property] = value;
   }
 
-  describe('DateFields', function() {
-    it('should create an instance of DateFields', function() {
-      // uncomment below and update the code to test DateFields
-      //var instane = new BjrApiV1.DateFields();
-      //expect(instance).to.be.a(BjrApiV1.DateFields);
+  describe('UserOutObject', function() {
+    it('should create an instance of UserOutObject', function() {
+      // uncomment below and update the code to test UserOutObject
+      //var instane = new BjrApiV1.UserOutObject();
+      //expect(instance).to.be.a(BjrApiV1.UserOutObject);
+    });
+
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new BjrApiV1.UserOutObject();
+      //expect(instance).to.be();
     });
 
     it('should have the property createdAt (base name: "created_at")', function() {
       // uncomment below and update the code to test the property createdAt
-      //var instane = new BjrApiV1.DateFields();
+      //var instane = new BjrApiV1.UserOutObject();
       //expect(instance).to.be();
     });
 
     it('should have the property updatedAt (base name: "updated_at")', function() {
       // uncomment below and update the code to test the property updatedAt
-      //var instane = new BjrApiV1.DateFields();
+      //var instane = new BjrApiV1.UserOutObject();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property username (base name: "username")', function() {
+      // uncomment below and update the code to test the property username
+      //var instane = new BjrApiV1.UserOutObject();
       //expect(instance).to.be();
     });
 

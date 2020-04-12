@@ -32,90 +32,53 @@ namespace IO.Swagger.BJR.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="JobOut" /> class.
         /// </summary>
-        /// <param name="id">The unique id of the job..</param>
-        /// <param name="name">The name of the job..</param>
-        /// <param name="cron">The cron expression for the job..</param>
-        /// <param name="enabled">Whether the job is enabled or not..</param>
-        /// <param name="command">The command that is executed when the job fires..</param>
-        /// <param name="nextRun">The date and time of the job&#x27;s next run..</param>
-        /// <param name="running">Whether the job is currently running..</param>
-        /// <param name="timezone">The timezone that the job will run in..</param>
-        /// <param name="tags">An array of tags associated with the job..</param>
-        public JobOut(int? id = default(int?), string name = default(string), string cron = default(string), bool? enabled = default(bool?), string command = default(string), string nextRun = default(string), bool? running = default(bool?), string timezone = default(string), List<string> tags = default(List<string>))
+        /// <param name="message">The status message returned from the API call..</param>
+        /// <param name="isError">True if there was an error performing the API call..</param>
+        /// <param name="objectType">The type of object being returned..</param>
+        /// <param name="statusCode">The HTTP status code returned..</param>
+        /// <param name="_object">_object.</param>
+        public JobOut(string message = default(string), bool? isError = default(bool?), string objectType = default(string), int? statusCode = default(int?), JobOutObject _object = default(JobOutObject))
         {
-            this.Id = id;
-            this.Name = name;
-            this.Cron = cron;
-            this.Enabled = enabled;
-            this.Command = command;
-            this.NextRun = nextRun;
-            this.Running = running;
-            this.Timezone = timezone;
-            this.Tags = tags;
+            this.Message = message;
+            this.IsError = isError;
+            this.ObjectType = objectType;
+            this.StatusCode = statusCode;
+            this.Object = _object;
         }
         
         /// <summary>
-        /// The unique id of the job.
+        /// The status message returned from the API call.
         /// </summary>
-        /// <value>The unique id of the job.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public int? Id { get; set; }
+        /// <value>The status message returned from the API call.</value>
+        [DataMember(Name="message", EmitDefaultValue=false)]
+        public string Message { get; set; }
 
         /// <summary>
-        /// The name of the job.
+        /// True if there was an error performing the API call.
         /// </summary>
-        /// <value>The name of the job.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
+        /// <value>True if there was an error performing the API call.</value>
+        [DataMember(Name="is_error", EmitDefaultValue=false)]
+        public bool? IsError { get; set; }
 
         /// <summary>
-        /// The cron expression for the job.
+        /// The type of object being returned.
         /// </summary>
-        /// <value>The cron expression for the job.</value>
-        [DataMember(Name="cron", EmitDefaultValue=false)]
-        public string Cron { get; set; }
+        /// <value>The type of object being returned.</value>
+        [DataMember(Name="object_type", EmitDefaultValue=false)]
+        public string ObjectType { get; set; }
 
         /// <summary>
-        /// Whether the job is enabled or not.
+        /// The HTTP status code returned.
         /// </summary>
-        /// <value>Whether the job is enabled or not.</value>
-        [DataMember(Name="enabled", EmitDefaultValue=false)]
-        public bool? Enabled { get; set; }
+        /// <value>The HTTP status code returned.</value>
+        [DataMember(Name="status_code", EmitDefaultValue=false)]
+        public int? StatusCode { get; set; }
 
         /// <summary>
-        /// The command that is executed when the job fires.
+        /// Gets or Sets Object
         /// </summary>
-        /// <value>The command that is executed when the job fires.</value>
-        [DataMember(Name="command", EmitDefaultValue=false)]
-        public string Command { get; set; }
-
-        /// <summary>
-        /// The date and time of the job&#x27;s next run.
-        /// </summary>
-        /// <value>The date and time of the job&#x27;s next run.</value>
-        [DataMember(Name="next_run", EmitDefaultValue=false)]
-        public string NextRun { get; set; }
-
-        /// <summary>
-        /// Whether the job is currently running.
-        /// </summary>
-        /// <value>Whether the job is currently running.</value>
-        [DataMember(Name="running", EmitDefaultValue=false)]
-        public bool? Running { get; set; }
-
-        /// <summary>
-        /// The timezone that the job will run in.
-        /// </summary>
-        /// <value>The timezone that the job will run in.</value>
-        [DataMember(Name="timezone", EmitDefaultValue=false)]
-        public string Timezone { get; set; }
-
-        /// <summary>
-        /// An array of tags associated with the job.
-        /// </summary>
-        /// <value>An array of tags associated with the job.</value>
-        [DataMember(Name="tags", EmitDefaultValue=false)]
-        public List<string> Tags { get; set; }
+        [DataMember(Name="object", EmitDefaultValue=false)]
+        public JobOutObject Object { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -125,15 +88,11 @@ namespace IO.Swagger.BJR.Model
         {
             var sb = new StringBuilder();
             sb.Append("class JobOut {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Cron: ").Append(Cron).Append("\n");
-            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
-            sb.Append("  Command: ").Append(Command).Append("\n");
-            sb.Append("  NextRun: ").Append(NextRun).Append("\n");
-            sb.Append("  Running: ").Append(Running).Append("\n");
-            sb.Append("  Timezone: ").Append(Timezone).Append("\n");
-            sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  IsError: ").Append(IsError).Append("\n");
+            sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
+            sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
+            sb.Append("  Object: ").Append(Object).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -169,50 +128,29 @@ namespace IO.Swagger.BJR.Model
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.Message == input.Message ||
+                    (this.Message != null &&
+                    this.Message.Equals(input.Message))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.IsError == input.IsError ||
+                    (this.IsError != null &&
+                    this.IsError.Equals(input.IsError))
                 ) && 
                 (
-                    this.Cron == input.Cron ||
-                    (this.Cron != null &&
-                    this.Cron.Equals(input.Cron))
+                    this.ObjectType == input.ObjectType ||
+                    (this.ObjectType != null &&
+                    this.ObjectType.Equals(input.ObjectType))
                 ) && 
                 (
-                    this.Enabled == input.Enabled ||
-                    (this.Enabled != null &&
-                    this.Enabled.Equals(input.Enabled))
+                    this.StatusCode == input.StatusCode ||
+                    (this.StatusCode != null &&
+                    this.StatusCode.Equals(input.StatusCode))
                 ) && 
                 (
-                    this.Command == input.Command ||
-                    (this.Command != null &&
-                    this.Command.Equals(input.Command))
-                ) && 
-                (
-                    this.NextRun == input.NextRun ||
-                    (this.NextRun != null &&
-                    this.NextRun.Equals(input.NextRun))
-                ) && 
-                (
-                    this.Running == input.Running ||
-                    (this.Running != null &&
-                    this.Running.Equals(input.Running))
-                ) && 
-                (
-                    this.Timezone == input.Timezone ||
-                    (this.Timezone != null &&
-                    this.Timezone.Equals(input.Timezone))
-                ) && 
-                (
-                    this.Tags == input.Tags ||
-                    this.Tags != null &&
-                    input.Tags != null &&
-                    this.Tags.SequenceEqual(input.Tags)
+                    this.Object == input.Object ||
+                    (this.Object != null &&
+                    this.Object.Equals(input.Object))
                 );
         }
 
@@ -225,24 +163,16 @@ namespace IO.Swagger.BJR.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Cron != null)
-                    hashCode = hashCode * 59 + this.Cron.GetHashCode();
-                if (this.Enabled != null)
-                    hashCode = hashCode * 59 + this.Enabled.GetHashCode();
-                if (this.Command != null)
-                    hashCode = hashCode * 59 + this.Command.GetHashCode();
-                if (this.NextRun != null)
-                    hashCode = hashCode * 59 + this.NextRun.GetHashCode();
-                if (this.Running != null)
-                    hashCode = hashCode * 59 + this.Running.GetHashCode();
-                if (this.Timezone != null)
-                    hashCode = hashCode * 59 + this.Timezone.GetHashCode();
-                if (this.Tags != null)
-                    hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                if (this.Message != null)
+                    hashCode = hashCode * 59 + this.Message.GetHashCode();
+                if (this.IsError != null)
+                    hashCode = hashCode * 59 + this.IsError.GetHashCode();
+                if (this.ObjectType != null)
+                    hashCode = hashCode * 59 + this.ObjectType.GetHashCode();
+                if (this.StatusCode != null)
+                    hashCode = hashCode * 59 + this.StatusCode.GetHashCode();
+                if (this.Object != null)
+                    hashCode = hashCode * 59 + this.Object.GetHashCode();
                 return hashCode;
             }
         }

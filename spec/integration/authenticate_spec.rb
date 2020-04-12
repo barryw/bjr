@@ -7,12 +7,12 @@ describe 'Authentication' do
     post 'Authenticates a user and returns a token' do
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :params, in: :body, schema: { '$ref' => '#/components/schemas/auth_in' }
+      parameter name: :params, in: :body, schema: { '$ref' => '#/components/schemas/AuthIn' }
 
       response '200', 'User authenticated successfully' do
         let(:admin) { create(:admin1) }
         let(:params) { { username: admin.username, password: admin.password } }
-        schema '$ref' => '#/components/schemas/auth_out'
+        schema '$ref' => '#/components/schemas/AuthOut'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -23,7 +23,7 @@ describe 'Authentication' do
 
       response '401', 'User failed authentication' do
         let(:params) { { username: 'bogus', password: 'user' } }
-        schema '$ref' => '#/components/schemas/auth_out'
+        schema '$ref' => '#/components/schemas/AuthOut'
 
         run_test! do |response|
           json = JSON.parse(response.body)

@@ -5,18 +5,7 @@ info:
   version: v1
 components:
   schemas:
-    date_fields:
-      type: object
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          description: The UTC date and time that the object was created.
-        updated_at:
-          type: string
-          format: date-time
-          description: The UTC date and time that the object was last modified.
-    auth_in:
+    AuthIn:
       type: object
       properties:
         username:
@@ -27,7 +16,7 @@ components:
           type: string
           description: The password of the user to authenticate as
           required: true
-    auth_out:
+    AuthOut:
       type: object
       properties:
         auth_token:
@@ -41,15 +30,19 @@ components:
           type: boolean
           description: This will be true if the authentication was successful, and
             false if not.
-    user_new_in:
+    UserNewIn:
       type: object
       properties:
         username:
           type: string
           description: The new user's username. Must be unique.
-        allOf:
-        - "$ref": "#/components/schemas/user_update_in"
-    user_update_in:
+        password:
+          type: string
+          description: The new user's password.
+        password_confirmation:
+          type: string
+          description: The new user's password confirmation. Must match 'password'.
+    UserUpdateIn:
       type: object
       properties:
         password:
@@ -58,16 +51,39 @@ components:
         password_confirmation:
           type: string
           description: The new user's password confirmation. Must match 'password'.
-    user_out:
+    UserOut:
       type: object
       properties:
-        id:
-          type: integer
-        username:
+        message:
           type: string
-        allOf:
-        - "$ref": "#/components/schemas/date_fields"
-    job_in:
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: The object's primary key. This uniquely identifies the
+                object in the system.
+            created_at:
+              type: string
+              format: date-time
+              description: The UTC date and time that the object was created.
+            updated_at:
+              type: string
+              format: date-time
+              description: The UTC date and time that the object was last modified.
+            username:
+              type: string
+    JobIn:
       type: object
       properties:
         name:
@@ -95,41 +111,7 @@ components:
           description: A comma-separated list of tags to associate with this job.
             You can search jobs by their tags.
           required: false
-    job_out:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique id of the job.
-        name:
-          type: string
-          description: The name of the job.
-        cron:
-          type: string
-          description: The cron expression for the job.
-        enabled:
-          type: boolean
-          description: Whether the job is enabled or not.
-        command:
-          type: string
-          description: The command that is executed when the job fires.
-        next_run:
-          type: string
-          description: The date and time of the job's next run.
-        running:
-          type: boolean
-          description: Whether the job is currently running.
-        timezone:
-          type: string
-          description: The timezone that the job will run in.
-        tags:
-          type: array
-          description: An array of tags associated with the job.
-          items:
-            type: string
-        allOf:
-        - "$ref": "#/components/schemas/date_fields"
-    out:
+    JobOut:
       type: object
       properties:
         message:
@@ -145,9 +127,46 @@ components:
           type: integer
           description: The HTTP status code returned.
         object:
-          anyOf:
-          - "$ref": "#/components/schemas/job_out"
-          - "$ref": "#/components/schemas/user_out"
+          type: object
+          properties:
+            id:
+              type: integer
+              description: The object's primary key. This uniquely identifies the
+                object in the system.
+            created_at:
+              type: string
+              format: date-time
+              description: The UTC date and time that the object was created.
+            updated_at:
+              type: string
+              format: date-time
+              description: The UTC date and time that the object was last modified.
+            name:
+              type: string
+              description: The name of the job.
+            cron:
+              type: string
+              description: The cron expression for the job.
+            enabled:
+              type: boolean
+              description: Whether the job is enabled or not.
+            command:
+              type: string
+              description: The command that is executed when the job fires.
+            next_run:
+              type: string
+              description: The date and time of the job's next run.
+            running:
+              type: boolean
+              description: Whether the job is currently running.
+            timezone:
+              type: string
+              description: The timezone that the job will run in.
+            tags:
+              type: array
+              description: An array of tags associated with the job.
+              items:
+                type: string
   securitySchemes:
     bearerAuth:
       scheme: bearer
@@ -164,18 +183,18 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/auth_out"
+                "$ref": "#/components/schemas/AuthOut"
         '401':
           description: User failed authentication
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/auth_out"
+                "$ref": "#/components/schemas/AuthOut"
       requestBody:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/auth_in"
+              "$ref": "#/components/schemas/AuthIn"
   "/job_api":
     post:
       summary: Creates a job
@@ -189,7 +208,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/out"
+                "$ref": "#/components/schemas/JobOut"
         '403':
           description: A job with this name already exists.
           content: {}
@@ -197,7 +216,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/job_in"
+              "$ref": "#/components/schemas/JobIn"
     get:
       summary: Retrieves jobs
       description: Retrieves jobs
@@ -225,7 +244,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/out"
+                "$ref": "#/components/schemas/JobOut"
         '403':
           description: Job could not be updated.
           content: {}
@@ -236,7 +255,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/job_in"
+              "$ref": "#/components/schemas/JobIn"
     delete:
       summary: Deletes a job
       description: Deletes a job
@@ -295,7 +314,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/out"
+                "$ref": "#/components/schemas/UserOut"
         '403':
           description: Username already exists
           content: {}
@@ -303,7 +322,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/user_new_in"
+              "$ref": "#/components/schemas/UserNewIn"
   "/user_api/{id}":
     put:
       summary: Update a single user
@@ -322,18 +341,18 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/out"
+                "$ref": "#/components/schemas/UserOut"
         '403':
           description: The passwords did not match
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/out"
+                "$ref": "#/components/schemas/UserOut"
       requestBody:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/user_update_in"
+              "$ref": "#/components/schemas/UserUpdateIn"
     get:
       summary: Retrieve a single user
       description: Retrieve a single user
@@ -351,13 +370,13 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/out"
+                "$ref": "#/components/schemas/UserOut"
         '404':
           description: The user with that id could not be found.
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/out"
+                "$ref": "#/components/schemas/UserOut"
         '401':
           description: Your token is invalid or expired
           content: {}
@@ -378,21 +397,16 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/out"
+                "$ref": "#/components/schemas/UserOut"
         '403':
           description: You cannot delete yourself.
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/out"
+                "$ref": "#/components/schemas/UserOut"
         '404':
           description: The user with that id could not be found.
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/out"
-servers:
-- url: http://{defaultHost}
-  variables:
-    defaultHost:
-      default: localhost:3000
+                "$ref": "#/components/schemas/UserOut"

@@ -12,6 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
+import UserOutObject from './UserOutObject';
 
 /**
 * The UserOut model module.
@@ -27,7 +28,7 @@ export default class UserOut {
 
     constructor() {
         
-        AnyOfoutModelObject.call(this);
+        
         
     }
 
@@ -43,27 +44,51 @@ export default class UserOut {
             obj = obj || new UserOut();
                         
             
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+            if (data.hasOwnProperty('message')) {
+                obj['message'] = ApiClient.convertToType(data['message'], 'String');
             }
-            if (data.hasOwnProperty('username')) {
-                obj['username'] = ApiClient.convertToType(data['username'], 'String');
+            if (data.hasOwnProperty('is_error')) {
+                obj['is_error'] = ApiClient.convertToType(data['is_error'], 'Boolean');
+            }
+            if (data.hasOwnProperty('object_type')) {
+                obj['object_type'] = ApiClient.convertToType(data['object_type'], 'String');
+            }
+            if (data.hasOwnProperty('status_code')) {
+                obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
+            }
+            if (data.hasOwnProperty('object')) {
+                obj['object'] = UserOutObject.constructFromObject(data['object']);
             }
         }
         return obj;
     }
 
     /**
-    * @member {Number} id
+    * The status message returned from the API call.
+    * @member {String} message
     */
-    id = undefined;
+    message = undefined;
     /**
-    * @member {String} username
+    * True if there was an error performing the API call.
+    * @member {Boolean} is_error
     */
-    username = undefined;
+    is_error = undefined;
+    /**
+    * The type of object being returned.
+    * @member {String} object_type
+    */
+    object_type = undefined;
+    /**
+    * The HTTP status code returned.
+    * @member {Number} status_code
+    */
+    status_code = undefined;
+    /**
+    * @member {module:BJR/BJR.Model/UserOutObject} object
+    */
+    object = undefined;
 
-    // Implement AnyOfoutModelObject interface:
-    
+
 
 
 }

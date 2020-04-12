@@ -3,15 +3,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int?** | The unique id of the job. | [optional] 
-**Name** | **string** | The name of the job. | [optional] 
-**Cron** | **string** | The cron expression for the job. | [optional] 
-**Enabled** | **bool?** | Whether the job is enabled or not. | [optional] 
-**Command** | **string** | The command that is executed when the job fires. | [optional] 
-**NextRun** | **string** | The date and time of the job&#x27;s next run. | [optional] 
-**Running** | **bool?** | Whether the job is currently running. | [optional] 
-**Timezone** | **string** | The timezone that the job will run in. | [optional] 
-**Tags** | **List&lt;string&gt;** | An array of tags associated with the job. | [optional] 
+**Message** | **string** | The status message returned from the API call. | [optional] 
+**IsError** | **bool?** | True if there was an error performing the API call. | [optional] 
+**ObjectType** | **string** | The type of object being returned. | [optional] 
+**StatusCode** | **int?** | The HTTP status code returned. | [optional] 
+**Object** | [**JobOutObject**](JobOutObject.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

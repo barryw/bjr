@@ -1,6 +1,6 @@
 # IO.Swagger.BJR.Api.DefaultApi
 
-All URIs are relative to *http://{defaultHost}*
+All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -252,7 +252,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="jobapiidput"></a>
 # **JobApiIdPut**
-> ModelOut JobApiIdPut (int? id, JobIn body = null)
+> JobOut JobApiIdPut (int? id, JobIn body = null)
 
 Updates a single job
 
@@ -280,7 +280,7 @@ namespace Example
             try
             {
                 // Updates a single job
-                ModelOut result = apiInstance.JobApiIdPut(id, body);
+                JobOut result = apiInstance.JobApiIdPut(id, body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelOut**](ModelOut.md)
+[**JobOut**](JobOut.md)
 
 ### Authorization
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="jobapipost"></a>
 # **JobApiPost**
-> ModelOut JobApiPost (JobIn body = null)
+> JobOut JobApiPost (JobIn body = null)
 
 Creates a job
 
@@ -342,7 +342,7 @@ namespace Example
             try
             {
                 // Creates a job
-                ModelOut result = apiInstance.JobApiPost(body);
+                JobOut result = apiInstance.JobApiPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -362,7 +362,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelOut**](ModelOut.md)
+[**JobOut**](JobOut.md)
 
 ### Authorization
 
@@ -432,7 +432,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="userapiiddelete"></a>
 # **UserApiIdDelete**
-> ModelOut UserApiIdDelete (int? id)
+> UserOut UserApiIdDelete (int? id)
 
 Deletes a user
 
@@ -459,7 +459,7 @@ namespace Example
             try
             {
                 // Deletes a user
-                ModelOut result = apiInstance.UserApiIdDelete(id);
+                UserOut result = apiInstance.UserApiIdDelete(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -479,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelOut**](ModelOut.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -493,7 +493,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="userapiidget"></a>
 # **UserApiIdGet**
-> ModelOut UserApiIdGet (int? id)
+> UserOut UserApiIdGet (int? id)
 
 Retrieve a single user
 
@@ -520,7 +520,7 @@ namespace Example
             try
             {
                 // Retrieve a single user
-                ModelOut result = apiInstance.UserApiIdGet(id);
+                UserOut result = apiInstance.UserApiIdGet(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -540,7 +540,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelOut**](ModelOut.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -554,7 +554,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="userapiidput"></a>
 # **UserApiIdPut**
-> ModelOut UserApiIdPut (int? id, UserUpdateIn body = null)
+> UserOut UserApiIdPut (int? id, UserUpdateIn body = null)
 
 Update a single user
 
@@ -582,7 +582,7 @@ namespace Example
             try
             {
                 // Update a single user
-                ModelOut result = apiInstance.UserApiIdPut(id, body);
+                UserOut result = apiInstance.UserApiIdPut(id, body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -603,7 +603,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelOut**](ModelOut.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -617,7 +617,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="userapipost"></a>
 # **UserApiPost**
-> ModelOut UserApiPost (UserNewIn body = null)
+> UserOut UserApiPost (UserNewIn body = null)
 
 Creates a user
 
@@ -644,7 +644,7 @@ namespace Example
             try
             {
                 // Creates a user
-                ModelOut result = apiInstance.UserApiPost(body);
+                UserOut result = apiInstance.UserApiPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -664,7 +664,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelOut**](ModelOut.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 

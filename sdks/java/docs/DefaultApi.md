@@ -1,6 +1,6 @@
 # DefaultApi
 
-All URIs are relative to *http://{defaultHost}*
+All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -204,7 +204,7 @@ null (empty response body)
 
 <a name="jobApiIdPut"></a>
 # **jobApiIdPut**
-> Out jobApiIdPut(id, body)
+> JobOut jobApiIdPut(id, body)
 
 Updates a single job
 
@@ -226,7 +226,7 @@ DefaultApi apiInstance = new DefaultApi();
 Integer id = 56; // Integer | 
 JobIn body = new JobIn(); // JobIn | 
 try {
-    Out result = apiInstance.jobApiIdPut(id, body);
+    JobOut result = apiInstance.jobApiIdPut(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#jobApiIdPut");
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**JobOut**](JobOut.md)
 
 ### Authorization
 
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 <a name="jobApiPost"></a>
 # **jobApiPost**
-> Out jobApiPost(body)
+> JobOut jobApiPost(body)
 
 Creates a job
 
@@ -277,7 +277,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 DefaultApi apiInstance = new DefaultApi();
 JobIn body = new JobIn(); // JobIn | 
 try {
-    Out result = apiInstance.jobApiPost(body);
+    JobOut result = apiInstance.jobApiPost(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#jobApiPost");
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**JobOut**](JobOut.md)
 
 ### Authorization
 
@@ -351,7 +351,7 @@ null (empty response body)
 
 <a name="userApiIdDelete"></a>
 # **userApiIdDelete**
-> Out userApiIdDelete(id)
+> UserOut userApiIdDelete(id)
 
 Deletes a user
 
@@ -372,7 +372,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 DefaultApi apiInstance = new DefaultApi();
 Integer id = 56; // Integer | 
 try {
-    Out result = apiInstance.userApiIdDelete(id);
+    UserOut result = apiInstance.userApiIdDelete(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#userApiIdDelete");
@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 
 <a name="userApiIdGet"></a>
 # **userApiIdGet**
-> Out userApiIdGet(id)
+> UserOut userApiIdGet(id)
 
 Retrieve a single user
 
@@ -422,7 +422,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 DefaultApi apiInstance = new DefaultApi();
 Integer id = 56; // Integer | 
 try {
-    Out result = apiInstance.userApiIdGet(id);
+    UserOut result = apiInstance.userApiIdGet(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#userApiIdGet");
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -451,7 +451,7 @@ Name | Type | Description  | Notes
 
 <a name="userApiIdPut"></a>
 # **userApiIdPut**
-> Out userApiIdPut(id, body)
+> UserOut userApiIdPut(id, body)
 
 Update a single user
 
@@ -473,7 +473,7 @@ DefaultApi apiInstance = new DefaultApi();
 Integer id = 56; // Integer | 
 UserUpdateIn body = new UserUpdateIn(); // UserUpdateIn | 
 try {
-    Out result = apiInstance.userApiIdPut(id, body);
+    UserOut result = apiInstance.userApiIdPut(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#userApiIdPut");
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 
 <a name="userApiPost"></a>
 # **userApiPost**
-> Out userApiPost(body)
+> UserOut userApiPost(body)
 
 Creates a user
 
@@ -524,7 +524,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 DefaultApi apiInstance = new DefaultApi();
 UserNewIn body = new UserNewIn(); // UserNewIn | 
 try {
-    Out result = apiInstance.userApiPost(body);
+    UserOut result = apiInstance.userApiPost(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#userApiPost");
@@ -540,7 +540,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Out**](Out.md)
+[**UserOut**](UserOut.md)
 
 ### Authorization
 
