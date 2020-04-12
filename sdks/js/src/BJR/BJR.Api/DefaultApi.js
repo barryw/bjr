@@ -14,8 +14,12 @@
 import ApiClient from "../ApiClient";
 import AuthIn from '../BJR.Model/AuthIn';
 import AuthOut from '../BJR.Model/AuthOut';
+import JobArray from '../BJR.Model/JobArray';
 import JobIn from '../BJR.Model/JobIn';
 import JobOut from '../BJR.Model/JobOut';
+import SingleJob from '../BJR.Model/SingleJob';
+import SingleUser from '../BJR.Model/SingleUser';
+import UserArray from '../BJR.Model/UserArray';
 import UserNewIn from '../BJR.Model/UserNewIn';
 import UserOut from '../BJR.Model/UserOut';
 import UserUpdateIn from '../BJR.Model/UserUpdateIn';
@@ -78,21 +82,28 @@ export default class DefaultApi {
      * Callback function to receive the result of the jobApiGet operation.
      * @callback module:BJR/BJR.Api/DefaultApi~jobApiGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:BJR/BJR.Model/JobArray} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Retrieves jobs
      * Retrieves jobs
+     * @param {Object} opts Optional parameters
      * @param {module:BJR/BJR.Api/DefaultApi~jobApiGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:BJR/BJR.Model/JobArray}
      */
-    jobApiGet(callback) {
+    jobApiGet(opts, callback) {
+      opts = opts || {};
       let postBody = null;
 
       let pathParams = {
       };
       let queryParams = {
+        'tags': opts['tags'],
+        'incexc': opts['incexc'],
+        'start_date': opts['startDate'],
+        'end_date': opts['endDate']
       };
       let headerParams = {
       };
@@ -101,8 +112,8 @@ export default class DefaultApi {
 
       let authNames = ['bearerAuth'];
       let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
+      let accepts = ['application/json'];
+      let returnType = JobArray;
 
       return this.apiClient.callApi(
         '/job_api', 'GET',
@@ -151,7 +162,7 @@ export default class DefaultApi {
      * Callback function to receive the result of the jobApiIdGet operation.
      * @callback module:BJR/BJR.Api/DefaultApi~jobApiIdGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:BJR/BJR.Model/SingleJob} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -159,6 +170,7 @@ export default class DefaultApi {
      * Retrieves a single job
      * Retrieves a single job
      * @param {module:BJR/BJR.Api/DefaultApi~jobApiIdGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:BJR/BJR.Model/SingleJob}
      */
     jobApiIdGet(id, callback) {
       let postBody = null;
@@ -175,8 +187,8 @@ export default class DefaultApi {
 
       let authNames = ['bearerAuth'];
       let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
+      let accepts = ['application/json'];
+      let returnType = SingleJob;
 
       return this.apiClient.callApi(
         '/job_api/{id}', 'GET',
@@ -263,7 +275,7 @@ export default class DefaultApi {
      * Callback function to receive the result of the userApiGet operation.
      * @callback module:BJR/BJR.Api/DefaultApi~userApiGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:BJR/BJR.Model/UserArray} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -271,6 +283,7 @@ export default class DefaultApi {
      * Retrieves users
      * Get a list of users
      * @param {module:BJR/BJR.Api/DefaultApi~userApiGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:BJR/BJR.Model/UserArray}
      */
     userApiGet(callback) {
       let postBody = null;
@@ -286,8 +299,8 @@ export default class DefaultApi {
 
       let authNames = ['bearerAuth'];
       let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
+      let accepts = ['application/json'];
+      let returnType = UserArray;
 
       return this.apiClient.callApi(
         '/user_api', 'GET',
@@ -337,7 +350,7 @@ export default class DefaultApi {
      * Callback function to receive the result of the userApiIdGet operation.
      * @callback module:BJR/BJR.Api/DefaultApi~userApiIdGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/BJR.Model/UserOut} data The data returned by the service call.
+     * @param {module:BJR/BJR.Model/SingleUser} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -345,7 +358,7 @@ export default class DefaultApi {
      * Retrieve a single user
      * Retrieve a single user
      * @param {module:BJR/BJR.Api/DefaultApi~userApiIdGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/BJR.Model/UserOut}
+     * data is of type: {@link module:BJR/BJR.Model/SingleUser}
      */
     userApiIdGet(id, callback) {
       let postBody = null;
@@ -363,7 +376,7 @@ export default class DefaultApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = UserOut;
+      let returnType = SingleUser;
 
       return this.apiClient.callApi(
         '/user_api/{id}', 'GET',

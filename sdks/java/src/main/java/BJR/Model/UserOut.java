@@ -14,7 +14,7 @@ package BJR.Model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import BJR.Model.UserOutObject;
+import BJR.Model.SingleUser;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,7 +26,7 @@ import java.io.IOException;
  * UserOut
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:07:05.406-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:58:08.024-04:00[America/New_York]")
 public class UserOut {
   @SerializedName("message")
   private String message = null;
@@ -41,7 +41,7 @@ public class UserOut {
   private Integer statusCode = null;
 
   @SerializedName("object")
-  private UserOutObject object = null;
+  private SingleUser object = null;
 
   public UserOut message(String message) {
     this.message = message;
@@ -115,7 +115,7 @@ public class UserOut {
     this.statusCode = statusCode;
   }
 
-  public UserOut object(UserOutObject object) {
+  public UserOut object(SingleUser object) {
     this.object = object;
     return this;
   }
@@ -125,11 +125,11 @@ public class UserOut {
    * @return object
   **/
   @Schema(description = "")
-  public UserOutObject getObject() {
+  public SingleUser getObject() {
     return object;
   }
 
-  public void setObject(UserOutObject object) {
+  public void setObject(SingleUser object) {
     this.object = object;
   }
 

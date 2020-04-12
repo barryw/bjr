@@ -33,7 +33,7 @@ class JobOut(object):
         'is_error': 'bool',
         'object_type': 'str',
         'status_code': 'int',
-        'object': 'JobOutObject'
+        'object': 'SingleJob'
     }
 
     attribute_map = {
@@ -161,7 +161,7 @@ class JobOut(object):
 
 
         :return: The object of this JobOut.  # noqa: E501
-        :rtype: JobOutObject
+        :rtype: SingleJob
         """
         return self._object
 
@@ -171,7 +171,7 @@ class JobOut(object):
 
 
         :param object: The object of this JobOut.  # noqa: E501
-        :type: JobOutObject
+        :type: SingleJob
         """
 
         self._object = object

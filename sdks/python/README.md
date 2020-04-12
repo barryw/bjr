@@ -65,10 +65,15 @@ except ApiException as e:
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+tags = 'tags_example' # str | Specify a comma-separated list of tags to search jobs by. (optional)
+incexc = 'incexc_example' # str |  (optional)
+start_date = 'start_date_example' # str | Specify a start date to search jobs by. (optional)
+end_date = 'end_date_example' # str | Specify an end date to search jobs by. (optional)
 
 try:
     # Retrieves jobs
-    api_instance.job_api_get()
+    api_response = api_instance.job_api_get(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->job_api_get: %s\n" % e)
 
@@ -90,7 +95,8 @@ id = 56 # int |
 
 try:
     # Retrieves a single job
-    api_instance.job_api_id_get(id)
+    api_response = api_instance.job_api_id_get(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->job_api_id_get: %s\n" % e)
 
@@ -125,7 +131,8 @@ api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration)
 
 try:
     # Retrieves users
-    api_instance.user_api_get()
+    api_response = api_instance.user_api_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->user_api_get: %s\n" % e)
 
@@ -201,12 +208,14 @@ Class | Method | HTTP request | Description
 
  - [AuthIn](docs/AuthIn.md)
  - [AuthOut](docs/AuthOut.md)
+ - [JobArray](docs/JobArray.md)
  - [JobIn](docs/JobIn.md)
  - [JobOut](docs/JobOut.md)
- - [JobOutObject](docs/JobOutObject.md)
+ - [SingleJob](docs/SingleJob.md)
+ - [SingleUser](docs/SingleUser.md)
+ - [UserArray](docs/UserArray.md)
  - [UserNewIn](docs/UserNewIn.md)
  - [UserOut](docs/UserOut.md)
- - [UserOutObject](docs/UserOutObject.md)
  - [UserUpdateIn](docs/UserUpdateIn.md)
 
 ## Documentation For Authorization

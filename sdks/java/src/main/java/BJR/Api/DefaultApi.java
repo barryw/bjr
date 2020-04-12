@@ -28,8 +28,12 @@ import java.io.IOException;
 
 import BJR.Model.AuthIn;
 import BJR.Model.AuthOut;
+import BJR.Model.JobArray;
 import BJR.Model.JobIn;
 import BJR.Model.JobOut;
+import BJR.Model.SingleJob;
+import BJR.Model.SingleUser;
+import BJR.Model.UserArray;
 import BJR.Model.UserNewIn;
 import BJR.Model.UserOut;
 import BJR.Model.UserUpdateIn;
@@ -181,12 +185,16 @@ public class DefaultApi {
     }
     /**
      * Build call for jobApiGet
+     * @param tags Specify a comma-separated list of tags to search jobs by. (optional)
+     * @param incexc  (optional)
+     * @param startDate Specify a start date to search jobs by. (optional)
+     * @param endDate Specify an end date to search jobs by. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call jobApiGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call jobApiGetCall(String tags, String incexc, String startDate, String endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -194,13 +202,21 @@ public class DefaultApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (tags != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("tags", tags));
+        if (incexc != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("incexc", incexc));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -228,9 +244,9 @@ public class DefaultApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call jobApiGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call jobApiGetValidateBeforeCall(String tags, String incexc, String startDate, String endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        com.squareup.okhttp.Call call = jobApiGetCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = jobApiGetCall(tags, incexc, startDate, endDate, progressListener, progressRequestListener);
         return call;
 
         
@@ -242,31 +258,46 @@ public class DefaultApi {
     /**
      * Retrieves jobs
      * Retrieves jobs
+     * @param tags Specify a comma-separated list of tags to search jobs by. (optional)
+     * @param incexc  (optional)
+     * @param startDate Specify a start date to search jobs by. (optional)
+     * @param endDate Specify an end date to search jobs by. (optional)
+     * @return JobArray
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void jobApiGet() throws ApiException {
-        jobApiGetWithHttpInfo();
+    public JobArray jobApiGet(String tags, String incexc, String startDate, String endDate) throws ApiException {
+        ApiResponse<JobArray> resp = jobApiGetWithHttpInfo(tags, incexc, startDate, endDate);
+        return resp.getData();
     }
 
     /**
      * Retrieves jobs
      * Retrieves jobs
-     * @return ApiResponse&lt;Void&gt;
+     * @param tags Specify a comma-separated list of tags to search jobs by. (optional)
+     * @param incexc  (optional)
+     * @param startDate Specify a start date to search jobs by. (optional)
+     * @param endDate Specify an end date to search jobs by. (optional)
+     * @return ApiResponse&lt;JobArray&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> jobApiGetWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = jobApiGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+    public ApiResponse<JobArray> jobApiGetWithHttpInfo(String tags, String incexc, String startDate, String endDate) throws ApiException {
+        com.squareup.okhttp.Call call = jobApiGetValidateBeforeCall(tags, incexc, startDate, endDate, null, null);
+        Type localVarReturnType = new TypeToken<JobArray>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Retrieves jobs (asynchronously)
      * Retrieves jobs
+     * @param tags Specify a comma-separated list of tags to search jobs by. (optional)
+     * @param incexc  (optional)
+     * @param startDate Specify a start date to search jobs by. (optional)
+     * @param endDate Specify an end date to search jobs by. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call jobApiGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call jobApiGetAsync(String tags, String incexc, String startDate, String endDate, final ApiCallback<JobArray> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -287,8 +318,9 @@ public class DefaultApi {
             };
         }
 
-        com.squareup.okhttp.Call call = jobApiGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        com.squareup.okhttp.Call call = jobApiGetValidateBeforeCall(tags, incexc, startDate, endDate, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<JobArray>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -435,7 +467,7 @@ public class DefaultApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -482,22 +514,25 @@ public class DefaultApi {
      * Retrieves a single job
      * Retrieves a single job
      * @param id  (required)
+     * @return SingleJob
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void jobApiIdGet(Integer id) throws ApiException {
-        jobApiIdGetWithHttpInfo(id);
+    public SingleJob jobApiIdGet(Integer id) throws ApiException {
+        ApiResponse<SingleJob> resp = jobApiIdGetWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Retrieves a single job
      * Retrieves a single job
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SingleJob&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> jobApiIdGetWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<SingleJob> jobApiIdGetWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = jobApiIdGetValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SingleJob>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -508,7 +543,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call jobApiIdGetAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call jobApiIdGetAsync(Integer id, final ApiCallback<SingleJob> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -530,7 +565,8 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = jobApiIdGetValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SingleJob>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -803,7 +839,7 @@ public class DefaultApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -845,21 +881,24 @@ public class DefaultApi {
     /**
      * Retrieves users
      * Get a list of users
+     * @return UserArray
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void userApiGet() throws ApiException {
-        userApiGetWithHttpInfo();
+    public UserArray userApiGet() throws ApiException {
+        ApiResponse<UserArray> resp = userApiGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Retrieves users
      * Get a list of users
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;UserArray&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> userApiGetWithHttpInfo() throws ApiException {
+    public ApiResponse<UserArray> userApiGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = userApiGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<UserArray>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -869,7 +908,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiGetAsync(final ApiCallback<UserArray> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -891,7 +930,8 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = userApiGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<UserArray>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1089,11 +1129,11 @@ public class DefaultApi {
      * Retrieve a single user
      * Retrieve a single user
      * @param id  (required)
-     * @return UserOut
+     * @return SingleUser
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public UserOut userApiIdGet(Integer id) throws ApiException {
-        ApiResponse<UserOut> resp = userApiIdGetWithHttpInfo(id);
+    public SingleUser userApiIdGet(Integer id) throws ApiException {
+        ApiResponse<SingleUser> resp = userApiIdGetWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -1101,12 +1141,12 @@ public class DefaultApi {
      * Retrieve a single user
      * Retrieve a single user
      * @param id  (required)
-     * @return ApiResponse&lt;UserOut&gt;
+     * @return ApiResponse&lt;SingleUser&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<UserOut> userApiIdGetWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<SingleUser> userApiIdGetWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = userApiIdGetValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<UserOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<SingleUser>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1118,7 +1158,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiIdGetAsync(Integer id, final ApiCallback<UserOut> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiIdGetAsync(Integer id, final ApiCallback<SingleUser> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1140,7 +1180,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = userApiIdGetValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<UserOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<SingleUser>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -13,6 +13,7 @@ describe 'User API' do
       response '200', 'Users found' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
+        schema '$ref' => '#/components/schemas/UserArray'
 
         before do |request|
           create(:admin2)
@@ -100,7 +101,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { admin.id }
-        schema '$ref' => '#/components/schemas/UserOut'
+        schema '$ref' => '#/components/schemas/SingleUser'
 
         run_test! do |response|
           json = JSON.parse(response.body)

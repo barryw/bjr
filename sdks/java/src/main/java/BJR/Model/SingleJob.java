@@ -25,19 +25,13 @@ import java.util.ArrayList;
 import java.util.List;
 import org.threeten.bp.OffsetDateTime;
 /**
- * JobOutObject
+ * SingleJob
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:07:05.406-04:00[America/New_York]")
-public class JobOutObject {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:58:08.024-04:00[America/New_York]")
+public class SingleJob {
   @SerializedName("id")
   private Integer id = null;
-
-  @SerializedName("created_at")
-  private OffsetDateTime createdAt = null;
-
-  @SerializedName("updated_at")
-  private OffsetDateTime updatedAt = null;
 
   @SerializedName("name")
   private String name = null;
@@ -63,7 +57,13 @@ public class JobOutObject {
   @SerializedName("tags")
   private List<String> tags = null;
 
-  public JobOutObject id(Integer id) {
+  @SerializedName("created_at")
+  private OffsetDateTime createdAt = null;
+
+  @SerializedName("updated_at")
+  private OffsetDateTime updatedAt = null;
+
+  public SingleJob id(Integer id) {
     this.id = id;
     return this;
   }
@@ -81,43 +81,7 @@ public class JobOutObject {
     this.id = id;
   }
 
-  public JobOutObject createdAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * The UTC date and time that the object was created.
-   * @return createdAt
-  **/
-  @Schema(description = "The UTC date and time that the object was created.")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public JobOutObject updatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * The UTC date and time that the object was last modified.
-   * @return updatedAt
-  **/
-  @Schema(description = "The UTC date and time that the object was last modified.")
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  public JobOutObject name(String name) {
+  public SingleJob name(String name) {
     this.name = name;
     return this;
   }
@@ -135,7 +99,7 @@ public class JobOutObject {
     this.name = name;
   }
 
-  public JobOutObject cron(String cron) {
+  public SingleJob cron(String cron) {
     this.cron = cron;
     return this;
   }
@@ -153,7 +117,7 @@ public class JobOutObject {
     this.cron = cron;
   }
 
-  public JobOutObject enabled(Boolean enabled) {
+  public SingleJob enabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -171,7 +135,7 @@ public class JobOutObject {
     this.enabled = enabled;
   }
 
-  public JobOutObject command(String command) {
+  public SingleJob command(String command) {
     this.command = command;
     return this;
   }
@@ -189,7 +153,7 @@ public class JobOutObject {
     this.command = command;
   }
 
-  public JobOutObject nextRun(String nextRun) {
+  public SingleJob nextRun(String nextRun) {
     this.nextRun = nextRun;
     return this;
   }
@@ -207,7 +171,7 @@ public class JobOutObject {
     this.nextRun = nextRun;
   }
 
-  public JobOutObject running(Boolean running) {
+  public SingleJob running(Boolean running) {
     this.running = running;
     return this;
   }
@@ -225,7 +189,7 @@ public class JobOutObject {
     this.running = running;
   }
 
-  public JobOutObject timezone(String timezone) {
+  public SingleJob timezone(String timezone) {
     this.timezone = timezone;
     return this;
   }
@@ -243,12 +207,12 @@ public class JobOutObject {
     this.timezone = timezone;
   }
 
-  public JobOutObject tags(List<String> tags) {
+  public SingleJob tags(List<String> tags) {
     this.tags = tags;
     return this;
   }
 
-  public JobOutObject addTagsItem(String tagsItem) {
+  public SingleJob addTagsItem(String tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<String>();
     }
@@ -269,6 +233,42 @@ public class JobOutObject {
     this.tags = tags;
   }
 
+  public SingleJob createdAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * The UTC date and time that the object was created.
+   * @return createdAt
+  **/
+  @Schema(description = "The UTC date and time that the object was created.")
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public SingleJob updatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * The UTC date and time that the object was last modified.
+   * @return updatedAt
+  **/
+  @Schema(description = "The UTC date and time that the object was last modified.")
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -278,34 +278,32 @@ public class JobOutObject {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    JobOutObject jobOutObject = (JobOutObject) o;
-    return Objects.equals(this.id, jobOutObject.id) &&
-        Objects.equals(this.createdAt, jobOutObject.createdAt) &&
-        Objects.equals(this.updatedAt, jobOutObject.updatedAt) &&
-        Objects.equals(this.name, jobOutObject.name) &&
-        Objects.equals(this.cron, jobOutObject.cron) &&
-        Objects.equals(this.enabled, jobOutObject.enabled) &&
-        Objects.equals(this.command, jobOutObject.command) &&
-        Objects.equals(this.nextRun, jobOutObject.nextRun) &&
-        Objects.equals(this.running, jobOutObject.running) &&
-        Objects.equals(this.timezone, jobOutObject.timezone) &&
-        Objects.equals(this.tags, jobOutObject.tags);
+    SingleJob singleJob = (SingleJob) o;
+    return Objects.equals(this.id, singleJob.id) &&
+        Objects.equals(this.name, singleJob.name) &&
+        Objects.equals(this.cron, singleJob.cron) &&
+        Objects.equals(this.enabled, singleJob.enabled) &&
+        Objects.equals(this.command, singleJob.command) &&
+        Objects.equals(this.nextRun, singleJob.nextRun) &&
+        Objects.equals(this.running, singleJob.running) &&
+        Objects.equals(this.timezone, singleJob.timezone) &&
+        Objects.equals(this.tags, singleJob.tags) &&
+        Objects.equals(this.createdAt, singleJob.createdAt) &&
+        Objects.equals(this.updatedAt, singleJob.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, name, cron, enabled, command, nextRun, running, timezone, tags);
+    return Objects.hash(id, name, cron, enabled, command, nextRun, running, timezone, tags, createdAt, updatedAt);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class JobOutObject {\n");
+    sb.append("class SingleJob {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    cron: ").append(toIndentedString(cron)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
@@ -314,6 +312,8 @@ public class JobOutObject {
     sb.append("    running: ").append(toIndentedString(running)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

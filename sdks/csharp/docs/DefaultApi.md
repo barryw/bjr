@@ -76,7 +76,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="jobapiget"></a>
 # **JobApiGet**
-> void JobApiGet ()
+> JobArray JobApiGet (string tags = null, string incexc = null, string startDate = null, string endDate = null)
 
 Retrieves jobs
 
@@ -98,11 +98,16 @@ namespace Example
         {
 
             var apiInstance = new DefaultApi();
+            var tags = tags_example;  // string | Specify a comma-separated list of tags to search jobs by. (optional) 
+            var incexc = incexc_example;  // string |  (optional) 
+            var startDate = startDate_example;  // string | Specify a start date to search jobs by. (optional) 
+            var endDate = endDate_example;  // string | Specify an end date to search jobs by. (optional) 
 
             try
             {
                 // Retrieves jobs
-                apiInstance.JobApiGet();
+                JobArray result = apiInstance.JobApiGet(tags, incexc, startDate, endDate);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -114,11 +119,17 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tags** | **string**| Specify a comma-separated list of tags to search jobs by. | [optional] 
+ **incexc** | **string**|  | [optional] 
+ **startDate** | **string**| Specify a start date to search jobs by. | [optional] 
+ **endDate** | **string**| Specify an end date to search jobs by. | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**JobArray**](JobArray.md)
 
 ### Authorization
 
@@ -127,7 +138,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="jobapiiddelete"></a>
@@ -192,7 +203,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="jobapiidget"></a>
 # **JobApiIdGet**
-> void JobApiIdGet (int? id)
+> SingleJob JobApiIdGet (int? id)
 
 Retrieves a single job
 
@@ -219,7 +230,8 @@ namespace Example
             try
             {
                 // Retrieves a single job
-                apiInstance.JobApiIdGet(id);
+                SingleJob result = apiInstance.JobApiIdGet(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -238,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SingleJob**](SingleJob.md)
 
 ### Authorization
 
@@ -247,7 +259,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="jobapiidput"></a>
@@ -376,7 +388,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="userapiget"></a>
 # **UserApiGet**
-> void UserApiGet ()
+> UserArray UserApiGet ()
 
 Retrieves users
 
@@ -402,7 +414,8 @@ namespace Example
             try
             {
                 // Retrieves users
-                apiInstance.UserApiGet();
+                UserArray result = apiInstance.UserApiGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -418,7 +431,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**UserArray**](UserArray.md)
 
 ### Authorization
 
@@ -427,7 +440,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="userapiiddelete"></a>
@@ -493,7 +506,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="userapiidget"></a>
 # **UserApiIdGet**
-> UserOut UserApiIdGet (int? id)
+> SingleUser UserApiIdGet (int? id)
 
 Retrieve a single user
 
@@ -520,7 +533,7 @@ namespace Example
             try
             {
                 // Retrieve a single user
-                UserOut result = apiInstance.UserApiIdGet(id);
+                SingleUser result = apiInstance.UserApiIdGet(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -540,7 +553,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUser**](SingleUser.md)
 
 ### Authorization
 

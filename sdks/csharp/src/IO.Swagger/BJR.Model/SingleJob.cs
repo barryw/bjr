@@ -24,17 +24,15 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.BJR.Model
 {
     /// <summary>
-    /// JobOutObject
+    /// SingleJob
     /// </summary>
     [DataContract]
-        public partial class JobOutObject :  IEquatable<JobOutObject>, IValidatableObject
+        public partial class SingleJob :  IEquatable<SingleJob>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobOutObject" /> class.
+        /// Initializes a new instance of the <see cref="SingleJob" /> class.
         /// </summary>
         /// <param name="id">The object&#x27;s primary key. This uniquely identifies the object in the system..</param>
-        /// <param name="createdAt">The UTC date and time that the object was created..</param>
-        /// <param name="updatedAt">The UTC date and time that the object was last modified..</param>
         /// <param name="name">The name of the job..</param>
         /// <param name="cron">The cron expression for the job..</param>
         /// <param name="enabled">Whether the job is enabled or not..</param>
@@ -43,11 +41,11 @@ namespace IO.Swagger.BJR.Model
         /// <param name="running">Whether the job is currently running..</param>
         /// <param name="timezone">The timezone that the job will run in..</param>
         /// <param name="tags">An array of tags associated with the job..</param>
-        public JobOutObject(int? id = default(int?), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?), string name = default(string), string cron = default(string), bool? enabled = default(bool?), string command = default(string), string nextRun = default(string), bool? running = default(bool?), string timezone = default(string), List<string> tags = default(List<string>))
+        /// <param name="createdAt">The UTC date and time that the object was created..</param>
+        /// <param name="updatedAt">The UTC date and time that the object was last modified..</param>
+        public SingleJob(int? id = default(int?), string name = default(string), string cron = default(string), bool? enabled = default(bool?), string command = default(string), string nextRun = default(string), bool? running = default(bool?), string timezone = default(string), List<string> tags = default(List<string>), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?))
         {
             this.Id = id;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
             this.Name = name;
             this.Cron = cron;
             this.Enabled = enabled;
@@ -56,6 +54,8 @@ namespace IO.Swagger.BJR.Model
             this.Running = running;
             this.Timezone = timezone;
             this.Tags = tags;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
         }
         
         /// <summary>
@@ -64,20 +64,6 @@ namespace IO.Swagger.BJR.Model
         /// <value>The object&#x27;s primary key. This uniquely identifies the object in the system.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public int? Id { get; set; }
-
-        /// <summary>
-        /// The UTC date and time that the object was created.
-        /// </summary>
-        /// <value>The UTC date and time that the object was created.</value>
-        [DataMember(Name="created_at", EmitDefaultValue=false)]
-        public DateTime? CreatedAt { get; set; }
-
-        /// <summary>
-        /// The UTC date and time that the object was last modified.
-        /// </summary>
-        /// <value>The UTC date and time that the object was last modified.</value>
-        [DataMember(Name="updated_at", EmitDefaultValue=false)]
-        public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
         /// The name of the job.
@@ -136,16 +122,28 @@ namespace IO.Swagger.BJR.Model
         public List<string> Tags { get; set; }
 
         /// <summary>
+        /// The UTC date and time that the object was created.
+        /// </summary>
+        /// <value>The UTC date and time that the object was created.</value>
+        [DataMember(Name="created_at", EmitDefaultValue=false)]
+        public DateTime? CreatedAt { get; set; }
+
+        /// <summary>
+        /// The UTC date and time that the object was last modified.
+        /// </summary>
+        /// <value>The UTC date and time that the object was last modified.</value>
+        [DataMember(Name="updated_at", EmitDefaultValue=false)]
+        public DateTime? UpdatedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class JobOutObject {\n");
+            sb.Append("class SingleJob {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Cron: ").Append(Cron).Append("\n");
             sb.Append("  Enabled: ").Append(Enabled).Append("\n");
@@ -154,6 +152,8 @@ namespace IO.Swagger.BJR.Model
             sb.Append("  Running: ").Append(Running).Append("\n");
             sb.Append("  Timezone: ").Append(Timezone).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -174,15 +174,15 @@ namespace IO.Swagger.BJR.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as JobOutObject);
+            return this.Equals(input as SingleJob);
         }
 
         /// <summary>
-        /// Returns true if JobOutObject instances are equal
+        /// Returns true if SingleJob instances are equal
         /// </summary>
-        /// <param name="input">Instance of JobOutObject to be compared</param>
+        /// <param name="input">Instance of SingleJob to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(JobOutObject input)
+        public bool Equals(SingleJob input)
         {
             if (input == null)
                 return false;
@@ -192,16 +192,6 @@ namespace IO.Swagger.BJR.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.UpdatedAt == input.UpdatedAt ||
-                    (this.UpdatedAt != null &&
-                    this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -243,6 +233,16 @@ namespace IO.Swagger.BJR.Model
                     this.Tags != null &&
                     input.Tags != null &&
                     this.Tags.SequenceEqual(input.Tags)
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
                 );
         }
 
@@ -257,10 +257,6 @@ namespace IO.Swagger.BJR.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.CreatedAt != null)
-                    hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
-                if (this.UpdatedAt != null)
-                    hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Cron != null)
@@ -277,6 +273,10 @@ namespace IO.Swagger.BJR.Model
                     hashCode = hashCode * 59 + this.Timezone.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                if (this.CreatedAt != null)
+                    hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
+                if (this.UpdatedAt != null)
+                    hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
                 return hashCode;
             }
         }

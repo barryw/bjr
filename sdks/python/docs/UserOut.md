@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **is_error** | **bool** | True if there was an error performing the API call. | [optional] 
 **object_type** | **str** | The type of object being returned. | [optional] 
 **status_code** | **int** | The HTTP status code returned. | [optional] 
-**object** | [**UserOutObject**](UserOutObject.md) |  | [optional] 
+**object** | [**SingleUser**](SingleUser.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,13 +23,16 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import org.threeten.bp.OffsetDateTime;
 /**
- * UserOutObject
+ * SingleUser
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:07:05.406-04:00[America/New_York]")
-public class UserOutObject {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:58:08.024-04:00[America/New_York]")
+public class SingleUser {
   @SerializedName("id")
   private Integer id = null;
+
+  @SerializedName("username")
+  private String username = null;
 
   @SerializedName("created_at")
   private OffsetDateTime createdAt = null;
@@ -37,10 +40,7 @@ public class UserOutObject {
   @SerializedName("updated_at")
   private OffsetDateTime updatedAt = null;
 
-  @SerializedName("username")
-  private String username = null;
-
-  public UserOutObject id(Integer id) {
+  public SingleUser id(Integer id) {
     this.id = id;
     return this;
   }
@@ -58,43 +58,7 @@ public class UserOutObject {
     this.id = id;
   }
 
-  public UserOutObject createdAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * The UTC date and time that the object was created.
-   * @return createdAt
-  **/
-  @Schema(description = "The UTC date and time that the object was created.")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public UserOutObject updatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * The UTC date and time that the object was last modified.
-   * @return updatedAt
-  **/
-  @Schema(description = "The UTC date and time that the object was last modified.")
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  public UserOutObject username(String username) {
+  public SingleUser username(String username) {
     this.username = username;
     return this;
   }
@@ -112,6 +76,42 @@ public class UserOutObject {
     this.username = username;
   }
 
+  public SingleUser createdAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * The UTC date and time that the object was created.
+   * @return createdAt
+  **/
+  @Schema(description = "The UTC date and time that the object was created.")
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public SingleUser updatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * The UTC date and time that the object was last modified.
+   * @return updatedAt
+  **/
+  @Schema(description = "The UTC date and time that the object was last modified.")
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -121,28 +121,28 @@ public class UserOutObject {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserOutObject userOutObject = (UserOutObject) o;
-    return Objects.equals(this.id, userOutObject.id) &&
-        Objects.equals(this.createdAt, userOutObject.createdAt) &&
-        Objects.equals(this.updatedAt, userOutObject.updatedAt) &&
-        Objects.equals(this.username, userOutObject.username);
+    SingleUser singleUser = (SingleUser) o;
+    return Objects.equals(this.id, singleUser.id) &&
+        Objects.equals(this.username, singleUser.username) &&
+        Objects.equals(this.createdAt, singleUser.createdAt) &&
+        Objects.equals(this.updatedAt, singleUser.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, username);
+    return Objects.hash(id, username, createdAt, updatedAt);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserOutObject {\n");
+    sb.append("class SingleUser {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }

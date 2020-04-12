@@ -25,7 +25,7 @@ import java.io.IOException;
  * UserNewIn
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:07:05.406-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:58:08.024-04:00[America/New_York]")
 public class UserNewIn {
   @SerializedName("username")
   private String username = null;

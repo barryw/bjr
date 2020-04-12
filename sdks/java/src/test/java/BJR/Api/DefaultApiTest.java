@@ -15,8 +15,12 @@ package BJR.Api;
 import BJR.ApiException;
 import BJR.Model.AuthIn;
 import BJR.Model.AuthOut;
+import BJR.Model.JobArray;
 import BJR.Model.JobIn;
 import BJR.Model.JobOut;
+import BJR.Model.SingleJob;
+import BJR.Model.SingleUser;
+import BJR.Model.UserArray;
 import BJR.Model.UserNewIn;
 import BJR.Model.UserOut;
 import BJR.Model.UserUpdateIn;
@@ -61,7 +65,11 @@ public class DefaultApiTest {
      */
     @Test
     public void jobApiGetTest() throws ApiException {
-        api.jobApiGet();
+        String tags = null;
+        String incexc = null;
+        String startDate = null;
+        String endDate = null;
+        JobArray response = api.jobApiGet(tags, incexc, startDate, endDate);
 
         // TODO: test validations
     }
@@ -91,7 +99,7 @@ public class DefaultApiTest {
     @Test
     public void jobApiIdGetTest() throws ApiException {
         Integer id = null;
-        api.jobApiIdGet(id);
+        SingleJob response = api.jobApiIdGet(id);
 
         // TODO: test validations
     }
@@ -136,7 +144,7 @@ public class DefaultApiTest {
      */
     @Test
     public void userApiGetTest() throws ApiException {
-        api.userApiGet();
+        UserArray response = api.userApiGet();
 
         // TODO: test validations
     }
@@ -166,7 +174,7 @@ public class DefaultApiTest {
     @Test
     public void userApiIdGetTest() throws ApiException {
         Integer id = null;
-        UserOut response = api.userApiIdGet(id);
+        SingleUser response = api.userApiIdGet(id);
 
         // TODO: test validations
     }

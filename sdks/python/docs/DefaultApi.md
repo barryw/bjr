@@ -63,7 +63,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **job_api_get**
-> job_api_get()
+> JobArray job_api_get(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date)
 
 Retrieves jobs
 
@@ -80,20 +80,31 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+tags = 'tags_example' # str | Specify a comma-separated list of tags to search jobs by. (optional)
+incexc = 'incexc_example' # str |  (optional)
+start_date = 'start_date_example' # str | Specify a start date to search jobs by. (optional)
+end_date = 'end_date_example' # str | Specify an end date to search jobs by. (optional)
 
 try:
     # Retrieves jobs
-    api_instance.job_api_get()
+    api_response = api_instance.job_api_get(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->job_api_get: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tags** | **str**| Specify a comma-separated list of tags to search jobs by. | [optional] 
+ **incexc** | **str**|  | [optional] 
+ **start_date** | **str**| Specify a start date to search jobs by. | [optional] 
+ **end_date** | **str**| Specify an end date to search jobs by. | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**JobArray**](JobArray.md)
 
 ### Authorization
 
@@ -102,7 +113,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -155,7 +166,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **job_api_id_get**
-> job_api_id_get(id)
+> SingleJob job_api_id_get(id)
 
 Retrieves a single job
 
@@ -176,7 +187,8 @@ id = 56 # int |
 
 try:
     # Retrieves a single job
-    api_instance.job_api_id_get(id)
+    api_response = api_instance.job_api_id_get(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->job_api_id_get: %s\n" % e)
 ```
@@ -189,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SingleJob**](SingleJob.md)
 
 ### Authorization
 
@@ -198,7 +210,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -303,7 +315,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_get**
-> user_api_get()
+> UserArray user_api_get()
 
 Retrieves users
 
@@ -323,7 +335,8 @@ api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration)
 
 try:
     # Retrieves users
-    api_instance.user_api_get()
+    api_response = api_instance.user_api_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->user_api_get: %s\n" % e)
 ```
@@ -333,7 +346,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**UserArray**](UserArray.md)
 
 ### Authorization
 
@@ -342,7 +355,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -396,7 +409,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_id_get**
-> UserOut user_api_id_get(id)
+> SingleUser user_api_id_get(id)
 
 Retrieve a single user
 
@@ -431,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUser**](SingleUser.md)
 
 ### Authorization
 

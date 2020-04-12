@@ -27,7 +27,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new BjrApiV1.JobOutObject();
+    instance = new BjrApiV1.SingleJob();
   });
 
   var getProperty = function(object, getter, property) {
@@ -46,76 +46,76 @@
       object[property] = value;
   }
 
-  describe('JobOutObject', function() {
-    it('should create an instance of JobOutObject', function() {
-      // uncomment below and update the code to test JobOutObject
-      //var instane = new BjrApiV1.JobOutObject();
-      //expect(instance).to.be.a(BjrApiV1.JobOutObject);
+  describe('SingleJob', function() {
+    it('should create an instance of SingleJob', function() {
+      // uncomment below and update the code to test SingleJob
+      //var instane = new BjrApiV1.SingleJob();
+      //expect(instance).to.be.a(BjrApiV1.SingleJob);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instane = new BjrApiV1.JobOutObject();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property createdAt (base name: "created_at")', function() {
-      // uncomment below and update the code to test the property createdAt
-      //var instane = new BjrApiV1.JobOutObject();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property updatedAt (base name: "updated_at")', function() {
-      // uncomment below and update the code to test the property updatedAt
-      //var instane = new BjrApiV1.JobOutObject();
+      //var instane = new BjrApiV1.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instane = new BjrApiV1.JobOutObject();
+      //var instane = new BjrApiV1.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property cron (base name: "cron")', function() {
       // uncomment below and update the code to test the property cron
-      //var instane = new BjrApiV1.JobOutObject();
+      //var instane = new BjrApiV1.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property enabled (base name: "enabled")', function() {
       // uncomment below and update the code to test the property enabled
-      //var instane = new BjrApiV1.JobOutObject();
+      //var instane = new BjrApiV1.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property command (base name: "command")', function() {
       // uncomment below and update the code to test the property command
-      //var instane = new BjrApiV1.JobOutObject();
+      //var instane = new BjrApiV1.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property nextRun (base name: "next_run")', function() {
       // uncomment below and update the code to test the property nextRun
-      //var instane = new BjrApiV1.JobOutObject();
+      //var instane = new BjrApiV1.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property running (base name: "running")', function() {
       // uncomment below and update the code to test the property running
-      //var instane = new BjrApiV1.JobOutObject();
+      //var instane = new BjrApiV1.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property timezone (base name: "timezone")', function() {
       // uncomment below and update the code to test the property timezone
-      //var instane = new BjrApiV1.JobOutObject();
+      //var instane = new BjrApiV1.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property tags (base name: "tags")', function() {
       // uncomment below and update the code to test the property tags
-      //var instane = new BjrApiV1.JobOutObject();
+      //var instane = new BjrApiV1.SingleJob();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property createdAt (base name: "created_at")', function() {
+      // uncomment below and update the code to test the property createdAt
+      //var instane = new BjrApiV1.SingleJob();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property updatedAt (base name: "updated_at")', function() {
+      // uncomment below and update the code to test the property updatedAt
+      //var instane = new BjrApiV1.SingleJob();
       //expect(instance).to.be();
     });
 

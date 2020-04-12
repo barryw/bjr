@@ -53,6 +53,22 @@ RSpec.configure do |config|
               password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'." }
             }
           },
+          SingleUser: {
+            type: :object,
+            properties: {
+              id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
+              username: { type: :string },
+              created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
+              updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' }
+            }
+          },
+          UserArray: {
+            type: :array,
+            items: {
+              type: :object,
+              "$ref": "#/components/schemas/SingleUser"
+            }
+          },
           UserOut: {
             type: :object,
             properties: {
@@ -60,14 +76,33 @@ RSpec.configure do |config|
               is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
               object_type: { type: :string, description: 'The type of object being returned.' },
               status_code: { type: :integer, description: 'The HTTP status code returned.' },
-              object: { type: :object,
-                properties: {
-                  id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
-                  created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
-                  updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' },
-                  username: { type: :string }
-                }
+              object: {
+                type: :object,
+                "$ref": "#/components/schemas/SingleUser"
               }
+            }
+          },
+          SingleJob: {
+            type: :object,
+            properties: {
+              id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
+              name: { type: :string, description: 'The name of the job.' },
+              cron: { type: :string, description: 'The cron expression for the job.' },
+              enabled: { type: :boolean, description: 'Whether the job is enabled or not.' },
+              command: { type: :string, description: 'The command that is executed when the job fires.' },
+              next_run: { type: :string, description: 'The date and time of the job\'s next run.' },
+              running: { type: :boolean, description: 'Whether the job is currently running.' },
+              timezone: { type: :string, description: 'The timezone that the job will run in.' },
+              tags: { type: :array, description: 'An array of tags associated with the job.', items: { type: :string } },
+              created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
+              updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' }
+            }
+          },
+          JobArray: {
+            type: :array,
+            items: {
+              type: :object,
+              "$ref": "#/components/schemas/SingleJob"
             }
           },
           JobIn: {
@@ -88,20 +123,9 @@ RSpec.configure do |config|
               is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
               object_type: { type: :string, description: 'The type of object being returned.' },
               status_code: { type: :integer, description: 'The HTTP status code returned.' },
-              object: { type: :object,
-                properties: {
-                  id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
-                  created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
-                  updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' },
-                  name: { type: :string, description: 'The name of the job.' },
-                  cron: { type: :string, description: 'The cron expression for the job.' },
-                  enabled: { type: :boolean, description: 'Whether the job is enabled or not.' },
-                  command: { type: :string, description: 'The command that is executed when the job fires.' },
-                  next_run: { type: :string, description: 'The date and time of the job\'s next run.' },
-                  running: { type: :boolean, description: 'Whether the job is currently running.' },
-                  timezone: { type: :string, description: 'The timezone that the job will run in.' },
-                  tags: { type: :array, description: 'An array of tags associated with the job.', items: { type: :string } }
-                }
+              object: {
+                type: :object,
+                "$ref": "#/components/schemas/SingleJob"
               }
             }
           }

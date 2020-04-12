@@ -58,7 +58,7 @@ No authorization required
 
 <a name="jobApiGet"></a>
 # **jobApiGet**
-> jobApiGet()
+> JobArray jobApiGet(opts)
 
 Retrieves jobs
 
@@ -71,21 +71,33 @@ let defaultClient = BjrApiV1.ApiClient.instance;
 
 
 let apiInstance = new BjrApiV1.DefaultApi();
-apiInstance.jobApiGet((error, data, response) => {
+let opts = { 
+  'tags': "tags_example", // String | Specify a comma-separated list of tags to search jobs by.
+  'incexc': "incexc_example", // String | 
+  'startDate': "startDate_example", // String | Specify a start date to search jobs by.
+  'endDate': "endDate_example" // String | Specify an end date to search jobs by.
+};
+apiInstance.jobApiGet(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tags** | **String**| Specify a comma-separated list of tags to search jobs by. | [optional] 
+ **incexc** | **String**|  | [optional] 
+ **startDate** | **String**| Specify a start date to search jobs by. | [optional] 
+ **endDate** | **String**| Specify an end date to search jobs by. | [optional] 
 
 ### Return type
 
-null (empty response body)
+[**JobArray**](JobArray.md)
 
 ### Authorization
 
@@ -94,7 +106,7 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 <a name="jobApiIdDelete"></a>
 # **jobApiIdDelete**
@@ -143,7 +155,7 @@ null (empty response body)
 
 <a name="jobApiIdGet"></a>
 # **jobApiIdGet**
-> jobApiIdGet(id)
+> SingleJob jobApiIdGet(id)
 
 Retrieves a single job
 
@@ -162,7 +174,7 @@ apiInstance.jobApiIdGet(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -175,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SingleJob**](SingleJob.md)
 
 ### Authorization
 
@@ -184,7 +196,7 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 <a name="jobApiIdPut"></a>
 # **jobApiIdPut**
@@ -278,7 +290,7 @@ Name | Type | Description  | Notes
 
 <a name="userApiGet"></a>
 # **userApiGet**
-> userApiGet()
+> UserArray userApiGet()
 
 Retrieves users
 
@@ -295,7 +307,7 @@ apiInstance.userApiGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -305,7 +317,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**UserArray**](UserArray.md)
 
 ### Authorization
 
@@ -314,7 +326,7 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 <a name="userApiIdDelete"></a>
 # **userApiIdDelete**
@@ -363,7 +375,7 @@ Name | Type | Description  | Notes
 
 <a name="userApiIdGet"></a>
 # **userApiIdGet**
-> UserOut userApiIdGet(id)
+> SingleUser userApiIdGet(id)
 
 Retrieve a single user
 
@@ -395,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUser**](SingleUser.md)
 
 ### Authorization
 

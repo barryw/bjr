@@ -67,10 +67,15 @@ describe 'Job API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
+      parameter name: :tags, in: :query, type: :string, required: false, description: 'Specify a comma-separated list of tags to search jobs by.'
+      parameter name: :incexc, in: :query, schema: { type: :string, enum: ['all','any','except'], description: 'How to handle the case where many tags are specified.' }, required: false
+      parameter name: :start_date, in: :query, type: :string, required: false, description: 'Specify a start date to search jobs by.'
+      parameter name: :end_date, in: :query, type: :string, required: false, description: 'Specify an end date to search jobs by.'
 
       response '200', 'Jobs returned successfully' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
+        schema '$ref' => '#/components/schemas/JobArray'
 
         before do |request|
           create(:job1, user: admin)
@@ -187,6 +192,7 @@ describe 'Job API' do
         let(:job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
+        schema '$ref' => '#/components/schemas/SingleJob'
 
         run_test! do |response|
           json = JSON.parse(response.body)

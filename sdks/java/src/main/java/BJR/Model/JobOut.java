@@ -14,7 +14,7 @@ package BJR.Model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import BJR.Model.JobOutObject;
+import BJR.Model.SingleJob;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,7 +26,7 @@ import java.io.IOException;
  * JobOut
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:07:05.406-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-12T17:58:08.024-04:00[America/New_York]")
 public class JobOut {
   @SerializedName("message")
   private String message = null;
@@ -41,7 +41,7 @@ public class JobOut {
   private Integer statusCode = null;
 
   @SerializedName("object")
-  private JobOutObject object = null;
+  private SingleJob object = null;
 
   public JobOut message(String message) {
     this.message = message;
@@ -115,7 +115,7 @@ public class JobOut {
     this.statusCode = statusCode;
   }
 
-  public JobOut object(JobOutObject object) {
+  public JobOut object(SingleJob object) {
     this.object = object;
     return this;
   }
@@ -125,11 +125,11 @@ public class JobOut {
    * @return object
   **/
   @Schema(description = "")
-  public JobOutObject getObject() {
+  public SingleJob getObject() {
     return object;
   }
 
-  public void setObject(JobOutObject object) {
+  public void setObject(SingleJob object) {
     this.object = object;
   }
 

@@ -14,14 +14,14 @@
 import ApiClient from '../ApiClient';
 
 /**
-* The UserOutObject model module.
-* @module BJR/BJR.Model/UserOutObject
+* The SingleUser model module.
+* @module BJR/BJR.Model/SingleUser
 * @version v1
 */
-export default class UserOutObject {
+export default class SingleUser {
     /**
-    * Constructs a new <code>UserOutObject</code>.
-    * @alias module:BJR/BJR.Model/UserOutObject
+    * Constructs a new <code>SingleUser</code>.
+    * @alias module:BJR/BJR.Model/SingleUser
     * @class
     */
 
@@ -32,28 +32,28 @@ export default class UserOutObject {
     }
 
     /**
-    * Constructs a <code>UserOutObject</code> from a plain JavaScript object, optionally creating a new instance.
+    * Constructs a <code>SingleUser</code> from a plain JavaScript object, optionally creating a new instance.
     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
     * @param {Object} data The plain JavaScript object bearing properties of interest.
-    * @param {module:BJR/BJR.Model/UserOutObject} obj Optional instance to populate.
-    * @return {module:BJR/BJR.Model/UserOutObject} The populated <code>UserOutObject</code> instance.
+    * @param {module:BJR/BJR.Model/SingleUser} obj Optional instance to populate.
+    * @return {module:BJR/BJR.Model/SingleUser} The populated <code>SingleUser</code> instance.
     */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new UserOutObject();
+            obj = obj || new SingleUser();
                         
             
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+            }
+            if (data.hasOwnProperty('username')) {
+                obj['username'] = ApiClient.convertToType(data['username'], 'String');
             }
             if (data.hasOwnProperty('created_at')) {
                 obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
             }
             if (data.hasOwnProperty('updated_at')) {
                 obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
-            }
-            if (data.hasOwnProperty('username')) {
-                obj['username'] = ApiClient.convertToType(data['username'], 'String');
             }
         }
         return obj;
@@ -65,6 +65,10 @@ export default class UserOutObject {
     */
     id = undefined;
     /**
+    * @member {String} username
+    */
+    username = undefined;
+    /**
     * The UTC date and time that the object was created.
     * @member {Date} created_at
     */
@@ -74,10 +78,6 @@ export default class UserOutObject {
     * @member {Date} updated_at
     */
     updated_at = undefined;
-    /**
-    * @member {String} username
-    */
-    username = undefined;
 
 
 

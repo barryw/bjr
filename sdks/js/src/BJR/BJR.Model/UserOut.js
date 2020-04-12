@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import UserOutObject from './UserOutObject';
+import SingleUser from './SingleUser';
 
 /**
 * The UserOut model module.
@@ -57,7 +57,7 @@ export default class UserOut {
                 obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
             }
             if (data.hasOwnProperty('object')) {
-                obj['object'] = UserOutObject.constructFromObject(data['object']);
+                obj['object'] = SingleUser.constructFromObject(data['object']);
             }
         }
         return obj;
@@ -84,7 +84,7 @@ export default class UserOut {
     */
     status_code = undefined;
     /**
-    * @member {module:BJR/BJR.Model/UserOutObject} object
+    * @member {module:BJR/BJR.Model/SingleUser} object
     */
     object = undefined;
 

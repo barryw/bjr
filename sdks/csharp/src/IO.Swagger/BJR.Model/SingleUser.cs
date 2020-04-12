@@ -24,24 +24,24 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.BJR.Model
 {
     /// <summary>
-    /// UserOutObject
+    /// SingleUser
     /// </summary>
     [DataContract]
-        public partial class UserOutObject :  IEquatable<UserOutObject>, IValidatableObject
+        public partial class SingleUser :  IEquatable<SingleUser>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserOutObject" /> class.
+        /// Initializes a new instance of the <see cref="SingleUser" /> class.
         /// </summary>
         /// <param name="id">The object&#x27;s primary key. This uniquely identifies the object in the system..</param>
+        /// <param name="username">username.</param>
         /// <param name="createdAt">The UTC date and time that the object was created..</param>
         /// <param name="updatedAt">The UTC date and time that the object was last modified..</param>
-        /// <param name="username">username.</param>
-        public UserOutObject(int? id = default(int?), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?), string username = default(string))
+        public SingleUser(int? id = default(int?), string username = default(string), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?))
         {
             this.Id = id;
+            this.Username = username;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
-            this.Username = username;
         }
         
         /// <summary>
@@ -50,6 +50,12 @@ namespace IO.Swagger.BJR.Model
         /// <value>The object&#x27;s primary key. This uniquely identifies the object in the system.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public int? Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Username
+        /// </summary>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string Username { get; set; }
 
         /// <summary>
         /// The UTC date and time that the object was created.
@@ -66,23 +72,17 @@ namespace IO.Swagger.BJR.Model
         public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Username
-        /// </summary>
-        [DataMember(Name="username", EmitDefaultValue=false)]
-        public string Username { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class UserOutObject {\n");
+            sb.Append("class SingleUser {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  Username: ").Append(Username).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -103,15 +103,15 @@ namespace IO.Swagger.BJR.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as UserOutObject);
+            return this.Equals(input as SingleUser);
         }
 
         /// <summary>
-        /// Returns true if UserOutObject instances are equal
+        /// Returns true if SingleUser instances are equal
         /// </summary>
-        /// <param name="input">Instance of UserOutObject to be compared</param>
+        /// <param name="input">Instance of SingleUser to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UserOutObject input)
+        public bool Equals(SingleUser input)
         {
             if (input == null)
                 return false;
@@ -123,6 +123,11 @@ namespace IO.Swagger.BJR.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Username == input.Username ||
+                    (this.Username != null &&
+                    this.Username.Equals(input.Username))
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -131,11 +136,6 @@ namespace IO.Swagger.BJR.Model
                     this.UpdatedAt == input.UpdatedAt ||
                     (this.UpdatedAt != null &&
                     this.UpdatedAt.Equals(input.UpdatedAt))
-                ) && 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
                 );
         }
 
@@ -150,12 +150,12 @@ namespace IO.Swagger.BJR.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.Username != null)
+                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 if (this.CreatedAt != null)
                     hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
                 if (this.UpdatedAt != null)
                     hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
                 return hashCode;
             }
         }

@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import JobOutObject from './JobOutObject';
+import SingleJob from './SingleJob';
 
 /**
 * The JobOut model module.
@@ -57,7 +57,7 @@ export default class JobOut {
                 obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
             }
             if (data.hasOwnProperty('object')) {
-                obj['object'] = JobOutObject.constructFromObject(data['object']);
+                obj['object'] = SingleJob.constructFromObject(data['object']);
             }
         }
         return obj;
@@ -84,7 +84,7 @@ export default class JobOut {
     */
     status_code = undefined;
     /**
-    * @member {module:BJR/BJR.Model/JobOutObject} object
+    * @member {module:BJR/BJR.Model/SingleJob} object
     */
     object = undefined;
 

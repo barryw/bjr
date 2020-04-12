@@ -1,11 +1,9 @@
-# IO.Swagger.BJR.Model.JobOutObject
+# IO.Swagger.BJR.Model.SingleJob
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int?** | The object&#x27;s primary key. This uniquely identifies the object in the system. | [optional] 
-**CreatedAt** | **DateTime?** | The UTC date and time that the object was created. | [optional] 
-**UpdatedAt** | **DateTime?** | The UTC date and time that the object was last modified. | [optional] 
 **Name** | **string** | The name of the job. | [optional] 
 **Cron** | **string** | The cron expression for the job. | [optional] 
 **Enabled** | **bool?** | Whether the job is enabled or not. | [optional] 
@@ -14,6 +12,8 @@ Name | Type | Description | Notes
 **Running** | **bool?** | Whether the job is currently running. | [optional] 
 **Timezone** | **string** | The timezone that the job will run in. | [optional] 
 **Tags** | **List&lt;string&gt;** | An array of tags associated with the job. | [optional] 
+**CreatedAt** | **DateTime?** | The UTC date and time that the object was created. | [optional] 
+**UpdatedAt** | **DateTime?** | The UTC date and time that the object was last modified. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

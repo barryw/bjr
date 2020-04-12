@@ -14,14 +14,14 @@
 import ApiClient from '../ApiClient';
 
 /**
-* The JobOutObject model module.
-* @module BJR/BJR.Model/JobOutObject
+* The SingleJob model module.
+* @module BJR/BJR.Model/SingleJob
 * @version v1
 */
-export default class JobOutObject {
+export default class SingleJob {
     /**
-    * Constructs a new <code>JobOutObject</code>.
-    * @alias module:BJR/BJR.Model/JobOutObject
+    * Constructs a new <code>SingleJob</code>.
+    * @alias module:BJR/BJR.Model/SingleJob
     * @class
     */
 
@@ -32,25 +32,19 @@ export default class JobOutObject {
     }
 
     /**
-    * Constructs a <code>JobOutObject</code> from a plain JavaScript object, optionally creating a new instance.
+    * Constructs a <code>SingleJob</code> from a plain JavaScript object, optionally creating a new instance.
     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
     * @param {Object} data The plain JavaScript object bearing properties of interest.
-    * @param {module:BJR/BJR.Model/JobOutObject} obj Optional instance to populate.
-    * @return {module:BJR/BJR.Model/JobOutObject} The populated <code>JobOutObject</code> instance.
+    * @param {module:BJR/BJR.Model/SingleJob} obj Optional instance to populate.
+    * @return {module:BJR/BJR.Model/SingleJob} The populated <code>SingleJob</code> instance.
     */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new JobOutObject();
+            obj = obj || new SingleJob();
                         
             
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'Number');
-            }
-            if (data.hasOwnProperty('created_at')) {
-                obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
-            }
-            if (data.hasOwnProperty('updated_at')) {
-                obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
             }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -76,6 +70,12 @@ export default class JobOutObject {
             if (data.hasOwnProperty('tags')) {
                 obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
             }
+            if (data.hasOwnProperty('created_at')) {
+                obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
+            }
+            if (data.hasOwnProperty('updated_at')) {
+                obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
+            }
         }
         return obj;
     }
@@ -85,16 +85,6 @@ export default class JobOutObject {
     * @member {Number} id
     */
     id = undefined;
-    /**
-    * The UTC date and time that the object was created.
-    * @member {Date} created_at
-    */
-    created_at = undefined;
-    /**
-    * The UTC date and time that the object was last modified.
-    * @member {Date} updated_at
-    */
-    updated_at = undefined;
     /**
     * The name of the job.
     * @member {String} name
@@ -135,6 +125,16 @@ export default class JobOutObject {
     * @member {Array.<String>} tags
     */
     tags = undefined;
+    /**
+    * The UTC date and time that the object was created.
+    * @member {Date} created_at
+    */
+    created_at = undefined;
+    /**
+    * The UTC date and time that the object was last modified.
+    * @member {Date} updated_at
+    */
+    updated_at = undefined;
 
 
 

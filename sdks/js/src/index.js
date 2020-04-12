@@ -14,12 +14,14 @@
 import ApiClient from './ApiClient';
 import AuthIn from './BJR.Model/AuthIn';
 import AuthOut from './BJR.Model/AuthOut';
+import JobArray from './BJR.Model/JobArray';
 import JobIn from './BJR.Model/JobIn';
 import JobOut from './BJR.Model/JobOut';
-import JobOutObject from './BJR.Model/JobOutObject';
+import SingleJob from './BJR.Model/SingleJob';
+import SingleUser from './BJR.Model/SingleUser';
+import UserArray from './BJR.Model/UserArray';
 import UserNewIn from './BJR.Model/UserNewIn';
 import UserOut from './BJR.Model/UserOut';
-import UserOutObject from './BJR.Model/UserOutObject';
 import UserUpdateIn from './BJR.Model/UserUpdateIn';
 import DefaultApi from './BJR.Api/DefaultApi';
 
@@ -74,6 +76,12 @@ export {
     AuthOut,
 
     /**
+     * The JobArray model constructor.
+     * @property {module:BJR/BJR.Model/JobArray}
+     */
+    JobArray,
+
+    /**
      * The JobIn model constructor.
      * @property {module:BJR/BJR.Model/JobIn}
      */
@@ -86,10 +94,22 @@ export {
     JobOut,
 
     /**
-     * The JobOutObject model constructor.
-     * @property {module:BJR/BJR.Model/JobOutObject}
+     * The SingleJob model constructor.
+     * @property {module:BJR/BJR.Model/SingleJob}
      */
-    JobOutObject,
+    SingleJob,
+
+    /**
+     * The SingleUser model constructor.
+     * @property {module:BJR/BJR.Model/SingleUser}
+     */
+    SingleUser,
+
+    /**
+     * The UserArray model constructor.
+     * @property {module:BJR/BJR.Model/UserArray}
+     */
+    UserArray,
 
     /**
      * The UserNewIn model constructor.
@@ -102,12 +122,6 @@ export {
      * @property {module:BJR/BJR.Model/UserOut}
      */
     UserOut,
-
-    /**
-     * The UserOutObject model constructor.
-     * @property {module:BJR/BJR.Model/UserOutObject}
-     */
-    UserOutObject,
 
     /**
      * The UserUpdateIn model constructor.

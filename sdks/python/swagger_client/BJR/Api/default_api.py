@@ -135,7 +135,11 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :param str tags: Specify a comma-separated list of tags to search jobs by.
+        :param str incexc:
+        :param str start_date: Specify a start date to search jobs by.
+        :param str end_date: Specify an end date to search jobs by.
+        :return: JobArray
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -156,12 +160,16 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :param str tags: Specify a comma-separated list of tags to search jobs by.
+        :param str incexc:
+        :param str start_date: Specify a start date to search jobs by.
+        :param str end_date: Specify an end date to search jobs by.
+        :return: JobArray
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['tags', 'incexc', 'start_date', 'end_date']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -182,6 +190,14 @@ class DefaultApi(object):
         path_params = {}
 
         query_params = []
+        if 'tags' in params:
+            query_params.append(('tags', params['tags']))  # noqa: E501
+        if 'incexc' in params:
+            query_params.append(('incexc', params['incexc']))  # noqa: E501
+        if 'start_date' in params:
+            query_params.append(('start_date', params['start_date']))  # noqa: E501
+        if 'end_date' in params:
+            query_params.append(('end_date', params['end_date']))  # noqa: E501
 
         header_params = {}
 
@@ -189,6 +205,10 @@ class DefaultApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['bearerAuth']  # noqa: E501
 
@@ -200,7 +220,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='JobArray',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -310,7 +330,7 @@ class DefaultApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :return: None
+        :return: SingleJob
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -332,7 +352,7 @@ class DefaultApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :return: None
+        :return: SingleJob
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -371,6 +391,10 @@ class DefaultApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['bearerAuth']  # noqa: E501
 
@@ -382,7 +406,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SingleJob',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -598,7 +622,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: UserArray
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -619,7 +643,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: UserArray
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -652,6 +676,10 @@ class DefaultApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['bearerAuth']  # noqa: E501
 
@@ -663,7 +691,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='UserArray',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -777,7 +805,7 @@ class DefaultApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :return: UserOut
+        :return: SingleUser
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -799,7 +827,7 @@ class DefaultApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :return: UserOut
+        :return: SingleUser
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -853,7 +881,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UserOut',  # noqa: E501
+            response_type='SingleUser',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

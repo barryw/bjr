@@ -37,7 +37,7 @@ namespace IO.Swagger.BJR.Model
         /// <param name="objectType">The type of object being returned..</param>
         /// <param name="statusCode">The HTTP status code returned..</param>
         /// <param name="_object">_object.</param>
-        public UserOut(string message = default(string), bool? isError = default(bool?), string objectType = default(string), int? statusCode = default(int?), UserOutObject _object = default(UserOutObject))
+        public UserOut(string message = default(string), bool? isError = default(bool?), string objectType = default(string), int? statusCode = default(int?), SingleUser _object = default(SingleUser))
         {
             this.Message = message;
             this.IsError = isError;
@@ -78,7 +78,7 @@ namespace IO.Swagger.BJR.Model
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name="object", EmitDefaultValue=false)]
-        public UserOutObject Object { get; set; }
+        public SingleUser Object { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

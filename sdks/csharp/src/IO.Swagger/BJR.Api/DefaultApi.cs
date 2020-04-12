@@ -51,8 +51,12 @@ namespace IO.Swagger.BJR.Api
         /// Retrieves jobs
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void JobApiGet ();
+        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
+        /// <param name="incexc"> (optional)</param>
+        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
+        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <returns>JobArray</returns>
+        JobArray JobApiGet (string tags = null, string incexc = null, string startDate = null, string endDate = null);
 
         /// <summary>
         /// Retrieves jobs
@@ -61,8 +65,12 @@ namespace IO.Swagger.BJR.Api
         /// Retrieves jobs
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> JobApiGetWithHttpInfo ();
+        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
+        /// <param name="incexc"> (optional)</param>
+        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
+        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <returns>ApiResponse of JobArray</returns>
+        ApiResponse<JobArray> JobApiGetWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null);
         /// <summary>
         /// Deletes a job
         /// </summary>
@@ -92,8 +100,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns></returns>
-        void JobApiIdGet (int? id);
+        /// <returns>SingleJob</returns>
+        SingleJob JobApiIdGet (int? id);
 
         /// <summary>
         /// Retrieves a single job
@@ -103,8 +111,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> JobApiIdGetWithHttpInfo (int? id);
+        /// <returns>ApiResponse of SingleJob</returns>
+        ApiResponse<SingleJob> JobApiIdGetWithHttpInfo (int? id);
         /// <summary>
         /// Updates a single job
         /// </summary>
@@ -156,8 +164,8 @@ namespace IO.Swagger.BJR.Api
         /// Get a list of users
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void UserApiGet ();
+        /// <returns>UserArray</returns>
+        UserArray UserApiGet ();
 
         /// <summary>
         /// Retrieves users
@@ -166,8 +174,8 @@ namespace IO.Swagger.BJR.Api
         /// Get a list of users
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UserApiGetWithHttpInfo ();
+        /// <returns>ApiResponse of UserArray</returns>
+        ApiResponse<UserArray> UserApiGetWithHttpInfo ();
         /// <summary>
         /// Deletes a user
         /// </summary>
@@ -197,8 +205,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>UserOut</returns>
-        UserOut UserApiIdGet (int? id);
+        /// <returns>SingleUser</returns>
+        SingleUser UserApiIdGet (int? id);
 
         /// <summary>
         /// Retrieve a single user
@@ -208,8 +216,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of UserOut</returns>
-        ApiResponse<UserOut> UserApiIdGetWithHttpInfo (int? id);
+        /// <returns>ApiResponse of SingleUser</returns>
+        ApiResponse<SingleUser> UserApiIdGetWithHttpInfo (int? id);
         /// <summary>
         /// Update a single user
         /// </summary>
@@ -284,8 +292,12 @@ namespace IO.Swagger.BJR.Api
         /// Retrieves jobs
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task JobApiGetAsync ();
+        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
+        /// <param name="incexc"> (optional)</param>
+        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
+        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <returns>Task of JobArray</returns>
+        System.Threading.Tasks.Task<JobArray> JobApiGetAsync (string tags = null, string incexc = null, string startDate = null, string endDate = null);
 
         /// <summary>
         /// Retrieves jobs
@@ -294,8 +306,12 @@ namespace IO.Swagger.BJR.Api
         /// Retrieves jobs
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> JobApiGetAsyncWithHttpInfo ();
+        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
+        /// <param name="incexc"> (optional)</param>
+        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
+        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <returns>Task of ApiResponse (JobArray)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JobArray>> JobApiGetAsyncWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null);
         /// <summary>
         /// Deletes a job
         /// </summary>
@@ -325,8 +341,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task JobApiIdGetAsync (int? id);
+        /// <returns>Task of SingleJob</returns>
+        System.Threading.Tasks.Task<SingleJob> JobApiIdGetAsync (int? id);
 
         /// <summary>
         /// Retrieves a single job
@@ -336,8 +352,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> JobApiIdGetAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (SingleJob)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleJob>> JobApiIdGetAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Updates a single job
         /// </summary>
@@ -389,8 +405,8 @@ namespace IO.Swagger.BJR.Api
         /// Get a list of users
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UserApiGetAsync ();
+        /// <returns>Task of UserArray</returns>
+        System.Threading.Tasks.Task<UserArray> UserApiGetAsync ();
 
         /// <summary>
         /// Retrieves users
@@ -399,8 +415,8 @@ namespace IO.Swagger.BJR.Api
         /// Get a list of users
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UserApiGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (UserArray)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserArray>> UserApiGetAsyncWithHttpInfo ();
         /// <summary>
         /// Deletes a user
         /// </summary>
@@ -430,8 +446,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of UserOut</returns>
-        System.Threading.Tasks.Task<UserOut> UserApiIdGetAsync (int? id);
+        /// <returns>Task of SingleUser</returns>
+        System.Threading.Tasks.Task<SingleUser> UserApiIdGetAsync (int? id);
 
         /// <summary>
         /// Retrieve a single user
@@ -441,8 +457,8 @@ namespace IO.Swagger.BJR.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (UserOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserOut>> UserApiIdGetAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (SingleUser)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleUser>> UserApiIdGetAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Update a single user
         /// </summary>
@@ -743,18 +759,27 @@ namespace IO.Swagger.BJR.Api
         /// Retrieves jobs Retrieves jobs
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void JobApiGet ()
+        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
+        /// <param name="incexc"> (optional)</param>
+        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
+        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <returns>JobArray</returns>
+        public JobArray JobApiGet (string tags = null, string incexc = null, string startDate = null, string endDate = null)
         {
-             JobApiGetWithHttpInfo();
+             ApiResponse<JobArray> localVarResponse = JobApiGetWithHttpInfo(tags, incexc, startDate, endDate);
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Retrieves jobs Retrieves jobs
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> JobApiGetWithHttpInfo ()
+        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
+        /// <param name="incexc"> (optional)</param>
+        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
+        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <returns>ApiResponse of JobArray</returns>
+        public ApiResponse< JobArray > JobApiGetWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null)
         {
 
             var localVarPath = "/job_api";
@@ -772,11 +797,16 @@ namespace IO.Swagger.BJR.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (tags != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tags", tags)); // query parameter
+            if (incexc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "incexc", incexc)); // query parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             // authentication (bearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -797,19 +827,24 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<JobArray>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (JobArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobArray)));
         }
 
         /// <summary>
         /// Retrieves jobs Retrieves jobs
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task JobApiGetAsync ()
+        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
+        /// <param name="incexc"> (optional)</param>
+        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
+        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <returns>Task of JobArray</returns>
+        public async System.Threading.Tasks.Task<JobArray> JobApiGetAsync (string tags = null, string incexc = null, string startDate = null, string endDate = null)
         {
-             await JobApiGetAsyncWithHttpInfo();
+             ApiResponse<JobArray> localVarResponse = await JobApiGetAsyncWithHttpInfo(tags, incexc, startDate, endDate);
+             return localVarResponse.Data;
 
         }
 
@@ -817,8 +852,12 @@ namespace IO.Swagger.BJR.Api
         /// Retrieves jobs Retrieves jobs
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> JobApiGetAsyncWithHttpInfo ()
+        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
+        /// <param name="incexc"> (optional)</param>
+        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
+        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <returns>Task of ApiResponse (JobArray)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JobArray>> JobApiGetAsyncWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null)
         {
 
             var localVarPath = "/job_api";
@@ -836,11 +875,16 @@ namespace IO.Swagger.BJR.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (tags != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tags", tags)); // query parameter
+            if (incexc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "incexc", incexc)); // query parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             // authentication (bearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -861,9 +905,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<JobArray>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (JobArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobArray)));
         }
 
         /// <summary>
@@ -1010,10 +1054,11 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns></returns>
-        public void JobApiIdGet (int? id)
+        /// <returns>SingleJob</returns>
+        public SingleJob JobApiIdGet (int? id)
         {
-             JobApiIdGetWithHttpInfo(id);
+             ApiResponse<SingleJob> localVarResponse = JobApiIdGetWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1021,8 +1066,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> JobApiIdGetWithHttpInfo (int? id)
+        /// <returns>ApiResponse of SingleJob</returns>
+        public ApiResponse< SingleJob > JobApiIdGetWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1043,6 +1088,7 @@ namespace IO.Swagger.BJR.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1069,9 +1115,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SingleJob>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SingleJob) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJob)));
         }
 
         /// <summary>
@@ -1079,10 +1125,11 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task JobApiIdGetAsync (int? id)
+        /// <returns>Task of SingleJob</returns>
+        public async System.Threading.Tasks.Task<SingleJob> JobApiIdGetAsync (int? id)
         {
-             await JobApiIdGetAsyncWithHttpInfo(id);
+             ApiResponse<SingleJob> localVarResponse = await JobApiIdGetAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -1091,8 +1138,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> JobApiIdGetAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (SingleJob)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleJob>> JobApiIdGetAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1113,6 +1160,7 @@ namespace IO.Swagger.BJR.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1139,9 +1187,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SingleJob>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SingleJob) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJob)));
         }
 
         /// <summary>
@@ -1466,18 +1514,19 @@ namespace IO.Swagger.BJR.Api
         /// Retrieves users Get a list of users
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void UserApiGet ()
+        /// <returns>UserArray</returns>
+        public UserArray UserApiGet ()
         {
-             UserApiGetWithHttpInfo();
+             ApiResponse<UserArray> localVarResponse = UserApiGetWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Retrieves users Get a list of users
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UserApiGetWithHttpInfo ()
+        /// <returns>ApiResponse of UserArray</returns>
+        public ApiResponse< UserArray > UserApiGetWithHttpInfo ()
         {
 
             var localVarPath = "/user_api";
@@ -1495,6 +1544,7 @@ namespace IO.Swagger.BJR.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1520,19 +1570,20 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<UserArray>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (UserArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserArray)));
         }
 
         /// <summary>
         /// Retrieves users Get a list of users
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UserApiGetAsync ()
+        /// <returns>Task of UserArray</returns>
+        public async System.Threading.Tasks.Task<UserArray> UserApiGetAsync ()
         {
-             await UserApiGetAsyncWithHttpInfo();
+             ApiResponse<UserArray> localVarResponse = await UserApiGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -1540,8 +1591,8 @@ namespace IO.Swagger.BJR.Api
         /// Retrieves users Get a list of users
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UserApiGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (UserArray)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserArray>> UserApiGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/user_api";
@@ -1559,6 +1610,7 @@ namespace IO.Swagger.BJR.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1584,9 +1636,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<UserArray>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (UserArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserArray)));
         }
 
         /// <summary>
@@ -1737,10 +1789,10 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>UserOut</returns>
-        public UserOut UserApiIdGet (int? id)
+        /// <returns>SingleUser</returns>
+        public SingleUser UserApiIdGet (int? id)
         {
-             ApiResponse<UserOut> localVarResponse = UserApiIdGetWithHttpInfo(id);
+             ApiResponse<SingleUser> localVarResponse = UserApiIdGetWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -1749,8 +1801,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of UserOut</returns>
-        public ApiResponse< UserOut > UserApiIdGetWithHttpInfo (int? id)
+        /// <returns>ApiResponse of SingleUser</returns>
+        public ApiResponse< SingleUser > UserApiIdGetWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1798,9 +1850,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserOut>(localVarStatusCode,
+            return new ApiResponse<SingleUser>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
+                (SingleUser) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUser)));
         }
 
         /// <summary>
@@ -1808,10 +1860,10 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of UserOut</returns>
-        public async System.Threading.Tasks.Task<UserOut> UserApiIdGetAsync (int? id)
+        /// <returns>Task of SingleUser</returns>
+        public async System.Threading.Tasks.Task<SingleUser> UserApiIdGetAsync (int? id)
         {
-             ApiResponse<UserOut> localVarResponse = await UserApiIdGetAsyncWithHttpInfo(id);
+             ApiResponse<SingleUser> localVarResponse = await UserApiIdGetAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -1821,8 +1873,8 @@ namespace IO.Swagger.BJR.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (UserOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserOut>> UserApiIdGetAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (SingleUser)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleUser>> UserApiIdGetAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1870,9 +1922,9 @@ namespace IO.Swagger.BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserOut>(localVarStatusCode,
+            return new ApiResponse<SingleUser>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
+                (SingleUser) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUser)));
         }
 
         /// <summary>

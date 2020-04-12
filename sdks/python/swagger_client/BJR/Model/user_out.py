@@ -33,7 +33,7 @@ class UserOut(object):
         'is_error': 'bool',
         'object_type': 'str',
         'status_code': 'int',
-        'object': 'UserOutObject'
+        'object': 'SingleUser'
     }
 
     attribute_map = {
@@ -161,7 +161,7 @@ class UserOut(object):
 
 
         :return: The object of this UserOut.  # noqa: E501
-        :rtype: UserOutObject
+        :rtype: SingleUser
         """
         return self._object
 
@@ -171,7 +171,7 @@ class UserOut(object):
 
 
         :param object: The object of this UserOut.  # noqa: E501
-        :type: UserOutObject
+        :type: SingleUser
         """
 
         self._object = object

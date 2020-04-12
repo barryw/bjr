@@ -104,12 +104,14 @@ Class | Method | HTTP request | Description
 
  - [BjrApiV1.AuthIn](docs/AuthIn.md)
  - [BjrApiV1.AuthOut](docs/AuthOut.md)
+ - [BjrApiV1.JobArray](docs/JobArray.md)
  - [BjrApiV1.JobIn](docs/JobIn.md)
  - [BjrApiV1.JobOut](docs/JobOut.md)
- - [BjrApiV1.JobOutObject](docs/JobOutObject.md)
+ - [BjrApiV1.SingleJob](docs/SingleJob.md)
+ - [BjrApiV1.SingleUser](docs/SingleUser.md)
+ - [BjrApiV1.UserArray](docs/UserArray.md)
  - [BjrApiV1.UserNewIn](docs/UserNewIn.md)
  - [BjrApiV1.UserOut](docs/UserOut.md)
- - [BjrApiV1.UserOutObject](docs/UserOutObject.md)
  - [BjrApiV1.UserUpdateIn](docs/UserUpdateIn.md)
 
 ## Documentation for Authorization

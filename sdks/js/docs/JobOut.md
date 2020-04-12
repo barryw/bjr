@@ -7,4 +7,4 @@ Name | Type | Description | Notes
 **isError** | **Boolean** | True if there was an error performing the API call. | [optional] 
 **objectType** | **String** | The type of object being returned. | [optional] 
 **statusCode** | **Number** | The HTTP status code returned. | [optional] 
-**_object** | [**JobOutObject**](JobOutObject.md) |  | [optional] 
+**_object** | [**SingleJob**](SingleJob.md) |  | [optional] 

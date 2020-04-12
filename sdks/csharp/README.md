@@ -111,12 +111,14 @@ Class | Method | HTTP request | Description
 
  - [BJR.Model.AuthIn](docs/AuthIn.md)
  - [BJR.Model.AuthOut](docs/AuthOut.md)
+ - [BJR.Model.JobArray](docs/JobArray.md)
  - [BJR.Model.JobIn](docs/JobIn.md)
  - [BJR.Model.JobOut](docs/JobOut.md)
- - [BJR.Model.JobOutObject](docs/JobOutObject.md)
+ - [BJR.Model.SingleJob](docs/SingleJob.md)
+ - [BJR.Model.SingleUser](docs/SingleUser.md)
+ - [BJR.Model.UserArray](docs/UserArray.md)
  - [BJR.Model.UserNewIn](docs/UserNewIn.md)
  - [BJR.Model.UserOut](docs/UserOut.md)
- - [BJR.Model.UserOutObject](docs/UserOutObject.md)
  - [BJR.Model.UserUpdateIn](docs/UserUpdateIn.md)
 
 <a name="documentation-for-authorization"></a>

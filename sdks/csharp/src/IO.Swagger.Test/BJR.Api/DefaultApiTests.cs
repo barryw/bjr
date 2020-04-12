@@ -80,8 +80,12 @@ namespace IO.Swagger.Test
         public void JobApiGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.JobApiGet();
-            
+            //string tags = null;
+            //string incexc = null;
+            //string startDate = null;
+            //string endDate = null;
+            //var response = instance.JobApiGet(tags, incexc, startDate, endDate);
+            //Assert.IsInstanceOf<JobArray> (response, "response is JobArray");
         }
         /// <summary>
         /// Test JobApiIdDelete
@@ -102,8 +106,8 @@ namespace IO.Swagger.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
-            //instance.JobApiIdGet(id);
-            
+            //var response = instance.JobApiIdGet(id);
+            //Assert.IsInstanceOf<SingleJob> (response, "response is SingleJob");
         }
         /// <summary>
         /// Test JobApiIdPut
@@ -135,8 +139,8 @@ namespace IO.Swagger.Test
         public void UserApiGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.UserApiGet();
-            
+            //var response = instance.UserApiGet();
+            //Assert.IsInstanceOf<UserArray> (response, "response is UserArray");
         }
         /// <summary>
         /// Test UserApiIdDelete
@@ -158,7 +162,7 @@ namespace IO.Swagger.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.UserApiIdGet(id);
-            //Assert.IsInstanceOf<UserOut> (response, "response is UserOut");
+            //Assert.IsInstanceOf<SingleUser> (response, "response is SingleUser");
         }
         /// <summary>
         /// Test UserApiIdPut

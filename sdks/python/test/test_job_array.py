@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import swagger_client
-from BJR.Model.job_out_object import JobOutObject  # noqa: E501
+from BJR.Model.job_array import JobArray  # noqa: E501
 from swagger_client.rest import ApiException
 
 
-class TestJobOutObject(unittest.TestCase):
-    """JobOutObject unit test stubs"""
+class TestJobArray(unittest.TestCase):
+    """JobArray unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestJobOutObject(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testJobOutObject(self):
-        """Test JobOutObject"""
+    def testJobArray(self):
+        """Test JobArray"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.job_out_object.JobOutObject()  # noqa: E501
+        # model = swagger_client.models.job_array.JobArray()  # noqa: E501
         pass
 
 
