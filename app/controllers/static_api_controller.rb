@@ -20,9 +20,6 @@ class StaticApiController < ApplicationController
     raise unless redis_info['connected_clients'].to_i > 0
 
     head :ok
-  rescue
-    logger.fatal $!
-    head :internal_server_error
   end
 
 end
