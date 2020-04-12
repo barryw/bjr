@@ -26,11 +26,11 @@ jobs:
 
     - name: Generate Swagger
       run: |
+        gem install bundler
         bundle exec rake rswag
 
     - name: Execute RSpec tests
       run: |
-        gem install bundler
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bundle exec rake
