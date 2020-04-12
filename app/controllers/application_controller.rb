@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+#
+# Base class of all API controllers. Handles low-level stuff like authentication and message
+# uniformity.
+#
 class ApplicationController < ActionController::API
   include HttpAcceptLanguage::AutoLocale
   before_action :authenticate_request
@@ -13,10 +19,8 @@ class ApplicationController < ActionController::API
   end
 
   def set_timezone
-    if params.key? :timezone
-      Time.zone = params[:timezone]
-    end
-  rescue
+    Time.zone = params[:timezone] if params.key? :timezone
+  rescue StandardError
     logger.warn I18n.t('common.errors.invalid_timezone', timezone: params[:timezone],
                                                          timezone_list_url: static_api_timezones_url)
   end

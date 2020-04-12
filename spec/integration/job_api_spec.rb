@@ -1,21 +1,23 @@
+# frozen_string_literal: true
+
 require 'swagger_helper'
 
 describe 'Job API' do
   path '/job_api' do
     post 'Creates a job' do
       description 'Creates a job'
-      security [ bearerAuth: [] ]
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string, description: "The name of the new job." },
-          cron: { type: :string, description: "The cron expression for the new job." },
-          command: { type: :string, description: "The command to run when the job fires." },
-          timezone: { type: :string, description: "The timezone to run the job in." },
-          enabled: { type: :boolean, description: "Is the new job enabled by default?" },
-          tags: { type: :string, description: "A comma-separated list of tags to associate with this job. You can search jobs by their tags." }
+          name: { type: :string, description: 'The name of the new job.' },
+          cron: { type: :string, description: 'The cron expression for the new job.' },
+          command: { type: :string, description: 'The command to run when the job fires.' },
+          timezone: { type: :string, description: 'The timezone to run the job in.' },
+          enabled: { type: :boolean, description: 'Is the new job enabled by default?' },
+          tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.' }
         }
       }
 
@@ -31,7 +33,7 @@ describe 'Job API' do
           expect(json['object']['cron']).to eq('*/5 * * * *')
           expect(json['object']['command']).to eq('echo Hello World')
           expect(json['object_type']).to eq('job')
-          expect(json['object']['tags']).to eq(['tag1', 'tag2'])
+          expect(json['object']['tags']).to eq(%w[tag1 tag2])
           expect(json['object']['enabled']).to be true
         end
       end
@@ -67,12 +69,11 @@ describe 'Job API' do
           expect(json['status_code']).to eq(403)
         end
       end
-
     end
 
     get 'Retrieves jobs' do
       description 'Retrieves jobs'
-      security [ bearerAuth: [] ]
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
 
@@ -97,25 +98,25 @@ describe 'Job API' do
   path '/job_api/{id}' do
     put 'Updates a single job' do
       description 'Updates a single job'
-      security [ bearerAuth: [] ]
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string, description: "The new name of the job. Must be unique." },
-          cron: { type: :string, description: "The new cron expression for the job." },
-          command: { type: :string, description: "The command to run when the job fires." },
-          timezone: { type: :string, description: "The timezone to run the job in." },
-          enabled: { type: :boolean, description: "Is the job enabled by default?" },
-          tags: { type: :string, description: "A comma-separated list of tags to associate with this job. You can search jobs by their tags." }
+          name: { type: :string, description: 'The new name of the job. Must be unique.' },
+          cron: { type: :string, description: 'The new cron expression for the job.' },
+          command: { type: :string, description: 'The command to run when the job fires.' },
+          timezone: { type: :string, description: 'The timezone to run the job in.' },
+          enabled: { type: :boolean, description: 'Is the job enabled by default?' },
+          tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.' }
         }
       }
 
       response '200', 'Job updated successfully.' do
         let(:admin) { create(:admin1) }
-        let(:job) { create(:job1, user: admin)}
+        let(:job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
         let(:params) { { name: 'Updated Job', cron: '*/60 * * * *', command: 'ls -l' } }
@@ -131,7 +132,7 @@ describe 'Job API' do
 
       response '403', 'Job could not be updated.' do
         let(:admin) { create(:admin1) }
-        let(:job) { create(:job1, user: admin)}
+        let(:job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
         let(:params) { { name: 'job2', cron: '*/60 * * * *', command: 'ls -l' } }
@@ -151,7 +152,7 @@ describe 'Job API' do
       response '404', I18n.t('jobs.errors.not_found') do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        let(:params) { { } }
+        let(:params) { {} }
         let(:id) { 0 }
 
         run_test! do |response|
@@ -163,7 +164,7 @@ describe 'Job API' do
 
     delete 'Deletes a job' do
       description 'Deletes a job'
-      security [ bearerAuth: [] ]
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer
@@ -194,7 +195,7 @@ describe 'Job API' do
 
     get 'Retrieves a single job' do
       description 'Retrieves a single job'
-      security [ bearerAuth: [] ]
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer
@@ -225,26 +226,26 @@ describe 'Job API' do
 
     put 'Updates a single job' do
       description 'Updates a single job'
-      security [ bearerAuth: [] ]
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string, description: "The new name of the job." },
-          cron: { type: :string, description: "The new cron expression for the job." },
-          command: { type: :string, description: "The command to run when the job fires." },
-          timezone: { type: :string, description: "The timezone to run the job in." },
-          enabled: { type: :boolean, description: "Is the new job enabled by default?" },
-          tags: { type: :string, description: "A comma-separated list of tags to associate with this job. You can search jobs by their tags." }
+          name: { type: :string, description: 'The new name of the job.' },
+          cron: { type: :string, description: 'The new cron expression for the job.' },
+          command: { type: :string, description: 'The command to run when the job fires.' },
+          timezone: { type: :string, description: 'The timezone to run the job in.' },
+          enabled: { type: :boolean, description: 'Is the new job enabled by default?' },
+          tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.' }
         }
       }
 
       response '404', I18n.t('jobs.errors.not_found') do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        let(:params) { { } }
+        let(:params) { {} }
         let(:id) { 0 }
 
         run_test! do |response|

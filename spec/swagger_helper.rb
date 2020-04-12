@@ -49,7 +49,7 @@ RSpec.configure do |config|
               is_error: { type: :boolean },
               object: { type: :object },
               object_type: { type: :string },
-              status_code: { type: :integer },
+              status_code: { type: :integer }
             }
           }
         },

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'open3'
 
 class ShellJob < ApplicationJob
@@ -10,10 +12,10 @@ class ShellJob < ApplicationJob
     error_message = ''
     stdout, stderr, status = Open3.capture3(job.command)
     return_code = status.exitstatus
-    success = (return_code == 0)
-  rescue
+    success = (return_code.zero?)
+  rescue StandardError
     success = false
-    error_message = $!
+    error_message = $ERROR_INFO
   ensure
     job.stop_job(run, return_code, success, error_message, stdout, stderr)
   end

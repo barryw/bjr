@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateJobs < ActiveRecord::Migration[5.2]
   def change
     create_table :jobs do |t|
@@ -15,7 +17,7 @@ class CreateJobs < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :jobs, [:name, :user_id], unique: true
+    add_index :jobs, %i[name user_id], unique: true
     add_index :jobs, :next_run
   end
 end

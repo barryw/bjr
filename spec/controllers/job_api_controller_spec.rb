@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe JobApiController, type: :controller do
-  describe "POST #create" do
-    it "returns http failure" do
+  describe 'POST #create' do
+    it 'returns http failure' do
       post :create, params: { 'name': 'foo' }
       expect(response).not_to have_http_status(:success)
     end
 
-    it "returns http failure from duplicated name" do
+    it 'returns http failure from duplicated name' do
       user = create(:admin1)
       authenticated_header(user)
       job = create(:job1, user: user)
@@ -15,15 +17,15 @@ RSpec.describe JobApiController, type: :controller do
       expect(response).not_to have_http_status(:success)
     end
 
-    it "returns http success" do
+    it 'returns http success' do
       authenticated_header(create(:admin1))
       post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST' }
       expect(response).to have_http_status(:success)
     end
 
-    it "returns http success and tags a job" do
+    it 'returns http success and tags a job' do
       authenticated_header(create(:admin1))
-      post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST', tags: "customer1,job1" }
+      post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST', tags: 'customer1,job1' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['status_code']).to eq(201)
@@ -32,28 +34,28 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['object']['tags']).to include('job1')
     end
 
-    it "returns http success and creates jobs that run in the specified timezone" do
+    it 'returns http success and creates jobs that run in the specified timezone' do
       Time.zone = 'Samoa'
-      today = Time.current.in_time_zone("Samoa").midnight
+      today = Time.current.in_time_zone('Samoa').midnight
       travel_to today - 2.minutes
       admin = create(:admin1)
       authenticated_header(admin)
       post :create, params: { name: 'job1', cron: '0 0 * * *', command: 'ls -ltr', timezone: 'Samoa' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json["object"]["next_run"]).to eq(today.as_json)
+      expect(json['object']['next_run']).to eq(today.as_json)
       travel_back
       Time.zone = 'UTC'
     end
   end
 
-  describe "PUT #update" do
-    it "returns http failure" do
+  describe 'PUT #update' do
+    it 'returns http failure' do
       put :update, params: { 'name': 'foo', 'id': 1 }
       expect(response).not_to have_http_status(:success)
     end
 
-    it "returns http failure from duplicate job name" do
+    it 'returns http failure from duplicate job name' do
       user = create(:admin1)
       authenticated_header(user)
       job = create(:job1, user: user)
@@ -63,7 +65,7 @@ RSpec.describe JobApiController, type: :controller do
       expect(response.status).to eq(403)
     end
 
-    it "returns http success" do
+    it 'returns http success' do
       user = create(:admin1)
       authenticated_header(user)
       job = create(:job1, user: user)
@@ -87,13 +89,13 @@ RSpec.describe JobApiController, type: :controller do
     end
   end
 
-  describe "GET #index" do
-    it "returns http failure" do
+  describe 'GET #index' do
+    it 'returns http failure' do
       get :index
       expect(response).not_to have_http_status(:success)
     end
 
-    it "properly times out our JWT" do
+    it 'properly times out our JWT' do
       user = create(:admin1)
       authenticated_header(user)
       travel_to Time.current + 3601.seconds
@@ -102,7 +104,7 @@ RSpec.describe JobApiController, type: :controller do
       travel_back
     end
 
-    it "allows our JWT to stay live for the default duration" do
+    it 'allows our JWT to stay live for the default duration' do
       user = create(:admin1)
       authenticated_header(user)
       travel_to Time.current + 3590.seconds
@@ -111,10 +113,10 @@ RSpec.describe JobApiController, type: :controller do
       travel_back
     end
 
-    it "returns http success" do
+    it 'returns http success' do
       user = create(:admin1)
-      job1 = create(:job1, user: user, name: 'job1')
-      job2 = create(:job1, user: user, name: 'job2')
+      create(:job1, user: user, name: 'job1')
+      create(:job1, user: user, name: 'job2')
       authenticated_header(user)
       get :index
       expect(response).to have_http_status(:success)
@@ -122,10 +124,10 @@ RSpec.describe JobApiController, type: :controller do
       expect(json.length).to eq(2)
     end
 
-    it "returns http success and gets a tagged job" do
+    it 'returns http success and gets a tagged job' do
       user = create(:admin1)
-      job1 = create(:job1, user: user, name: 'job1', tag_list: 'tag1')
-      job2 = create(:job1, user: user, name: 'job2', tag_list: 'tag2')
+      create(:job1, user: user, name: 'job1', tag_list: 'tag1')
+      create(:job1, user: user, name: 'job2', tag_list: 'tag2')
       authenticated_header(user)
       get :index, params: { tags: 'tag1' }
       expect(response).to have_http_status(:success)
@@ -134,10 +136,10 @@ RSpec.describe JobApiController, type: :controller do
       expect(json[0]['tags']).to include('tag1')
     end
 
-    it "returns http success and gets a tagged job on all tags" do
+    it 'returns http success and gets a tagged job on all tags' do
       user = create(:admin1)
-      job1 = create(:job1, user: user, name: 'job1', tag_list: 'tag1')
-      job2 = create(:job1, user: user, name: 'job2', tag_list: 'tag2')
+      create(:job1, user: user, name: 'job1', tag_list: 'tag1')
+      create(:job1, user: user, name: 'job2', tag_list: 'tag2')
       authenticated_header(user)
       get :index, params: { tags: 'tag1', incexc: 'all' }
       expect(response).to have_http_status(:success)
@@ -146,10 +148,10 @@ RSpec.describe JobApiController, type: :controller do
       expect(json[0]['tags']).to include('tag1')
     end
 
-    it "returns http success and gets a job tagged with multiple tags" do
+    it 'returns http success and gets a job tagged with multiple tags' do
       user = create(:admin1)
-      job1 = create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag2')
-      job2 = create(:job1, user: user, name: 'job2', tag_list: 'tag2')
+      create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag2')
+      create(:job1, user: user, name: 'job2', tag_list: 'tag2')
       authenticated_header(user)
       get :index, params: { tags: 'tag1, tag2', incexc: 'all' }
       expect(response).to have_http_status(:success)
@@ -159,10 +161,10 @@ RSpec.describe JobApiController, type: :controller do
       expect(json[0]['tags']).to include('tag2')
     end
 
-    it "returns http success and does not get a job tagged with multiple tags" do
+    it 'returns http success and does not get a job tagged with multiple tags' do
       user = create(:admin1)
-      job1 = create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag3')
-      job2 = create(:job1, user: user, name: 'job2', tag_list: 'tag2')
+      create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag3')
+      create(:job1, user: user, name: 'job2', tag_list: 'tag2')
       authenticated_header(user)
       get :index, params: { tags: 'tag1, tag2', incexc: 'all' }
       expect(response).to have_http_status(:success)
@@ -170,10 +172,10 @@ RSpec.describe JobApiController, type: :controller do
       expect(json.length).to eq(0)
     end
 
-    it "returns http success and gets several jobs on different tags" do
+    it 'returns http success and gets several jobs on different tags' do
       user = create(:admin1)
-      job1 = create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag2')
-      job2 = create(:job1, user: user, name: 'job2', tag_list: 'tag2')
+      create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag2')
+      create(:job1, user: user, name: 'job2', tag_list: 'tag2')
       authenticated_header(user)
       get :index, params: { tags: 'tag1, tag2', incexc: 'any' }
       expect(response).to have_http_status(:success)
@@ -182,9 +184,9 @@ RSpec.describe JobApiController, type: :controller do
       # TODO
     end
 
-    it "returns http success gets a job from excluded tags" do
+    it 'returns http success gets a job from excluded tags' do
       user = create(:admin1)
-      job1 = create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag3')
+      create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag3')
       job2 = create(:job1, user: user, name: 'job2', tag_list: 'tag1')
       authenticated_header(user)
       get :index, params: { tags: 'tag3', incexc: 'exclude' }
@@ -194,7 +196,7 @@ RSpec.describe JobApiController, type: :controller do
       expect(json[0]['id']).to eq(job2.id)
     end
 
-    it "returns http success gets a job due to execute within a timeframe" do
+    it 'returns http success gets a job due to execute within a timeframe' do
       user = create(:admin1)
       job1 = create(:job1, user: user, name: 'job1', cron: '0 0 * * *')
       authenticated_header(user)
@@ -205,10 +207,10 @@ RSpec.describe JobApiController, type: :controller do
       expect(json[0]['id']).to eq(job1.id)
     end
 
-    it "returns http success gets a job due to execute within a timeframe and tagged" do
+    it 'returns http success gets a job due to execute within a timeframe and tagged' do
       user = create(:admin1)
       job1 = create(:job1, user: user, name: 'job1', cron: '0 0 * * *', tag_list: 'tag1')
-      job2 = create(:job1, user: user, name: 'job2', cron: '0 0 * * *', tag_list: 'tag2')
+      create(:job1, user: user, name: 'job2', cron: '0 0 * * *', tag_list: 'tag2')
       authenticated_header(user)
       get :index, params: { start_date: 'yesterday', end_date: 'tomorrow', tags: 'tag1' }
       expect(response).to have_http_status(:success)
@@ -217,10 +219,10 @@ RSpec.describe JobApiController, type: :controller do
       expect(json[0]['id']).to eq(job1.id)
     end
 
-    it "returns http success does not get a job because it falls outside the occurrence check" do
+    it 'returns http success does not get a job because it falls outside the occurrence check' do
       user = create(:admin1)
-      job1 = create(:job1, user: user, name: 'job1', cron: '0 0 * * *')
-      job2 = create(:job1, user: user, name: 'job2', cron: '0 0 * * *')
+      create(:job1, user: user, name: 'job1', cron: '0 0 * * *')
+      create(:job1, user: user, name: 'job2', cron: '0 0 * * *')
       authenticated_header(user)
       get :index, params: { start_date: 'today at 2pm', end_date: 'today at 3pm' }
       expect(response).to have_http_status(:success)
@@ -228,10 +230,10 @@ RSpec.describe JobApiController, type: :controller do
       expect(json.length).to eq(0)
     end
 
-    it "returns http success looking for enabled jobs" do
+    it 'returns http success looking for enabled jobs' do
       user = create(:admin1)
       job1 = create(:job1, user: user, name: 'job1', enabled: true)
-      job2 = create(:job1, user: user, name: 'job2', enabled: false)
+      create(:job1, user: user, name: 'job2', enabled: false)
       authenticated_header(user)
       get :index, params: { enabled: true }
       expect(response).to have_http_status(:success)
@@ -240,9 +242,9 @@ RSpec.describe JobApiController, type: :controller do
       expect(json[0]['id']).to eq(job1.id)
     end
 
-    it "returns http success looking for enabled jobs that are tagged and match our occurrence check" do
+    it 'returns http success looking for enabled jobs that are tagged and match our occurrence check' do
       user = create(:admin1)
-      job1 = create(:job1, user: user, name: 'job1', enabled: false, tag_list: 'tag1', cron: '0 0 * * *')
+      create(:job1, user: user, name: 'job1', enabled: false, tag_list: 'tag1', cron: '0 0 * * *')
       job2 = create(:job1, user: user, name: 'job2', enabled: true, tag_list: 'tag1', cron: '0 0 * * *')
       authenticated_header(user)
       get :index, params: { enabled: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow' }
@@ -252,9 +254,9 @@ RSpec.describe JobApiController, type: :controller do
       expect(json[0]['id']).to eq(job2.id)
     end
 
-    it "returns http success looking for running jobs that are tagged and match our occurrence check" do
+    it 'returns http success looking for running jobs that are tagged and match our occurrence check' do
       user = create(:admin1)
-      job1 = create(:job1, user: user, name: 'job1', running: false, tag_list: 'tag1', cron: '0 0 * * *')
+      create(:job1, user: user, name: 'job1', running: false, tag_list: 'tag1', cron: '0 0 * * *')
       job2 = create(:job1, user: user, name: 'job2', running: true, tag_list: 'tag1', cron: '0 0 * * *')
       authenticated_header(user)
       get :index, params: { running: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow' }
@@ -265,8 +267,8 @@ RSpec.describe JobApiController, type: :controller do
     end
   end
 
-  describe "GET #show" do
-    it "returns http failure" do
+  describe 'GET #show' do
+    it 'returns http failure' do
       get :show, params: { 'id': 1 }
       expect(response).not_to have_http_status(:success)
     end
@@ -280,7 +282,7 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['is_error']).to be true
     end
 
-    it "returns http success" do
+    it 'returns http success' do
       user = create(:admin1)
       authenticated_header(user)
       job = create(:job1, user: user)
@@ -294,13 +296,13 @@ RSpec.describe JobApiController, type: :controller do
     end
   end
 
-  describe "DELETE #destroy" do
-    it "returns http failure" do
+  describe 'DELETE #destroy' do
+    it 'returns http failure' do
       delete :destroy, params: { 'id': 1 }
       expect(response).not_to have_http_status(:success)
     end
 
-    it "returns http success" do
+    it 'returns http success' do
       user = create(:admin1)
       job = create(:job1, user: user)
       authenticated_header(user)
@@ -309,13 +311,13 @@ RSpec.describe JobApiController, type: :controller do
     end
   end
 
-  describe "GET #occurrences" do
-    it "returns http failure" do
+  describe 'GET #occurrences' do
+    it 'returns http failure' do
       get :occurrences, params: { 'id': 1, 'end_date': Time.current }
       expect(response).not_to have_http_status(:success)
     end
 
-    it "returns http success for getting job occurrences" do
+    it 'returns http success for getting job occurrences' do
       user = create(:admin1)
       job1 = create(:job1, user: user, enabled: true, cron: '*/5 * * * *')
       authenticated_header(user)
@@ -337,60 +339,60 @@ RSpec.describe JobApiController, type: :controller do
     end
   end
 
-  describe "GET #runs" do
-    it "returns http failure" do
+  describe 'GET #runs' do
+    it 'returns http failure' do
       get :runs, params: { 'id': 1 }
       expect(response).not_to have_http_status(:success)
     end
 
-    it "returns http success and return 0 runs matching a bad start date" do
+    it 'returns http success and return 0 runs matching a bad start date' do
       user = create(:admin1)
       job = create(:job1, user: user)
-      run1 = create(:job_run, job: job, start_time: Time.current - 11.hours)
+      create(:job_run, job: job, start_time: Time.current - 11.hours)
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 10.hours }
       json = JSON.parse(response.body)
       expect(json['object'].length).to eq(0)
     end
 
-    it "returns http success while trying to get runs that started after a date" do
+    it 'returns http success while trying to get runs that started after a date' do
       user = create(:admin1)
       job = create(:job1, user: user)
-      run1 = create(:job_run, job: job, start_time: Time.current - 11.hours)
-      run2 = create(:job_run, job: job, start_time: Time.current - 13.hours)
+      create(:job_run, job: job, start_time: Time.current - 11.hours)
+      create(:job_run, job: job, start_time: Time.current - 13.hours)
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 12.hours }
       json = JSON.parse(response.body)
       expect(json['object'].length).to eq(1)
     end
 
-    it "returns http success while trying to get runs that ended before a date" do
+    it 'returns http success while trying to get runs that ended before a date' do
       user = create(:admin1)
       job = create(:job1, user: user)
-      run1 = create(:job_run, job: job, end_time: Time.current - 11.hours, start_time: Time.current - 12.hours)
-      run2 = create(:job_run, job: job, end_time: Time.current - 13.hours, start_time: Time.current - 12.hours)
+      create(:job_run, job: job, end_time: Time.current - 11.hours, start_time: Time.current - 12.hours)
+      create(:job_run, job: job, end_time: Time.current - 13.hours, start_time: Time.current - 12.hours)
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'end_date': Time.current - 12.hours }
       json = JSON.parse(response.body)
       expect(json['object'].length).to eq(1)
     end
 
-    it "returns http success while trying to get runs that started after a date and finished before a date" do
+    it 'returns http success while trying to get runs that started after a date and finished before a date' do
       user = create(:admin1)
       job = create(:job1, user: user)
-      run1 = create(:job_run, job: job, start_time: Time.current - 3.hours, end_time: Time.current - 2.hours)
-      run2 = create(:job_run, job: job, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
+      create(:job_run, job: job, start_time: Time.current - 3.hours, end_time: Time.current - 2.hours)
+      create(:job_run, job: job, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours }
       json = JSON.parse(response.body)
       expect(json['object'].length).to eq(1)
     end
 
-    it "returns http success while trying to get runs that succeeded" do
+    it 'returns http success while trying to get runs that succeeded' do
       user = create(:admin1)
       job = create(:job1, user: user)
       run1 = create(:job_run, job: job, success: true, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
-      run2 = create(:job_run, job: job, success: false, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
+      create(:job_run, job: job, success: false, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': true }
       json = JSON.parse(response.body)
@@ -398,10 +400,10 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['object'][0]['id']).to eq(run1.id)
     end
 
-    it "returns http success while trying to get runs that failed" do
+    it 'returns http success while trying to get runs that failed' do
       user = create(:admin1)
       job = create(:job1, user: user)
-      run1 = create(:job_run, job: job, success: true, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
+      create(:job_run, job: job, success: true, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       run2 = create(:job_run, job: job, success: false, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': false }

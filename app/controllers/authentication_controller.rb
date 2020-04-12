@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+#
+# Handles the /authenticate route
+#
 class AuthenticationController < ApplicationController
   skip_before_action :authenticate_request
 
@@ -5,9 +10,9 @@ class AuthenticationController < ApplicationController
     command = AuthenticateUser.call(params[:username], params[:password])
 
     if command.success?
-      render json: { auth_token: command.result, message: "", is_error: false }, status: :ok
+      render json: { auth_token: command.result, message: '', is_error: false }, status: :ok
     else
-      render json: { auth_token: "", message: command.errors, is_error: true }, status: :unauthorized
+      render json: { auth_token: '', message: command.errors, is_error: true }, status: :unauthorized
     end
   end
 end

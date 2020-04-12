@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'sidekiq/testing'
 
 RSpec.describe StaticApiController, type: :controller do
-  describe "GET #timezones" do
-    it "returns http failure" do
+  describe 'GET #timezones' do
+    it 'returns http failure' do
       get :timezones, params: { 'name': 'foo' }
       expect(response).not_to have_http_status(:success)
     end
 
-    it "returns http success" do
+    it 'returns http success' do
       user = create(:admin1)
       authenticated_header(user)
       get :timezones
@@ -20,13 +22,13 @@ RSpec.describe StaticApiController, type: :controller do
     end
   end
 
-  describe "GET #tags" do
-    it "returns http failure" do
+  describe 'GET #tags' do
+    it 'returns http failure' do
       get :tags, params: { 'name': 'foo' }
       expect(response).not_to have_http_status(:success)
     end
 
-    it "returns http success and returns the correct list of tags for a user" do
+    it 'returns http success and returns the correct list of tags for a user' do
       user1 = create(:admin1)
       user2 = create(:admin2)
       job1 = create(:job1, user: user1, name: 'job1')
@@ -48,8 +50,8 @@ RSpec.describe StaticApiController, type: :controller do
     end
   end
 
-  describe "GET #health" do
-    it "returns http success" do
+  describe 'GET #health' do
+    it 'returns http success' do
       get :health
       expect(response).to have_http_status(:success)
     end

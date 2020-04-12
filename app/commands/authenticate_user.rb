@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+#
+# Perform user authentication and return a time-limited JWT
+#
 class AuthenticateUser
   prepend SimpleCommand
 
@@ -16,7 +21,7 @@ class AuthenticateUser
 
   def user
     user = User.find_by_username(username)
-    return user if user && user.authenticate(password)
+    return user if user&.authenticate(password)
 
     errors.add :user_authentication, I18n.t('users.errors.invalid_credentials')
     nil

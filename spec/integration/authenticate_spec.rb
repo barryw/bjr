@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'swagger_helper'
 
 describe 'Authentication' do
@@ -33,7 +35,7 @@ describe 'Authentication' do
       end
 
       response '401', 'You need to supply credentials, there, yoohoo.' do
-        let(:params) {{ }}
+        let(:params) { {} }
         run_test! do |response|
           json = JSON.parse(response.body)
           expect(json['auth_token']).to eq('')

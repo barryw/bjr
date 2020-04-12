@@ -24,6 +24,10 @@ jobs:
       with:
         ruby-version: '2.6'
 
+    - name: Generate Swagger
+      run: |
+        bundle exec rake rswag
+
     - name: Execute RSpec tests
       run: |
         gem install bundler

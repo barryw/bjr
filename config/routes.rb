@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   require 'sidekiq/web'
 
-  root to: redirect("/api-docs")
+  root to: redirect('/api-docs')
 
   post 'authenticate', to: 'authentication#authenticate'
 

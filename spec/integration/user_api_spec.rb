@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'swagger_helper'
 
 describe 'User API' do
   path '/user_api' do
     get 'Retrieves users' do
-      description "Get a list of users"
-      security [ bearerAuth: [] ]
+      description 'Get a list of users'
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
 
@@ -25,8 +27,8 @@ describe 'User API' do
     end
 
     post 'Creates a user' do
-      description "Create a new user"
-      security [ bearerAuth: [] ]
+      description 'Create a new user'
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
       parameter name: :params, in: :body, schema: {
@@ -41,7 +43,7 @@ describe 'User API' do
       response '201', 'User created successfully' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        let(:params) { { username: 'barry', password: 'test1234', password_confirmation: 'test1234'}}
+        let(:params) { { username: 'barry', password: 'test1234', password_confirmation: 'test1234' } }
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -52,7 +54,7 @@ describe 'User API' do
       response '403', 'Username already exists' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        let(:params) { { username: admin.username, password: 'test1234', password_confirmation: 'test1234'}}
+        let(:params) { { username: admin.username, password: 'test1234', password_confirmation: 'test1234' } }
         schema oneOf: [{ '$ref' => '#/components/schemas/error' }]
 
         run_test!
@@ -63,7 +65,7 @@ describe 'User API' do
   path '/user_api/{id}' do
     put 'Update a single user' do
       description 'Update a single user'
-      security [ bearerAuth: [] ]
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer
@@ -96,7 +98,7 @@ describe 'User API' do
 
     get 'Retrieve a single user' do
       description 'Retrieve a single user'
-      security [ bearerAuth: [] ]
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer
@@ -135,8 +137,8 @@ describe 'User API' do
     end
 
     delete 'Deletes a user' do
-      description "Deletes a user"
-      security [ bearerAuth: [] ]
+      description 'Deletes a user'
+      security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer

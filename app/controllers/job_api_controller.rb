@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
+#
+# Handles calls to the /job_api routes
+#
 class JobApiController < ApplicationController
-  before_action :get_job, only: [:show, :update, :destroy, :failures, :runs, :occurrences, :runs]
+  before_action :get_job, only: %i[show update destroy failures runs occurrences runs]
 
   def index
     jobs = Job.find_jobs(current_user, params[:start_date], params[:end_date],
@@ -26,18 +31,18 @@ class JobApiController < ApplicationController
   end
 
   def update
-    @job.name = params[:name] unless @job.name == params[:name] or params[:name].blank?
-    @job.cron = params[:cron] unless @job.cron == params[:cron] or params[:cron].blank?
-    @job.command = params[:command] unless @job.command == params[:command] or params[:command].blank?
-    @job.timezone = params[:timezone] unless @job.timezone == params[:timezone] or params[:timezone].blank?
+    @job.name = params[:name] unless (@job.name == params[:name]) || params[:name].blank?
+    @job.cron = params[:cron] unless (@job.cron == params[:cron]) || params[:cron].blank?
+    @job.command = params[:command] unless (@job.command == params[:command]) || params[:command].blank?
+    @job.timezone = params[:timezone] unless (@job.timezone == params[:timezone]) || params[:timezone].blank?
     @job.enabled = params[:enabled] if params[:enabled].present?
     current_user.tag @job, with: params[:tags], on: :tags if params[:tags].present?
     @job.save!
     message I18n.t('jobs.messages.updated', id: @job.id), :ok, false, @job, 'job'
   rescue ActiveRecord::RecordNotUnique
     not_unique
-  rescue
-    error I18n.t('jobs.errors.update_failed', id: @job.id, error: $!), :forbidden
+  rescue StandardError
+    error I18n.t('jobs.errors.update_failed', id: @job.id, error: $ERROR_INFO), :forbidden
   end
 
   def destroy
@@ -54,7 +59,8 @@ class JobApiController < ApplicationController
   # Return the occurrences for this job up to a certain date
   def occurrences
     end_date = Chronic.parse(params[:end_date])
-    no_end_date and return if end_date.nil?
+    no_end_date && return if end_date.nil?
+
     paginate json: @job.occurrences(end_date)
   end
 
@@ -62,7 +68,7 @@ class JobApiController < ApplicationController
 
   def get_job
     @job = Job.mine(current_user).where(id: params[:id]).first
-    error I18n.t('jobs.errors.not_found'), :not_found and return if @job.blank?
+    error(I18n.t('jobs.errors.not_found'), :not_found) && return if @job.blank?
   end
 
   def not_unique

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module AuthHelper
   def authenticated_header(user)
-    ENV["JWT_EXPIRY_SECONDS"] = "3600"
+    ENV['JWT_EXPIRY_SECONDS'] = '3600'
     token = auth_token(user)
     request.headers.merge!({ 'Authorization': token })
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JobRun < ApplicationRecord
   belongs_to :job
 
@@ -15,7 +17,7 @@ class JobRun < ApplicationRecord
     save
   end
 
-  def as_json(options = {})
-    super(only: [:id, :success, :return_code, :error_message, :stdout, :stderr, :start_time, :end_time, :job_id, :created_at, :updated_at])
+  def as_json(_options = {})
+    super(only: %i[id success return_code error_message stdout stderr start_time end_time job_id created_at updated_at])
   end
 end

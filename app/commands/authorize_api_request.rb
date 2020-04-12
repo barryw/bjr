@@ -1,3 +1,10 @@
+# frozen_string_literal: true
+
+#
+# Take in a JWT and try to authenticate the user associated with it.
+# JWTs are time-limited and will expire based on the value of the env
+# var JWT_EXPIRY_SECONDS
+#
 class AuthorizeApiRequest
   prepend SimpleCommand
 
@@ -23,12 +30,9 @@ class AuthorizeApiRequest
   end
 
   def http_auth_header
-    if headers['Authorization'].present?
-      return headers['Authorization'].split(' ').last
-    else
-      errors.add(:token, I18n.t('users.errors.missing_token'))
-    end
+    return headers['Authorization'].split(' ').last if headers['Authorization'].present?
 
+    errors.add(:token, I18n.t('users.errors.missing_token'))
     nil
   end
 end

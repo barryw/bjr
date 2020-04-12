@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
+#
+# Handles calls to the /user_api routes
+#
 class UserApiController < ApplicationController
-  before_action :get_user, only: [:show, :update, :destroy]
+  before_action :get_user, only: %i[show update destroy]
 
   def index
     users = User.all
@@ -22,12 +27,13 @@ class UserApiController < ApplicationController
     @user.password_confirmation = params[:password_confirmation]
     @user.save!
     message I18n.t('users.messages.updated', id: @user.id), :ok, false, @user, 'user'
-  rescue
-    error I18n.t('users.errors.update_failed', id: @user.id, error: $!), :forbidden
+  rescue StandardError
+    error I18n.t('users.errors.update_failed', id: @user.id, error: $ERROR_INFO), :forbidden
   end
 
   def destroy
-    error I18n.t('users.errors.cant_delete_yourself'), :forbidden and return if current_user.id == @user.id
+    error(I18n.t('users.errors.cant_delete_yourself'), :forbidden) && return if current_user.id == @user.id
+
     @user.destroy
     message I18n.t('users.messages.deleted', id: @user.id), :ok
   end
@@ -36,6 +42,6 @@ class UserApiController < ApplicationController
 
   def get_user
     @user = User.where(id: params[:id]).first
-    error I18n.t('users.errors.not_found'), :not_found and return if @user.blank?
+    error(I18n.t('users.errors.not_found'), :not_found) && return if @user.blank?
   end
 end
