@@ -4,9 +4,6 @@ on: [push]
 
 jobs:
   build:
-
-    runs-on: self-hosted
-
     services:
       mysql:
         image: mysql:latest
