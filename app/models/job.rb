@@ -118,6 +118,7 @@ class Job < ApplicationRecord
       running: running,
       created_at: created_at,
       updated_at: updated_at,
+      timezone: timezone,
       tags: tags.collect(&:name)
     }
   end
