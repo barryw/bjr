@@ -9,22 +9,13 @@ describe 'Job API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :params, in: :body, schema: {
-        type: :object,
-        properties: {
-          name: { type: :string, description: 'The name of the new job.' },
-          cron: { type: :string, description: 'The cron expression for the new job.' },
-          command: { type: :string, description: 'The command to run when the job fires.' },
-          timezone: { type: :string, description: 'The timezone to run the job in.' },
-          enabled: { type: :boolean, description: 'Is the new job enabled by default?' },
-          tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.' }
-        }
-      }
+      parameter name: :params, in: :body, schema: { "$ref" => "#/components/schemas/job_in" }
 
-      response '201', I18n.t('jobs.messages.created') do
+      response '201', 'Job created successfully.' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:params) { { name: 'My New Job', cron: '*/5 * * * *', command: 'echo Hello World', timezone: 'UTC', enabled: 'true', tags: 'tag1, tag2' } }
+        schema '$ref' => '#/components/schemas/out'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -102,17 +93,7 @@ describe 'Job API' do
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer
-      parameter name: :params, in: :body, schema: {
-        type: :object,
-        properties: {
-          name: { type: :string, description: 'The new name of the job. Must be unique.' },
-          cron: { type: :string, description: 'The new cron expression for the job.' },
-          command: { type: :string, description: 'The command to run when the job fires.' },
-          timezone: { type: :string, description: 'The timezone to run the job in.' },
-          enabled: { type: :boolean, description: 'Is the job enabled by default?' },
-          tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.' }
-        }
-      }
+      parameter name: :params, in: :body, schema: { "$ref" => "#/components/schemas/job_in" }
 
       response '200', 'Job updated successfully.' do
         let(:admin) { create(:admin1) }
@@ -120,6 +101,7 @@ describe 'Job API' do
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
         let(:params) { { name: 'Updated Job', cron: '*/60 * * * *', command: 'ls -l' } }
+        schema '$ref' => '#/components/schemas/out'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -219,39 +201,6 @@ describe 'Job API' do
 
         run_test! do |response|
           json = JSON.parse(response.body)
-          expect(json['status_code']).to eq(404)
-        end
-      end
-    end
-
-    put 'Updates a single job' do
-      description 'Updates a single job'
-      security [bearerAuth: []]
-      consumes 'application/json'
-      produces 'application/json'
-      parameter name: :id, in: :path, type: :integer
-      parameter name: :params, in: :body, schema: {
-        type: :object,
-        properties: {
-          name: { type: :string, description: 'The new name of the job.' },
-          cron: { type: :string, description: 'The new cron expression for the job.' },
-          command: { type: :string, description: 'The command to run when the job fires.' },
-          timezone: { type: :string, description: 'The timezone to run the job in.' },
-          enabled: { type: :boolean, description: 'Is the new job enabled by default?' },
-          tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.' }
-        }
-      }
-
-      response '404', I18n.t('jobs.errors.not_found') do
-        let(:admin) { create(:admin1) }
-        let(:Authorization) { auth_token(admin) }
-        let(:params) { {} }
-        let(:id) { 0 }
-
-        run_test! do |response|
-          json = JSON.parse(response.body)
-          expect(json['message']).to eq(I18n.t('jobs.errors.not_found'))
-          expect(json['is_error']).to be true
           expect(json['status_code']).to eq(404)
         end
       end

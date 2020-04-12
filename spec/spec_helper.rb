@@ -1,7 +1,16 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start 'rails' do
+  enable_coverage :branch
+  minimum_coverage line: 90, branch: 80
+  refuse_coverage_drop
+
+  add_group 'Models', 'app/models'
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Libraries', 'lib'
+  add_group 'Helpers', 'app/helpers'
+end
 
 require './spec/support/auth_helper'
 require 'active_support/testing/time_helpers'

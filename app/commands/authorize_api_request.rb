@@ -22,7 +22,7 @@ class AuthorizeApiRequest
 
   def user
     @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
-    @user || errors.add(:token, I18n.t('users.errors.invalid_token')) && nil
+    @user || errors.add(:auth, I18n.t('users.errors.invalid_token')) && nil
   end
 
   def decoded_auth_token
@@ -32,7 +32,7 @@ class AuthorizeApiRequest
   def http_auth_header
     return headers['Authorization'].split(' ').last if headers['Authorization'].present?
 
-    errors.add(:token, I18n.t('users.errors.missing_token'))
+    errors.add(:auth, I18n.t('users.errors.missing_token'))
     nil
   end
 end

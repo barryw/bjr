@@ -31,19 +31,13 @@ describe 'User API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :params, in: :body, schema: {
-        type: :object,
-        properties: {
-          username: { type: :string, description: "The new user's username. Must be unique." },
-          password: { type: :string, description: "The new user's password." },
-          password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'." }
-        }
-      }
+      parameter name: :params, in: :body, schema: { "$ref" => "#/components/schemas/user_new_in" }
 
       response '201', 'User created successfully' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:params) { { username: 'barry', password: 'test1234', password_confirmation: 'test1234' } }
+        schema '$ref' => '#/components/schemas/out'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -55,7 +49,6 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:params) { { username: admin.username, password: 'test1234', password_confirmation: 'test1234' } }
-        schema oneOf: [{ '$ref' => '#/components/schemas/error' }]
 
         run_test!
       end
@@ -69,19 +62,14 @@ describe 'User API' do
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer
-      parameter name: :params, in: :body, schema: {
-        type: :object,
-        properties: {
-          password: { type: :string, description: "The user's new password." },
-          password_confirmation: { type: :string, description: "The user's new password confirmation. Must match 'password'." }
-        }
-      }
+      parameter name: :params, in: :body, schema: { "$ref" => "#/components/schemas/user_update_in" }
 
       response '200', 'The user was returned successfully.' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { admin.id }
         let(:params) { { password: 'password1234', password_confirmation: 'password1234' } }
+        schema '$ref' => '#/components/schemas/out'
 
         run_test!
       end
@@ -91,8 +79,13 @@ describe 'User API' do
         let(:Authorization) { auth_token(admin) }
         let(:id) { admin.id }
         let(:params) { { password: 'password123', password_confirmation: 'password1234' } }
+        schema '$ref' => '#/components/schemas/out'
 
-        run_test!
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json['is_error']).to be true
+          expect(json['status_code']).to eq(403)
+        end
       end
     end
 
@@ -107,6 +100,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { admin.id }
+        schema '$ref' => '#/components/schemas/out'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -118,6 +112,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { 0 }
+        schema '$ref' => '#/components/schemas/out'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -148,6 +143,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { deluser.id }
+        schema '$ref' => '#/components/schemas/out'
 
         run_test!
       end
@@ -156,6 +152,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { admin.id }
+        schema '$ref' => '#/components/schemas/out'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -167,6 +164,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { 0 }
+        schema '$ref' => '#/components/schemas/out'
 
         run_test! do |response|
           json = JSON.parse(response.body)

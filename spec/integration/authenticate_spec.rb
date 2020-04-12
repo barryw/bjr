@@ -7,40 +7,29 @@ describe 'Authentication' do
     post 'Authenticates a user and returns a token' do
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :params, in: :body, schema: {
-        type: :object,
-        properties: {
-          username: { type: :string },
-          password: { type: :string }
-        }
-      }
+      parameter name: :params, in: :body, schema: { '$ref' => '#/components/schemas/auth_in' }
 
       response '200', 'User authenticated successfully' do
         let(:admin) { create(:admin1) }
         let(:params) { { username: admin.username, password: admin.password } }
+        schema '$ref' => '#/components/schemas/auth_out'
+
         run_test! do |response|
           json = JSON.parse(response.body)
           expect(json['auth_token']).to_not be_nil
+          expect(json['is_error']).to be false
         end
       end
 
       response '401', 'User failed authentication' do
         let(:params) { { username: 'bogus', password: 'user' } }
-        run_test! do |response|
-          json = JSON.parse(response.body)
-          expect(json['auth_token']).to eq('')
-          expect(json['is_error']).to be true
-          expect(json['message']['user_authentication']).to eq('Invalid credentials')
-        end
-      end
+        schema '$ref' => '#/components/schemas/auth_out'
 
-      response '401', 'You need to supply credentials, there, yoohoo.' do
-        let(:params) { {} }
         run_test! do |response|
           json = JSON.parse(response.body)
           expect(json['auth_token']).to eq('')
           expect(json['is_error']).to be true
-          expect(json['message']['user_authentication']).to eq('Invalid credentials')
+          expect(json['message']).to eq(I18n.t('users.errors.invalid_credentials'))
         end
       end
     end
