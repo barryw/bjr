@@ -16,6 +16,8 @@ gem 'acts-as-taggable-on'
 gem 'kaminari'
 gem 'api-pagination'
 gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
 gem 'http_accept_language'
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -29,6 +31,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'rswag-specs'
   gem 'factory_bot_rails'
   gem 'simplecov'
   gem 'foreman'

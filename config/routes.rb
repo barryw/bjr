@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   require 'sidekiq/web'
 
+  root to: redirect("/api-docs")
+
   post 'authenticate', to: 'authentication#authenticate'
 
   resources :job_api

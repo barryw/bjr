@@ -1,0 +1,316 @@
+---
+openapi: 3.0.1
+info:
+  title: BJR API V1
+  version: v1
+components:
+  schemas:
+    user:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    success:
+      type: object
+      properties:
+        message:
+          type: string
+        is_error:
+          type: boolean
+        object:
+          type: object
+        object_type:
+          type: string
+        status_code:
+          type: integer
+    error:
+      type: object
+      properties:
+        message:
+          type: string
+        is_error:
+          type: boolean
+        object:
+          type: object
+        object_type:
+          type: string
+        status_code:
+          type: integer
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http
+      bearerFormat: JWT
+paths:
+  "/authenticate":
+    post:
+      summary: Authenticates a user and returns a token
+      parameters: []
+      responses:
+        '200':
+          description: User authenticated successfully
+          content: {}
+        '401':
+          description: You need to supply credentials, there, yoohoo.
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+  "/job_api":
+    post:
+      summary: Creates a job
+      description: Creates a job
+      security:
+      - bearerAuth: []
+      parameters: []
+      responses:
+        '201':
+          description: Job %{id} created successfully.
+          content: {}
+        '403':
+          description: A job with this name already exists.
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the new job.
+                cron:
+                  type: string
+                  description: The cron expression for the new job.
+                command:
+                  type: string
+                  description: The command to run when the job fires.
+                timezone:
+                  type: string
+                  description: The timezone to run the job in.
+                enabled:
+                  type: boolean
+                  description: Is the new job enabled by default?
+                tags:
+                  type: string
+                  description: A comma-separated list of tags to associate with this
+                    job. You can search jobs by their tags.
+    get:
+      summary: Retrieves jobs
+      description: Retrieves jobs
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Jobs returned successfully
+          content: {}
+  "/job_api/{id}":
+    put:
+      summary: Updates a single job
+      description: Updates a single job
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '404':
+          description: Job not found.
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The new name of the job.
+                cron:
+                  type: string
+                  description: The new cron expression for the job.
+                command:
+                  type: string
+                  description: The command to run when the job fires.
+                timezone:
+                  type: string
+                  description: The timezone to run the job in.
+                enabled:
+                  type: boolean
+                  description: Is the new job enabled by default?
+                tags:
+                  type: string
+                  description: A comma-separated list of tags to associate with this
+                    job. You can search jobs by their tags.
+    delete:
+      summary: Deletes a job
+      description: Deletes a job
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Job %{id} deleted successfully.
+          content: {}
+        '404':
+          description: Job not found.
+          content: {}
+    get:
+      summary: Retrieves a single job
+      description: Retrieves a single job
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Job returned successfully
+          content: {}
+        '404':
+          description: Job not found.
+          content: {}
+  "/user_api":
+    get:
+      summary: Retrieves users
+      description: Get a list of users
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Users found
+          content: {}
+    post:
+      summary: Creates a user
+      description: Create a new user
+      security:
+      - bearerAuth: []
+      parameters: []
+      responses:
+        '201':
+          description: User created successfully
+          content: {}
+        '403':
+          description: Username already exists
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: The new user's username. Must be unique.
+                password:
+                  type: string
+                  description: The new user's password.
+                password_confirmation:
+                  type: string
+                  description: The new user's password confirmation. Must match 'password'.
+  "/user_api/{id}":
+    put:
+      summary: Update a single user
+      description: Update a single user
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The user was returned successfully.
+          content: {}
+        '403':
+          description: The passwords did not match
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: The user's new password.
+                password_confirmation:
+                  type: string
+                  description: The user's new password confirmation. Must match 'password'.
+    get:
+      summary: Retrieve a single user
+      description: Retrieve a single user
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: The user was returned successfully.
+          content: {}
+        '404':
+          description: The user with that id could not be found.
+          content: {}
+        '401':
+          description: Your token is invalid or expired
+          content: {}
+    delete:
+      summary: Deletes a user
+      description: Deletes a user
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: User deleted successfully
+          content: {}
+        '403':
+          description: You cannot delete yourself.
+          content: {}
+        '404':
+          description: The user with that id could not be found.
+          content: {}
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
