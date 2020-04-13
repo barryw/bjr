@@ -241,8 +241,8 @@ paths:
       parameters:
       - name: tags
         in: query
-        required: false
         description: Specify a comma-separated list of tags to search jobs by.
+        required: false
         schema:
           type: string
       - name: incexc
@@ -257,14 +257,14 @@ paths:
         required: false
       - name: start_date
         in: query
-        required: false
         description: Specify a start date to search jobs by.
+        required: false
         schema:
           type: string
       - name: end_date
         in: query
-        required: false
         description: Specify an end date to search jobs by.
+        required: false
         schema:
           type: string
       responses:

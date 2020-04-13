@@ -11,7 +11,7 @@ WORKDIR /app
 ADD Gemfile /app
 ADD Gemfile.lock /app
 RUN gem install bundler \
-    && bundle install --without=development test
+    && bundle install #--without=development test
 
 ADD . /app
 RUN mkdir ./lib/mariadb && ln -s /usr/lib/mariadb/plugin ./lib/mariadb/plugin
