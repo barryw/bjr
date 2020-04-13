@@ -9,7 +9,7 @@ describe 'Job API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :params, in: :body, schema: { "$ref" => "#/components/schemas/JobIn" }
+      parameter name: :params, in: :body, schema: { '$ref' => '#/components/schemas/JobIn' }
 
       response '201', 'Job created successfully.' do
         let(:admin) { create(:admin1) }
@@ -67,10 +67,10 @@ describe 'Job API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :tags, in: :query, type: :string, required: false, description: 'Specify a comma-separated list of tags to search jobs by.'
-      parameter name: :incexc, in: :query, schema: { type: :string, enum: ['all','any','except'], description: 'How to handle the case where many tags are specified.' }, required: false
-      parameter name: :start_date, in: :query, type: :string, required: false, description: 'Specify a start date to search jobs by.'
-      parameter name: :end_date, in: :query, type: :string, required: false, description: 'Specify an end date to search jobs by.'
+      parameter name: :tags, in: :query, type: :string, description: 'Specify a comma-separated list of tags to search jobs by.', required: false
+      parameter name: :incexc, in: :query, schema: { type: :string, enum: %w[all any except], description: 'How to handle the case where many tags are specified.' }, required: false
+      parameter name: :start_date, in: :query, type: :string, description: 'Specify a start date to search jobs by.', required: false
+      parameter name: :end_date, in: :query, type: :string, description: 'Specify an end date to search jobs by.', required: false
 
       response '200', 'Jobs returned successfully' do
         let(:admin) { create(:admin1) }
@@ -98,7 +98,7 @@ describe 'Job API' do
       consumes 'application/json'
       produces 'application/json'
       parameter name: :id, in: :path, type: :integer
-      parameter name: :params, in: :body, schema: { "$ref" => "#/components/schemas/JobIn" }
+      parameter name: :params, in: :body, schema: { '$ref' => '#/components/schemas/JobIn' }
 
       response '200', 'Job updated successfully.' do
         let(:admin) { create(:admin1) }

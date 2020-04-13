@@ -12,7 +12,7 @@ class ShellJob < ApplicationJob
     error_message = ''
     stdout, stderr, status = Open3.capture3(job.command)
     return_code = status.exitstatus
-    success = (return_code.zero?)
+    success = return_code.zero?
   rescue StandardError
     success = false
     error_message = $ERROR_INFO

@@ -3,8 +3,8 @@
 require 'simplecov'
 SimpleCov.start 'rails' do
   enable_coverage :branch
-  #minimum_coverage line: 90, branch: 80
-  #refuse_coverage_drop
+  # minimum_coverage line: 90, branch: 80
+  # refuse_coverage_drop
 
   add_group 'Models', 'app/models'
   add_group 'Controllers', 'app/controllers'

@@ -66,7 +66,7 @@ RSpec.configure do |config|
             type: :array,
             items: {
               type: :object,
-              "$ref": "#/components/schemas/SingleUser"
+              "$ref": '#/components/schemas/SingleUser'
             }
           },
           UserOut: {
@@ -78,7 +78,7 @@ RSpec.configure do |config|
               status_code: { type: :integer, description: 'The HTTP status code returned.' },
               object: {
                 type: :object,
-                "$ref": "#/components/schemas/SingleUser"
+                "$ref": '#/components/schemas/SingleUser'
               }
             }
           },
@@ -102,7 +102,7 @@ RSpec.configure do |config|
             type: :array,
             items: {
               type: :object,
-              "$ref": "#/components/schemas/SingleJob"
+              "$ref": '#/components/schemas/SingleJob'
             }
           },
           JobIn: {
@@ -125,7 +125,7 @@ RSpec.configure do |config|
               status_code: { type: :integer, description: 'The HTTP status code returned.' },
               object: {
                 type: :object,
-                "$ref": "#/components/schemas/SingleJob"
+                "$ref": '#/components/schemas/SingleJob'
               }
             }
           }
