@@ -9,23 +9,30 @@ apiNode:
   nodeSelector: {}
   resources:
     requests:
-      memory: 128Mi
-      cpu: 100m
+      memory: 512Mi
+      cpu: 500m
     limits:
-      memory: 128Mi
-      cpu: 100m
+      memory: 512Mi
+      cpu: 500m
   replicas: 2
 
 workerNode:
   nodeSelector: {}
   resources:
     requests:
-      memory: 128Mi
-      cpu: 200m
+      memory: 512Mi
+      cpu: 500m
     limits:
-      memory: 128Mi
-      cpu: 200m
+      memory: 512Mi
+      cpu: 500m
   replicas: 2
+
+#
+# BJR Settings
+#
+serverSettings:
+  jwtLifetime: 3600
+
 
 #
 # MySQL settings
@@ -34,6 +41,16 @@ mysql:
   mysqlDatabase: bjr_production
   mysqlUser: bjr
   timezone: UTC
+  persistence:
+    enabled: true
+    size: 8Gi
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 200m
+    limits:
+      memory: 256Mi
+      cpu: 200m
   livenessProbe:
     initialDelaySeconds: 120
   readinessProbe:
@@ -56,9 +73,3 @@ redis:
     address: ""
     port: 6379
     sidekiqDb: 0
-
-#
-# BJR Settings
-#
-serverSettings:
-  jwtLifetime: 3600

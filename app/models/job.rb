@@ -17,6 +17,8 @@ class Job < ApplicationRecord
   scope :successful, ->(successful) { where(success: successful) }
   scope :include_by_ids, ->(ids) { where('jobs.id in (?)', ids) }
 
+  TAG_SEARCH = %w[any all exclude].freeze
+
   before_validation(on: %i[create update]) do
     self.timezone = 'UTC' if timezone.blank?
     begin
@@ -27,8 +29,6 @@ class Job < ApplicationRecord
     schedule = ::IceCube::Schedule.from_cron(date, cron)
     self.next_run = schedule.next_occurrence
   end
-
-  TAG_SEARCH = %w[any all exclude].freeze
 
   # Determines whether this job has a schedule ocurrence between 2 dates
   def occurs_between(start_date, end_date)
