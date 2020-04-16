@@ -15,7 +15,9 @@
 from __future__ import absolute_import
 
 # import apis into sdk package
-from swagger_client.Api.default_api import DefaultApi
+from swagger_client.Api.authentication_api import AuthenticationApi
+from swagger_client.Api.jobs_api import JobsApi
+from swagger_client.Api.users_api import UsersApi
 # import ApiClient
 from swagger_client.api_client import ApiClient
 from swagger_client.configuration import Configuration

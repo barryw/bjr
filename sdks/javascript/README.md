@@ -70,7 +70,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var BjrApiV1 = require('bjr_api_v1');
 
-var api = new BjrApiV1.DefaultApi()
+var api = new BjrApiV1.AuthenticationApi()
 
 var callback = function(error, data, response) {
   if (error) {
@@ -79,7 +79,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.authenticatePost(, callback);
+api.authenticateUser(, callback);
 ```
 
 ## Documentation for API Endpoints
@@ -88,17 +88,17 @@ All URIs are relative to */*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BjrApiV1.DefaultApi* | [**authenticatePost**](docs/DefaultApi.md#authenticatePost) | **POST** /authenticate | Authenticates a user and returns a token
-*BjrApiV1.DefaultApi* | [**jobApiGet**](docs/DefaultApi.md#jobApiGet) | **GET** /job_api | Retrieves jobs
-*BjrApiV1.DefaultApi* | [**jobApiIdDelete**](docs/DefaultApi.md#jobApiIdDelete) | **DELETE** /job_api/{id} | Deletes a job
-*BjrApiV1.DefaultApi* | [**jobApiIdGet**](docs/DefaultApi.md#jobApiIdGet) | **GET** /job_api/{id} | Retrieves a single job
-*BjrApiV1.DefaultApi* | [**jobApiIdPut**](docs/DefaultApi.md#jobApiIdPut) | **PUT** /job_api/{id} | Updates a single job
-*BjrApiV1.DefaultApi* | [**jobApiPost**](docs/DefaultApi.md#jobApiPost) | **POST** /job_api | Creates a job
-*BjrApiV1.DefaultApi* | [**userApiGet**](docs/DefaultApi.md#userApiGet) | **GET** /user_api | Retrieves users
-*BjrApiV1.DefaultApi* | [**userApiIdDelete**](docs/DefaultApi.md#userApiIdDelete) | **DELETE** /user_api/{id} | Deletes a user
-*BjrApiV1.DefaultApi* | [**userApiIdGet**](docs/DefaultApi.md#userApiIdGet) | **GET** /user_api/{id} | Retrieve a single user
-*BjrApiV1.DefaultApi* | [**userApiIdPut**](docs/DefaultApi.md#userApiIdPut) | **PUT** /user_api/{id} | Update a single user
-*BjrApiV1.DefaultApi* | [**userApiPost**](docs/DefaultApi.md#userApiPost) | **POST** /user_api | Creates a user
+*BjrApiV1.AuthenticationApi* | [**authenticateUser**](docs/AuthenticationApi.md#authenticateUser) | **POST** /authenticate | Authenticates a user and returns a token
+*BjrApiV1.JobsApi* | [**createJob**](docs/JobsApi.md#createJob) | **POST** /job_api | Creates a job
+*BjrApiV1.JobsApi* | [**deleteJob**](docs/JobsApi.md#deleteJob) | **DELETE** /job_api/{id} | Deletes a job
+*BjrApiV1.JobsApi* | [**getJob**](docs/JobsApi.md#getJob) | **GET** /job_api/{id} | Retrieves a single job
+*BjrApiV1.JobsApi* | [**getJobs**](docs/JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
+*BjrApiV1.JobsApi* | [**updateJob**](docs/JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
+*BjrApiV1.UsersApi* | [**createUser**](docs/UsersApi.md#createUser) | **POST** /user_api | Creates a user
+*BjrApiV1.UsersApi* | [**deleteUser**](docs/UsersApi.md#deleteUser) | **DELETE** /user_api/{id} | Deletes a user
+*BjrApiV1.UsersApi* | [**getUser**](docs/UsersApi.md#getUser) | **GET** /user_api/{id} | Retrieve a single user
+*BjrApiV1.UsersApi* | [**getUsers**](docs/UsersApi.md#getUsers) | **GET** /user_api | Retrieves users
+*BjrApiV1.UsersApi* | [**updateUser**](docs/UsersApi.md#updateUser) | **PUT** /user_api/{id} | Update a single user
 
 ## Documentation for Models
 

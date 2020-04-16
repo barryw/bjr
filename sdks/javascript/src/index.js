@@ -23,7 +23,9 @@ import UserArray from './Model/UserArray';
 import UserNewIn from './Model/UserNewIn';
 import UserOut from './Model/UserOut';
 import UserUpdateIn from './Model/UserUpdateIn';
-import DefaultApi from './Api/DefaultApi';
+import AuthenticationApi from './Api/AuthenticationApi';
+import JobsApi from './Api/JobsApi';
+import UsersApi from './Api/UsersApi';
 
 /**
 * Object.<br>
@@ -130,8 +132,20 @@ export {
     UserUpdateIn,
 
     /**
-    * The DefaultApi service constructor.
-    * @property {module:BJR/Api/DefaultApi}
+    * The AuthenticationApi service constructor.
+    * @property {module:BJR/Api/AuthenticationApi}
     */
-    DefaultApi
+    AuthenticationApi,
+
+    /**
+    * The JobsApi service constructor.
+    * @property {module:BJR/Api/JobsApi}
+    */
+    JobsApi,
+
+    /**
+    * The UsersApi service constructor.
+    * @property {module:BJR/Api/UsersApi}
+    */
+    UsersApi
 };

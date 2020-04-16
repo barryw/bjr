@@ -5,6 +5,9 @@ require 'swagger_helper'
 describe 'Authentication' do
   path '/authenticate' do
     post 'Authenticates a user and returns a token' do
+      description 'Authenticates a user and returns a token'
+      tags 'Authentication'
+      operationId 'authenticateUser'
       consumes 'application/json'
       produces 'application/json'
       parameter name: :params, in: :body, schema: { '$ref' => '#/components/schemas/AuthIn' }

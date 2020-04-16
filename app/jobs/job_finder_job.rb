@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+#
+# This job runs every minute to look for schedulable jobs
+#
 class JobFinderJob < ApplicationJob
   queue_as :job_finder
 

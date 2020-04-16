@@ -6,6 +6,8 @@ describe 'Job API' do
   path '/job_api' do
     post 'Creates a job' do
       description 'Creates a job'
+      tags 'Jobs'
+      operationId 'createJob'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
@@ -64,6 +66,8 @@ describe 'Job API' do
 
     get 'Retrieves jobs' do
       description 'Retrieves jobs'
+      tags 'Jobs'
+      operationId 'getJobs'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
@@ -94,6 +98,8 @@ describe 'Job API' do
   path '/job_api/{id}' do
     put 'Updates a single job' do
       description 'Updates a single job'
+      tags 'Jobs'
+      operationId 'updateJob'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
@@ -151,6 +157,8 @@ describe 'Job API' do
 
     delete 'Deletes a job' do
       description 'Deletes a job'
+      tags 'Jobs'
+      operationId 'deleteJob'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
@@ -182,6 +190,8 @@ describe 'Job API' do
 
     get 'Retrieves a single job' do
       description 'Retrieves a single job'
+      tags 'Jobs'
+      operationId 'getJob'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'

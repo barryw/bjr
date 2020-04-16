@@ -6,6 +6,8 @@ describe 'User API' do
   path '/user_api' do
     get 'Retrieves users' do
       description 'Get a list of users'
+      tags 'Users'
+      operationId 'getUsers'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
@@ -29,6 +31,8 @@ describe 'User API' do
 
     post 'Creates a user' do
       description 'Create a new user'
+      tags 'Users'
+      operationId 'createUser'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
@@ -59,6 +63,8 @@ describe 'User API' do
   path '/user_api/{id}' do
     put 'Update a single user' do
       description 'Update a single user'
+      tags 'Users'
+      operationId 'updateUser'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
@@ -92,6 +98,8 @@ describe 'User API' do
 
     get 'Retrieve a single user' do
       description 'Retrieve a single user'
+      tags 'Users'
+      operationId 'getUser'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
@@ -134,6 +142,8 @@ describe 'User API' do
 
     delete 'Deletes a user' do
       description 'Deletes a user'
+      tags 'Users'
+      operationId 'deleteUser'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'

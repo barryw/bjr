@@ -52,138 +52,15 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = swagger_client.AuthenticationApi(swagger_client.ApiClient(configuration))
 body = swagger_client.AuthIn() # AuthIn |  (optional)
 
 try:
     # Authenticates a user and returns a token
-    api_response = api_instance.authenticate_post(body=body)
+    api_response = api_instance.authenticate_user(body=body)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->authenticate_post: %s\n" % e)
-
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-tags = 'tags_example' # str | Specify a comma-separated list of tags to search jobs by. (optional)
-incexc = 'incexc_example' # str |  (optional)
-start_date = 'start_date_example' # str | Specify a start date to search jobs by. (optional)
-end_date = 'end_date_example' # str | Specify an end date to search jobs by. (optional)
-
-try:
-    # Retrieves jobs
-    api_response = api_instance.job_api_get(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->job_api_get: %s\n" % e)
-
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
-
-try:
-    # Deletes a job
-    api_instance.job_api_id_delete(id)
-except ApiException as e:
-    print("Exception when calling DefaultApi->job_api_id_delete: %s\n" % e)
-
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
-
-try:
-    # Retrieves a single job
-    api_response = api_instance.job_api_id_get(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->job_api_id_get: %s\n" % e)
-
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
-body = swagger_client.JobIn() # JobIn |  (optional)
-
-try:
-    # Updates a single job
-    api_response = api_instance.job_api_id_put(id, body=body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->job_api_id_put: %s\n" % e)
-
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.JobIn() # JobIn |  (optional)
-
-try:
-    # Creates a job
-    api_response = api_instance.job_api_post(body=body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->job_api_post: %s\n" % e)
-
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-
-try:
-    # Retrieves users
-    api_response = api_instance.user_api_get()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->user_api_get: %s\n" % e)
-
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
-
-try:
-    # Deletes a user
-    api_response = api_instance.user_api_id_delete(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->user_api_id_delete: %s\n" % e)
-
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
-
-try:
-    # Retrieve a single user
-    api_response = api_instance.user_api_id_get(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->user_api_id_get: %s\n" % e)
-
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
-body = swagger_client.UserUpdateIn() # UserUpdateIn |  (optional)
-
-try:
-    # Update a single user
-    api_response = api_instance.user_api_id_put(id, body=body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->user_api_id_put: %s\n" % e)
-
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.UserNewIn() # UserNewIn |  (optional)
-
-try:
-    # Creates a user
-    api_response = api_instance.user_api_post(body=body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->user_api_post: %s\n" % e)
+    print("Exception when calling AuthenticationApi->authenticate_user: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -192,17 +69,17 @@ All URIs are relative to */*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**authenticate_post**](docs/DefaultApi.md#authenticate_post) | **POST** /authenticate | Authenticates a user and returns a token
-*DefaultApi* | [**job_api_get**](docs/DefaultApi.md#job_api_get) | **GET** /job_api | Retrieves jobs
-*DefaultApi* | [**job_api_id_delete**](docs/DefaultApi.md#job_api_id_delete) | **DELETE** /job_api/{id} | Deletes a job
-*DefaultApi* | [**job_api_id_get**](docs/DefaultApi.md#job_api_id_get) | **GET** /job_api/{id} | Retrieves a single job
-*DefaultApi* | [**job_api_id_put**](docs/DefaultApi.md#job_api_id_put) | **PUT** /job_api/{id} | Updates a single job
-*DefaultApi* | [**job_api_post**](docs/DefaultApi.md#job_api_post) | **POST** /job_api | Creates a job
-*DefaultApi* | [**user_api_get**](docs/DefaultApi.md#user_api_get) | **GET** /user_api | Retrieves users
-*DefaultApi* | [**user_api_id_delete**](docs/DefaultApi.md#user_api_id_delete) | **DELETE** /user_api/{id} | Deletes a user
-*DefaultApi* | [**user_api_id_get**](docs/DefaultApi.md#user_api_id_get) | **GET** /user_api/{id} | Retrieve a single user
-*DefaultApi* | [**user_api_id_put**](docs/DefaultApi.md#user_api_id_put) | **PUT** /user_api/{id} | Update a single user
-*DefaultApi* | [**user_api_post**](docs/DefaultApi.md#user_api_post) | **POST** /user_api | Creates a user
+*AuthenticationApi* | [**authenticate_user**](docs/AuthenticationApi.md#authenticate_user) | **POST** /authenticate | Authenticates a user and returns a token
+*JobsApi* | [**create_job**](docs/JobsApi.md#create_job) | **POST** /job_api | Creates a job
+*JobsApi* | [**delete_job**](docs/JobsApi.md#delete_job) | **DELETE** /job_api/{id} | Deletes a job
+*JobsApi* | [**get_job**](docs/JobsApi.md#get_job) | **GET** /job_api/{id} | Retrieves a single job
+*JobsApi* | [**get_jobs**](docs/JobsApi.md#get_jobs) | **GET** /job_api | Retrieves jobs
+*JobsApi* | [**update_job**](docs/JobsApi.md#update_job) | **PUT** /job_api/{id} | Updates a single job
+*UsersApi* | [**create_user**](docs/UsersApi.md#create_user) | **POST** /user_api | Creates a user
+*UsersApi* | [**delete_user**](docs/UsersApi.md#delete_user) | **DELETE** /user_api/{id} | Deletes a user
+*UsersApi* | [**get_user**](docs/UsersApi.md#get_user) | **GET** /user_api/{id} | Retrieve a single user
+*UsersApi* | [**get_users**](docs/UsersApi.md#get_users) | **GET** /user_api | Retrieves users
+*UsersApi* | [**update_user**](docs/UsersApi.md#update_user) | **PUT** /user_api/{id} | Update a single user
 
 ## Documentation For Models
 

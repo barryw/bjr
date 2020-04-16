@@ -69,18 +69,18 @@ namespace Example
     {
         public void main()
         {
-            var apiInstance = new DefaultApi();
+            var apiInstance = new AuthenticationApi();
             var body = new AuthIn(); // AuthIn |  (optional) 
 
             try
             {
                 // Authenticates a user and returns a token
-                AuthOut result = apiInstance.AuthenticatePost(body);
+                AuthOut result = apiInstance.AuthenticateUser(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.AuthenticatePost: " + e.Message );
+                Debug.Print("Exception when calling AuthenticationApi.AuthenticateUser: " + e.Message );
             }
         }
     }
@@ -94,17 +94,17 @@ All URIs are relative to */*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**AuthenticatePost**](docs/DefaultApi.md#authenticatepost) | **POST** /authenticate | Authenticates a user and returns a token
-*DefaultApi* | [**JobApiGet**](docs/DefaultApi.md#jobapiget) | **GET** /job_api | Retrieves jobs
-*DefaultApi* | [**JobApiIdDelete**](docs/DefaultApi.md#jobapiiddelete) | **DELETE** /job_api/{id} | Deletes a job
-*DefaultApi* | [**JobApiIdGet**](docs/DefaultApi.md#jobapiidget) | **GET** /job_api/{id} | Retrieves a single job
-*DefaultApi* | [**JobApiIdPut**](docs/DefaultApi.md#jobapiidput) | **PUT** /job_api/{id} | Updates a single job
-*DefaultApi* | [**JobApiPost**](docs/DefaultApi.md#jobapipost) | **POST** /job_api | Creates a job
-*DefaultApi* | [**UserApiGet**](docs/DefaultApi.md#userapiget) | **GET** /user_api | Retrieves users
-*DefaultApi* | [**UserApiIdDelete**](docs/DefaultApi.md#userapiiddelete) | **DELETE** /user_api/{id} | Deletes a user
-*DefaultApi* | [**UserApiIdGet**](docs/DefaultApi.md#userapiidget) | **GET** /user_api/{id} | Retrieve a single user
-*DefaultApi* | [**UserApiIdPut**](docs/DefaultApi.md#userapiidput) | **PUT** /user_api/{id} | Update a single user
-*DefaultApi* | [**UserApiPost**](docs/DefaultApi.md#userapipost) | **POST** /user_api | Creates a user
+*AuthenticationApi* | [**AuthenticateUser**](docs/AuthenticationApi.md#authenticateuser) | **POST** /authenticate | Authenticates a user and returns a token
+*JobsApi* | [**CreateJob**](docs/JobsApi.md#createjob) | **POST** /job_api | Creates a job
+*JobsApi* | [**DeleteJob**](docs/JobsApi.md#deletejob) | **DELETE** /job_api/{id} | Deletes a job
+*JobsApi* | [**GetJob**](docs/JobsApi.md#getjob) | **GET** /job_api/{id} | Retrieves a single job
+*JobsApi* | [**GetJobs**](docs/JobsApi.md#getjobs) | **GET** /job_api | Retrieves jobs
+*JobsApi* | [**UpdateJob**](docs/JobsApi.md#updatejob) | **PUT** /job_api/{id} | Updates a single job
+*UsersApi* | [**CreateUser**](docs/UsersApi.md#createuser) | **POST** /user_api | Creates a user
+*UsersApi* | [**DeleteUser**](docs/UsersApi.md#deleteuser) | **DELETE** /user_api/{id} | Deletes a user
+*UsersApi* | [**GetUser**](docs/UsersApi.md#getuser) | **GET** /user_api/{id} | Retrieve a single user
+*UsersApi* | [**GetUsers**](docs/UsersApi.md#getusers) | **GET** /user_api | Retrieves users
+*UsersApi* | [**UpdateUser**](docs/UsersApi.md#updateuser) | **PUT** /user_api/{id} | Update a single user
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models

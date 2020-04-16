@@ -2,6 +2,9 @@
 
 require 'open3'
 
+#
+# Execute a shell job
+#
 class ShellJob < ApplicationJob
   queue_as :job_runner
 
@@ -17,6 +20,6 @@ class ShellJob < ApplicationJob
     success = false
     error_message = $ERROR_INFO
   ensure
-    job.stop_job(run, return_code, success, error_message, stdout, stderr) unless job.nil?
+    job&.stop_job(run, return_code, success, error_message, stdout, stderr)
   end
 end

@@ -192,6 +192,10 @@ paths:
   "/authenticate":
     post:
       summary: Authenticates a user and returns a token
+      description: Authenticates a user and returns a token
+      tags:
+      - Authentication
+      operationId: authenticateUser
       parameters: []
       responses:
         '200':
@@ -215,6 +219,9 @@ paths:
     post:
       summary: Creates a job
       description: Creates a job
+      tags:
+      - Jobs
+      operationId: createJob
       security:
       - bearerAuth: []
       parameters: []
@@ -236,6 +243,9 @@ paths:
     get:
       summary: Retrieves jobs
       description: Retrieves jobs
+      tags:
+      - Jobs
+      operationId: getJobs
       security:
       - bearerAuth: []
       parameters:
@@ -278,6 +288,9 @@ paths:
     put:
       summary: Updates a single job
       description: Updates a single job
+      tags:
+      - Jobs
+      operationId: updateJob
       security:
       - bearerAuth: []
       parameters:
@@ -307,6 +320,9 @@ paths:
     delete:
       summary: Deletes a job
       description: Deletes a job
+      tags:
+      - Jobs
+      operationId: deleteJob
       security:
       - bearerAuth: []
       parameters:
@@ -325,6 +341,9 @@ paths:
     get:
       summary: Retrieves a single job
       description: Retrieves a single job
+      tags:
+      - Jobs
+      operationId: getJob
       security:
       - bearerAuth: []
       parameters:
@@ -347,6 +366,9 @@ paths:
     get:
       summary: Retrieves users
       description: Get a list of users
+      tags:
+      - Users
+      operationId: getUsers
       security:
       - bearerAuth: []
       responses:
@@ -359,6 +381,9 @@ paths:
     post:
       summary: Creates a user
       description: Create a new user
+      tags:
+      - Users
+      operationId: createUser
       security:
       - bearerAuth: []
       parameters: []
@@ -381,6 +406,9 @@ paths:
     put:
       summary: Update a single user
       description: Update a single user
+      tags:
+      - Users
+      operationId: updateUser
       security:
       - bearerAuth: []
       parameters:
@@ -410,6 +438,9 @@ paths:
     get:
       summary: Retrieve a single user
       description: Retrieve a single user
+      tags:
+      - Users
+      operationId: getUser
       security:
       - bearerAuth: []
       parameters:
@@ -437,6 +468,9 @@ paths:
     delete:
       summary: Deletes a user
       description: Deletes a user
+      tags:
+      - Users
+      operationId: deleteUser
       security:
       - bearerAuth: []
       parameters:
