@@ -10,6 +10,7 @@ en:
       runs: Runs for job %{id}
     errors:
       not_found: Job not found.
+      create_failed: "Failed to create job: %{error}"
       update_failed: "Failed to update job '%{id}': %{error}"
       already_exists: A job with this name already exists.
       end_date_required: You must supply an end date parameter.

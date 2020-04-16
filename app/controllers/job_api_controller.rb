@@ -19,15 +19,19 @@ class JobApiController < ApplicationController
   end
 
   def create
-    job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command],
-                      timezone: params[:timezone], user: current_user)
-    current_user.tag job, with: params[:tags], on: :tags if params[:tags].present?
-    message I18n.t('jobs.messages.created', id: job.id), :created, false, job, 'job'
+    ActiveRecord::Base.transaction do
+      job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command],
+                        timezone: params[:timezone], user: current_user)
+      current_user.tag job, with: params[:tags], on: :tags if params[:tags].present?
+      message I18n.t('jobs.messages.created', id: job.id), :created, false, job, 'job'
+    end
   rescue ActiveRecord::RecordNotUnique
     not_unique
   rescue TZInfo::InvalidTimezoneIdentifier
     error I18n.t('common.errors.invalid_timezone', timezone: params[:timezone],
                                                    timezone_list_url: static_api_timezones_url), :forbidden
+  rescue StandardError
+    error I18n.t('jobs.errors.create_failed', error: $ERROR_INFO), :conflict
   end
 
   def update
@@ -36,8 +40,10 @@ class JobApiController < ApplicationController
     @job.command = params[:command] unless (@job.command == params[:command]) || params[:command].blank?
     @job.timezone = params[:timezone] unless (@job.timezone == params[:timezone]) || params[:timezone].blank?
     @job.enabled = params[:enabled] if params[:enabled].present?
-    current_user.tag @job, with: params[:tags], on: :tags if params[:tags].present?
-    @job.save!
+    ActiveRecord::Base.transaction do
+      current_user.tag @job, with: params[:tags], on: :tags if params[:tags].present?
+      @job.save!
+    end
     message I18n.t('jobs.messages.updated', id: @job.id), :ok, false, @job, 'job'
   rescue ActiveRecord::RecordNotUnique
     not_unique
