@@ -17,6 +17,6 @@ class ShellJob < ApplicationJob
     success = false
     error_message = $ERROR_INFO
   ensure
-    job.stop_job(run, return_code, success, error_message, stdout, stderr)
+    job.stop_job(run, return_code, success, error_message, stdout, stderr) unless job.nil?
   end
 end

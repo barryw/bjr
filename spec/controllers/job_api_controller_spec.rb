@@ -17,6 +17,17 @@ RSpec.describe JobApiController, type: :controller do
       expect(response).not_to have_http_status(:success)
     end
 
+    it 'returns http conflict when it fails to create a job' do
+      user = create(:admin1)
+      authenticated_header(user)
+      expect(Job).to receive(:create!).and_raise('The database is misbehaving.')
+      post :create, params: { 'name': 'I will fail', 'cron': '0 * * * *', command: 'ls -l' }
+      expect(response).to have_http_status(:conflict)
+      json = JSON.parse(response.body)
+      expect(json['status_code']).to eq(409)
+      expect(json['is_error']).to be true
+    end
+
     it 'returns http success' do
       authenticated_header(create(:admin1))
       post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST' }
@@ -86,6 +97,18 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['status_code']).to eq(200)
       expect(json['object']['enabled']).to eq(true)
       expect(json['object']['tags']).to include('tag2')
+    end
+
+    it 'returns http conflict when it fails to update a job' do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, user: user)
+      allow_any_instance_of(Job).to receive(:save!).and_raise('The database is misbehaving.')
+      put :update, params: { id: job.id, 'name': 'I will fail', 'cron': '0 * * * *', command: 'ps ax', timezone: 'EDT' }
+      expect(response).to have_http_status(:conflict)
+      json = JSON.parse(response.body)
+      expect(json['status_code']).to eq(409)
+      expect(json['is_error']).to be true
     end
   end
 

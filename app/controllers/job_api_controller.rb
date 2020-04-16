@@ -48,7 +48,7 @@ class JobApiController < ApplicationController
   rescue ActiveRecord::RecordNotUnique
     not_unique
   rescue StandardError
-    error I18n.t('jobs.errors.update_failed', id: @job.id, error: $ERROR_INFO), :forbidden
+    error I18n.t('jobs.errors.update_failed', id: @job.id, error: $ERROR_INFO), :conflict
   end
 
   def destroy
