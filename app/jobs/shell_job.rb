@@ -11,15 +11,39 @@ class ShellJob < ApplicationJob
   def perform(jobid)
     job = Job.find(jobid)
     run = job.start_job
+    file = write_command(job)
+
     success = true
     error_message = ''
-    stdout, stderr, status = Open3.capture3(job.command)
+    stdout, stderr, status = Open3.capture3(file.path)
     return_code = status.exitstatus
     success = return_code.zero?
   rescue StandardError
     success = false
     error_message = $ERROR_INFO
   ensure
+    file&.unlink
     job&.stop_job(run, return_code, success, error_message, stdout, stderr)
+  end
+
+private
+
+  def write_command(job)
+    file = Tempfile.new("job#{job.id}")
+    file.puts "#!/bin/bash"
+    file.puts
+    file.puts "# Shell script for job #{job.id}"
+    file.puts job.command
+    file.puts
+    file.puts "exit 0"
+
+    file.close
+
+    logger.debug "Job #{job.id} file written to #{file.path}"
+    logger.debug File.read(file.path)
+
+    File.chmod(0755, file.path)
+
+    file
   end
 end

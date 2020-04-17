@@ -17,7 +17,7 @@ RSpec.describe ShellJob, type: :job do
       user = create(:admin1)
       job = create(:job1, user: user)
       expect(Job).to receive(:find).and_return(job)
-      expect(Open3).to receive(:capture3).with(job.command).and_raise(StandardError)
+      expect(Open3).to receive(:capture3).and_raise(StandardError)
       expect(job).to receive(:stop_job)
       ShellJob.perform_later(1)
     end

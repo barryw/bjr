@@ -5,7 +5,7 @@ MAINTAINER Barry Walker <barrywalker@gmail.com>
 RUN apk update && apk upgrade \
     && apk add ruby-nokogiri ruby-dev build-base bash \
         libxml2-dev libxslt-dev libffi-dev mariadb-dev \
-        tzdata mariadb-connector-c
+        tzdata mariadb-connector-c curl wget jq
 
 WORKDIR /app
 ADD Gemfile /app
