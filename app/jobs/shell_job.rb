@@ -26,16 +26,16 @@ class ShellJob < ApplicationJob
     job&.stop_job(run, return_code, success, error_message, stdout, stderr)
   end
 
-private
+  private
 
   def write_command(job)
     file = Tempfile.new("job#{job.id}")
-    file.puts "#!/bin/bash"
+    file.puts '#!/bin/bash'
     file.puts
     file.puts "# Shell script for job #{job.id}"
     file.puts job.command
     file.puts
-    file.puts "exit 0"
+    file.puts 'exit 0'
 
     file.close
 

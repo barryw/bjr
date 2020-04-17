@@ -4,6 +4,9 @@ require 'active_support/time'
 require 'ice_cube_cron'
 require 'chronic'
 
+#
+# Job model
+#
 class Job < ApplicationRecord
   acts_as_taggable
 

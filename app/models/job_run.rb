@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+#
+# JobRun model
+#
 class JobRun < ApplicationRecord
   belongs_to :job
 

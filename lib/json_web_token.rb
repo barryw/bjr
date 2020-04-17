@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+#
+# Encode and decode JWTs
+#
 class JsonWebToken
   class << self
     def encode(payload)

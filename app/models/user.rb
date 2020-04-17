@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+#
+# User model
+#
 class User < ApplicationRecord
   acts_as_tagger
   has_secure_password
