@@ -15,7 +15,7 @@ RSpec.describe Job, type: :model do
   it 'Does the right thing when a job finishes' do
     admin = create(:admin1)
     job = create(:job1, user: admin)
-    run = create(:job_run, job: job, start_time: Time.current)
+    run = create(:successful_job_run, job: job, start_time: Time.current)
     job.stop_job(run, 0, true, 'error message', 'stdout', 'stderr')
     expect(job.running).to be false
     expect(job.success).to be true

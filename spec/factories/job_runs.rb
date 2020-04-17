@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :job_run, class: JobRun do
-  end
-
   factory :successful_job_run, class: JobRun do
     success { true }
     return_code { 0 }

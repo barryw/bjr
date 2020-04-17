@@ -426,7 +426,7 @@ RSpec.describe JobApiController, type: :controller do
     it 'returns http success while trying to get runs that failed' do
       user = create(:admin1)
       job = create(:job1, user: user)
-      create(:job_run, job: job, success: true, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
+      create(:successful_job_run, job: job, success: true, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       run2 = create(:failed_job_run, job: job, success: false, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': false }
