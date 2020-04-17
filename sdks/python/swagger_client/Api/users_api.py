@@ -327,6 +327,8 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
+        :param int per_page:
+        :param int page:
         :return: UserArray
                  If the method is called asynchronously,
                  returns the request thread.
@@ -348,12 +350,14 @@ class UsersApi(object):
         >>> result = thread.get()
 
         :param async_req bool
+        :param int per_page:
+        :param int page:
         :return: UserArray
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['per_page', 'page']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -374,6 +378,10 @@ class UsersApi(object):
         path_params = {}
 
         query_params = []
+        if 'per_page' in params:
+            query_params.append(('per_page', params['per_page']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
 
         header_params = {}
 

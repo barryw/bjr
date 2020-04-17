@@ -324,6 +324,8 @@ class JobsApi(object):
 
         :param async_req bool
         :param int id: (required)
+        :param int per_page:
+        :param int page:
         :return: JobRunArray
                  If the method is called asynchronously,
                  returns the request thread.
@@ -346,12 +348,14 @@ class JobsApi(object):
 
         :param async_req bool
         :param int id: (required)
+        :param int per_page:
+        :param int page:
         :return: JobRunArray
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id']  # noqa: E501
+        all_params = ['id', 'per_page', 'page']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -378,6 +382,10 @@ class JobsApi(object):
             path_params['id'] = params['id']  # noqa: E501
 
         query_params = []
+        if 'per_page' in params:
+            query_params.append(('per_page', params['per_page']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
 
         header_params = {}
 
@@ -422,6 +430,8 @@ class JobsApi(object):
         :param str incexc:
         :param str start_date: Specify a start date to search jobs by.
         :param str end_date: Specify an end date to search jobs by.
+        :param int per_page:
+        :param int page:
         :return: JobArray
                  If the method is called asynchronously,
                  returns the request thread.
@@ -447,12 +457,14 @@ class JobsApi(object):
         :param str incexc:
         :param str start_date: Specify a start date to search jobs by.
         :param str end_date: Specify an end date to search jobs by.
+        :param int per_page:
+        :param int page:
         :return: JobArray
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['tags', 'incexc', 'start_date', 'end_date']  # noqa: E501
+        all_params = ['tags', 'incexc', 'start_date', 'end_date', 'per_page', 'page']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -481,6 +493,10 @@ class JobsApi(object):
             query_params.append(('start_date', params['start_date']))  # noqa: E501
         if 'end_date' in params:
             query_params.append(('end_date', params['end_date']))  # noqa: E501
+        if 'per_page' in params:
+            query_params.append(('per_page', params['per_page']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
 
         header_params = {}
 

@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobRuns"></a>
 # **getJobRuns**
-> JobRunArray getJobRuns(id)
+> JobRunArray getJobRuns(id, opts)
 
 Retrieve the runs for a job
 
@@ -161,8 +161,11 @@ let defaultClient = BjrApiV1.ApiClient.instance;
 
 let apiInstance = new BjrApiV1.JobsApi();
 let id = 56; // Number | 
-
-apiInstance.getJobRuns(id, (error, data, response) => {
+let opts = { 
+  'perPage': 56, // Number | 
+  'page': 56 // Number | 
+};
+apiInstance.getJobRuns(id, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -176,6 +179,8 @@ apiInstance.getJobRuns(id, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**|  | 
+ **perPage** | **Number**|  | [optional] 
+ **page** | **Number**|  | [optional] 
 
 ### Return type
 
@@ -209,7 +214,9 @@ let opts = {
   'tags': "tags_example", // String | Specify a comma-separated list of tags to search jobs by.
   'incexc': "incexc_example", // String | 
   'startDate': "startDate_example", // String | Specify a start date to search jobs by.
-  'endDate': "endDate_example" // String | Specify an end date to search jobs by.
+  'endDate': "endDate_example", // String | Specify an end date to search jobs by.
+  'perPage': 56, // Number | 
+  'page': 56 // Number | 
 };
 apiInstance.getJobs(opts, (error, data, response) => {
   if (error) {
@@ -228,6 +235,8 @@ Name | Type | Description  | Notes
  **incexc** | **String**|  | [optional] 
  **startDate** | **String**| Specify a start date to search jobs by. | [optional] 
  **endDate** | **String**| Specify an end date to search jobs by. | [optional] 
+ **perPage** | **Number**|  | [optional] 
+ **page** | **Number**|  | [optional] 
 
 ### Return type
 

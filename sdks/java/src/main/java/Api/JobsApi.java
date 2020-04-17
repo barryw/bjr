@@ -426,12 +426,14 @@ public class JobsApi {
     /**
      * Build call for getJobRuns
      * @param id  (required)
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getJobRunsCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getJobRunsCall(Integer id, Integer perPage, Integer page, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -440,6 +442,10 @@ public class JobsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (perPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("per_page", perPage));
+        if (page != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -474,13 +480,13 @@ public class JobsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getJobRunsValidateBeforeCall(Integer id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getJobRunsValidateBeforeCall(Integer id, Integer perPage, Integer page, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getJobRuns(Async)");
         }
         
-        com.squareup.okhttp.Call call = getJobRunsCall(id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getJobRunsCall(id, perPage, page, progressListener, progressRequestListener);
         return call;
 
         
@@ -493,11 +499,13 @@ public class JobsApi {
      * Retrieve the runs for a job
      * Retrieve the runs for a job
      * @param id  (required)
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @return JobRunArray
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public JobRunArray getJobRuns(Integer id) throws ApiException {
-        ApiResponse<JobRunArray> resp = getJobRunsWithHttpInfo(id);
+    public JobRunArray getJobRuns(Integer id, Integer perPage, Integer page) throws ApiException {
+        ApiResponse<JobRunArray> resp = getJobRunsWithHttpInfo(id, perPage, page);
         return resp.getData();
     }
 
@@ -505,11 +513,13 @@ public class JobsApi {
      * Retrieve the runs for a job
      * Retrieve the runs for a job
      * @param id  (required)
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @return ApiResponse&lt;JobRunArray&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<JobRunArray> getJobRunsWithHttpInfo(Integer id) throws ApiException {
-        com.squareup.okhttp.Call call = getJobRunsValidateBeforeCall(id, null, null);
+    public ApiResponse<JobRunArray> getJobRunsWithHttpInfo(Integer id, Integer perPage, Integer page) throws ApiException {
+        com.squareup.okhttp.Call call = getJobRunsValidateBeforeCall(id, perPage, page, null, null);
         Type localVarReturnType = new TypeToken<JobRunArray>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -518,11 +528,13 @@ public class JobsApi {
      * Retrieve the runs for a job (asynchronously)
      * Retrieve the runs for a job
      * @param id  (required)
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getJobRunsAsync(Integer id, final ApiCallback<JobRunArray> callback) throws ApiException {
+    public com.squareup.okhttp.Call getJobRunsAsync(Integer id, Integer perPage, Integer page, final ApiCallback<JobRunArray> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -543,7 +555,7 @@ public class JobsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getJobRunsValidateBeforeCall(id, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getJobRunsValidateBeforeCall(id, perPage, page, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<JobRunArray>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -554,12 +566,14 @@ public class JobsApi {
      * @param incexc  (optional)
      * @param startDate Specify a start date to search jobs by. (optional)
      * @param endDate Specify an end date to search jobs by. (optional)
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getJobsCall(String tags, String incexc, String startDate, String endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getJobsCall(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -575,6 +589,10 @@ public class JobsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
         if (endDate != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (perPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("per_page", perPage));
+        if (page != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -609,9 +627,9 @@ public class JobsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getJobsValidateBeforeCall(String tags, String incexc, String startDate, String endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getJobsValidateBeforeCall(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        com.squareup.okhttp.Call call = getJobsCall(tags, incexc, startDate, endDate, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getJobsCall(tags, incexc, startDate, endDate, perPage, page, progressListener, progressRequestListener);
         return call;
 
         
@@ -627,11 +645,13 @@ public class JobsApi {
      * @param incexc  (optional)
      * @param startDate Specify a start date to search jobs by. (optional)
      * @param endDate Specify an end date to search jobs by. (optional)
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @return JobArray
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public JobArray getJobs(String tags, String incexc, String startDate, String endDate) throws ApiException {
-        ApiResponse<JobArray> resp = getJobsWithHttpInfo(tags, incexc, startDate, endDate);
+    public JobArray getJobs(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
+        ApiResponse<JobArray> resp = getJobsWithHttpInfo(tags, incexc, startDate, endDate, perPage, page);
         return resp.getData();
     }
 
@@ -642,11 +662,13 @@ public class JobsApi {
      * @param incexc  (optional)
      * @param startDate Specify a start date to search jobs by. (optional)
      * @param endDate Specify an end date to search jobs by. (optional)
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @return ApiResponse&lt;JobArray&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<JobArray> getJobsWithHttpInfo(String tags, String incexc, String startDate, String endDate) throws ApiException {
-        com.squareup.okhttp.Call call = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, null, null);
+    public ApiResponse<JobArray> getJobsWithHttpInfo(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
+        com.squareup.okhttp.Call call = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, perPage, page, null, null);
         Type localVarReturnType = new TypeToken<JobArray>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -658,11 +680,13 @@ public class JobsApi {
      * @param incexc  (optional)
      * @param startDate Specify a start date to search jobs by. (optional)
      * @param endDate Specify an end date to search jobs by. (optional)
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getJobsAsync(String tags, String incexc, String startDate, String endDate, final ApiCallback<JobArray> callback) throws ApiException {
+    public com.squareup.okhttp.Call getJobsAsync(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page, final ApiCallback<JobArray> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -683,7 +707,7 @@ public class JobsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, perPage, page, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<JobArray>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

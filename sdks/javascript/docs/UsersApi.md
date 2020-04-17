@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsers"></a>
 # **getUsers**
-> UserArray getUsers()
+> UserArray getUsers(opts)
 
 Retrieves users
 
@@ -159,7 +159,11 @@ let defaultClient = BjrApiV1.ApiClient.instance;
 
 
 let apiInstance = new BjrApiV1.UsersApi();
-apiInstance.getUsers((error, data, response) => {
+let opts = { 
+  'perPage': 56, // Number | 
+  'page': 56 // Number | 
+};
+apiInstance.getUsers(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -169,7 +173,11 @@ apiInstance.getUsers((error, data, response) => {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **Number**|  | [optional] 
+ **page** | **Number**|  | [optional] 
 
 ### Return type
 

@@ -103,7 +103,9 @@ namespace BJR.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
-            //var response = instance.GetJobRuns(id);
+            //int? perPage = null;
+            //int? page = null;
+            //var response = instance.GetJobRuns(id, perPage, page);
             //Assert.IsInstanceOf<JobRunArray> (response, "response is JobRunArray");
         }
         /// <summary>
@@ -117,7 +119,9 @@ namespace BJR.Test
             //string incexc = null;
             //string startDate = null;
             //string endDate = null;
-            //var response = instance.GetJobs(tags, incexc, startDate, endDate);
+            //int? perPage = null;
+            //int? page = null;
+            //var response = instance.GetJobs(tags, incexc, startDate, endDate, perPage, page);
             //Assert.IsInstanceOf<JobArray> (response, "response is JobArray");
         }
         /// <summary>

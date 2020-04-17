@@ -159,16 +159,20 @@ export default class JobsApi {
     /**
      * Retrieve the runs for a job
      * Retrieve the runs for a job
+     * @param {Object} opts Optional parameters
      * @param {module:BJR/Api/JobsApi~getJobRunsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:BJR/Model/JobRunArray}
      */
-    getJobRuns(id, callback) {
+    getJobRuns(id, opts, callback) {
+      opts = opts || {};
       let postBody = null;
 
       let pathParams = {
         'id': id
       };
       let queryParams = {
+        'per_page': opts['perPage'],
+        'page': opts['page']
       };
       let headerParams = {
       };
@@ -211,7 +215,9 @@ export default class JobsApi {
         'tags': opts['tags'],
         'incexc': opts['incexc'],
         'start_date': opts['startDate'],
-        'end_date': opts['endDate']
+        'end_date': opts['endDate'],
+        'per_page': opts['perPage'],
+        'page': opts['page']
       };
       let headerParams = {
       };

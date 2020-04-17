@@ -89,7 +89,9 @@ public class UsersApiTest {
      */
     @Test
     public void getUsersTest() throws ApiException {
-        UserArray response = api.getUsers();
+        Integer perPage = null;
+        Integer page = null;
+        UserArray response = api.getUsers(perPage, page);
 
         // TODO: test validations
     }

@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getjobruns"></a>
 # **GetJobRuns**
-> JobRunArray GetJobRuns (int? id)
+> JobRunArray GetJobRuns (int? id, int? perPage = null, int? page = null)
 
 Retrieve the runs for a job
 
@@ -218,11 +218,13 @@ namespace Example
 
             var apiInstance = new JobsApi();
             var id = 56;  // int? | 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
 
             try
             {
                 // Retrieve the runs for a job
-                JobRunArray result = apiInstance.GetJobRuns(id);
+                JobRunArray result = apiInstance.GetJobRuns(id, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -239,6 +241,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int?**|  | 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
 
 ### Return type
 
@@ -256,7 +260,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getjobs"></a>
 # **GetJobs**
-> JobArray GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null)
+> JobArray GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
 
 Retrieves jobs
 
@@ -282,11 +286,13 @@ namespace Example
             var incexc = incexc_example;  // string |  (optional) 
             var startDate = startDate_example;  // string | Specify a start date to search jobs by. (optional) 
             var endDate = endDate_example;  // string | Specify an end date to search jobs by. (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
 
             try
             {
                 // Retrieves jobs
-                JobArray result = apiInstance.GetJobs(tags, incexc, startDate, endDate);
+                JobArray result = apiInstance.GetJobs(tags, incexc, startDate, endDate, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -306,6 +312,8 @@ Name | Type | Description  | Notes
  **incexc** | **string**|  | [optional] 
  **startDate** | **string**| Specify a start date to search jobs by. | [optional] 
  **endDate** | **string**| Specify an end date to search jobs by. | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
 
 ### Return type
 

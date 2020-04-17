@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job_runs**
-> JobRunArray get_job_runs(id)
+> JobRunArray get_job_runs(id, per_page=per_page, page=page)
 
 Retrieve the runs for a job
 
@@ -176,10 +176,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
 id = 56 # int | 
+per_page = 56 # int |  (optional)
+page = 56 # int |  (optional)
 
 try:
     # Retrieve the runs for a job
-    api_response = api_instance.get_job_runs(id)
+    api_response = api_instance.get_job_runs(id, per_page=per_page, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling JobsApi->get_job_runs: %s\n" % e)
@@ -190,6 +192,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
+ **per_page** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -207,7 +211,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_jobs**
-> JobArray get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date)
+> JobArray get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, per_page=per_page, page=page)
 
 Retrieves jobs
 
@@ -228,10 +232,12 @@ tags = 'tags_example' # str | Specify a comma-separated list of tags to search j
 incexc = 'incexc_example' # str |  (optional)
 start_date = 'start_date_example' # str | Specify a start date to search jobs by. (optional)
 end_date = 'end_date_example' # str | Specify an end date to search jobs by. (optional)
+per_page = 56 # int |  (optional)
+page = 56 # int |  (optional)
 
 try:
     # Retrieves jobs
-    api_response = api_instance.get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date)
+    api_response = api_instance.get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, per_page=per_page, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling JobsApi->get_jobs: %s\n" % e)
@@ -245,6 +251,8 @@ Name | Type | Description  | Notes
  **incexc** | **str**|  | [optional] 
  **start_date** | **str**| Specify a start date to search jobs by. | [optional] 
  **end_date** | **str**| Specify an end date to search jobs by. | [optional] 
+ **per_page** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 

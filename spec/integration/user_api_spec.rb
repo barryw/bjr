@@ -11,6 +11,8 @@ describe 'User API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
+      parameter name: :per_page, in: :query, type: :integer, required: false
+      parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Users found' do
         let(:admin) { create(:admin1) }

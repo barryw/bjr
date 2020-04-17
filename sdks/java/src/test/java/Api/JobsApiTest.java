@@ -90,7 +90,9 @@ public class JobsApiTest {
     @Test
     public void getJobRunsTest() throws ApiException {
         Integer id = null;
-        JobRunArray response = api.getJobRuns(id);
+        Integer perPage = null;
+        Integer page = null;
+        JobRunArray response = api.getJobRuns(id, perPage, page);
 
         // TODO: test validations
     }
@@ -108,7 +110,9 @@ public class JobsApiTest {
         String incexc = null;
         String startDate = null;
         String endDate = null;
-        JobArray response = api.getJobs(tags, incexc, startDate, endDate);
+        Integer perPage = null;
+        Integer page = null;
+        JobArray response = api.getJobs(tags, incexc, startDate, endDate, perPage, page);
 
         // TODO: test validations
     }

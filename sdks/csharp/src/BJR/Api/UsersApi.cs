@@ -93,8 +93,10 @@ namespace BJR.Api
         /// Get a list of users
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>UserArray</returns>
-        UserArray GetUsers ();
+        UserArray GetUsers (int? perPage = null, int? page = null);
 
         /// <summary>
         /// Retrieves users
@@ -103,8 +105,10 @@ namespace BJR.Api
         /// Get a list of users
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of UserArray</returns>
-        ApiResponse<UserArray> GetUsersWithHttpInfo ();
+        ApiResponse<UserArray> GetUsersWithHttpInfo (int? perPage = null, int? page = null);
         /// <summary>
         /// Update a single user
         /// </summary>
@@ -200,8 +204,10 @@ namespace BJR.Api
         /// Get a list of users
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of UserArray</returns>
-        System.Threading.Tasks.Task<UserArray> GetUsersAsync ();
+        System.Threading.Tasks.Task<UserArray> GetUsersAsync (int? perPage = null, int? page = null);
 
         /// <summary>
         /// Retrieves users
@@ -210,8 +216,10 @@ namespace BJR.Api
         /// Get a list of users
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (UserArray)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserArray>> GetUsersAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<UserArray>> GetUsersAsyncWithHttpInfo (int? perPage = null, int? page = null);
         /// <summary>
         /// Update a single user
         /// </summary>
@@ -789,10 +797,12 @@ namespace BJR.Api
         /// Retrieves users Get a list of users
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>UserArray</returns>
-        public UserArray GetUsers ()
+        public UserArray GetUsers (int? perPage = null, int? page = null)
         {
-             ApiResponse<UserArray> localVarResponse = GetUsersWithHttpInfo();
+             ApiResponse<UserArray> localVarResponse = GetUsersWithHttpInfo(perPage, page);
              return localVarResponse.Data;
         }
 
@@ -800,8 +810,10 @@ namespace BJR.Api
         /// Retrieves users Get a list of users
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of UserArray</returns>
-        public ApiResponse< UserArray > GetUsersWithHttpInfo ()
+        public ApiResponse< UserArray > GetUsersWithHttpInfo (int? perPage = null, int? page = null)
         {
 
             var localVarPath = "/user_api";
@@ -825,6 +837,8 @@ namespace BJR.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             // authentication (bearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -854,10 +868,12 @@ namespace BJR.Api
         /// Retrieves users Get a list of users
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of UserArray</returns>
-        public async System.Threading.Tasks.Task<UserArray> GetUsersAsync ()
+        public async System.Threading.Tasks.Task<UserArray> GetUsersAsync (int? perPage = null, int? page = null)
         {
-             ApiResponse<UserArray> localVarResponse = await GetUsersAsyncWithHttpInfo();
+             ApiResponse<UserArray> localVarResponse = await GetUsersAsyncWithHttpInfo(perPage, page);
              return localVarResponse.Data;
 
         }
@@ -866,8 +882,10 @@ namespace BJR.Api
         /// Retrieves users Get a list of users
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (UserArray)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserArray>> GetUsersAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<UserArray>> GetUsersAsyncWithHttpInfo (int? perPage = null, int? page = null)
         {
 
             var localVarPath = "/user_api";
@@ -891,6 +909,8 @@ namespace BJR.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             // authentication (bearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))

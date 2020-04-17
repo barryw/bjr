@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobRuns"></a>
 # **getJobRuns**
-> JobRunArray getJobRuns(id)
+> JobRunArray getJobRuns(id, perPage, page)
 
 Retrieve the runs for a job
 
@@ -182,8 +182,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 JobsApi apiInstance = new JobsApi();
 Integer id = 56; // Integer | 
+Integer perPage = 56; // Integer | 
+Integer page = 56; // Integer | 
 try {
-    JobRunArray result = apiInstance.getJobRuns(id);
+    JobRunArray result = apiInstance.getJobRuns(id, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobsApi#getJobRuns");
@@ -196,6 +198,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**|  |
+ **perPage** | **Integer**|  | [optional]
+ **page** | **Integer**|  | [optional]
 
 ### Return type
 
@@ -212,7 +216,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobs"></a>
 # **getJobs**
-> JobArray getJobs(tags, incexc, startDate, endDate)
+> JobArray getJobs(tags, incexc, startDate, endDate, perPage, page)
 
 Retrieves jobs
 
@@ -235,8 +239,10 @@ String tags = "tags_example"; // String | Specify a comma-separated list of tags
 String incexc = "incexc_example"; // String | 
 String startDate = "startDate_example"; // String | Specify a start date to search jobs by.
 String endDate = "endDate_example"; // String | Specify an end date to search jobs by.
+Integer perPage = 56; // Integer | 
+Integer page = 56; // Integer | 
 try {
-    JobArray result = apiInstance.getJobs(tags, incexc, startDate, endDate);
+    JobArray result = apiInstance.getJobs(tags, incexc, startDate, endDate, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobsApi#getJobs");
@@ -252,6 +258,8 @@ Name | Type | Description  | Notes
  **incexc** | **String**|  | [optional] [enum: all, any, except]
  **startDate** | **String**| Specify a start date to search jobs by. | [optional]
  **endDate** | **String**| Specify an end date to search jobs by. | [optional]
+ **perPage** | **Integer**|  | [optional]
+ **page** | **Integer**|  | [optional]
 
 ### Return type
 

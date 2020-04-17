@@ -75,6 +75,8 @@ describe 'Job API' do
       parameter name: :incexc, in: :query, schema: { type: :string, enum: %w[all any except], description: 'How to handle the case where many tags are specified.' }, required: false
       parameter name: :start_date, in: :query, type: :string, description: 'Specify a start date to search jobs by.', required: false
       parameter name: :end_date, in: :query, type: :string, description: 'Specify an end date to search jobs by.', required: false
+      parameter name: :per_page, in: :query, type: :integer, required: false
+      parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Jobs returned successfully' do
         let(:admin) { create(:admin1) }
@@ -103,7 +105,9 @@ describe 'Job API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :id, in: :path, type: :integer
+      parameter name: :id, in: :path, type: :integer, required: true
+      parameter name: :per_page, in: :query, type: :integer, required: false
+      parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Runs received successfully.' do
         let(:admin) { create(:admin1) }

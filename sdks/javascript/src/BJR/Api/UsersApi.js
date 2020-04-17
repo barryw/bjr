@@ -160,15 +160,19 @@ export default class UsersApi {
     /**
      * Retrieves users
      * Get a list of users
+     * @param {Object} opts Optional parameters
      * @param {module:BJR/Api/UsersApi~getUsersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:BJR/Model/UserArray}
      */
-    getUsers(callback) {
+    getUsers(opts, callback) {
+      opts = opts || {};
       let postBody = null;
 
       let pathParams = {
       };
       let queryParams = {
+        'per_page': opts['perPage'],
+        'page': opts['page']
       };
       let headerParams = {
       };

@@ -102,7 +102,9 @@ namespace BJR.Test
         public void GetUsersTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.GetUsers();
+            //int? perPage = null;
+            //int? page = null;
+            //var response = instance.GetUsers(perPage, page);
             //Assert.IsInstanceOf<UserArray> (response, "response is UserArray");
         }
         /// <summary>

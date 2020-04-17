@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsers"></a>
 # **getUsers**
-> UserArray getUsers()
+> UserArray getUsers(perPage, page)
 
 Retrieves users
 
@@ -181,8 +181,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 
 UsersApi apiInstance = new UsersApi();
+Integer perPage = 56; // Integer | 
+Integer page = 56; // Integer | 
 try {
-    UserArray result = apiInstance.getUsers();
+    UserArray result = apiInstance.getUsers(perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#getUsers");
@@ -191,7 +193,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **Integer**|  | [optional]
+ **page** | **Integer**|  | [optional]
 
 ### Return type
 

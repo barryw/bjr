@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getusers"></a>
 # **GetUsers**
-> UserArray GetUsers ()
+> UserArray GetUsers (int? perPage = null, int? page = null)
 
 Retrieves users
 
@@ -217,11 +217,13 @@ namespace Example
         {
 
             var apiInstance = new UsersApi();
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
 
             try
             {
                 // Retrieves users
-                UserArray result = apiInstance.GetUsers();
+                UserArray result = apiInstance.GetUsers(perPage, page);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -234,7 +236,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
 
 ### Return type
 

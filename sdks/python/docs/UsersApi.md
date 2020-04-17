@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_users**
-> UserArray get_users()
+> UserArray get_users(per_page=per_page, page=page)
 
 Retrieves users
 
@@ -175,17 +175,23 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.UsersApi(swagger_client.ApiClient(configuration))
+per_page = 56 # int |  (optional)
+page = 56 # int |  (optional)
 
 try:
     # Retrieves users
-    api_response = api_instance.get_users()
+    api_response = api_instance.get_users(per_page=per_page, page=page)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->get_users: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **per_page** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
