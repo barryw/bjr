@@ -96,6 +96,17 @@ namespace BJR.Test
             //Assert.IsInstanceOf<SingleJob> (response, "response is SingleJob");
         }
         /// <summary>
+        /// Test GetJobRuns
+        /// </summary>
+        [Test]
+        public void GetJobRunsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? id = null;
+            //var response = instance.GetJobRuns(id);
+            //Assert.IsInstanceOf<JobRunArray> (response, "response is JobRunArray");
+        }
+        /// <summary>
         /// Test GetJobs
         /// </summary>
         [Test]

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**createJob**](JobsApi.md#createJob) | **POST** /job_api | Creates a job
 [**deleteJob**](JobsApi.md#deleteJob) | **DELETE** /job_api/{id} | Deletes a job
 [**getJob**](JobsApi.md#getJob) | **GET** /job_api/{id} | Retrieves a single job
+[**getJobRuns**](JobsApi.md#getJobRuns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**getJobs**](JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
 [**updateJob**](JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
 
@@ -134,6 +135,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SingleJob**](SingleJob.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getJobRuns"></a>
+# **getJobRuns**
+> JobRunArray getJobRuns(id)
+
+Retrieve the runs for a job
+
+Retrieve the runs for a job
+
+### Example
+```javascript
+import BjrApiV1 from 'bjr_api_v1';
+let defaultClient = BjrApiV1.ApiClient.instance;
+
+
+let apiInstance = new BjrApiV1.JobsApi();
+let id = 56; // Number | 
+
+apiInstance.getJobRuns(id, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**|  | 
+
+### Return type
+
+[**JobRunArray**](JobRunArray.md)
 
 ### Authorization
 

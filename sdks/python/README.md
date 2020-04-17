@@ -73,6 +73,7 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**create_job**](docs/JobsApi.md#create_job) | **POST** /job_api | Creates a job
 *JobsApi* | [**delete_job**](docs/JobsApi.md#delete_job) | **DELETE** /job_api/{id} | Deletes a job
 *JobsApi* | [**get_job**](docs/JobsApi.md#get_job) | **GET** /job_api/{id} | Retrieves a single job
+*JobsApi* | [**get_job_runs**](docs/JobsApi.md#get_job_runs) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 *JobsApi* | [**get_jobs**](docs/JobsApi.md#get_jobs) | **GET** /job_api | Retrieves jobs
 *JobsApi* | [**update_job**](docs/JobsApi.md#update_job) | **PUT** /job_api/{id} | Updates a single job
 *UsersApi* | [**create_user**](docs/UsersApi.md#create_user) | **POST** /user_api | Creates a user
@@ -88,7 +89,9 @@ Class | Method | HTTP request | Description
  - [JobArray](docs/JobArray.md)
  - [JobIn](docs/JobIn.md)
  - [JobOut](docs/JobOut.md)
+ - [JobRunArray](docs/JobRunArray.md)
  - [SingleJob](docs/SingleJob.md)
+ - [SingleJobRun](docs/SingleJobRun.md)
  - [SingleUser](docs/SingleUser.md)
  - [UserArray](docs/UserArray.md)
  - [UserNewIn](docs/UserNewIn.md)

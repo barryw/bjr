@@ -17,7 +17,9 @@ import AuthOut from './Model/AuthOut';
 import JobArray from './Model/JobArray';
 import JobIn from './Model/JobIn';
 import JobOut from './Model/JobOut';
+import JobRunArray from './Model/JobRunArray';
 import SingleJob from './Model/SingleJob';
+import SingleJobRun from './Model/SingleJobRun';
 import SingleUser from './Model/SingleUser';
 import UserArray from './Model/UserArray';
 import UserNewIn from './Model/UserNewIn';
@@ -96,10 +98,22 @@ export {
     JobOut,
 
     /**
+     * The JobRunArray model constructor.
+     * @property {module:BJR/Model/JobRunArray}
+     */
+    JobRunArray,
+
+    /**
      * The SingleJob model constructor.
      * @property {module:BJR/Model/SingleJob}
      */
     SingleJob,
+
+    /**
+     * The SingleJobRun model constructor.
+     * @property {module:BJR/Model/SingleJobRun}
+     */
+    SingleJobRun,
 
     /**
      * The SingleUser model constructor.

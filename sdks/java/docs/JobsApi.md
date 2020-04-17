@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**createJob**](JobsApi.md#createJob) | **POST** /job_api | Creates a job
 [**deleteJob**](JobsApi.md#deleteJob) | **DELETE** /job_api/{id} | Deletes a job
 [**getJob**](JobsApi.md#getJob) | **GET** /job_api/{id} | Retrieves a single job
+[**getJobRuns**](JobsApi.md#getJobRuns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**getJobs**](JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
 [**updateJob**](JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
 
@@ -149,6 +150,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SingleJob**](SingleJob.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getJobRuns"></a>
+# **getJobRuns**
+> JobRunArray getJobRuns(id)
+
+Retrieve the runs for a job
+
+Retrieve the runs for a job
+
+### Example
+```java
+// Import classes:
+//import BJR.ApiClient;
+//import BJR.ApiException;
+//import BJR.Configuration;
+//import BJR.auth.*;
+//import Api.JobsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+JobsApi apiInstance = new JobsApi();
+Integer id = 56; // Integer | 
+try {
+    JobRunArray result = apiInstance.getJobRuns(id);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling JobsApi#getJobRuns");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**|  |
+
+### Return type
+
+[**JobRunArray**](JobRunArray.md)
 
 ### Authorization
 

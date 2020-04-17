@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_job**](JobsApi.md#create_job) | **POST** /job_api | Creates a job
 [**delete_job**](JobsApi.md#delete_job) | **DELETE** /job_api/{id} | Deletes a job
 [**get_job**](JobsApi.md#get_job) | **GET** /job_api/{id} | Retrieves a single job
+[**get_job_runs**](JobsApi.md#get_job_runs) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**get_jobs**](JobsApi.md#get_jobs) | **GET** /job_api | Retrieves jobs
 [**update_job**](JobsApi.md#update_job) | **PUT** /job_api/{id} | Updates a single job
 
@@ -144,6 +145,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SingleJob**](SingleJob.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_job_runs**
+> JobRunArray get_job_runs(id)
+
+Retrieve the runs for a job
+
+Retrieve the runs for a job
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+
+# create an instance of the API class
+api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
+id = 56 # int | 
+
+try:
+    # Retrieve the runs for a job
+    api_response = api_instance.get_job_runs(id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling JobsApi->get_job_runs: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**JobRunArray**](JobRunArray.md)
 
 ### Authorization
 

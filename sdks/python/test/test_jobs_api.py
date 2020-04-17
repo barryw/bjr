@@ -49,6 +49,13 @@ class TestJobsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_job_runs(self):
+        """Test case for get_job_runs
+
+        Retrieve the runs for a job  # noqa: E501
+        """
+        pass
+
     def test_get_jobs(self):
         """Test case for get_jobs
 

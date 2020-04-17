@@ -87,6 +87,27 @@ namespace BJR.Api
         /// <returns>ApiResponse of SingleJob</returns>
         ApiResponse<SingleJob> GetJobWithHttpInfo (int? id);
         /// <summary>
+        /// Retrieve the runs for a job
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the runs for a job
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>JobRunArray</returns>
+        JobRunArray GetJobRuns (int? id);
+
+        /// <summary>
+        /// Retrieve the runs for a job
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the runs for a job
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of JobRunArray</returns>
+        ApiResponse<JobRunArray> GetJobRunsWithHttpInfo (int? id);
+        /// <summary>
         /// Retrieves jobs
         /// </summary>
         /// <remarks>
@@ -201,6 +222,27 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse (SingleJob)</returns>
         System.Threading.Tasks.Task<ApiResponse<SingleJob>> GetJobAsyncWithHttpInfo (int? id);
+        /// <summary>
+        /// Retrieve the runs for a job
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the runs for a job
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>Task of JobRunArray</returns>
+        System.Threading.Tasks.Task<JobRunArray> GetJobRunsAsync (int? id);
+
+        /// <summary>
+        /// Retrieve the runs for a job
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the runs for a job
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>Task of ApiResponse (JobRunArray)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JobRunArray>> GetJobRunsAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Retrieves jobs
         /// </summary>
@@ -795,6 +837,149 @@ namespace BJR.Api
             return new ApiResponse<SingleJob>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (SingleJob) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJob)));
+        }
+
+        /// <summary>
+        /// Retrieve the runs for a job Retrieve the runs for a job
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>JobRunArray</returns>
+        public JobRunArray GetJobRuns (int? id)
+        {
+             ApiResponse<JobRunArray> localVarResponse = GetJobRunsWithHttpInfo(id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve the runs for a job Retrieve the runs for a job
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of JobRunArray</returns>
+        public ApiResponse< JobRunArray > GetJobRunsWithHttpInfo (int? id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling JobsApi->GetJobRuns");
+
+            var localVarPath = "/job_api/{id}/runs";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            // authentication (bearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetJobRuns", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<JobRunArray>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (JobRunArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobRunArray)));
+        }
+
+        /// <summary>
+        /// Retrieve the runs for a job Retrieve the runs for a job
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>Task of JobRunArray</returns>
+        public async System.Threading.Tasks.Task<JobRunArray> GetJobRunsAsync (int? id)
+        {
+             ApiResponse<JobRunArray> localVarResponse = await GetJobRunsAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Retrieve the runs for a job Retrieve the runs for a job
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>Task of ApiResponse (JobRunArray)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JobRunArray>> GetJobRunsAsyncWithHttpInfo (int? id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling JobsApi->GetJobRuns");
+
+            var localVarPath = "/job_api/{id}/runs";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            // authentication (bearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetJobRuns", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<JobRunArray>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (JobRunArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobRunArray)));
         }
 
         /// <summary>

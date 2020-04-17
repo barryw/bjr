@@ -15,6 +15,7 @@ import ApiClient from "../ApiClient";
 import JobArray from '../Model/JobArray';
 import JobIn from '../Model/JobIn';
 import JobOut from '../Model/JobOut';
+import JobRunArray from '../Model/JobRunArray';
 import SingleJob from '../Model/SingleJob';
 
 /**
@@ -143,6 +144,44 @@ export default class JobsApi {
 
       return this.apiClient.callApi(
         '/job_api/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the getJobRuns operation.
+     * @callback module:BJR/Api/JobsApi~getJobRunsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:BJR/Model/JobRunArray} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Retrieve the runs for a job
+     * Retrieve the runs for a job
+     * @param {module:BJR/Api/JobsApi~getJobRunsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:BJR/Model/JobRunArray}
+     */
+    getJobRuns(id, callback) {
+      let postBody = null;
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = JobRunArray;
+
+      return this.apiClient.callApi(
+        '/job_api/{id}/runs', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

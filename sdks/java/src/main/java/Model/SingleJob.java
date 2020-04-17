@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
  * SingleJob
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-16T17:42:20.444-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-16T21:43:40.366-04:00[America/New_York]")
 public class SingleJob {
   @SerializedName("id")
   private Integer id = null;

@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *BjrApiV1.JobsApi* | [**createJob**](docs/JobsApi.md#createJob) | **POST** /job_api | Creates a job
 *BjrApiV1.JobsApi* | [**deleteJob**](docs/JobsApi.md#deleteJob) | **DELETE** /job_api/{id} | Deletes a job
 *BjrApiV1.JobsApi* | [**getJob**](docs/JobsApi.md#getJob) | **GET** /job_api/{id} | Retrieves a single job
+*BjrApiV1.JobsApi* | [**getJobRuns**](docs/JobsApi.md#getJobRuns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 *BjrApiV1.JobsApi* | [**getJobs**](docs/JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
 *BjrApiV1.JobsApi* | [**updateJob**](docs/JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
 *BjrApiV1.UsersApi* | [**createUser**](docs/UsersApi.md#createUser) | **POST** /user_api | Creates a user
@@ -107,7 +108,9 @@ Class | Method | HTTP request | Description
  - [BjrApiV1.JobArray](docs/JobArray.md)
  - [BjrApiV1.JobIn](docs/JobIn.md)
  - [BjrApiV1.JobOut](docs/JobOut.md)
+ - [BjrApiV1.JobRunArray](docs/JobRunArray.md)
  - [BjrApiV1.SingleJob](docs/SingleJob.md)
+ - [BjrApiV1.SingleJobRun](docs/SingleJobRun.md)
  - [BjrApiV1.SingleUser](docs/SingleUser.md)
  - [BjrApiV1.UserArray](docs/UserArray.md)
  - [BjrApiV1.UserNewIn](docs/UserNewIn.md)

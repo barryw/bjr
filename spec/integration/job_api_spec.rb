@@ -95,6 +95,50 @@ describe 'Job API' do
     end
   end
 
+  path '/job_api/{id}/runs' do
+    get 'Retrieve the runs for a job' do
+      description 'Retrieve the runs for a job'
+      tags 'Jobs'
+      operationId 'getJobRuns'
+      security [bearerAuth: []]
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :id, in: :path, type: :integer
+
+      response '200', 'Runs received successfully.' do
+        let(:admin) { create(:admin1) }
+        let(:job) { create(:job1, user: admin) }
+        let(:Authorization) { auth_token(admin) }
+        let(:id) { job.id }
+        schema '$ref' => '#/components/schemas/JobRunArray'
+
+        before do |request|
+          create(:successful_job_run, job: job, start_time: Time.current - 3.hours, end_time: Time.current - 2.hours)
+          create(:failed_job_run, job: job, start_time: Time.current - 3.hours, end_time: Time.current - 2.hours)
+          submit_request(request.metadata)
+        end
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json.length).to eq(2)
+          expect(json[0]['job_id']).to eq(job.id)
+          expect(json[0]['success']).to be true
+          expect(json[0]['return_code']).to eq(0)
+          expect(json[0]['error_message']).to be nil
+          expect(json[0]['stdout']).to eq('Hello, World!')
+          expect(json[0]['stderr']).to be nil
+
+          expect(json[1]['job_id']).to eq(job.id)
+          expect(json[1]['success']).to be false
+          expect(json[1]['return_code']).to eq(1)
+          expect(json[1]['error_message']).to eq('Failed to write Hello, World!')
+          expect(json[1]['stdout']).to be nil
+          expect(json[1]['stderr']).to eq('Everybody wants to rule the world!')
+        end
+      end
+    end
+  end
+
   path '/job_api/{id}' do
     put 'Updates a single job' do
       description 'Updates a single job'

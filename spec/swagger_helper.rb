@@ -23,6 +23,29 @@ RSpec.configure do |config|
       },
       components: {
         schemas: {
+          SingleJobRun: {
+            type: :object,
+            properties: {
+              id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
+              success: { type: :boolean, description: 'Whether the run was successful or not.' },
+              return_code: { type: :integer, description: 'The return code that the command exited with. 0 means success.' },
+              error_message: { type: :string, description: 'If the run failed, the error message that was returned.', nullable: true },
+              stdout: { type: :string, description: 'The text written to STDOUT as part of the job.', nullable: true },
+              stderr: { type: :string, description: 'The text written to STDERR as part of the job.', nullable: true },
+              start_time: { type: :string, format: 'date-time', description: 'The date and time that the run started.' },
+              end_time: { type: :string, format: 'date-time', description: 'The date and time that the run ended.' },
+              job_id: { type: :integer, description: 'The job that the run is associated with.' },
+              created_at: { type: :string, format: 'date-time', description: 'The date and time that the run record was created in UTC.' },
+              updated_at: { type: :string, format: 'date-time', description: 'The date and time that the run record was last updated in UTC.' }
+            }
+          },
+          JobRunArray: {
+            type: :array,
+            items: {
+              type: :object,
+              "$ref": '#/components/schemas/SingleJobRun'
+            }
+          },
           AuthIn: {
             type: :object,
             properties: {

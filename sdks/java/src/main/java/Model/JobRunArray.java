@@ -14,15 +14,15 @@ package Model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import Model.SingleJob;
+import Model.SingleJobRun;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * JobArray
+ * JobRunArray
  */
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-16T21:43:40.366-04:00[America/New_York]")
-public class JobArray extends ArrayList<SingleJob> {
+public class JobRunArray extends ArrayList<SingleJobRun> {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -44,7 +44,7 @@ public class JobArray extends ArrayList<SingleJob> {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class JobArray {\n");
+    sb.append("class JobRunArray {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

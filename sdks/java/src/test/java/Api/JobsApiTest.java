@@ -16,6 +16,7 @@ import BJR.ApiException;
 import Model.JobArray;
 import Model.JobIn;
 import Model.JobOut;
+import Model.JobRunArray;
 import Model.SingleJob;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -75,6 +76,21 @@ public class JobsApiTest {
     public void getJobTest() throws ApiException {
         Integer id = null;
         SingleJob response = api.getJob(id);
+
+        // TODO: test validations
+    }
+    /**
+     * Retrieve the runs for a job
+     *
+     * Retrieve the runs for a job
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getJobRunsTest() throws ApiException {
+        Integer id = null;
+        JobRunArray response = api.getJobRuns(id);
 
         // TODO: test validations
     }

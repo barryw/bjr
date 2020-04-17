@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CreateJob**](JobsApi.md#createjob) | **POST** /job_api | Creates a job
 [**DeleteJob**](JobsApi.md#deletejob) | **DELETE** /job_api/{id} | Deletes a job
 [**GetJob**](JobsApi.md#getjob) | **GET** /job_api/{id} | Retrieves a single job
+[**GetJobRuns**](JobsApi.md#getjobruns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**GetJobs**](JobsApi.md#getjobs) | **GET** /job_api | Retrieves jobs
 [**UpdateJob**](JobsApi.md#updatejob) | **PUT** /job_api/{id} | Updates a single job
 
@@ -181,6 +182,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SingleJob**](SingleJob.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="getjobruns"></a>
+# **GetJobRuns**
+> JobRunArray GetJobRuns (int? id)
+
+Retrieve the runs for a job
+
+Retrieve the runs for a job
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
+
+namespace Example
+{
+    public class GetJobRunsExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new JobsApi();
+            var id = 56;  // int? | 
+
+            try
+            {
+                // Retrieve the runs for a job
+                JobRunArray result = apiInstance.GetJobRuns(id);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling JobsApi.GetJobRuns: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**|  | 
+
+### Return type
+
+[**JobRunArray**](JobRunArray.md)
 
 ### Authorization
 

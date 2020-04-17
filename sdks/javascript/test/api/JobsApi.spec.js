@@ -77,6 +77,16 @@
         done();
       });
     });
+    describe('getJobRuns', function() {
+      it('should call getJobRuns successfully', function(done) {
+        //uncomment below and update the code to test getJobRuns
+        //instance.getJobRuns(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getJobs', function() {
       it('should call getJobs successfully', function(done) {
         //uncomment below and update the code to test getJobs

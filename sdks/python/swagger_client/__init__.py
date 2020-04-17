@@ -27,7 +27,9 @@ from swagger_client.Model.auth_out import AuthOut
 from swagger_client.Model.job_array import JobArray
 from swagger_client.Model.job_in import JobIn
 from swagger_client.Model.job_out import JobOut
+from swagger_client.Model.job_run_array import JobRunArray
 from swagger_client.Model.single_job import SingleJob
+from swagger_client.Model.single_job_run import SingleJobRun
 from swagger_client.Model.single_user import SingleUser
 from swagger_client.Model.user_array import UserArray
 from swagger_client.Model.user_new_in import UserNewIn
