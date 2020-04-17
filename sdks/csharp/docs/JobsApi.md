@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getjobruns"></a>
 # **GetJobRuns**
-> JobRunArray GetJobRuns (int? id, int? perPage = null, int? page = null)
+> JobRunArray GetJobRuns (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
 
 Retrieve the runs for a job
 
@@ -220,11 +220,14 @@ namespace Example
             var id = 56;  // int? | 
             var perPage = 56;  // int? |  (optional) 
             var page = 56;  // int? |  (optional) 
+            var succeeded = true;  // bool? |  (optional) 
+            var startDate = startDate_example;  // string |  (optional) 
+            var endDate = endDate_example;  // string |  (optional) 
 
             try
             {
                 // Retrieve the runs for a job
-                JobRunArray result = apiInstance.GetJobRuns(id, perPage, page);
+                JobRunArray result = apiInstance.GetJobRuns(id, perPage, page, succeeded, startDate, endDate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -243,6 +246,9 @@ Name | Type | Description  | Notes
  **id** | **int?**|  | 
  **perPage** | **int?**|  | [optional] 
  **page** | **int?**|  | [optional] 
+ **succeeded** | **bool?**|  | [optional] 
+ **startDate** | **string**|  | [optional] 
+ **endDate** | **string**|  | [optional] 
 
 ### Return type
 

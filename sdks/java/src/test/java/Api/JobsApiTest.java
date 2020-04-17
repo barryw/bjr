@@ -92,7 +92,10 @@ public class JobsApiTest {
         Integer id = null;
         Integer perPage = null;
         Integer page = null;
-        JobRunArray response = api.getJobRuns(id, perPage, page);
+        Boolean succeeded = null;
+        String startDate = null;
+        String endDate = null;
+        JobRunArray response = api.getJobRuns(id, perPage, page, succeeded, startDate, endDate);
 
         // TODO: test validations
     }

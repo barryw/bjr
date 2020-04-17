@@ -105,7 +105,10 @@ namespace BJR.Test
             //int? id = null;
             //int? perPage = null;
             //int? page = null;
-            //var response = instance.GetJobRuns(id, perPage, page);
+            //bool? succeeded = null;
+            //string startDate = null;
+            //string endDate = null;
+            //var response = instance.GetJobRuns(id, perPage, page, succeeded, startDate, endDate);
             //Assert.IsInstanceOf<JobRunArray> (response, "response is JobRunArray");
         }
         /// <summary>

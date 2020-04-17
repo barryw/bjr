@@ -108,6 +108,9 @@ describe 'Job API' do
       parameter name: :id, in: :path, type: :integer, required: true
       parameter name: :per_page, in: :query, type: :integer, required: false
       parameter name: :page, in: :query, type: :integer, required: false
+      parameter name: :succeeded, in: :query, type: :boolean, required: false
+      parameter name: :start_date, in: :query, type: :string, required: false
+      parameter name: :end_date, in: :query, type: :string, required: false
 
       response '200', 'Runs received successfully.' do
         let(:admin) { create(:admin1) }

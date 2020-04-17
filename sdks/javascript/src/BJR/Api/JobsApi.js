@@ -172,7 +172,10 @@ export default class JobsApi {
       };
       let queryParams = {
         'per_page': opts['perPage'],
-        'page': opts['page']
+        'page': opts['page'],
+        'succeeded': opts['succeeded'],
+        'start_date': opts['startDate'],
+        'end_date': opts['endDate']
       };
       let headerParams = {
       };

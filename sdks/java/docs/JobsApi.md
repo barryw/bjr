@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobRuns"></a>
 # **getJobRuns**
-> JobRunArray getJobRuns(id, perPage, page)
+> JobRunArray getJobRuns(id, perPage, page, succeeded, startDate, endDate)
 
 Retrieve the runs for a job
 
@@ -184,8 +184,11 @@ JobsApi apiInstance = new JobsApi();
 Integer id = 56; // Integer | 
 Integer perPage = 56; // Integer | 
 Integer page = 56; // Integer | 
+Boolean succeeded = true; // Boolean | 
+String startDate = "startDate_example"; // String | 
+String endDate = "endDate_example"; // String | 
 try {
-    JobRunArray result = apiInstance.getJobRuns(id, perPage, page);
+    JobRunArray result = apiInstance.getJobRuns(id, perPage, page, succeeded, startDate, endDate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobsApi#getJobRuns");
@@ -200,6 +203,9 @@ Name | Type | Description  | Notes
  **id** | **Integer**|  |
  **perPage** | **Integer**|  | [optional]
  **page** | **Integer**|  | [optional]
+ **succeeded** | **Boolean**|  | [optional]
+ **startDate** | **String**|  | [optional]
+ **endDate** | **String**|  | [optional]
 
 ### Return type
 

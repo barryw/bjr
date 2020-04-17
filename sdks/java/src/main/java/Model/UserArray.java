@@ -21,7 +21,7 @@ import java.util.List;
  * UserArray
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-16T22:12:09.768-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-16T22:21:27.274-04:00[America/New_York]")
 public class UserArray extends ArrayList<SingleUser> {
 
   @Override

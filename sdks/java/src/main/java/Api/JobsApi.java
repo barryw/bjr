@@ -428,12 +428,15 @@ public class JobsApi {
      * @param id  (required)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param succeeded  (optional)
+     * @param startDate  (optional)
+     * @param endDate  (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getJobRunsCall(Integer id, Integer perPage, Integer page, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getJobRunsCall(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -446,6 +449,12 @@ public class JobsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("per_page", perPage));
         if (page != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page", page));
+        if (succeeded != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("succeeded", succeeded));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -480,13 +489,13 @@ public class JobsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getJobRunsValidateBeforeCall(Integer id, Integer perPage, Integer page, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getJobRunsValidateBeforeCall(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getJobRuns(Async)");
         }
         
-        com.squareup.okhttp.Call call = getJobRunsCall(id, perPage, page, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getJobRunsCall(id, perPage, page, succeeded, startDate, endDate, progressListener, progressRequestListener);
         return call;
 
         
@@ -501,11 +510,14 @@ public class JobsApi {
      * @param id  (required)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param succeeded  (optional)
+     * @param startDate  (optional)
+     * @param endDate  (optional)
      * @return JobRunArray
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public JobRunArray getJobRuns(Integer id, Integer perPage, Integer page) throws ApiException {
-        ApiResponse<JobRunArray> resp = getJobRunsWithHttpInfo(id, perPage, page);
+    public JobRunArray getJobRuns(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate) throws ApiException {
+        ApiResponse<JobRunArray> resp = getJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
         return resp.getData();
     }
 
@@ -515,11 +527,14 @@ public class JobsApi {
      * @param id  (required)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param succeeded  (optional)
+     * @param startDate  (optional)
+     * @param endDate  (optional)
      * @return ApiResponse&lt;JobRunArray&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<JobRunArray> getJobRunsWithHttpInfo(Integer id, Integer perPage, Integer page) throws ApiException {
-        com.squareup.okhttp.Call call = getJobRunsValidateBeforeCall(id, perPage, page, null, null);
+    public ApiResponse<JobRunArray> getJobRunsWithHttpInfo(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate) throws ApiException {
+        com.squareup.okhttp.Call call = getJobRunsValidateBeforeCall(id, perPage, page, succeeded, startDate, endDate, null, null);
         Type localVarReturnType = new TypeToken<JobRunArray>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -530,11 +545,14 @@ public class JobsApi {
      * @param id  (required)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param succeeded  (optional)
+     * @param startDate  (optional)
+     * @param endDate  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getJobRunsAsync(Integer id, Integer perPage, Integer page, final ApiCallback<JobRunArray> callback) throws ApiException {
+    public com.squareup.okhttp.Call getJobRunsAsync(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, final ApiCallback<JobRunArray> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -555,7 +573,7 @@ public class JobsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getJobRunsValidateBeforeCall(id, perPage, page, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getJobRunsValidateBeforeCall(id, perPage, page, succeeded, startDate, endDate, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<JobRunArray>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

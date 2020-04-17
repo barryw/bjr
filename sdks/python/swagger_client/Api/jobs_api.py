@@ -326,6 +326,9 @@ class JobsApi(object):
         :param int id: (required)
         :param int per_page:
         :param int page:
+        :param bool succeeded:
+        :param str start_date:
+        :param str end_date:
         :return: JobRunArray
                  If the method is called asynchronously,
                  returns the request thread.
@@ -350,12 +353,15 @@ class JobsApi(object):
         :param int id: (required)
         :param int per_page:
         :param int page:
+        :param bool succeeded:
+        :param str start_date:
+        :param str end_date:
         :return: JobRunArray
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['id', 'per_page', 'page']  # noqa: E501
+        all_params = ['id', 'per_page', 'page', 'succeeded', 'start_date', 'end_date']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -386,6 +392,12 @@ class JobsApi(object):
             query_params.append(('per_page', params['per_page']))  # noqa: E501
         if 'page' in params:
             query_params.append(('page', params['page']))  # noqa: E501
+        if 'succeeded' in params:
+            query_params.append(('succeeded', params['succeeded']))  # noqa: E501
+        if 'start_date' in params:
+            query_params.append(('start_date', params['start_date']))  # noqa: E501
+        if 'end_date' in params:
+            query_params.append(('end_date', params['end_date']))  # noqa: E501
 
         header_params = {}
 

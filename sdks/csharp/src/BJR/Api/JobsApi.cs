@@ -96,8 +96,11 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="succeeded"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
         /// <returns>JobRunArray</returns>
-        JobRunArray GetJobRuns (int? id, int? perPage = null, int? page = null);
+        JobRunArray GetJobRuns (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
 
         /// <summary>
         /// Retrieve the runs for a job
@@ -109,8 +112,11 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="succeeded"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
         /// <returns>ApiResponse of JobRunArray</returns>
-        ApiResponse<JobRunArray> GetJobRunsWithHttpInfo (int? id, int? perPage = null, int? page = null);
+        ApiResponse<JobRunArray> GetJobRunsWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
         /// <summary>
         /// Retrieves jobs
         /// </summary>
@@ -240,8 +246,11 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="succeeded"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
         /// <returns>Task of JobRunArray</returns>
-        System.Threading.Tasks.Task<JobRunArray> GetJobRunsAsync (int? id, int? perPage = null, int? page = null);
+        System.Threading.Tasks.Task<JobRunArray> GetJobRunsAsync (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
 
         /// <summary>
         /// Retrieve the runs for a job
@@ -253,8 +262,11 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="succeeded"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
         /// <returns>Task of ApiResponse (JobRunArray)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobRunArray>> GetJobRunsAsyncWithHttpInfo (int? id, int? perPage = null, int? page = null);
+        System.Threading.Tasks.Task<ApiResponse<JobRunArray>> GetJobRunsAsyncWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
         /// <summary>
         /// Retrieves jobs
         /// </summary>
@@ -862,10 +874,13 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="succeeded"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
         /// <returns>JobRunArray</returns>
-        public JobRunArray GetJobRuns (int? id, int? perPage = null, int? page = null)
+        public JobRunArray GetJobRuns (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
         {
-             ApiResponse<JobRunArray> localVarResponse = GetJobRunsWithHttpInfo(id, perPage, page);
+             ApiResponse<JobRunArray> localVarResponse = GetJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
              return localVarResponse.Data;
         }
 
@@ -876,8 +891,11 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="succeeded"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
         /// <returns>ApiResponse of JobRunArray</returns>
-        public ApiResponse< JobRunArray > GetJobRunsWithHttpInfo (int? id, int? perPage = null, int? page = null)
+        public ApiResponse< JobRunArray > GetJobRunsWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -907,6 +925,9 @@ namespace BJR.Api
             if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (succeeded != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "succeeded", succeeded)); // query parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             // authentication (bearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -939,10 +960,13 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="succeeded"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
         /// <returns>Task of JobRunArray</returns>
-        public async System.Threading.Tasks.Task<JobRunArray> GetJobRunsAsync (int? id, int? perPage = null, int? page = null)
+        public async System.Threading.Tasks.Task<JobRunArray> GetJobRunsAsync (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
         {
-             ApiResponse<JobRunArray> localVarResponse = await GetJobRunsAsyncWithHttpInfo(id, perPage, page);
+             ApiResponse<JobRunArray> localVarResponse = await GetJobRunsAsyncWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
              return localVarResponse.Data;
 
         }
@@ -954,8 +978,11 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="succeeded"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
         /// <returns>Task of ApiResponse (JobRunArray)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobRunArray>> GetJobRunsAsyncWithHttpInfo (int? id, int? perPage = null, int? page = null)
+        public async System.Threading.Tasks.Task<ApiResponse<JobRunArray>> GetJobRunsAsyncWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -985,6 +1012,9 @@ namespace BJR.Api
             if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (succeeded != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "succeeded", succeeded)); // query parameter
+            if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
+            if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             // authentication (bearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))

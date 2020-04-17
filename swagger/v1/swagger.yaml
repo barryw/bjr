@@ -368,6 +368,21 @@ paths:
         required: false
         schema:
           type: integer
+      - name: succeeded
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: end_date
+        in: query
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           description: Runs received successfully.

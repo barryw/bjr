@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job_runs**
-> JobRunArray get_job_runs(id, per_page=per_page, page=page)
+> JobRunArray get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date)
 
 Retrieve the runs for a job
 
@@ -178,10 +178,13 @@ api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
 id = 56 # int | 
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
+succeeded = true # bool |  (optional)
+start_date = 'start_date_example' # str |  (optional)
+end_date = 'end_date_example' # str |  (optional)
 
 try:
     # Retrieve the runs for a job
-    api_response = api_instance.get_job_runs(id, per_page=per_page, page=page)
+    api_response = api_instance.get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling JobsApi->get_job_runs: %s\n" % e)
@@ -194,6 +197,9 @@ Name | Type | Description  | Notes
  **id** | **int**|  | 
  **per_page** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **succeeded** | **bool**|  | [optional] 
+ **start_date** | **str**|  | [optional] 
+ **end_date** | **str**|  | [optional] 
 
 ### Return type
 

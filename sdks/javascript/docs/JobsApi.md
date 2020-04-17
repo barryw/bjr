@@ -163,7 +163,10 @@ let apiInstance = new BjrApiV1.JobsApi();
 let id = 56; // Number | 
 let opts = { 
   'perPage': 56, // Number | 
-  'page': 56 // Number | 
+  'page': 56, // Number | 
+  'succeeded': true, // Boolean | 
+  'startDate': "startDate_example", // String | 
+  'endDate': "endDate_example" // String | 
 };
 apiInstance.getJobRuns(id, opts, (error, data, response) => {
   if (error) {
@@ -181,6 +184,9 @@ Name | Type | Description  | Notes
  **id** | **Number**|  | 
  **perPage** | **Number**|  | [optional] 
  **page** | **Number**|  | [optional] 
+ **succeeded** | **Boolean**|  | [optional] 
+ **startDate** | **String**|  | [optional] 
+ **endDate** | **String**|  | [optional] 
 
 ### Return type
 
