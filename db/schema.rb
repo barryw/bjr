@@ -13,7 +13,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20_190_919_102_511) do
-  create_table 'job_runs', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci', force: :cascade do |t|
+  create_table 'job_runs', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci', force: :cascade do |t|
     t.boolean 'success'
     t.integer 'return_code'
     t.string 'error_message'
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20_190_919_102_511) do
     t.index ['job_id'], name: 'index_job_runs_on_job_id'
   end
 
-  create_table 'jobs', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci', force: :cascade do |t|
+  create_table 'jobs', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci', force: :cascade do |t|
     t.string 'name', limit: 100, null: false
     t.string 'cron', limit: 20, null: false
     t.datetime 'last_run'
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20_190_919_102_511) do
     t.index ['user_id'], name: 'index_jobs_on_user_id'
   end
 
-  create_table 'taggings', id: :integer, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci', force: :cascade do |t|
+  create_table 'taggings', id: :integer, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci', force: :cascade do |t|
     t.integer 'tag_id'
     t.string 'taggable_type'
     t.integer 'taggable_id'
@@ -64,13 +64,13 @@ ActiveRecord::Schema.define(version: 20_190_919_102_511) do
     t.index ['tagger_id'], name: 'index_taggings_on_tagger_id'
   end
 
-  create_table 'tags', id: :integer, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci', force: :cascade do |t|
+  create_table 'tags', id: :integer, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci', force: :cascade do |t|
     t.string 'name', collation: 'utf8_bin'
     t.integer 'taggings_count', default: 0
     t.index ['name'], name: 'index_tags_on_name', unique: true
   end
 
-  create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci', force: :cascade do |t|
+  create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci', force: :cascade do |t|
     t.string 'username', limit: 20, null: false
     t.string 'password_digest', null: false
     t.datetime 'created_at', null: false
