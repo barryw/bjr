@@ -1,0 +1,109 @@
+{
+  "variables": {
+  },
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "scripts/all-in-one.service",
+      "destination": "/home/ec2-user/bjr.service",
+      "only": ["all-in-one"]
+    },
+    {
+      "type": "shell",
+      "expect_disconnect": true,
+      "script": "scripts/common.sh"
+    },
+    {
+      "type": "shell",
+      "only": ["all-in-one"],
+      "script": "scripts/all-in-one.sh"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/api.sh",
+      "only": ["api"]
+    },
+    {
+      "type": "shell",
+      "script": "scripts/worker.sh",
+      "only": ["worker"]
+    }
+  ],
+  "builders": [
+    {
+      "name": "all-in-one",
+      "ami_description": "BJR All-In-One AMI based on Amazon Linux 2",
+      "type": "amazon-ebs",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "amzn2-ami-hvm-2.0.*-x86_64-gp2",
+          "root-device-type": "ebs"
+        },
+        "owners": ["amazon"],
+        "most_recent": true
+      },
+      "instance_type": "t2.medium",
+      "ssh_username": "ec2-user",
+      "ami_name": "bjr-all-in-one-{{timestamp}}",
+      "run_tags": {
+        "Name": "BJR All-In-One Packer Builder"
+      },
+      "tags": {
+        "Name": "bjr-all-in-one-{{timestamp}}",
+        "Service": "bjr-all-in-one",
+        "Version": "v1"
+      }
+    },
+    {
+      "name": "worker",
+      "ami_description": "BJR Worker AMI based on Amazon Linux 2",
+      "type": "amazon-ebs",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "amzn2-ami-hvm-2.0.*-x86_64-gp2",
+          "root-device-type": "ebs"
+        },
+        "owners": ["amazon"],
+        "most_recent": true
+      },
+      "instance_type": "t2.medium",
+      "ssh_username": "ec2-user",
+      "ami_name": "bjr-worker-{{timestamp}}",
+      "run_tags": {
+        "Name": "BJR Worker Packer Builder"
+      },
+      "tags": {
+        "Name": "bjr-worker-{{timestamp}}",
+        "Service": "bjr-worker",
+        "Version": "v1"
+      }
+    },
+    {
+      "name": "api",
+      "ami_description": "BJR API AMI based on Amazon Linux 2",
+      "type": "amazon-ebs",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "amzn2-ami-hvm-2.0.*-x86_64-gp2",
+          "root-device-type": "ebs"
+        },
+        "owners": ["amazon"],
+        "most_recent": true
+      },
+      "instance_type": "t2.medium",
+      "ssh_username": "ec2-user",
+      "ami_name": "bjr-api-{{timestamp}}",
+      "run_tags": {
+        "Name": "BJR API Packer Builder"
+      },
+      "tags": {
+        "Name": "bjr-api-{{timestamp}}",
+        "Service": "bjr-api",
+        "Version": "v1"
+      }
+    }
+  ]
+}

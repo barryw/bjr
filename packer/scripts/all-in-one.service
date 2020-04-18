@@ -1,0 +1,23 @@
+[Unit]
+Description=BJR All-In-One
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+User=ec2-user
+
+WorkingDirectory=/home/ec2-user/bjr
+
+# Remove old containers, images and volumes
+ExecStartPre=/home/ec2-user/.local/bin/docker-compose down -v
+ExecStartPre=/home/ec2-user/.local/bin/docker-compose rm -fv
+
+# Compose up
+ExecStart=/home/ec2-user/.local/bin/docker-compose up
+
+# Compose down
+ExecStop=/home/ec2-user/.local/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target
