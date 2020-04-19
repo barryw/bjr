@@ -12,4 +12,8 @@ BJR_DATABASE_PASSWORD=__MYSQL_PASSWORD__
 # Sets the initial password for the admin user
 INITIAL_ADMIN_PASSWORD=__INITIAL_ADMIN_PASSWORD__
 
+# Should be set to a random string
 SECRET_KEY_BASE=__SECRET_KEY_BASE__
+
+# Enables log output to the container STDOUT
+RAILS_LOG_TO_STDOUT=true

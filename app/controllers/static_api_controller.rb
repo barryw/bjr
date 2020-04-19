@@ -17,8 +17,6 @@ class StaticApiController < ApplicationController
   def health
     # Check the database connection
     ActiveRecord::Base.establish_connection
-    ActiveRecord::Base.connection
-    raise unless ActiveRecord::Base.connected?
 
     # Make sure we have at least 1 sidekiq client
     redis_info = Sidekiq.redis(&:info)

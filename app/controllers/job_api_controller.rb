@@ -19,12 +19,10 @@ class JobApiController < ApplicationController
   end
 
   def create
-    ActiveRecord::Base.transaction do
-      job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command],
-                        timezone: params[:timezone], user: current_user)
-      current_user.tag job, with: params[:tags], on: :tags if params[:tags].present?
-      message I18n.t('jobs.messages.created', id: job.id), :created, false, job, 'job'
-    end
+    job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command],
+                      timezone: params[:timezone], user: current_user)
+    current_user.tag job, with: params[:tags], on: :tags if params[:tags].present?
+    message I18n.t('jobs.messages.created', id: job.id), :created, false, job, 'job'
   rescue ActiveRecord::RecordNotUnique
     logger.warn "Attempted to create Job named #{params[:name]}, but it already exists."
     not_unique
@@ -42,10 +40,8 @@ class JobApiController < ApplicationController
     @job.command = params[:command] unless (@job.command == params[:command]) || params[:command].blank?
     @job.timezone = params[:timezone] unless (@job.timezone == params[:timezone]) || params[:timezone].blank?
     @job.enabled = params[:enabled] if params[:enabled].present?
-    ActiveRecord::Base.transaction do
-      current_user.tag @job, with: params[:tags], on: :tags if params[:tags].present?
-      @job.save!
-    end
+    current_user.tag @job, with: params[:tags], on: :tags if params[:tags].present?
+    @job.save!
     message I18n.t('jobs.messages.updated', id: @job.id), :ok, false, @job, 'job'
   rescue ActiveRecord::RecordNotUnique
     logger.warn "Attempted to update Job #{@job.id} with name #{params[:name]}, but it already exists."
