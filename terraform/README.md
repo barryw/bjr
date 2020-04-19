@@ -49,6 +49,8 @@ All configuration for this code is done in `deployment.tfvars`. You will need to
 
 #### Plan, Deploy & Undeploy
 
+Before you deploy, make sure your `AWS_REGION` and `AWS_PROFILE` environment variables are set correctly.
+
 Once you've configured `deployment.tfvars`, run `make plan`. This will show you what resources will be created. If it all looks good, run `make deploy`. This will create all of the infrastructure and a route53 record that points at your BJR deployment.
 
 Once your deployment is up, ssh into one of the nodes (api or worker - doesn't matter). Type `cat /home/ec2-user/initial-admin-password`. This is the randomly generated initial admin password. Open your swagger page by doing to `https://bjr.{domain}`. You will be able to authenticate with the user `admin` and that random password.

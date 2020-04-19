@@ -23,6 +23,10 @@ resource "aws_launch_configuration" "bjr-api" {
   security_groups             = ["${aws_security_group.bjr-api.id}", "${aws_security_group.bjr-ssh.id}"]
   associate_public_ip_address = false
   user_data                   = "${data.template_file.bjr.rendered}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_autoscaling_group" "bjr-worker" {
@@ -50,6 +54,10 @@ resource "aws_launch_configuration" "bjr-worker" {
   security_groups             = ["${aws_security_group.bjr-worker.id}", "${aws_security_group.bjr-ssh.id}"]
   associate_public_ip_address = false
   user_data                   = "${data.template_file.bjr.rendered}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 data "template_file" "bjr" {
