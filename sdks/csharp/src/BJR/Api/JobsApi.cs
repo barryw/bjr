@@ -149,6 +149,33 @@ namespace BJR.Api
         /// <returns>ApiResponse of JobArray</returns>
         ApiResponse<JobArray> GetJobsWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null);
         /// <summary>
+        /// Upcoming job occurrences
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of upcoming occurrences for a job
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to retrieve occurrences for</param>
+        /// <param name="endDate">The date to retrieve occurrences up to</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>Occurrences</returns>
+        Occurrences JobOccurrences (int? id, string endDate, int? perPage = null, int? page = null);
+
+        /// <summary>
+        /// Upcoming job occurrences
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of upcoming occurrences for a job
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to retrieve occurrences for</param>
+        /// <param name="endDate">The date to retrieve occurrences up to</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>ApiResponse of Occurrences</returns>
+        ApiResponse<Occurrences> JobOccurrencesWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null);
+        /// <summary>
         /// Updates a single job
         /// </summary>
         /// <remarks>
@@ -298,6 +325,33 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobArray)</returns>
         System.Threading.Tasks.Task<ApiResponse<JobArray>> GetJobsAsyncWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null);
+        /// <summary>
+        /// Upcoming job occurrences
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of upcoming occurrences for a job
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to retrieve occurrences for</param>
+        /// <param name="endDate">The date to retrieve occurrences up to</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>Task of Occurrences</returns>
+        System.Threading.Tasks.Task<Occurrences> JobOccurrencesAsync (int? id, string endDate, int? perPage = null, int? page = null);
+
+        /// <summary>
+        /// Upcoming job occurrences
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of upcoming occurrences for a job
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to retrieve occurrences for</param>
+        /// <param name="endDate">The date to retrieve occurrences up to</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>Task of ApiResponse (Occurrences)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Occurrences>> JobOccurrencesAsyncWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null);
         /// <summary>
         /// Updates a single job
         /// </summary>
@@ -1205,6 +1259,173 @@ namespace BJR.Api
             return new ApiResponse<JobArray>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (JobArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobArray)));
+        }
+
+        /// <summary>
+        /// Upcoming job occurrences Retrieves a list of upcoming occurrences for a job
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to retrieve occurrences for</param>
+        /// <param name="endDate">The date to retrieve occurrences up to</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>Occurrences</returns>
+        public Occurrences JobOccurrences (int? id, string endDate, int? perPage = null, int? page = null)
+        {
+             ApiResponse<Occurrences> localVarResponse = JobOccurrencesWithHttpInfo(id, endDate, perPage, page);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Upcoming job occurrences Retrieves a list of upcoming occurrences for a job
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to retrieve occurrences for</param>
+        /// <param name="endDate">The date to retrieve occurrences up to</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>ApiResponse of Occurrences</returns>
+        public ApiResponse< Occurrences > JobOccurrencesWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling JobsApi->JobOccurrences");
+            // verify the required parameter 'endDate' is set
+            if (endDate == null)
+                throw new ApiException(400, "Missing required parameter 'endDate' when calling JobsApi->JobOccurrences");
+
+            var localVarPath = "/job_api/{id}/occurrences/{end_date}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (endDate != null) localVarPathParams.Add("end_date", this.Configuration.ApiClient.ParameterToString(endDate)); // path parameter
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            // authentication (bearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("JobOccurrences", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Occurrences>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Occurrences) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Occurrences)));
+        }
+
+        /// <summary>
+        /// Upcoming job occurrences Retrieves a list of upcoming occurrences for a job
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to retrieve occurrences for</param>
+        /// <param name="endDate">The date to retrieve occurrences up to</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>Task of Occurrences</returns>
+        public async System.Threading.Tasks.Task<Occurrences> JobOccurrencesAsync (int? id, string endDate, int? perPage = null, int? page = null)
+        {
+             ApiResponse<Occurrences> localVarResponse = await JobOccurrencesAsyncWithHttpInfo(id, endDate, perPage, page);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Upcoming job occurrences Retrieves a list of upcoming occurrences for a job
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to retrieve occurrences for</param>
+        /// <param name="endDate">The date to retrieve occurrences up to</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>Task of ApiResponse (Occurrences)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Occurrences>> JobOccurrencesAsyncWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling JobsApi->JobOccurrences");
+            // verify the required parameter 'endDate' is set
+            if (endDate == null)
+                throw new ApiException(400, "Missing required parameter 'endDate' when calling JobsApi->JobOccurrences");
+
+            var localVarPath = "/job_api/{id}/occurrences/{end_date}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (endDate != null) localVarPathParams.Add("end_date", this.Configuration.ApiClient.ParameterToString(endDate)); // path parameter
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            // authentication (bearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("JobOccurrences", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Occurrences>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Occurrences) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Occurrences)));
         }
 
         /// <summary>

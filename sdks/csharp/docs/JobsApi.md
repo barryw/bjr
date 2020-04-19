@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**GetJob**](JobsApi.md#getjob) | **GET** /job_api/{id} | Retrieves a single job
 [**GetJobRuns**](JobsApi.md#getjobruns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**GetJobs**](JobsApi.md#getjobs) | **GET** /job_api | Retrieves jobs
+[**JobOccurrences**](JobsApi.md#joboccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 [**UpdateJob**](JobsApi.md#updatejob) | **PUT** /job_api/{id} | Updates a single job
 
 <a name="createjob"></a>
@@ -324,6 +325,73 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobArray**](JobArray.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="joboccurrences"></a>
+# **JobOccurrences**
+> Occurrences JobOccurrences (int? id, string endDate, int? perPage = null, int? page = null)
+
+Upcoming job occurrences
+
+Retrieves a list of upcoming occurrences for a job
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
+
+namespace Example
+{
+    public class JobOccurrencesExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new JobsApi();
+            var id = 56;  // int? | The id of the job to retrieve occurrences for
+            var endDate = endDate_example;  // string | The date to retrieve occurrences up to
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
+
+            try
+            {
+                // Upcoming job occurrences
+                Occurrences result = apiInstance.JobOccurrences(id, endDate, perPage, page);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling JobsApi.JobOccurrences: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**| The id of the job to retrieve occurrences for | 
+ **endDate** | **string**| The date to retrieve occurrences up to | 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
+
+### Return type
+
+[**Occurrences**](Occurrences.md)
 
 ### Authorization
 

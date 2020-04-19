@@ -18,6 +18,7 @@ import JobArray from './Model/JobArray';
 import JobIn from './Model/JobIn';
 import JobOut from './Model/JobOut';
 import JobRunArray from './Model/JobRunArray';
+import Occurrences from './Model/Occurrences';
 import SingleJob from './Model/SingleJob';
 import SingleJobRun from './Model/SingleJobRun';
 import SingleUser from './Model/SingleUser';
@@ -102,6 +103,12 @@ export {
      * @property {module:BJR/Model/JobRunArray}
      */
     JobRunArray,
+
+    /**
+     * The Occurrences model constructor.
+     * @property {module:BJR/Model/Occurrences}
+     */
+    Occurrences,
 
     /**
      * The SingleJob model constructor.

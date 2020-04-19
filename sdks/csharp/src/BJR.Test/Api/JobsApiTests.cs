@@ -128,6 +128,20 @@ namespace BJR.Test
             //Assert.IsInstanceOf<JobArray> (response, "response is JobArray");
         }
         /// <summary>
+        /// Test JobOccurrences
+        /// </summary>
+        [Test]
+        public void JobOccurrencesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? id = null;
+            //string endDate = null;
+            //int? perPage = null;
+            //int? page = null;
+            //var response = instance.JobOccurrences(id, endDate, perPage, page);
+            //Assert.IsInstanceOf<Occurrences> (response, "response is Occurrences");
+        }
+        /// <summary>
         /// Test UpdateJob
         /// </summary>
         [Test]

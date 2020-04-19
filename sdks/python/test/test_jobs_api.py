@@ -63,6 +63,13 @@ class TestJobsApi(unittest.TestCase):
         """
         pass
 
+    def test_job_occurrences(self):
+        """Test case for job_occurrences
+
+        Upcoming job occurrences  # noqa: E501
+        """
+        pass
+
     def test_update_job(self):
         """Test case for update_job
 

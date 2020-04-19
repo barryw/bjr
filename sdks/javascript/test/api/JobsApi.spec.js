@@ -97,6 +97,16 @@
         done();
       });
     });
+    describe('jobOccurrences', function() {
+      it('should call jobOccurrences successfully', function(done) {
+        //uncomment below and update the code to test jobOccurrences
+        //instance.jobOccurrences(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('updateJob', function() {
       it('should call updateJob successfully', function(done) {
         //uncomment below and update the code to test updateJob

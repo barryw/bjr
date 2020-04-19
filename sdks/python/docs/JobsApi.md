@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**get_job**](JobsApi.md#get_job) | **GET** /job_api/{id} | Retrieves a single job
 [**get_job_runs**](JobsApi.md#get_job_runs) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**get_jobs**](JobsApi.md#get_jobs) | **GET** /job_api | Retrieves jobs
+[**job_occurrences**](JobsApi.md#job_occurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 [**update_job**](JobsApi.md#update_job) | **PUT** /job_api/{id} | Updates a single job
 
 # **create_job**
@@ -263,6 +264,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobArray**](JobArray.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **job_occurrences**
+> Occurrences job_occurrences(id, end_date, per_page=per_page, page=page)
+
+Upcoming job occurrences
+
+Retrieves a list of upcoming occurrences for a job
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+
+# create an instance of the API class
+api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
+id = 56 # int | The id of the job to retrieve occurrences for
+end_date = 'end_date_example' # str | The date to retrieve occurrences up to
+per_page = 56 # int |  (optional)
+page = 56 # int |  (optional)
+
+try:
+    # Upcoming job occurrences
+    api_response = api_instance.job_occurrences(id, end_date, per_page=per_page, page=page)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling JobsApi->job_occurrences: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the job to retrieve occurrences for | 
+ **end_date** | **str**| The date to retrieve occurrences up to | 
+ **per_page** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
+
+### Return type
+
+[**Occurrences**](Occurrences.md)
 
 ### Authorization
 

@@ -28,6 +28,7 @@ from swagger_client.Model.job_array import JobArray
 from swagger_client.Model.job_in import JobIn
 from swagger_client.Model.job_out import JobOut
 from swagger_client.Model.job_run_array import JobRunArray
+from swagger_client.Model.occurrences import Occurrences
 from swagger_client.Model.single_job import SingleJob
 from swagger_client.Model.single_job_run import SingleJobRun
 from swagger_client.Model.single_user import SingleUser

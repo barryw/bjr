@@ -17,6 +17,7 @@ import Model.JobArray;
 import Model.JobIn;
 import Model.JobOut;
 import Model.JobRunArray;
+import Model.Occurrences;
 import Model.SingleJob;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -116,6 +117,24 @@ public class JobsApiTest {
         Integer perPage = null;
         Integer page = null;
         JobArray response = api.getJobs(tags, incexc, startDate, endDate, perPage, page);
+
+        // TODO: test validations
+    }
+    /**
+     * Upcoming job occurrences
+     *
+     * Retrieves a list of upcoming occurrences for a job
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void jobOccurrencesTest() throws ApiException {
+        Integer id = null;
+        String endDate = null;
+        Integer perPage = null;
+        Integer page = null;
+        Occurrences response = api.jobOccurrences(id, endDate, perPage, page);
 
         // TODO: test validations
     }

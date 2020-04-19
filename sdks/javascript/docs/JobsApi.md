@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getJob**](JobsApi.md#getJob) | **GET** /job_api/{id} | Retrieves a single job
 [**getJobRuns**](JobsApi.md#getJobRuns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**getJobs**](JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
+[**jobOccurrences**](JobsApi.md#jobOccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 [**updateJob**](JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
 
 <a name="createJob"></a>
@@ -247,6 +248,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobArray**](JobArray.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="jobOccurrences"></a>
+# **jobOccurrences**
+> Occurrences jobOccurrences(id, endDate, opts)
+
+Upcoming job occurrences
+
+Retrieves a list of upcoming occurrences for a job
+
+### Example
+```javascript
+import BjrApiV1 from 'bjr_api_v1';
+let defaultClient = BjrApiV1.ApiClient.instance;
+
+
+let apiInstance = new BjrApiV1.JobsApi();
+let id = 56; // Number | The id of the job to retrieve occurrences for
+let endDate = "endDate_example"; // String | The date to retrieve occurrences up to
+let opts = { 
+  'perPage': 56, // Number | 
+  'page': 56 // Number | 
+};
+apiInstance.jobOccurrences(id, endDate, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The id of the job to retrieve occurrences for | 
+ **endDate** | **String**| The date to retrieve occurrences up to | 
+ **perPage** | **Number**|  | [optional] 
+ **page** | **Number**|  | [optional] 
+
+### Return type
+
+[**Occurrences**](Occurrences.md)
 
 ### Authorization
 

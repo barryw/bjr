@@ -23,6 +23,12 @@ RSpec.configure do |config|
       },
       components: {
         schemas: {
+          Occurrences: {
+            type: :array,
+            items: {
+              type: :string, format: 'date-time'
+            }
+          },
           SingleJobRun: {
             type: :object,
             properties: {

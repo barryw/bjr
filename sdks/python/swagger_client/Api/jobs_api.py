@@ -539,6 +539,117 @@ class JobsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def job_occurrences(self, id, end_date, **kwargs):  # noqa: E501
+        """Upcoming job occurrences  # noqa: E501
+
+        Retrieves a list of upcoming occurrences for a job  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.job_occurrences(id, end_date, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int id: The id of the job to retrieve occurrences for (required)
+        :param str end_date: The date to retrieve occurrences up to (required)
+        :param int per_page:
+        :param int page:
+        :return: Occurrences
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.job_occurrences_with_http_info(id, end_date, **kwargs)  # noqa: E501
+        else:
+            (data) = self.job_occurrences_with_http_info(id, end_date, **kwargs)  # noqa: E501
+            return data
+
+    def job_occurrences_with_http_info(self, id, end_date, **kwargs):  # noqa: E501
+        """Upcoming job occurrences  # noqa: E501
+
+        Retrieves a list of upcoming occurrences for a job  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.job_occurrences_with_http_info(id, end_date, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int id: The id of the job to retrieve occurrences for (required)
+        :param str end_date: The date to retrieve occurrences up to (required)
+        :param int per_page:
+        :param int page:
+        :return: Occurrences
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'end_date', 'per_page', 'page']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method job_occurrences" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `job_occurrences`")  # noqa: E501
+        # verify the required parameter 'end_date' is set
+        if ('end_date' not in params or
+                params['end_date'] is None):
+            raise ValueError("Missing the required parameter `end_date` when calling `job_occurrences`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+        if 'end_date' in params:
+            path_params['end_date'] = params['end_date']  # noqa: E501
+
+        query_params = []
+        if 'per_page' in params:
+            query_params.append(('per_page', params['per_page']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/job_api/{id}/occurrences/{end_date}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='Occurrences',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def update_job(self, id, **kwargs):  # noqa: E501
         """Updates a single job  # noqa: E501
 

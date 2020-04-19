@@ -3,6 +3,48 @@
 require 'swagger_helper'
 
 describe 'Job API' do
+  path '/job_api/{id}/occurrences/{end_date}' do
+    get 'Upcoming job occurrences' do
+      description 'Retrieves a list of upcoming occurrences for a job'
+      tags 'Jobs'
+      operationId 'jobOccurrences'
+      security [bearerAuth: []]
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :id, in: :path, required: true, type: :integer, description: 'The id of the job to retrieve occurrences for'
+      parameter name: :end_date, in: :path, required: true, type: :string, description: 'The date to retrieve occurrences up to'
+      parameter name: :per_page, in: :query, type: :integer, required: false
+      parameter name: :page, in: :query, type: :integer, required: false
+
+      response '200', 'Occurrences received successfully' do
+        let(:admin) { create(:admin1) }
+        let(:job) { create(:job1, user: admin) }
+        let(:Authorization) { auth_token(admin) }
+        let(:id) { job.id }
+        let(:end_date) { DateTime.now + 1.day}
+        schema '$ref' => '#/components/schemas/Occurrences'
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json.length).to eq(25)
+        end
+      end
+
+      response '404', 'Job not found' do
+        let(:admin) { create(:admin1) }
+        let(:Authorization) { auth_token(admin) }
+        let(:id) { 1 }
+        let(:end_date) { DateTime.now }
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json['status_code']).to eq(404)
+          expect(json['is_error']).to be true
+        end
+      end
+    end
+  end
+
   path '/job_api' do
     post 'Creates a job' do
       description 'Creates a job'

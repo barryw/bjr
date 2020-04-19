@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getJob**](JobsApi.md#getJob) | **GET** /job_api/{id} | Retrieves a single job
 [**getJobRuns**](JobsApi.md#getJobRuns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**getJobs**](JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
+[**jobOccurrences**](JobsApi.md#jobOccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 [**updateJob**](JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
 
 <a name="createJob"></a>
@@ -270,6 +271,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobArray**](JobArray.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="jobOccurrences"></a>
+# **jobOccurrences**
+> Occurrences jobOccurrences(id, endDate, perPage, page)
+
+Upcoming job occurrences
+
+Retrieves a list of upcoming occurrences for a job
+
+### Example
+```java
+// Import classes:
+//import BJR.ApiClient;
+//import BJR.ApiException;
+//import BJR.Configuration;
+//import BJR.auth.*;
+//import Api.JobsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+JobsApi apiInstance = new JobsApi();
+Integer id = 56; // Integer | The id of the job to retrieve occurrences for
+String endDate = "endDate_example"; // String | The date to retrieve occurrences up to
+Integer perPage = 56; // Integer | 
+Integer page = 56; // Integer | 
+try {
+    Occurrences result = apiInstance.jobOccurrences(id, endDate, perPage, page);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling JobsApi#jobOccurrences");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The id of the job to retrieve occurrences for |
+ **endDate** | **String**| The date to retrieve occurrences up to |
+ **perPage** | **Integer**|  | [optional]
+ **page** | **Integer**|  | [optional]
+
+### Return type
+
+[**Occurrences**](Occurrences.md)
 
 ### Authorization
 

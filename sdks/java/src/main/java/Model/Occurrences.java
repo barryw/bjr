@@ -14,15 +14,15 @@ package Model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import Model.SingleUser;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 /**
- * UserArray
+ * Occurrences
  */
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-19T19:43:28.123-04:00[America/New_York]")
-public class UserArray extends ArrayList<SingleUser> {
+public class Occurrences extends ArrayList<OffsetDateTime> {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -44,7 +44,7 @@ public class UserArray extends ArrayList<SingleUser> {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserArray {\n");
+    sb.append("class Occurrences {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

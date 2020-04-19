@@ -16,6 +16,7 @@ import JobArray from '../Model/JobArray';
 import JobIn from '../Model/JobIn';
 import JobOut from '../Model/JobOut';
 import JobRunArray from '../Model/JobRunArray';
+import Occurrences from '../Model/Occurrences';
 import SingleJob from '../Model/SingleJob';
 
 /**
@@ -234,6 +235,49 @@ export default class JobsApi {
 
       return this.apiClient.callApi(
         '/job_api', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the jobOccurrences operation.
+     * @callback module:BJR/Api/JobsApi~jobOccurrencesCallback
+     * @param {String} error Error message, if any.
+     * @param {module:BJR/Model/Occurrences} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Upcoming job occurrences
+     * Retrieves a list of upcoming occurrences for a job
+     * @param {Object} opts Optional parameters
+     * @param {module:BJR/Api/JobsApi~jobOccurrencesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:BJR/Model/Occurrences}
+     */
+    jobOccurrences(id, endDate, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+        'id': id,
+        'end_date': endDate
+      };
+      let queryParams = {
+        'per_page': opts['perPage'],
+        'page': opts['page']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = Occurrences;
+
+      return this.apiClient.callApi(
+        '/job_api/{id}/occurrences/{end_date}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

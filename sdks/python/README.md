@@ -75,6 +75,7 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**get_job**](docs/JobsApi.md#get_job) | **GET** /job_api/{id} | Retrieves a single job
 *JobsApi* | [**get_job_runs**](docs/JobsApi.md#get_job_runs) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 *JobsApi* | [**get_jobs**](docs/JobsApi.md#get_jobs) | **GET** /job_api | Retrieves jobs
+*JobsApi* | [**job_occurrences**](docs/JobsApi.md#job_occurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 *JobsApi* | [**update_job**](docs/JobsApi.md#update_job) | **PUT** /job_api/{id} | Updates a single job
 *UsersApi* | [**create_user**](docs/UsersApi.md#create_user) | **POST** /user_api | Creates a user
 *UsersApi* | [**delete_user**](docs/UsersApi.md#delete_user) | **DELETE** /user_api/{id} | Deletes a user
@@ -90,6 +91,7 @@ Class | Method | HTTP request | Description
  - [JobIn](docs/JobIn.md)
  - [JobOut](docs/JobOut.md)
  - [JobRunArray](docs/JobRunArray.md)
+ - [Occurrences](docs/Occurrences.md)
  - [SingleJob](docs/SingleJob.md)
  - [SingleJobRun](docs/SingleJobRun.md)
  - [SingleUser](docs/SingleUser.md)
