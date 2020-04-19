@@ -1,0 +1,15 @@
+vpc_id=""
+domain=""
+key_pair=""
+alb_subnet_ids=""
+subnet_ids=""
+api_instance_type="m5.large"
+worker_instance_type="m5.xlarge"
+rds_instance_type="db.m5.xlarge"
+redis_instance_type="cache.m5.large"
+api_asg_min=2
+api_asg_max=2
+api_asg_desired=2
+worker_asg_min=2
+worker_asg_max=2
+worker_asg_desired=2
