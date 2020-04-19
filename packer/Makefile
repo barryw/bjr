@@ -9,3 +9,7 @@ api:
 worker:
 	@echo Building Worker server AMI
 	packer build -only worker packer.json
+
+deployment:
+	@echo Building API and Worker AMIs
+	packer build -only api,worker packer.json

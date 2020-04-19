@@ -1,0 +1,15 @@
+# Configure these to talk to your Redis server.
+REDIS_HOST=__REDIS_HOST__
+REDIS_PORT=__REDIS_PORT__
+REDIS_SIDEKIQ_DB=__REDIS_SIDEKIQ_DB__
+
+# Configure these to talk to your MySQL database. The database must already exist.
+BJR_DATABASE_HOST=__MYSQL_HOST__
+BJR_DATABASE_PORT=__MYSQL_PORT__
+BJR_DATABASE_USERNAME=__MYSQL_USERNAME__
+BJR_DATABASE_PASSWORD=__MYSQL_PASSWORD__
+
+# Sets the initial password for the admin user
+INITIAL_ADMIN_PASSWORD=__INITIAL_ADMIN_PASSWORD__
+
+SECRET_KEY_BASE=__SECRET_KEY_BASE__

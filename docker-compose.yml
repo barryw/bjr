@@ -3,11 +3,8 @@ services:
   db:
     image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_USER: bjr
-      MYSQL_PASSWORD: bjr
-      MYSQL_DATABASE: bjr_development
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    env_file:
+    - .env.development
     volumes:
       - mysql:/var/lib/mysql
   api:
@@ -19,24 +16,18 @@ services:
     depends_on:
       - db
       - redis
+    env_file:
+    - .env.development
     environment:
-      REDIS_HOST: redis
-      BJR_DATABASE_HOST: db
-      BJR_DATABASE_USERNAME: bjr
-      BJR_DATABASE_PASSWORD: bjr
       SERVER_TYPE: api
-      RAILS_ENV: development
   sidekiq:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    env_file:
+    - .env.development
     environment:
-      REDIS_HOST: redis
-      BJR_DATABASE_HOST: db
-      BJR_DATABASE_USERNAME: bjr
-      BJR_DATABASE_PASSWORD: bjr
       SERVER_TYPE: worker
-      RAILS_ENV: development
   redis:
     image: redis:latest
 

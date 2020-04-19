@@ -1,0 +1,12 @@
+#cloud-config
+runcmd:
+  - sed -i 's#__REDIS_HOST__#${redis_host}#' /home/ec2-user/bjr/.env
+  - sed -i 's#__REDIS_PORT__#${redis_port}#' /home/ec2-user/bjr/.env
+  - sed -i 's#__REDIS_SIDEKIQ_DB__#${redis_sidekiq_db}#' /home/ec2-user/bjr/.env
+  - sed -i 's#__MYSQL_HOST__#${mysql_host}#' /home/ec2-user/bjr/.env
+  - sed -i 's#__MYSQL_PORT__#${mysql_port}#' /home/ec2-user/bjr/.env
+  - sed -i 's#__MYSQL_USERNAME__#${mysql_username}#' /home/ec2-user/bjr/.env
+  - sed -i 's#__MYSQL_PASSWORD__#${mysql_password}#' /home/ec2-user/bjr/.env
+  - sed -i 's#__INITIAL_ADMIN_PASSWORD__#${initial_admin_password}#' /home/ec2-user/bjr/.env
+  - sed -i 's#__SECRET_KEY_BASE__#${secret_key_base}#' /home/ec2-user/bjr/.env
+  - echo '${initial_admin_password}' > /home/ec2-user/initial-admin-password

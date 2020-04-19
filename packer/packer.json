@@ -1,12 +1,27 @@
 {
-  "variables": {
-  },
   "provisioners": [
     {
       "type": "file",
-      "source": "scripts/all-in-one.service",
-      "destination": "/home/ec2-user/bjr.service",
-      "only": ["all-in-one"]
+      "source": "scripts/bjr.service",
+      "destination": "/home/ec2-user/bjr.service"
+    },
+    {
+      "type": "file",
+      "source": "scripts/envfile",
+      "destination": "/home/ec2-user/.env",
+      "only": ["api", "worker"]
+    },
+    {
+      "type": "file",
+      "source": "scripts/api-docker-compose.yml",
+      "destination": "/home/ec2-user/docker-compose.yml",
+      "only": ["api"]
+    },
+    {
+      "type": "file",
+      "source": "scripts/worker-docker-compose.yml",
+      "destination": "/home/ec2-user/docker-compose.yml",
+      "only": ["worker"]
     },
     {
       "type": "shell",
@@ -15,18 +30,13 @@
     },
     {
       "type": "shell",
-      "only": ["all-in-one"],
-      "script": "scripts/all-in-one.sh"
+      "script": "scripts/all-in-one.sh",
+      "only": ["all-in-one"]
     },
     {
       "type": "shell",
-      "script": "scripts/api.sh",
-      "only": ["api"]
-    },
-    {
-      "type": "shell",
-      "script": "scripts/worker.sh",
-      "only": ["worker"]
+      "script": "scripts/api-and-worker.sh",
+      "only": ["api", "worker"]
     }
   ],
   "builders": [

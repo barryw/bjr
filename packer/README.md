@@ -14,9 +14,11 @@ From here you can build one of three different types of AWS AMIs:
 
 - BJR-ALL-IN-ONE: A single AMI that runs MySQL, Redis, the BJR API server and a single BJR worker. This is great for small, self-contained deployments, dev environments or proof-of-concept environments. Since this is not highly available or backed up, __DO NOT use this for production__.
 
-- BJR-API: Builds an AMI that can be used as an API server node. Requires configuration for external MySQL & Redis.
+- BJR-API: Builds an AMI that can be used as an API server node.
 
-- BJR-WORKER: Builds an AMI that can be used as a worker node. Requires configuration for external MySQL & Redis.
+- BJR-WORKER: Builds an AMI that can be used as a worker node.
+
+The `BJR-API` and `BJR-WORKER` AMIs need to be configured with a connection to MySQL and Redis before they can be used. This can be done using `User Data` when an instance is provisioned. See the `terraform` folder for an example of how to do this.
 
 __NOTE__: Before you run any of these builds, please make sure to have `AWS_REGION` and `AWS_PROFILE` set in your environment to point at the AWS account that you'd like to build your AMI in. Your `AWS_PROFILE` should be the name of a profile stored in `~/.aws/credentials`
 
@@ -81,6 +83,8 @@ Version: v1
 ```
 
 These tags will be used by code in the `terraform` deployment to find the correct AMIs.
+
+__NOTE__: These AMIs will not be usable as-is. They will need to be configured with either a `User Data` script, or manually. Have a look at the `terraform` folder to see how this is done.
 
 ##### BJR-WORKER
 
