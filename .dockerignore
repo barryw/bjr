@@ -5,3 +5,8 @@ log/*
 config/master.key
 config/credentials.yml.enc
 sdks/*
+packer/*
+terraform/*
+.git
+coverage/*
+deploy/*
