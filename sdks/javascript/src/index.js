@@ -22,12 +22,16 @@ import Occurrences from './Model/Occurrences';
 import SingleJob from './Model/SingleJob';
 import SingleJobRun from './Model/SingleJobRun';
 import SingleUser from './Model/SingleUser';
+import StringArray from './Model/StringArray';
+import TagArray from './Model/TagArray';
+import Tagging from './Model/Tagging';
 import UserArray from './Model/UserArray';
 import UserNewIn from './Model/UserNewIn';
 import UserOut from './Model/UserOut';
 import UserUpdateIn from './Model/UserUpdateIn';
 import AuthenticationApi from './Api/AuthenticationApi';
 import JobsApi from './Api/JobsApi';
+import StaticApi from './Api/StaticApi';
 import UsersApi from './Api/UsersApi';
 
 /**
@@ -129,6 +133,24 @@ export {
     SingleUser,
 
     /**
+     * The StringArray model constructor.
+     * @property {module:BJR/Model/StringArray}
+     */
+    StringArray,
+
+    /**
+     * The TagArray model constructor.
+     * @property {module:BJR/Model/TagArray}
+     */
+    TagArray,
+
+    /**
+     * The Tagging model constructor.
+     * @property {module:BJR/Model/Tagging}
+     */
+    Tagging,
+
+    /**
      * The UserArray model constructor.
      * @property {module:BJR/Model/UserArray}
      */
@@ -163,6 +185,12 @@ export {
     * @property {module:BJR/Api/JobsApi}
     */
     JobsApi,
+
+    /**
+    * The StaticApi service constructor.
+    * @property {module:BJR/Api/StaticApi}
+    */
+    StaticApi,
 
     /**
     * The UsersApi service constructor.

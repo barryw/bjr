@@ -29,6 +29,27 @@ RSpec.configure do |config|
               type: :string, format: 'date-time'
             }
           },
+          StringArray: {
+            type: :array,
+            items: {
+              type: :string
+            }
+          },
+          TagArray: {
+            type: :array,
+            items: {
+              type: :object,
+              "$ref": "#/components/schemas/Tagging"
+            }
+          },
+          Tagging: {
+            type: :object,
+            properties: {
+              id: { type: :integer },
+              name: { type: :string },
+              taggings_count: { type: :integer }
+            }
+          },
           SingleJobRun: {
             type: :object,
             properties: {

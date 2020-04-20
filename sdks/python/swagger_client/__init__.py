@@ -17,6 +17,7 @@ from __future__ import absolute_import
 # import apis into sdk package
 from swagger_client.Api.authentication_api import AuthenticationApi
 from swagger_client.Api.jobs_api import JobsApi
+from swagger_client.Api.static_api import StaticApi
 from swagger_client.Api.users_api import UsersApi
 # import ApiClient
 from swagger_client.api_client import ApiClient
@@ -32,6 +33,9 @@ from swagger_client.Model.occurrences import Occurrences
 from swagger_client.Model.single_job import SingleJob
 from swagger_client.Model.single_job_run import SingleJobRun
 from swagger_client.Model.single_user import SingleUser
+from swagger_client.Model.string_array import StringArray
+from swagger_client.Model.tag_array import TagArray
+from swagger_client.Model.tagging import Tagging
 from swagger_client.Model.user_array import UserArray
 from swagger_client.Model.user_new_in import UserNewIn
 from swagger_client.Model.user_out import UserOut

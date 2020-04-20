@@ -33,6 +33,11 @@ class Job < ApplicationRecord
     self.next_run = schedule.next_occurrence
   end
 
+  # Do the tagging
+  def tag(user, tags)
+    user.tag self, with: tags, on: :tags unless tags.nil?
+  end
+
   # Determines whether this job has a schedule ocurrence between 2 dates
   def occurs_between(start_date, end_date)
     schedule.occurs_between? start_date, end_date

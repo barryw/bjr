@@ -21,7 +21,7 @@ import java.util.List;
  * JobArray
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-19T19:43:28.123-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-19T20:25:22.798-04:00[America/New_York]")
 public class JobArray extends ArrayList<SingleJob> {
 
   @Override

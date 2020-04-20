@@ -24,6 +24,9 @@ from swagger_client.Model.occurrences import Occurrences
 from swagger_client.Model.single_job import SingleJob
 from swagger_client.Model.single_job_run import SingleJobRun
 from swagger_client.Model.single_user import SingleUser
+from swagger_client.Model.string_array import StringArray
+from swagger_client.Model.tag_array import TagArray
+from swagger_client.Model.tagging import Tagging
 from swagger_client.Model.user_array import UserArray
 from swagger_client.Model.user_new_in import UserNewIn
 from swagger_client.Model.user_out import UserOut
