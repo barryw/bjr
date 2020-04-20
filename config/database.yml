@@ -18,6 +18,7 @@ default: &default
   host: <%= ENV.fetch('BJR_DATABASE_HOST', '127.0.0.1') %>
   port: <%= ENV.fetch('BJR_DATABASE_PORT', 3306) %>
   database: <%= ENV.fetch('BJR_DATABASE', "bjr_#{Rails.env}") %>
+  reaping_frequency: 0
 
 development:
   <<: *default
