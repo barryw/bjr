@@ -38,7 +38,9 @@ namespace BJR.Model
         /// <param name="timezone">The timezone to run the job in..</param>
         /// <param name="enabled">Is the job enabled by default?.</param>
         /// <param name="tags">A comma-separated list of tags to associate with this job. You can search jobs by their tags..</param>
-        public JobIn(string name = default(string), string cron = default(string), string command = default(string), string timezone = default(string), bool? enabled = default(bool?), string tags = default(string))
+        /// <param name="successCallback">Specify the url to receive a POST callback for all successful runs of this job..</param>
+        /// <param name="failureCallback">Specify the url to receive a POST callback for all unsuccessful runs of this job..</param>
+        public JobIn(string name = default(string), string cron = default(string), string command = default(string), string timezone = default(string), bool? enabled = default(bool?), string tags = default(string), string successCallback = default(string), string failureCallback = default(string))
         {
             this.Name = name;
             this.Cron = cron;
@@ -46,6 +48,8 @@ namespace BJR.Model
             this.Timezone = timezone;
             this.Enabled = enabled;
             this.Tags = tags;
+            this.SuccessCallback = successCallback;
+            this.FailureCallback = failureCallback;
         }
         
         /// <summary>
@@ -91,6 +95,20 @@ namespace BJR.Model
         public string Tags { get; set; }
 
         /// <summary>
+        /// Specify the url to receive a POST callback for all successful runs of this job.
+        /// </summary>
+        /// <value>Specify the url to receive a POST callback for all successful runs of this job.</value>
+        [DataMember(Name="success_callback", EmitDefaultValue=false)]
+        public string SuccessCallback { get; set; }
+
+        /// <summary>
+        /// Specify the url to receive a POST callback for all unsuccessful runs of this job.
+        /// </summary>
+        /// <value>Specify the url to receive a POST callback for all unsuccessful runs of this job.</value>
+        [DataMember(Name="failure_callback", EmitDefaultValue=false)]
+        public string FailureCallback { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -104,6 +122,8 @@ namespace BJR.Model
             sb.Append("  Timezone: ").Append(Timezone).Append("\n");
             sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  SuccessCallback: ").Append(SuccessCallback).Append("\n");
+            sb.Append("  FailureCallback: ").Append(FailureCallback).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -167,6 +187,16 @@ namespace BJR.Model
                     this.Tags == input.Tags ||
                     (this.Tags != null &&
                     this.Tags.Equals(input.Tags))
+                ) && 
+                (
+                    this.SuccessCallback == input.SuccessCallback ||
+                    (this.SuccessCallback != null &&
+                    this.SuccessCallback.Equals(input.SuccessCallback))
+                ) && 
+                (
+                    this.FailureCallback == input.FailureCallback ||
+                    (this.FailureCallback != null &&
+                    this.FailureCallback.Equals(input.FailureCallback))
                 );
         }
 
@@ -191,6 +221,10 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.Enabled.GetHashCode();
                 if (this.Tags != null)
                     hashCode = hashCode * 59 + this.Tags.GetHashCode();
+                if (this.SuccessCallback != null)
+                    hashCode = hashCode * 59 + this.SuccessCallback.GetHashCode();
+                if (this.FailureCallback != null)
+                    hashCode = hashCode * 59 + this.FailureCallback.GetHashCode();
                 return hashCode;
             }
         }

@@ -14,3 +14,5 @@ Name | Type | Description | Notes
 **tags** | **List&lt;String&gt;** | An array of tags associated with the job. |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) | The UTC date and time that the object was created. |  [optional]
 **updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) | The UTC date and time that the object was last modified. |  [optional]
+**successCallback** | **String** | This url will receive a POST request with details about all successful job runs. |  [optional]
+**failureCallback** | **String** | This url will receive a POST request with details about all unsuccessful job runs. |  [optional]

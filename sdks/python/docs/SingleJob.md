@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **tags** | **list[str]** | An array of tags associated with the job. | [optional] 
 **created_at** | **datetime** | The UTC date and time that the object was created. | [optional] 
 **updated_at** | **datetime** | The UTC date and time that the object was last modified. | [optional] 
+**success_callback** | **str** | This url will receive a POST request with details about all successful job runs. | [optional] 
+**failure_callback** | **str** | This url will receive a POST request with details about all unsuccessful job runs. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -34,7 +34,9 @@ class JobIn(object):
         'command': 'str',
         'timezone': 'str',
         'enabled': 'bool',
-        'tags': 'str'
+        'tags': 'str',
+        'success_callback': 'str',
+        'failure_callback': 'str'
     }
 
     attribute_map = {
@@ -43,10 +45,12 @@ class JobIn(object):
         'command': 'command',
         'timezone': 'timezone',
         'enabled': 'enabled',
-        'tags': 'tags'
+        'tags': 'tags',
+        'success_callback': 'success_callback',
+        'failure_callback': 'failure_callback'
     }
 
-    def __init__(self, name=None, cron=None, command=None, timezone=None, enabled=None, tags=None):  # noqa: E501
+    def __init__(self, name=None, cron=None, command=None, timezone=None, enabled=None, tags=None, success_callback=None, failure_callback=None):  # noqa: E501
         """JobIn - a model defined in Swagger"""  # noqa: E501
         self._name = None
         self._cron = None
@@ -54,6 +58,8 @@ class JobIn(object):
         self._timezone = None
         self._enabled = None
         self._tags = None
+        self._success_callback = None
+        self._failure_callback = None
         self.discriminator = None
         if name is not None:
             self.name = name
@@ -67,6 +73,10 @@ class JobIn(object):
             self.enabled = enabled
         if tags is not None:
             self.tags = tags
+        if success_callback is not None:
+            self.success_callback = success_callback
+        if failure_callback is not None:
+            self.failure_callback = failure_callback
 
     @property
     def name(self):
@@ -205,6 +215,52 @@ class JobIn(object):
         """
 
         self._tags = tags
+
+    @property
+    def success_callback(self):
+        """Gets the success_callback of this JobIn.  # noqa: E501
+
+        Specify the url to receive a POST callback for all successful runs of this job.  # noqa: E501
+
+        :return: The success_callback of this JobIn.  # noqa: E501
+        :rtype: str
+        """
+        return self._success_callback
+
+    @success_callback.setter
+    def success_callback(self, success_callback):
+        """Sets the success_callback of this JobIn.
+
+        Specify the url to receive a POST callback for all successful runs of this job.  # noqa: E501
+
+        :param success_callback: The success_callback of this JobIn.  # noqa: E501
+        :type: str
+        """
+
+        self._success_callback = success_callback
+
+    @property
+    def failure_callback(self):
+        """Gets the failure_callback of this JobIn.  # noqa: E501
+
+        Specify the url to receive a POST callback for all unsuccessful runs of this job.  # noqa: E501
+
+        :return: The failure_callback of this JobIn.  # noqa: E501
+        :rtype: str
+        """
+        return self._failure_callback
+
+    @failure_callback.setter
+    def failure_callback(self, failure_callback):
+        """Sets the failure_callback of this JobIn.
+
+        Specify the url to receive a POST callback for all unsuccessful runs of this job.  # noqa: E501
+
+        :param failure_callback: The failure_callback of this JobIn.  # noqa: E501
+        :type: str
+        """
+
+        self._failure_callback = failure_callback
 
     def to_dict(self):
         """Returns the model properties as a dict"""

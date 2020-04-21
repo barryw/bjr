@@ -76,6 +76,12 @@ export default class SingleJob {
             if (data.hasOwnProperty('updated_at')) {
                 obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'Date');
             }
+            if (data.hasOwnProperty('success_callback')) {
+                obj['success_callback'] = ApiClient.convertToType(data['success_callback'], 'String');
+            }
+            if (data.hasOwnProperty('failure_callback')) {
+                obj['failure_callback'] = ApiClient.convertToType(data['failure_callback'], 'String');
+            }
         }
         return obj;
     }
@@ -135,6 +141,16 @@ export default class SingleJob {
     * @member {Date} updated_at
     */
     updated_at = undefined;
+    /**
+    * This url will receive a POST request with details about all successful job runs.
+    * @member {String} success_callback
+    */
+    success_callback = undefined;
+    /**
+    * This url will receive a POST request with details about all unsuccessful job runs.
+    * @member {String} failure_callback
+    */
+    failure_callback = undefined;
 
 
 

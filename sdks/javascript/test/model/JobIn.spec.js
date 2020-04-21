@@ -89,6 +89,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property successCallback (base name: "success_callback")', function() {
+      // uncomment below and update the code to test the property successCallback
+      //var instane = new BjrApiV1.JobIn();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property failureCallback (base name: "failure_callback")', function() {
+      // uncomment below and update the code to test the property failureCallback
+      //var instane = new BjrApiV1.JobIn();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

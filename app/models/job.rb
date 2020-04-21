@@ -127,7 +127,9 @@ class Job < ApplicationRecord
       created_at: created_at,
       updated_at: updated_at,
       timezone: timezone,
-      tags: tags.collect(&:name)
+      tags: tags.collect(&:name),
+      success_callback: success_callback,
+      failure_callback: failure_callback
     }
   end
 

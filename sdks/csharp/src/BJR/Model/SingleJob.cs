@@ -43,7 +43,9 @@ namespace BJR.Model
         /// <param name="tags">An array of tags associated with the job..</param>
         /// <param name="createdAt">The UTC date and time that the object was created..</param>
         /// <param name="updatedAt">The UTC date and time that the object was last modified..</param>
-        public SingleJob(int? id = default(int?), string name = default(string), string cron = default(string), bool? enabled = default(bool?), string command = default(string), string nextRun = default(string), bool? running = default(bool?), string timezone = default(string), List<string> tags = default(List<string>), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?))
+        /// <param name="successCallback">This url will receive a POST request with details about all successful job runs..</param>
+        /// <param name="failureCallback">This url will receive a POST request with details about all unsuccessful job runs..</param>
+        public SingleJob(int? id = default(int?), string name = default(string), string cron = default(string), bool? enabled = default(bool?), string command = default(string), string nextRun = default(string), bool? running = default(bool?), string timezone = default(string), List<string> tags = default(List<string>), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?), string successCallback = default(string), string failureCallback = default(string))
         {
             this.Id = id;
             this.Name = name;
@@ -56,6 +58,8 @@ namespace BJR.Model
             this.Tags = tags;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
+            this.SuccessCallback = successCallback;
+            this.FailureCallback = failureCallback;
         }
         
         /// <summary>
@@ -136,6 +140,20 @@ namespace BJR.Model
         public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
+        /// This url will receive a POST request with details about all successful job runs.
+        /// </summary>
+        /// <value>This url will receive a POST request with details about all successful job runs.</value>
+        [DataMember(Name="success_callback", EmitDefaultValue=false)]
+        public string SuccessCallback { get; set; }
+
+        /// <summary>
+        /// This url will receive a POST request with details about all unsuccessful job runs.
+        /// </summary>
+        /// <value>This url will receive a POST request with details about all unsuccessful job runs.</value>
+        [DataMember(Name="failure_callback", EmitDefaultValue=false)]
+        public string FailureCallback { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -154,6 +172,8 @@ namespace BJR.Model
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  SuccessCallback: ").Append(SuccessCallback).Append("\n");
+            sb.Append("  FailureCallback: ").Append(FailureCallback).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -243,6 +263,16 @@ namespace BJR.Model
                     this.UpdatedAt == input.UpdatedAt ||
                     (this.UpdatedAt != null &&
                     this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
+                    this.SuccessCallback == input.SuccessCallback ||
+                    (this.SuccessCallback != null &&
+                    this.SuccessCallback.Equals(input.SuccessCallback))
+                ) && 
+                (
+                    this.FailureCallback == input.FailureCallback ||
+                    (this.FailureCallback != null &&
+                    this.FailureCallback.Equals(input.FailureCallback))
                 );
         }
 
@@ -277,6 +307,10 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
                 if (this.UpdatedAt != null)
                     hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
+                if (this.SuccessCallback != null)
+                    hashCode = hashCode * 59 + this.SuccessCallback.GetHashCode();
+                if (this.FailureCallback != null)
+                    hashCode = hashCode * 59 + this.FailureCallback.GetHashCode();
                 return hashCode;
             }
         }

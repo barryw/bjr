@@ -25,7 +25,7 @@ import java.io.IOException;
  * JobIn
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-19T20:25:22.798-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-21T12:30:36.637-04:00[America/New_York]")
 public class JobIn {
   @SerializedName("name")
   private String name = null;
@@ -44,6 +44,12 @@ public class JobIn {
 
   @SerializedName("tags")
   private String tags = null;
+
+  @SerializedName("success_callback")
+  private String successCallback = null;
+
+  @SerializedName("failure_callback")
+  private String failureCallback = null;
 
   public JobIn name(String name) {
     this.name = name;
@@ -153,6 +159,42 @@ public class JobIn {
     this.tags = tags;
   }
 
+  public JobIn successCallback(String successCallback) {
+    this.successCallback = successCallback;
+    return this;
+  }
+
+   /**
+   * Specify the url to receive a POST callback for all successful runs of this job.
+   * @return successCallback
+  **/
+  @Schema(description = "Specify the url to receive a POST callback for all successful runs of this job.")
+  public String getSuccessCallback() {
+    return successCallback;
+  }
+
+  public void setSuccessCallback(String successCallback) {
+    this.successCallback = successCallback;
+  }
+
+  public JobIn failureCallback(String failureCallback) {
+    this.failureCallback = failureCallback;
+    return this;
+  }
+
+   /**
+   * Specify the url to receive a POST callback for all unsuccessful runs of this job.
+   * @return failureCallback
+  **/
+  @Schema(description = "Specify the url to receive a POST callback for all unsuccessful runs of this job.")
+  public String getFailureCallback() {
+    return failureCallback;
+  }
+
+  public void setFailureCallback(String failureCallback) {
+    this.failureCallback = failureCallback;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -168,12 +210,14 @@ public class JobIn {
         Objects.equals(this.command, jobIn.command) &&
         Objects.equals(this.timezone, jobIn.timezone) &&
         Objects.equals(this.enabled, jobIn.enabled) &&
-        Objects.equals(this.tags, jobIn.tags);
+        Objects.equals(this.tags, jobIn.tags) &&
+        Objects.equals(this.successCallback, jobIn.successCallback) &&
+        Objects.equals(this.failureCallback, jobIn.failureCallback);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, cron, command, timezone, enabled, tags);
+    return Objects.hash(name, cron, command, timezone, enabled, tags, successCallback, failureCallback);
   }
 
 
@@ -188,6 +232,8 @@ public class JobIn {
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    successCallback: ").append(toIndentedString(successCallback)).append("\n");
+    sb.append("    failureCallback: ").append(toIndentedString(failureCallback)).append("\n");
     sb.append("}");
     return sb.toString();
   }

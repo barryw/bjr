@@ -145,7 +145,9 @@ RSpec.configure do |config|
               timezone: { type: :string, description: 'The timezone that the job will run in.' },
               tags: { type: :array, description: 'An array of tags associated with the job.', items: { type: :string } },
               created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
-              updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' }
+              updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' },
+              success_callback: { type: :string, description: 'This url will receive a POST request with details about all successful job runs.', nullable: true },
+              failure_callback: { type: :string, description: 'This url will receive a POST request with details about all unsuccessful job runs.', nullable: true }
             }
           },
           JobArray: {
@@ -163,7 +165,9 @@ RSpec.configure do |config|
               command: { type: :string, description: 'The command to run when the job fires.', required: true },
               timezone: { type: :string, description: 'The timezone to run the job in.', required: false },
               enabled: { type: :boolean, description: 'Is the job enabled by default?', required: false },
-              tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.', required: false }
+              tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.', required: false },
+              success_callback: { type: :string, description: 'Specify the url to receive a POST callback for all successful runs of this job.', required: false },
+              failure_callback: { type: :string, description: 'Specify the url to receive a POST callback for all unsuccessful runs of this job.', required: false }
             }
           },
           JobOut: {

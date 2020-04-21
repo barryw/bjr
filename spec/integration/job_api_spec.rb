@@ -58,7 +58,8 @@ describe 'Job API' do
       response '201', 'Job created successfully.' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        let(:params) { { name: 'My New Job', cron: '*/5 * * * *', command: 'echo Hello World', timezone: 'UTC', enabled: 'true', tags: 'tag1, tag2' } }
+        let(:params) { { name: 'My New Job', cron: '*/5 * * * *', command: 'echo Hello World', timezone: 'UTC', enabled: 'true', tags: 'tag1, tag2',
+                         success_callback: 'http://localhost:3000/success', failure_callback: 'http://localhost:3000/failure' } }
         schema '$ref' => '#/components/schemas/JobOut'
 
         run_test! do |response|
@@ -70,6 +71,8 @@ describe 'Job API' do
           expect(json['object_type']).to eq('job')
           expect(json['object']['tags']).to eq(%w[tag1 tag2])
           expect(json['object']['enabled']).to be true
+          expect(json['object']['success_callback']).to eq('http://localhost:3000/success')
+          expect(json['object']['failure_callback']).to eq('http://localhost:3000/failure')
         end
       end
 

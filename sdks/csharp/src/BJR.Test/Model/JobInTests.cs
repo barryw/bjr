@@ -113,6 +113,22 @@ namespace BJR.Test
         {
             // TODO unit test for the property 'Tags'
         }
+        /// <summary>
+        /// Test the property 'SuccessCallback'
+        /// </summary>
+        [Test]
+        public void SuccessCallbackTest()
+        {
+            // TODO unit test for the property 'SuccessCallback'
+        }
+        /// <summary>
+        /// Test the property 'FailureCallback'
+        /// </summary>
+        [Test]
+        public void FailureCallbackTest()
+        {
+            // TODO unit test for the property 'FailureCallback'
+        }
 
     }
 

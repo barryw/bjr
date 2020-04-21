@@ -81,7 +81,7 @@ OpenAPI spec version: v1
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\BJR\BJR.csproj">
-          <Project>{68CFF2E5-B947-4F6C-B415-F3B27E835C4E}</Project>
+          <Project>{7F0A5DAE-A8F5-43F6-BFE3-5EA2A1AB7C9A}</Project>
           <Name>BJR</Name>
       </ProjectReference>
   </ItemGroup>

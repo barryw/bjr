@@ -39,7 +39,9 @@ class SingleJob(object):
         'timezone': 'str',
         'tags': 'list[str]',
         'created_at': 'datetime',
-        'updated_at': 'datetime'
+        'updated_at': 'datetime',
+        'success_callback': 'str',
+        'failure_callback': 'str'
     }
 
     attribute_map = {
@@ -53,10 +55,12 @@ class SingleJob(object):
         'timezone': 'timezone',
         'tags': 'tags',
         'created_at': 'created_at',
-        'updated_at': 'updated_at'
+        'updated_at': 'updated_at',
+        'success_callback': 'success_callback',
+        'failure_callback': 'failure_callback'
     }
 
-    def __init__(self, id=None, name=None, cron=None, enabled=None, command=None, next_run=None, running=None, timezone=None, tags=None, created_at=None, updated_at=None):  # noqa: E501
+    def __init__(self, id=None, name=None, cron=None, enabled=None, command=None, next_run=None, running=None, timezone=None, tags=None, created_at=None, updated_at=None, success_callback=None, failure_callback=None):  # noqa: E501
         """SingleJob - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None
@@ -69,6 +73,8 @@ class SingleJob(object):
         self._tags = None
         self._created_at = None
         self._updated_at = None
+        self._success_callback = None
+        self._failure_callback = None
         self.discriminator = None
         if id is not None:
             self.id = id
@@ -92,6 +98,10 @@ class SingleJob(object):
             self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
+        if success_callback is not None:
+            self.success_callback = success_callback
+        if failure_callback is not None:
+            self.failure_callback = failure_callback
 
     @property
     def id(self):
@@ -345,6 +355,52 @@ class SingleJob(object):
         """
 
         self._updated_at = updated_at
+
+    @property
+    def success_callback(self):
+        """Gets the success_callback of this SingleJob.  # noqa: E501
+
+        This url will receive a POST request with details about all successful job runs.  # noqa: E501
+
+        :return: The success_callback of this SingleJob.  # noqa: E501
+        :rtype: str
+        """
+        return self._success_callback
+
+    @success_callback.setter
+    def success_callback(self, success_callback):
+        """Sets the success_callback of this SingleJob.
+
+        This url will receive a POST request with details about all successful job runs.  # noqa: E501
+
+        :param success_callback: The success_callback of this SingleJob.  # noqa: E501
+        :type: str
+        """
+
+        self._success_callback = success_callback
+
+    @property
+    def failure_callback(self):
+        """Gets the failure_callback of this SingleJob.  # noqa: E501
+
+        This url will receive a POST request with details about all unsuccessful job runs.  # noqa: E501
+
+        :return: The failure_callback of this SingleJob.  # noqa: E501
+        :rtype: str
+        """
+        return self._failure_callback
+
+    @failure_callback.setter
+    def failure_callback(self, failure_callback):
+        """Sets the failure_callback of this SingleJob.
+
+        This url will receive a POST request with details about all unsuccessful job runs.  # noqa: E501
+
+        :param failure_callback: The failure_callback of this SingleJob.  # noqa: E501
+        :type: str
+        """
+
+        self._failure_callback = failure_callback
 
     def to_dict(self):
         """Returns the model properties as a dict"""

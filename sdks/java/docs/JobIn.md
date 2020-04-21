@@ -9,3 +9,5 @@ Name | Type | Description | Notes
 **timezone** | **String** | The timezone to run the job in. |  [optional]
 **enabled** | **Boolean** | Is the job enabled by default? |  [optional]
 **tags** | **String** | A comma-separated list of tags to associate with this job. You can search jobs by their tags. |  [optional]
+**successCallback** | **String** | Specify the url to receive a POST callback for all successful runs of this job. |  [optional]
+**failureCallback** | **String** | Specify the url to receive a POST callback for all unsuccessful runs of this job. |  [optional]

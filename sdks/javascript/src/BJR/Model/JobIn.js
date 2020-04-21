@@ -61,6 +61,12 @@ export default class JobIn {
             if (data.hasOwnProperty('tags')) {
                 obj['tags'] = ApiClient.convertToType(data['tags'], 'String');
             }
+            if (data.hasOwnProperty('success_callback')) {
+                obj['success_callback'] = ApiClient.convertToType(data['success_callback'], 'String');
+            }
+            if (data.hasOwnProperty('failure_callback')) {
+                obj['failure_callback'] = ApiClient.convertToType(data['failure_callback'], 'String');
+            }
         }
         return obj;
     }
@@ -95,6 +101,16 @@ export default class JobIn {
     * @member {String} tags
     */
     tags = undefined;
+    /**
+    * Specify the url to receive a POST callback for all successful runs of this job.
+    * @member {String} success_callback
+    */
+    success_callback = undefined;
+    /**
+    * Specify the url to receive a POST callback for all unsuccessful runs of this job.
+    * @member {String} failure_callback
+    */
+    failure_callback = undefined;
 
 
 

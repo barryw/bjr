@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
  * SingleJob
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-19T20:25:22.798-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-21T12:30:36.637-04:00[America/New_York]")
 public class SingleJob {
   @SerializedName("id")
   private Integer id = null;
@@ -62,6 +62,12 @@ public class SingleJob {
 
   @SerializedName("updated_at")
   private OffsetDateTime updatedAt = null;
+
+  @SerializedName("success_callback")
+  private String successCallback = null;
+
+  @SerializedName("failure_callback")
+  private String failureCallback = null;
 
   public SingleJob id(Integer id) {
     this.id = id;
@@ -269,6 +275,42 @@ public class SingleJob {
     this.updatedAt = updatedAt;
   }
 
+  public SingleJob successCallback(String successCallback) {
+    this.successCallback = successCallback;
+    return this;
+  }
+
+   /**
+   * This url will receive a POST request with details about all successful job runs.
+   * @return successCallback
+  **/
+  @Schema(description = "This url will receive a POST request with details about all successful job runs.")
+  public String getSuccessCallback() {
+    return successCallback;
+  }
+
+  public void setSuccessCallback(String successCallback) {
+    this.successCallback = successCallback;
+  }
+
+  public SingleJob failureCallback(String failureCallback) {
+    this.failureCallback = failureCallback;
+    return this;
+  }
+
+   /**
+   * This url will receive a POST request with details about all unsuccessful job runs.
+   * @return failureCallback
+  **/
+  @Schema(description = "This url will receive a POST request with details about all unsuccessful job runs.")
+  public String getFailureCallback() {
+    return failureCallback;
+  }
+
+  public void setFailureCallback(String failureCallback) {
+    this.failureCallback = failureCallback;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -289,12 +331,14 @@ public class SingleJob {
         Objects.equals(this.timezone, singleJob.timezone) &&
         Objects.equals(this.tags, singleJob.tags) &&
         Objects.equals(this.createdAt, singleJob.createdAt) &&
-        Objects.equals(this.updatedAt, singleJob.updatedAt);
+        Objects.equals(this.updatedAt, singleJob.updatedAt) &&
+        Objects.equals(this.successCallback, singleJob.successCallback) &&
+        Objects.equals(this.failureCallback, singleJob.failureCallback);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, cron, enabled, command, nextRun, running, timezone, tags, createdAt, updatedAt);
+    return Objects.hash(id, name, cron, enabled, command, nextRun, running, timezone, tags, createdAt, updatedAt, successCallback, failureCallback);
   }
 
 
@@ -314,6 +358,8 @@ public class SingleJob {
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    successCallback: ").append(toIndentedString(successCallback)).append("\n");
+    sb.append("    failureCallback: ").append(toIndentedString(failureCallback)).append("\n");
     sb.append("}");
     return sb.toString();
   }
