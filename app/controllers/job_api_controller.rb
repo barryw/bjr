@@ -4,7 +4,7 @@
 # Handles calls to the /job_api routes
 #
 class JobApiController < ApplicationController
-  before_action :get_job, only: %i[show update destroy failures runs occurrences runs]
+  before_action :job, only: %i[show update destroy failures runs occurrences runs]
 
   def index
     jobs = Job.find_jobs(current_user, params[:start_date], params[:end_date],
@@ -76,7 +76,7 @@ class JobApiController < ApplicationController
 
   private
 
-  def get_job
+  def job
     @job = Job.mine(current_user).where(id: params[:id]).first
     error(I18n.t('jobs.errors.not_found'), :not_found) && return if @job.blank?
   end

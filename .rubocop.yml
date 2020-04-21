@@ -14,3 +14,5 @@ Style/HashTransformKeys:
   Enabled: true
 Style/HashTransformValues:
   Enabled: true
+Style/SpecialGlobalVars:
+  Enabled: false

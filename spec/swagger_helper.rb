@@ -39,7 +39,7 @@ RSpec.configure do |config|
             type: :array,
             items: {
               type: :object,
-              "$ref": "#/components/schemas/Tagging"
+              "$ref": '#/components/schemas/Tagging'
             }
           },
           Tagging: {

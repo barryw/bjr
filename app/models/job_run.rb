@@ -18,6 +18,18 @@ class JobRun < ApplicationRecord
     self.stderr = stderr
     self.end_time = Time.current
     save
+
+    perform_callback unless job.success_callback.nil? and job.failure_callback.nil?
+  end
+
+  def perform_callback
+    body = { job_id: job.id, success: success, return_code: return_code, error_message: error_message,
+             stdout: stdout, stderr: stderr, start_time: start_time, end_time: end_time }
+    callback = job.success_callback || job.failure_callback
+    logger.debug "POSTING to callback hook #{callback} with #{body}"
+    HTTParty.post(callback, body: body)
+  rescue
+    logger.warn "Failed to call callback hook #{callback}: #{$!}"
   end
 
   def as_json(_options = {})

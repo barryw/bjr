@@ -4,7 +4,7 @@
 # Handles calls to the /user_api routes
 #
 class UserApiController < ApplicationController
-  before_action :get_user, only: %i[show update destroy]
+  before_action :user, only: %i[show update destroy]
 
   def index
     users = User.all
@@ -40,7 +40,7 @@ class UserApiController < ApplicationController
 
   private
 
-  def get_user
+  def user
     @user = User.where(id: params[:id]).first
     error(I18n.t('users.errors.not_found'), :not_found) && return if @user.blank?
   end
