@@ -62,6 +62,10 @@ class Job < ApplicationRecord
     self.last_run = Time.current
     self.success = success
     run.update_run(return_code, success, error_message, stdout, stderr)
+  rescue
+    self.success = false
+    logger.error "Failed to update the job run for job #{id} : #{$!}"
+  ensure
     save
   end
 
