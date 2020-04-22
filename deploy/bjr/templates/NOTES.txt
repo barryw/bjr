@@ -7,3 +7,15 @@
       Barry's Job Runner
 
 
+Thank you for installing BJR! For more information and updates, please visit the BJR GitHub page at https://github.com/barryw/bjr
+
+A few things to note:
+
+1. Out of the box, this Helm Chart will install 2 API server pods and 2 worker pods. The API pods will have a service named `bjr-api` configured with a type of `LoadBalancer`. You can modify this as needed to gain ingress to your BJR API server.
+2. MySQL will generate random passwords the first time you deploy. They can be found in the secret named `bjr-mysql`
+3. A random BJR admin password will be generated on first deploy and can be found in the secret named `bjr`
+4. You can access your BJR server's swagger API page by first exposing it and then browsing to it. This will allow you to interact with BJR via the generated swagger interface.
+5. It will take a few minutes for the BJR pods to become healthy. Be patient!
+6. The workers and API servers are stateless, so you can scale the API and worker deployments.
+7. This Helm Chart is NOT meant for a production deployment! This is meant as a starting point for a Kubernetes deployment. Feel free to copy, paste, steal, borrow whatever you need to deploy BJR in a production environment.
+

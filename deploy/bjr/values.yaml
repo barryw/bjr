@@ -73,3 +73,5 @@ redis:
     address: ""
     port: 6379
     sidekiqDb: 0
+  cluster:
+    enabled: false
