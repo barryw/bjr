@@ -37,43 +37,6 @@ export default class StaticApi {
      * Callback function to receive the result of the getTags operation.
      * @callback module:BJR/Api/StaticApi~getTagsCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/TimezoneMessage} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get timezones
-     * Get the list of acceptable timezone names.
-     * @param {module:BJR/Api/StaticApi~getTagsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/TimezoneMessage}
-     */
-    getTags(callback) {
-      let postBody = null;
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['bearerAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = TimezoneMessage;
-
-      return this.apiClient.callApi(
-        '/static_api/timezones', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-    /**
-     * Callback function to receive the result of the getTags_0 operation.
-     * @callback module:BJR/Api/StaticApi~getTags_0Callback
-     * @param {String} error Error message, if any.
      * @param {module:BJR/Model/TagMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
@@ -81,10 +44,10 @@ export default class StaticApi {
     /**
      * Get tags
      * Retrieves the list of tags that are currently in use for the authenticated user.
-     * @param {module:BJR/Api/StaticApi~getTags_0Callback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:BJR/Api/StaticApi~getTagsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:BJR/Model/TagMessage}
      */
-    getTags_0(callback) {
+    getTags(callback) {
       let postBody = null;
 
       let pathParams = {
@@ -103,6 +66,43 @@ export default class StaticApi {
 
       return this.apiClient.callApi(
         '/static_api/tags', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the getTimezones operation.
+     * @callback module:BJR/Api/StaticApi~getTimezonesCallback
+     * @param {String} error Error message, if any.
+     * @param {module:BJR/Model/TimezoneMessage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get timezones
+     * Get the list of acceptable timezone names.
+     * @param {module:BJR/Api/StaticApi~getTimezonesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:BJR/Model/TimezoneMessage}
+     */
+    getTimezones(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = TimezoneMessage;
+
+      return this.apiClient.callApi(
+        '/static_api/timezones', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

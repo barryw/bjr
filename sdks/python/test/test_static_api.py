@@ -31,14 +31,14 @@ class TestStaticApi(unittest.TestCase):
     def test_get_tags(self):
         """Test case for get_tags
 
-        Get timezones  # noqa: E501
+        Get tags  # noqa: E501
         """
         pass
 
-    def test_get_tags_0(self):
-        """Test case for get_tags_0
+    def test_get_timezones(self):
+        """Test case for get_timezones
 
-        Get tags  # noqa: E501
+        Get timezones  # noqa: E501
         """
         pass
 

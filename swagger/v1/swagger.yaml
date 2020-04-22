@@ -682,7 +682,7 @@ paths:
       description: Get the list of acceptable timezone names.
       tags:
       - Static
-      operationId: getTags
+      operationId: getTimezones
       security:
       - bearerAuth: []
       responses:

@@ -96,8 +96,8 @@ Class | Method | HTTP request | Description
 *BjrApiV1.JobsApi* | [**getJobs**](docs/JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
 *BjrApiV1.JobsApi* | [**jobOccurrences**](docs/JobsApi.md#jobOccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 *BjrApiV1.JobsApi* | [**updateJob**](docs/JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
-*BjrApiV1.StaticApi* | [**getTags**](docs/StaticApi.md#getTags) | **GET** /static_api/timezones | Get timezones
-*BjrApiV1.StaticApi* | [**getTags_0**](docs/StaticApi.md#getTags_0) | **GET** /static_api/tags | Get tags
+*BjrApiV1.StaticApi* | [**getTags**](docs/StaticApi.md#getTags) | **GET** /static_api/tags | Get tags
+*BjrApiV1.StaticApi* | [**getTimezones**](docs/StaticApi.md#getTimezones) | **GET** /static_api/timezones | Get timezones
 *BjrApiV1.UsersApi* | [**createUser**](docs/UsersApi.md#createUser) | **POST** /user_api | Creates a user
 *BjrApiV1.UsersApi* | [**deleteUser**](docs/UsersApi.md#deleteUser) | **DELETE** /user_api/{id} | Deletes a user
 *BjrApiV1.UsersApi* | [**getUser**](docs/UsersApi.md#getUser) | **GET** /user_api/{id} | Retrieve a single user

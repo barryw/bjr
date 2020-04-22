@@ -65,7 +65,7 @@ public class StaticApi {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/static_api/timezones";
+        String localVarPath = "/static_api/tags";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -115,36 +115,36 @@ public class StaticApi {
     }
 
     /**
-     * Get timezones
-     * Get the list of acceptable timezone names.
-     * @return TimezoneMessage
+     * Get tags
+     * Retrieves the list of tags that are currently in use for the authenticated user.
+     * @return TagMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public TimezoneMessage getTags() throws ApiException {
-        ApiResponse<TimezoneMessage> resp = getTagsWithHttpInfo();
+    public TagMessage getTags() throws ApiException {
+        ApiResponse<TagMessage> resp = getTagsWithHttpInfo();
         return resp.getData();
     }
 
     /**
-     * Get timezones
-     * Get the list of acceptable timezone names.
-     * @return ApiResponse&lt;TimezoneMessage&gt;
+     * Get tags
+     * Retrieves the list of tags that are currently in use for the authenticated user.
+     * @return ApiResponse&lt;TagMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<TimezoneMessage> getTagsWithHttpInfo() throws ApiException {
+    public ApiResponse<TagMessage> getTagsWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getTagsValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<TimezoneMessage>(){}.getType();
+        Type localVarReturnType = new TypeToken<TagMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Get timezones (asynchronously)
-     * Get the list of acceptable timezone names.
+     * Get tags (asynchronously)
+     * Retrieves the list of tags that are currently in use for the authenticated user.
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getTagsAsync(final ApiCallback<TimezoneMessage> callback) throws ApiException {
+    public com.squareup.okhttp.Call getTagsAsync(final ApiCallback<TagMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -166,22 +166,22 @@ public class StaticApi {
         }
 
         com.squareup.okhttp.Call call = getTagsValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<TimezoneMessage>(){}.getType();
+        Type localVarReturnType = new TypeToken<TagMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for getTags_0
+     * Build call for getTimezones
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getTags_0Call(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getTimezonesCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/static_api/tags";
+        String localVarPath = "/static_api/timezones";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -219,9 +219,9 @@ public class StaticApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getTags_0ValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getTimezonesValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        com.squareup.okhttp.Call call = getTags_0Call(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getTimezonesCall(progressListener, progressRequestListener);
         return call;
 
         
@@ -231,36 +231,36 @@ public class StaticApi {
     }
 
     /**
-     * Get tags
-     * Retrieves the list of tags that are currently in use for the authenticated user.
-     * @return TagMessage
+     * Get timezones
+     * Get the list of acceptable timezone names.
+     * @return TimezoneMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public TagMessage getTags_0() throws ApiException {
-        ApiResponse<TagMessage> resp = getTags_0WithHttpInfo();
+    public TimezoneMessage getTimezones() throws ApiException {
+        ApiResponse<TimezoneMessage> resp = getTimezonesWithHttpInfo();
         return resp.getData();
     }
 
     /**
-     * Get tags
-     * Retrieves the list of tags that are currently in use for the authenticated user.
-     * @return ApiResponse&lt;TagMessage&gt;
+     * Get timezones
+     * Get the list of acceptable timezone names.
+     * @return ApiResponse&lt;TimezoneMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<TagMessage> getTags_0WithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = getTags_0ValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<TagMessage>(){}.getType();
+    public ApiResponse<TimezoneMessage> getTimezonesWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = getTimezonesValidateBeforeCall(null, null);
+        Type localVarReturnType = new TypeToken<TimezoneMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Get tags (asynchronously)
-     * Retrieves the list of tags that are currently in use for the authenticated user.
+     * Get timezones (asynchronously)
+     * Get the list of acceptable timezone names.
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getTags_0Async(final ApiCallback<TagMessage> callback) throws ApiException {
+    public com.squareup.okhttp.Call getTimezonesAsync(final ApiCallback<TimezoneMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -281,8 +281,8 @@ public class StaticApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getTags_0ValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<TagMessage>(){}.getType();
+        com.squareup.okhttp.Call call = getTimezonesValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<TimezoneMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

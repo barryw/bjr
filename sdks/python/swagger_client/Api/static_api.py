@@ -33,16 +33,16 @@ class StaticApi(object):
         self.api_client = api_client
 
     def get_tags(self, **kwargs):  # noqa: E501
-        """Get timezones  # noqa: E501
+        """Get tags  # noqa: E501
 
-        Get the list of acceptable timezone names.  # noqa: E501
+        Retrieves the list of tags that are currently in use for the authenticated user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_tags(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :return: TimezoneMessage
+        :return: TagMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -54,16 +54,16 @@ class StaticApi(object):
             return data
 
     def get_tags_with_http_info(self, **kwargs):  # noqa: E501
-        """Get timezones  # noqa: E501
+        """Get tags  # noqa: E501
 
-        Get the list of acceptable timezone names.  # noqa: E501
+        Retrieves the list of tags that are currently in use for the authenticated user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_tags_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :return: TimezoneMessage
+        :return: TagMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -104,14 +104,14 @@ class StaticApi(object):
         auth_settings = ['bearerAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/static_api/timezones', 'GET',
+            '/static_api/tags', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TimezoneMessage',  # noqa: E501
+            response_type='TagMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -119,38 +119,38 @@ class StaticApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_tags_0(self, **kwargs):  # noqa: E501
-        """Get tags  # noqa: E501
+    def get_timezones(self, **kwargs):  # noqa: E501
+        """Get timezones  # noqa: E501
 
-        Retrieves the list of tags that are currently in use for the authenticated user.  # noqa: E501
+        Get the list of acceptable timezone names.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_tags_0(async_req=True)
+        >>> thread = api.get_timezones(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :return: TagMessage
+        :return: TimezoneMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_tags_0_with_http_info(**kwargs)  # noqa: E501
+            return self.get_timezones_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.get_tags_0_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_timezones_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def get_tags_0_with_http_info(self, **kwargs):  # noqa: E501
-        """Get tags  # noqa: E501
+    def get_timezones_with_http_info(self, **kwargs):  # noqa: E501
+        """Get timezones  # noqa: E501
 
-        Retrieves the list of tags that are currently in use for the authenticated user.  # noqa: E501
+        Get the list of acceptable timezone names.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_tags_0_with_http_info(async_req=True)
+        >>> thread = api.get_timezones_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :return: TagMessage
+        :return: TimezoneMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -166,7 +166,7 @@ class StaticApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_tags_0" % key
+                    " to method get_timezones" % key
                 )
             params[key] = val
         del params['kwargs']
@@ -191,14 +191,14 @@ class StaticApi(object):
         auth_settings = ['bearerAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/static_api/tags', 'GET',
+            '/static_api/timezones', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TagMessage',  # noqa: E501
+            response_type='TimezoneMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

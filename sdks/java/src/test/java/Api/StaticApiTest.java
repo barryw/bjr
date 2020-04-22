@@ -32,20 +32,6 @@ public class StaticApiTest {
     private final StaticApi api = new StaticApi();
 
     /**
-     * Get timezones
-     *
-     * Get the list of acceptable timezone names.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getTagsTest() throws ApiException {
-        TimezoneMessage response = api.getTags();
-
-        // TODO: test validations
-    }
-    /**
      * Get tags
      *
      * Retrieves the list of tags that are currently in use for the authenticated user.
@@ -54,8 +40,22 @@ public class StaticApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getTags_0Test() throws ApiException {
-        TagMessage response = api.getTags_0();
+    public void getTagsTest() throws ApiException {
+        TagMessage response = api.getTags();
+
+        // TODO: test validations
+    }
+    /**
+     * Get timezones
+     *
+     * Get the list of acceptable timezone names.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getTimezonesTest() throws ApiException {
+        TimezoneMessage response = api.getTimezones();
 
         // TODO: test validations
     }

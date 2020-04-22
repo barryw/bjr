@@ -12,7 +12,7 @@
 
 package BJR;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-22T18:00:45.389-04:00[America/New_York]")public class Configuration {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-22T18:06:05.167-04:00[America/New_York]")public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 
     /**

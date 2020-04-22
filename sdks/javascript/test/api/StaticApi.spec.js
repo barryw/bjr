@@ -57,10 +57,10 @@
         done();
       });
     });
-    describe('getTags_0', function() {
-      it('should call getTags_0 successfully', function(done) {
-        //uncomment below and update the code to test getTags_0
-        //instance.getTags_0(function(error) {
+    describe('getTimezones', function() {
+      it('should call getTimezones successfully', function(done) {
+        //uncomment below and update the code to test getTimezones
+        //instance.getTimezones(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

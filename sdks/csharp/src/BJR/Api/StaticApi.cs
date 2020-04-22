@@ -24,25 +24,6 @@ namespace BJR.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get timezones
-        /// </summary>
-        /// <remarks>
-        /// Get the list of acceptable timezone names.
-        /// </remarks>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>TimezoneMessage</returns>
-        TimezoneMessage GetTags ();
-
-        /// <summary>
-        /// Get timezones
-        /// </summary>
-        /// <remarks>
-        /// Get the list of acceptable timezone names.
-        /// </remarks>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of TimezoneMessage</returns>
-        ApiResponse<TimezoneMessage> GetTagsWithHttpInfo ();
-        /// <summary>
         /// Get tags
         /// </summary>
         /// <remarks>
@@ -50,7 +31,7 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>TagMessage</returns>
-        TagMessage GetTags_0 ();
+        TagMessage GetTags ();
 
         /// <summary>
         /// Get tags
@@ -60,9 +41,7 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of TagMessage</returns>
-        ApiResponse<TagMessage> GetTags_0WithHttpInfo ();
-        #endregion Synchronous Operations
-        #region Asynchronous Operations
+        ApiResponse<TagMessage> GetTagsWithHttpInfo ();
         /// <summary>
         /// Get timezones
         /// </summary>
@@ -70,8 +49,8 @@ namespace BJR.Api
         /// Get the list of acceptable timezone names.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of TimezoneMessage</returns>
-        System.Threading.Tasks.Task<TimezoneMessage> GetTagsAsync ();
+        /// <returns>TimezoneMessage</returns>
+        TimezoneMessage GetTimezones ();
 
         /// <summary>
         /// Get timezones
@@ -80,8 +59,10 @@ namespace BJR.Api
         /// Get the list of acceptable timezone names.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (TimezoneMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTagsAsyncWithHttpInfo ();
+        /// <returns>ApiResponse of TimezoneMessage</returns>
+        ApiResponse<TimezoneMessage> GetTimezonesWithHttpInfo ();
+        #endregion Synchronous Operations
+        #region Asynchronous Operations
         /// <summary>
         /// Get tags
         /// </summary>
@@ -90,7 +71,7 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of TagMessage</returns>
-        System.Threading.Tasks.Task<TagMessage> GetTags_0Async ();
+        System.Threading.Tasks.Task<TagMessage> GetTagsAsync ();
 
         /// <summary>
         /// Get tags
@@ -100,7 +81,26 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (TagMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTags_0AsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsAsyncWithHttpInfo ();
+        /// <summary>
+        /// Get timezones
+        /// </summary>
+        /// <remarks>
+        /// Get the list of acceptable timezone names.
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of TimezoneMessage</returns>
+        System.Threading.Tasks.Task<TimezoneMessage> GetTimezonesAsync ();
+
+        /// <summary>
+        /// Get timezones
+        /// </summary>
+        /// <remarks>
+        /// Get the list of acceptable timezone names.
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (TimezoneMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTimezonesAsyncWithHttpInfo ();
         #endregion Asynchronous Operations
     }
 
@@ -213,144 +213,13 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Get timezones Get the list of acceptable timezone names.
-        /// </summary>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>TimezoneMessage</returns>
-        public TimezoneMessage GetTags ()
-        {
-             ApiResponse<TimezoneMessage> localVarResponse = GetTagsWithHttpInfo();
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Get timezones Get the list of acceptable timezone names.
-        /// </summary>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of TimezoneMessage</returns>
-        public ApiResponse< TimezoneMessage > GetTagsWithHttpInfo ()
-        {
-
-            var localVarPath = "/static_api/timezones";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // authentication (bearerAuth) required
-            // bearer required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetTags", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<TimezoneMessage>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (TimezoneMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TimezoneMessage)));
-        }
-
-        /// <summary>
-        /// Get timezones Get the list of acceptable timezone names.
-        /// </summary>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of TimezoneMessage</returns>
-        public async System.Threading.Tasks.Task<TimezoneMessage> GetTagsAsync ()
-        {
-             ApiResponse<TimezoneMessage> localVarResponse = await GetTagsAsyncWithHttpInfo();
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Get timezones Get the list of acceptable timezone names.
-        /// </summary>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (TimezoneMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTagsAsyncWithHttpInfo ()
-        {
-
-            var localVarPath = "/static_api/timezones";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // authentication (bearerAuth) required
-            // bearer required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetTags", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<TimezoneMessage>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (TimezoneMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TimezoneMessage)));
-        }
-
-        /// <summary>
         /// Get tags Retrieves the list of tags that are currently in use for the authenticated user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>TagMessage</returns>
-        public TagMessage GetTags_0 ()
+        public TagMessage GetTags ()
         {
-             ApiResponse<TagMessage> localVarResponse = GetTags_0WithHttpInfo();
+             ApiResponse<TagMessage> localVarResponse = GetTagsWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -359,7 +228,7 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of TagMessage</returns>
-        public ApiResponse< TagMessage > GetTags_0WithHttpInfo ()
+        public ApiResponse< TagMessage > GetTagsWithHttpInfo ()
         {
 
             var localVarPath = "/static_api/tags";
@@ -399,7 +268,7 @@ namespace BJR.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetTags_0", localVarResponse);
+                Exception exception = ExceptionFactory("GetTags", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -413,9 +282,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of TagMessage</returns>
-        public async System.Threading.Tasks.Task<TagMessage> GetTags_0Async ()
+        public async System.Threading.Tasks.Task<TagMessage> GetTagsAsync ()
         {
-             ApiResponse<TagMessage> localVarResponse = await GetTags_0AsyncWithHttpInfo();
+             ApiResponse<TagMessage> localVarResponse = await GetTagsAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -425,7 +294,7 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (TagMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTags_0AsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/static_api/tags";
@@ -465,13 +334,144 @@ namespace BJR.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetTags_0", localVarResponse);
+                Exception exception = ExceptionFactory("GetTags", localVarResponse);
                 if (exception != null) throw exception;
             }
 
             return new ApiResponse<TagMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (TagMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TagMessage)));
+        }
+
+        /// <summary>
+        /// Get timezones Get the list of acceptable timezone names.
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>TimezoneMessage</returns>
+        public TimezoneMessage GetTimezones ()
+        {
+             ApiResponse<TimezoneMessage> localVarResponse = GetTimezonesWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get timezones Get the list of acceptable timezone names.
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of TimezoneMessage</returns>
+        public ApiResponse< TimezoneMessage > GetTimezonesWithHttpInfo ()
+        {
+
+            var localVarPath = "/static_api/timezones";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (bearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetTimezones", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TimezoneMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (TimezoneMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TimezoneMessage)));
+        }
+
+        /// <summary>
+        /// Get timezones Get the list of acceptable timezone names.
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of TimezoneMessage</returns>
+        public async System.Threading.Tasks.Task<TimezoneMessage> GetTimezonesAsync ()
+        {
+             ApiResponse<TimezoneMessage> localVarResponse = await GetTimezonesAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get timezones Get the list of acceptable timezone names.
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (TimezoneMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTimezonesAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/static_api/timezones";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (bearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetTimezones", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TimezoneMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (TimezoneMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TimezoneMessage)));
         }
 
     }

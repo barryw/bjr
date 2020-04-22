@@ -4,16 +4,16 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetTags**](StaticApi.md#gettags) | **GET** /static_api/timezones | Get timezones
-[**GetTags_0**](StaticApi.md#gettags_0) | **GET** /static_api/tags | Get tags
+[**GetTags**](StaticApi.md#gettags) | **GET** /static_api/tags | Get tags
+[**GetTimezones**](StaticApi.md#gettimezones) | **GET** /static_api/timezones | Get timezones
 
 <a name="gettags"></a>
 # **GetTags**
-> TimezoneMessage GetTags ()
+> TagMessage GetTags ()
 
-Get timezones
+Get tags
 
-Get the list of acceptable timezone names.
+Retrieves the list of tags that are currently in use for the authenticated user.
 
 ### Example
 ```csharp
@@ -34,8 +34,8 @@ namespace Example
 
             try
             {
-                // Get timezones
-                TimezoneMessage result = apiInstance.GetTags();
+                // Get tags
+                TagMessage result = apiInstance.GetTags();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -52,7 +52,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TimezoneMessage**](TimezoneMessage.md)
+[**TagMessage**](TagMessage.md)
 
 ### Authorization
 
@@ -64,13 +64,13 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="gettags_0"></a>
-# **GetTags_0**
-> TagMessage GetTags_0 ()
+<a name="gettimezones"></a>
+# **GetTimezones**
+> TimezoneMessage GetTimezones ()
 
-Get tags
+Get timezones
 
-Retrieves the list of tags that are currently in use for the authenticated user.
+Get the list of acceptable timezone names.
 
 ### Example
 ```csharp
@@ -82,7 +82,7 @@ using BJR.Model;
 
 namespace Example
 {
-    public class GetTags_0Example
+    public class GetTimezonesExample
     {
         public void main()
         {
@@ -91,13 +91,13 @@ namespace Example
 
             try
             {
-                // Get tags
-                TagMessage result = apiInstance.GetTags_0();
+                // Get timezones
+                TimezoneMessage result = apiInstance.GetTimezones();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling StaticApi.GetTags_0: " + e.Message );
+                Debug.Print("Exception when calling StaticApi.GetTimezones: " + e.Message );
             }
         }
     }
@@ -109,7 +109,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TagMessage**](TagMessage.md)
+[**TimezoneMessage**](TimezoneMessage.md)
 
 ### Authorization
 

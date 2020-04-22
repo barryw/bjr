@@ -77,8 +77,8 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**get_jobs**](docs/JobsApi.md#get_jobs) | **GET** /job_api | Retrieves jobs
 *JobsApi* | [**job_occurrences**](docs/JobsApi.md#job_occurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 *JobsApi* | [**update_job**](docs/JobsApi.md#update_job) | **PUT** /job_api/{id} | Updates a single job
-*StaticApi* | [**get_tags**](docs/StaticApi.md#get_tags) | **GET** /static_api/timezones | Get timezones
-*StaticApi* | [**get_tags_0**](docs/StaticApi.md#get_tags_0) | **GET** /static_api/tags | Get tags
+*StaticApi* | [**get_tags**](docs/StaticApi.md#get_tags) | **GET** /static_api/tags | Get tags
+*StaticApi* | [**get_timezones**](docs/StaticApi.md#get_timezones) | **GET** /static_api/timezones | Get timezones
 *UsersApi* | [**create_user**](docs/UsersApi.md#create_user) | **POST** /user_api | Creates a user
 *UsersApi* | [**delete_user**](docs/UsersApi.md#delete_user) | **DELETE** /user_api/{id} | Deletes a user
 *UsersApi* | [**get_user**](docs/UsersApi.md#get_user) | **GET** /user_api/{id} | Retrieve a single user

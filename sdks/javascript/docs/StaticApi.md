@@ -4,16 +4,16 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getTags**](StaticApi.md#getTags) | **GET** /static_api/timezones | Get timezones
-[**getTags_0**](StaticApi.md#getTags_0) | **GET** /static_api/tags | Get tags
+[**getTags**](StaticApi.md#getTags) | **GET** /static_api/tags | Get tags
+[**getTimezones**](StaticApi.md#getTimezones) | **GET** /static_api/timezones | Get timezones
 
 <a name="getTags"></a>
 # **getTags**
-> TimezoneMessage getTags()
+> TagMessage getTags()
 
-Get timezones
+Get tags
 
-Get the list of acceptable timezone names.
+Retrieves the list of tags that are currently in use for the authenticated user.
 
 ### Example
 ```javascript
@@ -36,7 +36,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TimezoneMessage**](TimezoneMessage.md)
+[**TagMessage**](TagMessage.md)
 
 ### Authorization
 
@@ -47,13 +47,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="getTags_0"></a>
-# **getTags_0**
-> TagMessage getTags_0()
+<a name="getTimezones"></a>
+# **getTimezones**
+> TimezoneMessage getTimezones()
 
-Get tags
+Get timezones
 
-Retrieves the list of tags that are currently in use for the authenticated user.
+Get the list of acceptable timezone names.
 
 ### Example
 ```javascript
@@ -62,7 +62,7 @@ let defaultClient = BjrApiV1.ApiClient.instance;
 
 
 let apiInstance = new BjrApiV1.StaticApi();
-apiInstance.getTags_0((error, data, response) => {
+apiInstance.getTimezones((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -76,7 +76,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TagMessage**](TagMessage.md)
+[**TimezoneMessage**](TimezoneMessage.md)
 
 ### Authorization
 

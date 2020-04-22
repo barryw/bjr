@@ -70,17 +70,17 @@ namespace BJR.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.GetTags();
-            //Assert.IsInstanceOf<TimezoneMessage> (response, "response is TimezoneMessage");
+            //Assert.IsInstanceOf<TagMessage> (response, "response is TagMessage");
         }
         /// <summary>
-        /// Test GetTags_0
+        /// Test GetTimezones
         /// </summary>
         [Test]
-        public void GetTags_0Test()
+        public void GetTimezonesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.GetTags_0();
-            //Assert.IsInstanceOf<TagMessage> (response, "response is TagMessage");
+            //var response = instance.GetTimezones();
+            //Assert.IsInstanceOf<TimezoneMessage> (response, "response is TimezoneMessage");
         }
     }
 

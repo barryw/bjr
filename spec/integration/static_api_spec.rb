@@ -7,7 +7,7 @@ describe 'Static API' do
     get 'Get timezones' do
       description 'Get the list of acceptable timezone names.'
       tags 'Static'
-      operationId 'getTags'
+      operationId 'getTimezones'
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
