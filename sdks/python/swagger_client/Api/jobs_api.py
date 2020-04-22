@@ -43,7 +43,7 @@ class JobsApi(object):
 
         :param async_req bool
         :param JobIn body:
-        :return: JobOut
+        :return: SingleJobMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -65,7 +65,7 @@ class JobsApi(object):
 
         :param async_req bool
         :param JobIn body:
-        :return: JobOut
+        :return: SingleJobMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -119,7 +119,7 @@ class JobsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='JobOut',  # noqa: E501
+            response_type='SingleJobMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -229,7 +229,7 @@ class JobsApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :return: SingleJob
+        :return: SingleJobMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -251,7 +251,7 @@ class JobsApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :return: SingleJob
+        :return: SingleJobMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -305,7 +305,7 @@ class JobsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SingleJob',  # noqa: E501
+            response_type='SingleJobMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -329,7 +329,7 @@ class JobsApi(object):
         :param bool succeeded:
         :param str start_date:
         :param str end_date:
-        :return: JobRunArray
+        :return: JobRunArrayMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -356,7 +356,7 @@ class JobsApi(object):
         :param bool succeeded:
         :param str start_date:
         :param str end_date:
-        :return: JobRunArray
+        :return: JobRunArrayMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -420,7 +420,7 @@ class JobsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='JobRunArray',  # noqa: E501
+            response_type='JobRunArrayMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -444,7 +444,7 @@ class JobsApi(object):
         :param str end_date: Specify an end date to search jobs by.
         :param int per_page:
         :param int page:
-        :return: JobArray
+        :return: JobArrayMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -471,7 +471,7 @@ class JobsApi(object):
         :param str end_date: Specify an end date to search jobs by.
         :param int per_page:
         :param int page:
-        :return: JobArray
+        :return: JobArrayMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -531,7 +531,7 @@ class JobsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='JobArray',  # noqa: E501
+            response_type='JobArrayMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -553,7 +553,7 @@ class JobsApi(object):
         :param str end_date: The date to retrieve occurrences up to (required)
         :param int per_page:
         :param int page:
-        :return: Occurrences
+        :return: OccurrenceMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -578,7 +578,7 @@ class JobsApi(object):
         :param str end_date: The date to retrieve occurrences up to (required)
         :param int per_page:
         :param int page:
-        :return: Occurrences
+        :return: OccurrenceMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -642,7 +642,7 @@ class JobsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Occurrences',  # noqa: E501
+            response_type='OccurrenceMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -662,7 +662,7 @@ class JobsApi(object):
         :param async_req bool
         :param int id: (required)
         :param JobIn body:
-        :return: JobOut
+        :return: SingleJobMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -685,7 +685,7 @@ class JobsApi(object):
         :param async_req bool
         :param int id: (required)
         :param JobIn body:
-        :return: JobOut
+        :return: SingleJobMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -745,7 +745,7 @@ class JobsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='JobOut',  # noqa: E501
+            response_type='SingleJobMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

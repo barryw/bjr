@@ -13,8 +13,8 @@
 package Api;
 
 import BJR.ApiException;
-import Model.StringArray;
-import Model.TagArray;
+import Model.TagMessage;
+import Model.TimezoneMessage;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -41,7 +41,7 @@ public class StaticApiTest {
      */
     @Test
     public void getTagsTest() throws ApiException {
-        StringArray response = api.getTags();
+        TimezoneMessage response = api.getTags();
 
         // TODO: test validations
     }
@@ -55,7 +55,7 @@ public class StaticApiTest {
      */
     @Test
     public void getTags_0Test() throws ApiException {
-        TagArray response = api.getTags_0();
+        TagMessage response = api.getTags_0();
 
         // TODO: test validations
     }

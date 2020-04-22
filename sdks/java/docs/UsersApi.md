@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createUser"></a>
 # **createUser**
-> UserOut createUser(body)
+> SingleUserMessage createUser(body)
 
 Creates a user
 
@@ -33,7 +33,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 UsersApi apiInstance = new UsersApi();
 UserNewIn body = new UserNewIn(); // UserNewIn | 
 try {
-    UserOut result = apiInstance.createUser(body);
+    SingleUserMessage result = apiInstance.createUser(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#createUser");
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteUser"></a>
 # **deleteUser**
-> UserOut deleteUser(id)
+> SingleUserMessage deleteUser(id)
 
 Deletes a user
 
@@ -83,7 +83,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 UsersApi apiInstance = new UsersApi();
 Integer id = 56; // Integer | 
 try {
-    UserOut result = apiInstance.deleteUser(id);
+    SingleUserMessage result = apiInstance.deleteUser(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#deleteUser");
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 <a name="getUser"></a>
 # **getUser**
-> SingleUser getUser(id)
+> SingleUserMessage getUser(id)
 
 Retrieve a single user
 
@@ -133,7 +133,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 UsersApi apiInstance = new UsersApi();
 Integer id = 56; // Integer | 
 try {
-    SingleUser result = apiInstance.getUser(id);
+    SingleUserMessage result = apiInstance.getUser(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#getUser");
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SingleUser**](SingleUser.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsers"></a>
 # **getUsers**
-> UserArray getUsers(perPage, page)
+> UserArrayMessage getUsers(perPage, page)
 
 Retrieves users
 
@@ -184,7 +184,7 @@ UsersApi apiInstance = new UsersApi();
 Integer perPage = 56; // Integer | 
 Integer page = 56; // Integer | 
 try {
-    UserArray result = apiInstance.getUsers(perPage, page);
+    UserArrayMessage result = apiInstance.getUsers(perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#getUsers");
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserArray**](UserArray.md)
+[**UserArrayMessage**](UserArrayMessage.md)
 
 ### Authorization
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 <a name="updateUser"></a>
 # **updateUser**
-> UserOut updateUser(id, body)
+> SingleUserMessage updateUser(id, body)
 
 Update a single user
 
@@ -236,7 +236,7 @@ UsersApi apiInstance = new UsersApi();
 Integer id = 56; // Integer | 
 UserUpdateIn body = new UserUpdateIn(); // UserUpdateIn | 
 try {
-    UserOut result = apiInstance.updateUser(id, body);
+    SingleUserMessage result = apiInstance.updateUser(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UsersApi#updateUser");
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 

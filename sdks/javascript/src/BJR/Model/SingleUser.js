@@ -65,6 +65,7 @@ export default class SingleUser {
     */
     id = undefined;
     /**
+    * The user' login name. Must be unique
     * @member {String} username
     */
     username = undefined;

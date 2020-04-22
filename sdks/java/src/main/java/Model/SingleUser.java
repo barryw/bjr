@@ -26,7 +26,7 @@ import org.threeten.bp.OffsetDateTime;
  * SingleUser
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-21T12:30:36.637-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-22T18:00:45.389-04:00[America/New_York]")
 public class SingleUser {
   @SerializedName("id")
   private Integer id = null;
@@ -64,10 +64,10 @@ public class SingleUser {
   }
 
    /**
-   * Get username
+   * The user&#x27; login name. Must be unique
    * @return username
   **/
-  @Schema(description = "")
+  @Schema(description = "The user' login name. Must be unique")
   public String getUsername() {
     return username;
   }

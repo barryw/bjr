@@ -5,21 +5,71 @@ info:
   version: v1
 components:
   schemas:
-    Occurrences:
-      type: array
-      items:
-        type: string
-        format: date-time
+    OccurrenceMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/DateTimeArray"
+    TimezoneMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/StringArray"
     StringArray:
       type: array
       items:
         type: string
+    DateTimeArray:
+      type: array
+      items:
+        type: string
+        format: date-time
+    TagMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/TagArray"
     TagArray:
       type: array
       items:
-        type: object
-        "$ref": "#/components/schemas/Tagging"
-    Tagging:
+        "$ref": "#/components/schemas/Tag"
+    Tag:
       type: object
       properties:
         id:
@@ -28,6 +78,40 @@ components:
           type: string
         taggings_count:
           type: integer
+    SingleJobRunMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/SingleJobRun"
+    JobRunArrayMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/JobRunArray"
     SingleJobRun:
       type: object
       properties:
@@ -75,7 +159,6 @@ components:
     JobRunArray:
       type: array
       items:
-        type: object
         "$ref": "#/components/schemas/SingleJobRun"
     AuthIn:
       type: object
@@ -102,50 +185,36 @@ components:
           type: boolean
           description: This will be true if the authentication was successful, and
             false if not.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
     UserNewIn:
       type: object
       properties:
         username:
           type: string
           description: The new user's username. Must be unique.
+          required: true
         password:
           type: string
           description: The new user's password.
+          required: true
         password_confirmation:
           type: string
           description: The new user's password confirmation. Must match 'password'.
+          required: true
     UserUpdateIn:
       type: object
       properties:
         password:
           type: string
           description: The new user's password.
+          required: true
         password_confirmation:
           type: string
           description: The new user's password confirmation. Must match 'password'.
-    SingleUser:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The object's primary key. This uniquely identifies the object
-            in the system.
-        username:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-          description: The UTC date and time that the object was created.
-        updated_at:
-          type: string
-          format: date-time
-          description: The UTC date and time that the object was last modified.
-    UserArray:
-      type: array
-      items:
-        type: object
-        "$ref": "#/components/schemas/SingleUser"
-    UserOut:
+          required: true
+    SingleUserMessage:
       type: object
       properties:
         message:
@@ -161,8 +230,80 @@ components:
           type: integer
           description: The HTTP status code returned.
         object:
-          type: object
           "$ref": "#/components/schemas/SingleUser"
+    UserArrayMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/UserArray"
+    SingleUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The object's primary key. This uniquely identifies the object
+            in the system.
+        username:
+          type: string
+          description: The user' login name. Must be unique
+        created_at:
+          type: string
+          format: date-time
+          description: The UTC date and time that the object was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: The UTC date and time that the object was last modified.
+    UserArray:
+      type: array
+      items:
+        "$ref": "#/components/schemas/SingleUser"
+    SingleJobMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/SingleJob"
+    JobArrayMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/JobArray"
     SingleJob:
       type: object
       properties:
@@ -196,6 +337,7 @@ components:
           description: An array of tags associated with the job.
           items:
             type: string
+            nullable: true
         created_at:
           type: string
           format: date-time
@@ -217,7 +359,6 @@ components:
     JobArray:
       type: array
       items:
-        type: object
         "$ref": "#/components/schemas/SingleJob"
     JobIn:
       type: object
@@ -257,24 +398,6 @@ components:
           description: Specify the url to receive a POST callback for all unsuccessful
             runs of this job.
           required: false
-    JobOut:
-      type: object
-      properties:
-        message:
-          type: string
-          description: The status message returned from the API call.
-        is_error:
-          type: boolean
-          description: True if there was an error performing the API call.
-        object_type:
-          type: string
-          description: The type of object being returned.
-        status_code:
-          type: integer
-          description: The HTTP status code returned.
-        object:
-          type: object
-          "$ref": "#/components/schemas/SingleJob"
   securitySchemes:
     bearerAuth:
       scheme: bearer
@@ -345,7 +468,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/Occurrences"
+                "$ref": "#/components/schemas/OccurrenceMessage"
         '404':
           description: Job not found
           content: {}
@@ -365,7 +488,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/JobOut"
+                "$ref": "#/components/schemas/SingleJobMessage"
         '403':
           description: A job with this name already exists.
           content: {}
@@ -427,7 +550,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/JobArray"
+                "$ref": "#/components/schemas/JobArrayMessage"
   "/job_api/{id}/runs":
     get:
       summary: Retrieve the runs for a job
@@ -474,7 +597,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/JobRunArray"
+                "$ref": "#/components/schemas/JobRunArrayMessage"
   "/job_api/{id}":
     put:
       summary: Updates a single job
@@ -496,7 +619,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/JobOut"
+                "$ref": "#/components/schemas/SingleJobMessage"
         '403':
           description: Job could not be updated.
           content: {}
@@ -549,7 +672,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/SingleJob"
+                "$ref": "#/components/schemas/SingleJobMessage"
         '404':
           description: Job not found.
           content: {}
@@ -568,7 +691,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/StringArray"
+                "$ref": "#/components/schemas/TimezoneMessage"
   "/static_api/tags":
     get:
       summary: Get tags
@@ -585,7 +708,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/TagArray"
+                "$ref": "#/components/schemas/TagMessage"
   "/user_api":
     get:
       summary: Retrieves users
@@ -612,7 +735,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/UserArray"
+                "$ref": "#/components/schemas/UserArrayMessage"
     post:
       summary: Creates a user
       description: Create a new user
@@ -628,7 +751,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/UserOut"
+                "$ref": "#/components/schemas/SingleUserMessage"
         '403':
           description: Username already exists
           content: {}
@@ -658,13 +781,13 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/UserOut"
+                "$ref": "#/components/schemas/SingleUserMessage"
         '403':
           description: The passwords did not match
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/UserOut"
+                "$ref": "#/components/schemas/SingleUserMessage"
       requestBody:
         content:
           application/json:
@@ -690,13 +813,13 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/SingleUser"
+                "$ref": "#/components/schemas/SingleUserMessage"
         '404':
           description: The user with that id could not be found.
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/UserOut"
+                "$ref": "#/components/schemas/SingleUserMessage"
         '401':
           description: Your token is invalid or expired
           content: {}
@@ -720,16 +843,16 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/UserOut"
+                "$ref": "#/components/schemas/SingleUserMessage"
         '403':
           description: You cannot delete yourself.
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/UserOut"
+                "$ref": "#/components/schemas/SingleUserMessage"
         '404':
           description: The user with that id could not be found.
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/UserOut"
+                "$ref": "#/components/schemas/SingleUserMessage"

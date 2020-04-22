@@ -12,10 +12,9 @@
  */
 
 import ApiClient from "../ApiClient";
-import SingleUser from '../Model/SingleUser';
-import UserArray from '../Model/UserArray';
+import SingleUserMessage from '../Model/SingleUserMessage';
+import UserArrayMessage from '../Model/UserArrayMessage';
 import UserNewIn from '../Model/UserNewIn';
-import UserOut from '../Model/UserOut';
 import UserUpdateIn from '../Model/UserUpdateIn';
 
 /**
@@ -40,7 +39,7 @@ export default class UsersApi {
      * Callback function to receive the result of the createUser operation.
      * @callback module:BJR/Api/UsersApi~createUserCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/UserOut} data The data returned by the service call.
+     * @param {module:BJR/Model/SingleUserMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -48,7 +47,7 @@ export default class UsersApi {
      * Creates a user
      * Create a new user
      * @param {module:BJR/Api/UsersApi~createUserCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/UserOut}
+     * data is of type: {@link module:BJR/Model/SingleUserMessage}
      */
     createUser(opts, callback) {
       let postBody = opts['body'];
@@ -65,7 +64,7 @@ export default class UsersApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = UserOut;
+      let returnType = SingleUserMessage;
 
       return this.apiClient.callApi(
         '/user_api', 'POST',
@@ -77,7 +76,7 @@ export default class UsersApi {
      * Callback function to receive the result of the deleteUser operation.
      * @callback module:BJR/Api/UsersApi~deleteUserCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/UserOut} data The data returned by the service call.
+     * @param {module:BJR/Model/SingleUserMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -85,7 +84,7 @@ export default class UsersApi {
      * Deletes a user
      * Deletes a user
      * @param {module:BJR/Api/UsersApi~deleteUserCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/UserOut}
+     * data is of type: {@link module:BJR/Model/SingleUserMessage}
      */
     deleteUser(id, callback) {
       let postBody = null;
@@ -103,7 +102,7 @@ export default class UsersApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = UserOut;
+      let returnType = SingleUserMessage;
 
       return this.apiClient.callApi(
         '/user_api/{id}', 'DELETE',
@@ -115,7 +114,7 @@ export default class UsersApi {
      * Callback function to receive the result of the getUser operation.
      * @callback module:BJR/Api/UsersApi~getUserCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/SingleUser} data The data returned by the service call.
+     * @param {module:BJR/Model/SingleUserMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -123,7 +122,7 @@ export default class UsersApi {
      * Retrieve a single user
      * Retrieve a single user
      * @param {module:BJR/Api/UsersApi~getUserCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/SingleUser}
+     * data is of type: {@link module:BJR/Model/SingleUserMessage}
      */
     getUser(id, callback) {
       let postBody = null;
@@ -141,7 +140,7 @@ export default class UsersApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = SingleUser;
+      let returnType = SingleUserMessage;
 
       return this.apiClient.callApi(
         '/user_api/{id}', 'GET',
@@ -153,7 +152,7 @@ export default class UsersApi {
      * Callback function to receive the result of the getUsers operation.
      * @callback module:BJR/Api/UsersApi~getUsersCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/UserArray} data The data returned by the service call.
+     * @param {module:BJR/Model/UserArrayMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -162,7 +161,7 @@ export default class UsersApi {
      * Get a list of users
      * @param {Object} opts Optional parameters
      * @param {module:BJR/Api/UsersApi~getUsersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/UserArray}
+     * data is of type: {@link module:BJR/Model/UserArrayMessage}
      */
     getUsers(opts, callback) {
       opts = opts || {};
@@ -182,7 +181,7 @@ export default class UsersApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = UserArray;
+      let returnType = UserArrayMessage;
 
       return this.apiClient.callApi(
         '/user_api', 'GET',
@@ -194,7 +193,7 @@ export default class UsersApi {
      * Callback function to receive the result of the updateUser operation.
      * @callback module:BJR/Api/UsersApi~updateUserCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/UserOut} data The data returned by the service call.
+     * @param {module:BJR/Model/SingleUserMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -202,7 +201,7 @@ export default class UsersApi {
      * Update a single user
      * Update a single user
      * @param {module:BJR/Api/UsersApi~updateUserCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/UserOut}
+     * data is of type: {@link module:BJR/Model/SingleUserMessage}
      */
     updateUser(id, opts, callback) {
       let postBody = opts['body'];
@@ -220,7 +219,7 @@ export default class UsersApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = UserOut;
+      let returnType = SingleUserMessage;
 
       return this.apiClient.callApi(
         '/user_api/{id}', 'PUT',

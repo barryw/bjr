@@ -13,12 +13,11 @@
 package Api;
 
 import BJR.ApiException;
-import Model.JobArray;
+import Model.JobArrayMessage;
 import Model.JobIn;
-import Model.JobOut;
-import Model.JobRunArray;
-import Model.Occurrences;
-import Model.SingleJob;
+import Model.JobRunArrayMessage;
+import Model.OccurrenceMessage;
+import Model.SingleJobMessage;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -46,7 +45,7 @@ public class JobsApiTest {
     @Test
     public void createJobTest() throws ApiException {
         JobIn body = null;
-        JobOut response = api.createJob(body);
+        SingleJobMessage response = api.createJob(body);
 
         // TODO: test validations
     }
@@ -76,7 +75,7 @@ public class JobsApiTest {
     @Test
     public void getJobTest() throws ApiException {
         Integer id = null;
-        SingleJob response = api.getJob(id);
+        SingleJobMessage response = api.getJob(id);
 
         // TODO: test validations
     }
@@ -96,7 +95,7 @@ public class JobsApiTest {
         Boolean succeeded = null;
         String startDate = null;
         String endDate = null;
-        JobRunArray response = api.getJobRuns(id, perPage, page, succeeded, startDate, endDate);
+        JobRunArrayMessage response = api.getJobRuns(id, perPage, page, succeeded, startDate, endDate);
 
         // TODO: test validations
     }
@@ -116,7 +115,7 @@ public class JobsApiTest {
         String endDate = null;
         Integer perPage = null;
         Integer page = null;
-        JobArray response = api.getJobs(tags, incexc, startDate, endDate, perPage, page);
+        JobArrayMessage response = api.getJobs(tags, incexc, startDate, endDate, perPage, page);
 
         // TODO: test validations
     }
@@ -134,7 +133,7 @@ public class JobsApiTest {
         String endDate = null;
         Integer perPage = null;
         Integer page = null;
-        Occurrences response = api.jobOccurrences(id, endDate, perPage, page);
+        OccurrenceMessage response = api.jobOccurrences(id, endDate, perPage, page);
 
         // TODO: test validations
     }
@@ -150,7 +149,7 @@ public class JobsApiTest {
     public void updateJobTest() throws ApiException {
         Integer id = null;
         JobIn body = null;
-        JobOut response = api.updateJob(id, body);
+        SingleJobMessage response = api.updateJob(id, body);
 
         // TODO: test validations
     }

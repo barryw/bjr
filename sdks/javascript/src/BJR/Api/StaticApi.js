@@ -12,8 +12,8 @@
  */
 
 import ApiClient from "../ApiClient";
-import StringArray from '../Model/StringArray';
-import TagArray from '../Model/TagArray';
+import TagMessage from '../Model/TagMessage';
+import TimezoneMessage from '../Model/TimezoneMessage';
 
 /**
 * Static service.
@@ -37,7 +37,7 @@ export default class StaticApi {
      * Callback function to receive the result of the getTags operation.
      * @callback module:BJR/Api/StaticApi~getTagsCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/StringArray} data The data returned by the service call.
+     * @param {module:BJR/Model/TimezoneMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -45,7 +45,7 @@ export default class StaticApi {
      * Get timezones
      * Get the list of acceptable timezone names.
      * @param {module:BJR/Api/StaticApi~getTagsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/StringArray}
+     * data is of type: {@link module:BJR/Model/TimezoneMessage}
      */
     getTags(callback) {
       let postBody = null;
@@ -62,7 +62,7 @@ export default class StaticApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = StringArray;
+      let returnType = TimezoneMessage;
 
       return this.apiClient.callApi(
         '/static_api/timezones', 'GET',
@@ -74,7 +74,7 @@ export default class StaticApi {
      * Callback function to receive the result of the getTags_0 operation.
      * @callback module:BJR/Api/StaticApi~getTags_0Callback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/TagArray} data The data returned by the service call.
+     * @param {module:BJR/Model/TagMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -82,7 +82,7 @@ export default class StaticApi {
      * Get tags
      * Retrieves the list of tags that are currently in use for the authenticated user.
      * @param {module:BJR/Api/StaticApi~getTags_0Callback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/TagArray}
+     * data is of type: {@link module:BJR/Model/TagMessage}
      */
     getTags_0(callback) {
       let postBody = null;
@@ -99,7 +99,7 @@ export default class StaticApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = TagArray;
+      let returnType = TagMessage;
 
       return this.apiClient.callApi(
         '/static_api/tags', 'GET',

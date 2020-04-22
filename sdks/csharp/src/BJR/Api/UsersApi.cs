@@ -31,8 +31,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>UserOut</returns>
-        UserOut CreateUser (UserNewIn body = null);
+        /// <returns>SingleUserMessage</returns>
+        SingleUserMessage CreateUser (UserNewIn body = null);
 
         /// <summary>
         /// Creates a user
@@ -42,8 +42,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of UserOut</returns>
-        ApiResponse<UserOut> CreateUserWithHttpInfo (UserNewIn body = null);
+        /// <returns>ApiResponse of SingleUserMessage</returns>
+        ApiResponse<SingleUserMessage> CreateUserWithHttpInfo (UserNewIn body = null);
         /// <summary>
         /// Deletes a user
         /// </summary>
@@ -52,8 +52,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>UserOut</returns>
-        UserOut DeleteUser (int? id);
+        /// <returns>SingleUserMessage</returns>
+        SingleUserMessage DeleteUser (int? id);
 
         /// <summary>
         /// Deletes a user
@@ -63,8 +63,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of UserOut</returns>
-        ApiResponse<UserOut> DeleteUserWithHttpInfo (int? id);
+        /// <returns>ApiResponse of SingleUserMessage</returns>
+        ApiResponse<SingleUserMessage> DeleteUserWithHttpInfo (int? id);
         /// <summary>
         /// Retrieve a single user
         /// </summary>
@@ -73,8 +73,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>SingleUser</returns>
-        SingleUser GetUser (int? id);
+        /// <returns>SingleUserMessage</returns>
+        SingleUserMessage GetUser (int? id);
 
         /// <summary>
         /// Retrieve a single user
@@ -84,8 +84,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of SingleUser</returns>
-        ApiResponse<SingleUser> GetUserWithHttpInfo (int? id);
+        /// <returns>ApiResponse of SingleUserMessage</returns>
+        ApiResponse<SingleUserMessage> GetUserWithHttpInfo (int? id);
         /// <summary>
         /// Retrieves users
         /// </summary>
@@ -95,8 +95,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>UserArray</returns>
-        UserArray GetUsers (int? perPage = null, int? page = null);
+        /// <returns>UserArrayMessage</returns>
+        UserArrayMessage GetUsers (int? perPage = null, int? page = null);
 
         /// <summary>
         /// Retrieves users
@@ -107,8 +107,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>ApiResponse of UserArray</returns>
-        ApiResponse<UserArray> GetUsersWithHttpInfo (int? perPage = null, int? page = null);
+        /// <returns>ApiResponse of UserArrayMessage</returns>
+        ApiResponse<UserArrayMessage> GetUsersWithHttpInfo (int? perPage = null, int? page = null);
         /// <summary>
         /// Update a single user
         /// </summary>
@@ -118,8 +118,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>UserOut</returns>
-        UserOut UpdateUser (int? id, UserUpdateIn body = null);
+        /// <returns>SingleUserMessage</returns>
+        SingleUserMessage UpdateUser (int? id, UserUpdateIn body = null);
 
         /// <summary>
         /// Update a single user
@@ -130,8 +130,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of UserOut</returns>
-        ApiResponse<UserOut> UpdateUserWithHttpInfo (int? id, UserUpdateIn body = null);
+        /// <returns>ApiResponse of SingleUserMessage</returns>
+        ApiResponse<SingleUserMessage> UpdateUserWithHttpInfo (int? id, UserUpdateIn body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -142,8 +142,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of UserOut</returns>
-        System.Threading.Tasks.Task<UserOut> CreateUserAsync (UserNewIn body = null);
+        /// <returns>Task of SingleUserMessage</returns>
+        System.Threading.Tasks.Task<SingleUserMessage> CreateUserAsync (UserNewIn body = null);
 
         /// <summary>
         /// Creates a user
@@ -153,8 +153,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserOut>> CreateUserAsyncWithHttpInfo (UserNewIn body = null);
+        /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> CreateUserAsyncWithHttpInfo (UserNewIn body = null);
         /// <summary>
         /// Deletes a user
         /// </summary>
@@ -163,8 +163,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of UserOut</returns>
-        System.Threading.Tasks.Task<UserOut> DeleteUserAsync (int? id);
+        /// <returns>Task of SingleUserMessage</returns>
+        System.Threading.Tasks.Task<SingleUserMessage> DeleteUserAsync (int? id);
 
         /// <summary>
         /// Deletes a user
@@ -174,8 +174,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (UserOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserOut>> DeleteUserAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> DeleteUserAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Retrieve a single user
         /// </summary>
@@ -184,8 +184,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of SingleUser</returns>
-        System.Threading.Tasks.Task<SingleUser> GetUserAsync (int? id);
+        /// <returns>Task of SingleUserMessage</returns>
+        System.Threading.Tasks.Task<SingleUserMessage> GetUserAsync (int? id);
 
         /// <summary>
         /// Retrieve a single user
@@ -195,8 +195,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (SingleUser)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleUser>> GetUserAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> GetUserAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Retrieves users
         /// </summary>
@@ -206,8 +206,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of UserArray</returns>
-        System.Threading.Tasks.Task<UserArray> GetUsersAsync (int? perPage = null, int? page = null);
+        /// <returns>Task of UserArrayMessage</returns>
+        System.Threading.Tasks.Task<UserArrayMessage> GetUsersAsync (int? perPage = null, int? page = null);
 
         /// <summary>
         /// Retrieves users
@@ -218,8 +218,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserArray)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserArray>> GetUsersAsyncWithHttpInfo (int? perPage = null, int? page = null);
+        /// <returns>Task of ApiResponse (UserArrayMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserArrayMessage>> GetUsersAsyncWithHttpInfo (int? perPage = null, int? page = null);
         /// <summary>
         /// Update a single user
         /// </summary>
@@ -229,8 +229,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of UserOut</returns>
-        System.Threading.Tasks.Task<UserOut> UpdateUserAsync (int? id, UserUpdateIn body = null);
+        /// <returns>Task of SingleUserMessage</returns>
+        System.Threading.Tasks.Task<SingleUserMessage> UpdateUserAsync (int? id, UserUpdateIn body = null);
 
         /// <summary>
         /// Update a single user
@@ -241,8 +241,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserOut>> UpdateUserAsyncWithHttpInfo (int? id, UserUpdateIn body = null);
+        /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> UpdateUserAsyncWithHttpInfo (int? id, UserUpdateIn body = null);
         #endregion Asynchronous Operations
     }
 
@@ -359,10 +359,10 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>UserOut</returns>
-        public UserOut CreateUser (UserNewIn body = null)
+        /// <returns>SingleUserMessage</returns>
+        public SingleUserMessage CreateUser (UserNewIn body = null)
         {
-             ApiResponse<UserOut> localVarResponse = CreateUserWithHttpInfo(body);
+             ApiResponse<SingleUserMessage> localVarResponse = CreateUserWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -371,8 +371,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of UserOut</returns>
-        public ApiResponse< UserOut > CreateUserWithHttpInfo (UserNewIn body = null)
+        /// <returns>ApiResponse of SingleUserMessage</returns>
+        public ApiResponse< SingleUserMessage > CreateUserWithHttpInfo (UserNewIn body = null)
         {
 
             var localVarPath = "/user_api";
@@ -425,9 +425,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserOut>(localVarStatusCode,
+            return new ApiResponse<SingleUserMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
+                (SingleUserMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUserMessage)));
         }
 
         /// <summary>
@@ -435,10 +435,10 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of UserOut</returns>
-        public async System.Threading.Tasks.Task<UserOut> CreateUserAsync (UserNewIn body = null)
+        /// <returns>Task of SingleUserMessage</returns>
+        public async System.Threading.Tasks.Task<SingleUserMessage> CreateUserAsync (UserNewIn body = null)
         {
-             ApiResponse<UserOut> localVarResponse = await CreateUserAsyncWithHttpInfo(body);
+             ApiResponse<SingleUserMessage> localVarResponse = await CreateUserAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -448,8 +448,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserOut>> CreateUserAsyncWithHttpInfo (UserNewIn body = null)
+        /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> CreateUserAsyncWithHttpInfo (UserNewIn body = null)
         {
 
             var localVarPath = "/user_api";
@@ -502,9 +502,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserOut>(localVarStatusCode,
+            return new ApiResponse<SingleUserMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
+                (SingleUserMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUserMessage)));
         }
 
         /// <summary>
@@ -512,10 +512,10 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>UserOut</returns>
-        public UserOut DeleteUser (int? id)
+        /// <returns>SingleUserMessage</returns>
+        public SingleUserMessage DeleteUser (int? id)
         {
-             ApiResponse<UserOut> localVarResponse = DeleteUserWithHttpInfo(id);
+             ApiResponse<SingleUserMessage> localVarResponse = DeleteUserWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -524,8 +524,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of UserOut</returns>
-        public ApiResponse< UserOut > DeleteUserWithHttpInfo (int? id)
+        /// <returns>ApiResponse of SingleUserMessage</returns>
+        public ApiResponse< SingleUserMessage > DeleteUserWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -573,9 +573,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserOut>(localVarStatusCode,
+            return new ApiResponse<SingleUserMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
+                (SingleUserMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUserMessage)));
         }
 
         /// <summary>
@@ -583,10 +583,10 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of UserOut</returns>
-        public async System.Threading.Tasks.Task<UserOut> DeleteUserAsync (int? id)
+        /// <returns>Task of SingleUserMessage</returns>
+        public async System.Threading.Tasks.Task<SingleUserMessage> DeleteUserAsync (int? id)
         {
-             ApiResponse<UserOut> localVarResponse = await DeleteUserAsyncWithHttpInfo(id);
+             ApiResponse<SingleUserMessage> localVarResponse = await DeleteUserAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -596,8 +596,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (UserOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserOut>> DeleteUserAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> DeleteUserAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -645,9 +645,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserOut>(localVarStatusCode,
+            return new ApiResponse<SingleUserMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
+                (SingleUserMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUserMessage)));
         }
 
         /// <summary>
@@ -655,10 +655,10 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>SingleUser</returns>
-        public SingleUser GetUser (int? id)
+        /// <returns>SingleUserMessage</returns>
+        public SingleUserMessage GetUser (int? id)
         {
-             ApiResponse<SingleUser> localVarResponse = GetUserWithHttpInfo(id);
+             ApiResponse<SingleUserMessage> localVarResponse = GetUserWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -667,8 +667,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of SingleUser</returns>
-        public ApiResponse< SingleUser > GetUserWithHttpInfo (int? id)
+        /// <returns>ApiResponse of SingleUserMessage</returns>
+        public ApiResponse< SingleUserMessage > GetUserWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -716,9 +716,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SingleUser>(localVarStatusCode,
+            return new ApiResponse<SingleUserMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SingleUser) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUser)));
+                (SingleUserMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUserMessage)));
         }
 
         /// <summary>
@@ -726,10 +726,10 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of SingleUser</returns>
-        public async System.Threading.Tasks.Task<SingleUser> GetUserAsync (int? id)
+        /// <returns>Task of SingleUserMessage</returns>
+        public async System.Threading.Tasks.Task<SingleUserMessage> GetUserAsync (int? id)
         {
-             ApiResponse<SingleUser> localVarResponse = await GetUserAsyncWithHttpInfo(id);
+             ApiResponse<SingleUserMessage> localVarResponse = await GetUserAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -739,8 +739,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (SingleUser)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleUser>> GetUserAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> GetUserAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -788,9 +788,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SingleUser>(localVarStatusCode,
+            return new ApiResponse<SingleUserMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SingleUser) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUser)));
+                (SingleUserMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUserMessage)));
         }
 
         /// <summary>
@@ -799,10 +799,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>UserArray</returns>
-        public UserArray GetUsers (int? perPage = null, int? page = null)
+        /// <returns>UserArrayMessage</returns>
+        public UserArrayMessage GetUsers (int? perPage = null, int? page = null)
         {
-             ApiResponse<UserArray> localVarResponse = GetUsersWithHttpInfo(perPage, page);
+             ApiResponse<UserArrayMessage> localVarResponse = GetUsersWithHttpInfo(perPage, page);
              return localVarResponse.Data;
         }
 
@@ -812,8 +812,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>ApiResponse of UserArray</returns>
-        public ApiResponse< UserArray > GetUsersWithHttpInfo (int? perPage = null, int? page = null)
+        /// <returns>ApiResponse of UserArrayMessage</returns>
+        public ApiResponse< UserArrayMessage > GetUsersWithHttpInfo (int? perPage = null, int? page = null)
         {
 
             var localVarPath = "/user_api";
@@ -859,9 +859,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserArray>(localVarStatusCode,
+            return new ApiResponse<UserArrayMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserArray)));
+                (UserArrayMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserArrayMessage)));
         }
 
         /// <summary>
@@ -870,10 +870,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of UserArray</returns>
-        public async System.Threading.Tasks.Task<UserArray> GetUsersAsync (int? perPage = null, int? page = null)
+        /// <returns>Task of UserArrayMessage</returns>
+        public async System.Threading.Tasks.Task<UserArrayMessage> GetUsersAsync (int? perPage = null, int? page = null)
         {
-             ApiResponse<UserArray> localVarResponse = await GetUsersAsyncWithHttpInfo(perPage, page);
+             ApiResponse<UserArrayMessage> localVarResponse = await GetUsersAsyncWithHttpInfo(perPage, page);
              return localVarResponse.Data;
 
         }
@@ -884,8 +884,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserArray)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserArray>> GetUsersAsyncWithHttpInfo (int? perPage = null, int? page = null)
+        /// <returns>Task of ApiResponse (UserArrayMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserArrayMessage>> GetUsersAsyncWithHttpInfo (int? perPage = null, int? page = null)
         {
 
             var localVarPath = "/user_api";
@@ -931,9 +931,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserArray>(localVarStatusCode,
+            return new ApiResponse<UserArrayMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserArray)));
+                (UserArrayMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserArrayMessage)));
         }
 
         /// <summary>
@@ -942,10 +942,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>UserOut</returns>
-        public UserOut UpdateUser (int? id, UserUpdateIn body = null)
+        /// <returns>SingleUserMessage</returns>
+        public SingleUserMessage UpdateUser (int? id, UserUpdateIn body = null)
         {
-             ApiResponse<UserOut> localVarResponse = UpdateUserWithHttpInfo(id, body);
+             ApiResponse<SingleUserMessage> localVarResponse = UpdateUserWithHttpInfo(id, body);
              return localVarResponse.Data;
         }
 
@@ -955,8 +955,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of UserOut</returns>
-        public ApiResponse< UserOut > UpdateUserWithHttpInfo (int? id, UserUpdateIn body = null)
+        /// <returns>ApiResponse of SingleUserMessage</returns>
+        public ApiResponse< SingleUserMessage > UpdateUserWithHttpInfo (int? id, UserUpdateIn body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1013,9 +1013,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserOut>(localVarStatusCode,
+            return new ApiResponse<SingleUserMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
+                (SingleUserMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUserMessage)));
         }
 
         /// <summary>
@@ -1024,10 +1024,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of UserOut</returns>
-        public async System.Threading.Tasks.Task<UserOut> UpdateUserAsync (int? id, UserUpdateIn body = null)
+        /// <returns>Task of SingleUserMessage</returns>
+        public async System.Threading.Tasks.Task<SingleUserMessage> UpdateUserAsync (int? id, UserUpdateIn body = null)
         {
-             ApiResponse<UserOut> localVarResponse = await UpdateUserAsyncWithHttpInfo(id, body);
+             ApiResponse<SingleUserMessage> localVarResponse = await UpdateUserAsyncWithHttpInfo(id, body);
              return localVarResponse.Data;
 
         }
@@ -1038,8 +1038,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (UserOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserOut>> UpdateUserAsyncWithHttpInfo (int? id, UserUpdateIn body = null)
+        /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> UpdateUserAsyncWithHttpInfo (int? id, UserUpdateIn body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1096,9 +1096,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<UserOut>(localVarStatusCode,
+            return new ApiResponse<SingleUserMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (UserOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserOut)));
+                (SingleUserMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleUserMessage)));
         }
 
     }

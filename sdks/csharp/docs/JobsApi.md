@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="createjob"></a>
 # **CreateJob**
-> JobOut CreateJob (JobIn body = null)
+> SingleJobMessage CreateJob (JobIn body = null)
 
 Creates a job
 
@@ -41,7 +41,7 @@ namespace Example
             try
             {
                 // Creates a job
-                JobOut result = apiInstance.CreateJob(body);
+                SingleJobMessage result = apiInstance.CreateJob(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobOut**](JobOut.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -135,7 +135,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getjob"></a>
 # **GetJob**
-> SingleJob GetJob (int? id)
+> SingleJobMessage GetJob (int? id)
 
 Retrieves a single job
 
@@ -162,7 +162,7 @@ namespace Example
             try
             {
                 // Retrieves a single job
-                SingleJob result = apiInstance.GetJob(id);
+                SingleJobMessage result = apiInstance.GetJob(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SingleJob**](SingleJob.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getjobruns"></a>
 # **GetJobRuns**
-> JobRunArray GetJobRuns (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
+> JobRunArrayMessage GetJobRuns (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
 
 Retrieve the runs for a job
 
@@ -228,7 +228,7 @@ namespace Example
             try
             {
                 // Retrieve the runs for a job
-                JobRunArray result = apiInstance.GetJobRuns(id, perPage, page, succeeded, startDate, endDate);
+                JobRunArrayMessage result = apiInstance.GetJobRuns(id, perPage, page, succeeded, startDate, endDate);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobRunArray**](JobRunArray.md)
+[**JobRunArrayMessage**](JobRunArrayMessage.md)
 
 ### Authorization
 
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getjobs"></a>
 # **GetJobs**
-> JobArray GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
+> JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
 
 Retrieves jobs
 
@@ -299,7 +299,7 @@ namespace Example
             try
             {
                 // Retrieves jobs
-                JobArray result = apiInstance.GetJobs(tags, incexc, startDate, endDate, perPage, page);
+                JobArrayMessage result = apiInstance.GetJobs(tags, incexc, startDate, endDate, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobArray**](JobArray.md)
+[**JobArrayMessage**](JobArrayMessage.md)
 
 ### Authorization
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="joboccurrences"></a>
 # **JobOccurrences**
-> Occurrences JobOccurrences (int? id, string endDate, int? perPage = null, int? page = null)
+> OccurrenceMessage JobOccurrences (int? id, string endDate, int? perPage = null, int? page = null)
 
 Upcoming job occurrences
 
@@ -368,7 +368,7 @@ namespace Example
             try
             {
                 // Upcoming job occurrences
-                Occurrences result = apiInstance.JobOccurrences(id, endDate, perPage, page);
+                OccurrenceMessage result = apiInstance.JobOccurrences(id, endDate, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Occurrences**](Occurrences.md)
+[**OccurrenceMessage**](OccurrenceMessage.md)
 
 ### Authorization
 
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="updatejob"></a>
 # **UpdateJob**
-> JobOut UpdateJob (int? id, JobIn body = null)
+> SingleJobMessage UpdateJob (int? id, JobIn body = null)
 
 Updates a single job
 
@@ -433,7 +433,7 @@ namespace Example
             try
             {
                 // Updates a single job
-                JobOut result = apiInstance.UpdateJob(id, body);
+                SingleJobMessage result = apiInstance.UpdateJob(id, body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -454,7 +454,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobOut**](JobOut.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 

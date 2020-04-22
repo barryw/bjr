@@ -89,6 +89,14 @@ namespace BJR.Test
         {
             // TODO unit test for the property 'IsError'
         }
+        /// <summary>
+        /// Test the property 'StatusCode'
+        /// </summary>
+        [Test]
+        public void StatusCodeTest()
+        {
+            // TODO unit test for the property 'StatusCode'
+        }
 
     }
 

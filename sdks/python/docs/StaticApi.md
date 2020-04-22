@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**get_tags_0**](StaticApi.md#get_tags_0) | **GET** /static_api/tags | Get tags
 
 # **get_tags**
-> StringArray get_tags()
+> TimezoneMessage get_tags()
 
 Get timezones
 
@@ -39,7 +39,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**StringArray**](StringArray.md)
+[**TimezoneMessage**](TimezoneMessage.md)
 
 ### Authorization
 
@@ -53,7 +53,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_tags_0**
-> TagArray get_tags_0()
+> TagMessage get_tags_0()
 
 Get tags
 
@@ -84,7 +84,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TagArray**](TagArray.md)
+[**TagMessage**](TagMessage.md)
 
 ### Authorization
 

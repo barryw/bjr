@@ -26,12 +26,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import Model.JobArray;
+import Model.JobArrayMessage;
 import Model.JobIn;
-import Model.JobOut;
-import Model.JobRunArray;
-import Model.Occurrences;
-import Model.SingleJob;
+import Model.JobRunArrayMessage;
+import Model.OccurrenceMessage;
+import Model.SingleJobMessage;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -123,11 +122,11 @@ public class JobsApi {
      * Creates a job
      * Creates a job
      * @param body  (optional)
-     * @return JobOut
+     * @return SingleJobMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public JobOut createJob(JobIn body) throws ApiException {
-        ApiResponse<JobOut> resp = createJobWithHttpInfo(body);
+    public SingleJobMessage createJob(JobIn body) throws ApiException {
+        ApiResponse<SingleJobMessage> resp = createJobWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -135,12 +134,12 @@ public class JobsApi {
      * Creates a job
      * Creates a job
      * @param body  (optional)
-     * @return ApiResponse&lt;JobOut&gt;
+     * @return ApiResponse&lt;SingleJobMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<JobOut> createJobWithHttpInfo(JobIn body) throws ApiException {
+    public ApiResponse<SingleJobMessage> createJobWithHttpInfo(JobIn body) throws ApiException {
         com.squareup.okhttp.Call call = createJobValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<JobOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<SingleJobMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -152,7 +151,7 @@ public class JobsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createJobAsync(JobIn body, final ApiCallback<JobOut> callback) throws ApiException {
+    public com.squareup.okhttp.Call createJobAsync(JobIn body, final ApiCallback<SingleJobMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -174,7 +173,7 @@ public class JobsApi {
         }
 
         com.squareup.okhttp.Call call = createJobValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<JobOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<SingleJobMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -369,11 +368,11 @@ public class JobsApi {
      * Retrieves a single job
      * Retrieves a single job
      * @param id  (required)
-     * @return SingleJob
+     * @return SingleJobMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SingleJob getJob(Integer id) throws ApiException {
-        ApiResponse<SingleJob> resp = getJobWithHttpInfo(id);
+    public SingleJobMessage getJob(Integer id) throws ApiException {
+        ApiResponse<SingleJobMessage> resp = getJobWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -381,12 +380,12 @@ public class JobsApi {
      * Retrieves a single job
      * Retrieves a single job
      * @param id  (required)
-     * @return ApiResponse&lt;SingleJob&gt;
+     * @return ApiResponse&lt;SingleJobMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SingleJob> getJobWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<SingleJobMessage> getJobWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = getJobValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<SingleJob>(){}.getType();
+        Type localVarReturnType = new TypeToken<SingleJobMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -398,7 +397,7 @@ public class JobsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getJobAsync(Integer id, final ApiCallback<SingleJob> callback) throws ApiException {
+    public com.squareup.okhttp.Call getJobAsync(Integer id, final ApiCallback<SingleJobMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -420,7 +419,7 @@ public class JobsApi {
         }
 
         com.squareup.okhttp.Call call = getJobValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<SingleJob>(){}.getType();
+        Type localVarReturnType = new TypeToken<SingleJobMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -514,11 +513,11 @@ public class JobsApi {
      * @param succeeded  (optional)
      * @param startDate  (optional)
      * @param endDate  (optional)
-     * @return JobRunArray
+     * @return JobRunArrayMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public JobRunArray getJobRuns(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate) throws ApiException {
-        ApiResponse<JobRunArray> resp = getJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
+    public JobRunArrayMessage getJobRuns(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate) throws ApiException {
+        ApiResponse<JobRunArrayMessage> resp = getJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
         return resp.getData();
     }
 
@@ -531,12 +530,12 @@ public class JobsApi {
      * @param succeeded  (optional)
      * @param startDate  (optional)
      * @param endDate  (optional)
-     * @return ApiResponse&lt;JobRunArray&gt;
+     * @return ApiResponse&lt;JobRunArrayMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<JobRunArray> getJobRunsWithHttpInfo(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate) throws ApiException {
+    public ApiResponse<JobRunArrayMessage> getJobRunsWithHttpInfo(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate) throws ApiException {
         com.squareup.okhttp.Call call = getJobRunsValidateBeforeCall(id, perPage, page, succeeded, startDate, endDate, null, null);
-        Type localVarReturnType = new TypeToken<JobRunArray>(){}.getType();
+        Type localVarReturnType = new TypeToken<JobRunArrayMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -553,7 +552,7 @@ public class JobsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getJobRunsAsync(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, final ApiCallback<JobRunArray> callback) throws ApiException {
+    public com.squareup.okhttp.Call getJobRunsAsync(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, final ApiCallback<JobRunArrayMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -575,7 +574,7 @@ public class JobsApi {
         }
 
         com.squareup.okhttp.Call call = getJobRunsValidateBeforeCall(id, perPage, page, succeeded, startDate, endDate, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<JobRunArray>(){}.getType();
+        Type localVarReturnType = new TypeToken<JobRunArrayMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -666,11 +665,11 @@ public class JobsApi {
      * @param endDate Specify an end date to search jobs by. (optional)
      * @param perPage  (optional)
      * @param page  (optional)
-     * @return JobArray
+     * @return JobArrayMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public JobArray getJobs(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        ApiResponse<JobArray> resp = getJobsWithHttpInfo(tags, incexc, startDate, endDate, perPage, page);
+    public JobArrayMessage getJobs(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
+        ApiResponse<JobArrayMessage> resp = getJobsWithHttpInfo(tags, incexc, startDate, endDate, perPage, page);
         return resp.getData();
     }
 
@@ -683,12 +682,12 @@ public class JobsApi {
      * @param endDate Specify an end date to search jobs by. (optional)
      * @param perPage  (optional)
      * @param page  (optional)
-     * @return ApiResponse&lt;JobArray&gt;
+     * @return ApiResponse&lt;JobArrayMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<JobArray> getJobsWithHttpInfo(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
+    public ApiResponse<JobArrayMessage> getJobsWithHttpInfo(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
         com.squareup.okhttp.Call call = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, perPage, page, null, null);
-        Type localVarReturnType = new TypeToken<JobArray>(){}.getType();
+        Type localVarReturnType = new TypeToken<JobArrayMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -705,7 +704,7 @@ public class JobsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getJobsAsync(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page, final ApiCallback<JobArray> callback) throws ApiException {
+    public com.squareup.okhttp.Call getJobsAsync(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page, final ApiCallback<JobArrayMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -727,7 +726,7 @@ public class JobsApi {
         }
 
         com.squareup.okhttp.Call call = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, perPage, page, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<JobArray>(){}.getType();
+        Type localVarReturnType = new TypeToken<JobArrayMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -816,11 +815,11 @@ public class JobsApi {
      * @param endDate The date to retrieve occurrences up to (required)
      * @param perPage  (optional)
      * @param page  (optional)
-     * @return Occurrences
+     * @return OccurrenceMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Occurrences jobOccurrences(Integer id, String endDate, Integer perPage, Integer page) throws ApiException {
-        ApiResponse<Occurrences> resp = jobOccurrencesWithHttpInfo(id, endDate, perPage, page);
+    public OccurrenceMessage jobOccurrences(Integer id, String endDate, Integer perPage, Integer page) throws ApiException {
+        ApiResponse<OccurrenceMessage> resp = jobOccurrencesWithHttpInfo(id, endDate, perPage, page);
         return resp.getData();
     }
 
@@ -831,12 +830,12 @@ public class JobsApi {
      * @param endDate The date to retrieve occurrences up to (required)
      * @param perPage  (optional)
      * @param page  (optional)
-     * @return ApiResponse&lt;Occurrences&gt;
+     * @return ApiResponse&lt;OccurrenceMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Occurrences> jobOccurrencesWithHttpInfo(Integer id, String endDate, Integer perPage, Integer page) throws ApiException {
+    public ApiResponse<OccurrenceMessage> jobOccurrencesWithHttpInfo(Integer id, String endDate, Integer perPage, Integer page) throws ApiException {
         com.squareup.okhttp.Call call = jobOccurrencesValidateBeforeCall(id, endDate, perPage, page, null, null);
-        Type localVarReturnType = new TypeToken<Occurrences>(){}.getType();
+        Type localVarReturnType = new TypeToken<OccurrenceMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -851,7 +850,7 @@ public class JobsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call jobOccurrencesAsync(Integer id, String endDate, Integer perPage, Integer page, final ApiCallback<Occurrences> callback) throws ApiException {
+    public com.squareup.okhttp.Call jobOccurrencesAsync(Integer id, String endDate, Integer perPage, Integer page, final ApiCallback<OccurrenceMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -873,7 +872,7 @@ public class JobsApi {
         }
 
         com.squareup.okhttp.Call call = jobOccurrencesValidateBeforeCall(id, endDate, perPage, page, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Occurrences>(){}.getType();
+        Type localVarReturnType = new TypeToken<OccurrenceMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -949,11 +948,11 @@ public class JobsApi {
      * Updates a single job
      * @param id  (required)
      * @param body  (optional)
-     * @return JobOut
+     * @return SingleJobMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public JobOut updateJob(Integer id, JobIn body) throws ApiException {
-        ApiResponse<JobOut> resp = updateJobWithHttpInfo(id, body);
+    public SingleJobMessage updateJob(Integer id, JobIn body) throws ApiException {
+        ApiResponse<SingleJobMessage> resp = updateJobWithHttpInfo(id, body);
         return resp.getData();
     }
 
@@ -962,12 +961,12 @@ public class JobsApi {
      * Updates a single job
      * @param id  (required)
      * @param body  (optional)
-     * @return ApiResponse&lt;JobOut&gt;
+     * @return ApiResponse&lt;SingleJobMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<JobOut> updateJobWithHttpInfo(Integer id, JobIn body) throws ApiException {
+    public ApiResponse<SingleJobMessage> updateJobWithHttpInfo(Integer id, JobIn body) throws ApiException {
         com.squareup.okhttp.Call call = updateJobValidateBeforeCall(id, body, null, null);
-        Type localVarReturnType = new TypeToken<JobOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<SingleJobMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -980,7 +979,7 @@ public class JobsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateJobAsync(Integer id, JobIn body, final ApiCallback<JobOut> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateJobAsync(Integer id, JobIn body, final ApiCallback<SingleJobMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1002,7 +1001,7 @@ public class JobsApi {
         }
 
         com.squareup.okhttp.Call call = updateJobValidateBeforeCall(id, body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<JobOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<SingleJobMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

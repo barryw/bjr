@@ -30,8 +30,8 @@ namespace BJR.Api
         /// Get the list of acceptable timezone names.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>StringArray</returns>
-        StringArray GetTags ();
+        /// <returns>TimezoneMessage</returns>
+        TimezoneMessage GetTags ();
 
         /// <summary>
         /// Get timezones
@@ -40,8 +40,8 @@ namespace BJR.Api
         /// Get the list of acceptable timezone names.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of StringArray</returns>
-        ApiResponse<StringArray> GetTagsWithHttpInfo ();
+        /// <returns>ApiResponse of TimezoneMessage</returns>
+        ApiResponse<TimezoneMessage> GetTagsWithHttpInfo ();
         /// <summary>
         /// Get tags
         /// </summary>
@@ -49,8 +49,8 @@ namespace BJR.Api
         /// Retrieves the list of tags that are currently in use for the authenticated user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>TagArray</returns>
-        TagArray GetTags_0 ();
+        /// <returns>TagMessage</returns>
+        TagMessage GetTags_0 ();
 
         /// <summary>
         /// Get tags
@@ -59,8 +59,8 @@ namespace BJR.Api
         /// Retrieves the list of tags that are currently in use for the authenticated user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of TagArray</returns>
-        ApiResponse<TagArray> GetTags_0WithHttpInfo ();
+        /// <returns>ApiResponse of TagMessage</returns>
+        ApiResponse<TagMessage> GetTags_0WithHttpInfo ();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -70,8 +70,8 @@ namespace BJR.Api
         /// Get the list of acceptable timezone names.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of StringArray</returns>
-        System.Threading.Tasks.Task<StringArray> GetTagsAsync ();
+        /// <returns>Task of TimezoneMessage</returns>
+        System.Threading.Tasks.Task<TimezoneMessage> GetTagsAsync ();
 
         /// <summary>
         /// Get timezones
@@ -80,8 +80,8 @@ namespace BJR.Api
         /// Get the list of acceptable timezone names.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (StringArray)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StringArray>> GetTagsAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (TimezoneMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTagsAsyncWithHttpInfo ();
         /// <summary>
         /// Get tags
         /// </summary>
@@ -89,8 +89,8 @@ namespace BJR.Api
         /// Retrieves the list of tags that are currently in use for the authenticated user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of TagArray</returns>
-        System.Threading.Tasks.Task<TagArray> GetTags_0Async ();
+        /// <returns>Task of TagMessage</returns>
+        System.Threading.Tasks.Task<TagMessage> GetTags_0Async ();
 
         /// <summary>
         /// Get tags
@@ -99,8 +99,8 @@ namespace BJR.Api
         /// Retrieves the list of tags that are currently in use for the authenticated user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (TagArray)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TagArray>> GetTags_0AsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (TagMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTags_0AsyncWithHttpInfo ();
         #endregion Asynchronous Operations
     }
 
@@ -216,10 +216,10 @@ namespace BJR.Api
         /// Get timezones Get the list of acceptable timezone names.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>StringArray</returns>
-        public StringArray GetTags ()
+        /// <returns>TimezoneMessage</returns>
+        public TimezoneMessage GetTags ()
         {
-             ApiResponse<StringArray> localVarResponse = GetTagsWithHttpInfo();
+             ApiResponse<TimezoneMessage> localVarResponse = GetTagsWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -227,8 +227,8 @@ namespace BJR.Api
         /// Get timezones Get the list of acceptable timezone names.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of StringArray</returns>
-        public ApiResponse< StringArray > GetTagsWithHttpInfo ()
+        /// <returns>ApiResponse of TimezoneMessage</returns>
+        public ApiResponse< TimezoneMessage > GetTagsWithHttpInfo ()
         {
 
             var localVarPath = "/static_api/timezones";
@@ -272,19 +272,19 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<StringArray>(localVarStatusCode,
+            return new ApiResponse<TimezoneMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (StringArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(StringArray)));
+                (TimezoneMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TimezoneMessage)));
         }
 
         /// <summary>
         /// Get timezones Get the list of acceptable timezone names.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of StringArray</returns>
-        public async System.Threading.Tasks.Task<StringArray> GetTagsAsync ()
+        /// <returns>Task of TimezoneMessage</returns>
+        public async System.Threading.Tasks.Task<TimezoneMessage> GetTagsAsync ()
         {
-             ApiResponse<StringArray> localVarResponse = await GetTagsAsyncWithHttpInfo();
+             ApiResponse<TimezoneMessage> localVarResponse = await GetTagsAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -293,8 +293,8 @@ namespace BJR.Api
         /// Get timezones Get the list of acceptable timezone names.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (StringArray)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<StringArray>> GetTagsAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (TimezoneMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTagsAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/static_api/timezones";
@@ -338,19 +338,19 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<StringArray>(localVarStatusCode,
+            return new ApiResponse<TimezoneMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (StringArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(StringArray)));
+                (TimezoneMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TimezoneMessage)));
         }
 
         /// <summary>
         /// Get tags Retrieves the list of tags that are currently in use for the authenticated user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>TagArray</returns>
-        public TagArray GetTags_0 ()
+        /// <returns>TagMessage</returns>
+        public TagMessage GetTags_0 ()
         {
-             ApiResponse<TagArray> localVarResponse = GetTags_0WithHttpInfo();
+             ApiResponse<TagMessage> localVarResponse = GetTags_0WithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -358,8 +358,8 @@ namespace BJR.Api
         /// Get tags Retrieves the list of tags that are currently in use for the authenticated user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of TagArray</returns>
-        public ApiResponse< TagArray > GetTags_0WithHttpInfo ()
+        /// <returns>ApiResponse of TagMessage</returns>
+        public ApiResponse< TagMessage > GetTags_0WithHttpInfo ()
         {
 
             var localVarPath = "/static_api/tags";
@@ -403,19 +403,19 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TagArray>(localVarStatusCode,
+            return new ApiResponse<TagMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (TagArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TagArray)));
+                (TagMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TagMessage)));
         }
 
         /// <summary>
         /// Get tags Retrieves the list of tags that are currently in use for the authenticated user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of TagArray</returns>
-        public async System.Threading.Tasks.Task<TagArray> GetTags_0Async ()
+        /// <returns>Task of TagMessage</returns>
+        public async System.Threading.Tasks.Task<TagMessage> GetTags_0Async ()
         {
-             ApiResponse<TagArray> localVarResponse = await GetTags_0AsyncWithHttpInfo();
+             ApiResponse<TagMessage> localVarResponse = await GetTags_0AsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -424,8 +424,8 @@ namespace BJR.Api
         /// Get tags Retrieves the list of tags that are currently in use for the authenticated user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (TagArray)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TagArray>> GetTags_0AsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (TagMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTags_0AsyncWithHttpInfo ()
         {
 
             var localVarPath = "/static_api/tags";
@@ -469,9 +469,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TagArray>(localVarStatusCode,
+            return new ApiResponse<TagMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (TagArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TagArray)));
+                (TagMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TagMessage)));
         }
 
     }

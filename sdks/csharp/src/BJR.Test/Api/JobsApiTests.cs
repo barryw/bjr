@@ -71,7 +71,7 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //JobIn body = null;
             //var response = instance.CreateJob(body);
-            //Assert.IsInstanceOf<JobOut> (response, "response is JobOut");
+            //Assert.IsInstanceOf<SingleJobMessage> (response, "response is SingleJobMessage");
         }
         /// <summary>
         /// Test DeleteJob
@@ -93,7 +93,7 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.GetJob(id);
-            //Assert.IsInstanceOf<SingleJob> (response, "response is SingleJob");
+            //Assert.IsInstanceOf<SingleJobMessage> (response, "response is SingleJobMessage");
         }
         /// <summary>
         /// Test GetJobRuns
@@ -109,7 +109,7 @@ namespace BJR.Test
             //string startDate = null;
             //string endDate = null;
             //var response = instance.GetJobRuns(id, perPage, page, succeeded, startDate, endDate);
-            //Assert.IsInstanceOf<JobRunArray> (response, "response is JobRunArray");
+            //Assert.IsInstanceOf<JobRunArrayMessage> (response, "response is JobRunArrayMessage");
         }
         /// <summary>
         /// Test GetJobs
@@ -125,7 +125,7 @@ namespace BJR.Test
             //int? perPage = null;
             //int? page = null;
             //var response = instance.GetJobs(tags, incexc, startDate, endDate, perPage, page);
-            //Assert.IsInstanceOf<JobArray> (response, "response is JobArray");
+            //Assert.IsInstanceOf<JobArrayMessage> (response, "response is JobArrayMessage");
         }
         /// <summary>
         /// Test JobOccurrences
@@ -139,7 +139,7 @@ namespace BJR.Test
             //int? perPage = null;
             //int? page = null;
             //var response = instance.JobOccurrences(id, endDate, perPage, page);
-            //Assert.IsInstanceOf<Occurrences> (response, "response is Occurrences");
+            //Assert.IsInstanceOf<OccurrenceMessage> (response, "response is OccurrenceMessage");
         }
         /// <summary>
         /// Test UpdateJob
@@ -151,7 +151,7 @@ namespace BJR.Test
             //int? id = null;
             //JobIn body = null;
             //var response = instance.UpdateJob(id, body);
-            //Assert.IsInstanceOf<JobOut> (response, "response is JobOut");
+            //Assert.IsInstanceOf<SingleJobMessage> (response, "response is SingleJobMessage");
         }
     }
 

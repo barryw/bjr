@@ -45,12 +45,17 @@ RSpec.describe UserApiController, type: :controller do
 
     it 'returns http success' do
       user = create(:admin1)
-      create(:admin2)
+      user2 = create(:admin2)
       authenticated_header(user)
       get :index
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(2)
+      expect(json['status_code']).to eq(200)
+      expect(json['is_error']).to be false
+      expect(json['object_type']).to eq('userarray')
+      expect(json['object'].length).to eq(2)
+      expect(json['object'][0]['id']).to eq(user.id)
+      expect(json['object'][1]['id']).to eq(user2.id)
     end
   end
 
@@ -73,8 +78,11 @@ RSpec.describe UserApiController, type: :controller do
       get :show, params: { 'id': user.id }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json['id']).to equal(user.id)
-      expect(json['username']).to eq(user.username)
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object_type']).to eq('user')
+      expect(json['object']['id']).to equal(user.id)
+      expect(json['object']['username']).to eq(user.username)
     end
   end
 

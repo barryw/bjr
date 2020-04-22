@@ -71,7 +71,7 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //UserNewIn body = null;
             //var response = instance.CreateUser(body);
-            //Assert.IsInstanceOf<UserOut> (response, "response is UserOut");
+            //Assert.IsInstanceOf<SingleUserMessage> (response, "response is SingleUserMessage");
         }
         /// <summary>
         /// Test DeleteUser
@@ -82,7 +82,7 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.DeleteUser(id);
-            //Assert.IsInstanceOf<UserOut> (response, "response is UserOut");
+            //Assert.IsInstanceOf<SingleUserMessage> (response, "response is SingleUserMessage");
         }
         /// <summary>
         /// Test GetUser
@@ -93,7 +93,7 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.GetUser(id);
-            //Assert.IsInstanceOf<SingleUser> (response, "response is SingleUser");
+            //Assert.IsInstanceOf<SingleUserMessage> (response, "response is SingleUserMessage");
         }
         /// <summary>
         /// Test GetUsers
@@ -105,7 +105,7 @@ namespace BJR.Test
             //int? perPage = null;
             //int? page = null;
             //var response = instance.GetUsers(perPage, page);
-            //Assert.IsInstanceOf<UserArray> (response, "response is UserArray");
+            //Assert.IsInstanceOf<UserArrayMessage> (response, "response is UserArrayMessage");
         }
         /// <summary>
         /// Test UpdateUser
@@ -117,7 +117,7 @@ namespace BJR.Test
             //int? id = null;
             //UserUpdateIn body = null;
             //var response = instance.UpdateUser(id, body);
-            //Assert.IsInstanceOf<UserOut> (response, "response is UserOut");
+            //Assert.IsInstanceOf<SingleUserMessage> (response, "response is SingleUserMessage");
         }
     }
 

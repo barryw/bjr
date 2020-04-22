@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getTags"></a>
 # **getTags**
-> StringArray getTags()
+> TimezoneMessage getTags()
 
 Get timezones
 
@@ -29,7 +29,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 StaticApi apiInstance = new StaticApi();
 try {
-    StringArray result = apiInstance.getTags();
+    TimezoneMessage result = apiInstance.getTags();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StaticApi#getTags");
@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**StringArray**](StringArray.md)
+[**TimezoneMessage**](TimezoneMessage.md)
 
 ### Authorization
 
@@ -55,7 +55,7 @@ This endpoint does not need any parameter.
 
 <a name="getTags_0"></a>
 # **getTags_0**
-> TagArray getTags_0()
+> TagMessage getTags_0()
 
 Get tags
 
@@ -75,7 +75,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 StaticApi apiInstance = new StaticApi();
 try {
-    TagArray result = apiInstance.getTags_0();
+    TagMessage result = apiInstance.getTags_0();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StaticApi#getTags_0");
@@ -88,7 +88,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TagArray**](TagArray.md)
+[**TagMessage**](TagMessage.md)
 
 ### Authorization
 

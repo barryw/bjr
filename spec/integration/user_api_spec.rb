@@ -17,7 +17,7 @@ describe 'User API' do
       response '200', 'Users found' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        schema '$ref' => '#/components/schemas/UserArray'
+        schema '$ref' => '#/components/schemas/UserArrayMessage'
 
         before do |request|
           create(:admin2)
@@ -26,7 +26,7 @@ describe 'User API' do
 
         run_test! do |response|
           json = JSON.parse(response.body)
-          expect(json.length).to eq(2)
+          expect(json['object'].length).to eq(2)
         end
       end
     end
@@ -44,7 +44,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:params) { { username: 'barry', password: 'test1234', password_confirmation: 'test1234' } }
-        schema '$ref' => '#/components/schemas/UserOut'
+        schema '$ref' => '#/components/schemas/SingleUserMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -78,7 +78,7 @@ describe 'User API' do
         let(:Authorization) { auth_token(admin) }
         let(:id) { admin.id }
         let(:params) { { password: 'password1234', password_confirmation: 'password1234' } }
-        schema '$ref' => '#/components/schemas/UserOut'
+        schema '$ref' => '#/components/schemas/SingleUserMessage'
 
         run_test!
       end
@@ -88,7 +88,7 @@ describe 'User API' do
         let(:Authorization) { auth_token(admin) }
         let(:id) { admin.id }
         let(:params) { { password: 'password123', password_confirmation: 'password1234' } }
-        schema '$ref' => '#/components/schemas/UserOut'
+        schema '$ref' => '#/components/schemas/SingleUserMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -111,11 +111,14 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { admin.id }
-        schema '$ref' => '#/components/schemas/SingleUser'
+        schema '$ref' => '#/components/schemas/SingleUserMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)
-          expect(json['id']).to eq(id)
+          expect(json['is_error']).to be false
+          expect(json['status_code']).to eq(200)
+          expect(json['object_type']).to eq('user')
+          expect(json['object']['id']).to eq(id)
         end
       end
 
@@ -123,7 +126,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { 0 }
-        schema '$ref' => '#/components/schemas/UserOut'
+        schema '$ref' => '#/components/schemas/SingleUserMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -156,7 +159,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { deluser.id }
-        schema '$ref' => '#/components/schemas/UserOut'
+        schema '$ref' => '#/components/schemas/SingleUserMessage'
 
         run_test!
       end
@@ -165,7 +168,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { admin.id }
-        schema '$ref' => '#/components/schemas/UserOut'
+        schema '$ref' => '#/components/schemas/SingleUserMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -177,7 +180,7 @@ describe 'User API' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { 0 }
-        schema '$ref' => '#/components/schemas/UserOut'
+        schema '$ref' => '#/components/schemas/SingleUserMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)

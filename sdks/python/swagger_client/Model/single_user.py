@@ -85,6 +85,7 @@ class SingleUser(object):
     def username(self):
         """Gets the username of this SingleUser.  # noqa: E501
 
+        The user' login name. Must be unique  # noqa: E501
 
         :return: The username of this SingleUser.  # noqa: E501
         :rtype: str
@@ -95,6 +96,7 @@ class SingleUser(object):
     def username(self, username):
         """Sets the username of this SingleUser.
 
+        The user' login name. Must be unique  # noqa: E501
 
         :param username: The username of this SingleUser.  # noqa: E501
         :type: str

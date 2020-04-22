@@ -70,7 +70,7 @@ namespace BJR.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.GetTags();
-            //Assert.IsInstanceOf<StringArray> (response, "response is StringArray");
+            //Assert.IsInstanceOf<TimezoneMessage> (response, "response is TimezoneMessage");
         }
         /// <summary>
         /// Test GetTags_0
@@ -80,7 +80,7 @@ namespace BJR.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.GetTags_0();
-            //Assert.IsInstanceOf<TagArray> (response, "response is TagArray");
+            //Assert.IsInstanceOf<TagMessage> (response, "response is TagMessage");
         }
     }
 

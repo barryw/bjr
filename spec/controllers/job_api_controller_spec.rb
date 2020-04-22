@@ -144,7 +144,10 @@ RSpec.describe JobApiController, type: :controller do
       get :index
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(2)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['status_code']).to eq(200)
+      expect(json['is_error']).to be false
+      expect(json['object'].length).to eq(2)
     end
 
     it 'returns http success and gets a tagged job' do
@@ -155,8 +158,11 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { tags: 'tag1' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['tags']).to include('tag1')
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['tags']).to include('tag1')
     end
 
     it 'returns http success and gets a tagged job on all tags' do
@@ -167,8 +173,11 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { tags: 'tag1', incexc: 'all' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['tags']).to include('tag1')
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['tags']).to include('tag1')
     end
 
     it 'returns http success and gets a job tagged with multiple tags' do
@@ -179,9 +188,12 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { tags: 'tag1, tag2', incexc: 'all' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['tags']).to include('tag1')
-      expect(json[0]['tags']).to include('tag2')
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['tags']).to include('tag1')
+      expect(json['object'][0]['tags']).to include('tag2')
     end
 
     it 'returns http success and does not get a job tagged with multiple tags' do
@@ -192,18 +204,26 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { tags: 'tag1, tag2', incexc: 'all' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(0)
+      expect(json['status_code']).to eq(200)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['object'].length).to eq(0)
     end
 
     it 'returns http success and gets several jobs on different tags' do
       user = create(:admin1)
-      create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag2')
-      create(:job1, user: user, name: 'job2', tag_list: 'tag2')
+      job1 = create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag2')
+      job2 = create(:job1, user: user, name: 'job2', tag_list: 'tag2')
       authenticated_header(user)
       get :index, params: { tags: 'tag1, tag2', incexc: 'any' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(2)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(2)
+      expect(json['object'][0]['id']).to eq(job1.id)
+      expect(json['object'][1]['id']).to eq(job2.id)
       # TODO
     end
 
@@ -215,8 +235,11 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { tags: 'tag3', incexc: 'exclude' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(job2.id)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(job2.id)
     end
 
     it 'returns http success gets a job due to execute within a timeframe' do
@@ -226,8 +249,11 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { start_date: 'yesterday', end_date: 'tomorrow' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(job1.id)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(job1.id)
     end
 
     it 'returns http success gets a job due to execute within a timeframe and tagged' do
@@ -238,8 +264,11 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { start_date: 'yesterday', end_date: 'tomorrow', tags: 'tag1' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(job1.id)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(job1.id)
     end
 
     it 'returns http success does not get a job because it falls outside the occurrence check' do
@@ -250,7 +279,10 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { start_date: 'today at 2pm', end_date: 'today at 3pm' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(0)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(0)
     end
 
     it 'returns http success looking for enabled jobs' do
@@ -261,8 +293,11 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { enabled: true }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(job1.id)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(job1.id)
     end
 
     it 'returns http success looking for enabled jobs that are tagged and match our occurrence check' do
@@ -273,8 +308,11 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { enabled: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(job2.id)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(job2.id)
     end
 
     it 'returns http success looking for running jobs that are tagged and match our occurrence check' do
@@ -285,8 +323,11 @@ RSpec.describe JobApiController, type: :controller do
       get :index, params: { running: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(job2.id)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(job2.id)
     end
   end
 
@@ -312,10 +353,13 @@ RSpec.describe JobApiController, type: :controller do
       get :show, params: { 'id': job.id }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json['id']).to equal(job.id)
-      expect(json['name']).to eq(job.name)
-      expect(json['command']).to eq(job.command)
-      expect(json['next_run']).not_to be_nil
+      expect(json['object_type']).to eq('job')
+      expect(json['status_code']).to eq(200)
+      expect(json['is_error']).to be false
+      expect(json['object']['id']).to eq(job.id)
+      expect(json['object']['name']).to eq(job.name)
+      expect(json['object']['command']).to eq(job.command)
+      expect(json['object']['next_run']).not_to be_nil
     end
   end
 
@@ -375,7 +419,7 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 10.hours }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(0)
+      expect(json['object'].length).to eq(0)
     end
 
     it 'returns http success while trying to get runs that started after a date' do
@@ -386,7 +430,7 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 12.hours }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
+      expect(json['object'].length).to eq(1)
     end
 
     it 'returns http success while trying to get runs that ended before a date' do
@@ -397,7 +441,7 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'end_date': Time.current - 12.hours }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
+      expect(json['object'].length).to eq(1)
     end
 
     it 'returns http success while trying to get runs that started after a date and finished before a date' do
@@ -408,7 +452,7 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
+      expect(json['object'].length).to eq(1)
     end
 
     it 'returns http success while trying to get runs that succeeded' do
@@ -419,8 +463,8 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': true }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(run1.id)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(run1.id)
     end
 
     it 'returns http success while trying to get runs that failed' do
@@ -431,8 +475,8 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': false }
       json = JSON.parse(response.body)
-      expect(json.length).to eq(1)
-      expect(json[0]['id']).to eq(run2.id)
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(run2.id)
     end
   end
 end

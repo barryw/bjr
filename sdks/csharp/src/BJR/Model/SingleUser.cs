@@ -33,7 +33,7 @@ namespace BJR.Model
         /// Initializes a new instance of the <see cref="SingleUser" /> class.
         /// </summary>
         /// <param name="id">The object&#x27;s primary key. This uniquely identifies the object in the system..</param>
-        /// <param name="username">username.</param>
+        /// <param name="username">The user&#x27; login name. Must be unique.</param>
         /// <param name="createdAt">The UTC date and time that the object was created..</param>
         /// <param name="updatedAt">The UTC date and time that the object was last modified..</param>
         public SingleUser(int? id = default(int?), string username = default(string), DateTime? createdAt = default(DateTime?), DateTime? updatedAt = default(DateTime?))
@@ -52,8 +52,9 @@ namespace BJR.Model
         public int? Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Username
+        /// The user&#x27; login name. Must be unique
         /// </summary>
+        /// <value>The user&#x27; login name. Must be unique</value>
         [DataMember(Name="username", EmitDefaultValue=false)]
         public string Username { get; set; }
 

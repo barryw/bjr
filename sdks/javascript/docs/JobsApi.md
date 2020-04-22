@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="createJob"></a>
 # **createJob**
-> JobOut createJob()
+> SingleJobMessage createJob()
 
 Creates a job
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobOut**](JobOut.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ null (empty response body)
 
 <a name="getJob"></a>
 # **getJob**
-> SingleJob getJob(id)
+> SingleJobMessage getJob(id)
 
 Retrieves a single job
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SingleJob**](SingleJob.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobRuns"></a>
 # **getJobRuns**
-> JobRunArray getJobRuns(id, opts)
+> JobRunArrayMessage getJobRuns(id, opts)
 
 Retrieve the runs for a job
 
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobRunArray**](JobRunArray.md)
+[**JobRunArrayMessage**](JobRunArrayMessage.md)
 
 ### Authorization
 
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobs"></a>
 # **getJobs**
-> JobArray getJobs(opts)
+> JobArrayMessage getJobs(opts)
 
 Retrieves jobs
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobArray**](JobArray.md)
+[**JobArrayMessage**](JobArrayMessage.md)
 
 ### Authorization
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 <a name="jobOccurrences"></a>
 # **jobOccurrences**
-> Occurrences jobOccurrences(id, endDate, opts)
+> OccurrenceMessage jobOccurrences(id, endDate, opts)
 
 Upcoming job occurrences
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Occurrences**](Occurrences.md)
+[**OccurrenceMessage**](OccurrenceMessage.md)
 
 ### Authorization
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 <a name="updateJob"></a>
 # **updateJob**
-> JobOut updateJob(id)
+> SingleJobMessage updateJob(id)
 
 Updates a single job
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobOut**](JobOut.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 

@@ -7,11 +7,13 @@ class StaticApiController < ApplicationController
   skip_before_action :authenticate_request, only: [:health]
 
   def timezones
-    render json: ActiveSupport::TimeZone::MAPPING.keys
+    timezones = ActiveSupport::TimeZone::MAPPING.keys
+    message I18n.t('timezones.messages.received'), :ok, false, timezones, 'tzarray'
   end
 
   def tags
-    render json: current_user.owned_tags
+    tags = paginate current_user.owned_tags
+    message I18n.t('tags.messages.received'), :ok, false, tags, 'tagarray'
   end
 
   def health

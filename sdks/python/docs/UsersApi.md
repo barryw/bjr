@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**update_user**](UsersApi.md#update_user) | **PUT** /user_api/{id} | Update a single user
 
 # **create_user**
-> UserOut create_user(body=body)
+> SingleUserMessage create_user(body=body)
 
 Creates a user
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_user**
-> UserOut delete_user(id)
+> SingleUserMessage delete_user(id)
 
 Deletes a user
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user**
-> SingleUser get_user(id)
+> SingleUserMessage get_user(id)
 
 Retrieve a single user
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SingleUser**](SingleUser.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_users**
-> UserArray get_users(per_page=per_page, page=page)
+> UserArrayMessage get_users(per_page=per_page, page=page)
 
 Retrieves users
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserArray**](UserArray.md)
+[**UserArrayMessage**](UserArrayMessage.md)
 
 ### Authorization
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user**
-> UserOut update_user(id, body=body)
+> SingleUserMessage update_user(id, body=body)
 
 Update a single user
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 

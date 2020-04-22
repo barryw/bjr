@@ -27,7 +27,7 @@ namespace BJR.Model
     /// TagArray
     /// </summary>
     [DataContract]
-        public partial class TagArray : List<Tagging>,  IEquatable<TagArray>, IValidatableObject
+        public partial class TagArray : List<Tag>,  IEquatable<TagArray>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TagArray" /> class.

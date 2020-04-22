@@ -23,31 +23,74 @@ RSpec.configure do |config|
       },
       components: {
         schemas: {
-          Occurrences: {
-            type: :array,
-            items: {
-              type: :string, format: 'date-time'
+          OccurrenceMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/DateTimeArray' }
+            }
+          },
+          TimezoneMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/StringArray' }
             }
           },
           StringArray: {
             type: :array,
-            items: {
-              type: :string
+            items: { type: :string }
+          },
+          DateTimeArray: {
+            type: :array,
+            items: { type: :string, format: 'date-time' }
+          },
+          TagMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/TagArray' }
             }
           },
           TagArray: {
             type: :array,
-            items: {
-              type: :object,
-              "$ref": '#/components/schemas/Tagging'
-            }
+            items: { '$ref': '#/components/schemas/Tag' }
           },
-          Tagging: {
+          Tag: {
             type: :object,
             properties: {
               id: { type: :integer },
               name: { type: :string },
               taggings_count: { type: :integer }
+            }
+          },
+          SingleJobRunMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/SingleJobRun' }
+            }
+          },
+          JobRunArrayMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/JobRunArray' }
             }
           },
           SingleJobRun: {
@@ -68,10 +111,7 @@ RSpec.configure do |config|
           },
           JobRunArray: {
             type: :array,
-            items: {
-              type: :object,
-              "$ref": '#/components/schemas/SingleJobRun'
-            }
+            items: { '$ref': '#/components/schemas/SingleJobRun' }
           },
           AuthIn: {
             type: :object,
@@ -85,51 +125,76 @@ RSpec.configure do |config|
             properties: {
               auth_token: { type: :string, description: 'The JWT authentication token. This must be passed in the Authorization header on subsequent requests.' },
               message: { type: :string, description: 'If authentication failed, this will contain the reason why.' },
-              is_error: { type: :boolean, description: 'This will be true if the authentication was successful, and false if not.' }
+              is_error: { type: :boolean, description: 'This will be true if the authentication was successful, and false if not.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' }
             }
           },
           UserNewIn: {
             type: :object,
             properties: {
-              username: { type: :string, description: "The new user's username. Must be unique." },
-              password: { type: :string, description: "The new user's password." },
-              password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'." }
+              username: { type: :string, description: "The new user's username. Must be unique.", required: true },
+              password: { type: :string, description: "The new user's password.", required: true },
+              password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'.", required: true }
             }
           },
           UserUpdateIn: {
             type: :object,
             properties: {
-              password: { type: :string, description: "The new user's password." },
-              password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'." }
+              password: { type: :string, description: "The new user's password.", required: true },
+              password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'.", required: true }
             }
           },
-          SingleUser: {
-            type: :object,
-            properties: {
-              id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
-              username: { type: :string },
-              created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
-              updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' }
-            }
-          },
-          UserArray: {
-            type: :array,
-            items: {
-              type: :object,
-              "$ref": '#/components/schemas/SingleUser'
-            }
-          },
-          UserOut: {
+          SingleUserMessage: {
             type: :object,
             properties: {
               message: { type: :string, description: 'The status message returned from the API call.' },
               is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
               object_type: { type: :string, description: 'The type of object being returned.' },
               status_code: { type: :integer, description: 'The HTTP status code returned.' },
-              object: {
-                type: :object,
-                "$ref": '#/components/schemas/SingleUser'
-              }
+              object: { '$ref': '#/components/schemas/SingleUser' }
+            }
+          },
+          UserArrayMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/UserArray' }
+            }
+          },
+          SingleUser: {
+            type: :object,
+            properties: {
+              id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
+              username: { type: :string, description: 'The user\' login name. Must be unique' },
+              created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
+              updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' }
+            }
+          },
+          UserArray: {
+            type: :array,
+            items: { '$ref': '#/components/schemas/SingleUser' }
+          },
+          SingleJobMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/SingleJob' }
+            }
+          },
+          JobArrayMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/JobArray' }
             }
           },
           SingleJob: {
@@ -143,7 +208,7 @@ RSpec.configure do |config|
               next_run: { type: :string, description: 'The date and time of the job\'s next run.' },
               running: { type: :boolean, description: 'Whether the job is currently running.' },
               timezone: { type: :string, description: 'The timezone that the job will run in.' },
-              tags: { type: :array, description: 'An array of tags associated with the job.', items: { type: :string } },
+              tags: { type: :array, description: 'An array of tags associated with the job.', items: { type: :string, nullable: true } },
               created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
               updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' },
               success_callback: { type: :string, description: 'This url will receive a POST request with details about all successful job runs.', nullable: true },
@@ -152,10 +217,7 @@ RSpec.configure do |config|
           },
           JobArray: {
             type: :array,
-            items: {
-              type: :object,
-              "$ref": '#/components/schemas/SingleJob'
-            }
+            items: { '$ref': '#/components/schemas/SingleJob' }
           },
           JobIn: {
             type: :object,
@@ -168,19 +230,6 @@ RSpec.configure do |config|
               tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.', required: false },
               success_callback: { type: :string, description: 'Specify the url to receive a POST callback for all successful runs of this job.', required: false },
               failure_callback: { type: :string, description: 'Specify the url to receive a POST callback for all unsuccessful runs of this job.', required: false }
-            }
-          },
-          JobOut: {
-            type: :object,
-            properties: {
-              message: { type: :string, description: 'The status message returned from the API call.' },
-              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
-              object_type: { type: :string, description: 'The type of object being returned.' },
-              status_code: { type: :integer, description: 'The HTTP status code returned.' },
-              object: {
-                type: :object,
-                "$ref": '#/components/schemas/SingleJob'
-              }
             }
           }
         },

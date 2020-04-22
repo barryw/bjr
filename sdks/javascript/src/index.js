@@ -14,20 +14,27 @@
 import ApiClient from './ApiClient';
 import AuthIn from './Model/AuthIn';
 import AuthOut from './Model/AuthOut';
+import DateTimeArray from './Model/DateTimeArray';
 import JobArray from './Model/JobArray';
+import JobArrayMessage from './Model/JobArrayMessage';
 import JobIn from './Model/JobIn';
-import JobOut from './Model/JobOut';
 import JobRunArray from './Model/JobRunArray';
-import Occurrences from './Model/Occurrences';
+import JobRunArrayMessage from './Model/JobRunArrayMessage';
+import OccurrenceMessage from './Model/OccurrenceMessage';
 import SingleJob from './Model/SingleJob';
+import SingleJobMessage from './Model/SingleJobMessage';
 import SingleJobRun from './Model/SingleJobRun';
+import SingleJobRunMessage from './Model/SingleJobRunMessage';
 import SingleUser from './Model/SingleUser';
+import SingleUserMessage from './Model/SingleUserMessage';
 import StringArray from './Model/StringArray';
+import Tag from './Model/Tag';
 import TagArray from './Model/TagArray';
-import Tagging from './Model/Tagging';
+import TagMessage from './Model/TagMessage';
+import TimezoneMessage from './Model/TimezoneMessage';
 import UserArray from './Model/UserArray';
+import UserArrayMessage from './Model/UserArrayMessage';
 import UserNewIn from './Model/UserNewIn';
-import UserOut from './Model/UserOut';
 import UserUpdateIn from './Model/UserUpdateIn';
 import AuthenticationApi from './Api/AuthenticationApi';
 import JobsApi from './Api/JobsApi';
@@ -85,10 +92,22 @@ export {
     AuthOut,
 
     /**
+     * The DateTimeArray model constructor.
+     * @property {module:BJR/Model/DateTimeArray}
+     */
+    DateTimeArray,
+
+    /**
      * The JobArray model constructor.
      * @property {module:BJR/Model/JobArray}
      */
     JobArray,
+
+    /**
+     * The JobArrayMessage model constructor.
+     * @property {module:BJR/Model/JobArrayMessage}
+     */
+    JobArrayMessage,
 
     /**
      * The JobIn model constructor.
@@ -97,22 +116,22 @@ export {
     JobIn,
 
     /**
-     * The JobOut model constructor.
-     * @property {module:BJR/Model/JobOut}
-     */
-    JobOut,
-
-    /**
      * The JobRunArray model constructor.
      * @property {module:BJR/Model/JobRunArray}
      */
     JobRunArray,
 
     /**
-     * The Occurrences model constructor.
-     * @property {module:BJR/Model/Occurrences}
+     * The JobRunArrayMessage model constructor.
+     * @property {module:BJR/Model/JobRunArrayMessage}
      */
-    Occurrences,
+    JobRunArrayMessage,
+
+    /**
+     * The OccurrenceMessage model constructor.
+     * @property {module:BJR/Model/OccurrenceMessage}
+     */
+    OccurrenceMessage,
 
     /**
      * The SingleJob model constructor.
@@ -121,10 +140,22 @@ export {
     SingleJob,
 
     /**
+     * The SingleJobMessage model constructor.
+     * @property {module:BJR/Model/SingleJobMessage}
+     */
+    SingleJobMessage,
+
+    /**
      * The SingleJobRun model constructor.
      * @property {module:BJR/Model/SingleJobRun}
      */
     SingleJobRun,
+
+    /**
+     * The SingleJobRunMessage model constructor.
+     * @property {module:BJR/Model/SingleJobRunMessage}
+     */
+    SingleJobRunMessage,
 
     /**
      * The SingleUser model constructor.
@@ -133,10 +164,22 @@ export {
     SingleUser,
 
     /**
+     * The SingleUserMessage model constructor.
+     * @property {module:BJR/Model/SingleUserMessage}
+     */
+    SingleUserMessage,
+
+    /**
      * The StringArray model constructor.
      * @property {module:BJR/Model/StringArray}
      */
     StringArray,
+
+    /**
+     * The Tag model constructor.
+     * @property {module:BJR/Model/Tag}
+     */
+    Tag,
 
     /**
      * The TagArray model constructor.
@@ -145,10 +188,16 @@ export {
     TagArray,
 
     /**
-     * The Tagging model constructor.
-     * @property {module:BJR/Model/Tagging}
+     * The TagMessage model constructor.
+     * @property {module:BJR/Model/TagMessage}
      */
-    Tagging,
+    TagMessage,
+
+    /**
+     * The TimezoneMessage model constructor.
+     * @property {module:BJR/Model/TimezoneMessage}
+     */
+    TimezoneMessage,
 
     /**
      * The UserArray model constructor.
@@ -157,16 +206,16 @@ export {
     UserArray,
 
     /**
+     * The UserArrayMessage model constructor.
+     * @property {module:BJR/Model/UserArrayMessage}
+     */
+    UserArrayMessage,
+
+    /**
      * The UserNewIn model constructor.
      * @property {module:BJR/Model/UserNewIn}
      */
     UserNewIn,
-
-    /**
-     * The UserOut model constructor.
-     * @property {module:BJR/Model/UserOut}
-     */
-    UserOut,
 
     /**
      * The UserUpdateIn model constructor.

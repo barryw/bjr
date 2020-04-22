@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import Tagging from './Tagging';
+import Tag from './Tag';
 
 /**
 * The TagArray model module.
@@ -44,7 +44,7 @@ export default class TagArray extends Array {
     static constructFromObject(data, obj) {
         if (data) {
             obj = obj || new TagArray();
-            ApiClient.constructFromObject(data, obj, 'Tagging');
+            ApiClient.constructFromObject(data, obj, 'Tag');
             
             
         }

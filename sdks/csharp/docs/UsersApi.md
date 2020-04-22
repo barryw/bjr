@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createuser"></a>
 # **CreateUser**
-> UserOut CreateUser (UserNewIn body = null)
+> SingleUserMessage CreateUser (UserNewIn body = null)
 
 Creates a user
 
@@ -39,7 +39,7 @@ namespace Example
             try
             {
                 // Creates a user
-                UserOut result = apiInstance.CreateUser(body);
+                SingleUserMessage result = apiInstance.CreateUser(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="deleteuser"></a>
 # **DeleteUser**
-> UserOut DeleteUser (int? id)
+> SingleUserMessage DeleteUser (int? id)
 
 Deletes a user
 
@@ -100,7 +100,7 @@ namespace Example
             try
             {
                 // Deletes a user
-                UserOut result = apiInstance.DeleteUser(id);
+                SingleUserMessage result = apiInstance.DeleteUser(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getuser"></a>
 # **GetUser**
-> SingleUser GetUser (int? id)
+> SingleUserMessage GetUser (int? id)
 
 Retrieve a single user
 
@@ -161,7 +161,7 @@ namespace Example
             try
             {
                 // Retrieve a single user
-                SingleUser result = apiInstance.GetUser(id);
+                SingleUserMessage result = apiInstance.GetUser(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SingleUser**](SingleUser.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getusers"></a>
 # **GetUsers**
-> UserArray GetUsers (int? perPage = null, int? page = null)
+> UserArrayMessage GetUsers (int? perPage = null, int? page = null)
 
 Retrieves users
 
@@ -223,7 +223,7 @@ namespace Example
             try
             {
                 // Retrieves users
-                UserArray result = apiInstance.GetUsers(perPage, page);
+                UserArrayMessage result = apiInstance.GetUsers(perPage, page);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserArray**](UserArray.md)
+[**UserArrayMessage**](UserArrayMessage.md)
 
 ### Authorization
 
@@ -258,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="updateuser"></a>
 # **UpdateUser**
-> UserOut UpdateUser (int? id, UserUpdateIn body = null)
+> SingleUserMessage UpdateUser (int? id, UserUpdateIn body = null)
 
 Update a single user
 
@@ -286,7 +286,7 @@ namespace Example
             try
             {
                 // Update a single user
-                UserOut result = apiInstance.UpdateUser(id, body);
+                SingleUserMessage result = apiInstance.UpdateUser(id, body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -307,7 +307,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 

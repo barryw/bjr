@@ -12,7 +12,7 @@ OpenAPI spec version: v1
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F0A5DAE-A8F5-43F6-BFE3-5EA2A1AB7C9A}</ProjectGuid>
+    <ProjectGuid>{55B92EAD-8911-4E4B-9495-23583BAD3036}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BJR</RootNamespace>

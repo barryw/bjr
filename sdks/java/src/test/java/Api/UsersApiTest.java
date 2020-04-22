@@ -13,10 +13,9 @@
 package Api;
 
 import BJR.ApiException;
-import Model.SingleUser;
-import Model.UserArray;
+import Model.SingleUserMessage;
+import Model.UserArrayMessage;
 import Model.UserNewIn;
-import Model.UserOut;
 import Model.UserUpdateIn;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -45,7 +44,7 @@ public class UsersApiTest {
     @Test
     public void createUserTest() throws ApiException {
         UserNewIn body = null;
-        UserOut response = api.createUser(body);
+        SingleUserMessage response = api.createUser(body);
 
         // TODO: test validations
     }
@@ -60,7 +59,7 @@ public class UsersApiTest {
     @Test
     public void deleteUserTest() throws ApiException {
         Integer id = null;
-        UserOut response = api.deleteUser(id);
+        SingleUserMessage response = api.deleteUser(id);
 
         // TODO: test validations
     }
@@ -75,7 +74,7 @@ public class UsersApiTest {
     @Test
     public void getUserTest() throws ApiException {
         Integer id = null;
-        SingleUser response = api.getUser(id);
+        SingleUserMessage response = api.getUser(id);
 
         // TODO: test validations
     }
@@ -91,7 +90,7 @@ public class UsersApiTest {
     public void getUsersTest() throws ApiException {
         Integer perPage = null;
         Integer page = null;
-        UserArray response = api.getUsers(perPage, page);
+        UserArrayMessage response = api.getUsers(perPage, page);
 
         // TODO: test validations
     }
@@ -107,7 +106,7 @@ public class UsersApiTest {
     public void updateUserTest() throws ApiException {
         Integer id = null;
         UserUpdateIn body = null;
-        UserOut response = api.updateUser(id, body);
+        SingleUserMessage response = api.updateUser(id, body);
 
         // TODO: test validations
     }

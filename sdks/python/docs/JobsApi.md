@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**update_job**](JobsApi.md#update_job) | **PUT** /job_api/{id} | Updates a single job
 
 # **create_job**
-> JobOut create_job(body=body)
+> SingleJobMessage create_job(body=body)
 
 Creates a job
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobOut**](JobOut.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job**
-> SingleJob get_job(id)
+> SingleJobMessage get_job(id)
 
 Retrieves a single job
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SingleJob**](SingleJob.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job_runs**
-> JobRunArray get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date)
+> JobRunArrayMessage get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date)
 
 Retrieve the runs for a job
 
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobRunArray**](JobRunArray.md)
+[**JobRunArrayMessage**](JobRunArrayMessage.md)
 
 ### Authorization
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_jobs**
-> JobArray get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+> JobArrayMessage get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, per_page=per_page, page=page)
 
 Retrieves jobs
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobArray**](JobArray.md)
+[**JobArrayMessage**](JobArrayMessage.md)
 
 ### Authorization
 
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **job_occurrences**
-> Occurrences job_occurrences(id, end_date, per_page=per_page, page=page)
+> OccurrenceMessage job_occurrences(id, end_date, per_page=per_page, page=page)
 
 Upcoming job occurrences
 
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Occurrences**](Occurrences.md)
+[**OccurrenceMessage**](OccurrenceMessage.md)
 
 ### Authorization
 
@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_job**
-> JobOut update_job(id, body=body)
+> SingleJobMessage update_job(id, body=body)
 
 Updates a single job
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobOut**](JobOut.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 

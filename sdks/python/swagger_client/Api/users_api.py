@@ -43,7 +43,7 @@ class UsersApi(object):
 
         :param async_req bool
         :param UserNewIn body:
-        :return: UserOut
+        :return: SingleUserMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -65,7 +65,7 @@ class UsersApi(object):
 
         :param async_req bool
         :param UserNewIn body:
-        :return: UserOut
+        :return: SingleUserMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -119,7 +119,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UserOut',  # noqa: E501
+            response_type='SingleUserMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -138,7 +138,7 @@ class UsersApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :return: UserOut
+        :return: SingleUserMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -160,7 +160,7 @@ class UsersApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :return: UserOut
+        :return: SingleUserMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -214,7 +214,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UserOut',  # noqa: E501
+            response_type='SingleUserMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -233,7 +233,7 @@ class UsersApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :return: SingleUser
+        :return: SingleUserMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -255,7 +255,7 @@ class UsersApi(object):
 
         :param async_req bool
         :param int id: (required)
-        :return: SingleUser
+        :return: SingleUserMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -309,7 +309,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SingleUser',  # noqa: E501
+            response_type='SingleUserMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -329,7 +329,7 @@ class UsersApi(object):
         :param async_req bool
         :param int per_page:
         :param int page:
-        :return: UserArray
+        :return: UserArrayMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -352,7 +352,7 @@ class UsersApi(object):
         :param async_req bool
         :param int per_page:
         :param int page:
-        :return: UserArray
+        :return: UserArrayMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -404,7 +404,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UserArray',  # noqa: E501
+            response_type='UserArrayMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -424,7 +424,7 @@ class UsersApi(object):
         :param async_req bool
         :param int id: (required)
         :param UserUpdateIn body:
-        :return: UserOut
+        :return: SingleUserMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -447,7 +447,7 @@ class UsersApi(object):
         :param async_req bool
         :param int id: (required)
         :param UserUpdateIn body:
-        :return: UserOut
+        :return: SingleUserMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -507,7 +507,7 @@ class UsersApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UserOut',  # noqa: E501
+            response_type='SingleUserMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

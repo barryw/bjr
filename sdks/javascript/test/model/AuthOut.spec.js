@@ -71,6 +71,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property statusCode (base name: "status_code")', function() {
+      // uncomment below and update the code to test the property statusCode
+      //var instane = new BjrApiV1.AuthOut();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

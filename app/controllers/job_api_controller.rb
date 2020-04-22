@@ -11,11 +11,12 @@ class JobApiController < ApplicationController
                          params[:tags], params[:incexc], params[:enabled],
                          params[:succeeded], params[:running])
 
-    paginate json: jobs
+    jobs_return = paginate jobs
+    message I18n.t('jobs.messages.received'), :ok, false, jobs_return, 'jobarray'
   end
 
   def show
-    render json: @job
+    message I18n.t('jobs.messages.received'), :ok, false, @job, 'job'
   end
 
   def create
@@ -65,8 +66,8 @@ class JobApiController < ApplicationController
 
   # Return the runs for a job
   def runs
-    runs = @job.filter_runs(params[:start_date], params[:end_date], params[:succeeded]).page params[:page]
-    paginate json: runs
+    runs = paginate @job.filter_runs(params[:start_date], params[:end_date], params[:succeeded]).page params[:page]
+    message I18n.t('jobruns.messages.received'), :ok, false, runs, 'jobruns'
   end
 
   # Return the occurrences for this job up to a certain date
@@ -74,7 +75,8 @@ class JobApiController < ApplicationController
     end_date = Chronic.parse(params[:end_date])
     no_end_date && return if end_date.nil?
 
-    paginate json: @job.occurrences(end_date)
+    occurrences = paginate @job.occurrences(end_date)
+    message I18n.t('occurrences.messages.received'), :ok, false, occurrences, 'occurrences'
   end
 
   private

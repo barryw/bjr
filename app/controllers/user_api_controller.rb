@@ -8,11 +8,13 @@ class UserApiController < ApplicationController
 
   def index
     users = User.all
-    paginate json: users
+
+    users_return = paginate users
+    message I18n.t('users.messages.received'), :ok, false, users_return, 'userarray'
   end
 
   def show
-    render json: @user
+    message I18n.t('users.messages.received'), :ok, false, @user, 'user'
   end
 
   def create

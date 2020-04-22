@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getTags"></a>
 # **getTags**
-> StringArray getTags()
+> TimezoneMessage getTags()
 
 Get timezones
 
@@ -36,7 +36,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**StringArray**](StringArray.md)
+[**TimezoneMessage**](TimezoneMessage.md)
 
 ### Authorization
 
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 <a name="getTags_0"></a>
 # **getTags_0**
-> TagArray getTags_0()
+> TagMessage getTags_0()
 
 Get tags
 
@@ -76,7 +76,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TagArray**](TagArray.md)
+[**TagMessage**](TagMessage.md)
 
 ### Authorization
 

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="createJob"></a>
 # **createJob**
-> JobOut createJob(body)
+> SingleJobMessage createJob(body)
 
 Creates a job
 
@@ -35,7 +35,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 JobsApi apiInstance = new JobsApi();
 JobIn body = new JobIn(); // JobIn | 
 try {
-    JobOut result = apiInstance.createJob(body);
+    SingleJobMessage result = apiInstance.createJob(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobsApi#createJob");
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobOut**](JobOut.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ null (empty response body)
 
 <a name="getJob"></a>
 # **getJob**
-> SingleJob getJob(id)
+> SingleJobMessage getJob(id)
 
 Retrieves a single job
 
@@ -134,7 +134,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 JobsApi apiInstance = new JobsApi();
 Integer id = 56; // Integer | 
 try {
-    SingleJob result = apiInstance.getJob(id);
+    SingleJobMessage result = apiInstance.getJob(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobsApi#getJob");
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SingleJob**](SingleJob.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobRuns"></a>
 # **getJobRuns**
-> JobRunArray getJobRuns(id, perPage, page, succeeded, startDate, endDate)
+> JobRunArrayMessage getJobRuns(id, perPage, page, succeeded, startDate, endDate)
 
 Retrieve the runs for a job
 
@@ -189,7 +189,7 @@ Boolean succeeded = true; // Boolean |
 String startDate = "startDate_example"; // String | 
 String endDate = "endDate_example"; // String | 
 try {
-    JobRunArray result = apiInstance.getJobRuns(id, perPage, page, succeeded, startDate, endDate);
+    JobRunArrayMessage result = apiInstance.getJobRuns(id, perPage, page, succeeded, startDate, endDate);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobsApi#getJobRuns");
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobRunArray**](JobRunArray.md)
+[**JobRunArrayMessage**](JobRunArrayMessage.md)
 
 ### Authorization
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobs"></a>
 # **getJobs**
-> JobArray getJobs(tags, incexc, startDate, endDate, perPage, page)
+> JobArrayMessage getJobs(tags, incexc, startDate, endDate, perPage, page)
 
 Retrieves jobs
 
@@ -249,7 +249,7 @@ String endDate = "endDate_example"; // String | Specify an end date to search jo
 Integer perPage = 56; // Integer | 
 Integer page = 56; // Integer | 
 try {
-    JobArray result = apiInstance.getJobs(tags, incexc, startDate, endDate, perPage, page);
+    JobArrayMessage result = apiInstance.getJobs(tags, incexc, startDate, endDate, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobsApi#getJobs");
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobArray**](JobArray.md)
+[**JobArrayMessage**](JobArrayMessage.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 <a name="jobOccurrences"></a>
 # **jobOccurrences**
-> Occurrences jobOccurrences(id, endDate, perPage, page)
+> OccurrenceMessage jobOccurrences(id, endDate, perPage, page)
 
 Upcoming job occurrences
 
@@ -307,7 +307,7 @@ String endDate = "endDate_example"; // String | The date to retrieve occurrences
 Integer perPage = 56; // Integer | 
 Integer page = 56; // Integer | 
 try {
-    Occurrences result = apiInstance.jobOccurrences(id, endDate, perPage, page);
+    OccurrenceMessage result = apiInstance.jobOccurrences(id, endDate, perPage, page);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobsApi#jobOccurrences");
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Occurrences**](Occurrences.md)
+[**OccurrenceMessage**](OccurrenceMessage.md)
 
 ### Authorization
 
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 <a name="updateJob"></a>
 # **updateJob**
-> JobOut updateJob(id, body)
+> SingleJobMessage updateJob(id, body)
 
 Updates a single job
 
@@ -361,7 +361,7 @@ JobsApi apiInstance = new JobsApi();
 Integer id = 56; // Integer | 
 JobIn body = new JobIn(); // JobIn | 
 try {
-    JobOut result = apiInstance.updateJob(id, body);
+    SingleJobMessage result = apiInstance.updateJob(id, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling JobsApi#updateJob");
@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobOut**](JobOut.md)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 

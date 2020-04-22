@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="gettags"></a>
 # **GetTags**
-> StringArray GetTags ()
+> TimezoneMessage GetTags ()
 
 Get timezones
 
@@ -35,7 +35,7 @@ namespace Example
             try
             {
                 // Get timezones
-                StringArray result = apiInstance.GetTags();
+                TimezoneMessage result = apiInstance.GetTags();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -52,7 +52,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**StringArray**](StringArray.md)
+[**TimezoneMessage**](TimezoneMessage.md)
 
 ### Authorization
 
@@ -66,7 +66,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="gettags_0"></a>
 # **GetTags_0**
-> TagArray GetTags_0 ()
+> TagMessage GetTags_0 ()
 
 Get tags
 
@@ -92,7 +92,7 @@ namespace Example
             try
             {
                 // Get tags
-                TagArray result = apiInstance.GetTags_0();
+                TagMessage result = apiInstance.GetTags_0();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -109,7 +109,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TagArray**](TagArray.md)
+[**TagMessage**](TagMessage.md)
 
 ### Authorization
 

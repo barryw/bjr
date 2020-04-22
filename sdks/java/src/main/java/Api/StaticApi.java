@@ -26,8 +26,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import Model.StringArray;
-import Model.TagArray;
+import Model.TagMessage;
+import Model.TimezoneMessage;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -117,23 +117,23 @@ public class StaticApi {
     /**
      * Get timezones
      * Get the list of acceptable timezone names.
-     * @return StringArray
+     * @return TimezoneMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public StringArray getTags() throws ApiException {
-        ApiResponse<StringArray> resp = getTagsWithHttpInfo();
+    public TimezoneMessage getTags() throws ApiException {
+        ApiResponse<TimezoneMessage> resp = getTagsWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get timezones
      * Get the list of acceptable timezone names.
-     * @return ApiResponse&lt;StringArray&gt;
+     * @return ApiResponse&lt;TimezoneMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<StringArray> getTagsWithHttpInfo() throws ApiException {
+    public ApiResponse<TimezoneMessage> getTagsWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getTagsValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<StringArray>(){}.getType();
+        Type localVarReturnType = new TypeToken<TimezoneMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -144,7 +144,7 @@ public class StaticApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getTagsAsync(final ApiCallback<StringArray> callback) throws ApiException {
+    public com.squareup.okhttp.Call getTagsAsync(final ApiCallback<TimezoneMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -166,7 +166,7 @@ public class StaticApi {
         }
 
         com.squareup.okhttp.Call call = getTagsValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<StringArray>(){}.getType();
+        Type localVarReturnType = new TypeToken<TimezoneMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -233,23 +233,23 @@ public class StaticApi {
     /**
      * Get tags
      * Retrieves the list of tags that are currently in use for the authenticated user.
-     * @return TagArray
+     * @return TagMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public TagArray getTags_0() throws ApiException {
-        ApiResponse<TagArray> resp = getTags_0WithHttpInfo();
+    public TagMessage getTags_0() throws ApiException {
+        ApiResponse<TagMessage> resp = getTags_0WithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get tags
      * Retrieves the list of tags that are currently in use for the authenticated user.
-     * @return ApiResponse&lt;TagArray&gt;
+     * @return ApiResponse&lt;TagMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<TagArray> getTags_0WithHttpInfo() throws ApiException {
+    public ApiResponse<TagMessage> getTags_0WithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getTags_0ValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<TagArray>(){}.getType();
+        Type localVarReturnType = new TypeToken<TagMessage>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -260,7 +260,7 @@ public class StaticApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getTags_0Async(final ApiCallback<TagArray> callback) throws ApiException {
+    public com.squareup.okhttp.Call getTags_0Async(final ApiCallback<TagMessage> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -282,7 +282,7 @@ public class StaticApi {
         }
 
         com.squareup.okhttp.Call call = getTags_0ValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<TagArray>(){}.getType();
+        Type localVarReturnType = new TypeToken<TagMessage>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

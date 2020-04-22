@@ -52,6 +52,9 @@ export default class AuthOut {
             if (data.hasOwnProperty('is_error')) {
                 obj['is_error'] = ApiClient.convertToType(data['is_error'], 'Boolean');
             }
+            if (data.hasOwnProperty('status_code')) {
+                obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
+            }
         }
         return obj;
     }
@@ -71,6 +74,11 @@ export default class AuthOut {
     * @member {Boolean} is_error
     */
     is_error = undefined;
+    /**
+    * The HTTP status code returned.
+    * @member {Number} status_code
+    */
+    status_code = undefined;
 
 
 

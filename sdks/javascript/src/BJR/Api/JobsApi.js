@@ -12,12 +12,11 @@
  */
 
 import ApiClient from "../ApiClient";
-import JobArray from '../Model/JobArray';
+import JobArrayMessage from '../Model/JobArrayMessage';
 import JobIn from '../Model/JobIn';
-import JobOut from '../Model/JobOut';
-import JobRunArray from '../Model/JobRunArray';
-import Occurrences from '../Model/Occurrences';
-import SingleJob from '../Model/SingleJob';
+import JobRunArrayMessage from '../Model/JobRunArrayMessage';
+import OccurrenceMessage from '../Model/OccurrenceMessage';
+import SingleJobMessage from '../Model/SingleJobMessage';
 
 /**
 * Jobs service.
@@ -41,7 +40,7 @@ export default class JobsApi {
      * Callback function to receive the result of the createJob operation.
      * @callback module:BJR/Api/JobsApi~createJobCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/JobOut} data The data returned by the service call.
+     * @param {module:BJR/Model/SingleJobMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -49,7 +48,7 @@ export default class JobsApi {
      * Creates a job
      * Creates a job
      * @param {module:BJR/Api/JobsApi~createJobCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/JobOut}
+     * data is of type: {@link module:BJR/Model/SingleJobMessage}
      */
     createJob(opts, callback) {
       let postBody = opts['body'];
@@ -66,7 +65,7 @@ export default class JobsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = JobOut;
+      let returnType = SingleJobMessage;
 
       return this.apiClient.callApi(
         '/job_api', 'POST',
@@ -115,7 +114,7 @@ export default class JobsApi {
      * Callback function to receive the result of the getJob operation.
      * @callback module:BJR/Api/JobsApi~getJobCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/SingleJob} data The data returned by the service call.
+     * @param {module:BJR/Model/SingleJobMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -123,7 +122,7 @@ export default class JobsApi {
      * Retrieves a single job
      * Retrieves a single job
      * @param {module:BJR/Api/JobsApi~getJobCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/SingleJob}
+     * data is of type: {@link module:BJR/Model/SingleJobMessage}
      */
     getJob(id, callback) {
       let postBody = null;
@@ -141,7 +140,7 @@ export default class JobsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = SingleJob;
+      let returnType = SingleJobMessage;
 
       return this.apiClient.callApi(
         '/job_api/{id}', 'GET',
@@ -153,7 +152,7 @@ export default class JobsApi {
      * Callback function to receive the result of the getJobRuns operation.
      * @callback module:BJR/Api/JobsApi~getJobRunsCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/JobRunArray} data The data returned by the service call.
+     * @param {module:BJR/Model/JobRunArrayMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -162,7 +161,7 @@ export default class JobsApi {
      * Retrieve the runs for a job
      * @param {Object} opts Optional parameters
      * @param {module:BJR/Api/JobsApi~getJobRunsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/JobRunArray}
+     * data is of type: {@link module:BJR/Model/JobRunArrayMessage}
      */
     getJobRuns(id, opts, callback) {
       opts = opts || {};
@@ -186,7 +185,7 @@ export default class JobsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = JobRunArray;
+      let returnType = JobRunArrayMessage;
 
       return this.apiClient.callApi(
         '/job_api/{id}/runs', 'GET',
@@ -198,7 +197,7 @@ export default class JobsApi {
      * Callback function to receive the result of the getJobs operation.
      * @callback module:BJR/Api/JobsApi~getJobsCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/JobArray} data The data returned by the service call.
+     * @param {module:BJR/Model/JobArrayMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -207,7 +206,7 @@ export default class JobsApi {
      * Retrieves jobs
      * @param {Object} opts Optional parameters
      * @param {module:BJR/Api/JobsApi~getJobsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/JobArray}
+     * data is of type: {@link module:BJR/Model/JobArrayMessage}
      */
     getJobs(opts, callback) {
       opts = opts || {};
@@ -231,7 +230,7 @@ export default class JobsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = JobArray;
+      let returnType = JobArrayMessage;
 
       return this.apiClient.callApi(
         '/job_api', 'GET',
@@ -243,7 +242,7 @@ export default class JobsApi {
      * Callback function to receive the result of the jobOccurrences operation.
      * @callback module:BJR/Api/JobsApi~jobOccurrencesCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/Occurrences} data The data returned by the service call.
+     * @param {module:BJR/Model/OccurrenceMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -252,7 +251,7 @@ export default class JobsApi {
      * Retrieves a list of upcoming occurrences for a job
      * @param {Object} opts Optional parameters
      * @param {module:BJR/Api/JobsApi~jobOccurrencesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/Occurrences}
+     * data is of type: {@link module:BJR/Model/OccurrenceMessage}
      */
     jobOccurrences(id, endDate, opts, callback) {
       opts = opts || {};
@@ -274,7 +273,7 @@ export default class JobsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = Occurrences;
+      let returnType = OccurrenceMessage;
 
       return this.apiClient.callApi(
         '/job_api/{id}/occurrences/{end_date}', 'GET',
@@ -286,7 +285,7 @@ export default class JobsApi {
      * Callback function to receive the result of the updateJob operation.
      * @callback module:BJR/Api/JobsApi~updateJobCallback
      * @param {String} error Error message, if any.
-     * @param {module:BJR/Model/JobOut} data The data returned by the service call.
+     * @param {module:BJR/Model/SingleJobMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -294,7 +293,7 @@ export default class JobsApi {
      * Updates a single job
      * Updates a single job
      * @param {module:BJR/Api/JobsApi~updateJobCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:BJR/Model/JobOut}
+     * data is of type: {@link module:BJR/Model/SingleJobMessage}
      */
     updateJob(id, opts, callback) {
       let postBody = opts['body'];
@@ -312,7 +311,7 @@ export default class JobsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = JobOut;
+      let returnType = SingleJobMessage;
 
       return this.apiClient.callApi(
         '/job_api/{id}', 'PUT',

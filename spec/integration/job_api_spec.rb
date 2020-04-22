@@ -22,11 +22,11 @@ describe 'Job API' do
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
         let(:end_date) { DateTime.now + 1.day }
-        schema '$ref' => '#/components/schemas/Occurrences'
+        schema '$ref' => '#/components/schemas/OccurrenceMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)
-          expect(json.length).to eq(25)
+          expect(json['object'].length).to eq(25)
         end
       end
 
@@ -60,11 +60,12 @@ describe 'Job API' do
         let(:Authorization) { auth_token(admin) }
         let(:params) { { name: 'My New Job', cron: '*/5 * * * *', command: 'echo Hello World', timezone: 'UTC', enabled: 'true', tags: 'tag1, tag2',
                          success_callback: 'http://localhost:3000/success', failure_callback: 'http://localhost:3000/failure' } }
-        schema '$ref' => '#/components/schemas/JobOut'
+        schema '$ref' => '#/components/schemas/SingleJobMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)
           expect(json['is_error']).to be false
+          expect(json['status_code']).to eq(201)
           expect(json['object']['name']).to eq('My New Job')
           expect(json['object']['cron']).to eq('*/5 * * * *')
           expect(json['object']['command']).to eq('echo Hello World')
@@ -126,7 +127,7 @@ describe 'Job API' do
       response '200', 'Jobs returned successfully' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        schema '$ref' => '#/components/schemas/JobArray'
+        schema '$ref' => '#/components/schemas/JobArrayMessage'
 
         before do |request|
           create(:job1, user: admin)
@@ -136,7 +137,7 @@ describe 'Job API' do
 
         run_test! do |response|
           json = JSON.parse(response.body)
-          expect(json.length).to eq(2)
+          expect(json['object'].length).to eq(2)
         end
       end
     end
@@ -162,7 +163,7 @@ describe 'Job API' do
         let(:job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
-        schema '$ref' => '#/components/schemas/JobRunArray'
+        schema '$ref' => '#/components/schemas/JobRunArrayMessage'
 
         before do |request|
           create(:successful_job_run, job: job, start_time: Time.current - 3.hours, end_time: Time.current - 2.hours)
@@ -172,20 +173,20 @@ describe 'Job API' do
 
         run_test! do |response|
           json = JSON.parse(response.body)
-          expect(json.length).to eq(2)
-          expect(json[0]['job_id']).to eq(job.id)
-          expect(json[0]['success']).to be true
-          expect(json[0]['return_code']).to eq(0)
-          expect(json[0]['error_message']).to be nil
-          expect(json[0]['stdout']).to eq('Hello, World!')
-          expect(json[0]['stderr']).to be nil
+          expect(json['object'].length).to eq(2)
+          expect(json['object'][0]['job_id']).to eq(job.id)
+          expect(json['object'][0]['success']).to be true
+          expect(json['object'][0]['return_code']).to eq(0)
+          expect(json['object'][0]['error_message']).to be nil
+          expect(json['object'][0]['stdout']).to eq('Hello, World!')
+          expect(json['object'][0]['stderr']).to be nil
 
-          expect(json[1]['job_id']).to eq(job.id)
-          expect(json[1]['success']).to be false
-          expect(json[1]['return_code']).to eq(1)
-          expect(json[1]['error_message']).to eq('Failed to write Hello, World!')
-          expect(json[1]['stdout']).to be nil
-          expect(json[1]['stderr']).to eq('Everybody wants to rule the world!')
+          expect(json['object'][1]['job_id']).to eq(job.id)
+          expect(json['object'][1]['success']).to be false
+          expect(json['object'][1]['return_code']).to eq(1)
+          expect(json['object'][1]['error_message']).to eq('Failed to write Hello, World!')
+          expect(json['object'][1]['stdout']).to be nil
+          expect(json['object'][1]['stderr']).to eq('Everybody wants to rule the world!')
         end
       end
     end
@@ -208,7 +209,7 @@ describe 'Job API' do
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
         let(:params) { { name: 'Updated Job', cron: '*/60 * * * *', command: 'ls -l' } }
-        schema '$ref' => '#/components/schemas/JobOut'
+        schema '$ref' => '#/components/schemas/SingleJobMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -298,11 +299,14 @@ describe 'Job API' do
         let(:job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
-        schema '$ref' => '#/components/schemas/SingleJob'
+        schema '$ref' => '#/components/schemas/SingleJobMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)
-          expect(json['id']).to eq(job.id)
+          expect(json['object_type']).to eq('job')
+          expect(json['is_error']).to be false
+          expect(json['status_code']).to eq(200)
+          expect(json['object']['id']).to eq(job.id)
         end
       end
 

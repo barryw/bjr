@@ -35,11 +35,13 @@ namespace BJR.Model
         /// <param name="authToken">The JWT authentication token. This must be passed in the Authorization header on subsequent requests..</param>
         /// <param name="message">If authentication failed, this will contain the reason why..</param>
         /// <param name="isError">This will be true if the authentication was successful, and false if not..</param>
-        public AuthOut(string authToken = default(string), string message = default(string), bool? isError = default(bool?))
+        /// <param name="statusCode">The HTTP status code returned..</param>
+        public AuthOut(string authToken = default(string), string message = default(string), bool? isError = default(bool?), int? statusCode = default(int?))
         {
             this.AuthToken = authToken;
             this.Message = message;
             this.IsError = isError;
+            this.StatusCode = statusCode;
         }
         
         /// <summary>
@@ -64,6 +66,13 @@ namespace BJR.Model
         public bool? IsError { get; set; }
 
         /// <summary>
+        /// The HTTP status code returned.
+        /// </summary>
+        /// <value>The HTTP status code returned.</value>
+        [DataMember(Name="status_code", EmitDefaultValue=false)]
+        public int? StatusCode { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -74,6 +83,7 @@ namespace BJR.Model
             sb.Append("  AuthToken: ").Append(AuthToken).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  IsError: ").Append(IsError).Append("\n");
+            sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -122,6 +132,11 @@ namespace BJR.Model
                     this.IsError == input.IsError ||
                     (this.IsError != null &&
                     this.IsError.Equals(input.IsError))
+                ) && 
+                (
+                    this.StatusCode == input.StatusCode ||
+                    (this.StatusCode != null &&
+                    this.StatusCode.Equals(input.StatusCode))
                 );
         }
 
@@ -140,6 +155,8 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.Message.GetHashCode();
                 if (this.IsError != null)
                     hashCode = hashCode * 59 + this.IsError.GetHashCode();
+                if (this.StatusCode != null)
+                    hashCode = hashCode * 59 + this.StatusCode.GetHashCode();
                 return hashCode;
             }
         }

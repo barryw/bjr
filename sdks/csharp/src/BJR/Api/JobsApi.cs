@@ -31,8 +31,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>JobOut</returns>
-        JobOut CreateJob (JobIn body = null);
+        /// <returns>SingleJobMessage</returns>
+        SingleJobMessage CreateJob (JobIn body = null);
 
         /// <summary>
         /// Creates a job
@@ -42,8 +42,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of JobOut</returns>
-        ApiResponse<JobOut> CreateJobWithHttpInfo (JobIn body = null);
+        /// <returns>ApiResponse of SingleJobMessage</returns>
+        ApiResponse<SingleJobMessage> CreateJobWithHttpInfo (JobIn body = null);
         /// <summary>
         /// Deletes a job
         /// </summary>
@@ -73,8 +73,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>SingleJob</returns>
-        SingleJob GetJob (int? id);
+        /// <returns>SingleJobMessage</returns>
+        SingleJobMessage GetJob (int? id);
 
         /// <summary>
         /// Retrieves a single job
@@ -84,8 +84,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of SingleJob</returns>
-        ApiResponse<SingleJob> GetJobWithHttpInfo (int? id);
+        /// <returns>ApiResponse of SingleJobMessage</returns>
+        ApiResponse<SingleJobMessage> GetJobWithHttpInfo (int? id);
         /// <summary>
         /// Retrieve the runs for a job
         /// </summary>
@@ -99,8 +99,8 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
-        /// <returns>JobRunArray</returns>
-        JobRunArray GetJobRuns (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
+        /// <returns>JobRunArrayMessage</returns>
+        JobRunArrayMessage GetJobRuns (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
 
         /// <summary>
         /// Retrieve the runs for a job
@@ -115,8 +115,8 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
-        /// <returns>ApiResponse of JobRunArray</returns>
-        ApiResponse<JobRunArray> GetJobRunsWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
+        /// <returns>ApiResponse of JobRunArrayMessage</returns>
+        ApiResponse<JobRunArrayMessage> GetJobRunsWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
         /// <summary>
         /// Retrieves jobs
         /// </summary>
@@ -130,8 +130,8 @@ namespace BJR.Api
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>JobArray</returns>
-        JobArray GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null);
+        /// <returns>JobArrayMessage</returns>
+        JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null);
 
         /// <summary>
         /// Retrieves jobs
@@ -146,8 +146,8 @@ namespace BJR.Api
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>ApiResponse of JobArray</returns>
-        ApiResponse<JobArray> GetJobsWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null);
+        /// <returns>ApiResponse of JobArrayMessage</returns>
+        ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null);
         /// <summary>
         /// Upcoming job occurrences
         /// </summary>
@@ -159,8 +159,8 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Occurrences</returns>
-        Occurrences JobOccurrences (int? id, string endDate, int? perPage = null, int? page = null);
+        /// <returns>OccurrenceMessage</returns>
+        OccurrenceMessage JobOccurrences (int? id, string endDate, int? perPage = null, int? page = null);
 
         /// <summary>
         /// Upcoming job occurrences
@@ -173,8 +173,8 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>ApiResponse of Occurrences</returns>
-        ApiResponse<Occurrences> JobOccurrencesWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null);
+        /// <returns>ApiResponse of OccurrenceMessage</returns>
+        ApiResponse<OccurrenceMessage> JobOccurrencesWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null);
         /// <summary>
         /// Updates a single job
         /// </summary>
@@ -184,8 +184,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>JobOut</returns>
-        JobOut UpdateJob (int? id, JobIn body = null);
+        /// <returns>SingleJobMessage</returns>
+        SingleJobMessage UpdateJob (int? id, JobIn body = null);
 
         /// <summary>
         /// Updates a single job
@@ -196,8 +196,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of JobOut</returns>
-        ApiResponse<JobOut> UpdateJobWithHttpInfo (int? id, JobIn body = null);
+        /// <returns>ApiResponse of SingleJobMessage</returns>
+        ApiResponse<SingleJobMessage> UpdateJobWithHttpInfo (int? id, JobIn body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -208,8 +208,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of JobOut</returns>
-        System.Threading.Tasks.Task<JobOut> CreateJobAsync (JobIn body = null);
+        /// <returns>Task of SingleJobMessage</returns>
+        System.Threading.Tasks.Task<SingleJobMessage> CreateJobAsync (JobIn body = null);
 
         /// <summary>
         /// Creates a job
@@ -219,8 +219,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (JobOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobOut>> CreateJobAsyncWithHttpInfo (JobIn body = null);
+        /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> CreateJobAsyncWithHttpInfo (JobIn body = null);
         /// <summary>
         /// Deletes a job
         /// </summary>
@@ -250,8 +250,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of SingleJob</returns>
-        System.Threading.Tasks.Task<SingleJob> GetJobAsync (int? id);
+        /// <returns>Task of SingleJobMessage</returns>
+        System.Threading.Tasks.Task<SingleJobMessage> GetJobAsync (int? id);
 
         /// <summary>
         /// Retrieves a single job
@@ -261,8 +261,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (SingleJob)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleJob>> GetJobAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> GetJobAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Retrieve the runs for a job
         /// </summary>
@@ -276,8 +276,8 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
-        /// <returns>Task of JobRunArray</returns>
-        System.Threading.Tasks.Task<JobRunArray> GetJobRunsAsync (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
+        /// <returns>Task of JobRunArrayMessage</returns>
+        System.Threading.Tasks.Task<JobRunArrayMessage> GetJobRunsAsync (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
 
         /// <summary>
         /// Retrieve the runs for a job
@@ -292,8 +292,8 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
-        /// <returns>Task of ApiResponse (JobRunArray)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobRunArray>> GetJobRunsAsyncWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
+        /// <returns>Task of ApiResponse (JobRunArrayMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JobRunArrayMessage>> GetJobRunsAsyncWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null);
         /// <summary>
         /// Retrieves jobs
         /// </summary>
@@ -307,8 +307,8 @@ namespace BJR.Api
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of JobArray</returns>
-        System.Threading.Tasks.Task<JobArray> GetJobsAsync (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null);
+        /// <returns>Task of JobArrayMessage</returns>
+        System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null);
 
         /// <summary>
         /// Retrieves jobs
@@ -323,8 +323,8 @@ namespace BJR.Api
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of ApiResponse (JobArray)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobArray>> GetJobsAsyncWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null);
+        /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null);
         /// <summary>
         /// Upcoming job occurrences
         /// </summary>
@@ -336,8 +336,8 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of Occurrences</returns>
-        System.Threading.Tasks.Task<Occurrences> JobOccurrencesAsync (int? id, string endDate, int? perPage = null, int? page = null);
+        /// <returns>Task of OccurrenceMessage</returns>
+        System.Threading.Tasks.Task<OccurrenceMessage> JobOccurrencesAsync (int? id, string endDate, int? perPage = null, int? page = null);
 
         /// <summary>
         /// Upcoming job occurrences
@@ -350,8 +350,8 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of ApiResponse (Occurrences)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Occurrences>> JobOccurrencesAsyncWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null);
+        /// <returns>Task of ApiResponse (OccurrenceMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OccurrenceMessage>> JobOccurrencesAsyncWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null);
         /// <summary>
         /// Updates a single job
         /// </summary>
@@ -361,8 +361,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of JobOut</returns>
-        System.Threading.Tasks.Task<JobOut> UpdateJobAsync (int? id, JobIn body = null);
+        /// <returns>Task of SingleJobMessage</returns>
+        System.Threading.Tasks.Task<SingleJobMessage> UpdateJobAsync (int? id, JobIn body = null);
 
         /// <summary>
         /// Updates a single job
@@ -373,8 +373,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (JobOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobOut>> UpdateJobAsyncWithHttpInfo (int? id, JobIn body = null);
+        /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> UpdateJobAsyncWithHttpInfo (int? id, JobIn body = null);
         #endregion Asynchronous Operations
     }
 
@@ -491,10 +491,10 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>JobOut</returns>
-        public JobOut CreateJob (JobIn body = null)
+        /// <returns>SingleJobMessage</returns>
+        public SingleJobMessage CreateJob (JobIn body = null)
         {
-             ApiResponse<JobOut> localVarResponse = CreateJobWithHttpInfo(body);
+             ApiResponse<SingleJobMessage> localVarResponse = CreateJobWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -503,8 +503,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of JobOut</returns>
-        public ApiResponse< JobOut > CreateJobWithHttpInfo (JobIn body = null)
+        /// <returns>ApiResponse of SingleJobMessage</returns>
+        public ApiResponse< SingleJobMessage > CreateJobWithHttpInfo (JobIn body = null)
         {
 
             var localVarPath = "/job_api";
@@ -557,9 +557,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<JobOut>(localVarStatusCode,
+            return new ApiResponse<SingleJobMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (JobOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobOut)));
+                (SingleJobMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJobMessage)));
         }
 
         /// <summary>
@@ -567,10 +567,10 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of JobOut</returns>
-        public async System.Threading.Tasks.Task<JobOut> CreateJobAsync (JobIn body = null)
+        /// <returns>Task of SingleJobMessage</returns>
+        public async System.Threading.Tasks.Task<SingleJobMessage> CreateJobAsync (JobIn body = null)
         {
-             ApiResponse<JobOut> localVarResponse = await CreateJobAsyncWithHttpInfo(body);
+             ApiResponse<SingleJobMessage> localVarResponse = await CreateJobAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -580,8 +580,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (JobOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobOut>> CreateJobAsyncWithHttpInfo (JobIn body = null)
+        /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> CreateJobAsyncWithHttpInfo (JobIn body = null)
         {
 
             var localVarPath = "/job_api";
@@ -634,9 +634,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<JobOut>(localVarStatusCode,
+            return new ApiResponse<SingleJobMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (JobOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobOut)));
+                (SingleJobMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJobMessage)));
         }
 
         /// <summary>
@@ -783,10 +783,10 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>SingleJob</returns>
-        public SingleJob GetJob (int? id)
+        /// <returns>SingleJobMessage</returns>
+        public SingleJobMessage GetJob (int? id)
         {
-             ApiResponse<SingleJob> localVarResponse = GetJobWithHttpInfo(id);
+             ApiResponse<SingleJobMessage> localVarResponse = GetJobWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -795,8 +795,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of SingleJob</returns>
-        public ApiResponse< SingleJob > GetJobWithHttpInfo (int? id)
+        /// <returns>ApiResponse of SingleJobMessage</returns>
+        public ApiResponse< SingleJobMessage > GetJobWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -844,9 +844,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SingleJob>(localVarStatusCode,
+            return new ApiResponse<SingleJobMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SingleJob) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJob)));
+                (SingleJobMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJobMessage)));
         }
 
         /// <summary>
@@ -854,10 +854,10 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of SingleJob</returns>
-        public async System.Threading.Tasks.Task<SingleJob> GetJobAsync (int? id)
+        /// <returns>Task of SingleJobMessage</returns>
+        public async System.Threading.Tasks.Task<SingleJobMessage> GetJobAsync (int? id)
         {
-             ApiResponse<SingleJob> localVarResponse = await GetJobAsyncWithHttpInfo(id);
+             ApiResponse<SingleJobMessage> localVarResponse = await GetJobAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -867,8 +867,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse (SingleJob)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleJob>> GetJobAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> GetJobAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -916,9 +916,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SingleJob>(localVarStatusCode,
+            return new ApiResponse<SingleJobMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SingleJob) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJob)));
+                (SingleJobMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJobMessage)));
         }
 
         /// <summary>
@@ -931,10 +931,10 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
-        /// <returns>JobRunArray</returns>
-        public JobRunArray GetJobRuns (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
+        /// <returns>JobRunArrayMessage</returns>
+        public JobRunArrayMessage GetJobRuns (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
         {
-             ApiResponse<JobRunArray> localVarResponse = GetJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
+             ApiResponse<JobRunArrayMessage> localVarResponse = GetJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
              return localVarResponse.Data;
         }
 
@@ -948,8 +948,8 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
-        /// <returns>ApiResponse of JobRunArray</returns>
-        public ApiResponse< JobRunArray > GetJobRunsWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
+        /// <returns>ApiResponse of JobRunArrayMessage</returns>
+        public ApiResponse< JobRunArrayMessage > GetJobRunsWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1002,9 +1002,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<JobRunArray>(localVarStatusCode,
+            return new ApiResponse<JobRunArrayMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (JobRunArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobRunArray)));
+                (JobRunArrayMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobRunArrayMessage)));
         }
 
         /// <summary>
@@ -1017,10 +1017,10 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
-        /// <returns>Task of JobRunArray</returns>
-        public async System.Threading.Tasks.Task<JobRunArray> GetJobRunsAsync (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
+        /// <returns>Task of JobRunArrayMessage</returns>
+        public async System.Threading.Tasks.Task<JobRunArrayMessage> GetJobRunsAsync (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
         {
-             ApiResponse<JobRunArray> localVarResponse = await GetJobRunsAsyncWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
+             ApiResponse<JobRunArrayMessage> localVarResponse = await GetJobRunsAsyncWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
              return localVarResponse.Data;
 
         }
@@ -1035,8 +1035,8 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
-        /// <returns>Task of ApiResponse (JobRunArray)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobRunArray>> GetJobRunsAsyncWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
+        /// <returns>Task of ApiResponse (JobRunArrayMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JobRunArrayMessage>> GetJobRunsAsyncWithHttpInfo (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1089,9 +1089,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<JobRunArray>(localVarStatusCode,
+            return new ApiResponse<JobRunArrayMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (JobRunArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobRunArray)));
+                (JobRunArrayMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobRunArrayMessage)));
         }
 
         /// <summary>
@@ -1104,10 +1104,10 @@ namespace BJR.Api
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>JobArray</returns>
-        public JobArray GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
+        /// <returns>JobArrayMessage</returns>
+        public JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
         {
-             ApiResponse<JobArray> localVarResponse = GetJobsWithHttpInfo(tags, incexc, startDate, endDate, perPage, page);
+             ApiResponse<JobArrayMessage> localVarResponse = GetJobsWithHttpInfo(tags, incexc, startDate, endDate, perPage, page);
              return localVarResponse.Data;
         }
 
@@ -1121,8 +1121,8 @@ namespace BJR.Api
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>ApiResponse of JobArray</returns>
-        public ApiResponse< JobArray > GetJobsWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
+        /// <returns>ApiResponse of JobArrayMessage</returns>
+        public ApiResponse< JobArrayMessage > GetJobsWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
         {
 
             var localVarPath = "/job_api";
@@ -1172,9 +1172,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<JobArray>(localVarStatusCode,
+            return new ApiResponse<JobArrayMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (JobArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobArray)));
+                (JobArrayMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobArrayMessage)));
         }
 
         /// <summary>
@@ -1187,10 +1187,10 @@ namespace BJR.Api
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of JobArray</returns>
-        public async System.Threading.Tasks.Task<JobArray> GetJobsAsync (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
+        /// <returns>Task of JobArrayMessage</returns>
+        public async System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
         {
-             ApiResponse<JobArray> localVarResponse = await GetJobsAsyncWithHttpInfo(tags, incexc, startDate, endDate, perPage, page);
+             ApiResponse<JobArrayMessage> localVarResponse = await GetJobsAsyncWithHttpInfo(tags, incexc, startDate, endDate, perPage, page);
              return localVarResponse.Data;
 
         }
@@ -1205,8 +1205,8 @@ namespace BJR.Api
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of ApiResponse (JobArray)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobArray>> GetJobsAsyncWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
+        /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
         {
 
             var localVarPath = "/job_api";
@@ -1256,9 +1256,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<JobArray>(localVarStatusCode,
+            return new ApiResponse<JobArrayMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (JobArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobArray)));
+                (JobArrayMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobArrayMessage)));
         }
 
         /// <summary>
@@ -1269,10 +1269,10 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Occurrences</returns>
-        public Occurrences JobOccurrences (int? id, string endDate, int? perPage = null, int? page = null)
+        /// <returns>OccurrenceMessage</returns>
+        public OccurrenceMessage JobOccurrences (int? id, string endDate, int? perPage = null, int? page = null)
         {
-             ApiResponse<Occurrences> localVarResponse = JobOccurrencesWithHttpInfo(id, endDate, perPage, page);
+             ApiResponse<OccurrenceMessage> localVarResponse = JobOccurrencesWithHttpInfo(id, endDate, perPage, page);
              return localVarResponse.Data;
         }
 
@@ -1284,8 +1284,8 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>ApiResponse of Occurrences</returns>
-        public ApiResponse< Occurrences > JobOccurrencesWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null)
+        /// <returns>ApiResponse of OccurrenceMessage</returns>
+        public ApiResponse< OccurrenceMessage > JobOccurrencesWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1339,9 +1339,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Occurrences>(localVarStatusCode,
+            return new ApiResponse<OccurrenceMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Occurrences) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Occurrences)));
+                (OccurrenceMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OccurrenceMessage)));
         }
 
         /// <summary>
@@ -1352,10 +1352,10 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of Occurrences</returns>
-        public async System.Threading.Tasks.Task<Occurrences> JobOccurrencesAsync (int? id, string endDate, int? perPage = null, int? page = null)
+        /// <returns>Task of OccurrenceMessage</returns>
+        public async System.Threading.Tasks.Task<OccurrenceMessage> JobOccurrencesAsync (int? id, string endDate, int? perPage = null, int? page = null)
         {
-             ApiResponse<Occurrences> localVarResponse = await JobOccurrencesAsyncWithHttpInfo(id, endDate, perPage, page);
+             ApiResponse<OccurrenceMessage> localVarResponse = await JobOccurrencesAsyncWithHttpInfo(id, endDate, perPage, page);
              return localVarResponse.Data;
 
         }
@@ -1368,8 +1368,8 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
-        /// <returns>Task of ApiResponse (Occurrences)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Occurrences>> JobOccurrencesAsyncWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null)
+        /// <returns>Task of ApiResponse (OccurrenceMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<OccurrenceMessage>> JobOccurrencesAsyncWithHttpInfo (int? id, string endDate, int? perPage = null, int? page = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1423,9 +1423,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Occurrences>(localVarStatusCode,
+            return new ApiResponse<OccurrenceMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Occurrences) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Occurrences)));
+                (OccurrenceMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OccurrenceMessage)));
         }
 
         /// <summary>
@@ -1434,10 +1434,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>JobOut</returns>
-        public JobOut UpdateJob (int? id, JobIn body = null)
+        /// <returns>SingleJobMessage</returns>
+        public SingleJobMessage UpdateJob (int? id, JobIn body = null)
         {
-             ApiResponse<JobOut> localVarResponse = UpdateJobWithHttpInfo(id, body);
+             ApiResponse<SingleJobMessage> localVarResponse = UpdateJobWithHttpInfo(id, body);
              return localVarResponse.Data;
         }
 
@@ -1447,8 +1447,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of JobOut</returns>
-        public ApiResponse< JobOut > UpdateJobWithHttpInfo (int? id, JobIn body = null)
+        /// <returns>ApiResponse of SingleJobMessage</returns>
+        public ApiResponse< SingleJobMessage > UpdateJobWithHttpInfo (int? id, JobIn body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1505,9 +1505,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<JobOut>(localVarStatusCode,
+            return new ApiResponse<SingleJobMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (JobOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobOut)));
+                (SingleJobMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJobMessage)));
         }
 
         /// <summary>
@@ -1516,10 +1516,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of JobOut</returns>
-        public async System.Threading.Tasks.Task<JobOut> UpdateJobAsync (int? id, JobIn body = null)
+        /// <returns>Task of SingleJobMessage</returns>
+        public async System.Threading.Tasks.Task<SingleJobMessage> UpdateJobAsync (int? id, JobIn body = null)
         {
-             ApiResponse<JobOut> localVarResponse = await UpdateJobAsyncWithHttpInfo(id, body);
+             ApiResponse<SingleJobMessage> localVarResponse = await UpdateJobAsyncWithHttpInfo(id, body);
              return localVarResponse.Data;
 
         }
@@ -1530,8 +1530,8 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (JobOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobOut>> UpdateJobAsyncWithHttpInfo (int? id, JobIn body = null)
+        /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> UpdateJobAsyncWithHttpInfo (int? id, JobIn body = null)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1588,9 +1588,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<JobOut>(localVarStatusCode,
+            return new ApiResponse<SingleJobMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (JobOut) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobOut)));
+                (SingleJobMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJobMessage)));
         }
 
     }

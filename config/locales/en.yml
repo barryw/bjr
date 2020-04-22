@@ -2,8 +2,21 @@ en:
   common:
     errors:
       invalid_timezone: "Invalid timezone '%{timezone}' specified. Acceptable timezone list: %{timezone_list_url}"
+  tags:
+    messages:
+      received: Tags received successfully.
+  timezones:
+    messages:
+      received: Timezones received successfully.
+  occurrences:
+    messages:
+      received: Job occurrences received successfully.
+  jobruns:
+    messages:
+      received: Job runs received successfully.
   jobs:
     messages:
+      received: Job(s) received successfully.
       created: Job %{id} created successfully.
       deleted: Job %{id} deleted successfully.
       updated: Job %{id} updated successfully.
@@ -16,6 +29,7 @@ en:
       end_date_required: You must supply an end date parameter.
   users:
     messages:
+      received: User(s) received successfully.
       created: User %{id} created successfully.
       deleted: User %{id} deleted successfully.
       updated: User %{id} updated successfully.

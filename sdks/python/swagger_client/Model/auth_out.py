@@ -31,20 +31,23 @@ class AuthOut(object):
     swagger_types = {
         'auth_token': 'str',
         'message': 'str',
-        'is_error': 'bool'
+        'is_error': 'bool',
+        'status_code': 'int'
     }
 
     attribute_map = {
         'auth_token': 'auth_token',
         'message': 'message',
-        'is_error': 'is_error'
+        'is_error': 'is_error',
+        'status_code': 'status_code'
     }
 
-    def __init__(self, auth_token=None, message=None, is_error=None):  # noqa: E501
+    def __init__(self, auth_token=None, message=None, is_error=None, status_code=None):  # noqa: E501
         """AuthOut - a model defined in Swagger"""  # noqa: E501
         self._auth_token = None
         self._message = None
         self._is_error = None
+        self._status_code = None
         self.discriminator = None
         if auth_token is not None:
             self.auth_token = auth_token
@@ -52,6 +55,8 @@ class AuthOut(object):
             self.message = message
         if is_error is not None:
             self.is_error = is_error
+        if status_code is not None:
+            self.status_code = status_code
 
     @property
     def auth_token(self):
@@ -121,6 +126,29 @@ class AuthOut(object):
         """
 
         self._is_error = is_error
+
+    @property
+    def status_code(self):
+        """Gets the status_code of this AuthOut.  # noqa: E501
+
+        The HTTP status code returned.  # noqa: E501
+
+        :return: The status_code of this AuthOut.  # noqa: E501
+        :rtype: int
+        """
+        return self._status_code
+
+    @status_code.setter
+    def status_code(self, status_code):
+        """Sets the status_code of this AuthOut.
+
+        The HTTP status code returned.  # noqa: E501
+
+        :param status_code: The status_code of this AuthOut.  # noqa: E501
+        :type: int
+        """
+
+        self._status_code = status_code
 
     def to_dict(self):
         """Returns the model properties as a dict"""

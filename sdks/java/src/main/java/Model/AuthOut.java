@@ -25,7 +25,7 @@ import java.io.IOException;
  * AuthOut
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-21T12:30:36.637-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-22T18:00:45.389-04:00[America/New_York]")
 public class AuthOut {
   @SerializedName("auth_token")
   private String authToken = null;
@@ -35,6 +35,9 @@ public class AuthOut {
 
   @SerializedName("is_error")
   private Boolean isError = null;
+
+  @SerializedName("status_code")
+  private Integer statusCode = null;
 
   public AuthOut authToken(String authToken) {
     this.authToken = authToken;
@@ -90,6 +93,24 @@ public class AuthOut {
     this.isError = isError;
   }
 
+  public AuthOut statusCode(Integer statusCode) {
+    this.statusCode = statusCode;
+    return this;
+  }
+
+   /**
+   * The HTTP status code returned.
+   * @return statusCode
+  **/
+  @Schema(description = "The HTTP status code returned.")
+  public Integer getStatusCode() {
+    return statusCode;
+  }
+
+  public void setStatusCode(Integer statusCode) {
+    this.statusCode = statusCode;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -102,12 +123,13 @@ public class AuthOut {
     AuthOut authOut = (AuthOut) o;
     return Objects.equals(this.authToken, authOut.authToken) &&
         Objects.equals(this.message, authOut.message) &&
-        Objects.equals(this.isError, authOut.isError);
+        Objects.equals(this.isError, authOut.isError) &&
+        Objects.equals(this.statusCode, authOut.statusCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(authToken, message, isError);
+    return Objects.hash(authToken, message, isError, statusCode);
   }
 
 
@@ -119,6 +141,7 @@ public class AuthOut {
     sb.append("    authToken: ").append(toIndentedString(authToken)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
+    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

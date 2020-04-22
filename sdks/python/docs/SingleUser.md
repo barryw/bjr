@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | The object&#x27;s primary key. This uniquely identifies the object in the system. | [optional] 
-**username** | **str** |  | [optional] 
+**username** | **str** | The user&#x27; login name. Must be unique | [optional] 
 **created_at** | **datetime** | The UTC date and time that the object was created. | [optional] 
 **updated_at** | **datetime** | The UTC date and time that the object was last modified. | [optional] 
 

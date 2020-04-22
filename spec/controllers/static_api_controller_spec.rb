@@ -16,9 +16,12 @@ RSpec.describe StaticApiController, type: :controller do
       get :timezones
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json.length).to eq(151)
-      expect(json[0]).to eq('International Date Line West')
-      expect(json[150]).to eq('Samoa')
+      expect(json['object'].length).to eq(151)
+      expect(json['is_error']).to be false
+      expect(json['status_code']).to eq(200)
+      expect(json['object_type']).to eq('tzarray')
+      expect(json['object'][0]).to eq('International Date Line West')
+      expect(json['object'][150]).to eq('Samoa')
     end
   end
 
@@ -39,14 +42,20 @@ RSpec.describe StaticApiController, type: :controller do
       get :tags
       expect(response).to have_http_status(:success)
       json1 = JSON.parse(response.body)
-      expect(json1.length).to eq(3)
-      expect(json1).to eq(job1.tags.as_json)
+      expect(json1['object'].length).to eq(3)
+      expect(json1['is_error']).to be false
+      expect(json1['status_code']).to eq(200)
+      expect(json1['object_type']).to eq('tagarray')
+      expect(json1['object']).to eq(job1.tags.as_json)
       authenticated_header(user2)
       get :tags
       expect(response).to have_http_status(:success)
       json2 = JSON.parse(response.body)
-      expect(json2.length).to eq(2)
-      expect(json2).to eq(job2.tags.as_json)
+      expect(json2['object'].length).to eq(2)
+      expect(json2['is_error']).to be false
+      expect(json2['status_code']).to eq(200)
+      expect(json2['object_type']).to eq('tagarray')
+      expect(json2['object']).to eq(job2.tags.as_json)
     end
   end
 

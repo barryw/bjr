@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createUser"></a>
 # **createUser**
-> UserOut createUser()
+> SingleUserMessage createUser()
 
 Creates a user
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteUser"></a>
 # **deleteUser**
-> UserOut deleteUser(id)
+> SingleUserMessage deleteUser(id)
 
 Deletes a user
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 <a name="getUser"></a>
 # **getUser**
-> SingleUser getUser(id)
+> SingleUserMessage getUser(id)
 
 Retrieve a single user
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SingleUser**](SingleUser.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 <a name="getUsers"></a>
 # **getUsers**
-> UserArray getUsers(opts)
+> UserArrayMessage getUsers(opts)
 
 Retrieves users
 
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserArray**](UserArray.md)
+[**UserArrayMessage**](UserArrayMessage.md)
 
 ### Authorization
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 <a name="updateUser"></a>
 # **updateUser**
-> UserOut updateUser(id)
+> SingleUserMessage updateUser(id)
 
 Update a single user
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserOut**](UserOut.md)
+[**SingleUserMessage**](SingleUserMessage.md)
 
 ### Authorization
 
