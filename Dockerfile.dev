@@ -1,19 +1,21 @@
-FROM ruby:2.6.6-alpine
+FROM ruby:2.6.6-slim
 
 MAINTAINER Barry Walker <barrywalker@gmail.com>
 
-RUN apk update && apk upgrade \
-    && apk --no-cache add ruby-nokogiri ruby-dev build-base bash \
-        libxml2-dev libxslt-dev libffi-dev mariadb-dev \
-        tzdata mariadb-connector-c curl wget jq ca-certificates
-
 WORKDIR /app
+
 ADD Gemfile /app
 ADD Gemfile.lock /app
-RUN gem install bundler \
-    && bundle install --without=test
+
+RUN apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y build-essential libxml2-dev libxslt-dev default-libmysqlclient-dev \
+                          curl wget jq ca-certificates tzdata libffi-dev ncat \
+    && gem install bundler \
+    && bundle install --without=test \
+    && apt-get remove -y build-essential \
+    && apt-get autoremove -y
 
 ADD . /app
-RUN mkdir ./lib/mariadb && ln -s /usr/lib/mariadb/plugin ./lib/mariadb/plugin
 
 ENTRYPOINT ["/app/entrypoint.sh"]
