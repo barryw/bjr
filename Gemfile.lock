@@ -56,6 +56,10 @@ GEM
     builder (3.2.4)
     byebug (11.1.2)
     chronic (0.10.2)
+    codecov (0.1.16)
+      json
+      simplecov
+      url
     concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
     crass (1.0.6)
@@ -89,6 +93,7 @@ GEM
       activesupport
       ice_cube (~> 0.16.0)
     jaro_winkler (1.5.4)
+    json (2.3.0)
     json-schema (2.8.1)
       addressable (>= 2.4)
     jwt (2.2.1)
@@ -244,6 +249,7 @@ GEM
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unicode-display_width (1.7.0)
+    url (0.3.2)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -259,6 +265,7 @@ DEPENDENCIES
   brakeman
   byebug
   chronic
+  codecov
   factory_bot_rails
   fakeredis
   foreman

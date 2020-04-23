@@ -12,6 +12,9 @@ SimpleCov.start 'rails' do
   add_group 'Helpers', 'app/helpers'
 end
 
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
+
 require './spec/support/auth_helper'
 require 'active_support/testing/time_helpers'
 
