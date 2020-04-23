@@ -8,10 +8,44 @@
 
 #### Introduction
 
+This is service with a very simple use case:
+
+A job server that can execute bash commands/scripts with a REST API frontend that allows you to manage the schedule of those jobs.
+
+That's it in a nutshell.
+
+It's a bit more than that, but this is what I set out to build because I was unable to find something that satisfied this use case. There are tools like Quartz, but that's just a very robust scheduler. It doesn't have a nice REST API frontend.
+
+This comes in essentially 2 pieces:
+
+- One or more worker nodes that execute the jobs. These run a tool called Sidekiq, which is a great Job runner.
+- One or more API server nodes running a stripped down Rails API application. This is how you interact with BJR.
+
+The job data is stored in a MySQL database, and state is managed in Redis. Every minute a job is executed to find "schedulable" jobs, which are jobs with a "next run" date that's earlier than the current date. For every job that's found that matches this, a "shell job" is created to execute the job. Both of these jobs are run by Sidekiq.
+
+You can add tags to your jobs so that you can search on them. You can also add success and failure callback URLs so that you can be notified when jobs succeed and fail. These callbacks will be called with a POST and sent information about the job run.
+
 
 #### Configuration
 
-`JWT_EXPIRY_SECONDS` : Set to the number of seconds that a JWT should live. The default is 3600 seconds.
+If you're just running a development environment, the defaults are probably fine. For everything else, here's what you'll want to configure:
+
+`RAILS_ENV`: The Rails environment to run in. For development/test instances, use `development`. For production, use `production`. Defaults to development
+
+`JWT_EXPIRY_SECONDS` : Set to the number of seconds that a JWT should live. The default is 3600 seconds. Once expired, you'll need to reauthenticate to get a new JWT.
+
+`REDIS_HOST`: The Redis host to connect to. This will default to localhost. Your API server nodes and worker nodes must see the same Redis server.
+`REDIS_PORT`: The Redis port to connect to. This will default to 6379. Your API server nodes and worker nodes must see the same Redis server.
+`REDIS_SIDEKIQ_DB`: The Redis database to use for Sidekiq. Defaults to 0.
+
+`BJR_DATABASE_USERNAME`: The username for the BJR MySQL database. Defaults to bjr
+`BJR_DATABASE_PASSWORD`: The password for the BJR MySQL database. Defaults to bjr
+`BJR_DATABASE_HOST`: The hostname to connect to the BJR MySQL database at. Defaults to 127.0.0.1
+`BJR_DATABASE_PORT`: The port to connect to the BJR MySQL database at. Defaults to 3306
+`BJR_DATABASE`: The name of the database to use for BJR data. Defaults to `bjr_{RAILS_ENV}`
+
+`WEB_CONCURRENCY`: Puma will run in clustered mode by default. This is the number of web workers. Defaults to 2
+`PORT`: The port that Puma will listen on. Defaults to 3000
 
 
 #### Running
@@ -30,14 +64,49 @@ It will run a single API server listening on :3000, a single worker and a Redis 
 
 ##### Local dev with docker-compose
 
+If Docker is more your thing, there's a `docker-compose.yml` file supplied which will bring up everything needed for a development environment, including MySQL and Redis.
 
+Bring it up with `docker-compose up`
+
+When you're done, you can hit ctrl-c or run `docker-compose down`. If you'd like to reset the MySQL data volume, use `docker-compose down -v`
 
 ##### Packer & Terraform
 
+Included are Packer and Terraform scripts to build BJR AMIs and deploy them. The code to build the AMIs are in the `packer` directory. There's a README in there that describes the different AMIs that can be built and how to use them.
+
+Once you've built an API and worker AMI, you can then deploy them with the Terraform code in `terraform`. This will build EC2 instances running docker-compose and is a bit complicated. Read the README file in that directory to see how to deploy it.
 
 ##### Kubernetes
 
+Ahhh.. Kubernetes.. the latest sexy. The thing that everybody wants, but few understands.
 
+If you're looking to deploy this to Kubernetes (that's where I do my testing, btw), then you're in luck. There's a Helm chart in `deploy` that will allow you to do a quick-and-dirty deploy of everything you need, including MySQL and Redis. Right now it's using Helm 2 with Tiller, but I plan to migrate to Helm 3.
+
+First, make sure you have Helm 2 installed (2.16) and then 'cd' to the `deploy` directory.
+
+The BJR Helm Chart is driven from values in the `values.yaml` file. For a dev environment deployment, you can just accept the defaults, but in a production deployment you'd definitely want to tune these settings.
+
+If this is your first time, install Tiller with
+
+```bash
+make init
+```
+
+To deploy, make sure your kube config is set properly and that you're using the correct kube context
+
+```bash
+make deploy
+```
+
+Open your Kubernetes dashboard and watch as your BJR deployment comes up. You should see a Redis pod, a MySQL pod, 2 API pods and 2 worker pods. It's normal for the API pods to take a while to go green.
+
+Once everything is green, you'll need to expose your `bjr-api` service so that you can view your Swagger UI. This will vary depending on your environment, but I use microk8s with MetalLB so that I can expose the API service on an IP that I can open with a browser. By default the `bjr-api` service is running with a type of `LoadBalancer`, but you can change it to whatever you need.
+
+To tear down your BJR installation
+
+```bash
+make undeploy
+```
 
 #### Building Docker images
 
@@ -54,6 +123,13 @@ rake generate:sdks
 ```
 
 The SDKs will be generated in subfolders of the `sdks` directory. Each language contains documentation on how to use the SDK.
+
+Currently, the SDKs are generated for the following languages:
+
+- C#
+- Python
+- Java
+- Javascript
 
 #### Interacting with BJR using curl
 
@@ -109,3 +185,5 @@ If there are multiple pages, the response header will contain a `Link` attribute
 ```bash
 Link: <http://localhost:3000/job_api/27/runs?page=1>; rel="first", <http://localhost:3000/job_api/27/runs?page=1>; rel="prev"
 ```
+
+If you'd like to see what API routes are availble, run `rails routes`

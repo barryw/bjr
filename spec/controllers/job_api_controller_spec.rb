@@ -461,7 +461,7 @@ RSpec.describe JobApiController, type: :controller do
       run1 = create(:successful_job_run, job: job, success: true, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       create(:successful_job_run, job: job, success: false, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       authenticated_header(user)
-      get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': true }
+      get :runs, params: { 'id': job.id, 'start_date': Time.current - 3.hours, 'end_date': Time.current, 'succeeded': true }
       json = JSON.parse(response.body)
       expect(json['object'].length).to eq(1)
       expect(json['object'][0]['id']).to eq(run1.id)
