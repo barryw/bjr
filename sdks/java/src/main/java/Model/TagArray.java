@@ -21,7 +21,7 @@ import java.util.List;
  * TagArray
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-22T18:06:05.167-04:00[America/New_York]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2020-04-23T13:01:36.940Z[GMT]")
 public class TagArray extends ArrayList<Tag> {
 
   @Override

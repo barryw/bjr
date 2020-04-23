@@ -20,7 +20,7 @@ class ShellJob < ApplicationJob
     success = return_code&.zero?
   rescue StandardError
     success = false
-    error_message = $ERROR_INFO
+    error_message = $!
   ensure
     file&.unlink
     job&.stop_job(run, return_code, success, error_message, stdout, stderr)
@@ -34,9 +34,6 @@ class ShellJob < ApplicationJob
     file.puts
     file.puts "# Shell script for job #{job.id}"
     file.puts job.command
-    file.puts
-    file.puts 'exit 0'
-
     file.close
 
     logger.debug "Job #{job.id} file written to #{file.path}"
@@ -45,5 +42,7 @@ class ShellJob < ApplicationJob
     File.chmod(0755, file.path)
 
     file
+  rescue
+    logger.error "Failed to write command to file #{file.path}: #{$!}"
   end
 end

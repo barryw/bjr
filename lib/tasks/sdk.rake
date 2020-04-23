@@ -8,6 +8,8 @@ task 'generate:sdks' do |_t, _args|
   sdks.each do |sdk|
     print "Building #{sdk[:description]}"
     sh "rm -rf sdks/#{sdk[:language]}/*"
-    sh "java -jar bin/swagger-codegen-cli.jar generate -l #{sdk[:language]} -i swagger/v1/swagger.yaml -o sdks/#{sdk[:language]} --api-package Api --model-package Model --invoker-package BJR -c sdks/#{sdk[:language]}.json"
+    sh "docker run -v ${PWD}/swagger/v1:/swagger -v ${PWD}/sdks:/config -v ${PWD}/sdks/#{sdk[:language]}:/gen -w " \
+       "/gen -e GEN_DIR=/gen swaggerapi/swagger-codegen-cli-v3:3.0.19 generate -l #{sdk[:language]} -i /swagger/swagger.yaml " \
+       "-o /gen --api-package Api --model-package Model --invoker-package BJR -c /config/#{sdk[:language]}.json"
   end
 end
