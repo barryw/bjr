@@ -6,6 +6,9 @@
 
       Barry's Job Runner
 
+
+[![codecov](https://codecov.io/gh/barryw/bjr/branch/master/graph/badge.svg)](https://codecov.io/gh/barryw/bjr)
+
 #### Introduction
 
 This is service with a very simple use case:
