@@ -42,3 +42,6 @@ en:
       not_authorized: Not authorized
       invalid_token: Invalid token
       missing_token: Missing token
+  version:
+    messages:
+      received: Version received successfully.

@@ -3,6 +3,28 @@
 require 'swagger_helper'
 
 describe 'Static API' do
+  path '/version' do
+    get 'Server version' do
+      description 'The BJR server version'
+      tags 'Static'
+      operationId 'getVersion'
+      consumes 'application/json'
+      produces 'application/json'
+
+      response '200', 'Server version received successfully' do
+        schema '$ref' => '#/components/schemas/Version'
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          version = File.read("#{Rails.root}/.version").strip
+          expect(json['object']).to eq(version)
+          expect(json['is_error']).to be false
+          expect(json['object_type']).to eq('version')
+        end
+      end
+    end
+  end
+
   path '/static_api/timezones' do
     get 'Get timezones' do
       description 'Get the list of acceptable timezone names.'

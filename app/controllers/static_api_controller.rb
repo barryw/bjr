@@ -4,7 +4,7 @@
 # Handles static routes
 #
 class StaticApiController < ApplicationController
-  skip_before_action :authenticate_request, only: [:health]
+  skip_before_action :authenticate_request, only: [:health, :version]
 
   def timezones
     timezones = ActiveSupport::TimeZone::MAPPING.keys
@@ -25,5 +25,10 @@ class StaticApiController < ApplicationController
     raise unless redis_info['connected_clients'].to_i.positive?
 
     head :ok
+  end
+
+  def version
+    version = File.read("#{Rails.root}/.version").strip
+    message I18n.t('version.messages.received'), :ok, false, version, 'version'
   end
 end
