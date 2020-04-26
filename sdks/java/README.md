@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-04-26T19:59:06.045Z[GMT]
+  - Build date: 2020-04-26T23:01:15.533Z[GMT]
 
 API specification for the BJR job server.
 

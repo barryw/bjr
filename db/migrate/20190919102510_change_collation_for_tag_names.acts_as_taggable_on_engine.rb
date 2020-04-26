@@ -10,6 +10,6 @@ else
 end
 ChangeCollationForTagNames.class_eval do
   def up
-    execute('ALTER TABLE tags MODIFY name varchar(255) CHARACTER SET utf8 COLLATE utf8_bin;') if ActsAsTaggableOn::Utils.using_mysql?
+    execute('ALTER TABLE tags MODIFY name varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;') if ActsAsTaggableOn::Utils.using_mysql?
   end
 end

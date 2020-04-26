@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * SingleJob
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-26T19:59:06.045Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-26T23:01:15.533Z[GMT]")
 public class SingleJob {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -52,9 +52,17 @@ public class SingleJob {
   @SerializedName(SERIALIZED_NAME_COMMAND)
   private String command;
 
+  public static final String SERIALIZED_NAME_LAST_RUN = "last_run";
+  @SerializedName(SERIALIZED_NAME_LAST_RUN)
+  private OffsetDateTime lastRun;
+
   public static final String SERIALIZED_NAME_NEXT_RUN = "next_run";
   @SerializedName(SERIALIZED_NAME_NEXT_RUN)
-  private String nextRun;
+  private OffsetDateTime nextRun;
+
+  public static final String SERIALIZED_NAME_SUCCESS = "success";
+  @SerializedName(SERIALIZED_NAME_SUCCESS)
+  private Boolean success;
 
   public static final String SERIALIZED_NAME_RUNNING = "running";
   @SerializedName(SERIALIZED_NAME_RUNNING)
@@ -200,7 +208,30 @@ public class SingleJob {
   }
 
 
-  public SingleJob nextRun(String nextRun) {
+  public SingleJob lastRun(OffsetDateTime lastRun) {
+    
+    this.lastRun = lastRun;
+    return this;
+  }
+
+   /**
+   * The last time the job ran.
+   * @return lastRun
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The last time the job ran.")
+
+  public OffsetDateTime getLastRun() {
+    return lastRun;
+  }
+
+
+  public void setLastRun(OffsetDateTime lastRun) {
+    this.lastRun = lastRun;
+  }
+
+
+  public SingleJob nextRun(OffsetDateTime nextRun) {
     
     this.nextRun = nextRun;
     return this;
@@ -213,13 +244,36 @@ public class SingleJob {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The date and time of the job's next run.")
 
-  public String getNextRun() {
+  public OffsetDateTime getNextRun() {
     return nextRun;
   }
 
 
-  public void setNextRun(String nextRun) {
+  public void setNextRun(OffsetDateTime nextRun) {
     this.nextRun = nextRun;
+  }
+
+
+  public SingleJob success(Boolean success) {
+    
+    this.success = success;
+    return this;
+  }
+
+   /**
+   * Whether the last run of the job was successful.
+   * @return success
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Whether the last run of the job was successful.")
+
+  public Boolean getSuccess() {
+    return success;
+  }
+
+
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
 
@@ -406,7 +460,9 @@ public class SingleJob {
         Objects.equals(this.cron, singleJob.cron) &&
         Objects.equals(this.enabled, singleJob.enabled) &&
         Objects.equals(this.command, singleJob.command) &&
+        Objects.equals(this.lastRun, singleJob.lastRun) &&
         Objects.equals(this.nextRun, singleJob.nextRun) &&
+        Objects.equals(this.success, singleJob.success) &&
         Objects.equals(this.running, singleJob.running) &&
         Objects.equals(this.timezone, singleJob.timezone) &&
         Objects.equals(this.tags, singleJob.tags) &&
@@ -418,7 +474,7 @@ public class SingleJob {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, cron, enabled, command, nextRun, running, timezone, tags, createdAt, updatedAt, successCallback, failureCallback);
+    return Objects.hash(id, name, cron, enabled, command, lastRun, nextRun, success, running, timezone, tags, createdAt, updatedAt, successCallback, failureCallback);
   }
 
 
@@ -431,7 +487,9 @@ public class SingleJob {
     sb.append("    cron: ").append(toIndentedString(cron)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    command: ").append(toIndentedString(command)).append("\n");
+    sb.append("    lastRun: ").append(toIndentedString(lastRun)).append("\n");
     sb.append("    nextRun: ").append(toIndentedString(nextRun)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    running: ").append(toIndentedString(running)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");

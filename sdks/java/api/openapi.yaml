@@ -972,6 +972,7 @@ components:
           cron: cron
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
+          last_run: 2000-01-23T04:56:07.000+00:00
           enabled: true
           command: command
           tags:
@@ -979,8 +980,9 @@ components:
           - tags
           running: true
           success_callback: success_callback
-          next_run: next_run
+          next_run: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
+          success: true
           name: name
           failure_callback: failure_callback
           id: 6
@@ -1010,6 +1012,7 @@ components:
         - cron: cron
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
+          last_run: 2000-01-23T04:56:07.000+00:00
           enabled: true
           command: command
           tags:
@@ -1017,14 +1020,16 @@ components:
           - tags
           running: true
           success_callback: success_callback
-          next_run: next_run
+          next_run: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
+          success: true
           name: name
           failure_callback: failure_callback
           id: 6
         - cron: cron
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
+          last_run: 2000-01-23T04:56:07.000+00:00
           enabled: true
           command: command
           tags:
@@ -1032,8 +1037,9 @@ components:
           - tags
           running: true
           success_callback: success_callback
-          next_run: next_run
+          next_run: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
+          success: true
           name: name
           failure_callback: failure_callback
           id: 6
@@ -1060,6 +1066,7 @@ components:
         cron: cron
         timezone: timezone
         created_at: 2000-01-23T04:56:07.000+00:00
+        last_run: 2000-01-23T04:56:07.000+00:00
         enabled: true
         command: command
         tags:
@@ -1067,8 +1074,9 @@ components:
         - tags
         running: true
         success_callback: success_callback
-        next_run: next_run
+        next_run: 2000-01-23T04:56:07.000+00:00
         updated_at: 2000-01-23T04:56:07.000+00:00
+        success: true
         name: name
         failure_callback: failure_callback
         id: 6
@@ -1089,9 +1097,18 @@ components:
         command:
           description: The command that is executed when the job fires.
           type: string
+        last_run:
+          description: The last time the job ran.
+          format: date-time
+          nullable: true
+          type: string
         next_run:
           description: The date and time of the job's next run.
+          format: date-time
           type: string
+        success:
+          description: Whether the last run of the job was successful.
+          type: boolean
         running:
           description: Whether the job is currently running.
           type: boolean

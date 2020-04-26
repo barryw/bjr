@@ -62,8 +62,14 @@ class SingleJob {
             if (data.hasOwnProperty('command')) {
                 obj['command'] = ApiClient.convertToType(data['command'], 'String');
             }
+            if (data.hasOwnProperty('last_run')) {
+                obj['last_run'] = ApiClient.convertToType(data['last_run'], 'Date');
+            }
             if (data.hasOwnProperty('next_run')) {
-                obj['next_run'] = ApiClient.convertToType(data['next_run'], 'String');
+                obj['next_run'] = ApiClient.convertToType(data['next_run'], 'Date');
+            }
+            if (data.hasOwnProperty('success')) {
+                obj['success'] = ApiClient.convertToType(data['success'], 'Boolean');
             }
             if (data.hasOwnProperty('running')) {
                 obj['running'] = ApiClient.convertToType(data['running'], 'Boolean');
@@ -124,10 +130,22 @@ SingleJob.prototype['enabled'] = undefined;
 SingleJob.prototype['command'] = undefined;
 
 /**
+ * The last time the job ran.
+ * @member {Date} last_run
+ */
+SingleJob.prototype['last_run'] = undefined;
+
+/**
  * The date and time of the job's next run.
- * @member {String} next_run
+ * @member {Date} next_run
  */
 SingleJob.prototype['next_run'] = undefined;
+
+/**
+ * Whether the last run of the job was successful.
+ * @member {Boolean} success
+ */
+SingleJob.prototype['success'] = undefined;
 
 /**
  * Whether the job is currently running.

@@ -11,11 +11,13 @@ Thank you for installing BJR! For more information and updates, please visit the
 
 A few things to note:
 
-1. Out of the box, this Helm Chart will install 2 API server pods and 2 worker pods. The API pods will have a service named `bjr-api` configured with a type of `LoadBalancer`. You can modify this as needed to gain ingress to your BJR API server.
-2. MySQL will generate random passwords the first time you deploy. They can be found in the secret named `bjr-mysql`
-3. A random BJR admin password will be generated on first deploy and can be found in the secret named `bjr`
-4. You can access your BJR server's swagger API page by first exposing it and then browsing to it. This will allow you to interact with BJR via the generated swagger interface.
-5. It will take a few minutes for the BJR pods to become healthy. Be patient!
-6. The workers and API servers are stateless, so you can scale the API and worker deployments.
-7. This Helm Chart is NOT meant for a production deployment! This is meant as a starting point for a Kubernetes deployment. Feel free to copy, paste, steal, borrow whatever you need to deploy BJR in a production environment.
+- Out of the box, this Helm Chart will install 2 API server pods, 2 worker pods and 2 web server pods. The API pods will have a service named `bjr-api` configured with a type of `LoadBalancer`. You can modify this as needed to gain ingress to your BJR API server. The web server pods will have a service named `bjr-web` configured with a type of `LoadBalancer` as well.
+- MySQL will generate random passwords the first time you deploy. They can be found in the secret named `bjr-mysql`
+- A random BJR admin password will be generated on first deploy and can be found in the secret named `bjr`
+- You can access your BJR server's swagger API page by first exposing it and then browsing to it. This will allow you to interact with BJR via the generated swagger interface.
+- A web interface will be exposed which will give you a nice way of managing your BJR server.
+- It will take a few minutes for the BJR pods to become healthy. Be patient!
+- The workers, API and web servers are stateless, so you can scale their deployments as needed, or hook them up to the Horizontal Pod Autoscaler.
+- This Helm Chart is NOT meant for a production deployment! This is meant as a starting point for a Kubernetes deployment. Feel free to copy, paste, steal, borrow whatever you need to deploy BJR in a production environment.
 
+If you need a client SDK to work with your BJR server, there are a few to choose from in the bjr repository's 'sdks' directory. Currently there are SDKs for C#, Java, Javascript, Python and Ruby.

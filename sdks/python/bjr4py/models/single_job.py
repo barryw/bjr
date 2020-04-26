@@ -38,7 +38,9 @@ class SingleJob(object):
         'cron': 'str',
         'enabled': 'bool',
         'command': 'str',
-        'next_run': 'str',
+        'last_run': 'datetime',
+        'next_run': 'datetime',
+        'success': 'bool',
         'running': 'bool',
         'timezone': 'str',
         'tags': 'list[str]',
@@ -54,7 +56,9 @@ class SingleJob(object):
         'cron': 'cron',
         'enabled': 'enabled',
         'command': 'command',
+        'last_run': 'last_run',
         'next_run': 'next_run',
+        'success': 'success',
         'running': 'running',
         'timezone': 'timezone',
         'tags': 'tags',
@@ -64,7 +68,7 @@ class SingleJob(object):
         'failure_callback': 'failure_callback'
     }
 
-    def __init__(self, id=None, name=None, cron=None, enabled=None, command=None, next_run=None, running=None, timezone=None, tags=None, created_at=None, updated_at=None, success_callback=None, failure_callback=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, cron=None, enabled=None, command=None, last_run=None, next_run=None, success=None, running=None, timezone=None, tags=None, created_at=None, updated_at=None, success_callback=None, failure_callback=None, local_vars_configuration=None):  # noqa: E501
         """SingleJob - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -75,7 +79,9 @@ class SingleJob(object):
         self._cron = None
         self._enabled = None
         self._command = None
+        self._last_run = None
         self._next_run = None
+        self._success = None
         self._running = None
         self._timezone = None
         self._tags = None
@@ -95,8 +101,11 @@ class SingleJob(object):
             self.enabled = enabled
         if command is not None:
             self.command = command
+        self.last_run = last_run
         if next_run is not None:
             self.next_run = next_run
+        if success is not None:
+            self.success = success
         if running is not None:
             self.running = running
         if timezone is not None:
@@ -226,13 +235,36 @@ class SingleJob(object):
         self._command = command
 
     @property
+    def last_run(self):
+        """Gets the last_run of this SingleJob.  # noqa: E501
+
+        The last time the job ran.  # noqa: E501
+
+        :return: The last_run of this SingleJob.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._last_run
+
+    @last_run.setter
+    def last_run(self, last_run):
+        """Sets the last_run of this SingleJob.
+
+        The last time the job ran.  # noqa: E501
+
+        :param last_run: The last_run of this SingleJob.  # noqa: E501
+        :type: datetime
+        """
+
+        self._last_run = last_run
+
+    @property
     def next_run(self):
         """Gets the next_run of this SingleJob.  # noqa: E501
 
         The date and time of the job's next run.  # noqa: E501
 
         :return: The next_run of this SingleJob.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._next_run
 
@@ -243,10 +275,33 @@ class SingleJob(object):
         The date and time of the job's next run.  # noqa: E501
 
         :param next_run: The next_run of this SingleJob.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._next_run = next_run
+
+    @property
+    def success(self):
+        """Gets the success of this SingleJob.  # noqa: E501
+
+        Whether the last run of the job was successful.  # noqa: E501
+
+        :return: The success of this SingleJob.  # noqa: E501
+        :rtype: bool
+        """
+        return self._success
+
+    @success.setter
+    def success(self, success):
+        """Sets the success of this SingleJob.
+
+        Whether the last run of the job was successful.  # noqa: E501
+
+        :param success: The success of this SingleJob.  # noqa: E501
+        :type: bool
+        """
+
+        self._success = success
 
     @property
     def running(self):

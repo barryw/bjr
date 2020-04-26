@@ -84,8 +84,20 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property lastRun (base name: "last_run")', function() {
+      // uncomment below and update the code to test the property lastRun
+      //var instane = new Bjr4js.SingleJob();
+      //expect(instance).to.be();
+    });
+
     it('should have the property nextRun (base name: "next_run")', function() {
       // uncomment below and update the code to test the property nextRun
+      //var instane = new Bjr4js.SingleJob();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property success (base name: "success")', function() {
+      // uncomment below and update the code to test the property success
       //var instane = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });

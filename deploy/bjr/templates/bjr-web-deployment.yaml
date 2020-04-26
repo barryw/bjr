@@ -74,10 +74,10 @@ spec:
             path: /health
             port: 3000
           initialDelaySeconds: 120
-          periodSeconds: 3
+          periodSeconds: 30
         readinessProbe:
           httpGet:
             path: /health
             port: 3000
           initialDelaySeconds: 120
-          periodSeconds: 3
+          periodSeconds: 30

@@ -84,11 +84,27 @@ public class SingleJobTest {
     }
 
     /**
+     * Test the property 'lastRun'
+     */
+    @Test
+    public void lastRunTest() {
+        // TODO: test lastRun
+    }
+
+    /**
      * Test the property 'nextRun'
      */
     @Test
     public void nextRunTest() {
         // TODO: test nextRun
+    }
+
+    /**
+     * Test the property 'success'
+     */
+    @Test
+    public void successTest() {
+        // TODO: test success
     }
 
     /**

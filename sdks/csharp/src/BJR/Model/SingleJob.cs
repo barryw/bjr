@@ -38,7 +38,9 @@ namespace BJR.Model
         /// <param name="cron">The cron expression for the job..</param>
         /// <param name="enabled">Whether the job is enabled or not..</param>
         /// <param name="command">The command that is executed when the job fires..</param>
+        /// <param name="lastRun">The last time the job ran..</param>
         /// <param name="nextRun">The date and time of the job&#39;s next run..</param>
+        /// <param name="success">Whether the last run of the job was successful..</param>
         /// <param name="running">Whether the job is currently running..</param>
         /// <param name="timezone">The timezone that the job will run in..</param>
         /// <param name="tags">An array of tags associated with the job..</param>
@@ -46,8 +48,9 @@ namespace BJR.Model
         /// <param name="updatedAt">The UTC date and time that the object was last modified..</param>
         /// <param name="successCallback">This url will receive a POST request with details about all successful job runs..</param>
         /// <param name="failureCallback">This url will receive a POST request with details about all unsuccessful job runs..</param>
-        public SingleJob(int id = default(int), string name = default(string), string cron = default(string), bool enabled = default(bool), string command = default(string), string nextRun = default(string), bool running = default(bool), string timezone = default(string), List<string> tags = default(List<string>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string successCallback = default(string), string failureCallback = default(string))
+        public SingleJob(int id = default(int), string name = default(string), string cron = default(string), bool enabled = default(bool), string command = default(string), DateTime? lastRun = default(DateTime?), DateTime nextRun = default(DateTime), bool success = default(bool), bool running = default(bool), string timezone = default(string), List<string> tags = default(List<string>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string successCallback = default(string), string failureCallback = default(string))
         {
+            this.LastRun = lastRun;
             this.SuccessCallback = successCallback;
             this.FailureCallback = failureCallback;
             this.Id = id;
@@ -55,7 +58,9 @@ namespace BJR.Model
             this.Cron = cron;
             this.Enabled = enabled;
             this.Command = command;
+            this.LastRun = lastRun;
             this.NextRun = nextRun;
+            this.Success = success;
             this.Running = running;
             this.Timezone = timezone;
             this.Tags = tags;
@@ -101,11 +106,25 @@ namespace BJR.Model
         public string Command { get; set; }
 
         /// <summary>
+        /// The last time the job ran.
+        /// </summary>
+        /// <value>The last time the job ran.</value>
+        [DataMember(Name="last_run", EmitDefaultValue=true)]
+        public DateTime? LastRun { get; set; }
+
+        /// <summary>
         /// The date and time of the job&#39;s next run.
         /// </summary>
         /// <value>The date and time of the job&#39;s next run.</value>
         [DataMember(Name="next_run", EmitDefaultValue=false)]
-        public string NextRun { get; set; }
+        public DateTime NextRun { get; set; }
+
+        /// <summary>
+        /// Whether the last run of the job was successful.
+        /// </summary>
+        /// <value>Whether the last run of the job was successful.</value>
+        [DataMember(Name="success", EmitDefaultValue=false)]
+        public bool Success { get; set; }
 
         /// <summary>
         /// Whether the job is currently running.
@@ -169,7 +188,9 @@ namespace BJR.Model
             sb.Append("  Cron: ").Append(Cron).Append("\n");
             sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  Command: ").Append(Command).Append("\n");
+            sb.Append("  LastRun: ").Append(LastRun).Append("\n");
             sb.Append("  NextRun: ").Append(NextRun).Append("\n");
+            sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("  Running: ").Append(Running).Append("\n");
             sb.Append("  Timezone: ").Append(Timezone).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
@@ -237,9 +258,19 @@ namespace BJR.Model
                     this.Command.Equals(input.Command))
                 ) && 
                 (
+                    this.LastRun == input.LastRun ||
+                    (this.LastRun != null &&
+                    this.LastRun.Equals(input.LastRun))
+                ) && 
+                (
                     this.NextRun == input.NextRun ||
                     (this.NextRun != null &&
                     this.NextRun.Equals(input.NextRun))
+                ) && 
+                (
+                    this.Success == input.Success ||
+                    (this.Success != null &&
+                    this.Success.Equals(input.Success))
                 ) && 
                 (
                     this.Running == input.Running ||
@@ -298,8 +329,12 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.Enabled.GetHashCode();
                 if (this.Command != null)
                     hashCode = hashCode * 59 + this.Command.GetHashCode();
+                if (this.LastRun != null)
+                    hashCode = hashCode * 59 + this.LastRun.GetHashCode();
                 if (this.NextRun != null)
                     hashCode = hashCode * 59 + this.NextRun.GetHashCode();
+                if (this.Success != null)
+                    hashCode = hashCode * 59 + this.Success.GetHashCode();
                 if (this.Running != null)
                     hashCode = hashCode * 59 + this.Running.GetHashCode();
                 if (this.Timezone != null)

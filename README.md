@@ -117,7 +117,7 @@ make undeploy
 
 #### SDKs
 
-The BJR API server has a Swagger UI available at `/api-docs` which you can use to interact with BJR. The `swagger.yaml` lives in `swagger/v1` and can be used to generate SDKs for several languages using Swagger codegen.
+The BJR API server has a Swagger UI available at `/api-docs` which you can use to interact with BJR. The `swagger.yaml` lives in `swagger/v1` and can be used to generate SDKs for several languages using OpenAPI codegen.
 
 In order to generate the SDKs, you will need to be running `docker`. To generate them, run
 
@@ -133,6 +133,7 @@ Currently, the SDKs are generated for the following languages:
 - Python
 - Java
 - Javascript
+- Ruby
 
 #### Interacting with BJR using curl
 

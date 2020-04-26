@@ -2,7 +2,7 @@
 
 class CreateJobRuns < ActiveRecord::Migration[5.2]
   def change
-    create_table :job_runs do |t|
+    create_table :job_runs, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.boolean :success, null: true
       t.integer :return_code, null: true
       t.string :error_message, null: true

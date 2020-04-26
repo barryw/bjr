@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **cron** | **String** | The cron expression for the job. | [optional] 
 **enabled** | **Boolean** | Whether the job is enabled or not. | [optional] 
 **command** | **String** | The command that is executed when the job fires. | [optional] 
-**next_run** | **String** | The date and time of the job&#39;s next run. | [optional] 
+**last_run** | **DateTime** | The last time the job ran. | [optional] 
+**next_run** | **DateTime** | The date and time of the job&#39;s next run. | [optional] 
+**success** | **Boolean** | Whether the last run of the job was successful. | [optional] 
 **running** | **Boolean** | Whether the job is currently running. | [optional] 
 **timezone** | **String** | The timezone that the job will run in. | [optional] 
 **tags** | **Array&lt;String&gt;** | An array of tags associated with the job. | [optional] 
@@ -28,7 +30,9 @@ instance = BJR::SingleJob.new(id: null,
                                  cron: null,
                                  enabled: null,
                                  command: null,
+                                 last_run: null,
                                  next_run: null,
+                                 success: null,
                                  running: null,
                                  timezone: null,
                                  tags: null,

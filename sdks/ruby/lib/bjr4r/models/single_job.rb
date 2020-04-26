@@ -29,8 +29,14 @@ module BJR
     # The command that is executed when the job fires.
     attr_accessor :command
 
+    # The last time the job ran.
+    attr_accessor :last_run
+
     # The date and time of the job's next run.
     attr_accessor :next_run
+
+    # Whether the last run of the job was successful.
+    attr_accessor :success
 
     # Whether the job is currently running.
     attr_accessor :running
@@ -61,7 +67,9 @@ module BJR
         :'cron' => :'cron',
         :'enabled' => :'enabled',
         :'command' => :'command',
+        :'last_run' => :'last_run',
         :'next_run' => :'next_run',
+        :'success' => :'success',
         :'running' => :'running',
         :'timezone' => :'timezone',
         :'tags' => :'tags',
@@ -80,7 +88,9 @@ module BJR
         :'cron' => :'String',
         :'enabled' => :'Boolean',
         :'command' => :'String',
-        :'next_run' => :'String',
+        :'last_run' => :'DateTime',
+        :'next_run' => :'DateTime',
+        :'success' => :'Boolean',
         :'running' => :'Boolean',
         :'timezone' => :'String',
         :'tags' => :'Array<String>',
@@ -94,6 +104,7 @@ module BJR
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'last_run',
         :'success_callback',
         :'failure_callback'
       ])
@@ -134,8 +145,16 @@ module BJR
         self.command = attributes[:'command']
       end
 
+      if attributes.key?(:'last_run')
+        self.last_run = attributes[:'last_run']
+      end
+
       if attributes.key?(:'next_run')
         self.next_run = attributes[:'next_run']
+      end
+
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
       end
 
       if attributes.key?(:'running')
@@ -192,7 +211,9 @@ module BJR
           cron == o.cron &&
           enabled == o.enabled &&
           command == o.command &&
+          last_run == o.last_run &&
           next_run == o.next_run &&
+          success == o.success &&
           running == o.running &&
           timezone == o.timezone &&
           tags == o.tags &&
@@ -211,7 +232,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, cron, enabled, command, next_run, running, timezone, tags, created_at, updated_at, success_callback, failure_callback].hash
+      [id, name, cron, enabled, command, last_run, next_run, success, running, timezone, tags, created_at, updated_at, success_callback, failure_callback].hash
     end
 
     # Builds the object from hash

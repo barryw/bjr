@@ -14,8 +14,8 @@ class JobRun < ApplicationRecord
     self.success = success
     self.return_code = return_code
     self.error_message = error_message
-    self.stdout = stdout
-    self.stderr = stderr
+    self.stdout = stdout.nil? ? '' : stdout.encode('UTF-8', invalid: :replace, undef: :replace)
+    self.stderr = stderr.nil? ? '' : stderr.encode('UTF-8', invalid: :replace, undef: :replace)
     self.end_time = Time.current
     save
 

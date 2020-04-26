@@ -2,7 +2,7 @@
 
 class CreateJobs < ActiveRecord::Migration[5.2]
   def change
-    create_table :jobs do |t|
+    create_table :jobs, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.string :name, null: false, limit: 100
       t.string :cron, null: false, limit: 20
       t.datetime :last_run, null: true

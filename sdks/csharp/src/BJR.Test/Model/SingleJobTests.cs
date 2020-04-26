@@ -106,12 +106,28 @@ namespace BJR.Test
             // TODO unit test for the property 'Command'
         }
         /// <summary>
+        /// Test the property 'LastRun'
+        /// </summary>
+        [Test]
+        public void LastRunTest()
+        {
+            // TODO unit test for the property 'LastRun'
+        }
+        /// <summary>
         /// Test the property 'NextRun'
         /// </summary>
         [Test]
         public void NextRunTest()
         {
             // TODO unit test for the property 'NextRun'
+        }
+        /// <summary>
+        /// Test the property 'Success'
+        /// </summary>
+        [Test]
+        public void SuccessTest()
+        {
+            // TODO unit test for the property 'Success'
         }
         /// <summary>
         /// Test the property 'Running'

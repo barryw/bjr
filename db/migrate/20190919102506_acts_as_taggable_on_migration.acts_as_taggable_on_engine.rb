@@ -8,11 +8,11 @@ else
 end
 ActsAsTaggableOnMigration.class_eval do
   def self.up
-    create_table :tags do |t|
+    create_table :tags, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.string :name
     end
 
-    create_table :taggings do |t|
+    create_table :taggings, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.references :tag
 
       # You should make sure that the column created is
