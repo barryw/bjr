@@ -19,11 +19,12 @@ RSpec.configure do |config|
       openapi: '3.0.1',
       info: {
         title: 'BJR API V1',
+        description: 'API specification for the BJR job server.',
         version: 'v1'
       },
       components: {
         schemas: {
-          Version: {
+          ServerVersion: {
             type: :object,
             properties: {
               message: { type: :string, description: 'The status message returned from the API call.' },
@@ -126,9 +127,10 @@ RSpec.configure do |config|
           AuthIn: {
             type: :object,
             properties: {
-              username: { type: :string, description: 'The username of the user to authenticate as', required: true },
-              password: { type: :string, description: 'The password of the user to authenticate as', required: true }
-            }
+              username: { type: :string, description: 'The username of the user to authenticate as' },
+              password: { type: :string, description: 'The password of the user to authenticate as' }
+            },
+            required: [:username, :password]
           },
           AuthOut: {
             type: :object,
@@ -142,17 +144,19 @@ RSpec.configure do |config|
           UserNewIn: {
             type: :object,
             properties: {
-              username: { type: :string, description: "The new user's username. Must be unique.", required: true },
-              password: { type: :string, description: "The new user's password.", required: true },
-              password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'.", required: true }
-            }
+              username: { type: :string, description: "The new user's username. Must be unique." },
+              password: { type: :string, description: "The new user's password." },
+              password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'." }
+            },
+            required: [:username, :password, :password_confirmation]
           },
           UserUpdateIn: {
             type: :object,
             properties: {
-              password: { type: :string, description: "The new user's password.", required: true },
-              password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'.", required: true }
-            }
+              password: { type: :string, description: "The new user's password." },
+              password_confirmation: { type: :string, description: "The new user's password confirmation. Must match 'password'." }
+            },
+            required: [:password, :password_confirmation]
           },
           SingleUserMessage: {
             type: :object,
@@ -232,15 +236,16 @@ RSpec.configure do |config|
           JobIn: {
             type: :object,
             properties: {
-              name: { type: :string, description: 'The new name of the job. Must be unique.', required: true },
-              cron: { type: :string, description: 'The new cron expression for the job.', required: true },
-              command: { type: :string, description: 'The command to run when the job fires.', required: true },
-              timezone: { type: :string, description: 'The timezone to run the job in.', required: false },
-              enabled: { type: :boolean, description: 'Is the job enabled by default?', required: false },
-              tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.', required: false },
-              success_callback: { type: :string, description: 'Specify the url to receive a POST callback for all successful runs of this job.', required: false },
-              failure_callback: { type: :string, description: 'Specify the url to receive a POST callback for all unsuccessful runs of this job.', required: false }
-            }
+              name: { type: :string, description: 'The new name of the job. Must be unique.' },
+              cron: { type: :string, description: 'The new cron expression for the job.' },
+              command: { type: :string, description: 'The command to run when the job fires.' },
+              timezone: { type: :string, description: 'The timezone to run the job in.' },
+              enabled: { type: :boolean, description: 'Is the job enabled by default?' },
+              tags: { type: :string, description: 'A comma-separated list of tags to associate with this job. You can search jobs by their tags.' },
+              success_callback: { type: :string, description: 'Specify the url to receive a POST callback for all successful runs of this job.' },
+              failure_callback: { type: :string, description: 'Specify the url to receive a POST callback for all unsuccessful runs of this job.' }
+            },
+            required: [:name, :cron, :command]
           }
         },
         securitySchemes: {

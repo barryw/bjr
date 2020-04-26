@@ -12,7 +12,7 @@ describe 'Static API' do
       produces 'application/json'
 
       response '200', 'Server version received successfully' do
-        schema '$ref' => '#/components/schemas/Version'
+        schema '$ref' => '#/components/schemas/ServerVersion'
 
         run_test! do |response|
           json = JSON.parse(response.body)

@@ -1,6 +1,6 @@
 # JobsApi
 
-All URIs are relative to */*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,9 +12,10 @@ Method | HTTP request | Description
 [**jobOccurrences**](JobsApi.md#jobOccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 [**updateJob**](JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
 
+
 <a name="createJob"></a>
 # **createJob**
-> SingleJobMessage createJob(body)
+> SingleJobMessage createJob(jobIn)
 
 Creates a job
 
@@ -23,23 +24,35 @@ Creates a job
 ### Example
 ```java
 // Import classes:
-//import BJR.ApiClient;
-//import BJR.ApiException;
-//import BJR.Configuration;
-//import BJR.auth.*;
-//import Api.JobsApi;
+import io.barrywalker.bjr.ApiClient;
+import io.barrywalker.bjr.ApiException;
+import io.barrywalker.bjr.Configuration;
+import io.barrywalker.bjr.auth.*;
+import io.barrywalker.bjr.models.*;
+import io.barrywalker.bjr.api.JobsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
 
-
-JobsApi apiInstance = new JobsApi();
-JobIn body = new JobIn(); // JobIn | 
-try {
-    SingleJobMessage result = apiInstance.createJob(body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling JobsApi#createJob");
-    e.printStackTrace();
+    JobsApi apiInstance = new JobsApi(defaultClient);
+    JobIn jobIn = new JobIn(); // JobIn | 
+    try {
+      SingleJobMessage result = apiInstance.createJob(jobIn);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling JobsApi#createJob");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -47,7 +60,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**JobIn**](JobIn.md)|  | [optional]
+ **jobIn** | [**JobIn**](JobIn.md)|  | [optional]
 
 ### Return type
 
@@ -62,6 +75,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Job created successfully. |  -  |
+**403** | A job with this name already exists. |  -  |
+
 <a name="deleteJob"></a>
 # **deleteJob**
 > deleteJob(id)
@@ -73,22 +92,34 @@ Deletes a job
 ### Example
 ```java
 // Import classes:
-//import BJR.ApiClient;
-//import BJR.ApiException;
-//import BJR.Configuration;
-//import BJR.auth.*;
-//import Api.JobsApi;
+import io.barrywalker.bjr.ApiClient;
+import io.barrywalker.bjr.ApiException;
+import io.barrywalker.bjr.Configuration;
+import io.barrywalker.bjr.auth.*;
+import io.barrywalker.bjr.models.*;
+import io.barrywalker.bjr.api.JobsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
 
-
-JobsApi apiInstance = new JobsApi();
-Integer id = 56; // Integer | 
-try {
-    apiInstance.deleteJob(id);
-} catch (ApiException e) {
-    System.err.println("Exception when calling JobsApi#deleteJob");
-    e.printStackTrace();
+    JobsApi apiInstance = new JobsApi(defaultClient);
+    Integer id = 56; // Integer | 
+    try {
+      apiInstance.deleteJob(id);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling JobsApi#deleteJob");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -111,6 +142,12 @@ null (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Job %{id} deleted successfully. |  -  |
+**404** | Job not found. |  -  |
+
 <a name="getJob"></a>
 # **getJob**
 > SingleJobMessage getJob(id)
@@ -122,23 +159,35 @@ Retrieves a single job
 ### Example
 ```java
 // Import classes:
-//import BJR.ApiClient;
-//import BJR.ApiException;
-//import BJR.Configuration;
-//import BJR.auth.*;
-//import Api.JobsApi;
+import io.barrywalker.bjr.ApiClient;
+import io.barrywalker.bjr.ApiException;
+import io.barrywalker.bjr.Configuration;
+import io.barrywalker.bjr.auth.*;
+import io.barrywalker.bjr.models.*;
+import io.barrywalker.bjr.api.JobsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
 
-
-JobsApi apiInstance = new JobsApi();
-Integer id = 56; // Integer | 
-try {
-    SingleJobMessage result = apiInstance.getJob(id);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling JobsApi#getJob");
-    e.printStackTrace();
+    JobsApi apiInstance = new JobsApi(defaultClient);
+    Integer id = 56; // Integer | 
+    try {
+      SingleJobMessage result = apiInstance.getJob(id);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling JobsApi#getJob");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -161,6 +210,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Job returned successfully |  -  |
+**404** | Job not found. |  -  |
+
 <a name="getJobRuns"></a>
 # **getJobRuns**
 > JobRunArrayMessage getJobRuns(id, perPage, page, succeeded, startDate, endDate)
@@ -172,28 +227,40 @@ Retrieve the runs for a job
 ### Example
 ```java
 // Import classes:
-//import BJR.ApiClient;
-//import BJR.ApiException;
-//import BJR.Configuration;
-//import BJR.auth.*;
-//import Api.JobsApi;
+import io.barrywalker.bjr.ApiClient;
+import io.barrywalker.bjr.ApiException;
+import io.barrywalker.bjr.Configuration;
+import io.barrywalker.bjr.auth.*;
+import io.barrywalker.bjr.models.*;
+import io.barrywalker.bjr.api.JobsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
 
-
-JobsApi apiInstance = new JobsApi();
-Integer id = 56; // Integer | 
-Integer perPage = 56; // Integer | 
-Integer page = 56; // Integer | 
-Boolean succeeded = true; // Boolean | 
-String startDate = "startDate_example"; // String | 
-String endDate = "endDate_example"; // String | 
-try {
-    JobRunArrayMessage result = apiInstance.getJobRuns(id, perPage, page, succeeded, startDate, endDate);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling JobsApi#getJobRuns");
-    e.printStackTrace();
+    JobsApi apiInstance = new JobsApi(defaultClient);
+    Integer id = 56; // Integer | 
+    Integer perPage = 56; // Integer | 
+    Integer page = 56; // Integer | 
+    Boolean succeeded = true; // Boolean | 
+    String startDate = "startDate_example"; // String | 
+    String endDate = "endDate_example"; // String | 
+    try {
+      JobRunArrayMessage result = apiInstance.getJobRuns(id, perPage, page, succeeded, startDate, endDate);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling JobsApi#getJobRuns");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -221,6 +288,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Runs received successfully. |  -  |
+
 <a name="getJobs"></a>
 # **getJobs**
 > JobArrayMessage getJobs(tags, incexc, startDate, endDate, perPage, page)
@@ -232,28 +304,40 @@ Retrieves jobs
 ### Example
 ```java
 // Import classes:
-//import BJR.ApiClient;
-//import BJR.ApiException;
-//import BJR.Configuration;
-//import BJR.auth.*;
-//import Api.JobsApi;
+import io.barrywalker.bjr.ApiClient;
+import io.barrywalker.bjr.ApiException;
+import io.barrywalker.bjr.Configuration;
+import io.barrywalker.bjr.auth.*;
+import io.barrywalker.bjr.models.*;
+import io.barrywalker.bjr.api.JobsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
 
-
-JobsApi apiInstance = new JobsApi();
-String tags = "tags_example"; // String | Specify a comma-separated list of tags to search jobs by.
-String incexc = "incexc_example"; // String | 
-String startDate = "startDate_example"; // String | Specify a start date to search jobs by.
-String endDate = "endDate_example"; // String | Specify an end date to search jobs by.
-Integer perPage = 56; // Integer | 
-Integer page = 56; // Integer | 
-try {
-    JobArrayMessage result = apiInstance.getJobs(tags, incexc, startDate, endDate, perPage, page);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling JobsApi#getJobs");
-    e.printStackTrace();
+    JobsApi apiInstance = new JobsApi(defaultClient);
+    String tags = "tags_example"; // String | Specify a comma-separated list of tags to search jobs by.
+    String incexc = "incexc_example"; // String | 
+    String startDate = "startDate_example"; // String | Specify a start date to search jobs by.
+    String endDate = "endDate_example"; // String | Specify an end date to search jobs by.
+    Integer perPage = 56; // Integer | 
+    Integer page = 56; // Integer | 
+    try {
+      JobArrayMessage result = apiInstance.getJobs(tags, incexc, startDate, endDate, perPage, page);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling JobsApi#getJobs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -281,6 +365,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Jobs returned successfully |  -  |
+
 <a name="jobOccurrences"></a>
 # **jobOccurrences**
 > OccurrenceMessage jobOccurrences(id, endDate, perPage, page)
@@ -292,26 +381,38 @@ Retrieves a list of upcoming occurrences for a job
 ### Example
 ```java
 // Import classes:
-//import BJR.ApiClient;
-//import BJR.ApiException;
-//import BJR.Configuration;
-//import BJR.auth.*;
-//import Api.JobsApi;
+import io.barrywalker.bjr.ApiClient;
+import io.barrywalker.bjr.ApiException;
+import io.barrywalker.bjr.Configuration;
+import io.barrywalker.bjr.auth.*;
+import io.barrywalker.bjr.models.*;
+import io.barrywalker.bjr.api.JobsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
 
-
-JobsApi apiInstance = new JobsApi();
-Integer id = 56; // Integer | The id of the job to retrieve occurrences for
-String endDate = "endDate_example"; // String | The date to retrieve occurrences up to
-Integer perPage = 56; // Integer | 
-Integer page = 56; // Integer | 
-try {
-    OccurrenceMessage result = apiInstance.jobOccurrences(id, endDate, perPage, page);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling JobsApi#jobOccurrences");
-    e.printStackTrace();
+    JobsApi apiInstance = new JobsApi(defaultClient);
+    Integer id = 56; // Integer | The id of the job to retrieve occurrences for
+    String endDate = "endDate_example"; // String | The date to retrieve occurrences up to
+    Integer perPage = 56; // Integer | 
+    Integer page = 56; // Integer | 
+    try {
+      OccurrenceMessage result = apiInstance.jobOccurrences(id, endDate, perPage, page);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling JobsApi#jobOccurrences");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -337,9 +438,15 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Occurrences received successfully |  -  |
+**404** | Job not found |  -  |
+
 <a name="updateJob"></a>
 # **updateJob**
-> SingleJobMessage updateJob(id, body)
+> SingleJobMessage updateJob(id, jobIn)
 
 Updates a single job
 
@@ -348,24 +455,36 @@ Updates a single job
 ### Example
 ```java
 // Import classes:
-//import BJR.ApiClient;
-//import BJR.ApiException;
-//import BJR.Configuration;
-//import BJR.auth.*;
-//import Api.JobsApi;
+import io.barrywalker.bjr.ApiClient;
+import io.barrywalker.bjr.ApiException;
+import io.barrywalker.bjr.Configuration;
+import io.barrywalker.bjr.auth.*;
+import io.barrywalker.bjr.models.*;
+import io.barrywalker.bjr.api.JobsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
 
-
-JobsApi apiInstance = new JobsApi();
-Integer id = 56; // Integer | 
-JobIn body = new JobIn(); // JobIn | 
-try {
-    SingleJobMessage result = apiInstance.updateJob(id, body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling JobsApi#updateJob");
-    e.printStackTrace();
+    JobsApi apiInstance = new JobsApi(defaultClient);
+    Integer id = 56; // Integer | 
+    JobIn jobIn = new JobIn(); // JobIn | 
+    try {
+      SingleJobMessage result = apiInstance.updateJob(id, jobIn);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling JobsApi#updateJob");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -374,7 +493,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Integer**|  |
- **body** | [**JobIn**](JobIn.md)|  | [optional]
+ **jobIn** | [**JobIn**](JobIn.md)|  | [optional]
 
 ### Return type
 
@@ -388,4 +507,11 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Job updated successfully. |  -  |
+**403** | Job could not be updated. |  -  |
+**404** | Job not found. |  -  |
 

@@ -1,6 +1,6 @@
-# BjrApiV1.UsersApi
+# Bjr4js.UsersApi
 
-All URIs are relative to */*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,23 +10,30 @@ Method | HTTP request | Description
 [**getUsers**](UsersApi.md#getUsers) | **GET** /user_api | Retrieves users
 [**updateUser**](UsersApi.md#updateUser) | **PUT** /user_api/{id} | Update a single user
 
-<a name="createUser"></a>
-# **createUser**
-> SingleUserMessage createUser()
+
+
+## createUser
+
+> SingleUserMessage createUser(opts)
 
 Creates a user
 
 Create a new user
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.UsersApi();
-
-apiInstance.createUser(, (error, data, response) => {
+let apiInstance = new Bjr4js.UsersApi();
+let opts = {
+  'userNewIn': new Bjr4js.UserNewIn() // UserNewIn | 
+};
+apiInstance.createUser(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -37,9 +44,10 @@ apiInstance.createUser(, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UserNewIn**](UserNewIn.md)|  | [optional] 
+ **userNewIn** | [**UserNewIn**](UserNewIn.md)|  | [optional] 
 
 ### Return type
 
@@ -51,11 +59,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deleteUser"></a>
-# **deleteUser**
+
+## deleteUser
+
 > SingleUserMessage deleteUser(id)
 
 Deletes a user
@@ -63,14 +72,16 @@ Deletes a user
 Deletes a user
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.UsersApi();
+let apiInstance = new Bjr4js.UsersApi();
 let id = 56; // Number | 
-
 apiInstance.deleteUser(id, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -82,6 +93,7 @@ apiInstance.deleteUser(id, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**|  | 
@@ -96,11 +108,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getUser"></a>
-# **getUser**
+
+## getUser
+
 > SingleUserMessage getUser(id)
 
 Retrieve a single user
@@ -108,14 +121,16 @@ Retrieve a single user
 Retrieve a single user
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.UsersApi();
+let apiInstance = new Bjr4js.UsersApi();
 let id = 56; // Number | 
-
 apiInstance.getUser(id, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -127,6 +142,7 @@ apiInstance.getUser(id, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**|  | 
@@ -141,11 +157,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getUsers"></a>
-# **getUsers**
+
+## getUsers
+
 > UserArrayMessage getUsers(opts)
 
 Retrieves users
@@ -153,13 +170,16 @@ Retrieves users
 Get a list of users
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.UsersApi();
-let opts = { 
+let apiInstance = new Bjr4js.UsersApi();
+let opts = {
   'perPage': 56, // Number | 
   'page': 56 // Number | 
 };
@@ -173,6 +193,7 @@ apiInstance.getUsers(opts, (error, data, response) => {
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -189,27 +210,33 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="updateUser"></a>
-# **updateUser**
-> SingleUserMessage updateUser(id)
+
+## updateUser
+
+> SingleUserMessage updateUser(id, opts)
 
 Update a single user
 
 Update a single user
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.UsersApi();
+let apiInstance = new Bjr4js.UsersApi();
 let id = 56; // Number | 
-
-apiInstance.updateUser(id, (error, data, response) => {
+let opts = {
+  'userUpdateIn': new Bjr4js.UserUpdateIn() // UserUpdateIn | 
+};
+apiInstance.updateUser(id, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -220,10 +247,11 @@ apiInstance.updateUser(id, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**|  | 
- **body** | [**UserUpdateIn**](UserUpdateIn.md)|  | [optional] 
+ **userUpdateIn** | [**UserUpdateIn**](UserUpdateIn.md)|  | [optional] 
 
 ### Return type
 
@@ -235,6 +263,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 

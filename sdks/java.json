@@ -1,2 +1,11 @@
 {
+  "developerName": "Barry Walker",
+  "developerEmail": "barrywalker@gmail.com",
+  "artifactDescription": "BJR Client SDK for Java",
+  "licenseName": "BSD-3-Clause",
+  "artifactId": "bjr4j",
+  "invokerPackage": "io.barrywalker.bjr",
+  "apiPackage": "io.barrywalker.bjr.api",
+  "modelPackage": "io.barrywalker.bjr.model",
+  "artifactVersion": "1.0.0"
 }

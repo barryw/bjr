@@ -1,6 +1,6 @@
 # BJR.Api.JobsApi
 
-All URIs are relative to */*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,17 +12,20 @@ Method | HTTP request | Description
 [**JobOccurrences**](JobsApi.md#joboccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 [**UpdateJob**](JobsApi.md#updatejob) | **PUT** /job_api/{id} | Updates a single job
 
-<a name="createjob"></a>
-# **CreateJob**
-> SingleJobMessage CreateJob (JobIn body = null)
+
+
+## CreateJob
+
+> SingleJobMessage CreateJob (JobIn jobIn = null)
 
 Creates a job
 
 Creates a job
 
 ### Example
+
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using BJR.Api;
 using BJR.Client;
@@ -32,21 +35,26 @@ namespace Example
 {
     public class CreateJobExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost";
+            // Configure HTTP bearer authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new JobsApi();
-            var body = new JobIn(); // JobIn |  (optional) 
+            var apiInstance = new JobsApi(Configuration.Default);
+            var jobIn = new JobIn(); // JobIn |  (optional) 
 
             try
             {
                 // Creates a job
-                SingleJobMessage result = apiInstance.CreateJob(body);
+                SingleJobMessage result = apiInstance.CreateJob(jobIn);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling JobsApi.CreateJob: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -55,9 +63,10 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**JobIn**](JobIn.md)|  | [optional] 
+ **jobIn** | [**JobIn**](JobIn.md)|  | [optional] 
 
 ### Return type
 
@@ -69,21 +78,33 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="deletejob"></a>
-# **DeleteJob**
-> void DeleteJob (int? id)
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Job created successfully. |  -  |
+| **403** | A job with this name already exists. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteJob
+
+> void DeleteJob (int id)
 
 Deletes a job
 
 Deletes a job
 
 ### Example
+
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using BJR.Api;
 using BJR.Client;
@@ -93,20 +114,25 @@ namespace Example
 {
     public class DeleteJobExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost";
+            // Configure HTTP bearer authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new JobsApi();
-            var id = 56;  // int? | 
+            var apiInstance = new JobsApi(Configuration.Default);
+            var id = 56;  // int | 
 
             try
             {
                 // Deletes a job
                 apiInstance.DeleteJob(id);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling JobsApi.DeleteJob: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -115,9 +141,10 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int?**|  | 
+ **id** | **int**|  | 
 
 ### Return type
 
@@ -129,21 +156,33 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="getjob"></a>
-# **GetJob**
-> SingleJobMessage GetJob (int? id)
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Job %{id} deleted successfully. |  -  |
+| **404** | Job not found. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetJob
+
+> SingleJobMessage GetJob (int id)
 
 Retrieves a single job
 
 Retrieves a single job
 
 ### Example
+
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using BJR.Api;
 using BJR.Client;
@@ -153,11 +192,14 @@ namespace Example
 {
     public class GetJobExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost";
+            // Configure HTTP bearer authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new JobsApi();
-            var id = 56;  // int? | 
+            var apiInstance = new JobsApi(Configuration.Default);
+            var id = 56;  // int | 
 
             try
             {
@@ -165,9 +207,11 @@ namespace Example
                 SingleJobMessage result = apiInstance.GetJob(id);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling JobsApi.GetJob: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -176,9 +220,10 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int?**|  | 
+ **id** | **int**|  | 
 
 ### Return type
 
@@ -190,21 +235,33 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="getjobruns"></a>
-# **GetJobRuns**
-> JobRunArrayMessage GetJobRuns (int? id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null)
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Job returned successfully |  -  |
+| **404** | Job not found. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetJobRuns
+
+> JobRunArrayMessage GetJobRuns (int id, int perPage = null, int page = null, bool succeeded = null, string startDate = null, string endDate = null)
 
 Retrieve the runs for a job
 
 Retrieve the runs for a job
 
 ### Example
+
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using BJR.Api;
 using BJR.Client;
@@ -214,14 +271,17 @@ namespace Example
 {
     public class GetJobRunsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost";
+            // Configure HTTP bearer authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new JobsApi();
-            var id = 56;  // int? | 
-            var perPage = 56;  // int? |  (optional) 
-            var page = 56;  // int? |  (optional) 
-            var succeeded = true;  // bool? |  (optional) 
+            var apiInstance = new JobsApi(Configuration.Default);
+            var id = 56;  // int | 
+            var perPage = 56;  // int |  (optional) 
+            var page = 56;  // int |  (optional) 
+            var succeeded = true;  // bool |  (optional) 
             var startDate = startDate_example;  // string |  (optional) 
             var endDate = endDate_example;  // string |  (optional) 
 
@@ -231,9 +291,11 @@ namespace Example
                 JobRunArrayMessage result = apiInstance.GetJobRuns(id, perPage, page, succeeded, startDate, endDate);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling JobsApi.GetJobRuns: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -242,12 +304,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int?**|  | 
- **perPage** | **int?**|  | [optional] 
- **page** | **int?**|  | [optional] 
- **succeeded** | **bool?**|  | [optional] 
+ **id** | **int**|  | 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
+ **succeeded** | **bool**|  | [optional] 
  **startDate** | **string**|  | [optional] 
  **endDate** | **string**|  | [optional] 
 
@@ -261,21 +324,32 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="getjobs"></a>
-# **GetJobs**
-> JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, int? perPage = null, int? page = null)
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Runs received successfully. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetJobs
+
+> JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, int perPage = null, int page = null)
 
 Retrieves jobs
 
 Retrieves jobs
 
 ### Example
+
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using BJR.Api;
 using BJR.Client;
@@ -285,16 +359,19 @@ namespace Example
 {
     public class GetJobsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost";
+            // Configure HTTP bearer authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new JobsApi();
+            var apiInstance = new JobsApi(Configuration.Default);
             var tags = tags_example;  // string | Specify a comma-separated list of tags to search jobs by. (optional) 
             var incexc = incexc_example;  // string |  (optional) 
             var startDate = startDate_example;  // string | Specify a start date to search jobs by. (optional) 
             var endDate = endDate_example;  // string | Specify an end date to search jobs by. (optional) 
-            var perPage = 56;  // int? |  (optional) 
-            var page = 56;  // int? |  (optional) 
+            var perPage = 56;  // int |  (optional) 
+            var page = 56;  // int |  (optional) 
 
             try
             {
@@ -302,9 +379,11 @@ namespace Example
                 JobArrayMessage result = apiInstance.GetJobs(tags, incexc, startDate, endDate, perPage, page);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling JobsApi.GetJobs: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -313,14 +392,15 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tags** | **string**| Specify a comma-separated list of tags to search jobs by. | [optional] 
  **incexc** | **string**|  | [optional] 
  **startDate** | **string**| Specify a start date to search jobs by. | [optional] 
  **endDate** | **string**| Specify an end date to search jobs by. | [optional] 
- **perPage** | **int?**|  | [optional] 
- **page** | **int?**|  | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -332,21 +412,32 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="joboccurrences"></a>
-# **JobOccurrences**
-> OccurrenceMessage JobOccurrences (int? id, string endDate, int? perPage = null, int? page = null)
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Jobs returned successfully |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## JobOccurrences
+
+> OccurrenceMessage JobOccurrences (int id, string endDate, int perPage = null, int page = null)
 
 Upcoming job occurrences
 
 Retrieves a list of upcoming occurrences for a job
 
 ### Example
+
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using BJR.Api;
 using BJR.Client;
@@ -356,14 +447,17 @@ namespace Example
 {
     public class JobOccurrencesExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost";
+            // Configure HTTP bearer authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new JobsApi();
-            var id = 56;  // int? | The id of the job to retrieve occurrences for
+            var apiInstance = new JobsApi(Configuration.Default);
+            var id = 56;  // int | The id of the job to retrieve occurrences for
             var endDate = endDate_example;  // string | The date to retrieve occurrences up to
-            var perPage = 56;  // int? |  (optional) 
-            var page = 56;  // int? |  (optional) 
+            var perPage = 56;  // int |  (optional) 
+            var page = 56;  // int |  (optional) 
 
             try
             {
@@ -371,9 +465,11 @@ namespace Example
                 OccurrenceMessage result = apiInstance.JobOccurrences(id, endDate, perPage, page);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling JobsApi.JobOccurrences: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -382,12 +478,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int?**| The id of the job to retrieve occurrences for | 
+ **id** | **int**| The id of the job to retrieve occurrences for | 
  **endDate** | **string**| The date to retrieve occurrences up to | 
- **perPage** | **int?**|  | [optional] 
- **page** | **int?**|  | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -399,21 +496,33 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="updatejob"></a>
-# **UpdateJob**
-> SingleJobMessage UpdateJob (int? id, JobIn body = null)
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Occurrences received successfully |  -  |
+| **404** | Job not found |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateJob
+
+> SingleJobMessage UpdateJob (int id, JobIn jobIn = null)
 
 Updates a single job
 
 Updates a single job
 
 ### Example
+
 ```csharp
-using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using BJR.Api;
 using BJR.Client;
@@ -423,22 +532,27 @@ namespace Example
 {
     public class UpdateJobExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost";
+            // Configure HTTP bearer authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
-            var apiInstance = new JobsApi();
-            var id = 56;  // int? | 
-            var body = new JobIn(); // JobIn |  (optional) 
+            var apiInstance = new JobsApi(Configuration.Default);
+            var id = 56;  // int | 
+            var jobIn = new JobIn(); // JobIn |  (optional) 
 
             try
             {
                 // Updates a single job
-                SingleJobMessage result = apiInstance.UpdateJob(id, body);
+                SingleJobMessage result = apiInstance.UpdateJob(id, jobIn);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling JobsApi.UpdateJob: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -447,10 +561,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int?**|  | 
- **body** | [**JobIn**](JobIn.md)|  | [optional] 
+ **id** | **int**|  | 
+ **jobIn** | [**JobIn**](JobIn.md)|  | [optional] 
 
 ### Return type
 
@@ -462,7 +577,18 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Job updated successfully. |  -  |
+| **403** | Job could not be updated. |  -  |
+| **404** | Job not found. |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+

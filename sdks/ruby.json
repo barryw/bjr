@@ -1,0 +1,10 @@
+{
+  "gemAuthor": "Barry Walker",
+  "gemAuthorEmail": "barrywalker@gmail.com",
+  "gemDescription": "BJR Client SDK for Ruby",
+  "gemLicense": "BSD-3-Clause",
+  "gemName": "bjr4r",
+  "gemRequiredRubyVersion": ">=2.0",
+  "gemSummary": "Ruby SDK for the BJR API server",
+  "moduleName": "BJR"
+}

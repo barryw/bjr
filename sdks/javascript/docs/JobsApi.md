@@ -1,6 +1,6 @@
-# BjrApiV1.JobsApi
+# Bjr4js.JobsApi
 
-All URIs are relative to */*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,23 +12,30 @@ Method | HTTP request | Description
 [**jobOccurrences**](JobsApi.md#jobOccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 [**updateJob**](JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
 
-<a name="createJob"></a>
-# **createJob**
-> SingleJobMessage createJob()
+
+
+## createJob
+
+> SingleJobMessage createJob(opts)
 
 Creates a job
 
 Creates a job
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.JobsApi();
-
-apiInstance.createJob(, (error, data, response) => {
+let apiInstance = new Bjr4js.JobsApi();
+let opts = {
+  'jobIn': new Bjr4js.JobIn() // JobIn | 
+};
+apiInstance.createJob(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -39,9 +46,10 @@ apiInstance.createJob(, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**JobIn**](JobIn.md)|  | [optional] 
+ **jobIn** | [**JobIn**](JobIn.md)|  | [optional] 
 
 ### Return type
 
@@ -53,11 +61,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deleteJob"></a>
-# **deleteJob**
+
+## deleteJob
+
 > deleteJob(id)
 
 Deletes a job
@@ -65,14 +74,16 @@ Deletes a job
 Deletes a job
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.JobsApi();
+let apiInstance = new Bjr4js.JobsApi();
 let id = 56; // Number | 
-
 apiInstance.deleteJob(id, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -83,6 +94,7 @@ apiInstance.deleteJob(id, (error, data, response) => {
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -98,11 +110,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-<a name="getJob"></a>
-# **getJob**
+
+## getJob
+
 > SingleJobMessage getJob(id)
 
 Retrieves a single job
@@ -110,14 +123,16 @@ Retrieves a single job
 Retrieves a single job
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.JobsApi();
+let apiInstance = new Bjr4js.JobsApi();
 let id = 56; // Number | 
-
 apiInstance.getJob(id, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -128,6 +143,7 @@ apiInstance.getJob(id, (error, data, response) => {
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -143,11 +159,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getJobRuns"></a>
-# **getJobRuns**
+
+## getJobRuns
+
 > JobRunArrayMessage getJobRuns(id, opts)
 
 Retrieve the runs for a job
@@ -155,14 +172,17 @@ Retrieve the runs for a job
 Retrieve the runs for a job
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.JobsApi();
+let apiInstance = new Bjr4js.JobsApi();
 let id = 56; // Number | 
-let opts = { 
+let opts = {
   'perPage': 56, // Number | 
   'page': 56, // Number | 
   'succeeded': true, // Boolean | 
@@ -179,6 +199,7 @@ apiInstance.getJobRuns(id, opts, (error, data, response) => {
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -199,11 +220,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getJobs"></a>
-# **getJobs**
+
+## getJobs
+
 > JobArrayMessage getJobs(opts)
 
 Retrieves jobs
@@ -211,13 +233,16 @@ Retrieves jobs
 Retrieves jobs
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.JobsApi();
-let opts = { 
+let apiInstance = new Bjr4js.JobsApi();
+let opts = {
   'tags': "tags_example", // String | Specify a comma-separated list of tags to search jobs by.
   'incexc': "incexc_example", // String | 
   'startDate': "startDate_example", // String | Specify a start date to search jobs by.
@@ -235,6 +260,7 @@ apiInstance.getJobs(opts, (error, data, response) => {
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -255,11 +281,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="jobOccurrences"></a>
-# **jobOccurrences**
+
+## jobOccurrences
+
 > OccurrenceMessage jobOccurrences(id, endDate, opts)
 
 Upcoming job occurrences
@@ -267,15 +294,18 @@ Upcoming job occurrences
 Retrieves a list of upcoming occurrences for a job
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.JobsApi();
+let apiInstance = new Bjr4js.JobsApi();
 let id = 56; // Number | The id of the job to retrieve occurrences for
 let endDate = "endDate_example"; // String | The date to retrieve occurrences up to
-let opts = { 
+let opts = {
   'perPage': 56, // Number | 
   'page': 56 // Number | 
 };
@@ -289,6 +319,7 @@ apiInstance.jobOccurrences(id, endDate, opts, (error, data, response) => {
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -307,27 +338,33 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="updateJob"></a>
-# **updateJob**
-> SingleJobMessage updateJob(id)
+
+## updateJob
+
+> SingleJobMessage updateJob(id, opts)
 
 Updates a single job
 
 Updates a single job
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
-let defaultClient = BjrApiV1.ApiClient.instance;
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
-
-let apiInstance = new BjrApiV1.JobsApi();
+let apiInstance = new Bjr4js.JobsApi();
 let id = 56; // Number | 
-
-apiInstance.updateJob(id, (error, data, response) => {
+let opts = {
+  'jobIn': new Bjr4js.JobIn() // JobIn | 
+};
+apiInstance.updateJob(id, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -338,10 +375,11 @@ apiInstance.updateJob(id, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Number**|  | 
- **body** | [**JobIn**](JobIn.md)|  | [optional] 
+ **jobIn** | [**JobIn**](JobIn.md)|  | [optional] 
 
 ### Return type
 
@@ -353,6 +391,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 

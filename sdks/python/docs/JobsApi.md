@@ -1,6 +1,6 @@
-# swagger_client.JobsApi
+# bjr4py.JobsApi
 
-All URIs are relative to */*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,39 +12,58 @@ Method | HTTP request | Description
 [**job_occurrences**](JobsApi.md#job_occurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 [**update_job**](JobsApi.md#update_job) | **PUT** /job_api/{id} | Updates a single job
 
+
 # **create_job**
-> SingleJobMessage create_job(body=body)
+> SingleJobMessage create_job(job_in=job_in)
 
 Creates a job
 
 Creates a job
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.JobIn() # JobIn |  (optional)
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
-try:
-    # Creates a job
-    api_response = api_instance.create_job(body=body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling JobsApi->create_job: %s\n" % e)
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.JobsApi(api_client)
+    job_in = bjr4py.JobIn() # JobIn |  (optional)
+
+    try:
+        # Creates a job
+        api_response = api_instance.create_job(job_in=job_in)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling JobsApi->create_job: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**JobIn**](JobIn.md)|  | [optional] 
+ **job_in** | [**JobIn**](JobIn.md)|  | [optional] 
 
 ### Return type
 
@@ -59,6 +78,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Job created successfully. |  -  |
+**403** | A job with this name already exists. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_job**
@@ -69,23 +94,41 @@ Deletes a job
 Deletes a job
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
-try:
-    # Deletes a job
-    api_instance.delete_job(id)
-except ApiException as e:
-    print("Exception when calling JobsApi->delete_job: %s\n" % e)
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.JobsApi(api_client)
+    id = 56 # int | 
+
+    try:
+        # Deletes a job
+        api_instance.delete_job(id)
+    except ApiException as e:
+        print("Exception when calling JobsApi->delete_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -107,6 +150,12 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Job %{id} deleted successfully. |  -  |
+**404** | Job not found. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job**
@@ -117,24 +166,42 @@ Retrieves a single job
 Retrieves a single job
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
-try:
-    # Retrieves a single job
-    api_response = api_instance.get_job(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling JobsApi->get_job: %s\n" % e)
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.JobsApi(api_client)
+    id = 56 # int | 
+
+    try:
+        # Retrieves a single job
+        api_response = api_instance.get_job(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling JobsApi->get_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -156,6 +223,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Job returned successfully |  -  |
+**404** | Job not found. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job_runs**
@@ -166,29 +239,47 @@ Retrieve the runs for a job
 Retrieve the runs for a job
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.JobsApi(api_client)
+    id = 56 # int | 
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
-succeeded = true # bool |  (optional)
+succeeded = True # bool |  (optional)
 start_date = 'start_date_example' # str |  (optional)
 end_date = 'end_date_example' # str |  (optional)
 
-try:
-    # Retrieve the runs for a job
-    api_response = api_instance.get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling JobsApi->get_job_runs: %s\n" % e)
+    try:
+        # Retrieve the runs for a job
+        api_response = api_instance.get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling JobsApi->get_job_runs: %s\n" % e)
 ```
 
 ### Parameters
@@ -215,6 +306,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Runs received successfully. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_jobs**
@@ -225,29 +321,47 @@ Retrieves jobs
 Retrieves jobs
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
-tags = 'tags_example' # str | Specify a comma-separated list of tags to search jobs by. (optional)
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.JobsApi(api_client)
+    tags = 'tags_example' # str | Specify a comma-separated list of tags to search jobs by. (optional)
 incexc = 'incexc_example' # str |  (optional)
 start_date = 'start_date_example' # str | Specify a start date to search jobs by. (optional)
 end_date = 'end_date_example' # str | Specify an end date to search jobs by. (optional)
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
 
-try:
-    # Retrieves jobs
-    api_response = api_instance.get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, per_page=per_page, page=page)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling JobsApi->get_jobs: %s\n" % e)
+    try:
+        # Retrieves jobs
+        api_response = api_instance.get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling JobsApi->get_jobs: %s\n" % e)
 ```
 
 ### Parameters
@@ -274,6 +388,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Jobs returned successfully |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **job_occurrences**
@@ -284,27 +403,45 @@ Upcoming job occurrences
 Retrieves a list of upcoming occurrences for a job
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
-id = 56 # int | The id of the job to retrieve occurrences for
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.JobsApi(api_client)
+    id = 56 # int | The id of the job to retrieve occurrences for
 end_date = 'end_date_example' # str | The date to retrieve occurrences up to
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
 
-try:
-    # Upcoming job occurrences
-    api_response = api_instance.job_occurrences(id, end_date, per_page=per_page, page=page)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling JobsApi->job_occurrences: %s\n" % e)
+    try:
+        # Upcoming job occurrences
+        api_response = api_instance.job_occurrences(id, end_date, per_page=per_page, page=page)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling JobsApi->job_occurrences: %s\n" % e)
 ```
 
 ### Parameters
@@ -329,35 +466,59 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Occurrences received successfully |  -  |
+**404** | Job not found |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_job**
-> SingleJobMessage update_job(id, body=body)
+> SingleJobMessage update_job(id, job_in=job_in)
 
 Updates a single job
 
 Updates a single job
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.JobsApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
-body = swagger_client.JobIn() # JobIn |  (optional)
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
-try:
-    # Updates a single job
-    api_response = api_instance.update_job(id, body=body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling JobsApi->update_job: %s\n" % e)
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.JobsApi(api_client)
+    id = 56 # int | 
+job_in = bjr4py.JobIn() # JobIn |  (optional)
+
+    try:
+        # Updates a single job
+        api_response = api_instance.update_job(id, job_in=job_in)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling JobsApi->update_job: %s\n" % e)
 ```
 
 ### Parameters
@@ -365,7 +526,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **body** | [**JobIn**](JobIn.md)|  | [optional] 
+ **job_in** | [**JobIn**](JobIn.md)|  | [optional] 
 
 ### Return type
 
@@ -379,6 +540,13 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Job updated successfully. |  -  |
+**403** | Job could not be updated. |  -  |
+**404** | Job not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

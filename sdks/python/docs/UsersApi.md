@@ -1,6 +1,6 @@
-# swagger_client.UsersApi
+# bjr4py.UsersApi
 
-All URIs are relative to */*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,39 +10,58 @@ Method | HTTP request | Description
 [**get_users**](UsersApi.md#get_users) | **GET** /user_api | Retrieves users
 [**update_user**](UsersApi.md#update_user) | **PUT** /user_api/{id} | Update a single user
 
+
 # **create_user**
-> SingleUserMessage create_user(body=body)
+> SingleUserMessage create_user(user_new_in=user_new_in)
 
 Creates a user
 
 Create a new user
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.UsersApi(swagger_client.ApiClient(configuration))
-body = swagger_client.UserNewIn() # UserNewIn |  (optional)
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
-try:
-    # Creates a user
-    api_response = api_instance.create_user(body=body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UsersApi->create_user: %s\n" % e)
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.UsersApi(api_client)
+    user_new_in = bjr4py.UserNewIn() # UserNewIn |  (optional)
+
+    try:
+        # Creates a user
+        api_response = api_instance.create_user(user_new_in=user_new_in)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UsersApi->create_user: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UserNewIn**](UserNewIn.md)|  | [optional] 
+ **user_new_in** | [**UserNewIn**](UserNewIn.md)|  | [optional] 
 
 ### Return type
 
@@ -57,6 +76,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | User created successfully |  -  |
+**403** | Username already exists |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_user**
@@ -67,24 +92,42 @@ Deletes a user
 Deletes a user
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.UsersApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
-try:
-    # Deletes a user
-    api_response = api_instance.delete_user(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UsersApi->delete_user: %s\n" % e)
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.UsersApi(api_client)
+    id = 56 # int | 
+
+    try:
+        # Deletes a user
+        api_response = api_instance.delete_user(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UsersApi->delete_user: %s\n" % e)
 ```
 
 ### Parameters
@@ -105,6 +148,13 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | User deleted successfully |  -  |
+**403** | You cannot delete yourself. |  -  |
+**404** | The user with that id could not be found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -116,24 +166,42 @@ Retrieve a single user
 Retrieve a single user
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.UsersApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
-try:
-    # Retrieve a single user
-    api_response = api_instance.get_user(id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UsersApi->get_user: %s\n" % e)
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.UsersApi(api_client)
+    id = 56 # int | 
+
+    try:
+        # Retrieve a single user
+        api_response = api_instance.get_user(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UsersApi->get_user: %s\n" % e)
 ```
 
 ### Parameters
@@ -155,6 +223,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The user was returned successfully. |  -  |
+**404** | The user with that id could not be found. |  -  |
+**401** | Your token is invalid or expired |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_users**
@@ -165,25 +240,43 @@ Retrieves users
 Get a list of users
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.UsersApi(swagger_client.ApiClient(configuration))
-per_page = 56 # int |  (optional)
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.UsersApi(api_client)
+    per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
 
-try:
-    # Retrieves users
-    api_response = api_instance.get_users(per_page=per_page, page=page)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UsersApi->get_users: %s\n" % e)
+    try:
+        # Retrieves users
+        api_response = api_instance.get_users(per_page=per_page, page=page)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UsersApi->get_users: %s\n" % e)
 ```
 
 ### Parameters
@@ -206,35 +299,58 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Users found |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user**
-> SingleUserMessage update_user(id, body=body)
+> SingleUserMessage update_user(id, user_update_in=user_update_in)
 
 Update a single user
 
 Update a single user
 
 ### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import bjr4py
+from bjr4py.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
-# create an instance of the API class
-api_instance = swagger_client.UsersApi(swagger_client.ApiClient(configuration))
-id = 56 # int | 
-body = swagger_client.UserUpdateIn() # UserUpdateIn |  (optional)
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
-try:
-    # Update a single user
-    api_response = api_instance.update_user(id, body=body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UsersApi->update_user: %s\n" % e)
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.UsersApi(api_client)
+    id = 56 # int | 
+user_update_in = bjr4py.UserUpdateIn() # UserUpdateIn |  (optional)
+
+    try:
+        # Update a single user
+        api_response = api_instance.update_user(id, user_update_in=user_update_in)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UsersApi->update_user: %s\n" % e)
 ```
 
 ### Parameters
@@ -242,7 +358,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **body** | [**UserUpdateIn**](UserUpdateIn.md)|  | [optional] 
+ **user_update_in** | [**UserUpdateIn**](UserUpdateIn.md)|  | [optional] 
 
 ### Return type
 
@@ -256,6 +372,12 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The user was returned successfully. |  -  |
+**403** | The passwords did not match |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

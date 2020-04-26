@@ -1,6 +1,7 @@
-# BjrApiV1.SingleUserMessage
+# Bjr4js.SingleUserMessage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **String** | The status message returned from the API call. | [optional] 
@@ -8,3 +9,5 @@ Name | Type | Description | Notes
 **objectType** | **String** | The type of object being returned. | [optional] 
 **statusCode** | **Number** | The HTTP status code returned. | [optional] 
 **_object** | [**SingleUser**](SingleUser.md) |  | [optional] 
+
+

@@ -1,0 +1,8 @@
+{
+  "apiPackage": "io.barrywalker.bjr.api",
+  "invokerPackage": "io.barrywalker.bjr",
+  "modelPackage": "io.barrywalker.bjr.model",
+  "projectDescription": "BJR Client SDK for Javascript",
+  "projectName": "bjr4js",
+  "projectVersion": "1.0.0"
+}

@@ -1,26 +1,31 @@
-# BjrApiV1.AuthenticationApi
+# Bjr4js.AuthenticationApi
 
-All URIs are relative to */*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**authenticateUser**](AuthenticationApi.md#authenticateUser) | **POST** /authenticate | Authenticates a user and returns a token
 
-<a name="authenticateUser"></a>
-# **authenticateUser**
-> AuthOut authenticateUser()
+
+
+## authenticateUser
+
+> AuthOut authenticateUser(opts)
 
 Authenticates a user and returns a token
 
 Authenticates a user and returns a token
 
 ### Example
+
 ```javascript
-import BjrApiV1 from 'bjr_api_v1';
+import Bjr4js from 'bjr4js';
 
-let apiInstance = new BjrApiV1.AuthenticationApi();
-
-apiInstance.authenticateUser(, (error, data, response) => {
+let apiInstance = new Bjr4js.AuthenticationApi();
+let opts = {
+  'authIn': new Bjr4js.AuthIn() // AuthIn | 
+};
+apiInstance.authenticateUser(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -31,9 +36,10 @@ apiInstance.authenticateUser(, (error, data, response) => {
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**AuthIn**](AuthIn.md)|  | [optional] 
+ **authIn** | [**AuthIn**](AuthIn.md)|  | [optional] 
 
 ### Return type
 
@@ -45,6 +51,6 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 

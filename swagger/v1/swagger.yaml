@@ -2,9 +2,28 @@
 openapi: 3.0.1
 info:
   title: BJR API V1
+  description: API specification for the BJR job server.
   version: v1
 components:
   schemas:
+    ServerVersion:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          type: string
+          description: The BJR server version
     OccurrenceMessage:
       type: object
       properties:
@@ -166,11 +185,12 @@ components:
         username:
           type: string
           description: The username of the user to authenticate as
-          required: true
         password:
           type: string
           description: The password of the user to authenticate as
-          required: true
+      required:
+      - username
+      - password
     AuthOut:
       type: object
       properties:
@@ -194,26 +214,28 @@ components:
         username:
           type: string
           description: The new user's username. Must be unique.
-          required: true
         password:
           type: string
           description: The new user's password.
-          required: true
         password_confirmation:
           type: string
           description: The new user's password confirmation. Must match 'password'.
-          required: true
+      required:
+      - username
+      - password
+      - password_confirmation
     UserUpdateIn:
       type: object
       properties:
         password:
           type: string
           description: The new user's password.
-          required: true
         password_confirmation:
           type: string
           description: The new user's password confirmation. Must match 'password'.
-          required: true
+      required:
+      - password
+      - password_confirmation
     SingleUserMessage:
       type: object
       properties:
@@ -366,38 +388,34 @@ components:
         name:
           type: string
           description: The new name of the job. Must be unique.
-          required: true
         cron:
           type: string
           description: The new cron expression for the job.
-          required: true
         command:
           type: string
           description: The command to run when the job fires.
-          required: true
         timezone:
           type: string
           description: The timezone to run the job in.
-          required: false
         enabled:
           type: boolean
           description: Is the job enabled by default?
-          required: false
         tags:
           type: string
           description: A comma-separated list of tags to associate with this job.
             You can search jobs by their tags.
-          required: false
         success_callback:
           type: string
           description: Specify the url to receive a POST callback for all successful
             runs of this job.
-          required: false
         failure_callback:
           type: string
           description: Specify the url to receive a POST callback for all unsuccessful
             runs of this job.
-          required: false
+      required:
+      - name
+      - cron
+      - command
   securitySchemes:
     bearerAuth:
       scheme: bearer
@@ -676,6 +694,20 @@ paths:
         '404':
           description: Job not found.
           content: {}
+  "/version":
+    get:
+      summary: Server version
+      description: The BJR server version
+      tags:
+      - Static
+      operationId: getVersion
+      responses:
+        '200':
+          description: Server version received successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ServerVersion"
   "/static_api/timezones":
     get:
       summary: Get timezones

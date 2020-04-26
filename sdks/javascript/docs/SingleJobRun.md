@@ -1,9 +1,10 @@
-# BjrApiV1.SingleJobRun
+# Bjr4js.SingleJobRun
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Number** | The object&#x27;s primary key. This uniquely identifies the object in the system. | [optional] 
+**id** | **Number** | The object&#39;s primary key. This uniquely identifies the object in the system. | [optional] 
 **success** | **Boolean** | Whether the run was successful or not. | [optional] 
 **returnCode** | **Number** | The return code that the command exited with. 0 means success. | [optional] 
 **errorMessage** | **String** | If the run failed, the error message that was returned. | [optional] 
@@ -14,3 +15,5 @@ Name | Type | Description | Notes
 **jobId** | **Number** | The job that the run is associated with. | [optional] 
 **createdAt** | **Date** | The date and time that the run record was created in UTC. | [optional] 
 **updatedAt** | **Date** | The date and time that the run record was last updated in UTC. | [optional] 
+
+

@@ -1,0 +1,1178 @@
+openapi: 3.0.1
+info:
+  description: API specification for the BJR job server.
+  title: BJR API V1
+  version: v1
+servers:
+- url: /
+paths:
+  /authenticate:
+    post:
+      description: Authenticates a user and returns a token
+      operationId: authenticateUser
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthIn'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthOut'
+          description: User authenticated successfully
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthOut'
+          description: User failed authentication
+      summary: Authenticates a user and returns a token
+      tags:
+      - Authentication
+      x-contentType: application/json
+      x-accepts: application/json
+  /job_api/{id}/occurrences/{end_date}:
+    get:
+      description: Retrieves a list of upcoming occurrences for a job
+      operationId: jobOccurrences
+      parameters:
+      - description: The id of the job to retrieve occurrences for
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - description: The date to retrieve occurrences up to
+        explode: false
+        in: path
+        name: end_date
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OccurrenceMessage'
+          description: Occurrences received successfully
+        "404":
+          content: {}
+          description: Job not found
+      security:
+      - bearerAuth: []
+      summary: Upcoming job occurrences
+      tags:
+      - Jobs
+      x-accepts: application/json
+  /job_api:
+    get:
+      description: Retrieves jobs
+      operationId: getJobs
+      parameters:
+      - description: Specify a comma-separated list of tags to search jobs by.
+        explode: true
+        in: query
+        name: tags
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: incexc
+        required: false
+        schema:
+          description: How to handle the case where many tags are specified.
+          enum:
+          - all
+          - any
+          - except
+          type: string
+        style: form
+      - description: Specify a start date to search jobs by.
+        explode: true
+        in: query
+        name: start_date
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Specify an end date to search jobs by.
+        explode: true
+        in: query
+        name: end_date
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobArrayMessage'
+          description: Jobs returned successfully
+      security:
+      - bearerAuth: []
+      summary: Retrieves jobs
+      tags:
+      - Jobs
+      x-accepts: application/json
+    post:
+      description: Creates a job
+      operationId: createJob
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobIn'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleJobMessage'
+          description: Job created successfully.
+        "403":
+          content: {}
+          description: A job with this name already exists.
+      security:
+      - bearerAuth: []
+      summary: Creates a job
+      tags:
+      - Jobs
+      x-contentType: application/json
+      x-accepts: application/json
+  /job_api/{id}/runs:
+    get:
+      description: Retrieve the runs for a job
+      operationId: getJobRuns
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: succeeded
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: start_date
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: end_date
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobRunArrayMessage'
+          description: Runs received successfully.
+      security:
+      - bearerAuth: []
+      summary: Retrieve the runs for a job
+      tags:
+      - Jobs
+      x-accepts: application/json
+  /job_api/{id}:
+    delete:
+      description: Deletes a job
+      operationId: deleteJob
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content: {}
+          description: Job %{id} deleted successfully.
+        "404":
+          content: {}
+          description: Job not found.
+      security:
+      - bearerAuth: []
+      summary: Deletes a job
+      tags:
+      - Jobs
+      x-accepts: application/json
+    get:
+      description: Retrieves a single job
+      operationId: getJob
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleJobMessage'
+          description: Job returned successfully
+        "404":
+          content: {}
+          description: Job not found.
+      security:
+      - bearerAuth: []
+      summary: Retrieves a single job
+      tags:
+      - Jobs
+      x-accepts: application/json
+    put:
+      description: Updates a single job
+      operationId: updateJob
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobIn'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleJobMessage'
+          description: Job updated successfully.
+        "403":
+          content: {}
+          description: Job could not be updated.
+        "404":
+          content: {}
+          description: Job not found.
+      security:
+      - bearerAuth: []
+      summary: Updates a single job
+      tags:
+      - Jobs
+      x-contentType: application/json
+      x-accepts: application/json
+  /version:
+    get:
+      description: The BJR server version
+      operationId: getVersion
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerVersion'
+          description: Server version received successfully
+      summary: Server version
+      tags:
+      - Static
+      x-accepts: application/json
+  /static_api/timezones:
+    get:
+      description: Get the list of acceptable timezone names.
+      operationId: getTimezones
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimezoneMessage'
+          description: Timezones received successfully
+      security:
+      - bearerAuth: []
+      summary: Get timezones
+      tags:
+      - Static
+      x-accepts: application/json
+  /static_api/tags:
+    get:
+      description: Retrieves the list of tags that are currently in use for the authenticated
+        user.
+      operationId: getTags
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagMessage'
+          description: Tags received successfully
+      security:
+      - bearerAuth: []
+      summary: Get tags
+      tags:
+      - Static
+      x-accepts: application/json
+  /user_api:
+    get:
+      description: Get a list of users
+      operationId: getUsers
+      parameters:
+      - explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserArrayMessage'
+          description: Users found
+      security:
+      - bearerAuth: []
+      summary: Retrieves users
+      tags:
+      - Users
+      x-accepts: application/json
+    post:
+      description: Create a new user
+      operationId: createUser
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserNewIn'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleUserMessage'
+          description: User created successfully
+        "403":
+          content: {}
+          description: Username already exists
+      security:
+      - bearerAuth: []
+      summary: Creates a user
+      tags:
+      - Users
+      x-contentType: application/json
+      x-accepts: application/json
+  /user_api/{id}:
+    delete:
+      description: Deletes a user
+      operationId: deleteUser
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleUserMessage'
+          description: User deleted successfully
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleUserMessage'
+          description: You cannot delete yourself.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleUserMessage'
+          description: The user with that id could not be found.
+      security:
+      - bearerAuth: []
+      summary: Deletes a user
+      tags:
+      - Users
+      x-accepts: application/json
+    get:
+      description: Retrieve a single user
+      operationId: getUser
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleUserMessage'
+          description: The user was returned successfully.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleUserMessage'
+          description: The user with that id could not be found.
+        "401":
+          content: {}
+          description: Your token is invalid or expired
+      security:
+      - bearerAuth: []
+      summary: Retrieve a single user
+      tags:
+      - Users
+      x-accepts: application/json
+    put:
+      description: Update a single user
+      operationId: updateUser
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateIn'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleUserMessage'
+          description: The user was returned successfully.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleUserMessage'
+          description: The passwords did not match
+      security:
+      - bearerAuth: []
+      summary: Update a single user
+      tags:
+      - Users
+      x-contentType: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    ServerVersion:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object: object
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          description: The BJR server version
+          type: string
+      type: object
+    OccurrenceMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+        - 2000-01-23T04:56:07.000+00:00
+        - 2000-01-23T04:56:07.000+00:00
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          items:
+            format: date-time
+            type: string
+          type: array
+      type: object
+    TimezoneMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+        - object
+        - object
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          items:
+            type: string
+          type: array
+      type: object
+    StringArray:
+      items:
+        type: string
+      type: array
+    DateTimeArray:
+      items:
+        format: date-time
+        type: string
+      type: array
+    TagMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+        - name: name
+          id: 6
+          taggings_count: 1
+        - name: name
+          id: 6
+          taggings_count: 1
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          items:
+            $ref: '#/components/schemas/Tag'
+          type: array
+      type: object
+    TagArray:
+      items:
+        $ref: '#/components/schemas/Tag'
+      type: array
+    Tag:
+      example:
+        name: name
+        id: 6
+        taggings_count: 1
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        taggings_count:
+          type: integer
+      type: object
+    SingleJobRunMessage:
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          $ref: '#/components/schemas/SingleJobRun'
+      type: object
+    JobRunArrayMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+        - error_message: error_message
+          start_time: 2000-01-23T04:56:07.000+00:00
+          stdout: stdout
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          success: true
+          job_id: 5
+          end_time: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 6
+          stderr: stderr
+          return_code: 1
+        - error_message: error_message
+          start_time: 2000-01-23T04:56:07.000+00:00
+          stdout: stdout
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          success: true
+          job_id: 5
+          end_time: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 6
+          stderr: stderr
+          return_code: 1
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          items:
+            $ref: '#/components/schemas/SingleJobRun'
+          type: array
+      type: object
+    SingleJobRun:
+      example:
+        error_message: error_message
+        start_time: 2000-01-23T04:56:07.000+00:00
+        stdout: stdout
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        success: true
+        job_id: 5
+        end_time: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 6
+        stderr: stderr
+        return_code: 1
+      properties:
+        id:
+          description: The object's primary key. This uniquely identifies the object
+            in the system.
+          type: integer
+        success:
+          description: Whether the run was successful or not.
+          type: boolean
+        return_code:
+          description: The return code that the command exited with. 0 means success.
+          type: integer
+        error_message:
+          description: If the run failed, the error message that was returned.
+          nullable: true
+          type: string
+        stdout:
+          description: The text written to STDOUT as part of the job.
+          nullable: true
+          type: string
+        stderr:
+          description: The text written to STDERR as part of the job.
+          nullable: true
+          type: string
+        start_time:
+          description: The date and time that the run started.
+          format: date-time
+          type: string
+        end_time:
+          description: The date and time that the run ended.
+          format: date-time
+          type: string
+        job_id:
+          description: The job that the run is associated with.
+          type: integer
+        created_at:
+          description: The date and time that the run record was created in UTC.
+          format: date-time
+          type: string
+        updated_at:
+          description: The date and time that the run record was last updated in UTC.
+          format: date-time
+          type: string
+      type: object
+    JobRunArray:
+      items:
+        $ref: '#/components/schemas/SingleJobRun'
+      type: array
+    AuthIn:
+      example:
+        password: password
+        username: username
+      properties:
+        username:
+          description: The username of the user to authenticate as
+          type: string
+        password:
+          description: The password of the user to authenticate as
+          type: string
+      required:
+      - password
+      - username
+      type: object
+    AuthOut:
+      example:
+        status_code: 0
+        is_error: true
+        auth_token: auth_token
+        message: message
+      properties:
+        auth_token:
+          description: The JWT authentication token. This must be passed in the Authorization
+            header on subsequent requests.
+          type: string
+        message:
+          description: If authentication failed, this will contain the reason why.
+          type: string
+        is_error:
+          description: This will be true if the authentication was successful, and
+            false if not.
+          type: boolean
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+      type: object
+    UserNewIn:
+      example:
+        password: password
+        password_confirmation: password_confirmation
+        username: username
+      properties:
+        username:
+          description: The new user's username. Must be unique.
+          type: string
+        password:
+          description: The new user's password.
+          type: string
+        password_confirmation:
+          description: The new user's password confirmation. Must match 'password'.
+          type: string
+      required:
+      - password
+      - password_confirmation
+      - username
+      type: object
+    UserUpdateIn:
+      example:
+        password: password
+        password_confirmation: password_confirmation
+      properties:
+        password:
+          description: The new user's password.
+          type: string
+        password_confirmation:
+          description: The new user's password confirmation. Must match 'password'.
+          type: string
+      required:
+      - password
+      - password_confirmation
+      type: object
+    SingleUserMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 6
+          username: username
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          $ref: '#/components/schemas/SingleUser'
+      type: object
+    UserArrayMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 6
+          username: username
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 6
+          username: username
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          items:
+            $ref: '#/components/schemas/SingleUser'
+          type: array
+      type: object
+    SingleUser:
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 6
+        username: username
+      properties:
+        id:
+          description: The object's primary key. This uniquely identifies the object
+            in the system.
+          type: integer
+        username:
+          description: The user' login name. Must be unique
+          type: string
+        created_at:
+          description: The UTC date and time that the object was created.
+          format: date-time
+          type: string
+        updated_at:
+          description: The UTC date and time that the object was last modified.
+          format: date-time
+          type: string
+      type: object
+    UserArray:
+      items:
+        $ref: '#/components/schemas/SingleUser'
+      type: array
+    SingleJobMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+          cron: cron
+          timezone: timezone
+          created_at: 2000-01-23T04:56:07.000+00:00
+          enabled: true
+          command: command
+          tags:
+          - tags
+          - tags
+          running: true
+          success_callback: success_callback
+          next_run: next_run
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          failure_callback: failure_callback
+          id: 6
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          $ref: '#/components/schemas/SingleJob'
+      type: object
+    JobArrayMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+        - cron: cron
+          timezone: timezone
+          created_at: 2000-01-23T04:56:07.000+00:00
+          enabled: true
+          command: command
+          tags:
+          - tags
+          - tags
+          running: true
+          success_callback: success_callback
+          next_run: next_run
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          failure_callback: failure_callback
+          id: 6
+        - cron: cron
+          timezone: timezone
+          created_at: 2000-01-23T04:56:07.000+00:00
+          enabled: true
+          command: command
+          tags:
+          - tags
+          - tags
+          running: true
+          success_callback: success_callback
+          next_run: next_run
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          failure_callback: failure_callback
+          id: 6
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          items:
+            $ref: '#/components/schemas/SingleJob'
+          type: array
+      type: object
+    SingleJob:
+      example:
+        cron: cron
+        timezone: timezone
+        created_at: 2000-01-23T04:56:07.000+00:00
+        enabled: true
+        command: command
+        tags:
+        - tags
+        - tags
+        running: true
+        success_callback: success_callback
+        next_run: next_run
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        failure_callback: failure_callback
+        id: 6
+      properties:
+        id:
+          description: The object's primary key. This uniquely identifies the object
+            in the system.
+          type: integer
+        name:
+          description: The name of the job.
+          type: string
+        cron:
+          description: The cron expression for the job.
+          type: string
+        enabled:
+          description: Whether the job is enabled or not.
+          type: boolean
+        command:
+          description: The command that is executed when the job fires.
+          type: string
+        next_run:
+          description: The date and time of the job's next run.
+          type: string
+        running:
+          description: Whether the job is currently running.
+          type: boolean
+        timezone:
+          description: The timezone that the job will run in.
+          type: string
+        tags:
+          description: An array of tags associated with the job.
+          items:
+            nullable: true
+            type: string
+          type: array
+        created_at:
+          description: The UTC date and time that the object was created.
+          format: date-time
+          type: string
+        updated_at:
+          description: The UTC date and time that the object was last modified.
+          format: date-time
+          type: string
+        success_callback:
+          description: This url will receive a POST request with details about all
+            successful job runs.
+          nullable: true
+          type: string
+        failure_callback:
+          description: This url will receive a POST request with details about all
+            unsuccessful job runs.
+          nullable: true
+          type: string
+      type: object
+    JobArray:
+      items:
+        $ref: '#/components/schemas/SingleJob'
+      type: array
+    JobIn:
+      example:
+        cron: cron
+        success_callback: success_callback
+        timezone: timezone
+        name: name
+        failure_callback: failure_callback
+        command: command
+        enabled: true
+        tags: tags
+      properties:
+        name:
+          description: The new name of the job. Must be unique.
+          type: string
+        cron:
+          description: The new cron expression for the job.
+          type: string
+        command:
+          description: The command to run when the job fires.
+          type: string
+        timezone:
+          description: The timezone to run the job in.
+          type: string
+        enabled:
+          description: Is the job enabled by default?
+          type: boolean
+        tags:
+          description: A comma-separated list of tags to associate with this job.
+            You can search jobs by their tags.
+          type: string
+        success_callback:
+          description: Specify the url to receive a POST callback for all successful
+            runs of this job.
+          type: string
+        failure_callback:
+          description: Specify the url to receive a POST callback for all unsuccessful
+            runs of this job.
+          type: string
+      required:
+      - command
+      - cron
+      - name
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+
