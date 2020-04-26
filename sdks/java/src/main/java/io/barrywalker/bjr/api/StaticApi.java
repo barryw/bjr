@@ -71,7 +71,7 @@ public class StaticApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/static_api/tags";
+        String localVarPath = "/tags";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -172,7 +172,7 @@ public class StaticApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/static_api/timezones";
+        String localVarPath = "/timezones";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

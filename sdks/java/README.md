@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-04-26T19:15:23.002Z[GMT]
+  - Build date: 2020-04-26T19:59:06.045Z[GMT]
 
 API specification for the BJR job server.
 
@@ -115,8 +115,8 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**getJobs**](docs/JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
 *JobsApi* | [**jobOccurrences**](docs/JobsApi.md#jobOccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 *JobsApi* | [**updateJob**](docs/JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
-*StaticApi* | [**getTags**](docs/StaticApi.md#getTags) | **GET** /static_api/tags | Get tags
-*StaticApi* | [**getTimezones**](docs/StaticApi.md#getTimezones) | **GET** /static_api/timezones | Get timezones
+*StaticApi* | [**getTags**](docs/StaticApi.md#getTags) | **GET** /tags | Get tags
+*StaticApi* | [**getTimezones**](docs/StaticApi.md#getTimezones) | **GET** /timezones | Get timezones
 *StaticApi* | [**getVersion**](docs/StaticApi.md#getVersion) | **GET** /version | Server version
 *UsersApi* | [**createUser**](docs/UsersApi.md#createUser) | **POST** /user_api | Creates a user
 *UsersApi* | [**deleteUser**](docs/UsersApi.md#deleteUser) | **DELETE** /user_api/{id} | Deletes a user

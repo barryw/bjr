@@ -708,7 +708,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ServerVersion"
-  "/static_api/timezones":
+  "/timezones":
     get:
       summary: Get timezones
       description: Get the list of acceptable timezone names.
@@ -724,7 +724,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/TimezoneMessage"
-  "/static_api/tags":
+  "/tags":
     get:
       summary: Get tags
       description: Retrieves the list of tags that are currently in use for the authenticated

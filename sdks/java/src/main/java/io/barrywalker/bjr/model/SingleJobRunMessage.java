@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * SingleJobRunMessage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-26T19:15:23.002Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-26T19:59:06.045Z[GMT]")
 public class SingleJobRunMessage {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)

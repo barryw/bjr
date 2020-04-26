@@ -67,7 +67,7 @@ export default class StaticApi {
       let accepts = ['application/json'];
       let returnType = TagMessage;
       return this.apiClient.callApi(
-        '/static_api/tags', 'GET',
+        '/tags', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -104,7 +104,7 @@ export default class StaticApi {
       let accepts = ['application/json'];
       let returnType = TimezoneMessage;
       return this.apiClient.callApi(
-        '/static_api/timezones', 'GET',
+        '/timezones', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

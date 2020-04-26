@@ -113,8 +113,8 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**GetJobs**](docs/JobsApi.md#getjobs) | **GET** /job_api | Retrieves jobs
 *JobsApi* | [**JobOccurrences**](docs/JobsApi.md#joboccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 *JobsApi* | [**UpdateJob**](docs/JobsApi.md#updatejob) | **PUT** /job_api/{id} | Updates a single job
-*StaticApi* | [**GetTags**](docs/StaticApi.md#gettags) | **GET** /static_api/tags | Get tags
-*StaticApi* | [**GetTimezones**](docs/StaticApi.md#gettimezones) | **GET** /static_api/timezones | Get timezones
+*StaticApi* | [**GetTags**](docs/StaticApi.md#gettags) | **GET** /tags | Get tags
+*StaticApi* | [**GetTimezones**](docs/StaticApi.md#gettimezones) | **GET** /timezones | Get timezones
 *StaticApi* | [**GetVersion**](docs/StaticApi.md#getversion) | **GET** /version | Server version
 *UsersApi* | [**CreateUser**](docs/UsersApi.md#createuser) | **POST** /user_api | Creates a user
 *UsersApi* | [**DeleteUser**](docs/UsersApi.md#deleteuser) | **DELETE** /user_api/{id} | Deletes a user

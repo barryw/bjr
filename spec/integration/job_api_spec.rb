@@ -87,7 +87,7 @@ describe 'Job API' do
           json = JSON.parse(response.body)
           expect(json['is_error']).to be true
           expect(json['status_code']).to eq(403)
-          expect(json['message']).to eq("Invalid timezone 'ASS' specified. Acceptable timezone list: http://www.example.com/static_api/timezones")
+          expect(json['message']).to eq("Invalid timezone 'ASS' specified. Acceptable timezone list: http://www.example.com/timezones")
         end
       end
 

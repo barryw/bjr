@@ -270,7 +270,7 @@ namespace BJR.Api
         public ApiResponse<TagMessage> GetTagsWithHttpInfo ()
         {
 
-            var localVarPath = "/static_api/tags";
+            var localVarPath = "/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -337,7 +337,7 @@ namespace BJR.Api
         public async System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/static_api/tags";
+            var localVarPath = "/tags";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -403,7 +403,7 @@ namespace BJR.Api
         public ApiResponse<TimezoneMessage> GetTimezonesWithHttpInfo ()
         {
 
-            var localVarPath = "/static_api/timezones";
+            var localVarPath = "/timezones";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -470,7 +470,7 @@ namespace BJR.Api
         public async System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTimezonesAsyncWithHttpInfo ()
         {
 
-            var localVarPath = "/static_api/timezones";
+            var localVarPath = "/timezones";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

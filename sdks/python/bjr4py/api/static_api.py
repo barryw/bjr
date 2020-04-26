@@ -126,7 +126,7 @@ class StaticApi(object):
         auth_settings = ['bearerAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/static_api/tags', 'GET',
+            '/tags', 'GET',
             path_params,
             query_params,
             header_params,
@@ -231,7 +231,7 @@ class StaticApi(object):
         auth_settings = ['bearerAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/static_api/timezones', 'GET',
+            '/timezones', 'GET',
             path_params,
             query_params,
             header_params,

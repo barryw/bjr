@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * UserUpdateIn
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-26T19:15:23.002Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-26T19:59:06.045Z[GMT]")
 public class UserUpdateIn {
   public static final String SERIALIZED_NAME_PASSWORD = "password";
   @SerializedName(SERIALIZED_NAME_PASSWORD)

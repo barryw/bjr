@@ -4,8 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetTags**](StaticApi.md#gettags) | **GET** /static_api/tags | Get tags
-[**GetTimezones**](StaticApi.md#gettimezones) | **GET** /static_api/timezones | Get timezones
+[**GetTags**](StaticApi.md#gettags) | **GET** /tags | Get tags
+[**GetTimezones**](StaticApi.md#gettimezones) | **GET** /timezones | Get timezones
 [**GetVersion**](StaticApi.md#getversion) | **GET** /version | Server version
 
 

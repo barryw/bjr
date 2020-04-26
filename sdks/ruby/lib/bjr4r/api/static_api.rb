@@ -37,7 +37,7 @@ module BJR
         @api_client.config.logger.debug 'Calling API: StaticApi.get_tags ...'
       end
       # resource path
-      local_var_path = '/static_api/tags'
+      local_var_path = '/tags'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -93,7 +93,7 @@ module BJR
         @api_client.config.logger.debug 'Calling API: StaticApi.get_timezones ...'
       end
       # resource path
-      local_var_path = '/static_api/timezones'
+      local_var_path = '/timezones'
 
       # query parameters
       query_params = opts[:query_params] || {}

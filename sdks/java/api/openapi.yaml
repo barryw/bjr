@@ -342,7 +342,7 @@ paths:
       tags:
       - Static
       x-accepts: application/json
-  /static_api/timezones:
+  /timezones:
     get:
       description: Get the list of acceptable timezone names.
       operationId: getTimezones
@@ -359,7 +359,7 @@ paths:
       tags:
       - Static
       x-accepts: application/json
-  /static_api/tags:
+  /tags:
     get:
       description: Retrieves the list of tags that are currently in use for the authenticated
         user.

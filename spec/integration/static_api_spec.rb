@@ -25,7 +25,7 @@ describe 'Static API' do
     end
   end
 
-  path '/static_api/timezones' do
+  path '/timezones' do
     get 'Get timezones' do
       description 'Get the list of acceptable timezone names.'
       tags 'Static'
@@ -52,7 +52,7 @@ describe 'Static API' do
     end
   end
 
-  path '/static_api/tags' do
+  path '/tags' do
     get 'Get tags' do
       description 'Retrieves the list of tags that are currently in use for the authenticated user.'
       tags 'Static'

@@ -130,8 +130,8 @@ Class | Method | HTTP request | Description
 *Bjr4js.JobsApi* | [**getJobs**](docs/JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
 *Bjr4js.JobsApi* | [**jobOccurrences**](docs/JobsApi.md#jobOccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
 *Bjr4js.JobsApi* | [**updateJob**](docs/JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
-*Bjr4js.StaticApi* | [**getTags**](docs/StaticApi.md#getTags) | **GET** /static_api/tags | Get tags
-*Bjr4js.StaticApi* | [**getTimezones**](docs/StaticApi.md#getTimezones) | **GET** /static_api/timezones | Get timezones
+*Bjr4js.StaticApi* | [**getTags**](docs/StaticApi.md#getTags) | **GET** /tags | Get tags
+*Bjr4js.StaticApi* | [**getTimezones**](docs/StaticApi.md#getTimezones) | **GET** /timezones | Get timezones
 *Bjr4js.StaticApi* | [**getVersion**](docs/StaticApi.md#getVersion) | **GET** /version | Server version
 *Bjr4js.UsersApi* | [**createUser**](docs/UsersApi.md#createUser) | **POST** /user_api | Creates a user
 *Bjr4js.UsersApi* | [**deleteUser**](docs/UsersApi.md#deleteUser) | **DELETE** /user_api/{id} | Deletes a user
