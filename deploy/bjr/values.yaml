@@ -1,11 +1,11 @@
-#
-# BJR Server image and tag
-#
-image: "barrywalker71/bjr"
-imageTag: "latest"
 imagePullPolicy: Always
 
+#
+# Settings for API nodes
+#
 apiNode:
+  image: barrywalker71/bjr
+  imageTag: latest
   nodeSelector: {}
   resources:
     requests:
@@ -16,7 +16,12 @@ apiNode:
       cpu: 500m
   replicas: 2
 
+#
+# Settings for worker nodes
+#
 workerNode:
+  image: barrywalker71/bjr
+  imageTag: latest
   nodeSelector: {}
   resources:
     requests:
@@ -25,6 +30,22 @@ workerNode:
     limits:
       memory: 512Mi
       cpu: 500m
+  replicas: 2
+
+#
+# Settings for BJR web nodes
+#
+webNode:
+  image: barrywalker71/bjr_web
+  imageTag: latest
+  nodeSelector: {}
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 100m
+    limits:
+      memory: 128Mi
+      cpu: 100m
   replicas: 2
 
 #

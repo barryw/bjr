@@ -45,7 +45,7 @@ spec:
       {{- end }}
       containers:
       - name: {{ template "bjr.fullname" . }}-worker
-        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+        image: "{{ .Values.workerNode.image }}:{{ .Values.workerNode.imageTag }}"
         imagePullPolicy: {{ .Values.imagePullPolicy | quote }}
         resources:
 {{ toYaml .Values.workerNode.resources | indent 10 }}
