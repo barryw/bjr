@@ -22,6 +22,8 @@ module BJR
     # Get tags
     # Retrieves the list of tags that are currently in use for the authenticated user.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :per_page 
+    # @option opts [Integer] :page 
     # @return [TagMessage]
     def get_tags(opts = {})
       data, _status_code, _headers = get_tags_with_http_info(opts)
@@ -31,6 +33,8 @@ module BJR
     # Get tags
     # Retrieves the list of tags that are currently in use for the authenticated user.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :per_page 
+    # @option opts [Integer] :page 
     # @return [Array<(TagMessage, Integer, Hash)>] TagMessage data, response status code and response headers
     def get_tags_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -41,6 +45,8 @@ module BJR
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

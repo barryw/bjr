@@ -17,6 +17,8 @@ describe 'Job API' do
       parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Occurrences received successfully' do
+        header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
+        header 'total', schema: { type: :integer }, description: 'The total number of items available.'
         let(:admin) { create(:admin1) }
         let(:job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }
@@ -125,6 +127,9 @@ describe 'Job API' do
       parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Jobs returned successfully' do
+        header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
+        header 'total', schema: { type: :integer }, description: 'The total number of items available.'
+        let(:admin) { create(:admin1) }
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         schema '$ref' => '#/components/schemas/JobArrayMessage'
@@ -159,6 +164,9 @@ describe 'Job API' do
       parameter name: :end_date, in: :query, type: :string, required: false
 
       response '200', 'Runs received successfully.' do
+        header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
+        header 'total', schema: { type: :integer }, description: 'The total number of items available.'
+        let(:admin) { create(:admin1) }
         let(:admin) { create(:admin1) }
         let(:job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }

@@ -60,8 +60,13 @@ describe 'Static API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
+      parameter name: :per_page, in: :query, type: :integer, required: false
+      parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Tags received successfully' do
+        header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
+        header 'total', schema: { type: :integer }, description: 'The total number of items available.'
+        let(:admin) { create(:admin1) }
         let(:admin) { create(:admin1) }
         let(:job1) { create(:job1, user: admin) }
         let(:job2) { create(:job2, user: admin) }

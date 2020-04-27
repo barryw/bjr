@@ -407,7 +407,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Runs received successfully. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Runs received successfully. </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public okhttp3.Call getJobRunsCall(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, final ApiCallback _callback) throws ApiException {
@@ -488,7 +488,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Runs received successfully. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Runs received successfully. </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public JobRunArrayMessage getJobRuns(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate) throws ApiException {
@@ -510,7 +510,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Runs received successfully. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Runs received successfully. </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public ApiResponse<JobRunArrayMessage> getJobRunsWithHttpInfo(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate) throws ApiException {
@@ -534,7 +534,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Runs received successfully. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Runs received successfully. </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public okhttp3.Call getJobRunsAsync(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, final ApiCallback<JobRunArrayMessage> _callback) throws ApiException {
@@ -558,7 +558,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Jobs returned successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public okhttp3.Call getJobsCall(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
@@ -637,7 +637,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Jobs returned successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public JobArrayMessage getJobs(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
@@ -659,7 +659,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Jobs returned successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public ApiResponse<JobArrayMessage> getJobsWithHttpInfo(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
@@ -683,7 +683,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Jobs returned successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public okhttp3.Call getJobsAsync(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page, final ApiCallback<JobArrayMessage> _callback) throws ApiException {
@@ -705,7 +705,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Occurrences received successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Occurrences received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
         <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
      </table>
      */
@@ -779,7 +779,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Occurrences received successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Occurrences received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
         <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
      </table>
      */
@@ -800,7 +800,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Occurrences received successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Occurrences received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
         <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
      </table>
      */
@@ -823,7 +823,7 @@ public class JobsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Occurrences received successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Occurrences received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
         <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
      </table>
      */

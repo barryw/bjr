@@ -414,7 +414,7 @@ public class UsersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Users found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Users found </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public okhttp3.Call getUsersCall(Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
@@ -473,7 +473,7 @@ public class UsersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Users found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Users found </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public UserArrayMessage getUsers(Integer perPage, Integer page) throws ApiException {
@@ -491,7 +491,7 @@ public class UsersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Users found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Users found </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public ApiResponse<UserArrayMessage> getUsersWithHttpInfo(Integer perPage, Integer page) throws ApiException {
@@ -511,7 +511,7 @@ public class UsersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Users found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Users found </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
     public okhttp3.Call getUsersAsync(Integer perPage, Integer page, final ApiCallback<UserArrayMessage> _callback) throws ApiException {

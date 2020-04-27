@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getTags"></a>
 # **getTags**
-> TagMessage getTags()
+> TagMessage getTags(perPage, page)
 
 Get tags
 
@@ -37,8 +37,10 @@ public class Example {
     bearerAuth.setBearerToken("BEARER TOKEN");
 
     StaticApi apiInstance = new StaticApi(defaultClient);
+    Integer perPage = 56; // Integer | 
+    Integer page = 56; // Integer | 
     try {
-      TagMessage result = apiInstance.getTags();
+      TagMessage result = apiInstance.getTags(perPage, page);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling StaticApi#getTags");
@@ -52,7 +54,11 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **Integer**|  | [optional]
+ **page** | **Integer**|  | [optional]
 
 ### Return type
 
@@ -70,7 +76,7 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Tags received successfully |  -  |
+**200** | Tags received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 <a name="getTimezones"></a>
 # **getTimezones**

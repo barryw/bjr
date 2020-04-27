@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## getTags
 
-> TagMessage getTags()
+> TagMessage getTags(opts)
 
 Get tags
 
@@ -28,7 +28,11 @@ let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new Bjr4js.StaticApi();
-apiInstance.getTags((error, data, response) => {
+let opts = {
+  'perPage': 56, // Number | 
+  'page': 56 // Number | 
+};
+apiInstance.getTags(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -39,7 +43,11 @@ apiInstance.getTags((error, data, response) => {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **Number**|  | [optional] 
+ **page** | **Number**|  | [optional] 
 
 ### Return type
 

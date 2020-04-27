@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **get_tags**
-> TagMessage get_tags()
+> TagMessage get_tags(per_page=per_page, page=page)
 
 Get tags
 
@@ -45,17 +45,23 @@ configuration = bjr4py.Configuration(
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = bjr4py.StaticApi(api_client)
-    
+    per_page = 56 # int |  (optional)
+page = 56 # int |  (optional)
+
     try:
         # Get tags
-        api_response = api_instance.get_tags()
+        api_response = api_instance.get_tags(per_page=per_page, page=page)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling StaticApi->get_tags: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **per_page** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -73,7 +79,7 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Tags received successfully |  -  |
+**200** | Tags received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

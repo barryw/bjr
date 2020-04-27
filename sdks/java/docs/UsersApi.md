@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Users found |  -  |
+**200** | Users found |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 <a name="updateUser"></a>
 # **updateUser**

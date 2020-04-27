@@ -76,6 +76,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/OccurrenceMessage'
           description: Occurrences received successfully
+          headers:
+            per-page:
+              description: The number of items in this page.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            total:
+              description: The total number of items available.
+              explode: false
+              schema:
+                type: integer
+              style: simple
         "404":
           content: {}
           description: Job not found
@@ -147,6 +160,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/JobArrayMessage'
           description: Jobs returned successfully
+          headers:
+            per-page:
+              description: The number of items in this page.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            total:
+              description: The total number of items available.
+              explode: false
+              schema:
+                type: integer
+              style: simple
       security:
       - bearerAuth: []
       summary: Retrieves jobs
@@ -233,6 +259,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/JobRunArrayMessage'
           description: Runs received successfully.
+          headers:
+            per-page:
+              description: The number of items in this page.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            total:
+              description: The total number of items available.
+              explode: false
+              schema:
+                type: integer
+              style: simple
       security:
       - bearerAuth: []
       summary: Retrieve the runs for a job
@@ -364,6 +403,21 @@ paths:
       description: Retrieves the list of tags that are currently in use for the authenticated
         user.
       operationId: getTags
+      parameters:
+      - explode: true
+        in: query
+        name: per_page
+        required: false
+        schema:
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -371,6 +425,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/TagMessage'
           description: Tags received successfully
+          headers:
+            per-page:
+              description: The number of items in this page.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            total:
+              description: The total number of items available.
+              explode: false
+              schema:
+                type: integer
+              style: simple
       security:
       - bearerAuth: []
       summary: Get tags
@@ -403,6 +470,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserArrayMessage'
           description: Users found
+          headers:
+            per-page:
+              description: The number of items in this page.
+              explode: false
+              schema:
+                type: integer
+              style: simple
+            total:
+              description: The total number of items available.
+              explode: false
+              schema:
+                type: integer
+              style: simple
       security:
       - bearerAuth: []
       summary: Retrieves users

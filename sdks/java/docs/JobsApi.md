@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Runs received successfully. |  -  |
+**200** | Runs received successfully. |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 <a name="getJobs"></a>
 # **getJobs**
@@ -368,7 +368,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Jobs returned successfully |  -  |
+**200** | Jobs returned successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 <a name="jobOccurrences"></a>
 # **jobOccurrences**
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Occurrences received successfully |  -  |
+**200** | Occurrences received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 **404** | Job not found |  -  |
 
 <a name="updateJob"></a>

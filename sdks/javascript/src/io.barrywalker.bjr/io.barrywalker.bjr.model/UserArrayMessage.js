@@ -17,7 +17,7 @@ import SingleUser from './SingleUser';
 /**
  * The UserArrayMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/UserArrayMessage
- * @version 1.0.0
+ * @version 1.0.2
  */
 class UserArrayMessage {
     /**

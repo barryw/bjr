@@ -67,7 +67,7 @@ import UsersApi from './io.barrywalker.bjr.api/UsersApi';
 * </pre>
 * </p>
 * @module io.barrywalker.bjr/index
-* @version 1.0.0
+* @version 1.0.2
 */
 export {
     /**

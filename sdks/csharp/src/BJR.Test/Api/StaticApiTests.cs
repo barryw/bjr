@@ -70,7 +70,9 @@ namespace BJR.Test
         public void GetTagsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.GetTags();
+            //int perPage = null;
+            //int page = null;
+            //var response = instance.GetTags(perPage, page);
             //Assert.IsInstanceOf(typeof(TagMessage), response, "response is TagMessage");
         }
         

@@ -20,7 +20,7 @@ import TimezoneMessage from '../io.barrywalker.bjr.model/TimezoneMessage';
 /**
 * Static service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/StaticApi
-* @version 1.0.0
+* @version 1.0.2
 */
 export default class StaticApi {
 
@@ -47,15 +47,21 @@ export default class StaticApi {
     /**
      * Get tags
      * Retrieves the list of tags that are currently in use for the authenticated user.
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.perPage 
+     * @param {Number} opts.page 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/StaticApi~getTagsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/TagMessage}
      */
-    getTags(callback) {
+    getTags(opts, callback) {
+      opts = opts || {};
       let postBody = null;
 
       let pathParams = {
       };
       let queryParams = {
+        'per_page': opts['perPage'],
+        'page': opts['page']
       };
       let headerParams = {
       };

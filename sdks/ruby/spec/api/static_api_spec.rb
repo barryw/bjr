@@ -36,6 +36,8 @@ describe 'StaticApi' do
   # Get tags
   # Retrieves the list of tags that are currently in use for the authenticated user.
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :per_page 
+  # @option opts [Integer] :page 
   # @return [TagMessage]
   describe 'get_tags test' do
     it 'should work' do

@@ -46,6 +46,8 @@ class StaticApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
+        :param int per_page:
+        :param int page:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -70,6 +72,8 @@ class StaticApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
+        :param int per_page:
+        :param int page:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -87,6 +91,8 @@ class StaticApi(object):
         local_var_params = locals()
 
         all_params = [
+            'per_page',
+            'page'
         ]
         all_params.extend(
             [
@@ -111,6 +117,10 @@ class StaticApi(object):
         path_params = {}
 
         query_params = []
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
 
         header_params = {}
 

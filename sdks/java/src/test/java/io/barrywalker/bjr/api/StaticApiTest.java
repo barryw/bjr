@@ -44,7 +44,9 @@ public class StaticApiTest {
      */
     @Test
     public void getTagsTest() throws ApiException {
-        TagMessage response = api.getTags();
+        Integer perPage = null;
+        Integer page = null;
+        TagMessage response = api.getTags(perPage, page);
 
         // TODO: test validations
     }

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## get_tags
 
-> TagMessage get_tags
+> TagMessage get_tags(opts)
 
 Get tags
 
@@ -30,10 +30,14 @@ BJR.configure do |config|
 end
 
 api_instance = BJR::StaticApi.new
+opts = {
+  per_page: 56, # Integer | 
+  page: 56 # Integer | 
+}
 
 begin
   #Get tags
-  result = api_instance.get_tags
+  result = api_instance.get_tags(opts)
   p result
 rescue BJR::ApiError => e
   puts "Exception when calling StaticApi->get_tags: #{e}"
@@ -42,7 +46,11 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **per_page** | **Integer**|  | [optional] 
+ **page** | **Integer**|  | [optional] 
 
 ### Return type
 

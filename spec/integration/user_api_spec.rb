@@ -15,6 +15,8 @@ describe 'User API' do
       parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Users found' do
+        header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
+        header 'total', schema: { type: :integer }, description: 'The total number of items available.'
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         schema '$ref' => '#/components/schemas/UserArrayMessage'

@@ -58,16 +58,18 @@ public class StaticApi {
 
     /**
      * Build call for getTags
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Tags received successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Tags received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getTagsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTagsCall(Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -75,6 +77,14 @@ public class StaticApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (perPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -97,10 +107,10 @@ public class StaticApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTagsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTagsValidateBeforeCall(Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getTagsCall(_callback);
+        okhttp3.Call localVarCall = getTagsCall(perPage, page, _callback);
         return localVarCall;
 
     }
@@ -108,32 +118,36 @@ public class StaticApi {
     /**
      * Get tags
      * Retrieves the list of tags that are currently in use for the authenticated user.
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @return TagMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Tags received successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Tags received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public TagMessage getTags() throws ApiException {
-        ApiResponse<TagMessage> localVarResp = getTagsWithHttpInfo();
+    public TagMessage getTags(Integer perPage, Integer page) throws ApiException {
+        ApiResponse<TagMessage> localVarResp = getTagsWithHttpInfo(perPage, page);
         return localVarResp.getData();
     }
 
     /**
      * Get tags
      * Retrieves the list of tags that are currently in use for the authenticated user.
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @return ApiResponse&lt;TagMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Tags received successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Tags received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<TagMessage> getTagsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getTagsValidateBeforeCall(null);
+    public ApiResponse<TagMessage> getTagsWithHttpInfo(Integer perPage, Integer page) throws ApiException {
+        okhttp3.Call localVarCall = getTagsValidateBeforeCall(perPage, page, null);
         Type localVarReturnType = new TypeToken<TagMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -141,18 +155,20 @@ public class StaticApi {
     /**
      * Get tags (asynchronously)
      * Retrieves the list of tags that are currently in use for the authenticated user.
+     * @param perPage  (optional)
+     * @param page  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Tags received successfully </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Tags received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getTagsAsync(final ApiCallback<TagMessage> _callback) throws ApiException {
+    public okhttp3.Call getTagsAsync(Integer perPage, Integer page, final ApiCallback<TagMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTagsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTagsValidateBeforeCall(perPage, page, _callback);
         Type localVarReturnType = new TypeToken<TagMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

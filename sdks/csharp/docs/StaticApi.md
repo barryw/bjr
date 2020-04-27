@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## GetTags
 
-> TagMessage GetTags ()
+> TagMessage GetTags (int perPage = null, int page = null)
 
 Get tags
 
@@ -38,11 +38,13 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new StaticApi(Configuration.Default);
+            var perPage = 56;  // int |  (optional) 
+            var page = 56;  // int |  (optional) 
 
             try
             {
                 // Get tags
-                TagMessage result = apiInstance.GetTags();
+                TagMessage result = apiInstance.GetTags(perPage, page);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -58,7 +60,11 @@ namespace Example
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -76,7 +82,7 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Tags received successfully |  -  |
+| **200** | Tags received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

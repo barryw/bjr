@@ -31,8 +31,10 @@ namespace BJR.Api
         /// Retrieves the list of tags that are currently in use for the authenticated user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>TagMessage</returns>
-        TagMessage GetTags ();
+        TagMessage GetTags (int perPage = default(int), int page = default(int));
 
         /// <summary>
         /// Get tags
@@ -41,8 +43,10 @@ namespace BJR.Api
         /// Retrieves the list of tags that are currently in use for the authenticated user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of TagMessage</returns>
-        ApiResponse<TagMessage> GetTagsWithHttpInfo ();
+        ApiResponse<TagMessage> GetTagsWithHttpInfo (int perPage = default(int), int page = default(int));
         /// <summary>
         /// Get timezones
         /// </summary>
@@ -90,8 +94,10 @@ namespace BJR.Api
         /// Retrieves the list of tags that are currently in use for the authenticated user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of TagMessage</returns>
-        System.Threading.Tasks.Task<TagMessage> GetTagsAsync ();
+        System.Threading.Tasks.Task<TagMessage> GetTagsAsync (int perPage = default(int), int page = default(int));
 
         /// <summary>
         /// Get tags
@@ -100,8 +106,10 @@ namespace BJR.Api
         /// Retrieves the list of tags that are currently in use for the authenticated user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (TagMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsAsyncWithHttpInfo (int perPage = default(int), int page = default(int));
         /// <summary>
         /// Get timezones
         /// </summary>
@@ -255,10 +263,12 @@ namespace BJR.Api
         /// Get tags Retrieves the list of tags that are currently in use for the authenticated user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>TagMessage</returns>
-        public TagMessage GetTags ()
+        public TagMessage GetTags (int perPage = default(int), int page = default(int))
         {
-             ApiResponse<TagMessage> localVarResponse = GetTagsWithHttpInfo();
+             ApiResponse<TagMessage> localVarResponse = GetTagsWithHttpInfo(perPage, page);
              return localVarResponse.Data;
         }
 
@@ -266,8 +276,10 @@ namespace BJR.Api
         /// Get tags Retrieves the list of tags that are currently in use for the authenticated user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of TagMessage</returns>
-        public ApiResponse<TagMessage> GetTagsWithHttpInfo ()
+        public ApiResponse<TagMessage> GetTagsWithHttpInfo (int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/tags";
@@ -291,6 +303,8 @@ namespace BJR.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -321,10 +335,12 @@ namespace BJR.Api
         /// Get tags Retrieves the list of tags that are currently in use for the authenticated user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of TagMessage</returns>
-        public async System.Threading.Tasks.Task<TagMessage> GetTagsAsync ()
+        public async System.Threading.Tasks.Task<TagMessage> GetTagsAsync (int perPage = default(int), int page = default(int))
         {
-             ApiResponse<TagMessage> localVarResponse = await GetTagsAsyncWithHttpInfo();
+             ApiResponse<TagMessage> localVarResponse = await GetTagsAsyncWithHttpInfo(perPage, page);
              return localVarResponse.Data;
 
         }
@@ -333,8 +349,10 @@ namespace BJR.Api
         /// Get tags Retrieves the list of tags that are currently in use for the authenticated user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (TagMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsAsyncWithHttpInfo (int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/tags";
@@ -358,6 +376,8 @@ namespace BJR.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required
