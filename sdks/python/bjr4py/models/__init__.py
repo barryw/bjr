@@ -19,6 +19,8 @@ from bjr4py.models.auth_out import AuthOut
 from bjr4py.models.job_array_message import JobArrayMessage
 from bjr4py.models.job_in import JobIn
 from bjr4py.models.job_run_array_message import JobRunArrayMessage
+from bjr4py.models.jobs_per_day import JobsPerDay
+from bjr4py.models.jobs_per_day_object import JobsPerDayObject
 from bjr4py.models.occurrence_message import OccurrenceMessage
 from bjr4py.models.server_version import ServerVersion
 from bjr4py.models.single_job import SingleJob

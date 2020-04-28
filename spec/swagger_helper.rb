@@ -24,6 +24,26 @@ RSpec.configure do |config|
       },
       components: {
         schemas: {
+          JobsPerDay: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: {
+                type: :array,
+                items: {
+                  type: :object,
+                  properties: {
+                    date: { type: :string, description: 'The date the counts are for.' },
+                    processed: { type: :integer, description: 'The total number of jobs that were processed for the day.' },
+                    failed: { type: :integer, description: 'The total number of jobs that failed for the day.' }
+                  }
+                }
+              }
+            }
+          },
           ServerVersion: {
             type: :object,
             properties: {

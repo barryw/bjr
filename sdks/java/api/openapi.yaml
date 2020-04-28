@@ -366,6 +366,37 @@ paths:
       - Jobs
       x-contentType: application/json
       x-accepts: application/json
+  /job_server_api/job_runs_per_day:
+    get:
+      description: The number of jobs processed and failed by day
+      operationId: jobsPerDay
+      parameters:
+      - explode: true
+        in: query
+        name: days
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobsPerDay'
+          description: Job processed statistics received successfully
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobsPerDay'
+          description: Too many days specified
+      security:
+      - bearerAuth: []
+      summary: Jobs Per Day
+      tags:
+      - JobServer
+      x-accepts: application/json
   /version:
     get:
       description: The BJR server version
@@ -623,6 +654,37 @@ paths:
       x-accepts: application/json
 components:
   schemas:
+    JobsPerDay:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+        - date: date
+          processed: 6
+          failed: 1
+        - date: date
+          processed: 6
+          failed: 1
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          items:
+            $ref: '#/components/schemas/JobsPerDay_object'
+          type: array
+      type: object
     ServerVersion:
       example:
         status_code: 0
@@ -1267,6 +1329,21 @@ components:
       - cron
       - name
       type: object
+    JobsPerDay_object:
+      example:
+        date: date
+        processed: 6
+        failed: 1
+      properties:
+        date:
+          description: The date the counts are for.
+          type: string
+        processed:
+          description: The total number of jobs that were processed for the day.
+          type: integer
+        failed:
+          description: The total number of jobs that failed for the day.
+          type: integer
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

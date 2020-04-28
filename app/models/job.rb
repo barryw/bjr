@@ -58,14 +58,14 @@ class Job < ApplicationRecord
 
   # When a job completes, this is called to update the job and the run
   def stop_job(run, return_code, success, error_message, stdout, stderr)
-    self.running = false
-    self.last_run = Time.current
     self.success = success
     run.update_run(return_code, success, error_message, stdout, stderr)
   rescue
     self.success = false
     logger.error "Failed to update the job run for job #{id} : #{$!}"
   ensure
+    self.last_run = Time.current
+    self.running = false
     save
   end
 

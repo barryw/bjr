@@ -30,7 +30,8 @@ class ApplicationController < ActionController::API
   end
 
   def message(message, status, is_error = false, object = {}, object_type = '')
-    render json: { message: message, is_error: is_error, object: object, object_type: object_type, status_code: status_msg_to_number(status) }, status: status
+    render json: { message: message, is_error: is_error, object: object, object_type: object_type,
+                   status_code: status_msg_to_number(status) }, status: status
   end
 
   def status_msg_to_number(status)

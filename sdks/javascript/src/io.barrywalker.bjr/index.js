@@ -18,6 +18,8 @@ import AuthOut from './io.barrywalker.bjr.model/AuthOut';
 import JobArrayMessage from './io.barrywalker.bjr.model/JobArrayMessage';
 import JobIn from './io.barrywalker.bjr.model/JobIn';
 import JobRunArrayMessage from './io.barrywalker.bjr.model/JobRunArrayMessage';
+import JobsPerDay from './io.barrywalker.bjr.model/JobsPerDay';
+import JobsPerDayObject from './io.barrywalker.bjr.model/JobsPerDayObject';
 import OccurrenceMessage from './io.barrywalker.bjr.model/OccurrenceMessage';
 import ServerVersion from './io.barrywalker.bjr.model/ServerVersion';
 import SingleJob from './io.barrywalker.bjr.model/SingleJob';
@@ -33,6 +35,7 @@ import UserArrayMessage from './io.barrywalker.bjr.model/UserArrayMessage';
 import UserNewIn from './io.barrywalker.bjr.model/UserNewIn';
 import UserUpdateIn from './io.barrywalker.bjr.model/UserUpdateIn';
 import AuthenticationApi from './io.barrywalker.bjr.api/AuthenticationApi';
+import JobServerApi from './io.barrywalker.bjr.api/JobServerApi';
 import JobsApi from './io.barrywalker.bjr.api/JobsApi';
 import StaticApi from './io.barrywalker.bjr.api/StaticApi';
 import UsersApi from './io.barrywalker.bjr.api/UsersApi';
@@ -67,7 +70,7 @@ import UsersApi from './io.barrywalker.bjr.api/UsersApi';
 * </pre>
 * </p>
 * @module io.barrywalker.bjr/index
-* @version 1.0.2
+* @version 1.0.3
 */
 export {
     /**
@@ -105,6 +108,18 @@ export {
      * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobRunArrayMessage}
      */
     JobRunArrayMessage,
+
+    /**
+     * The JobsPerDay model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobsPerDay}
+     */
+    JobsPerDay,
+
+    /**
+     * The JobsPerDayObject model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobsPerDayObject}
+     */
+    JobsPerDayObject,
 
     /**
      * The OccurrenceMessage model constructor.
@@ -195,6 +210,12 @@ export {
     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.api/AuthenticationApi}
     */
     AuthenticationApi,
+
+    /**
+    * The JobServerApi service constructor.
+    * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi}
+    */
+    JobServerApi,
 
     /**
     * The JobsApi service constructor.

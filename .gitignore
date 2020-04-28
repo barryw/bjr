@@ -28,3 +28,5 @@ deploy/bjr/charts
 terraform/.terraform
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
+
+.env.test.local

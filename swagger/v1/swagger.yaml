@@ -6,6 +6,36 @@ info:
   version: v1
 components:
   schemas:
+    JobsPerDay:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                description: The date the counts are for.
+              processed:
+                type: integer
+                description: The total number of jobs that were processed for the
+                  day.
+              failed:
+                type: integer
+                description: The total number of jobs that failed for the day.
     ServerVersion:
       type: object
       properties:
@@ -730,6 +760,34 @@ paths:
         '404':
           description: Job not found.
           content: {}
+  "/job_server_api/job_runs_per_day":
+    get:
+      summary: Jobs Per Day
+      description: The number of jobs processed and failed by day
+      tags:
+      - JobServer
+      operationId: jobsPerDay
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: days
+        in: query
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Job processed statistics received successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobsPerDay"
+        '406':
+          description: Too many days specified
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobsPerDay"
   "/version":
     get:
       summary: Server version

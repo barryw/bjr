@@ -45,3 +45,7 @@ en:
   version:
     messages:
       received: Version received successfully.
+  jobserver:
+    messages:
+      received: Job Server runs by day received successfully.
+      failed: The 'days' parameter must be less than 31.
