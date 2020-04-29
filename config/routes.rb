@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   # Job Server API
   get '/job_server_api/job_runs_per_day', to: 'job_server_api#job_runs_per_day', as: 'job_runs_per_day'
+  get '/job_server_api/most_recent_jobs', to: 'job_server_api#most_recent_jobs', as: 'most_recent_jobs'
 
   # Swagger UI
   mount Rswag::Ui::Engine => '/api-docs'

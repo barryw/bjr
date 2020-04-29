@@ -13,12 +13,13 @@
 
 
 import ApiClient from "../ApiClient";
+import JobArrayMessage from '../io.barrywalker.bjr.model/JobArrayMessage';
 import JobsPerDay from '../io.barrywalker.bjr.model/JobsPerDay';
 
 /**
 * JobServer service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi
-* @version 1.0.3
+* @version 1.0.4
 */
 export default class JobServerApi {
 
@@ -46,7 +47,7 @@ export default class JobServerApi {
      * Jobs Per Day
      * The number of jobs processed and failed by day
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.days 
+     * @param {Number} opts.days The number of days to return (max 30)
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~jobsPerDayCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobsPerDay}
      */
@@ -70,6 +71,47 @@ export default class JobServerApi {
       let returnType = JobsPerDay;
       return this.apiClient.callApi(
         '/job_server_api/job_runs_per_day', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the recentJobs operation.
+     * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~recentJobsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobArrayMessage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Most Recent Jobs
+     * Get a list of the most recently run jobs
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.count The number of jobs to return (max 20)
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~recentJobsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobArrayMessage}
+     */
+    recentJobs(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'count': opts['count']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = JobArrayMessage;
+      return this.apiClient.callApi(
+        '/job_server_api/most_recent_jobs', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

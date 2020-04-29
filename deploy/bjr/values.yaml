@@ -59,6 +59,7 @@ serverSettings:
 # MySQL settings
 #
 mysql:
+  useKubernetesMySQL: false
   mysqlDatabase: bjr_production
   mysqlUser: bjr
   timezone: UTC
@@ -78,12 +79,11 @@ mysql:
   readinessProbe:
     initialDelaySeconds: 120
   external:
-    disabled: true
-    secretName: bjr-mysql
+    secretName: bjr-external-mysql
     usernameKey: mysql-username
     passwordKey: mysql-password
-    address: ""
-    database: ""
+    address: "192.168.1.209"
+    database: "bjr_production"
   configurationFiles:
     mysql.cnf: |-
       [mysqld]
@@ -100,9 +100,9 @@ mysql:
 # Redis settings
 #
 redis:
+  useKubernetesRedis: true
   usePassword: false
   external:
-    disabled: true
     address: ""
     port: 6379
     sidekiqDb: 0

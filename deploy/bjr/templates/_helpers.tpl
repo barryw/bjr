@@ -36,7 +36,7 @@ MySQL settings. Handles the case of an external MySQL instance as well
 as a bundled MySQL
 */}}
 {{- define "bjr.mysql" -}}
-{{- if .Values.mysql.external.disabled -}}
+{{- if .Values.useKubernetesMySQL -}}
 - name: BJR_DATABASE_USERNAME
   value: bjr
 - name: BJR_DATABASE_PASSWORD
@@ -73,7 +73,7 @@ Redis settings. Handles the case of an external Redis instance as well
 as a bundled Redis
 */}}
 {{- define "bjr.redis" -}}
-{{- if .Values.redis.external.disabled -}}
+{{- if .Values.redis.useKubernetesRedis -}}
 - name: REDIS_HOST
   value: "bjr-redis-master"
 - name: REDIS_PORT

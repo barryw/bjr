@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-04-28T00:59:02.508Z[GMT]
+  - Build date: 2020-04-29T01:57:09.455Z[GMT]
 
 API specification for the BJR job server.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>bjr4j</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:bjr4j:1.0.3"
+compile "org.openapitools:bjr4j:1.0.4"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bjr4j-1.0.3.jar`
+* `target/bjr4j-1.0.4.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuthenticationApi* | [**authenticateUser**](docs/AuthenticationApi.md#authenticateUser) | **POST** /authenticate | Authenticates a user and returns a token
 *JobServerApi* | [**jobsPerDay**](docs/JobServerApi.md#jobsPerDay) | **GET** /job_server_api/job_runs_per_day | Jobs Per Day
+*JobServerApi* | [**recentJobs**](docs/JobServerApi.md#recentJobs) | **GET** /job_server_api/most_recent_jobs | Most Recent Jobs
 *JobsApi* | [**createJob**](docs/JobsApi.md#createJob) | **POST** /job_api | Creates a job
 *JobsApi* | [**deleteJob**](docs/JobsApi.md#deleteJob) | **DELETE** /job_api/{id} | Deletes a job
 *JobsApi* | [**getJob**](docs/JobsApi.md#getJob) | **GET** /job_api/{id} | Retrieves a single job

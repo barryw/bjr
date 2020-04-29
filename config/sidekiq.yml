@@ -3,3 +3,4 @@
 :queues:
   - job_finder
   - job_runner
+  - stats_runner

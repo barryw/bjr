@@ -366,12 +366,45 @@ paths:
       - Jobs
       x-contentType: application/json
       x-accepts: application/json
+  /job_server_api/most_recent_jobs:
+    get:
+      description: Get a list of the most recently run jobs
+      operationId: recentJobs
+      parameters:
+      - description: The number of jobs to return (max 20)
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobArrayMessage'
+          description: Jobs received successfully
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobArrayMessage'
+          description: Too many jobs specified
+      security:
+      - bearerAuth: []
+      summary: Most Recent Jobs
+      tags:
+      - JobServer
+      x-accepts: application/json
   /job_server_api/job_runs_per_day:
     get:
       description: The number of jobs processed and failed by day
       operationId: jobsPerDay
       parameters:
-      - explode: true
+      - description: The number of days to return (max 30)
+        explode: true
         in: query
         name: days
         required: false

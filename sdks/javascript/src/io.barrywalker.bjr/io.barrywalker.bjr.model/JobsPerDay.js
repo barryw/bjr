@@ -17,7 +17,7 @@ import JobsPerDayObject from './JobsPerDayObject';
 /**
  * The JobsPerDay model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobsPerDay
- * @version 1.0.3
+ * @version 1.0.4
  */
 class JobsPerDay {
     /**

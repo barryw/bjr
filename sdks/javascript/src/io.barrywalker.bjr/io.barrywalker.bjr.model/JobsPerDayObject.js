@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The JobsPerDayObject model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobsPerDayObject
- * @version 1.0.3
+ * @version 1.0.4
  */
 class JobsPerDayObject {
     /**

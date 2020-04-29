@@ -760,6 +760,35 @@ paths:
         '404':
           description: Job not found.
           content: {}
+  "/job_server_api/most_recent_jobs":
+    get:
+      summary: Most Recent Jobs
+      description: Get a list of the most recently run jobs
+      tags:
+      - JobServer
+      operationId: recentJobs
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: count
+        in: query
+        required: false
+        description: The number of jobs to return (max 20)
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Jobs received successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobArrayMessage"
+        '406':
+          description: Too many jobs specified
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobArrayMessage"
   "/job_server_api/job_runs_per_day":
     get:
       summary: Jobs Per Day
@@ -773,6 +802,7 @@ paths:
       - name: days
         in: query
         required: false
+        description: The number of days to return (max 30)
         schema:
           type: integer
       responses:

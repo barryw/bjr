@@ -75,6 +75,18 @@ namespace BJR.Test
             //Assert.IsInstanceOf(typeof(JobsPerDay), response, "response is JobsPerDay");
         }
         
+        /// <summary>
+        /// Test RecentJobs
+        /// </summary>
+        [Test]
+        public void RecentJobsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int count = null;
+            //var response = instance.RecentJobs(count);
+            //Assert.IsInstanceOf(typeof(JobArrayMessage), response, "response is JobArrayMessage");
+        }
+        
     }
 
 }

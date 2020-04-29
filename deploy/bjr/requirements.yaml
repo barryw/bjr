@@ -2,8 +2,8 @@ dependencies:
   - name: mysql
     repository: "@stable"
     version: 1.4.0
-    condition: mysql.external.disabled
+    condition: mysql.useKubernetesMySQL
   - name: redis
     repository: "@stable"
     version: 9.2.2
-    condition: redis.external.disabled
+    condition: redis.useKubernetesRedis

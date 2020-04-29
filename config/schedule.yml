@@ -1,4 +1,14 @@
 job_finder:
   cron: "* * * * *"
-  class: "JobFinderJob"
+  class: JobFinderJob
   queue: job_finder
+
+stats_per_day:
+  cron: "0 0 * * *"
+  class: StatsPerDayJob
+  queue: stats_runner
+
+stats_per_minute:
+  cron: "* * * * *"
+  class: StatsPerMinuteJob
+  queue: stats_runner

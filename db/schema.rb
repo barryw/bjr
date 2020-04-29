@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_123755) do
+ActiveRecord::Schema.define(version: 2020_04_28_213937) do
 
   create_table "job_runs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "success"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_123755) do
     t.bigint "job_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["job_id", "created_at"], name: "index_job_runs_on_job_id_and_created_at"
     t.index ["job_id"], name: "index_job_runs_on_job_id"
   end
 

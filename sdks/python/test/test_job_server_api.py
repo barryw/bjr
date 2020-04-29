@@ -35,6 +35,13 @@ class TestJobServerApi(unittest.TestCase):
         """
         pass
 
+    def test_recent_jobs(self):
+        """Test case for recent_jobs
+
+        Most Recent Jobs  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()
