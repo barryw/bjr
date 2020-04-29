@@ -15,7 +15,6 @@ package io.barrywalker.bjr.api;
 
 import io.barrywalker.bjr.ApiException;
 import io.barrywalker.bjr.model.JobArrayMessage;
-import io.barrywalker.bjr.model.JobsPerDay;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -34,23 +33,7 @@ public class JobServerApiTest {
 
     
     /**
-     * Jobs Per Day
-     *
-     * The number of jobs processed and failed by day
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void jobsPerDayTest() throws ApiException {
-        Integer days = null;
-        JobsPerDay response = api.jobsPerDay(days);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Most Recent Jobs
+     * List of recent jobs
      *
      * Get a list of the most recently run jobs
      *
@@ -61,6 +44,22 @@ public class JobServerApiTest {
     public void recentJobsTest() throws ApiException {
         Integer count = null;
         JobArrayMessage response = api.recentJobs(count);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * List of upcoming jobs
+     *
+     * A list of jobs that are about to execute
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void upcomingJobsTest() throws ApiException {
+        Integer count = null;
+        JobArrayMessage response = api.upcomingJobs(count);
 
         // TODO: test validations
     }

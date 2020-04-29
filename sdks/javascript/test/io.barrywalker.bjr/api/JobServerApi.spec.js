@@ -48,20 +48,20 @@
   }
 
   describe('JobServerApi', function() {
-    describe('jobsPerDay', function() {
-      it('should call jobsPerDay successfully', function(done) {
-        //uncomment below and update the code to test jobsPerDay
-        //instance.jobsPerDay(function(error) {
+    describe('recentJobs', function() {
+      it('should call recentJobs successfully', function(done) {
+        //uncomment below and update the code to test recentJobs
+        //instance.recentJobs(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('recentJobs', function() {
-      it('should call recentJobs successfully', function(done) {
-        //uncomment below and update the code to test recentJobs
-        //instance.recentJobs(function(error) {
+    describe('upcomingJobs', function() {
+      it('should call upcomingJobs successfully', function(done) {
+        //uncomment below and update the code to test upcomingJobs
+        //instance.upcomingJobs(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

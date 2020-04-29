@@ -14,11 +14,13 @@ class Job < ApplicationRecord
   has_many :job_runs, dependent: :delete_all
 
   scope :schedulable, -> { where('next_run < ? and enabled = ? and running = ?', Time.current, true, false) }
-  scope :mine, ->(user_id) { where(user_id: user_id) }
-  scope :enabled, ->(enabled) { where(enabled: enabled) }
-  scope :running, ->(running) { where(running: running) }
-  scope :successful, ->(successful) { where(success: successful) }
-  scope :include_by_ids, ->(ids) { where('jobs.id in (?)', ids) }
+  scope :mine, -> (user_id) { where(user_id: user_id) }
+  scope :enabled, -> (enabled) { where(enabled: enabled) }
+  scope :running, -> (running) { where(running: running) }
+  scope :successful, -> (successful) { where(success: successful) }
+  scope :include_by_ids, -> (ids) { where('jobs.id in (?)', ids) }
+  scope :recent, -> (user_id, count) { where(user_id: user_id).order(last_run: :desc).limit(count) }
+  scope :upcoming, -> (user_id, count) { where(user_id: user_id).order(next_run: :desc).limit(count) }
 
   TAG_SEARCH = %w[any all exclude].freeze
 

@@ -32,25 +32,25 @@ describe 'JobServerApi' do
     end
   end
 
-  # unit tests for jobs_per_day
-  # Jobs Per Day
-  # The number of jobs processed and failed by day
-  # @param [Hash] opts the optional parameters
-  # @option opts [Integer] :days The number of days to return (max 30)
-  # @return [JobsPerDay]
-  describe 'jobs_per_day test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   # unit tests for recent_jobs
-  # Most Recent Jobs
+  # List of recent jobs
   # Get a list of the most recently run jobs
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :count The number of jobs to return (max 20)
   # @return [JobArrayMessage]
   describe 'recent_jobs test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for upcoming_jobs
+  # List of upcoming jobs
+  # A list of jobs that are about to execute
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :count The number of jobs to return (max 20)
+  # @return [JobArrayMessage]
+  describe 'upcoming_jobs test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

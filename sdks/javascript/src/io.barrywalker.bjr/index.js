@@ -18,8 +18,6 @@ import AuthOut from './io.barrywalker.bjr.model/AuthOut';
 import JobArrayMessage from './io.barrywalker.bjr.model/JobArrayMessage';
 import JobIn from './io.barrywalker.bjr.model/JobIn';
 import JobRunArrayMessage from './io.barrywalker.bjr.model/JobRunArrayMessage';
-import JobsPerDay from './io.barrywalker.bjr.model/JobsPerDay';
-import JobsPerDayObject from './io.barrywalker.bjr.model/JobsPerDayObject';
 import OccurrenceMessage from './io.barrywalker.bjr.model/OccurrenceMessage';
 import ServerVersion from './io.barrywalker.bjr.model/ServerVersion';
 import SingleJob from './io.barrywalker.bjr.model/SingleJob';
@@ -70,7 +68,7 @@ import UsersApi from './io.barrywalker.bjr.api/UsersApi';
 * </pre>
 * </p>
 * @module io.barrywalker.bjr/index
-* @version 1.0.4
+* @version 1.0.5
 */
 export {
     /**
@@ -108,18 +106,6 @@ export {
      * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobRunArrayMessage}
      */
     JobRunArrayMessage,
-
-    /**
-     * The JobsPerDay model constructor.
-     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobsPerDay}
-     */
-    JobsPerDay,
-
-    /**
-     * The JobsPerDayObject model constructor.
-     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobsPerDayObject}
-     */
-    JobsPerDayObject,
 
     /**
      * The OccurrenceMessage model constructor.

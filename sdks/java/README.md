@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-04-29T01:57:09.455Z[GMT]
+  - Build date: 2020-04-29T21:40:53.579Z[GMT]
 
 API specification for the BJR job server.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>bjr4j</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:bjr4j:1.0.4"
+compile "org.openapitools:bjr4j:1.0.5"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bjr4j-1.0.4.jar`
+* `target/bjr4j-1.0.5.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -108,8 +108,8 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuthenticationApi* | [**authenticateUser**](docs/AuthenticationApi.md#authenticateUser) | **POST** /authenticate | Authenticates a user and returns a token
-*JobServerApi* | [**jobsPerDay**](docs/JobServerApi.md#jobsPerDay) | **GET** /job_server_api/job_runs_per_day | Jobs Per Day
-*JobServerApi* | [**recentJobs**](docs/JobServerApi.md#recentJobs) | **GET** /job_server_api/most_recent_jobs | Most Recent Jobs
+*JobServerApi* | [**recentJobs**](docs/JobServerApi.md#recentJobs) | **GET** /job_server_api/recent_jobs | List of recent jobs
+*JobServerApi* | [**upcomingJobs**](docs/JobServerApi.md#upcomingJobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 *JobsApi* | [**createJob**](docs/JobsApi.md#createJob) | **POST** /job_api | Creates a job
 *JobsApi* | [**deleteJob**](docs/JobsApi.md#deleteJob) | **DELETE** /job_api/{id} | Deletes a job
 *JobsApi* | [**getJob**](docs/JobsApi.md#getJob) | **GET** /job_api/{id} | Retrieves a single job
@@ -134,8 +134,6 @@ Class | Method | HTTP request | Description
  - [JobArrayMessage](docs/JobArrayMessage.md)
  - [JobIn](docs/JobIn.md)
  - [JobRunArrayMessage](docs/JobRunArrayMessage.md)
- - [JobsPerDay](docs/JobsPerDay.md)
- - [JobsPerDayObject](docs/JobsPerDayObject.md)
  - [OccurrenceMessage](docs/OccurrenceMessage.md)
  - [ServerVersion](docs/ServerVersion.md)
  - [SingleJob](docs/SingleJob.md)

@@ -64,18 +64,6 @@ namespace BJR.Test
 
         
         /// <summary>
-        /// Test JobsPerDay
-        /// </summary>
-        [Test]
-        public void JobsPerDayTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int days = null;
-            //var response = instance.JobsPerDay(days);
-            //Assert.IsInstanceOf(typeof(JobsPerDay), response, "response is JobsPerDay");
-        }
-        
-        /// <summary>
         /// Test RecentJobs
         /// </summary>
         [Test]
@@ -84,6 +72,18 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int count = null;
             //var response = instance.RecentJobs(count);
+            //Assert.IsInstanceOf(typeof(JobArrayMessage), response, "response is JobArrayMessage");
+        }
+        
+        /// <summary>
+        /// Test UpcomingJobs
+        /// </summary>
+        [Test]
+        public void UpcomingJobsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int count = null;
+            //var response = instance.UpcomingJobs(count);
             //Assert.IsInstanceOf(typeof(JobArrayMessage), response, "response is JobArrayMessage");
         }
         

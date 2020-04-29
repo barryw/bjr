@@ -28,17 +28,17 @@ class TestJobServerApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_jobs_per_day(self):
-        """Test case for jobs_per_day
-
-        Jobs Per Day  # noqa: E501
-        """
-        pass
-
     def test_recent_jobs(self):
         """Test case for recent_jobs
 
-        Most Recent Jobs  # noqa: E501
+        List of recent jobs  # noqa: E501
+        """
+        pass
+
+    def test_upcoming_jobs(self):
+        """Test case for upcoming_jobs
+
+        List of upcoming jobs  # noqa: E501
         """
         pass
 

@@ -6,36 +6,6 @@ info:
   version: v1
 components:
   schemas:
-    JobsPerDay:
-      type: object
-      properties:
-        message:
-          type: string
-          description: The status message returned from the API call.
-        is_error:
-          type: boolean
-          description: True if there was an error performing the API call.
-        object_type:
-          type: string
-          description: The type of object being returned.
-        status_code:
-          type: integer
-          description: The HTTP status code returned.
-        object:
-          type: array
-          items:
-            type: object
-            properties:
-              date:
-                type: string
-                description: The date the counts are for.
-              processed:
-                type: integer
-                description: The total number of jobs that were processed for the
-                  day.
-              failed:
-                type: integer
-                description: The total number of jobs that failed for the day.
     ServerVersion:
       type: object
       properties:
@@ -760,9 +730,9 @@ paths:
         '404':
           description: Job not found.
           content: {}
-  "/job_server_api/most_recent_jobs":
+  "/job_server_api/recent_jobs":
     get:
-      summary: Most Recent Jobs
+      summary: List of recent jobs
       description: Get a list of the most recently run jobs
       tags:
       - JobServer
@@ -789,35 +759,35 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/JobArrayMessage"
-  "/job_server_api/job_runs_per_day":
+  "/job_server_api/upcoming_jobs":
     get:
-      summary: Jobs Per Day
-      description: The number of jobs processed and failed by day
+      summary: List of upcoming jobs
+      description: A list of jobs that are about to execute
       tags:
       - JobServer
-      operationId: jobsPerDay
+      operationId: upcomingJobs
       security:
       - bearerAuth: []
       parameters:
-      - name: days
+      - name: count
         in: query
         required: false
-        description: The number of days to return (max 30)
+        description: The number of jobs to return (max 20)
         schema:
           type: integer
       responses:
         '200':
-          description: Job processed statistics received successfully
+          description: Upcoming job list returned successfully
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/JobsPerDay"
+                "$ref": "#/components/schemas/JobArrayMessage"
         '406':
-          description: Too many days specified
+          description: Too many jobs specified
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/JobsPerDay"
+                "$ref": "#/components/schemas/JobArrayMessage"
   "/version":
     get:
       summary: Server version

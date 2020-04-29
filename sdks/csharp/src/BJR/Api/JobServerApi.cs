@@ -25,28 +25,7 @@ namespace BJR.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Jobs Per Day
-        /// </summary>
-        /// <remarks>
-        /// The number of jobs processed and failed by day
-        /// </remarks>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days">The number of days to return (max 30) (optional)</param>
-        /// <returns>JobsPerDay</returns>
-        JobsPerDay JobsPerDay (int days = default(int));
-
-        /// <summary>
-        /// Jobs Per Day
-        /// </summary>
-        /// <remarks>
-        /// The number of jobs processed and failed by day
-        /// </remarks>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days">The number of days to return (max 30) (optional)</param>
-        /// <returns>ApiResponse of JobsPerDay</returns>
-        ApiResponse<JobsPerDay> JobsPerDayWithHttpInfo (int days = default(int));
-        /// <summary>
-        /// Most Recent Jobs
+        /// List of recent jobs
         /// </summary>
         /// <remarks>
         /// Get a list of the most recently run jobs
@@ -57,7 +36,7 @@ namespace BJR.Api
         JobArrayMessage RecentJobs (int count = default(int));
 
         /// <summary>
-        /// Most Recent Jobs
+        /// List of recent jobs
         /// </summary>
         /// <remarks>
         /// Get a list of the most recently run jobs
@@ -66,31 +45,31 @@ namespace BJR.Api
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
         ApiResponse<JobArrayMessage> RecentJobsWithHttpInfo (int count = default(int));
+        /// <summary>
+        /// List of upcoming jobs
+        /// </summary>
+        /// <remarks>
+        /// A list of jobs that are about to execute
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <returns>JobArrayMessage</returns>
+        JobArrayMessage UpcomingJobs (int count = default(int));
+
+        /// <summary>
+        /// List of upcoming jobs
+        /// </summary>
+        /// <remarks>
+        /// A list of jobs that are about to execute
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <returns>ApiResponse of JobArrayMessage</returns>
+        ApiResponse<JobArrayMessage> UpcomingJobsWithHttpInfo (int count = default(int));
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Jobs Per Day
-        /// </summary>
-        /// <remarks>
-        /// The number of jobs processed and failed by day
-        /// </remarks>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days">The number of days to return (max 30) (optional)</param>
-        /// <returns>Task of JobsPerDay</returns>
-        System.Threading.Tasks.Task<JobsPerDay> JobsPerDayAsync (int days = default(int));
-
-        /// <summary>
-        /// Jobs Per Day
-        /// </summary>
-        /// <remarks>
-        /// The number of jobs processed and failed by day
-        /// </remarks>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days">The number of days to return (max 30) (optional)</param>
-        /// <returns>Task of ApiResponse (JobsPerDay)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobsPerDay>> JobsPerDayAsyncWithHttpInfo (int days = default(int));
-        /// <summary>
-        /// Most Recent Jobs
+        /// List of recent jobs
         /// </summary>
         /// <remarks>
         /// Get a list of the most recently run jobs
@@ -101,7 +80,7 @@ namespace BJR.Api
         System.Threading.Tasks.Task<JobArrayMessage> RecentJobsAsync (int count = default(int));
 
         /// <summary>
-        /// Most Recent Jobs
+        /// List of recent jobs
         /// </summary>
         /// <remarks>
         /// Get a list of the most recently run jobs
@@ -110,6 +89,27 @@ namespace BJR.Api
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
         System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> RecentJobsAsyncWithHttpInfo (int count = default(int));
+        /// <summary>
+        /// List of upcoming jobs
+        /// </summary>
+        /// <remarks>
+        /// A list of jobs that are about to execute
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <returns>Task of JobArrayMessage</returns>
+        System.Threading.Tasks.Task<JobArrayMessage> UpcomingJobsAsync (int count = default(int));
+
+        /// <summary>
+        /// List of upcoming jobs
+        /// </summary>
+        /// <remarks>
+        /// A list of jobs that are about to execute
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> UpcomingJobsAsyncWithHttpInfo (int count = default(int));
         #endregion Asynchronous Operations
     }
 
@@ -222,146 +222,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Jobs Per Day The number of jobs processed and failed by day
-        /// </summary>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days">The number of days to return (max 30) (optional)</param>
-        /// <returns>JobsPerDay</returns>
-        public JobsPerDay JobsPerDay (int days = default(int))
-        {
-             ApiResponse<JobsPerDay> localVarResponse = JobsPerDayWithHttpInfo(days);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Jobs Per Day The number of jobs processed and failed by day
-        /// </summary>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days">The number of days to return (max 30) (optional)</param>
-        /// <returns>ApiResponse of JobsPerDay</returns>
-        public ApiResponse<JobsPerDay> JobsPerDayWithHttpInfo (int days = default(int))
-        {
-
-            var localVarPath = "/job_server_api/job_runs_per_day";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (days != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "days", days)); // query parameter
-
-            // authentication (bearerAuth) required
-            // http beerer authentication required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("JobsPerDay", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<JobsPerDay>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (JobsPerDay) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobsPerDay)));
-        }
-
-        /// <summary>
-        /// Jobs Per Day The number of jobs processed and failed by day
-        /// </summary>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days">The number of days to return (max 30) (optional)</param>
-        /// <returns>Task of JobsPerDay</returns>
-        public async System.Threading.Tasks.Task<JobsPerDay> JobsPerDayAsync (int days = default(int))
-        {
-             ApiResponse<JobsPerDay> localVarResponse = await JobsPerDayAsyncWithHttpInfo(days);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Jobs Per Day The number of jobs processed and failed by day
-        /// </summary>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="days">The number of days to return (max 30) (optional)</param>
-        /// <returns>Task of ApiResponse (JobsPerDay)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobsPerDay>> JobsPerDayAsyncWithHttpInfo (int days = default(int))
-        {
-
-            var localVarPath = "/job_server_api/job_runs_per_day";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (days != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "days", days)); // query parameter
-
-            // authentication (bearerAuth) required
-            // http bearer authentication required
-            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("JobsPerDay", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<JobsPerDay>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (JobsPerDay) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobsPerDay)));
-        }
-
-        /// <summary>
-        /// Most Recent Jobs Get a list of the most recently run jobs
+        /// List of recent jobs Get a list of the most recently run jobs
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
@@ -373,7 +234,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Most Recent Jobs Get a list of the most recently run jobs
+        /// List of recent jobs Get a list of the most recently run jobs
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
@@ -381,7 +242,7 @@ namespace BJR.Api
         public ApiResponse<JobArrayMessage> RecentJobsWithHttpInfo (int count = default(int))
         {
 
-            var localVarPath = "/job_server_api/most_recent_jobs";
+            var localVarPath = "/job_server_api/recent_jobs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -430,7 +291,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Most Recent Jobs Get a list of the most recently run jobs
+        /// List of recent jobs Get a list of the most recently run jobs
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
@@ -443,7 +304,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Most Recent Jobs Get a list of the most recently run jobs
+        /// List of recent jobs Get a list of the most recently run jobs
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
@@ -451,7 +312,7 @@ namespace BJR.Api
         public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> RecentJobsAsyncWithHttpInfo (int count = default(int))
         {
 
-            var localVarPath = "/job_server_api/most_recent_jobs";
+            var localVarPath = "/job_server_api/recent_jobs";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -491,6 +352,145 @@ namespace BJR.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("RecentJobs", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<JobArrayMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (JobArrayMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobArrayMessage)));
+        }
+
+        /// <summary>
+        /// List of upcoming jobs A list of jobs that are about to execute
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <returns>JobArrayMessage</returns>
+        public JobArrayMessage UpcomingJobs (int count = default(int))
+        {
+             ApiResponse<JobArrayMessage> localVarResponse = UpcomingJobsWithHttpInfo(count);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List of upcoming jobs A list of jobs that are about to execute
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <returns>ApiResponse of JobArrayMessage</returns>
+        public ApiResponse<JobArrayMessage> UpcomingJobsWithHttpInfo (int count = default(int))
+        {
+
+            var localVarPath = "/job_server_api/upcoming_jobs";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+
+            // authentication (bearerAuth) required
+            // http beerer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpcomingJobs", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<JobArrayMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (JobArrayMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobArrayMessage)));
+        }
+
+        /// <summary>
+        /// List of upcoming jobs A list of jobs that are about to execute
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <returns>Task of JobArrayMessage</returns>
+        public async System.Threading.Tasks.Task<JobArrayMessage> UpcomingJobsAsync (int count = default(int))
+        {
+             ApiResponse<JobArrayMessage> localVarResponse = await UpcomingJobsAsyncWithHttpInfo(count);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// List of upcoming jobs A list of jobs that are about to execute
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> UpcomingJobsAsyncWithHttpInfo (int count = default(int))
+        {
+
+            var localVarPath = "/job_server_api/upcoming_jobs";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+
+            // authentication (bearerAuth) required
+            // http bearer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpcomingJobs", localVarResponse);
                 if (exception != null) throw exception;
             }
 
