@@ -7,30 +7,21 @@ require 'sidekiq/api'
 class JobServerApiController < ApplicationController
 
   #
-  # Return a list of the jobs that are failing the most
+  # Return minutely stats
   #
-  def most_failed_jobs
-    count = params[:count].nil? ? 10 : params[:count].to_i
-
-    message I18n.t('jobserver.messages.most_failed_jobs.failed'), :not_acceptable, true, [], 'jobs' and return if count > 20
-  end
-
-  #
-  # Return a list of the jobs that are running the longest
-  #
-  def longest_running_jobs
+  def minutely_job_stats
+    count = params[:count].nil? ? 60 : params[:count].to_i
+    message I18n.t('jobserver.messages.minutely_job_stats.failed'), :not_acceptable, true, [], 'jobstats' and return if count > 60
+    stats = JobStat.mine(current_user).where(period: :minute).order(created_at: :asc).limit(count)
+    message I18n.t('jobserver.messages.minutely_job_stats.received'), :ok, false, stats, 'jobstats'
   end
 
   #
   # Return job run statistics for the last 24 hours by hour
   #
-  def daily_job_stats
-  end
-
-  #
-  # Return job run statistics for the week by day
-  #
-  def weekly_job_stats
+  def hourly_job_stats
+    stats = JobStat.mine(current_user).where(period: :hour).order(created_at: :asc).limit(24)
+    message I18n.t('jobserver.messages.hourly_job_stats.received'), :ok, false, stats, 'jobstats'
   end
 
   #

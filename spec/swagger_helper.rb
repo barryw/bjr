@@ -24,6 +24,35 @@ RSpec.configure do |config|
       },
       components: {
         schemas: {
+          JobStat: {
+            type: :object,
+            properties: {
+              runs: { type: :integer, description: 'The number of job runs in the period.' },
+              failed: { type: :integer, description: 'The number of job runs that failed in the period.' },
+              avg_runtime: { type: :integer, description: 'The average runtime in seconds of all jobs in the period.' },
+              max_runtime: { type: :integer, description: 'The max runtime in seconds of all jobs in the period.' },
+              min_runtime: { type: :integer, description: 'The min runtime in seconds of all jobs in the period.' },
+              period: { type: :string, description: 'The runtime period.' },
+              start_dt: { type: :string, format: 'date-time', description: 'The period start date.' },
+              end_dt: { type: :string, format: 'date-time', description: 'The period end date.' },
+              created_at: { type: :string, format: 'date-time', description: 'The date the record was created.' },
+              updated_at: { type: :string, format: 'date-time', description: 'The date the record was last updated.' }
+            }
+          },
+          JobStatArray: {
+            type: :array,
+            items: { '$ref': '#/components/schemas/JobStat' }
+          },
+          JobStatMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/JobStatArray' }
+            }
+          },
           ServerVersion: {
             type: :object,
             properties: {

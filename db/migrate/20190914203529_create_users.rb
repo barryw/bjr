@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.string :username, null: false, limit: 20
       t.string :password_digest, null: false
+
       t.timestamps
     end
 

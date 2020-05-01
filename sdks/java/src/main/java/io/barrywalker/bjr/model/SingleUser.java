@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * SingleUser
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-29T21:40:53.579Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-01T01:31:17.546Z[GMT]")
 public class SingleUser {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

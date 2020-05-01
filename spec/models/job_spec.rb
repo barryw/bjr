@@ -31,8 +31,8 @@ RSpec.describe Job, type: :model do
 
   it "returns a list of upcoming jobs" do
     admin = create(:admin1)
-    job1 = create(:job1, name: 'job 1', user: admin, next_run: DateTime.now)
-    job2 = create(:job1, name: 'job 2', user: admin, next_run: DateTime.now - 1.minute)
+    job1 = create(:job1, name: 'job 1', user: admin, next_run: DateTime.now + 1.minute)
+    job2 = create(:job2, name: 'job 2', user: admin, next_run: DateTime.now + 2.minutes)
 
     jobs = Job.upcoming(admin.id, 1)
     expect(jobs.count).to eq(1)
@@ -41,8 +41,8 @@ RSpec.describe Job, type: :model do
 
   it 'returns a list of recent jobs' do
     admin = create(:admin1)
-    job1 = create(:job1, name: 'job 1', user: admin, last_run: DateTime.now)
-    job2 = create(:job1, name: 'job 2', user: admin, last_run: DateTime.now - 1.minute)
+    job1 = create(:job1, name: 'job 1', user: admin, last_run: DateTime.now - 1.minute)
+    job2 = create(:job2, name: 'job 2', user: admin, last_run: DateTime.now - 2.minute)
 
     jobs = Job.upcoming(admin.id, 1)
     expect(jobs.count).to eq(1)

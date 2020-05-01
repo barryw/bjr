@@ -6,6 +6,64 @@ info:
   version: v1
 components:
   schemas:
+    JobStat:
+      type: object
+      properties:
+        runs:
+          type: integer
+          description: The number of job runs in the period.
+        failed:
+          type: integer
+          description: The number of job runs that failed in the period.
+        avg_runtime:
+          type: integer
+          description: The average runtime in seconds of all jobs in the period.
+        max_runtime:
+          type: integer
+          description: The max runtime in seconds of all jobs in the period.
+        min_runtime:
+          type: integer
+          description: The min runtime in seconds of all jobs in the period.
+        period:
+          type: string
+          description: The runtime period.
+        start_dt:
+          type: string
+          format: date-time
+          description: The period start date.
+        end_dt:
+          type: string
+          format: date-time
+          description: The period end date.
+        created_at:
+          type: string
+          format: date-time
+          description: The date the record was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: The date the record was last updated.
+    JobStatArray:
+      type: array
+      items:
+        "$ref": "#/components/schemas/JobStat"
+    JobStatMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/JobStatArray"
     ServerVersion:
       type: object
       properties:
@@ -730,6 +788,51 @@ paths:
         '404':
           description: Job not found.
           content: {}
+  "/job_server_api/minutely_job_stats":
+    get:
+      summary: Job statistics by minute
+      description: Get minutely job statistics
+      tags:
+      - JobServer
+      operationId: statsByMinute
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: count
+        in: query
+        required: false
+        description: The number of stats to return (max 60)
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Minutely stats received successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobStatMessage"
+        '406':
+          description: Too many minutes specified
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobStatMessage"
+  "/job_server_api/hourly_job_stats":
+    get:
+      summary: Job statistics by hour
+      description: Get hourly job statistics for the day
+      tags:
+      - JobServer
+      operationId: statsByHour
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Hourly stats received successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobStatMessage"
   "/job_server_api/recent_jobs":
     get:
       summary: List of recent jobs

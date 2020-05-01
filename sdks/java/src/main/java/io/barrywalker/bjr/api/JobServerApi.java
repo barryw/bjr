@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import io.barrywalker.bjr.model.JobArrayMessage;
+import io.barrywalker.bjr.model.JobStatMessage;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -164,6 +165,220 @@ public class JobServerApi {
 
         okhttp3.Call localVarCall = recentJobsValidateBeforeCall(count, _callback);
         Type localVarReturnType = new TypeToken<JobArrayMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statsByHour
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Hourly stats received successfully </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statsByHourCall(final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/job_server_api/hourly_job_stats";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statsByHourValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statsByHourCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Job statistics by hour
+     * Get hourly job statistics for the day
+     * @return JobStatMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Hourly stats received successfully </td><td>  -  </td></tr>
+     </table>
+     */
+    public JobStatMessage statsByHour() throws ApiException {
+        ApiResponse<JobStatMessage> localVarResp = statsByHourWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Job statistics by hour
+     * Get hourly job statistics for the day
+     * @return ApiResponse&lt;JobStatMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Hourly stats received successfully </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<JobStatMessage> statsByHourWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = statsByHourValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Job statistics by hour (asynchronously)
+     * Get hourly job statistics for the day
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Hourly stats received successfully </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statsByHourAsync(final ApiCallback<JobStatMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statsByHourValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statsByMinute
+     * @param count The number of stats to return (max 60) (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> Too many minutes specified </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statsByMinuteCall(Integer count, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/job_server_api/minutely_job_stats";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (count != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("count", count));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statsByMinuteValidateBeforeCall(Integer count, final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = statsByMinuteCall(count, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Job statistics by minute
+     * Get minutely job statistics
+     * @param count The number of stats to return (max 60) (optional)
+     * @return JobStatMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> Too many minutes specified </td><td>  -  </td></tr>
+     </table>
+     */
+    public JobStatMessage statsByMinute(Integer count) throws ApiException {
+        ApiResponse<JobStatMessage> localVarResp = statsByMinuteWithHttpInfo(count);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Job statistics by minute
+     * Get minutely job statistics
+     * @param count The number of stats to return (max 60) (optional)
+     * @return ApiResponse&lt;JobStatMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> Too many minutes specified </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<JobStatMessage> statsByMinuteWithHttpInfo(Integer count) throws ApiException {
+        okhttp3.Call localVarCall = statsByMinuteValidateBeforeCall(count, null);
+        Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Job statistics by minute (asynchronously)
+     * Get minutely job statistics
+     * @param count The number of stats to return (max 60) (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
+        <tr><td> 406 </td><td> Too many minutes specified </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statsByMinuteAsync(Integer count, final ApiCallback<JobStatMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statsByMinuteValidateBeforeCall(count, _callback);
+        Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

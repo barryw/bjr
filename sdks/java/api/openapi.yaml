@@ -366,6 +366,55 @@ paths:
       - Jobs
       x-contentType: application/json
       x-accepts: application/json
+  /job_server_api/minutely_job_stats:
+    get:
+      description: Get minutely job statistics
+      operationId: statsByMinute
+      parameters:
+      - description: The number of stats to return (max 60)
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatMessage'
+          description: Minutely stats received successfully
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatMessage'
+          description: Too many minutes specified
+      security:
+      - bearerAuth: []
+      summary: Job statistics by minute
+      tags:
+      - JobServer
+      x-accepts: application/json
+  /job_server_api/hourly_job_stats:
+    get:
+      description: Get hourly job statistics for the day
+      operationId: statsByHour
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatMessage'
+          description: Hourly stats received successfully
+      security:
+      - bearerAuth: []
+      summary: Job statistics by hour
+      tags:
+      - JobServer
+      x-accepts: application/json
   /job_server_api/recent_jobs:
     get:
       description: Get a list of the most recently run jobs
@@ -687,6 +736,103 @@ paths:
       x-accepts: application/json
 components:
   schemas:
+    JobStat:
+      example:
+        avg_runtime: 5
+        start_dt: 2000-01-23T04:56:07.000+00:00
+        period: period
+        end_dt: 2000-01-23T04:56:07.000+00:00
+        min_runtime: 2
+        max_runtime: 5
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        failed: 1
+        runs: 6
+      properties:
+        runs:
+          description: The number of job runs in the period.
+          type: integer
+        failed:
+          description: The number of job runs that failed in the period.
+          type: integer
+        avg_runtime:
+          description: The average runtime in seconds of all jobs in the period.
+          type: integer
+        max_runtime:
+          description: The max runtime in seconds of all jobs in the period.
+          type: integer
+        min_runtime:
+          description: The min runtime in seconds of all jobs in the period.
+          type: integer
+        period:
+          description: The runtime period.
+          type: string
+        start_dt:
+          description: The period start date.
+          format: date-time
+          type: string
+        end_dt:
+          description: The period end date.
+          format: date-time
+          type: string
+        created_at:
+          description: The date the record was created.
+          format: date-time
+          type: string
+        updated_at:
+          description: The date the record was last updated.
+          format: date-time
+          type: string
+      type: object
+    JobStatArray:
+      items:
+        $ref: '#/components/schemas/JobStat'
+      type: array
+    JobStatMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+        - avg_runtime: 5
+          start_dt: 2000-01-23T04:56:07.000+00:00
+          period: period
+          end_dt: 2000-01-23T04:56:07.000+00:00
+          min_runtime: 2
+          max_runtime: 5
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          failed: 1
+          runs: 6
+        - avg_runtime: 5
+          start_dt: 2000-01-23T04:56:07.000+00:00
+          period: period
+          end_dt: 2000-01-23T04:56:07.000+00:00
+          min_runtime: 2
+          max_runtime: 5
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          failed: 1
+          runs: 6
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          items:
+            $ref: '#/components/schemas/JobStat'
+          type: array
+      type: object
     ServerVersion:
       example:
         status_code: 0

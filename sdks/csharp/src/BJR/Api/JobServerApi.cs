@@ -46,6 +46,46 @@ namespace BJR.Api
         /// <returns>ApiResponse of JobArrayMessage</returns>
         ApiResponse<JobArrayMessage> RecentJobsWithHttpInfo (int count = default(int));
         /// <summary>
+        /// Job statistics by hour
+        /// </summary>
+        /// <remarks>
+        /// Get hourly job statistics for the day
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>JobStatMessage</returns>
+        JobStatMessage StatsByHour ();
+
+        /// <summary>
+        /// Job statistics by hour
+        /// </summary>
+        /// <remarks>
+        /// Get hourly job statistics for the day
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of JobStatMessage</returns>
+        ApiResponse<JobStatMessage> StatsByHourWithHttpInfo ();
+        /// <summary>
+        /// Job statistics by minute
+        /// </summary>
+        /// <remarks>
+        /// Get minutely job statistics
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of stats to return (max 60) (optional)</param>
+        /// <returns>JobStatMessage</returns>
+        JobStatMessage StatsByMinute (int count = default(int));
+
+        /// <summary>
+        /// Job statistics by minute
+        /// </summary>
+        /// <remarks>
+        /// Get minutely job statistics
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of stats to return (max 60) (optional)</param>
+        /// <returns>ApiResponse of JobStatMessage</returns>
+        ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (int count = default(int));
+        /// <summary>
         /// List of upcoming jobs
         /// </summary>
         /// <remarks>
@@ -89,6 +129,46 @@ namespace BJR.Api
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
         System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> RecentJobsAsyncWithHttpInfo (int count = default(int));
+        /// <summary>
+        /// Job statistics by hour
+        /// </summary>
+        /// <remarks>
+        /// Get hourly job statistics for the day
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of JobStatMessage</returns>
+        System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync ();
+
+        /// <summary>
+        /// Job statistics by hour
+        /// </summary>
+        /// <remarks>
+        /// Get hourly job statistics for the day
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (JobStatMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo ();
+        /// <summary>
+        /// Job statistics by minute
+        /// </summary>
+        /// <remarks>
+        /// Get minutely job statistics
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of stats to return (max 60) (optional)</param>
+        /// <returns>Task of JobStatMessage</returns>
+        System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (int count = default(int));
+
+        /// <summary>
+        /// Job statistics by minute
+        /// </summary>
+        /// <remarks>
+        /// Get minutely job statistics
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of stats to return (max 60) (optional)</param>
+        /// <returns>Task of ApiResponse (JobStatMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteAsyncWithHttpInfo (int count = default(int));
         /// <summary>
         /// List of upcoming jobs
         /// </summary>
@@ -358,6 +438,278 @@ namespace BJR.Api
             return new ApiResponse<JobArrayMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (JobArrayMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobArrayMessage)));
+        }
+
+        /// <summary>
+        /// Job statistics by hour Get hourly job statistics for the day
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>JobStatMessage</returns>
+        public JobStatMessage StatsByHour ()
+        {
+             ApiResponse<JobStatMessage> localVarResponse = StatsByHourWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Job statistics by hour Get hourly job statistics for the day
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of JobStatMessage</returns>
+        public ApiResponse<JobStatMessage> StatsByHourWithHttpInfo ()
+        {
+
+            var localVarPath = "/job_server_api/hourly_job_stats";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (bearerAuth) required
+            // http beerer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("StatsByHour", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<JobStatMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (JobStatMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobStatMessage)));
+        }
+
+        /// <summary>
+        /// Job statistics by hour Get hourly job statistics for the day
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of JobStatMessage</returns>
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync ()
+        {
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByHourAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Job statistics by hour Get hourly job statistics for the day
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (JobStatMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/job_server_api/hourly_job_stats";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (bearerAuth) required
+            // http bearer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("StatsByHour", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<JobStatMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (JobStatMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobStatMessage)));
+        }
+
+        /// <summary>
+        /// Job statistics by minute Get minutely job statistics
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of stats to return (max 60) (optional)</param>
+        /// <returns>JobStatMessage</returns>
+        public JobStatMessage StatsByMinute (int count = default(int))
+        {
+             ApiResponse<JobStatMessage> localVarResponse = StatsByMinuteWithHttpInfo(count);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Job statistics by minute Get minutely job statistics
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of stats to return (max 60) (optional)</param>
+        /// <returns>ApiResponse of JobStatMessage</returns>
+        public ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (int count = default(int))
+        {
+
+            var localVarPath = "/job_server_api/minutely_job_stats";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+
+            // authentication (bearerAuth) required
+            // http beerer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("StatsByMinute", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<JobStatMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (JobStatMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobStatMessage)));
+        }
+
+        /// <summary>
+        /// Job statistics by minute Get minutely job statistics
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of stats to return (max 60) (optional)</param>
+        /// <returns>Task of JobStatMessage</returns>
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (int count = default(int))
+        {
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByMinuteAsyncWithHttpInfo(count);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Job statistics by minute Get minutely job statistics
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="count">The number of stats to return (max 60) (optional)</param>
+        /// <returns>Task of ApiResponse (JobStatMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteAsyncWithHttpInfo (int count = default(int))
+        {
+
+            var localVarPath = "/job_server_api/minutely_job_stats";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (count != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "count", count)); // query parameter
+
+            // authentication (bearerAuth) required
+            // http bearer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("StatsByMinute", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<JobStatMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (JobStatMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobStatMessage)));
         }
 
         /// <summary>

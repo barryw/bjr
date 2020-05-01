@@ -12,7 +12,7 @@ The version of the OpenAPI document: v1
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4C446CE7-CD13-4325-95CC-77E3428E16D7}</ProjectGuid>
+    <ProjectGuid>{A8C5D16F-134E-4E13-B3DB-F7EC907B67DA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BJR</RootNamespace>

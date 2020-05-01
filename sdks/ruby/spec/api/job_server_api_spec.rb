@@ -44,6 +44,29 @@ describe 'JobServerApi' do
     end
   end
 
+  # unit tests for stats_by_hour
+  # Job statistics by hour
+  # Get hourly job statistics for the day
+  # @param [Hash] opts the optional parameters
+  # @return [JobStatMessage]
+  describe 'stats_by_hour test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for stats_by_minute
+  # Job statistics by minute
+  # Get minutely job statistics
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :count The number of stats to return (max 60)
+  # @return [JobStatMessage]
+  describe 'stats_by_minute test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for upcoming_jobs
   # List of upcoming jobs
   # A list of jobs that are about to execute

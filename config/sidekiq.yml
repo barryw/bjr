@@ -1,6 +1,6 @@
 ---
 :concurrency: 10
 :queues:
+  - [stats_runner, 2]
   - job_finder
   - job_runner
-  - stats_runner

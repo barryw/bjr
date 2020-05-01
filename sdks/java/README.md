@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-04-29T21:40:53.579Z[GMT]
+  - Build date: 2020-05-01T01:31:17.546Z[GMT]
 
 API specification for the BJR job server.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>bjr4j</artifactId>
-  <version>1.0.5</version>
+  <version>1.1.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:bjr4j:1.0.5"
+compile "org.openapitools:bjr4j:1.1.0"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bjr4j-1.0.5.jar`
+* `target/bjr4j-1.1.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -109,6 +109,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuthenticationApi* | [**authenticateUser**](docs/AuthenticationApi.md#authenticateUser) | **POST** /authenticate | Authenticates a user and returns a token
 *JobServerApi* | [**recentJobs**](docs/JobServerApi.md#recentJobs) | **GET** /job_server_api/recent_jobs | List of recent jobs
+*JobServerApi* | [**statsByHour**](docs/JobServerApi.md#statsByHour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
+*JobServerApi* | [**statsByMinute**](docs/JobServerApi.md#statsByMinute) | **GET** /job_server_api/minutely_job_stats | Job statistics by minute
 *JobServerApi* | [**upcomingJobs**](docs/JobServerApi.md#upcomingJobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 *JobsApi* | [**createJob**](docs/JobsApi.md#createJob) | **POST** /job_api | Creates a job
 *JobsApi* | [**deleteJob**](docs/JobsApi.md#deleteJob) | **DELETE** /job_api/{id} | Deletes a job
@@ -134,6 +136,8 @@ Class | Method | HTTP request | Description
  - [JobArrayMessage](docs/JobArrayMessage.md)
  - [JobIn](docs/JobIn.md)
  - [JobRunArrayMessage](docs/JobRunArrayMessage.md)
+ - [JobStat](docs/JobStat.md)
+ - [JobStatMessage](docs/JobStatMessage.md)
  - [OccurrenceMessage](docs/OccurrenceMessage.md)
  - [ServerVersion](docs/ServerVersion.md)
  - [SingleJob](docs/SingleJob.md)

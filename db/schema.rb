@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_213937) do
+ActiveRecord::Schema.define(version: 2020_04_30_015341) do
 
-  create_table "job_runs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "job_runs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.boolean "success"
     t.integer "return_code"
     t.string "error_message"
@@ -25,9 +25,25 @@ ActiveRecord::Schema.define(version: 2020_04_28_213937) do
     t.datetime "updated_at", null: false
     t.index ["job_id", "created_at"], name: "index_job_runs_on_job_id_and_created_at"
     t.index ["job_id"], name: "index_job_runs_on_job_id"
+    t.index ["start_time"], name: "index_job_runs_on_start_time"
   end
 
-  create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "job_stats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "runs", default: 0
+    t.integer "failed", default: 0
+    t.integer "avg_runtime", default: 0
+    t.integer "max_runtime", default: 0
+    t.integer "min_runtime", default: 0
+    t.integer "period", default: 0
+    t.datetime "start_dt"
+    t.datetime "end_dt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_job_stats_on_user_id"
+  end
+
+  create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", limit: 100, null: false
     t.string "cron", limit: 20, null: false
     t.datetime "last_run"
@@ -47,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_213937) do
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
-  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
@@ -66,13 +82,13 @@ ActiveRecord::Schema.define(version: 2020_04_28_213937) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", collation: "utf8_bin"
+  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.string "name", collation: "utf8mb4_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "username", limit: 20, null: false
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
@@ -81,5 +97,6 @@ ActiveRecord::Schema.define(version: 2020_04_28_213937) do
   end
 
   add_foreign_key "job_runs", "jobs", on_delete: :cascade
+  add_foreign_key "job_stats", "users", on_delete: :cascade
   add_foreign_key "jobs", "users", on_delete: :cascade
 end

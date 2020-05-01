@@ -13,7 +13,7 @@
 
 package io.barrywalker.bjr;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-04-29T21:40:53.579Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-01T01:31:17.546Z[GMT]")
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 

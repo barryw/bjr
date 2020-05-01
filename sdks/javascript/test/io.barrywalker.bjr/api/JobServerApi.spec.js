@@ -58,6 +58,26 @@
         done();
       });
     });
+    describe('statsByHour', function() {
+      it('should call statsByHour successfully', function(done) {
+        //uncomment below and update the code to test statsByHour
+        //instance.statsByHour(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('statsByMinute', function() {
+      it('should call statsByMinute successfully', function(done) {
+        //uncomment below and update the code to test statsByMinute
+        //instance.statsByMinute(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('upcomingJobs', function() {
       it('should call upcomingJobs successfully', function(done) {
         //uncomment below and update the code to test upcomingJobs

@@ -14,6 +14,7 @@ class CreateJobs < ActiveRecord::Migration[5.2]
       t.boolean :success, default: false
 
       t.references :user, null: false, index: true, foreign_key: { on_delete: :cascade }
+
       t.timestamps
     end
 

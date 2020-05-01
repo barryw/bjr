@@ -27,6 +27,7 @@ en:
       update_failed: "Failed to update job '%{id}': %{error}"
       already_exists: A job with this name already exists.
       end_date_required: You must supply an end date parameter.
+      concurrency_violation: This job was updated by another process. Re-fetch the job and try your update again.
   users:
     messages:
       received: User(s) received successfully.
@@ -59,3 +60,6 @@ en:
       most_failed_jobs:
         received: Most failed jobs received successfully.
         failed: The 'count' parameter must be less than 20.
+      minutely_job_stats:
+        received: Minutely job stats received successfully.
+        failed: The 'count' parameter must be less than 60.

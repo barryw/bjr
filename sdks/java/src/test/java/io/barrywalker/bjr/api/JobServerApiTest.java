@@ -15,6 +15,7 @@ package io.barrywalker.bjr.api;
 
 import io.barrywalker.bjr.ApiException;
 import io.barrywalker.bjr.model.JobArrayMessage;
+import io.barrywalker.bjr.model.JobStatMessage;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -44,6 +45,37 @@ public class JobServerApiTest {
     public void recentJobsTest() throws ApiException {
         Integer count = null;
         JobArrayMessage response = api.recentJobs(count);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Job statistics by hour
+     *
+     * Get hourly job statistics for the day
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void statsByHourTest() throws ApiException {
+        JobStatMessage response = api.statsByHour();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Job statistics by minute
+     *
+     * Get minutely job statistics
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void statsByMinuteTest() throws ApiException {
+        Integer count = null;
+        JobStatMessage response = api.statsByMinute(count);
 
         // TODO: test validations
     }

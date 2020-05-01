@@ -83,7 +83,7 @@ class JobApiController < ApplicationController
 
   def job
     @job = Job.mine(current_user).where(id: params[:id]).first
-    error(I18n.t('jobs.errors.not_found'), :not_found) && return if @job.blank?
+    error(I18n.t('jobs.errors.not_found'), :not_found) and return if @job.blank?
   end
 
   def not_unique

@@ -78,6 +78,121 @@ module BJR
       return data, status_code, headers
     end
 
+    # Job statistics by hour
+    # Get hourly job statistics for the day
+    # @param [Hash] opts the optional parameters
+    # @return [JobStatMessage]
+    def stats_by_hour(opts = {})
+      data, _status_code, _headers = stats_by_hour_with_http_info(opts)
+      data
+    end
+
+    # Job statistics by hour
+    # Get hourly job statistics for the day
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
+    def stats_by_hour_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: JobServerApi.stats_by_hour ...'
+      end
+      # resource path
+      local_var_path = '/job_server_api/hourly_job_stats'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'JobStatMessage' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: JobServerApi#stats_by_hour\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Job statistics by minute
+    # Get minutely job statistics
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :count The number of stats to return (max 60)
+    # @return [JobStatMessage]
+    def stats_by_minute(opts = {})
+      data, _status_code, _headers = stats_by_minute_with_http_info(opts)
+      data
+    end
+
+    # Job statistics by minute
+    # Get minutely job statistics
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :count The number of stats to return (max 60)
+    # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
+    def stats_by_minute_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: JobServerApi.stats_by_minute ...'
+      end
+      # resource path
+      local_var_path = '/job_server_api/minutely_job_stats'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'count'] = opts[:'count'] if !opts[:'count'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'JobStatMessage' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: JobServerApi#stats_by_minute\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List of upcoming jobs
     # A list of jobs that are about to execute
     # @param [Hash] opts the optional parameters

@@ -3,12 +3,22 @@ job_finder:
   class: JobFinderJob
   queue: job_finder
 
+stats_per_minute:
+  cron: "* * * * *"
+  class: StatsPerMinuteJob
+  queue: stats_runner
+
+stats_per_hour:
+  cron: "0 * * * *"
+  class: StatsPerHourJob
+  queue: stats_runner
+
 stats_per_day:
   cron: "0 0 * * *"
   class: StatsPerDayJob
   queue: stats_runner
 
-stats_per_minute:
-  cron: "* * * * *"
-  class: StatsPerMinuteJob
+stats_per_week:
+  cron: "0 0 * * 0"
+  class: StatsPerWeekJob
   queue: stats_runner

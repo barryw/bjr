@@ -76,6 +76,29 @@ namespace BJR.Test
         }
         
         /// <summary>
+        /// Test StatsByHour
+        /// </summary>
+        [Test]
+        public void StatsByHourTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.StatsByHour();
+            //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
+        }
+        
+        /// <summary>
+        /// Test StatsByMinute
+        /// </summary>
+        [Test]
+        public void StatsByMinuteTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int count = null;
+            //var response = instance.StatsByMinute(count);
+            //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
+        }
+        
+        /// <summary>
         /// Test UpcomingJobs
         /// </summary>
         [Test]
