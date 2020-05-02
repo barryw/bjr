@@ -4,9 +4,9 @@ class CreateJobStats < ActiveRecord::Migration[5.2]
       t.references :user, null: false, index: true, foreign_key: { on_delete: :cascade }
       t.integer :runs, default: 0
       t.integer :failed, default: 0
-      t.integer :avg_runtime, default: 0
-      t.integer :max_runtime, default: 0
-      t.integer :min_runtime, default: 0
+      t.decimal :avg_runtime, default: 0.0, precision: 10, scale: 4
+      t.decimal :max_runtime, default: 0.0, precision: 10, scale: 4
+      t.decimal :min_runtime, default: 0.0, precision: 10, scale: 4
       t.integer :period, default: 0
       t.datetime :start_dt
       t.datetime :end_dt

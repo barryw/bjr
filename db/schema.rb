@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 2020_04_30_015341) do
     t.bigint "user_id", null: false
     t.integer "runs", default: 0
     t.integer "failed", default: 0
-    t.integer "avg_runtime", default: 0
-    t.integer "max_runtime", default: 0
-    t.integer "min_runtime", default: 0
+    t.decimal "avg_runtime", precision: 10, scale: 4, default: "0.0"
+    t.decimal "max_runtime", precision: 10, scale: 4, default: "0.0"
+    t.decimal "min_runtime", precision: 10, scale: 4, default: "0.0"
     t.integer "period", default: 0
     t.datetime "start_dt"
     t.datetime "end_dt"

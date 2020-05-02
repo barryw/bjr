@@ -29,11 +29,8 @@ class JobServerApiController < ApplicationController
   #
   def recent_jobs
     count = params[:count].nil? ? 10 : params[:count].to_i
-
     message I18n.t('jobserver.messages.recent_jobs.failed'), :not_acceptable, true, [], 'jobs' and return if count > 20
-
     jobs = Job.recent(current_user, count)
-
     message I18n.t('jobserver.messages.recent_jobs.received'), :ok, false, jobs, 'jobs'
   end
 
@@ -42,11 +39,8 @@ class JobServerApiController < ApplicationController
   #
   def upcoming_jobs
     count = params[:count].nil? ? 10 : params[:count].to_i
-
     message I18n.t('jobserver.messages.upcoming_jobs.failed'), :not_acceptable, true, [], 'jobs' and return if count > 20
-
     jobs = Job.upcoming(current_user, count)
-
     message I18n.t('jobserver.messages.upcoming_jobs.received'), :ok, false, jobs, 'jobs'
   end
 

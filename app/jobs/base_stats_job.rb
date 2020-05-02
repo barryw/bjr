@@ -6,16 +6,16 @@ class BaseStatsJob < ApplicationJob
       logger.debug "Processing #{period}ly job stats for user #{user.username}"
       logger.debug "No job runs for user #{user.username}. Continuing." and next if !user_has_job_runs(user)
 
-      process_start_dt = start_processing_date(user, period)
+      process_start_dt = start_processing_date(user, period) + 1.second
 
       current_dt, end_dt, time_incr = processing_dates(process_start_dt, period)
 
       logger.debug "Processing starts at #{current_dt} and will end at #{end_dt}"
 
       while current_dt < end_dt
-        new_end = current_dt + time_incr
+        new_end = current_dt + time_incr - 1.second
         generate_row(user, current_dt, new_end, period)
-        current_dt = new_end
+        current_dt += time_incr
       end
 
       logger.debug "Finished stats run for user #{user.username}"
@@ -52,11 +52,11 @@ class BaseStatsJob < ApplicationJob
     when :day
       current_dt = process_start_dt.change(hour: 0)
       end_dt = DateTime.now.change(hour: 0)
-      time_incr = 1.day
+      time_incr = 1.day - 1.hour
     when :week
       current_dt = process_start_dt
       end_dt = DateTime.now
-      time_incr = 1.week
+      time_incr = 1.week - 1.day
     end
 
     return current_dt, end_dt, time_incr
