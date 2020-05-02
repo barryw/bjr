@@ -279,7 +279,6 @@ public class JobServerApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
-        <tr><td> 406 </td><td> Too many minutes specified </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call statsByMinuteCall(Integer count, final ApiCallback _callback) throws ApiException {
@@ -334,7 +333,6 @@ public class JobServerApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
-        <tr><td> 406 </td><td> Too many minutes specified </td><td>  -  </td></tr>
      </table>
      */
     public JobStatMessage statsByMinute(Integer count) throws ApiException {
@@ -352,7 +350,6 @@ public class JobServerApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
-        <tr><td> 406 </td><td> Too many minutes specified </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<JobStatMessage> statsByMinuteWithHttpInfo(Integer count) throws ApiException {
@@ -372,7 +369,6 @@ public class JobServerApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
-        <tr><td> 406 </td><td> Too many minutes specified </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call statsByMinuteAsync(Integer count, final ApiCallback<JobStatMessage> _callback) throws ApiException {

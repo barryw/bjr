@@ -811,12 +811,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/JobStatMessage"
-        '406':
-          description: Too many minutes specified
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/JobStatMessage"
   "/job_server_api/hourly_job_stats":
     get:
       summary: Job statistics by hour

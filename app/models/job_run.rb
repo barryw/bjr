@@ -12,18 +12,12 @@ class JobRun < ApplicationRecord
   scope :succeeded, ->(success) { where(success: success) }
   scope :runs_in_range, ->(user_id, start_dt, end_dt) { joins(:job).where(jobs: { user_id: user_id }, start_time: start_dt..end_dt) }
   scope :fails_in_range, ->(user_id, start_dt, end_dt) { joins(:job).where(jobs: { user_id: user_id }, success: false, start_time: start_dt..end_dt) }
-  scope :avg_runtime_in_range, lambda { |user_id, start_dt, end_dt|
-                                 joins(:job).where(jobs: { user_id: user_id },
-                                                   start_time: start_dt..end_dt).average('timestampdiff(second, start_time, end_time)')
-                               }
-  scope :max_runtime_in_range, lambda { |user_id, start_dt, end_dt|
-                                 joins(:job).where(jobs: { user_id: user_id },
-                                                   start_time: start_dt..end_dt).maximum('timestampdiff(second, start_time, end_time)')
-                               }
-  scope :min_runtime_in_range, lambda { |user_id, start_dt, end_dt|
-                                 joins(:job).where(jobs: { user_id: user_id },
-                                                   start_time: start_dt..end_dt).minimum('timestampdiff(second, start_time, end_time)')
-                               }
+  scope :avg_runtime_in_range, ->(user_id, start_dt, end_dt) { joins(:job).where(jobs: { user_id: user_id },
+                                                               start_time: start_dt..end_dt).average('timestampdiff(second, start_time, end_time)') }
+  scope :max_runtime_in_range, ->(user_id, start_dt, end_dt) { joins(:job).where(jobs: { user_id: user_id },
+                                                               start_time: start_dt..end_dt).maximum('timestampdiff(second, start_time, end_time)') }
+  scope :min_runtime_in_range, ->(user_id, start_dt, end_dt) { joins(:job).where(jobs: { user_id: user_id },
+                                                               start_time: start_dt..end_dt).minimum('timestampdiff(second, start_time, end_time)') }
 
   def self.earliest_job_run(user)
     joins(:job).where(jobs: { user_id: user.id }).minimum(:start_time)

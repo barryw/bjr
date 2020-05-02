@@ -207,7 +207,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Minutely stats received successfully |  -  |
-**406** | Too many minutes specified |  -  |
 
 <a name="upcomingJobs"></a>
 # **upcomingJobs**

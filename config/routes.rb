@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   # Job Server API
   get '/job_server_api/minutely_job_stats', to: 'job_server_api#minutely_job_stats', as: 'minutely_job_stats'
   get '/job_server_api/hourly_job_stats', to: 'job_server_api#hourly_job_stats', as: 'hourly_job_stats'
+  get '/job_server_api/daily_job_stats', to: 'job_server_api#daily_job_stats', as: 'daily_job_stats'
+  get '/job_server_api/weekly_job_stats', to: 'job_server_api#weekly_job_stats', as: 'weekly_job_stats'
+
   get '/job_server_api/recent_jobs', to: 'job_server_api#recent_jobs', as: 'recent_jobs'
   get '/job_server_api/upcoming_jobs', to: 'job_server_api#upcoming_jobs', as: 'upcoming_jobs'
 

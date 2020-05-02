@@ -45,20 +45,20 @@ class BaseStatsJob < ApplicationJob
     case period
     when :minute
       current_dt = process_start_dt.change(sec: 0)
-      end_dt = DateTime.now.change(sec: 0)
+      end_dt = current_dt + 59.seconds
       time_incr = 1.minute
     when :hour
       current_dt = process_start_dt.change(min: 0)
-      end_dt = DateTime.now.change(min: 0)
+      end_dt = current_dt + 59.minutes + 59.seconds
       time_incr = 1.hour
     when :day
       current_dt = process_start_dt.change(hour: 0)
-      end_dt = DateTime.now.change(hour: 0)
-      time_incr = 1.day - 1.hour
+      end_dt = current_dt + 23.hours + 59.minutes + 59.seconds
+      time_incr = 1.day
     when :week
       current_dt = process_start_dt
-      end_dt = DateTime.now
-      time_incr = 1.week - 1.day
+      end_dt = current_dt + 6.days + 23.hours + 59.minutes + 59.seconds
+      time_incr = 1.week
     end
 
     [current_dt, end_dt, time_incr]

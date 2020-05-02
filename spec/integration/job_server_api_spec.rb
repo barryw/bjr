@@ -33,26 +33,6 @@ describe 'Job Server API' do
           expect(json['message']).to eq(I18n.t('jobserver.messages.minutely_job_stats.received'))
         end
       end
-
-      response '406', 'Too many minutes specified' do
-        let(:admin) { create(:admin1) }
-        let(:Authorization) { auth_token(admin) }
-        let(:count) { 61 }
-        schema '$ref' => '#/components/schemas/JobStatMessage'
-
-        before do |request|
-          create(:minutely_stat1, user: admin, start_dt: DateTime.now - 1.minute, end_dt: DateTime.now)
-          submit_request(request.metadata)
-        end
-
-        run_test! do |response|
-          json = JSON.parse(response.body)
-
-          expect(json['is_error']).to be true
-          expect(json['status_code']).to eq(406)
-          expect(json['message']).to eq(I18n.t('jobserver.messages.minutely_job_stats.failed'))
-        end
-      end
     end
   end
 

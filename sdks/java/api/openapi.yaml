@@ -386,12 +386,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/JobStatMessage'
           description: Minutely stats received successfully
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JobStatMessage'
-          description: Too many minutes specified
       security:
       - bearerAuth: []
       summary: Job statistics by minute
