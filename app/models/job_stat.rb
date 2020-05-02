@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class JobStat < ApplicationRecord
   belongs_to :user
 
   enum period: %i[minute hour day week]
 
-  scope :mine, -> (user_id) { where(user_id: user_id) }
+  scope :mine, ->(user_id) { where(user_id: user_id) }
 
   def self.max_processed_date(user, period)
     where(user_id: user.id, period: period).maximum(:end_dt)

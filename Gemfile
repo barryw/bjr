@@ -46,8 +46,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'fakeredis', require: 'fakeredis/rspec'
   gem 'codecov', require: false
+  gem 'fakeredis', require: 'fakeredis/rspec'
 end
 
 group :development do

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'json'
 
 sdks = [{ description: 'C# SDK', language: 'csharp', version_attr: 'packageVersion' },

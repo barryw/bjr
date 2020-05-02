@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class BaseStatsJob < ApplicationJob
   queue_as :stats_runner
 
   def generate_stats(period)
     User.find_each do |user|
       logger.debug "Processing #{period}ly job stats for user #{user.username}"
-      logger.debug "No job runs for user #{user.username}. Continuing." and next if !user_has_job_runs(user)
+      logger.debug("No job runs for user #{user.username}. Continuing.") && next unless user_has_job_runs(user)
 
       process_start_dt = start_processing_date(user, period) + 1.second
 
@@ -59,7 +61,7 @@ class BaseStatsJob < ApplicationJob
       time_incr = 1.week - 1.day
     end
 
-    return current_dt, end_dt, time_incr
+    [current_dt, end_dt, time_incr]
   end
 
   def user_has_job_runs(user)

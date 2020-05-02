@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateJobStats < ActiveRecord::Migration[5.2]
   def change
     create_table :job_stats, options: 'ROW_FORMAT=DYNAMIC' do |t|

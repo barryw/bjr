@@ -4,7 +4,7 @@
 # Handles static routes
 #
 class StaticApiController < ApplicationController
-  skip_before_action :authenticate_request, only: [:health, :version]
+  skip_before_action :authenticate_request, only: %i[health version]
 
   def timezones
     timezones = ActiveSupport::TimeZone::MAPPING.keys

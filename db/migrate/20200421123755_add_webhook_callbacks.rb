@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddWebhookCallbacks < ActiveRecord::Migration[5.2]
   def change
     add_column :jobs, :success_callback, :string, null: true, default: nil
