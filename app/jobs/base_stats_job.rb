@@ -65,7 +65,7 @@ class BaseStatsJob < ApplicationJob
   end
 
   def user_has_job_runs(user)
-    JobRun.count_for_user(user.id) > 0
+    JobRun.count_for_user(user.id).positive?
   end
 
   def start_processing_date(user, period)

@@ -42,7 +42,7 @@ class ShellJob < ApplicationJob
     File.chmod(0755, file.path)
 
     file
-  rescue
+  rescue StandardError
     logger.error "Failed to write command to file #{file.path}: #{$!}"
   end
 end
