@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-05-02T18:52:12.981Z[GMT]
+  - Build date: 2020-05-02T20:50:02.308Z[GMT]
 
 API specification for the BJR job server.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>bjr4j</artifactId>
-  <version>1.1.1</version>
+  <version>1.1.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:bjr4j:1.1.1"
+compile "org.openapitools:bjr4j:1.1.2"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bjr4j-1.1.1.jar`
+* `target/bjr4j-1.1.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -109,8 +109,10 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuthenticationApi* | [**authenticateUser**](docs/AuthenticationApi.md#authenticateUser) | **POST** /authenticate | Authenticates a user and returns a token
 *JobServerApi* | [**recentJobs**](docs/JobServerApi.md#recentJobs) | **GET** /job_server_api/recent_jobs | List of recent jobs
+*JobServerApi* | [**statsByDay**](docs/JobServerApi.md#statsByDay) | **GET** /job_server_api/daily_job_stats | Job statistics by day
 *JobServerApi* | [**statsByHour**](docs/JobServerApi.md#statsByHour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
 *JobServerApi* | [**statsByMinute**](docs/JobServerApi.md#statsByMinute) | **GET** /job_server_api/minutely_job_stats | Job statistics by minute
+*JobServerApi* | [**statsByWeek**](docs/JobServerApi.md#statsByWeek) | **GET** /job_server_api/weekly_job_stats | Job statistics by week
 *JobServerApi* | [**upcomingJobs**](docs/JobServerApi.md#upcomingJobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 *JobsApi* | [**createJob**](docs/JobsApi.md#createJob) | **POST** /job_api | Creates a job
 *JobsApi* | [**deleteJob**](docs/JobsApi.md#deleteJob) | **DELETE** /job_api/{id} | Deletes a job

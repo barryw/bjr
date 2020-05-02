@@ -11,12 +11,12 @@ describe 'Job Server API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :count, in: :query, type: :integer, required: false, description: 'The number of stats to return (max 60)'
+      parameter name: :start_date, in: :query, type: :string, required: false, description: 'The start date from which to get minutely metrics from'
+      parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get minutely metrics from'
 
       response '200', 'Minutely stats received successfully' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        let(:count) { 1 }
         schema '$ref' => '#/components/schemas/JobStatMessage'
 
         before do |request|
@@ -44,11 +44,12 @@ describe 'Job Server API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
+      parameter name: :start_date, in: :query, type: :string, required: false, description: 'The start date from which to get hourly metrics from'
+      parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get hourly metrics from'
 
       response '200', 'Hourly stats received successfully' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        let(:count) { 1 }
         schema '$ref' => '#/components/schemas/JobStatMessage'
 
         before do |request|
@@ -63,6 +64,72 @@ describe 'Job Server API' do
           expect(json['object_type']).to eq('jobstats')
           expect(json['object'].length).to eq(1)
           expect(json['message']).to eq(I18n.t('jobserver.messages.hourly_job_stats.received'))
+        end
+      end
+    end
+  end
+
+  path '/job_server_api/daily_job_stats' do
+    get 'Job statistics by day' do
+      description 'Get daily job statistics'
+      tags 'JobServer'
+      operationId 'statsByDay'
+      security [bearerAuth: []]
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :start_date, in: :query, type: :string, required: false, description: 'The start date from which to get daily metrics from'
+      parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get daily metrics from'
+
+      response '200', 'Daily stats received successfully' do
+        let(:admin) { create(:admin1) }
+        let(:Authorization) { auth_token(admin) }
+        schema '$ref' => '#/components/schemas/JobStatMessage'
+
+        before do |request|
+          create(:daily_stat1, user: admin, start_dt: DateTime.now - 2.hours, end_dt: DateTime.now)
+          submit_request(request.metadata)
+        end
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+
+          expect(json['is_error']).to be false
+          expect(json['object_type']).to eq('jobstats')
+          expect(json['object'].length).to eq(1)
+          expect(json['message']).to eq(I18n.t('jobserver.messages.daily_job_stats.received'))
+        end
+      end
+    end
+  end
+
+  path '/job_server_api/weekly_job_stats' do
+    get 'Job statistics by week' do
+      description 'Get weekly job statistics'
+      tags 'JobServer'
+      operationId 'statsByWeek'
+      security [bearerAuth: []]
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :start_date, in: :query, type: :string, required: false, description: 'The start date from which to get weekly metrics from'
+      parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get weekly metrics from'
+
+      response '200', 'Weekly stats received successfully' do
+        let(:admin) { create(:admin1) }
+        let(:Authorization) { auth_token(admin) }
+        schema '$ref' => '#/components/schemas/JobStatMessage'
+
+        before do |request|
+          create(:weekly_stat1, user: admin, start_dt: DateTime.now - 2.hours, end_dt: DateTime.now)
+          submit_request(request.metadata)
+        end
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+
+          expect(json['is_error']).to be false
+          expect(json['object_type']).to eq('jobstats')
+          expect(json['object'].length).to eq(1)
+          expect(json['message']).to eq(I18n.t('jobserver.messages.weekly_job_stats.received'))
         end
       end
     end

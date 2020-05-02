@@ -48,18 +48,17 @@ en:
       received: Version received successfully.
   jobserver:
     messages:
-      server_runs:
-        received: Job Server runs by day received successfully.
-        failed: The 'days' parameter must be less than 31.
       recent_jobs:
         received: Recently run jobs received successfully.
         failed: The 'count' parameter must be less than 20.
       upcoming_jobs:
         received: Upcoming jobs received successfully.
         failed: The 'count' parameter must be less than 20.
-      most_failed_jobs:
-        received: Most failed jobs received successfully.
-        failed: The 'count' parameter must be less than 20.
       minutely_job_stats:
         received: Minutely job stats received successfully.
-        failed: The 'count' parameter must be less than 60.
+      hourly_job_stats:
+        received: Hourly job stats received successfully.
+      daily_job_stats:
+        received: Daily job stats received successfully.
+      weekly_job_stats:
+        received: Weekly job stats received successfully.

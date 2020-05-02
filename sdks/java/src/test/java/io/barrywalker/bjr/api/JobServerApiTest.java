@@ -50,6 +50,23 @@ public class JobServerApiTest {
     }
     
     /**
+     * Job statistics by day
+     *
+     * Get daily job statistics
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void statsByDayTest() throws ApiException {
+        String startDate = null;
+        String endDate = null;
+        JobStatMessage response = api.statsByDay(startDate, endDate);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Job statistics by hour
      *
      * Get hourly job statistics for the day
@@ -59,7 +76,9 @@ public class JobServerApiTest {
      */
     @Test
     public void statsByHourTest() throws ApiException {
-        JobStatMessage response = api.statsByHour();
+        String startDate = null;
+        String endDate = null;
+        JobStatMessage response = api.statsByHour(startDate, endDate);
 
         // TODO: test validations
     }
@@ -74,8 +93,26 @@ public class JobServerApiTest {
      */
     @Test
     public void statsByMinuteTest() throws ApiException {
-        Integer count = null;
-        JobStatMessage response = api.statsByMinute(count);
+        String startDate = null;
+        String endDate = null;
+        JobStatMessage response = api.statsByMinute(startDate, endDate);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Job statistics by week
+     *
+     * Get weekly job statistics
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void statsByWeekTest() throws ApiException {
+        String startDate = null;
+        String endDate = null;
+        JobStatMessage response = api.statsByWeek(startDate, endDate);
 
         // TODO: test validations
     }

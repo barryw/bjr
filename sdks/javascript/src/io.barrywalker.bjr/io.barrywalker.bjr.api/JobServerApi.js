@@ -19,7 +19,7 @@ import JobStatMessage from '../io.barrywalker.bjr.model/JobStatMessage';
 /**
 * JobServer service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi
-* @version 1.1.1
+* @version 1.1.2
 */
 export default class JobServerApi {
 
@@ -77,6 +77,49 @@ export default class JobServerApi {
     }
 
     /**
+     * Callback function to receive the result of the statsByDay operation.
+     * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByDayCallback
+     * @param {String} error Error message, if any.
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Job statistics by day
+     * Get daily job statistics
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.startDate The start date from which to get daily metrics from
+     * @param {String} opts.endDate The end date from which to get daily metrics from
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByDayCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage}
+     */
+    statsByDay(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'start_date': opts['startDate'],
+        'end_date': opts['endDate']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = JobStatMessage;
+      return this.apiClient.callApi(
+        '/job_server_api/daily_job_stats', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the statsByHour operation.
      * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByHourCallback
      * @param {String} error Error message, if any.
@@ -87,15 +130,21 @@ export default class JobServerApi {
     /**
      * Job statistics by hour
      * Get hourly job statistics for the day
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.startDate The start date from which to get hourly metrics from
+     * @param {String} opts.endDate The end date from which to get hourly metrics from
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByHourCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage}
      */
-    statsByHour(callback) {
+    statsByHour(opts, callback) {
+      opts = opts || {};
       let postBody = null;
 
       let pathParams = {
       };
       let queryParams = {
+        'start_date': opts['startDate'],
+        'end_date': opts['endDate']
       };
       let headerParams = {
       };
@@ -125,7 +174,8 @@ export default class JobServerApi {
      * Job statistics by minute
      * Get minutely job statistics
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.count The number of stats to return (max 60)
+     * @param {String} opts.startDate The start date from which to get minutely metrics from
+     * @param {String} opts.endDate The end date from which to get minutely metrics from
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByMinuteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage}
      */
@@ -136,7 +186,8 @@ export default class JobServerApi {
       let pathParams = {
       };
       let queryParams = {
-        'count': opts['count']
+        'start_date': opts['startDate'],
+        'end_date': opts['endDate']
       };
       let headerParams = {
       };
@@ -149,6 +200,49 @@ export default class JobServerApi {
       let returnType = JobStatMessage;
       return this.apiClient.callApi(
         '/job_server_api/minutely_job_stats', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the statsByWeek operation.
+     * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByWeekCallback
+     * @param {String} error Error message, if any.
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Job statistics by week
+     * Get weekly job statistics
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.startDate The start date from which to get weekly metrics from
+     * @param {String} opts.endDate The end date from which to get weekly metrics from
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByWeekCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage}
+     */
+    statsByWeek(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'start_date': opts['startDate'],
+        'end_date': opts['endDate']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = JobStatMessage;
+      return this.apiClient.callApi(
+        '/job_server_api/weekly_job_stats', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

@@ -76,13 +76,28 @@ namespace BJR.Test
         }
         
         /// <summary>
+        /// Test StatsByDay
+        /// </summary>
+        [Test]
+        public void StatsByDayTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string startDate = null;
+            //string endDate = null;
+            //var response = instance.StatsByDay(startDate, endDate);
+            //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
+        }
+        
+        /// <summary>
         /// Test StatsByHour
         /// </summary>
         [Test]
         public void StatsByHourTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.StatsByHour();
+            //string startDate = null;
+            //string endDate = null;
+            //var response = instance.StatsByHour(startDate, endDate);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
         }
         
@@ -93,8 +108,22 @@ namespace BJR.Test
         public void StatsByMinuteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //int count = null;
-            //var response = instance.StatsByMinute(count);
+            //string startDate = null;
+            //string endDate = null;
+            //var response = instance.StatsByMinute(startDate, endDate);
+            //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
+        }
+        
+        /// <summary>
+        /// Test StatsByWeek
+        /// </summary>
+        [Test]
+        public void StatsByWeekTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string startDate = null;
+            //string endDate = null;
+            //var response = instance.StatsByWeek(startDate, endDate);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
         }
         

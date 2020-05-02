@@ -25,4 +25,22 @@ FactoryBot.define do
     max_runtime { 100 }
     period { :hour }
   end
+
+  factory :daily_stat1, class: JobStat do
+    runs { 20 }
+    failed { 10 }
+    avg_runtime { 30 }
+    min_runtime { 10 }
+    max_runtime { 100 }
+    period { :day }
+  end
+
+  factory :weekly_stat1, class: JobStat do
+    runs { 20 }
+    failed { 10 }
+    avg_runtime { 30 }
+    min_runtime { 10 }
+    max_runtime { 100 }
+    period { :week }
+  end
 end

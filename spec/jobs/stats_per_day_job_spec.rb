@@ -6,7 +6,9 @@ RSpec.describe StatsPerDayJob, type: :job do
   include ActiveJob::TestHelper
 
   it 'computes daily stats for jobs that ran' do
-    travel_to Time.zone.local(2020, 5, 2, 13, 00, 00)
+    #travel_to Time.zone.local(2020, 5, 2, 13, 00, 00)
+
+    Time.zone = 'UTC'
 
     admin = create(:admin1)
     job = create(:job1, user:admin)
@@ -22,5 +24,7 @@ RSpec.describe StatsPerDayJob, type: :job do
 
       StatsPerDayJob.perform_later
     end
+
+    #travel_back
   end
 end

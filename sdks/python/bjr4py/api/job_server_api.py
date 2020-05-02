@@ -146,6 +146,121 @@ class JobServerApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def stats_by_day(self, **kwargs):  # noqa: E501
+        """Job statistics by day  # noqa: E501
+
+        Get daily job statistics  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.stats_by_day(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str start_date: The start date from which to get daily metrics from
+        :param str end_date: The end date from which to get daily metrics from
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: JobStatMessage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.stats_by_day_with_http_info(**kwargs)  # noqa: E501
+
+    def stats_by_day_with_http_info(self, **kwargs):  # noqa: E501
+        """Job statistics by day  # noqa: E501
+
+        Get daily job statistics  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.stats_by_day_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str start_date: The start date from which to get daily metrics from
+        :param str end_date: The end date from which to get daily metrics from
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(JobStatMessage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'start_date',
+            'end_date'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method stats_by_day" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'start_date' in local_var_params and local_var_params['start_date'] is not None:  # noqa: E501
+            query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
+        if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
+            query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/job_server_api/daily_job_stats', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='JobStatMessage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def stats_by_hour(self, **kwargs):  # noqa: E501
         """Job statistics by hour  # noqa: E501
 
@@ -156,6 +271,8 @@ class JobServerApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
+        :param str start_date: The start date from which to get hourly metrics from
+        :param str end_date: The end date from which to get hourly metrics from
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -180,6 +297,8 @@ class JobServerApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
+        :param str start_date: The start date from which to get hourly metrics from
+        :param str end_date: The end date from which to get hourly metrics from
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -197,6 +316,8 @@ class JobServerApi(object):
         local_var_params = locals()
 
         all_params = [
+            'start_date',
+            'end_date'
         ]
         all_params.extend(
             [
@@ -221,6 +342,10 @@ class JobServerApi(object):
         path_params = {}
 
         query_params = []
+        if 'start_date' in local_var_params and local_var_params['start_date'] is not None:  # noqa: E501
+            query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
+        if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
+            query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
 
         header_params = {}
 
@@ -261,7 +386,8 @@ class JobServerApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int count: The number of stats to return (max 60)
+        :param str start_date: The start date from which to get minutely metrics from
+        :param str end_date: The end date from which to get minutely metrics from
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -286,7 +412,8 @@ class JobServerApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int count: The number of stats to return (max 60)
+        :param str start_date: The start date from which to get minutely metrics from
+        :param str end_date: The end date from which to get minutely metrics from
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -304,7 +431,8 @@ class JobServerApi(object):
         local_var_params = locals()
 
         all_params = [
-            'count'
+            'start_date',
+            'end_date'
         ]
         all_params.extend(
             [
@@ -329,8 +457,10 @@ class JobServerApi(object):
         path_params = {}
 
         query_params = []
-        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
-            query_params.append(('count', local_var_params['count']))  # noqa: E501
+        if 'start_date' in local_var_params and local_var_params['start_date'] is not None:  # noqa: E501
+            query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
+        if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
+            query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
 
         header_params = {}
 
@@ -347,6 +477,121 @@ class JobServerApi(object):
 
         return self.api_client.call_api(
             '/job_server_api/minutely_job_stats', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='JobStatMessage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def stats_by_week(self, **kwargs):  # noqa: E501
+        """Job statistics by week  # noqa: E501
+
+        Get weekly job statistics  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.stats_by_week(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str start_date: The start date from which to get weekly metrics from
+        :param str end_date: The end date from which to get weekly metrics from
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: JobStatMessage
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.stats_by_week_with_http_info(**kwargs)  # noqa: E501
+
+    def stats_by_week_with_http_info(self, **kwargs):  # noqa: E501
+        """Job statistics by week  # noqa: E501
+
+        Get weekly job statistics  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.stats_by_week_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str start_date: The start date from which to get weekly metrics from
+        :param str end_date: The end date from which to get weekly metrics from
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(JobStatMessage, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'start_date',
+            'end_date'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method stats_by_week" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'start_date' in local_var_params and local_var_params['start_date'] is not None:  # noqa: E501
+            query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
+        if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
+            query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/job_server_api/weekly_job_stats', 'GET',
             path_params,
             query_params,
             header_params,

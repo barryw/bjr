@@ -44,10 +44,25 @@ describe 'JobServerApi' do
     end
   end
 
+  # unit tests for stats_by_day
+  # Job statistics by day
+  # Get daily job statistics
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :start_date The start date from which to get daily metrics from
+  # @option opts [String] :end_date The end date from which to get daily metrics from
+  # @return [JobStatMessage]
+  describe 'stats_by_day test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for stats_by_hour
   # Job statistics by hour
   # Get hourly job statistics for the day
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :start_date The start date from which to get hourly metrics from
+  # @option opts [String] :end_date The end date from which to get hourly metrics from
   # @return [JobStatMessage]
   describe 'stats_by_hour test' do
     it 'should work' do
@@ -59,9 +74,23 @@ describe 'JobServerApi' do
   # Job statistics by minute
   # Get minutely job statistics
   # @param [Hash] opts the optional parameters
-  # @option opts [Integer] :count The number of stats to return (max 60)
+  # @option opts [String] :start_date The start date from which to get minutely metrics from
+  # @option opts [String] :end_date The end date from which to get minutely metrics from
   # @return [JobStatMessage]
   describe 'stats_by_minute test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for stats_by_week
+  # Job statistics by week
+  # Get weekly job statistics
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :start_date The start date from which to get weekly metrics from
+  # @option opts [String] :end_date The end date from which to get weekly metrics from
+  # @return [JobStatMessage]
+  describe 'stats_by_week test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

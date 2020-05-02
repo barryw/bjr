@@ -22,5 +22,7 @@ RSpec.describe StatsPerHourJob, type: :job do
 
       StatsPerHourJob.perform_later
     end
+
+    travel_back
   end
 end

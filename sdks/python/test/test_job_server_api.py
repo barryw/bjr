@@ -35,6 +35,13 @@ class TestJobServerApi(unittest.TestCase):
         """
         pass
 
+    def test_stats_by_day(self):
+        """Test case for stats_by_day
+
+        Job statistics by day  # noqa: E501
+        """
+        pass
+
     def test_stats_by_hour(self):
         """Test case for stats_by_hour
 
@@ -46,6 +53,13 @@ class TestJobServerApi(unittest.TestCase):
         """Test case for stats_by_minute
 
         Job statistics by minute  # noqa: E501
+        """
+        pass
+
+    def test_stats_by_week(self):
+        """Test case for stats_by_week
+
+        Job statistics by week  # noqa: E501
         """
         pass
 

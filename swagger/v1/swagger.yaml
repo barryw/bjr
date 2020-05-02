@@ -798,12 +798,18 @@ paths:
       security:
       - bearerAuth: []
       parameters:
-      - name: count
+      - name: start_date
         in: query
         required: false
-        description: The number of stats to return (max 60)
+        description: The start date from which to get minutely metrics from
         schema:
-          type: integer
+          type: string
+      - name: end_date
+        in: query
+        required: false
+        description: The end date from which to get minutely metrics from
+        schema:
+          type: string
       responses:
         '200':
           description: Minutely stats received successfully
@@ -820,9 +826,80 @@ paths:
       operationId: statsByHour
       security:
       - bearerAuth: []
+      parameters:
+      - name: start_date
+        in: query
+        required: false
+        description: The start date from which to get hourly metrics from
+        schema:
+          type: string
+      - name: end_date
+        in: query
+        required: false
+        description: The end date from which to get hourly metrics from
+        schema:
+          type: string
       responses:
         '200':
           description: Hourly stats received successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobStatMessage"
+  "/job_server_api/daily_job_stats":
+    get:
+      summary: Job statistics by day
+      description: Get daily job statistics
+      tags:
+      - JobServer
+      operationId: statsByDay
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: start_date
+        in: query
+        required: false
+        description: The start date from which to get daily metrics from
+        schema:
+          type: string
+      - name: end_date
+        in: query
+        required: false
+        description: The end date from which to get daily metrics from
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Daily stats received successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobStatMessage"
+  "/job_server_api/weekly_job_stats":
+    get:
+      summary: Job statistics by week
+      description: Get weekly job statistics
+      tags:
+      - JobServer
+      operationId: statsByWeek
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: start_date
+        in: query
+        required: false
+        description: The start date from which to get weekly metrics from
+        schema:
+          type: string
+      - name: end_date
+        in: query
+        required: false
+        description: The end date from which to get weekly metrics from
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Weekly stats received successfully
           content:
             application/json:
               schema:

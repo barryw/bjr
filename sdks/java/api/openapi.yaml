@@ -371,13 +371,21 @@ paths:
       description: Get minutely job statistics
       operationId: statsByMinute
       parameters:
-      - description: The number of stats to return (max 60)
+      - description: The start date from which to get minutely metrics from
         explode: true
         in: query
-        name: count
+        name: start_date
         required: false
         schema:
-          type: integer
+          type: string
+        style: form
+      - description: The end date from which to get minutely metrics from
+        explode: true
+        in: query
+        name: end_date
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -396,6 +404,23 @@ paths:
     get:
       description: Get hourly job statistics for the day
       operationId: statsByHour
+      parameters:
+      - description: The start date from which to get hourly metrics from
+        explode: true
+        in: query
+        name: start_date
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The end date from which to get hourly metrics from
+        explode: true
+        in: query
+        name: end_date
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -406,6 +431,74 @@ paths:
       security:
       - bearerAuth: []
       summary: Job statistics by hour
+      tags:
+      - JobServer
+      x-accepts: application/json
+  /job_server_api/daily_job_stats:
+    get:
+      description: Get daily job statistics
+      operationId: statsByDay
+      parameters:
+      - description: The start date from which to get daily metrics from
+        explode: true
+        in: query
+        name: start_date
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The end date from which to get daily metrics from
+        explode: true
+        in: query
+        name: end_date
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatMessage'
+          description: Daily stats received successfully
+      security:
+      - bearerAuth: []
+      summary: Job statistics by day
+      tags:
+      - JobServer
+      x-accepts: application/json
+  /job_server_api/weekly_job_stats:
+    get:
+      description: Get weekly job statistics
+      operationId: statsByWeek
+      parameters:
+      - description: The start date from which to get weekly metrics from
+        explode: true
+        in: query
+        name: start_date
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The end date from which to get weekly metrics from
+        explode: true
+        in: query
+        name: end_date
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatMessage'
+          description: Weekly stats received successfully
+      security:
+      - bearerAuth: []
+      summary: Job statistics by week
       tags:
       - JobServer
       x-accepts: application/json

@@ -58,6 +58,16 @@
         done();
       });
     });
+    describe('statsByDay', function() {
+      it('should call statsByDay successfully', function(done) {
+        //uncomment below and update the code to test statsByDay
+        //instance.statsByDay(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('statsByHour', function() {
       it('should call statsByHour successfully', function(done) {
         //uncomment below and update the code to test statsByHour
@@ -72,6 +82,16 @@
       it('should call statsByMinute successfully', function(done) {
         //uncomment below and update the code to test statsByMinute
         //instance.statsByMinute(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('statsByWeek', function() {
+      it('should call statsByWeek successfully', function(done) {
+        //uncomment below and update the code to test statsByWeek
+        //instance.statsByWeek(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

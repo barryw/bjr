@@ -5,8 +5,10 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**recent_jobs**](JobServerApi.md#recent_jobs) | **GET** /job_server_api/recent_jobs | List of recent jobs
+[**stats_by_day**](JobServerApi.md#stats_by_day) | **GET** /job_server_api/daily_job_stats | Job statistics by day
 [**stats_by_hour**](JobServerApi.md#stats_by_hour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
 [**stats_by_minute**](JobServerApi.md#stats_by_minute) | **GET** /job_server_api/minutely_job_stats | Job statistics by minute
+[**stats_by_week**](JobServerApi.md#stats_by_week) | **GET** /job_server_api/weekly_job_stats | Job statistics by week
 [**upcoming_jobs**](JobServerApi.md#upcoming_jobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 
 
@@ -65,9 +67,65 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## stats_by_day
+
+> JobStatMessage stats_by_day(opts)
+
+Job statistics by day
+
+Get daily job statistics
+
+### Example
+
+```ruby
+# load the gem
+require 'bjr4r'
+# setup authorization
+BJR.configure do |config|
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = BJR::JobServerApi.new
+opts = {
+  start_date: 'start_date_example', # String | The start date from which to get daily metrics from
+  end_date: 'end_date_example' # String | The end date from which to get daily metrics from
+}
+
+begin
+  #Job statistics by day
+  result = api_instance.stats_by_day(opts)
+  p result
+rescue BJR::ApiError => e
+  puts "Exception when calling JobServerApi->stats_by_day: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **start_date** | **String**| The start date from which to get daily metrics from | [optional] 
+ **end_date** | **String**| The end date from which to get daily metrics from | [optional] 
+
+### Return type
+
+[**JobStatMessage**](JobStatMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## stats_by_hour
 
-> JobStatMessage stats_by_hour
+> JobStatMessage stats_by_hour(opts)
 
 Job statistics by hour
 
@@ -85,10 +143,14 @@ BJR.configure do |config|
 end
 
 api_instance = BJR::JobServerApi.new
+opts = {
+  start_date: 'start_date_example', # String | The start date from which to get hourly metrics from
+  end_date: 'end_date_example' # String | The end date from which to get hourly metrics from
+}
 
 begin
   #Job statistics by hour
-  result = api_instance.stats_by_hour
+  result = api_instance.stats_by_hour(opts)
   p result
 rescue BJR::ApiError => e
   puts "Exception when calling JobServerApi->stats_by_hour: #{e}"
@@ -97,7 +159,11 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **start_date** | **String**| The start date from which to get hourly metrics from | [optional] 
+ **end_date** | **String**| The end date from which to get hourly metrics from | [optional] 
 
 ### Return type
 
@@ -134,7 +200,8 @@ end
 
 api_instance = BJR::JobServerApi.new
 opts = {
-  count: 56 # Integer | The number of stats to return (max 60)
+  start_date: 'start_date_example', # String | The start date from which to get minutely metrics from
+  end_date: 'end_date_example' # String | The end date from which to get minutely metrics from
 }
 
 begin
@@ -151,7 +218,64 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **count** | **Integer**| The number of stats to return (max 60) | [optional] 
+ **start_date** | **String**| The start date from which to get minutely metrics from | [optional] 
+ **end_date** | **String**| The end date from which to get minutely metrics from | [optional] 
+
+### Return type
+
+[**JobStatMessage**](JobStatMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## stats_by_week
+
+> JobStatMessage stats_by_week(opts)
+
+Job statistics by week
+
+Get weekly job statistics
+
+### Example
+
+```ruby
+# load the gem
+require 'bjr4r'
+# setup authorization
+BJR.configure do |config|
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = BJR::JobServerApi.new
+opts = {
+  start_date: 'start_date_example', # String | The start date from which to get weekly metrics from
+  end_date: 'end_date_example' # String | The end date from which to get weekly metrics from
+}
+
+begin
+  #Job statistics by week
+  result = api_instance.stats_by_week(opts)
+  p result
+rescue BJR::ApiError => e
+  puts "Exception when calling JobServerApi->stats_by_week: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **start_date** | **String**| The start date from which to get weekly metrics from | [optional] 
+ **end_date** | **String**| The end date from which to get weekly metrics from | [optional] 
 
 ### Return type
 
