@@ -9,12 +9,10 @@ class BaseStatsJob < ApplicationJob
       logger.debug("No job runs for user #{user.username}. Continuing.") && next unless user_has_job_runs(user)
 
       process_start_dt = start_processing_date(user, period) + 1.second
+      time_incr = time_increment(period)
+      current_dt = processing_dates(process_start_dt, period)
 
-      current_dt, end_dt, time_incr = processing_dates(process_start_dt, period)
-
-      logger.debug "Processing starts at #{current_dt} and will end at #{end_dt}"
-
-      while current_dt < end_dt
+      while current_dt < DateTime.now
         new_end = current_dt + time_incr - 1.second
         generate_row(user, current_dt, new_end, period)
         current_dt += time_incr
@@ -37,31 +35,38 @@ class BaseStatsJob < ApplicationJob
                    end_dt: new_end, period: period)
   end
 
-  def processing_dates(process_start_dt, period)
-    current_dt = ''
-    end_dt = ''
-    time_incr = ''
-
-    case period
+  def time_increment(period)
+    incr = case period
     when :minute
-      current_dt = process_start_dt.change(sec: 0)
-      end_dt = current_dt + 59.seconds
-      time_incr = 1.minute
+      1.minute
     when :hour
-      current_dt = process_start_dt.change(min: 0)
-      end_dt = current_dt + 59.minutes + 59.seconds
-      time_incr = 1.hour
+      1.hour
     when :day
-      current_dt = process_start_dt.change(hour: 0)
-      end_dt = current_dt + 23.hours + 59.minutes + 59.seconds
-      time_incr = 1.day
+      1.day
     when :week
-      current_dt = process_start_dt
-      end_dt = current_dt + 6.days + 23.hours + 59.minutes + 59.seconds
-      time_incr = 1.week
+      1.week
+    else
+      raise "#{period} is not an acceptable period"
     end
 
-    [current_dt, end_dt, time_incr]
+    incr
+  end
+
+  def processing_dates(process_start_dt, period)
+    current_dt = case period
+    when :minute
+      process_start_dt.change(sec: 0)
+    when :hour
+      process_start_dt.change(min: 0)
+    when :day
+      process_start_dt.change(hour: 0)
+    when :week
+      process_start_dt
+    else
+      raise "#{period} is not an acceptable period"
+    end
+
+    current_dt
   end
 
   def user_has_job_runs(user)

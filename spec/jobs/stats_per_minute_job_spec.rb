@@ -10,17 +10,21 @@ RSpec.describe StatsPerMinuteJob, type: :job do
 
     admin = create(:admin1)
     job = create(:job1, user:admin)
-    jobrun1 = create(:successful_job_run, job: job, start_time: DateTime.now.utc - 10.minutes, end_time: DateTime.now.utc - 5.minutes)
-    jobrun2 = create(:failed_job_run, job: job, start_time: DateTime.now.utc - 10.minutes, end_time: DateTime.now.utc - 3.minutes)
+    jobrun1 = create(:successful_job_run, job: job, start_time: DateTime.now - 9.minutes - 30.seconds, end_time: DateTime.now - 5.minutes)
+    jobrun2 = create(:failed_job_run, job: job, start_time: DateTime.now - 9.minutes - 30.seconds, end_time: DateTime.now - 3.minutes)
 
     perform_enqueued_jobs do
-      start_dt = DateTime.now.utc - 10.minutes
-      end_dt = start_dt + 59.seconds
-
-      expect(JobStat).to receive(:create).with({user_id: admin.id, runs: 2, failed: 1, avg_runtime: BigDecimal(360),
-        min_runtime: 300, max_runtime: 420, start_dt: start_dt, end_dt: end_dt, period: :minute})
-
       StatsPerMinuteJob.perform_later
+
+      js = JobStat.all
+      expect(js.length).to eq(10)
+      expect(js[0].runs).to eq(2)
+      expect(js[0].failed).to eq(1)
+      expect(js[0].start_dt).to eq(Time.zone.local(2020, 5, 2, 12, 50, 00))
+      expect(js[0].end_dt).to eq(Time.zone.local(2020, 5, 2, 12, 50, 59))
+      expect(js[0].avg_runtime).to eq(330)
+      expect(js[0].min_runtime).to eq(270)
+      expect(js[0].max_runtime).to eq(390)
     end
 
     travel_back

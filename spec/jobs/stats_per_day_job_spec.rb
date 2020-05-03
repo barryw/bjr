@@ -6,25 +6,27 @@ RSpec.describe StatsPerDayJob, type: :job do
   include ActiveJob::TestHelper
 
   it 'computes daily stats for jobs that ran' do
-    #travel_to Time.zone.local(2020, 5, 2, 13, 00, 00)
-
-    Time.zone = 'UTC'
+    travel_to Time.zone.local(2020, 5, 2, 13, 00, 00)
 
     admin = create(:admin1)
     job = create(:job1, user:admin)
-    jobrun1 = create(:successful_job_run, job: job, start_time: DateTime.now.utc - 10.minutes, end_time: DateTime.now.utc - 5.minutes)
-    jobrun2 = create(:failed_job_run, job: job, start_time: DateTime.now.utc - 8.minutes, end_time: DateTime.now.utc - 3.minutes)
+    jobrun1 = create(:successful_job_run, job: job, start_time: DateTime.now - 10.minutes, end_time: DateTime.now - 5.minutes)
+    jobrun2 = create(:failed_job_run, job: job, start_time: DateTime.now - 8.minutes, end_time: DateTime.now - 3.minutes)
 
     perform_enqueued_jobs do
-      start_dt = DateTime.now.utc.midnight
-      end_dt = DateTime.now.utc.midnight + 23.hours + 59.minutes + 59.seconds
-
-      expect(JobStat).to receive(:create).with({user_id: admin.id, runs: 2, failed: 1, avg_runtime: BigDecimal(300),
-        min_runtime: 300, max_runtime: 300, start_dt: start_dt, end_dt: end_dt, period: :day})
-
       StatsPerDayJob.perform_later
+
+      js = JobStat.all
+      expect(js.length).to eq(1)
+      expect(js[0].runs).to eq(2)
+      expect(js[0].failed).to eq(1)
+      expect(js[0].start_dt).to eq(Time.zone.local(2020, 5, 2, 0, 00, 00))
+      expect(js[0].end_dt).to eq(Time.zone.local(2020, 5, 2, 23, 59, 59))
+      expect(js[0].avg_runtime).to eq(300)
+      expect(js[0].min_runtime).to eq(300)
+      expect(js[0].max_runtime).to eq(300)
     end
 
-    #travel_back
+    travel_back
   end
 end

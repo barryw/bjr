@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe JobFinderJob, type: :job do
   include ActiveJob::TestHelper
 
-  it 'Looks for jobs that need to be performed' do
+  it 'looks for jobs that need to be performed' do
     perform_enqueued_jobs do
       admin = create(:admin1)
       job = create(:job1, user: admin, enabled: true, running: false, cron: '* * * * *', timezone: 'UTC')

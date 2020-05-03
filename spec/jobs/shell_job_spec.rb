@@ -5,14 +5,14 @@ require 'rails_helper'
 RSpec.describe ShellJob, type: :job do
   include ActiveJob::TestHelper
 
-  it 'Properly handles a non-existing job' do
+  it 'properly handles a non-existing job' do
     perform_enqueued_jobs do
       expect(Job).to receive(:find).with(1).and_raise(StandardError)
       ShellJob.perform_later(1)
     end
   end
 
-  it 'Properly handles an exception from Open3' do
+  it 'properly handles an exception from Open3' do
     perform_enqueued_jobs do
       user = create(:admin1)
       job = create(:job1, user: user)
