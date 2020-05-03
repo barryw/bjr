@@ -1,0 +1,6 @@
+exclude_patterns:
+  - sdks/**
+  - bin/**
+  - deploy/**
+  - packer/**
+  - terraform/**
