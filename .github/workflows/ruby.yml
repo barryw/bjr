@@ -25,6 +25,8 @@ jobs:
         ruby-version: '2.6'
 
     - name: Execute RSpec tests
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       run: |
         gem install bundler
         bundle config path vendor/bundle
