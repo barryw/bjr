@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## StatsByDay
 
-> JobStatMessage StatsByDay (string startDate = null, string endDate = null)
+> JobStatMessage StatsByDay (string startDate = null, string endDate = null, int perPage = null, int page = null)
 
 Job statistics by day
 
@@ -122,11 +122,13 @@ namespace Example
             var apiInstance = new JobServerApi(Configuration.Default);
             var startDate = startDate_example;  // string | The start date from which to get daily metrics from (optional) 
             var endDate = endDate_example;  // string | The end date from which to get daily metrics from (optional) 
+            var perPage = 56;  // int |  (optional) 
+            var page = 56;  // int |  (optional) 
 
             try
             {
                 // Job statistics by day
-                JobStatMessage result = apiInstance.StatsByDay(startDate, endDate);
+                JobStatMessage result = apiInstance.StatsByDay(startDate, endDate, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -147,6 +149,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| The start date from which to get daily metrics from | [optional] 
  **endDate** | **string**| The end date from which to get daily metrics from | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -164,7 +168,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Daily stats received successfully |  -  |
+| **200** | Daily stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -174,7 +178,7 @@ Name | Type | Description  | Notes
 
 ## StatsByHour
 
-> JobStatMessage StatsByHour (string startDate = null, string endDate = null)
+> JobStatMessage StatsByHour (string startDate = null, string endDate = null, int perPage = null, int page = null)
 
 Job statistics by hour
 
@@ -202,11 +206,13 @@ namespace Example
             var apiInstance = new JobServerApi(Configuration.Default);
             var startDate = startDate_example;  // string | The start date from which to get hourly metrics from (optional) 
             var endDate = endDate_example;  // string | The end date from which to get hourly metrics from (optional) 
+            var perPage = 56;  // int |  (optional) 
+            var page = 56;  // int |  (optional) 
 
             try
             {
                 // Job statistics by hour
-                JobStatMessage result = apiInstance.StatsByHour(startDate, endDate);
+                JobStatMessage result = apiInstance.StatsByHour(startDate, endDate, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -227,6 +233,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| The start date from which to get hourly metrics from | [optional] 
  **endDate** | **string**| The end date from which to get hourly metrics from | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -244,7 +252,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Hourly stats received successfully |  -  |
+| **200** | Hourly stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -254,7 +262,7 @@ Name | Type | Description  | Notes
 
 ## StatsByMinute
 
-> void StatsByMinute (string startDate = null, string endDate = null)
+> JobStatMessage StatsByMinute (string startDate = null, string endDate = null, int perPage = null, int page = null)
 
 Job statistics by minute
 
@@ -282,11 +290,14 @@ namespace Example
             var apiInstance = new JobServerApi(Configuration.Default);
             var startDate = startDate_example;  // string | The start date from which to get minutely metrics from (optional) 
             var endDate = endDate_example;  // string | The end date from which to get minutely metrics from (optional) 
+            var perPage = 56;  // int |  (optional) 
+            var page = 56;  // int |  (optional) 
 
             try
             {
                 // Job statistics by minute
-                apiInstance.StatsByMinute(startDate, endDate);
+                JobStatMessage result = apiInstance.StatsByMinute(startDate, endDate, perPage, page);
+                Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
@@ -306,10 +317,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| The start date from which to get minutely metrics from | [optional] 
  **endDate** | **string**| The end date from which to get minutely metrics from | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**JobStatMessage**](JobStatMessage.md)
 
 ### Authorization
 
@@ -318,12 +331,12 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Minutely stats received successfully |  -  |
+| **200** | Minutely stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -333,7 +346,7 @@ void (empty response body)
 
 ## StatsByWeek
 
-> JobStatMessage StatsByWeek (string startDate = null, string endDate = null)
+> JobStatMessage StatsByWeek (string startDate = null, string endDate = null, int perPage = null, int page = null)
 
 Job statistics by week
 
@@ -361,11 +374,13 @@ namespace Example
             var apiInstance = new JobServerApi(Configuration.Default);
             var startDate = startDate_example;  // string | The start date from which to get weekly metrics from (optional) 
             var endDate = endDate_example;  // string | The end date from which to get weekly metrics from (optional) 
+            var perPage = 56;  // int |  (optional) 
+            var page = 56;  // int |  (optional) 
 
             try
             {
                 // Job statistics by week
-                JobStatMessage result = apiInstance.StatsByWeek(startDate, endDate);
+                JobStatMessage result = apiInstance.StatsByWeek(startDate, endDate, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -386,6 +401,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| The start date from which to get weekly metrics from | [optional] 
  **endDate** | **string**| The end date from which to get weekly metrics from | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -403,7 +420,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Weekly stats received successfully |  -  |
+| **200** | Weekly stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

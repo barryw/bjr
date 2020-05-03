@@ -83,6 +83,8 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [String] :start_date The start date from which to get daily metrics from
     # @option opts [String] :end_date The end date from which to get daily metrics from
+    # @option opts [Integer] :per_page 
+    # @option opts [Integer] :page 
     # @return [JobStatMessage]
     def stats_by_day(opts = {})
       data, _status_code, _headers = stats_by_day_with_http_info(opts)
@@ -94,6 +96,8 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [String] :start_date The start date from which to get daily metrics from
     # @option opts [String] :end_date The end date from which to get daily metrics from
+    # @option opts [Integer] :per_page 
+    # @option opts [Integer] :page 
     # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
     def stats_by_day_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -106,6 +110,8 @@ module BJR
       query_params = opts[:query_params] || {}
       query_params[:'start_date'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -145,6 +151,8 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [String] :start_date The start date from which to get hourly metrics from
     # @option opts [String] :end_date The end date from which to get hourly metrics from
+    # @option opts [Integer] :per_page 
+    # @option opts [Integer] :page 
     # @return [JobStatMessage]
     def stats_by_hour(opts = {})
       data, _status_code, _headers = stats_by_hour_with_http_info(opts)
@@ -156,6 +164,8 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [String] :start_date The start date from which to get hourly metrics from
     # @option opts [String] :end_date The end date from which to get hourly metrics from
+    # @option opts [Integer] :per_page 
+    # @option opts [Integer] :page 
     # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
     def stats_by_hour_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -168,6 +178,8 @@ module BJR
       query_params = opts[:query_params] || {}
       query_params[:'start_date'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -207,10 +219,12 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [String] :start_date The start date from which to get minutely metrics from
     # @option opts [String] :end_date The end date from which to get minutely metrics from
-    # @return [nil]
+    # @option opts [Integer] :per_page 
+    # @option opts [Integer] :page 
+    # @return [JobStatMessage]
     def stats_by_minute(opts = {})
-      stats_by_minute_with_http_info(opts)
-      nil
+      data, _status_code, _headers = stats_by_minute_with_http_info(opts)
+      data
     end
 
     # Job statistics by minute
@@ -218,7 +232,9 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [String] :start_date The start date from which to get minutely metrics from
     # @option opts [String] :end_date The end date from which to get minutely metrics from
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @option opts [Integer] :per_page 
+    # @option opts [Integer] :page 
+    # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
     def stats_by_minute_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: JobServerApi.stats_by_minute ...'
@@ -230,9 +246,13 @@ module BJR
       query_params = opts[:query_params] || {}
       query_params[:'start_date'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -241,7 +261,7 @@ module BJR
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'JobStatMessage' 
 
       # auth_names
       auth_names = opts[:auth_names] || ['bearerAuth']
@@ -267,6 +287,8 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [String] :start_date The start date from which to get weekly metrics from
     # @option opts [String] :end_date The end date from which to get weekly metrics from
+    # @option opts [Integer] :per_page 
+    # @option opts [Integer] :page 
     # @return [JobStatMessage]
     def stats_by_week(opts = {})
       data, _status_code, _headers = stats_by_week_with_http_info(opts)
@@ -278,6 +300,8 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [String] :start_date The start date from which to get weekly metrics from
     # @option opts [String] :end_date The end date from which to get weekly metrics from
+    # @option opts [Integer] :per_page 
+    # @option opts [Integer] :page 
     # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
     def stats_by_week_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -290,6 +314,8 @@ module BJR
       query_params = opts[:query_params] || {}
       query_params[:'start_date'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
+      query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

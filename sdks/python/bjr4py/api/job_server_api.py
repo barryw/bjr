@@ -158,6 +158,8 @@ class JobServerApi(object):
         :param async_req bool: execute request asynchronously
         :param str start_date: The start date from which to get daily metrics from
         :param str end_date: The end date from which to get daily metrics from
+        :param int per_page:
+        :param int page:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -184,6 +186,8 @@ class JobServerApi(object):
         :param async_req bool: execute request asynchronously
         :param str start_date: The start date from which to get daily metrics from
         :param str end_date: The end date from which to get daily metrics from
+        :param int per_page:
+        :param int page:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -202,7 +206,9 @@ class JobServerApi(object):
 
         all_params = [
             'start_date',
-            'end_date'
+            'end_date',
+            'per_page',
+            'page'
         ]
         all_params.extend(
             [
@@ -231,6 +237,10 @@ class JobServerApi(object):
             query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
         if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
             query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
 
         header_params = {}
 
@@ -273,6 +283,8 @@ class JobServerApi(object):
         :param async_req bool: execute request asynchronously
         :param str start_date: The start date from which to get hourly metrics from
         :param str end_date: The end date from which to get hourly metrics from
+        :param int per_page:
+        :param int page:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -299,6 +311,8 @@ class JobServerApi(object):
         :param async_req bool: execute request asynchronously
         :param str start_date: The start date from which to get hourly metrics from
         :param str end_date: The end date from which to get hourly metrics from
+        :param int per_page:
+        :param int page:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -317,7 +331,9 @@ class JobServerApi(object):
 
         all_params = [
             'start_date',
-            'end_date'
+            'end_date',
+            'per_page',
+            'page'
         ]
         all_params.extend(
             [
@@ -346,6 +362,10 @@ class JobServerApi(object):
             query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
         if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
             query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
 
         header_params = {}
 
@@ -388,6 +408,8 @@ class JobServerApi(object):
         :param async_req bool: execute request asynchronously
         :param str start_date: The start date from which to get minutely metrics from
         :param str end_date: The end date from which to get minutely metrics from
+        :param int per_page:
+        :param int page:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -395,7 +417,7 @@ class JobServerApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: JobStatMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -414,6 +436,8 @@ class JobServerApi(object):
         :param async_req bool: execute request asynchronously
         :param str start_date: The start date from which to get minutely metrics from
         :param str end_date: The end date from which to get minutely metrics from
+        :param int per_page:
+        :param int page:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -423,7 +447,7 @@ class JobServerApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: tuple(JobStatMessage, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -432,7 +456,9 @@ class JobServerApi(object):
 
         all_params = [
             'start_date',
-            'end_date'
+            'end_date',
+            'per_page',
+            'page'
         ]
         all_params.extend(
             [
@@ -461,6 +487,10 @@ class JobServerApi(object):
             query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
         if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
             query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
 
         header_params = {}
 
@@ -468,6 +498,10 @@ class JobServerApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['bearerAuth']  # noqa: E501
 
@@ -479,7 +513,7 @@ class JobServerApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='JobStatMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -499,6 +533,8 @@ class JobServerApi(object):
         :param async_req bool: execute request asynchronously
         :param str start_date: The start date from which to get weekly metrics from
         :param str end_date: The end date from which to get weekly metrics from
+        :param int per_page:
+        :param int page:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -525,6 +561,8 @@ class JobServerApi(object):
         :param async_req bool: execute request asynchronously
         :param str start_date: The start date from which to get weekly metrics from
         :param str end_date: The end date from which to get weekly metrics from
+        :param int per_page:
+        :param int page:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -543,7 +581,9 @@ class JobServerApi(object):
 
         all_params = [
             'start_date',
-            'end_date'
+            'end_date',
+            'per_page',
+            'page'
         ]
         all_params.extend(
             [
@@ -572,6 +612,10 @@ class JobServerApi(object):
             query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
         if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
             query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
+        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
+            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
+        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
+            query_params.append(('page', local_var_params['page']))  # noqa: E501
 
         header_params = {}
 

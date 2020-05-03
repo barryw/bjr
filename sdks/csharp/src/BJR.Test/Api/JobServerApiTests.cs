@@ -84,7 +84,9 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string startDate = null;
             //string endDate = null;
-            //var response = instance.StatsByDay(startDate, endDate);
+            //int perPage = null;
+            //int page = null;
+            //var response = instance.StatsByDay(startDate, endDate, perPage, page);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
         }
         
@@ -97,7 +99,9 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string startDate = null;
             //string endDate = null;
-            //var response = instance.StatsByHour(startDate, endDate);
+            //int perPage = null;
+            //int page = null;
+            //var response = instance.StatsByHour(startDate, endDate, perPage, page);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
         }
         
@@ -110,8 +114,10 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string startDate = null;
             //string endDate = null;
-            //instance.StatsByMinute(startDate, endDate);
-            
+            //int perPage = null;
+            //int page = null;
+            //var response = instance.StatsByMinute(startDate, endDate, perPage, page);
+            //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
         }
         
         /// <summary>
@@ -123,7 +129,9 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string startDate = null;
             //string endDate = null;
-            //var response = instance.StatsByWeek(startDate, endDate);
+            //int perPage = null;
+            //int page = null;
+            //var response = instance.StatsByWeek(startDate, endDate, perPage, page);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
         }
         

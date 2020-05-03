@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 <a name="statsByDay"></a>
 # **statsByDay**
-> JobStatMessage statsByDay(startDate, endDate)
+> JobStatMessage statsByDay(startDate, endDate, perPage, page)
 
 Job statistics by day
 
@@ -110,8 +110,10 @@ public class Example {
     JobServerApi apiInstance = new JobServerApi(defaultClient);
     String startDate = "startDate_example"; // String | The start date from which to get daily metrics from
     String endDate = "endDate_example"; // String | The end date from which to get daily metrics from
+    Integer perPage = 56; // Integer | 
+    Integer page = 56; // Integer | 
     try {
-      JobStatMessage result = apiInstance.statsByDay(startDate, endDate);
+      JobStatMessage result = apiInstance.statsByDay(startDate, endDate, perPage, page);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobServerApi#statsByDay");
@@ -130,6 +132,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **String**| The start date from which to get daily metrics from | [optional]
  **endDate** | **String**| The end date from which to get daily metrics from | [optional]
+ **perPage** | **Integer**|  | [optional]
+ **page** | **Integer**|  | [optional]
 
 ### Return type
 
@@ -147,11 +151,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Daily stats received successfully |  -  |
+**200** | Daily stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 <a name="statsByHour"></a>
 # **statsByHour**
-> JobStatMessage statsByHour(startDate, endDate)
+> JobStatMessage statsByHour(startDate, endDate, perPage, page)
 
 Job statistics by hour
 
@@ -179,8 +183,10 @@ public class Example {
     JobServerApi apiInstance = new JobServerApi(defaultClient);
     String startDate = "startDate_example"; // String | The start date from which to get hourly metrics from
     String endDate = "endDate_example"; // String | The end date from which to get hourly metrics from
+    Integer perPage = 56; // Integer | 
+    Integer page = 56; // Integer | 
     try {
-      JobStatMessage result = apiInstance.statsByHour(startDate, endDate);
+      JobStatMessage result = apiInstance.statsByHour(startDate, endDate, perPage, page);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobServerApi#statsByHour");
@@ -199,6 +205,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **String**| The start date from which to get hourly metrics from | [optional]
  **endDate** | **String**| The end date from which to get hourly metrics from | [optional]
+ **perPage** | **Integer**|  | [optional]
+ **page** | **Integer**|  | [optional]
 
 ### Return type
 
@@ -216,11 +224,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Hourly stats received successfully |  -  |
+**200** | Hourly stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 <a name="statsByMinute"></a>
 # **statsByMinute**
-> statsByMinute(startDate, endDate)
+> JobStatMessage statsByMinute(startDate, endDate, perPage, page)
 
 Job statistics by minute
 
@@ -248,8 +256,11 @@ public class Example {
     JobServerApi apiInstance = new JobServerApi(defaultClient);
     String startDate = "startDate_example"; // String | The start date from which to get minutely metrics from
     String endDate = "endDate_example"; // String | The end date from which to get minutely metrics from
+    Integer perPage = 56; // Integer | 
+    Integer page = 56; // Integer | 
     try {
-      apiInstance.statsByMinute(startDate, endDate);
+      JobStatMessage result = apiInstance.statsByMinute(startDate, endDate, perPage, page);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobServerApi#statsByMinute");
       System.err.println("Status code: " + e.getCode());
@@ -267,10 +278,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **String**| The start date from which to get minutely metrics from | [optional]
  **endDate** | **String**| The end date from which to get minutely metrics from | [optional]
+ **perPage** | **Integer**|  | [optional]
+ **page** | **Integer**|  | [optional]
 
 ### Return type
 
-null (empty response body)
+[**JobStatMessage**](JobStatMessage.md)
 
 ### Authorization
 
@@ -279,16 +292,16 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Minutely stats received successfully |  -  |
+**200** | Minutely stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 <a name="statsByWeek"></a>
 # **statsByWeek**
-> JobStatMessage statsByWeek(startDate, endDate)
+> JobStatMessage statsByWeek(startDate, endDate, perPage, page)
 
 Job statistics by week
 
@@ -316,8 +329,10 @@ public class Example {
     JobServerApi apiInstance = new JobServerApi(defaultClient);
     String startDate = "startDate_example"; // String | The start date from which to get weekly metrics from
     String endDate = "endDate_example"; // String | The end date from which to get weekly metrics from
+    Integer perPage = 56; // Integer | 
+    Integer page = 56; // Integer | 
     try {
-      JobStatMessage result = apiInstance.statsByWeek(startDate, endDate);
+      JobStatMessage result = apiInstance.statsByWeek(startDate, endDate, perPage, page);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobServerApi#statsByWeek");
@@ -336,6 +351,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **String**| The start date from which to get weekly metrics from | [optional]
  **endDate** | **String**| The end date from which to get weekly metrics from | [optional]
+ **perPage** | **Integer**|  | [optional]
+ **page** | **Integer**|  | [optional]
 
 ### Return type
 
@@ -353,7 +370,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Weekly stats received successfully |  -  |
+**200** | Weekly stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 <a name="upcomingJobs"></a>
 # **upcomingJobs**

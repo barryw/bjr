@@ -13,11 +13,15 @@ describe 'Job Server API' do
       produces 'application/json'
       parameter name: :start_date, in: :query, type: :string, required: false, description: 'The start date from which to get minutely metrics from'
       parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get minutely metrics from'
+      parameter name: :per_page, in: :query, type: :integer, required: false
+      parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Minutely stats received successfully' do
+        header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
+        header 'total', schema: { type: :integer }, description: 'The total number of items available.'
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        #schema '$ref' => '#/components/schemas/JobStatMessage'
+        schema '$ref' => '#/components/schemas/JobStatMessage'
 
         before do |request|
           create(:minutely_stat1, user: admin, start_dt: DateTime.now - 1.minute, end_dt: DateTime.now,
@@ -54,8 +58,12 @@ describe 'Job Server API' do
       produces 'application/json'
       parameter name: :start_date, in: :query, type: :string, required: false, description: 'The start date from which to get hourly metrics from'
       parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get hourly metrics from'
+      parameter name: :per_page, in: :query, type: :integer, required: false
+      parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Hourly stats received successfully' do
+        header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
+        header 'total', schema: { type: :integer }, description: 'The total number of items available.'
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         schema '$ref' => '#/components/schemas/JobStatMessage'
@@ -90,8 +98,12 @@ describe 'Job Server API' do
       produces 'application/json'
       parameter name: :start_date, in: :query, type: :string, required: false, description: 'The start date from which to get daily metrics from'
       parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get daily metrics from'
+      parameter name: :per_page, in: :query, type: :integer, required: false
+      parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Daily stats received successfully' do
+        header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
+        header 'total', schema: { type: :integer }, description: 'The total number of items available.'
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         schema '$ref' => '#/components/schemas/JobStatMessage'
@@ -123,8 +135,12 @@ describe 'Job Server API' do
       produces 'application/json'
       parameter name: :start_date, in: :query, type: :string, required: false, description: 'The start date from which to get weekly metrics from'
       parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get weekly metrics from'
+      parameter name: :per_page, in: :query, type: :integer, required: false
+      parameter name: :page, in: :query, type: :integer, required: false
 
       response '200', 'Weekly stats received successfully' do
+        header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
+        header 'total', schema: { type: :integer }, description: 'The total number of items available.'
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         schema '$ref' => '#/components/schemas/JobStatMessage'

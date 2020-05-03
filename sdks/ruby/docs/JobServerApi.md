@@ -89,7 +89,9 @@ end
 api_instance = BJR::JobServerApi.new
 opts = {
   start_date: 'start_date_example', # String | The start date from which to get daily metrics from
-  end_date: 'end_date_example' # String | The end date from which to get daily metrics from
+  end_date: 'end_date_example', # String | The end date from which to get daily metrics from
+  per_page: 56, # Integer | 
+  page: 56 # Integer | 
 }
 
 begin
@@ -108,6 +110,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **String**| The start date from which to get daily metrics from | [optional] 
  **end_date** | **String**| The end date from which to get daily metrics from | [optional] 
+ **per_page** | **Integer**|  | [optional] 
+ **page** | **Integer**|  | [optional] 
 
 ### Return type
 
@@ -145,7 +149,9 @@ end
 api_instance = BJR::JobServerApi.new
 opts = {
   start_date: 'start_date_example', # String | The start date from which to get hourly metrics from
-  end_date: 'end_date_example' # String | The end date from which to get hourly metrics from
+  end_date: 'end_date_example', # String | The end date from which to get hourly metrics from
+  per_page: 56, # Integer | 
+  page: 56 # Integer | 
 }
 
 begin
@@ -164,6 +170,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **String**| The start date from which to get hourly metrics from | [optional] 
  **end_date** | **String**| The end date from which to get hourly metrics from | [optional] 
+ **per_page** | **Integer**|  | [optional] 
+ **page** | **Integer**|  | [optional] 
 
 ### Return type
 
@@ -181,7 +189,7 @@ Name | Type | Description  | Notes
 
 ## stats_by_minute
 
-> stats_by_minute(opts)
+> JobStatMessage stats_by_minute(opts)
 
 Job statistics by minute
 
@@ -201,12 +209,15 @@ end
 api_instance = BJR::JobServerApi.new
 opts = {
   start_date: 'start_date_example', # String | The start date from which to get minutely metrics from
-  end_date: 'end_date_example' # String | The end date from which to get minutely metrics from
+  end_date: 'end_date_example', # String | The end date from which to get minutely metrics from
+  per_page: 56, # Integer | 
+  page: 56 # Integer | 
 }
 
 begin
   #Job statistics by minute
-  api_instance.stats_by_minute(opts)
+  result = api_instance.stats_by_minute(opts)
+  p result
 rescue BJR::ApiError => e
   puts "Exception when calling JobServerApi->stats_by_minute: #{e}"
 end
@@ -219,10 +230,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **String**| The start date from which to get minutely metrics from | [optional] 
  **end_date** | **String**| The end date from which to get minutely metrics from | [optional] 
+ **per_page** | **Integer**|  | [optional] 
+ **page** | **Integer**|  | [optional] 
 
 ### Return type
 
-nil (empty response body)
+[**JobStatMessage**](JobStatMessage.md)
 
 ### Authorization
 
@@ -231,7 +244,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## stats_by_week
@@ -256,7 +269,9 @@ end
 api_instance = BJR::JobServerApi.new
 opts = {
   start_date: 'start_date_example', # String | The start date from which to get weekly metrics from
-  end_date: 'end_date_example' # String | The end date from which to get weekly metrics from
+  end_date: 'end_date_example', # String | The end date from which to get weekly metrics from
+  per_page: 56, # Integer | 
+  page: 56 # Integer | 
 }
 
 begin
@@ -275,6 +290,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **String**| The start date from which to get weekly metrics from | [optional] 
  **end_date** | **String**| The end date from which to get weekly metrics from | [optional] 
+ **per_page** | **Integer**|  | [optional] 
+ **page** | **Integer**|  | [optional] 
 
 ### Return type
 

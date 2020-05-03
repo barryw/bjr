@@ -84,7 +84,9 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new Bjr4js.JobServerApi();
 let opts = {
   'startDate': "startDate_example", // String | The start date from which to get daily metrics from
-  'endDate': "endDate_example" // String | The end date from which to get daily metrics from
+  'endDate': "endDate_example", // String | The end date from which to get daily metrics from
+  'perPage': 56, // Number | 
+  'page': 56 // Number | 
 };
 apiInstance.statsByDay(opts, (error, data, response) => {
   if (error) {
@@ -102,6 +104,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **String**| The start date from which to get daily metrics from | [optional] 
  **endDate** | **String**| The end date from which to get daily metrics from | [optional] 
+ **perPage** | **Number**|  | [optional] 
+ **page** | **Number**|  | [optional] 
 
 ### Return type
 
@@ -137,7 +141,9 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new Bjr4js.JobServerApi();
 let opts = {
   'startDate': "startDate_example", // String | The start date from which to get hourly metrics from
-  'endDate': "endDate_example" // String | The end date from which to get hourly metrics from
+  'endDate': "endDate_example", // String | The end date from which to get hourly metrics from
+  'perPage': 56, // Number | 
+  'page': 56 // Number | 
 };
 apiInstance.statsByHour(opts, (error, data, response) => {
   if (error) {
@@ -155,6 +161,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **String**| The start date from which to get hourly metrics from | [optional] 
  **endDate** | **String**| The end date from which to get hourly metrics from | [optional] 
+ **perPage** | **Number**|  | [optional] 
+ **page** | **Number**|  | [optional] 
 
 ### Return type
 
@@ -172,7 +180,7 @@ Name | Type | Description  | Notes
 
 ## statsByMinute
 
-> statsByMinute(opts)
+> JobStatMessage statsByMinute(opts)
 
 Job statistics by minute
 
@@ -190,13 +198,15 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new Bjr4js.JobServerApi();
 let opts = {
   'startDate': "startDate_example", // String | The start date from which to get minutely metrics from
-  'endDate': "endDate_example" // String | The end date from which to get minutely metrics from
+  'endDate': "endDate_example", // String | The end date from which to get minutely metrics from
+  'perPage': 56, // Number | 
+  'page': 56 // Number | 
 };
 apiInstance.statsByMinute(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -208,10 +218,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **String**| The start date from which to get minutely metrics from | [optional] 
  **endDate** | **String**| The end date from which to get minutely metrics from | [optional] 
+ **perPage** | **Number**|  | [optional] 
+ **page** | **Number**|  | [optional] 
 
 ### Return type
 
-null (empty response body)
+[**JobStatMessage**](JobStatMessage.md)
 
 ### Authorization
 
@@ -220,7 +232,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## statsByWeek
@@ -243,7 +255,9 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 let apiInstance = new Bjr4js.JobServerApi();
 let opts = {
   'startDate': "startDate_example", // String | The start date from which to get weekly metrics from
-  'endDate': "endDate_example" // String | The end date from which to get weekly metrics from
+  'endDate': "endDate_example", // String | The end date from which to get weekly metrics from
+  'perPage': 56, // Number | 
+  'page': 56 // Number | 
 };
 apiInstance.statsByWeek(opts, (error, data, response) => {
   if (error) {
@@ -261,6 +275,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **String**| The start date from which to get weekly metrics from | [optional] 
  **endDate** | **String**| The end date from which to get weekly metrics from | [optional] 
+ **perPage** | **Number**|  | [optional] 
+ **page** | **Number**|  | [optional] 
 
 ### Return type
 

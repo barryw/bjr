@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SingleUser model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/SingleUser
- * @version 1.1.5
+ * @version 1.1.6
  */
 class SingleUser {
     /**

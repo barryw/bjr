@@ -61,7 +61,9 @@ public class JobServerApiTest {
     public void statsByDayTest() throws ApiException {
         String startDate = null;
         String endDate = null;
-        JobStatMessage response = api.statsByDay(startDate, endDate);
+        Integer perPage = null;
+        Integer page = null;
+        JobStatMessage response = api.statsByDay(startDate, endDate, perPage, page);
 
         // TODO: test validations
     }
@@ -78,7 +80,9 @@ public class JobServerApiTest {
     public void statsByHourTest() throws ApiException {
         String startDate = null;
         String endDate = null;
-        JobStatMessage response = api.statsByHour(startDate, endDate);
+        Integer perPage = null;
+        Integer page = null;
+        JobStatMessage response = api.statsByHour(startDate, endDate, perPage, page);
 
         // TODO: test validations
     }
@@ -95,7 +99,9 @@ public class JobServerApiTest {
     public void statsByMinuteTest() throws ApiException {
         String startDate = null;
         String endDate = null;
-        api.statsByMinute(startDate, endDate);
+        Integer perPage = null;
+        Integer page = null;
+        JobStatMessage response = api.statsByMinute(startDate, endDate, perPage, page);
 
         // TODO: test validations
     }
@@ -112,7 +118,9 @@ public class JobServerApiTest {
     public void statsByWeekTest() throws ApiException {
         String startDate = null;
         String endDate = null;
-        JobStatMessage response = api.statsByWeek(startDate, endDate);
+        Integer perPage = null;
+        Integer page = null;
+        JobStatMessage response = api.statsByWeek(startDate, endDate, perPage, page);
 
         // TODO: test validations
     }

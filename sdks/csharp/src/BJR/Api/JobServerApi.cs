@@ -54,8 +54,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get daily metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string));
+        JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
 
         /// <summary>
         /// Job statistics by day
@@ -66,8 +68,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get daily metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string));
+        ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
         /// <summary>
         /// Job statistics by hour
         /// </summary>
@@ -77,8 +81,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get hourly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string));
+        JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
 
         /// <summary>
         /// Job statistics by hour
@@ -89,8 +95,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get hourly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string));
+        ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
         /// <summary>
         /// Job statistics by minute
         /// </summary>
@@ -100,31 +108,37 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get minutely metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
-        /// <returns></returns>
-        void StatsByMinute (string startDate = default(string), string endDate = default(string));
-
-        /// <summary>
-        /// Job statistics by minute
-        /// </summary>
-        /// <remarks>
-        /// Get minutely job statistics
-        /// </remarks>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startDate">The start date from which to get minutely metrics from (optional)</param>
-        /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string));
-        /// <summary>
-        /// Job statistics by week
-        /// </summary>
-        /// <remarks>
-        /// Get weekly job statistics
-        /// </remarks>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startDate">The start date from which to get weekly metrics from (optional)</param>
-        /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string));
+        JobStatMessage StatsByMinute (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+
+        /// <summary>
+        /// Job statistics by minute
+        /// </summary>
+        /// <remarks>
+        /// Get minutely job statistics
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">The start date from which to get minutely metrics from (optional)</param>
+        /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>ApiResponse of JobStatMessage</returns>
+        ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        /// <summary>
+        /// Job statistics by week
+        /// </summary>
+        /// <remarks>
+        /// Get weekly job statistics
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">The start date from which to get weekly metrics from (optional)</param>
+        /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>JobStatMessage</returns>
+        JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
 
         /// <summary>
         /// Job statistics by week
@@ -135,8 +149,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get weekly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string));
+        ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
         /// <summary>
         /// List of upcoming jobs
         /// </summary>
@@ -190,8 +206,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get daily metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
 
         /// <summary>
         /// Job statistics by day
@@ -202,8 +220,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get daily metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
         /// <summary>
         /// Job statistics by hour
         /// </summary>
@@ -213,8 +233,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get hourly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
 
         /// <summary>
         /// Job statistics by hour
@@ -225,8 +247,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get hourly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
         /// <summary>
         /// Job statistics by minute
         /// </summary>
@@ -236,31 +260,37 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get minutely metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task StatsByMinuteAsync (string startDate = default(string), string endDate = default(string));
-
-        /// <summary>
-        /// Job statistics by minute
-        /// </summary>
-        /// <remarks>
-        /// Get minutely job statistics
-        /// </remarks>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startDate">The start date from which to get minutely metrics from (optional)</param>
-        /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> StatsByMinuteAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string));
-        /// <summary>
-        /// Job statistics by week
-        /// </summary>
-        /// <remarks>
-        /// Get weekly job statistics
-        /// </remarks>
-        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="startDate">The start date from which to get weekly metrics from (optional)</param>
-        /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+
+        /// <summary>
+        /// Job statistics by minute
+        /// </summary>
+        /// <remarks>
+        /// Get minutely job statistics
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">The start date from which to get minutely metrics from (optional)</param>
+        /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>Task of ApiResponse (JobStatMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        /// <summary>
+        /// Job statistics by week
+        /// </summary>
+        /// <remarks>
+        /// Get weekly job statistics
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="startDate">The start date from which to get weekly metrics from (optional)</param>
+        /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>Task of JobStatMessage</returns>
+        System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
 
         /// <summary>
         /// Job statistics by week
@@ -271,8 +301,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get weekly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
         /// <summary>
         /// List of upcoming jobs
         /// </summary>
@@ -550,10 +582,12 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get daily metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string))
+        public JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
-             ApiResponse<JobStatMessage> localVarResponse = StatsByDayWithHttpInfo(startDate, endDate);
+             ApiResponse<JobStatMessage> localVarResponse = StatsByDayWithHttpInfo(startDate, endDate, perPage, page);
              return localVarResponse.Data;
         }
 
@@ -563,8 +597,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get daily metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string))
+        public ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/job_server_api/daily_job_stats";
@@ -590,6 +626,8 @@ namespace BJR.Api
 
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -622,10 +660,12 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get daily metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByDayAsyncWithHttpInfo(startDate, endDate);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByDayAsyncWithHttpInfo(startDate, endDate, perPage, page);
              return localVarResponse.Data;
 
         }
@@ -636,8 +676,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get daily metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/job_server_api/daily_job_stats";
@@ -663,6 +705,8 @@ namespace BJR.Api
 
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required
@@ -695,10 +739,12 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get hourly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string))
+        public JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
-             ApiResponse<JobStatMessage> localVarResponse = StatsByHourWithHttpInfo(startDate, endDate);
+             ApiResponse<JobStatMessage> localVarResponse = StatsByHourWithHttpInfo(startDate, endDate, perPage, page);
              return localVarResponse.Data;
         }
 
@@ -708,8 +754,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get hourly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string))
+        public ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/job_server_api/hourly_job_stats";
@@ -735,6 +783,8 @@ namespace BJR.Api
 
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -767,10 +817,12 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get hourly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByHourAsyncWithHttpInfo(startDate, endDate);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByHourAsyncWithHttpInfo(startDate, endDate, perPage, page);
              return localVarResponse.Data;
 
         }
@@ -781,8 +833,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get hourly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/job_server_api/hourly_job_stats";
@@ -808,6 +862,8 @@ namespace BJR.Api
 
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required
@@ -840,10 +896,13 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get minutely metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
-        /// <returns></returns>
-        public void StatsByMinute (string startDate = default(string), string endDate = default(string))
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>JobStatMessage</returns>
+        public JobStatMessage StatsByMinute (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
-             StatsByMinuteWithHttpInfo(startDate, endDate);
+             ApiResponse<JobStatMessage> localVarResponse = StatsByMinuteWithHttpInfo(startDate, endDate, perPage, page);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -852,8 +911,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get minutely metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string))
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>ApiResponse of JobStatMessage</returns>
+        public ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/job_server_api/minutely_job_stats";
@@ -871,6 +932,7 @@ namespace BJR.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -878,6 +940,8 @@ namespace BJR.Api
 
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -899,9 +963,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<JobStatMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (JobStatMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobStatMessage)));
         }
 
         /// <summary>
@@ -910,10 +974,13 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get minutely metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task StatsByMinuteAsync (string startDate = default(string), string endDate = default(string))
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>Task of JobStatMessage</returns>
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
-             await StatsByMinuteAsyncWithHttpInfo(startDate, endDate);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByMinuteAsyncWithHttpInfo(startDate, endDate, perPage, page);
+             return localVarResponse.Data;
 
         }
 
@@ -923,8 +990,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get minutely metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> StatsByMinuteAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string))
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <returns>Task of ApiResponse (JobStatMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/job_server_api/minutely_job_stats";
@@ -942,6 +1011,7 @@ namespace BJR.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -949,6 +1019,8 @@ namespace BJR.Api
 
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required
@@ -970,9 +1042,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<JobStatMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (JobStatMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobStatMessage)));
         }
 
         /// <summary>
@@ -981,10 +1053,12 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get weekly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string))
+        public JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
-             ApiResponse<JobStatMessage> localVarResponse = StatsByWeekWithHttpInfo(startDate, endDate);
+             ApiResponse<JobStatMessage> localVarResponse = StatsByWeekWithHttpInfo(startDate, endDate, perPage, page);
              return localVarResponse.Data;
         }
 
@@ -994,8 +1068,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get weekly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string))
+        public ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/job_server_api/weekly_job_stats";
@@ -1021,6 +1097,8 @@ namespace BJR.Api
 
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -1053,10 +1131,12 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get weekly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByWeekAsyncWithHttpInfo(startDate, endDate);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByWeekAsyncWithHttpInfo(startDate, endDate, perPage, page);
              return localVarResponse.Data;
 
         }
@@ -1067,8 +1147,10 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="startDate">The start date from which to get weekly metrics from (optional)</param>
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
+        /// <param name="perPage"> (optional)</param>
+        /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/job_server_api/weekly_job_stats";
@@ -1094,6 +1176,8 @@ namespace BJR.Api
 
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required

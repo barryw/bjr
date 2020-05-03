@@ -816,10 +816,32 @@ paths:
         description: The end date from which to get minutely metrics from
         schema:
           type: string
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
       responses:
         '200':
           description: Minutely stats received successfully
-          content: {}
+          headers:
+            per-page:
+              schema:
+                type: integer
+              description: The number of items in this page.
+            total:
+              schema:
+                type: integer
+              description: The total number of items available.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobStatMessage"
   "/job_server_api/hourly_job_stats":
     get:
       summary: Job statistics by hour
@@ -842,9 +864,28 @@ paths:
         description: The end date from which to get hourly metrics from
         schema:
           type: string
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
       responses:
         '200':
           description: Hourly stats received successfully
+          headers:
+            per-page:
+              schema:
+                type: integer
+              description: The number of items in this page.
+            total:
+              schema:
+                type: integer
+              description: The total number of items available.
           content:
             application/json:
               schema:
@@ -871,9 +912,28 @@ paths:
         description: The end date from which to get daily metrics from
         schema:
           type: string
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
       responses:
         '200':
           description: Daily stats received successfully
+          headers:
+            per-page:
+              schema:
+                type: integer
+              description: The number of items in this page.
+            total:
+              schema:
+                type: integer
+              description: The total number of items available.
           content:
             application/json:
               schema:
@@ -900,9 +960,28 @@ paths:
         description: The end date from which to get weekly metrics from
         schema:
           type: string
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
       responses:
         '200':
           description: Weekly stats received successfully
+          headers:
+            per-page:
+              schema:
+                type: integer
+              description: The number of items in this page.
+            total:
+              schema:
+                type: integer
+              description: The total number of items available.
           content:
             application/json:
               schema:

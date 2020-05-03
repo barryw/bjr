@@ -19,7 +19,7 @@ import JobStatMessage from '../io.barrywalker.bjr.model/JobStatMessage';
 /**
 * JobServer service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi
-* @version 1.1.5
+* @version 1.1.6
 */
 export default class JobServerApi {
 
@@ -90,6 +90,8 @@ export default class JobServerApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.startDate The start date from which to get daily metrics from
      * @param {String} opts.endDate The end date from which to get daily metrics from
+     * @param {Number} opts.perPage 
+     * @param {Number} opts.page 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByDayCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage}
      */
@@ -101,7 +103,9 @@ export default class JobServerApi {
       };
       let queryParams = {
         'start_date': opts['startDate'],
-        'end_date': opts['endDate']
+        'end_date': opts['endDate'],
+        'per_page': opts['perPage'],
+        'page': opts['page']
       };
       let headerParams = {
       };
@@ -133,6 +137,8 @@ export default class JobServerApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.startDate The start date from which to get hourly metrics from
      * @param {String} opts.endDate The end date from which to get hourly metrics from
+     * @param {Number} opts.perPage 
+     * @param {Number} opts.page 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByHourCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage}
      */
@@ -144,7 +150,9 @@ export default class JobServerApi {
       };
       let queryParams = {
         'start_date': opts['startDate'],
-        'end_date': opts['endDate']
+        'end_date': opts['endDate'],
+        'per_page': opts['perPage'],
+        'page': opts['page']
       };
       let headerParams = {
       };
@@ -166,7 +174,7 @@ export default class JobServerApi {
      * Callback function to receive the result of the statsByMinute operation.
      * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByMinuteCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -176,7 +184,10 @@ export default class JobServerApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.startDate The start date from which to get minutely metrics from
      * @param {String} opts.endDate The end date from which to get minutely metrics from
+     * @param {Number} opts.perPage 
+     * @param {Number} opts.page 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByMinuteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage}
      */
     statsByMinute(opts, callback) {
       opts = opts || {};
@@ -186,7 +197,9 @@ export default class JobServerApi {
       };
       let queryParams = {
         'start_date': opts['startDate'],
-        'end_date': opts['endDate']
+        'end_date': opts['endDate'],
+        'per_page': opts['perPage'],
+        'page': opts['page']
       };
       let headerParams = {
       };
@@ -195,8 +208,8 @@ export default class JobServerApi {
 
       let authNames = ['bearerAuth'];
       let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
+      let accepts = ['application/json'];
+      let returnType = JobStatMessage;
       return this.apiClient.callApi(
         '/job_server_api/minutely_job_stats', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -218,6 +231,8 @@ export default class JobServerApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.startDate The start date from which to get weekly metrics from
      * @param {String} opts.endDate The end date from which to get weekly metrics from
+     * @param {Number} opts.perPage 
+     * @param {Number} opts.page 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByWeekCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage}
      */
@@ -229,7 +244,9 @@ export default class JobServerApi {
       };
       let queryParams = {
         'start_date': opts['startDate'],
-        'end_date': opts['endDate']
+        'end_date': opts['endDate'],
+        'per_page': opts['perPage'],
+        'page': opts['page']
       };
       let headerParams = {
       };

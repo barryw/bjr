@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_day**
-> JobStatMessage stats_by_day(start_date=start_date, end_date=end_date)
+> JobStatMessage stats_by_day(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
 
 Job statistics by day
 
@@ -123,10 +123,12 @@ with bjr4py.ApiClient(configuration) as api_client:
     api_instance = bjr4py.JobServerApi(api_client)
     start_date = 'start_date_example' # str | The start date from which to get daily metrics from (optional)
 end_date = 'end_date_example' # str | The end date from which to get daily metrics from (optional)
+per_page = 56 # int |  (optional)
+page = 56 # int |  (optional)
 
     try:
         # Job statistics by day
-        api_response = api_instance.stats_by_day(start_date=start_date, end_date=end_date)
+        api_response = api_instance.stats_by_day(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobServerApi->stats_by_day: %s\n" % e)
@@ -138,6 +140,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **str**| The start date from which to get daily metrics from | [optional] 
  **end_date** | **str**| The end date from which to get daily metrics from | [optional] 
+ **per_page** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -155,12 +159,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Daily stats received successfully |  -  |
+**200** | Daily stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_hour**
-> JobStatMessage stats_by_hour(start_date=start_date, end_date=end_date)
+> JobStatMessage stats_by_hour(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
 
 Job statistics by hour
 
@@ -197,10 +201,12 @@ with bjr4py.ApiClient(configuration) as api_client:
     api_instance = bjr4py.JobServerApi(api_client)
     start_date = 'start_date_example' # str | The start date from which to get hourly metrics from (optional)
 end_date = 'end_date_example' # str | The end date from which to get hourly metrics from (optional)
+per_page = 56 # int |  (optional)
+page = 56 # int |  (optional)
 
     try:
         # Job statistics by hour
-        api_response = api_instance.stats_by_hour(start_date=start_date, end_date=end_date)
+        api_response = api_instance.stats_by_hour(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobServerApi->stats_by_hour: %s\n" % e)
@@ -212,6 +218,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **str**| The start date from which to get hourly metrics from | [optional] 
  **end_date** | **str**| The end date from which to get hourly metrics from | [optional] 
+ **per_page** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -229,12 +237,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Hourly stats received successfully |  -  |
+**200** | Hourly stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_minute**
-> stats_by_minute(start_date=start_date, end_date=end_date)
+> JobStatMessage stats_by_minute(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
 
 Job statistics by minute
 
@@ -271,10 +279,13 @@ with bjr4py.ApiClient(configuration) as api_client:
     api_instance = bjr4py.JobServerApi(api_client)
     start_date = 'start_date_example' # str | The start date from which to get minutely metrics from (optional)
 end_date = 'end_date_example' # str | The end date from which to get minutely metrics from (optional)
+per_page = 56 # int |  (optional)
+page = 56 # int |  (optional)
 
     try:
         # Job statistics by minute
-        api_instance.stats_by_minute(start_date=start_date, end_date=end_date)
+        api_response = api_instance.stats_by_minute(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobServerApi->stats_by_minute: %s\n" % e)
 ```
@@ -285,10 +296,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **str**| The start date from which to get minutely metrics from | [optional] 
  **end_date** | **str**| The end date from which to get minutely metrics from | [optional] 
+ **per_page** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
-void (empty response body)
+[**JobStatMessage**](JobStatMessage.md)
 
 ### Authorization
 
@@ -297,17 +310,17 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Minutely stats received successfully |  -  |
+**200** | Minutely stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_week**
-> JobStatMessage stats_by_week(start_date=start_date, end_date=end_date)
+> JobStatMessage stats_by_week(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
 
 Job statistics by week
 
@@ -344,10 +357,12 @@ with bjr4py.ApiClient(configuration) as api_client:
     api_instance = bjr4py.JobServerApi(api_client)
     start_date = 'start_date_example' # str | The start date from which to get weekly metrics from (optional)
 end_date = 'end_date_example' # str | The end date from which to get weekly metrics from (optional)
+per_page = 56 # int |  (optional)
+page = 56 # int |  (optional)
 
     try:
         # Job statistics by week
-        api_response = api_instance.stats_by_week(start_date=start_date, end_date=end_date)
+        api_response = api_instance.stats_by_week(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobServerApi->stats_by_week: %s\n" % e)
@@ -359,6 +374,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **start_date** | **str**| The start date from which to get weekly metrics from | [optional] 
  **end_date** | **str**| The end date from which to get weekly metrics from | [optional] 
+ **per_page** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -376,7 +393,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Weekly stats received successfully |  -  |
+**200** | Weekly stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

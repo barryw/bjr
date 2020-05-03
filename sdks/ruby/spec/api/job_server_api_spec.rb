@@ -50,6 +50,8 @@ describe 'JobServerApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :start_date The start date from which to get daily metrics from
   # @option opts [String] :end_date The end date from which to get daily metrics from
+  # @option opts [Integer] :per_page 
+  # @option opts [Integer] :page 
   # @return [JobStatMessage]
   describe 'stats_by_day test' do
     it 'should work' do
@@ -63,6 +65,8 @@ describe 'JobServerApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :start_date The start date from which to get hourly metrics from
   # @option opts [String] :end_date The end date from which to get hourly metrics from
+  # @option opts [Integer] :per_page 
+  # @option opts [Integer] :page 
   # @return [JobStatMessage]
   describe 'stats_by_hour test' do
     it 'should work' do
@@ -76,7 +80,9 @@ describe 'JobServerApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :start_date The start date from which to get minutely metrics from
   # @option opts [String] :end_date The end date from which to get minutely metrics from
-  # @return [nil]
+  # @option opts [Integer] :per_page 
+  # @option opts [Integer] :page 
+  # @return [JobStatMessage]
   describe 'stats_by_minute test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -89,6 +95,8 @@ describe 'JobServerApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :start_date The start date from which to get weekly metrics from
   # @option opts [String] :end_date The end date from which to get weekly metrics from
+  # @option opts [Integer] :per_page 
+  # @option opts [Integer] :page 
   # @return [JobStatMessage]
   describe 'stats_by_week test' do
     it 'should work' do

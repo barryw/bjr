@@ -15,7 +15,7 @@ class JobServerApiController < ApplicationController
   # Return minutely stats
   #
   def minutely_job_stats
-    stats = JobStat.mine(current_user).where(period: :minute, start_dt: (@start_date || DateTime.now - 1.hour)..(@end_date || DateTime.now)).order(created_at: :asc)
+    stats = paginate JobStat.mine(current_user).where(period: :minute, start_dt: (@start_date || DateTime.now - 1.hour)..(@end_date || DateTime.now)).order(created_at: :asc)
     message I18n.t('jobserver.messages.minutely_job_stats.received'), :ok, false, stats, 'jobstats'
   end
 
@@ -23,7 +23,7 @@ class JobServerApiController < ApplicationController
   # Return hourly stats
   #
   def hourly_job_stats
-    stats = JobStat.mine(current_user).where(period: :hour, start_dt: (@start_date || DateTime.now - 24.hours)..(@end_date || DateTime.now)).order(created_at: :asc)
+    stats = paginate JobStat.mine(current_user).where(period: :hour, start_dt: (@start_date || DateTime.now - 24.hours)..(@end_date || DateTime.now)).order(created_at: :asc)
     message I18n.t('jobserver.messages.hourly_job_stats.received'), :ok, false, stats, 'jobstats'
   end
 
@@ -31,7 +31,7 @@ class JobServerApiController < ApplicationController
   # Return daily stats
   #
   def daily_job_stats
-    stats = JobStat.mine(current_user).where(period: :day, start_dt: (@start_date || DateTime.now - 7.days)..(@end_date || DateTime.now)).order(created_at: :asc)
+    stats = paginate JobStat.mine(current_user).where(period: :day, start_dt: (@start_date || DateTime.now - 7.days)..(@end_date || DateTime.now)).order(created_at: :asc)
     message I18n.t('jobserver.messages.daily_job_stats.received'), :ok, false, stats, 'jobstats'
   end
 
@@ -39,7 +39,7 @@ class JobServerApiController < ApplicationController
   # Return weekly stats
   #
   def weekly_job_stats
-    stats = JobStat.mine(current_user).where(period: :week, start_dt: (@start_date || DateTime.now - 4.weeks)..(@end_date || DateTime.now)).order(created_at: :asc)
+    stats = paginate JobStat.mine(current_user).where(period: :week, start_dt: (@start_date || DateTime.now - 4.weeks)..(@end_date || DateTime.now)).order(created_at: :asc)
     message I18n.t('jobserver.messages.weekly_job_stats.received'), :ok, false, stats, 'jobstats'
   end
 
