@@ -25,6 +25,7 @@ class BaseStatsJob < ApplicationJob
   def generate_row(user, current_dt, new_end, period)
     runs = JobRun.runs_in_range(user.id, current_dt, new_end).count
     failed = JobRun.fails_in_range(user.id, current_dt, new_end).count
+    job_count = JobRun.job_count_in_range(user.id, current_dt, new_end)
 
     avg_runtime = JobRun.avg_runtime_in_range(user.id, current_dt, new_end)
     max_runtime = JobRun.max_runtime_in_range(user.id, current_dt, new_end)
@@ -32,7 +33,7 @@ class BaseStatsJob < ApplicationJob
 
     JobStat.create(user_id: user.id, runs: runs, failed: failed, avg_runtime: avg_runtime,
                    min_runtime: min_runtime, max_runtime: max_runtime, start_dt: current_dt,
-                   end_dt: new_end, period: period)
+                   end_dt: new_end, period: period, job_count: job_count)
   end
 
   def time_increment(period)

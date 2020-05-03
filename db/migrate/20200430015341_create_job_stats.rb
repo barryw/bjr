@@ -9,7 +9,9 @@ class CreateJobStats < ActiveRecord::Migration[5.2]
       t.decimal :avg_runtime, default: 0.0, precision: 10, scale: 4
       t.decimal :max_runtime, default: 0.0, precision: 10, scale: 4
       t.decimal :min_runtime, default: 0.0, precision: 10, scale: 4
+      t.integer :job_count, default: 0
       t.integer :period, default: 0
+
       t.datetime :start_dt
       t.datetime :end_dt
 

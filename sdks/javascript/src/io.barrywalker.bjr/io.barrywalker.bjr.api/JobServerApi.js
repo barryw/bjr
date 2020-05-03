@@ -19,7 +19,7 @@ import JobStatMessage from '../io.barrywalker.bjr.model/JobStatMessage';
 /**
 * JobServer service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi
-* @version 1.1.2
+* @version 1.1.3
 */
 export default class JobServerApi {
 

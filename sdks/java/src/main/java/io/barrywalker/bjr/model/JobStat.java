@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.barrywalker.bjr.model.Decimal;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -28,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * JobStat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-02T20:50:02.308Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-03T14:40:04.229Z[GMT]")
 public class JobStat {
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
@@ -38,17 +39,21 @@ public class JobStat {
   @SerializedName(SERIALIZED_NAME_FAILED)
   private Integer failed;
 
+  public static final String SERIALIZED_NAME_JOB_COUNT = "job_count";
+  @SerializedName(SERIALIZED_NAME_JOB_COUNT)
+  private Integer jobCount;
+
   public static final String SERIALIZED_NAME_AVG_RUNTIME = "avg_runtime";
   @SerializedName(SERIALIZED_NAME_AVG_RUNTIME)
-  private Integer avgRuntime;
+  private Decimal avgRuntime = null;
 
   public static final String SERIALIZED_NAME_MAX_RUNTIME = "max_runtime";
   @SerializedName(SERIALIZED_NAME_MAX_RUNTIME)
-  private Integer maxRuntime;
+  private Decimal maxRuntime = null;
 
   public static final String SERIALIZED_NAME_MIN_RUNTIME = "min_runtime";
   @SerializedName(SERIALIZED_NAME_MIN_RUNTIME)
-  private Integer minRuntime;
+  private Decimal minRuntime = null;
 
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
@@ -117,7 +122,30 @@ public class JobStat {
   }
 
 
-  public JobStat avgRuntime(Integer avgRuntime) {
+  public JobStat jobCount(Integer jobCount) {
+    
+    this.jobCount = jobCount;
+    return this;
+  }
+
+   /**
+   * The number of jobs that executed in the period.
+   * @return jobCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The number of jobs that executed in the period.")
+
+  public Integer getJobCount() {
+    return jobCount;
+  }
+
+
+  public void setJobCount(Integer jobCount) {
+    this.jobCount = jobCount;
+  }
+
+
+  public JobStat avgRuntime(Decimal avgRuntime) {
     
     this.avgRuntime = avgRuntime;
     return this;
@@ -130,17 +158,17 @@ public class JobStat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The average runtime in seconds of all jobs in the period.")
 
-  public Integer getAvgRuntime() {
+  public Decimal getAvgRuntime() {
     return avgRuntime;
   }
 
 
-  public void setAvgRuntime(Integer avgRuntime) {
+  public void setAvgRuntime(Decimal avgRuntime) {
     this.avgRuntime = avgRuntime;
   }
 
 
-  public JobStat maxRuntime(Integer maxRuntime) {
+  public JobStat maxRuntime(Decimal maxRuntime) {
     
     this.maxRuntime = maxRuntime;
     return this;
@@ -153,17 +181,17 @@ public class JobStat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The max runtime in seconds of all jobs in the period.")
 
-  public Integer getMaxRuntime() {
+  public Decimal getMaxRuntime() {
     return maxRuntime;
   }
 
 
-  public void setMaxRuntime(Integer maxRuntime) {
+  public void setMaxRuntime(Decimal maxRuntime) {
     this.maxRuntime = maxRuntime;
   }
 
 
-  public JobStat minRuntime(Integer minRuntime) {
+  public JobStat minRuntime(Decimal minRuntime) {
     
     this.minRuntime = minRuntime;
     return this;
@@ -176,12 +204,12 @@ public class JobStat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The min runtime in seconds of all jobs in the period.")
 
-  public Integer getMinRuntime() {
+  public Decimal getMinRuntime() {
     return minRuntime;
   }
 
 
-  public void setMinRuntime(Integer minRuntime) {
+  public void setMinRuntime(Decimal minRuntime) {
     this.minRuntime = minRuntime;
   }
 
@@ -312,6 +340,7 @@ public class JobStat {
     JobStat jobStat = (JobStat) o;
     return Objects.equals(this.runs, jobStat.runs) &&
         Objects.equals(this.failed, jobStat.failed) &&
+        Objects.equals(this.jobCount, jobStat.jobCount) &&
         Objects.equals(this.avgRuntime, jobStat.avgRuntime) &&
         Objects.equals(this.maxRuntime, jobStat.maxRuntime) &&
         Objects.equals(this.minRuntime, jobStat.minRuntime) &&
@@ -324,7 +353,7 @@ public class JobStat {
 
   @Override
   public int hashCode() {
-    return Objects.hash(runs, failed, avgRuntime, maxRuntime, minRuntime, period, startDt, endDt, createdAt, updatedAt);
+    return Objects.hash(runs, failed, jobCount, avgRuntime, maxRuntime, minRuntime, period, startDt, endDt, createdAt, updatedAt);
   }
 
 
@@ -334,6 +363,7 @@ public class JobStat {
     sb.append("class JobStat {\n");
     sb.append("    runs: ").append(toIndentedString(runs)).append("\n");
     sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
+    sb.append("    jobCount: ").append(toIndentedString(jobCount)).append("\n");
     sb.append("    avgRuntime: ").append(toIndentedString(avgRuntime)).append("\n");
     sb.append("    maxRuntime: ").append(toIndentedString(maxRuntime)).append("\n");
     sb.append("    minRuntime: ").append(toIndentedString(minRuntime)).append("\n");

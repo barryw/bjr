@@ -35,6 +35,7 @@ namespace BJR.Model
         /// </summary>
         /// <param name="runs">The number of job runs in the period..</param>
         /// <param name="failed">The number of job runs that failed in the period..</param>
+        /// <param name="jobCount">The number of jobs that executed in the period..</param>
         /// <param name="avgRuntime">The average runtime in seconds of all jobs in the period..</param>
         /// <param name="maxRuntime">The max runtime in seconds of all jobs in the period..</param>
         /// <param name="minRuntime">The min runtime in seconds of all jobs in the period..</param>
@@ -43,10 +44,11 @@ namespace BJR.Model
         /// <param name="endDt">The period end date..</param>
         /// <param name="createdAt">The date the record was created..</param>
         /// <param name="updatedAt">The date the record was last updated..</param>
-        public JobStat(int runs = default(int), int failed = default(int), int avgRuntime = default(int), int maxRuntime = default(int), int minRuntime = default(int), string period = default(string), DateTime startDt = default(DateTime), DateTime endDt = default(DateTime), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public JobStat(int runs = default(int), int failed = default(int), int jobCount = default(int), ModelDecimal avgRuntime = default(ModelDecimal), ModelDecimal maxRuntime = default(ModelDecimal), ModelDecimal minRuntime = default(ModelDecimal), string period = default(string), DateTime startDt = default(DateTime), DateTime endDt = default(DateTime), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Runs = runs;
             this.Failed = failed;
+            this.JobCount = jobCount;
             this.AvgRuntime = avgRuntime;
             this.MaxRuntime = maxRuntime;
             this.MinRuntime = minRuntime;
@@ -72,25 +74,32 @@ namespace BJR.Model
         public int Failed { get; set; }
 
         /// <summary>
+        /// The number of jobs that executed in the period.
+        /// </summary>
+        /// <value>The number of jobs that executed in the period.</value>
+        [DataMember(Name="job_count", EmitDefaultValue=false)]
+        public int JobCount { get; set; }
+
+        /// <summary>
         /// The average runtime in seconds of all jobs in the period.
         /// </summary>
         /// <value>The average runtime in seconds of all jobs in the period.</value>
         [DataMember(Name="avg_runtime", EmitDefaultValue=false)]
-        public int AvgRuntime { get; set; }
+        public ModelDecimal AvgRuntime { get; set; }
 
         /// <summary>
         /// The max runtime in seconds of all jobs in the period.
         /// </summary>
         /// <value>The max runtime in seconds of all jobs in the period.</value>
         [DataMember(Name="max_runtime", EmitDefaultValue=false)]
-        public int MaxRuntime { get; set; }
+        public ModelDecimal MaxRuntime { get; set; }
 
         /// <summary>
         /// The min runtime in seconds of all jobs in the period.
         /// </summary>
         /// <value>The min runtime in seconds of all jobs in the period.</value>
         [DataMember(Name="min_runtime", EmitDefaultValue=false)]
-        public int MinRuntime { get; set; }
+        public ModelDecimal MinRuntime { get; set; }
 
         /// <summary>
         /// The runtime period.
@@ -137,6 +146,7 @@ namespace BJR.Model
             sb.Append("class JobStat {\n");
             sb.Append("  Runs: ").Append(Runs).Append("\n");
             sb.Append("  Failed: ").Append(Failed).Append("\n");
+            sb.Append("  JobCount: ").Append(JobCount).Append("\n");
             sb.Append("  AvgRuntime: ").Append(AvgRuntime).Append("\n");
             sb.Append("  MaxRuntime: ").Append(MaxRuntime).Append("\n");
             sb.Append("  MinRuntime: ").Append(MinRuntime).Append("\n");
@@ -188,6 +198,11 @@ namespace BJR.Model
                     this.Failed == input.Failed ||
                     (this.Failed != null &&
                     this.Failed.Equals(input.Failed))
+                ) && 
+                (
+                    this.JobCount == input.JobCount ||
+                    (this.JobCount != null &&
+                    this.JobCount.Equals(input.JobCount))
                 ) && 
                 (
                     this.AvgRuntime == input.AvgRuntime ||
@@ -244,6 +259,8 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.Runs.GetHashCode();
                 if (this.Failed != null)
                     hashCode = hashCode * 59 + this.Failed.GetHashCode();
+                if (this.JobCount != null)
+                    hashCode = hashCode * 59 + this.JobCount.GetHashCode();
                 if (this.AvgRuntime != null)
                     hashCode = hashCode * 59 + this.AvgRuntime.GetHashCode();
                 if (this.MaxRuntime != null)

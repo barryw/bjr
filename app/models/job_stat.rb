@@ -15,6 +15,7 @@ class JobStat < ApplicationRecord
     {
       runs: runs,
       failed: failed,
+      job_count: job_count,
       avg_runtime: avg_runtime,
       max_runtime: max_runtime,
       min_runtime: min_runtime,

@@ -35,9 +35,10 @@ class JobStat(object):
     openapi_types = {
         'runs': 'int',
         'failed': 'int',
-        'avg_runtime': 'int',
-        'max_runtime': 'int',
-        'min_runtime': 'int',
+        'job_count': 'int',
+        'avg_runtime': 'Decimal',
+        'max_runtime': 'Decimal',
+        'min_runtime': 'Decimal',
         'period': 'str',
         'start_dt': 'datetime',
         'end_dt': 'datetime',
@@ -48,6 +49,7 @@ class JobStat(object):
     attribute_map = {
         'runs': 'runs',
         'failed': 'failed',
+        'job_count': 'job_count',
         'avg_runtime': 'avg_runtime',
         'max_runtime': 'max_runtime',
         'min_runtime': 'min_runtime',
@@ -58,7 +60,7 @@ class JobStat(object):
         'updated_at': 'updated_at'
     }
 
-    def __init__(self, runs=None, failed=None, avg_runtime=None, max_runtime=None, min_runtime=None, period=None, start_dt=None, end_dt=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, runs=None, failed=None, job_count=None, avg_runtime=None, max_runtime=None, min_runtime=None, period=None, start_dt=None, end_dt=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """JobStat - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -66,6 +68,7 @@ class JobStat(object):
 
         self._runs = None
         self._failed = None
+        self._job_count = None
         self._avg_runtime = None
         self._max_runtime = None
         self._min_runtime = None
@@ -80,6 +83,8 @@ class JobStat(object):
             self.runs = runs
         if failed is not None:
             self.failed = failed
+        if job_count is not None:
+            self.job_count = job_count
         if avg_runtime is not None:
             self.avg_runtime = avg_runtime
         if max_runtime is not None:
@@ -144,13 +149,36 @@ class JobStat(object):
         self._failed = failed
 
     @property
+    def job_count(self):
+        """Gets the job_count of this JobStat.  # noqa: E501
+
+        The number of jobs that executed in the period.  # noqa: E501
+
+        :return: The job_count of this JobStat.  # noqa: E501
+        :rtype: int
+        """
+        return self._job_count
+
+    @job_count.setter
+    def job_count(self, job_count):
+        """Sets the job_count of this JobStat.
+
+        The number of jobs that executed in the period.  # noqa: E501
+
+        :param job_count: The job_count of this JobStat.  # noqa: E501
+        :type: int
+        """
+
+        self._job_count = job_count
+
+    @property
     def avg_runtime(self):
         """Gets the avg_runtime of this JobStat.  # noqa: E501
 
         The average runtime in seconds of all jobs in the period.  # noqa: E501
 
         :return: The avg_runtime of this JobStat.  # noqa: E501
-        :rtype: int
+        :rtype: Decimal
         """
         return self._avg_runtime
 
@@ -161,7 +189,7 @@ class JobStat(object):
         The average runtime in seconds of all jobs in the period.  # noqa: E501
 
         :param avg_runtime: The avg_runtime of this JobStat.  # noqa: E501
-        :type: int
+        :type: Decimal
         """
 
         self._avg_runtime = avg_runtime
@@ -173,7 +201,7 @@ class JobStat(object):
         The max runtime in seconds of all jobs in the period.  # noqa: E501
 
         :return: The max_runtime of this JobStat.  # noqa: E501
-        :rtype: int
+        :rtype: Decimal
         """
         return self._max_runtime
 
@@ -184,7 +212,7 @@ class JobStat(object):
         The max runtime in seconds of all jobs in the period.  # noqa: E501
 
         :param max_runtime: The max_runtime of this JobStat.  # noqa: E501
-        :type: int
+        :type: Decimal
         """
 
         self._max_runtime = max_runtime
@@ -196,7 +224,7 @@ class JobStat(object):
         The min runtime in seconds of all jobs in the period.  # noqa: E501
 
         :return: The min_runtime of this JobStat.  # noqa: E501
-        :rtype: int
+        :rtype: Decimal
         """
         return self._min_runtime
 
@@ -207,7 +235,7 @@ class JobStat(object):
         The min runtime in seconds of all jobs in the period.  # noqa: E501
 
         :param min_runtime: The min_runtime of this JobStat.  # noqa: E501
-        :type: int
+        :type: Decimal
         """
 
         self._min_runtime = min_runtime

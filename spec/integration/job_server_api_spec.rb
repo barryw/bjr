@@ -20,16 +20,22 @@ describe 'Job Server API' do
         schema '$ref' => '#/components/schemas/JobStatMessage'
 
         before do |request|
-          create(:minutely_stat1, user: admin, start_dt: DateTime.now - 1.minute, end_dt: DateTime.now)
+          create(:minutely_stat1, user: admin, start_dt: DateTime.now - 1.minute, end_dt: DateTime.now,
+                 job_count: 10, runs: 35, failed: 2, avg_runtime: 2.6, max_runtime: 3.2, min_runtime: 1.8)
           submit_request(request.metadata)
         end
 
         run_test! do |response|
           json = JSON.parse(response.body)
-
           expect(json['is_error']).to be false
           expect(json['object_type']).to eq('jobstats')
           expect(json['object'].length).to eq(1)
+          expect(json['object'][0]['job_count']).to eq(10)
+          expect(json['object'][0]['runs']).to eq(35)
+          expect(json['object'][0]['failed']).to eq(2)
+          expect(json['object'][0]['avg_runtime']).to eq('2.6')
+          expect(json['object'][0]['min_runtime']).to eq('1.8')
+          expect(json['object'][0]['max_runtime']).to eq('3.2')
           expect(json['message']).to eq(I18n.t('jobserver.messages.minutely_job_stats.received'))
         end
       end
@@ -53,12 +59,15 @@ describe 'Job Server API' do
         schema '$ref' => '#/components/schemas/JobStatMessage'
 
         before do |request|
+          job = create(:job1, user: admin)
+          run = create(:successful_job_run, job: job, start_time: DateTime.now - 1.minute, end_time: DateTime.now)
           create(:hourly_stat1, user: admin, start_dt: DateTime.now - 1.minute, end_dt: DateTime.now)
           submit_request(request.metadata)
         end
 
         run_test! do |response|
           json = JSON.parse(response.body)
+          puts json
 
           expect(json['is_error']).to be false
           expect(json['object_type']).to eq('jobstats')

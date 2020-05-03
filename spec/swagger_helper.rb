@@ -29,9 +29,10 @@ RSpec.configure do |config|
             properties: {
               runs: { type: :integer, description: 'The number of job runs in the period.' },
               failed: { type: :integer, description: 'The number of job runs that failed in the period.' },
-              avg_runtime: { type: :integer, description: 'The average runtime in seconds of all jobs in the period.' },
-              max_runtime: { type: :integer, description: 'The max runtime in seconds of all jobs in the period.' },
-              min_runtime: { type: :integer, description: 'The min runtime in seconds of all jobs in the period.' },
+              job_count: { type: :integer, description: 'The number of jobs that executed in the period.' },
+              avg_runtime: { type: :decimal, description: 'The average runtime in seconds of all jobs in the period.' },
+              max_runtime: { type: :decimal, description: 'The max runtime in seconds of all jobs in the period.' },
+              min_runtime: { type: :decimal, description: 'The min runtime in seconds of all jobs in the period.' },
               period: { type: :string, description: 'The runtime period.' },
               start_dt: { type: :string, format: 'date-time', description: 'The period start date.' },
               end_dt: { type: :string, format: 'date-time', description: 'The period end date.' },

@@ -20,6 +20,9 @@ module BJR
     # The number of job runs that failed in the period.
     attr_accessor :failed
 
+    # The number of jobs that executed in the period.
+    attr_accessor :job_count
+
     # The average runtime in seconds of all jobs in the period.
     attr_accessor :avg_runtime
 
@@ -49,6 +52,7 @@ module BJR
       {
         :'runs' => :'runs',
         :'failed' => :'failed',
+        :'job_count' => :'job_count',
         :'avg_runtime' => :'avg_runtime',
         :'max_runtime' => :'max_runtime',
         :'min_runtime' => :'min_runtime',
@@ -65,9 +69,10 @@ module BJR
       {
         :'runs' => :'Integer',
         :'failed' => :'Integer',
-        :'avg_runtime' => :'Integer',
-        :'max_runtime' => :'Integer',
-        :'min_runtime' => :'Integer',
+        :'job_count' => :'Integer',
+        :'avg_runtime' => :'Decimal',
+        :'max_runtime' => :'Decimal',
+        :'min_runtime' => :'Decimal',
         :'period' => :'String',
         :'start_dt' => :'DateTime',
         :'end_dt' => :'DateTime',
@@ -103,6 +108,10 @@ module BJR
 
       if attributes.key?(:'failed')
         self.failed = attributes[:'failed']
+      end
+
+      if attributes.key?(:'job_count')
+        self.job_count = attributes[:'job_count']
       end
 
       if attributes.key?(:'avg_runtime')
@@ -158,6 +167,7 @@ module BJR
       self.class == o.class &&
           runs == o.runs &&
           failed == o.failed &&
+          job_count == o.job_count &&
           avg_runtime == o.avg_runtime &&
           max_runtime == o.max_runtime &&
           min_runtime == o.min_runtime &&
@@ -177,7 +187,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [runs, failed, avg_runtime, max_runtime, min_runtime, period, start_dt, end_dt, created_at, updated_at].hash
+      [runs, failed, job_count, avg_runtime, max_runtime, min_runtime, period, start_dt, end_dt, created_at, updated_at].hash
     end
 
     # Builds the object from hash

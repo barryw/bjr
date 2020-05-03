@@ -82,6 +82,14 @@ namespace BJR.Test
             // TODO unit test for the property 'Failed'
         }
         /// <summary>
+        /// Test the property 'JobCount'
+        /// </summary>
+        [Test]
+        public void JobCountTest()
+        {
+            // TODO unit test for the property 'JobCount'
+        }
+        /// <summary>
         /// Test the property 'AvgRuntime'
         /// </summary>
         [Test]

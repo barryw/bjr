@@ -12,11 +12,12 @@
  */
 
 import ApiClient from '../ApiClient';
+import Decimal from './Decimal';
 
 /**
  * The JobStat model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobStat
- * @version 1.1.2
+ * @version 1.1.3
  */
 class JobStat {
     /**
@@ -53,14 +54,17 @@ class JobStat {
             if (data.hasOwnProperty('failed')) {
                 obj['failed'] = ApiClient.convertToType(data['failed'], 'Number');
             }
+            if (data.hasOwnProperty('job_count')) {
+                obj['job_count'] = ApiClient.convertToType(data['job_count'], 'Number');
+            }
             if (data.hasOwnProperty('avg_runtime')) {
-                obj['avg_runtime'] = ApiClient.convertToType(data['avg_runtime'], 'Number');
+                obj['avg_runtime'] = ApiClient.convertToType(data['avg_runtime'], Decimal);
             }
             if (data.hasOwnProperty('max_runtime')) {
-                obj['max_runtime'] = ApiClient.convertToType(data['max_runtime'], 'Number');
+                obj['max_runtime'] = ApiClient.convertToType(data['max_runtime'], Decimal);
             }
             if (data.hasOwnProperty('min_runtime')) {
-                obj['min_runtime'] = ApiClient.convertToType(data['min_runtime'], 'Number');
+                obj['min_runtime'] = ApiClient.convertToType(data['min_runtime'], Decimal);
             }
             if (data.hasOwnProperty('period')) {
                 obj['period'] = ApiClient.convertToType(data['period'], 'String');
@@ -97,20 +101,26 @@ JobStat.prototype['runs'] = undefined;
 JobStat.prototype['failed'] = undefined;
 
 /**
+ * The number of jobs that executed in the period.
+ * @member {Number} job_count
+ */
+JobStat.prototype['job_count'] = undefined;
+
+/**
  * The average runtime in seconds of all jobs in the period.
- * @member {Number} avg_runtime
+ * @member {module:io.barrywalker.bjr/io.barrywalker.bjr.model/Decimal} avg_runtime
  */
 JobStat.prototype['avg_runtime'] = undefined;
 
 /**
  * The max runtime in seconds of all jobs in the period.
- * @member {Number} max_runtime
+ * @member {module:io.barrywalker.bjr/io.barrywalker.bjr.model/Decimal} max_runtime
  */
 JobStat.prototype['max_runtime'] = undefined;
 
 /**
  * The min runtime in seconds of all jobs in the period.
- * @member {Number} min_runtime
+ * @member {module:io.barrywalker.bjr/io.barrywalker.bjr.model/Decimal} min_runtime
  */
 JobStat.prototype['min_runtime'] = undefined;
 
