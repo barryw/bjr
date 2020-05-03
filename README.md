@@ -7,7 +7,7 @@
       Barry's Job Runner
 
 
-[![codecov](https://codecov.io/gh/barryw/bjr/branch/master/graph/badge.svg)](https://codecov.io/gh/barryw/bjr) [![Maintainability](https://api.codeclimate.com/v1/badges/0c796a2aad42607c6e93/maintainability)](https://codeclimate.com/github/barryw/bjr/maintainability)
+[![Actions Status](https://github.com/barryw/bjr/workflows/Ruby/badge.svg)](https://github.com/barryw/bjr/workflows/Ruby/badge.svg) [![codecov](https://codecov.io/gh/barryw/bjr/branch/master/graph/badge.svg)](https://codecov.io/gh/barryw/bjr) [![Maintainability](https://api.codeclimate.com/v1/badges/0c796a2aad42607c6e93/maintainability)](https://codeclimate.com/github/barryw/bjr/maintainability)
 
 #### Introduction
 
