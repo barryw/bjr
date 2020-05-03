@@ -15,9 +15,9 @@ class JobRun < ApplicationRecord
   scope :fails_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).where(success: false) }
   scope :job_count_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).select('jobs.id').distinct.count }
 
-  scope :avg_runtime_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).average('timestampdiff(second, start_time, end_time)') }
-  scope :max_runtime_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).maximum('timestampdiff(second, start_time, end_time)') }
-  scope :min_runtime_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).minimum('timestampdiff(second, start_time, end_time)') }
+  scope :avg_runtime_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).average('timestampdiff(microsecond, start_time, end_time)/1000000') }
+  scope :max_runtime_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).maximum('timestampdiff(microsecond, start_time, end_time)/1000000') }
+  scope :min_runtime_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).minimum('timestampdiff(microsecond, start_time, end_time)/1000000') }
 
   def self.earliest_job_run(user)
     joins(:job).where(jobs: { user_id: user.id }).minimum(:start_time)

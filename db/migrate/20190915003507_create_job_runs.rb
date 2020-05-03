@@ -8,8 +8,8 @@ class CreateJobRuns < ActiveRecord::Migration[5.2]
       t.string :error_message, null: true
       t.longtext :stdout, null: true
       t.longtext :stderr, null: true
-      t.datetime :start_time, null: false
-      t.datetime :end_time, null: true
+      t.datetime :start_time, null: false, limit: 6
+      t.datetime :end_time, null: true, limit: 6
 
       t.references :job, null: false, index: true, foreign_key: { on_delete: :cascade }
       t.timestamps

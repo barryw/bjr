@@ -10,12 +10,14 @@ class BaseStatsJob < ApplicationJob
 
       process_start_dt = start_processing_date(user, period) + 1.second
       time_incr = time_increment(period)
-      current_dt = processing_dates(process_start_dt, period)
+      end_dt = end_date(period)
 
-      while current_dt < DateTime.now
-        new_end = current_dt + time_incr - 1.second
-        generate_row(user, current_dt, new_end, period)
-        current_dt += time_incr
+      stat_start_dt = processing_dates(process_start_dt, period)
+
+      while stat_start_dt < end_dt
+        stat_end_dt = stat_start_dt + time_incr - 1.second
+        generate_row(user, stat_start_dt, stat_end_dt, period)
+        stat_start_dt += time_incr
       end
 
       logger.debug "Finished stats run for user #{user.username}"
@@ -34,6 +36,21 @@ class BaseStatsJob < ApplicationJob
     JobStat.create(user_id: user.id, runs: runs, failed: failed, avg_runtime: avg_runtime,
                    min_runtime: min_runtime, max_runtime: max_runtime, start_dt: current_dt,
                    end_dt: new_end, period: period, job_count: job_count)
+  end
+
+  def end_date(period)
+    end_dt = case period
+    when :minute
+      DateTime.now.change(sec: 0)
+    when :hour
+      DateTime.now.change(sec: 0, min: 0)
+    when :day
+      DateTime.now.midnight - 1.second
+    when :week
+      DateTime.now.midnight - 1.second
+    end
+
+    end_dt
   end
 
   def time_increment(period)

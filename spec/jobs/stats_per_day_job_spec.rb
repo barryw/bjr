@@ -6,7 +6,7 @@ RSpec.describe StatsPerDayJob, type: :job do
   include ActiveJob::TestHelper
 
   it 'computes daily stats for jobs that ran' do
-    travel_to Time.zone.local(2020, 5, 2, 13, 00, 00)
+    travel_to Time.zone.local(2020, 5, 2, 13, 0, 0)
 
     admin1 = create(:admin1)
     admin2 = create(:admin2)
@@ -18,6 +18,8 @@ RSpec.describe StatsPerDayJob, type: :job do
     jobrun2 = create(:failed_job_run, job: job1, start_time: DateTime.now - 8.minutes, end_time: DateTime.now - 3.minutes)
     jobrun3 = create(:successful_job_run, job: job2, start_time: DateTime.now - 40.minutes, end_time: DateTime.now - 30.minutes)
     jobrun4 = create(:successful_job_run, job: job2, start_time: DateTime.now - 20.minutes, end_time: DateTime.now - 1.minute)
+
+    travel_to Time.zone.local(2020, 5, 3, 10, 0, 0)
 
     perform_enqueued_jobs do
       StatsPerDayJob.perform_later

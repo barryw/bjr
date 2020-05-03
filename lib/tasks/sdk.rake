@@ -8,8 +8,16 @@ sdks = [{ description: 'C# SDK', language: 'csharp', version_attr: 'packageVersi
         { description: 'Java SDK', language: 'java', version_attr: 'artifactVersion' },
         { description: 'Ruby SDK', language: 'ruby', version_attr: 'gemVersion' }]
 
+desc 'Do everything needed to update the SDKs. Specify position as patch, minor or major to bump the SDK versions.'
+task 'sdk:all', [:position] => [:environment] do |_t, _args|
+  Rake::Task["spec"].invoke
+  Rake::Task["rswag"].invoke
+  Rake::Task["sdk:bumpver"].invoke(_args[:position])
+  Rake::Task["sdk:generate"].invoke
+end
+
 desc 'Generate the client SDKs'
-task 'generate:sdks' do |_t, _args|
+task 'sdk:generate' do |_t, _args|
   sdks.each do |sdk|
     print "Building #{sdk[:description]}"
     sh "rm -rf sdks/#{sdk[:language]}/*"
@@ -19,10 +27,10 @@ task 'generate:sdks' do |_t, _args|
   end
 end
 
-desc 'Bump the patch version of the SDKs'
-task 'sdk:bumpver', [:position] => [:environment] do |_t, args|
+desc 'Bump the patch version of the SDKs. Specify position as patch, minor or major to bump the SDK versions.'
+task 'sdk:bumpver', [:position] => [:environment] do |_t, _args|
   sdks.each do |sdk|
-    position = args[:position]
+    position = _args[:position]
 
     file = File.read("#{Rails.root}/sdks/#{sdk[:language]}.json")
     json = JSON.parse(file)

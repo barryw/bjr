@@ -5,8 +5,8 @@ class CreateJobs < ActiveRecord::Migration[5.2]
     create_table :jobs, options: 'ROW_FORMAT=DYNAMIC' do |t|
       t.string :name, null: false, limit: 100
       t.string :cron, null: false, limit: 20
-      t.datetime :last_run, null: true
-      t.datetime :next_run, null: false
+      t.datetime :last_run, null: true, limit: 6
+      t.datetime :next_run, null: false, limit: 6
       t.string :command, null: false
       t.string :timezone, default: 'UTC', limit: 50
       t.boolean :enabled, default: true
