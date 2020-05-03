@@ -12,6 +12,7 @@ gem 'redis', '~> 4.0'
 gem 'puma', '~> 3.11'
 gem 'sidekiq'
 gem 'sidekiq-cron'
+gem 'oj'
 
 gem 'acts-as-taggable-on'
 gem 'api-pagination'

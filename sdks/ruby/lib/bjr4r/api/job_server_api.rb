@@ -207,10 +207,10 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [String] :start_date The start date from which to get minutely metrics from
     # @option opts [String] :end_date The end date from which to get minutely metrics from
-    # @return [JobStatMessage]
+    # @return [nil]
     def stats_by_minute(opts = {})
-      data, _status_code, _headers = stats_by_minute_with_http_info(opts)
-      data
+      stats_by_minute_with_http_info(opts)
+      nil
     end
 
     # Job statistics by minute
@@ -218,7 +218,7 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [String] :start_date The start date from which to get minutely metrics from
     # @option opts [String] :end_date The end date from which to get minutely metrics from
-    # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def stats_by_minute_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: JobServerApi.stats_by_minute ...'
@@ -233,8 +233,6 @@ module BJR
 
       # header parameters
       header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -243,7 +241,7 @@ module BJR
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] || 'JobStatMessage' 
+      return_type = opts[:return_type] 
 
       # auth_names
       auth_names = opts[:auth_names] || ['bearerAuth']

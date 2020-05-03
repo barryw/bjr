@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 ## stats_by_minute
 
-> JobStatMessage stats_by_minute(opts)
+> stats_by_minute(opts)
 
 Job statistics by minute
 
@@ -206,8 +206,7 @@ opts = {
 
 begin
   #Job statistics by minute
-  result = api_instance.stats_by_minute(opts)
-  p result
+  api_instance.stats_by_minute(opts)
 rescue BJR::ApiError => e
   puts "Exception when calling JobServerApi->stats_by_minute: #{e}"
 end
@@ -223,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobStatMessage**](JobStatMessage.md)
+nil (empty response body)
 
 ### Authorization
 
@@ -232,7 +231,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 
 ## stats_by_week

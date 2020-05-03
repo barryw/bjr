@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 <a name="statsByMinute"></a>
 # **statsByMinute**
-> JobStatMessage statsByMinute(startDate, endDate)
+> statsByMinute(startDate, endDate)
 
 Job statistics by minute
 
@@ -249,8 +249,7 @@ public class Example {
     String startDate = "startDate_example"; // String | The start date from which to get minutely metrics from
     String endDate = "endDate_example"; // String | The end date from which to get minutely metrics from
     try {
-      JobStatMessage result = apiInstance.statsByMinute(startDate, endDate);
-      System.out.println(result);
+      apiInstance.statsByMinute(startDate, endDate);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobServerApi#statsByMinute");
       System.err.println("Status code: " + e.getCode());
@@ -271,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobStatMessage**](JobStatMessage.md)
+null (empty response body)
 
 ### Authorization
 
@@ -280,7 +279,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 ### HTTP response details
 | Status code | Description | Response headers |

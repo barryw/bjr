@@ -19,7 +19,7 @@ import JobStatMessage from '../io.barrywalker.bjr.model/JobStatMessage';
 /**
 * JobServer service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi
-* @version 1.1.3
+* @version 1.1.4
 */
 export default class JobServerApi {
 
@@ -166,7 +166,7 @@ export default class JobServerApi {
      * Callback function to receive the result of the statsByMinute operation.
      * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByMinuteCallback
      * @param {String} error Error message, if any.
-     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage} data The data returned by the service call.
+     * @param data This operation does not return a value.
      * @param {String} response The complete HTTP response.
      */
 
@@ -177,7 +177,6 @@ export default class JobServerApi {
      * @param {String} opts.startDate The start date from which to get minutely metrics from
      * @param {String} opts.endDate The end date from which to get minutely metrics from
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~statsByMinuteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage}
      */
     statsByMinute(opts, callback) {
       opts = opts || {};
@@ -196,8 +195,8 @@ export default class JobServerApi {
 
       let authNames = ['bearerAuth'];
       let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = JobStatMessage;
+      let accepts = [];
+      let returnType = null;
       return this.apiClient.callApi(
         '/job_server_api/minutely_job_stats', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

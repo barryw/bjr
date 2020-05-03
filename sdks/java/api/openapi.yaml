@@ -389,10 +389,7 @@ paths:
         style: form
       responses:
         "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JobStatMessage'
+          content: {}
           description: Minutely stats received successfully
       security:
       - bearerAuth: []
@@ -825,13 +822,13 @@ components:
   schemas:
     JobStat:
       example:
-        avg_runtime: ""
+        avg_runtime: 5.637377
         start_dt: 2000-01-23T04:56:07.000+00:00
         period: period
         end_dt: 2000-01-23T04:56:07.000+00:00
         job_count: 5
-        min_runtime: ""
-        max_runtime: ""
+        min_runtime: 7.0614014
+        max_runtime: 2.302136
         updated_at: 2000-01-23T04:56:07.000+00:00
         created_at: 2000-01-23T04:56:07.000+00:00
         failed: 1
@@ -848,13 +845,16 @@ components:
           type: integer
         avg_runtime:
           description: The average runtime in seconds of all jobs in the period.
-          type: decimal
+          format: float
+          type: number
         max_runtime:
           description: The max runtime in seconds of all jobs in the period.
-          type: decimal
+          format: float
+          type: number
         min_runtime:
           description: The min runtime in seconds of all jobs in the period.
-          type: decimal
+          format: float
+          type: number
         period:
           description: The runtime period.
           type: string
@@ -886,24 +886,24 @@ components:
         is_error: true
         message: message
         object:
-        - avg_runtime: ""
+        - avg_runtime: 5.637377
           start_dt: 2000-01-23T04:56:07.000+00:00
           period: period
           end_dt: 2000-01-23T04:56:07.000+00:00
           job_count: 5
-          min_runtime: ""
-          max_runtime: ""
+          min_runtime: 7.0614014
+          max_runtime: 2.302136
           updated_at: 2000-01-23T04:56:07.000+00:00
           created_at: 2000-01-23T04:56:07.000+00:00
           failed: 1
           runs: 6
-        - avg_runtime: ""
+        - avg_runtime: 5.637377
           start_dt: 2000-01-23T04:56:07.000+00:00
           period: period
           end_dt: 2000-01-23T04:56:07.000+00:00
           job_count: 5
-          min_runtime: ""
-          max_runtime: ""
+          min_runtime: 7.0614014
+          max_runtime: 2.302136
           updated_at: 2000-01-23T04:56:07.000+00:00
           created_at: 2000-01-23T04:56:07.000+00:00
           failed: 1

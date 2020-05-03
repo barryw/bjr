@@ -36,9 +36,9 @@ class JobStat(object):
         'runs': 'int',
         'failed': 'int',
         'job_count': 'int',
-        'avg_runtime': 'Decimal',
-        'max_runtime': 'Decimal',
-        'min_runtime': 'Decimal',
+        'avg_runtime': 'float',
+        'max_runtime': 'float',
+        'min_runtime': 'float',
         'period': 'str',
         'start_dt': 'datetime',
         'end_dt': 'datetime',
@@ -178,7 +178,7 @@ class JobStat(object):
         The average runtime in seconds of all jobs in the period.  # noqa: E501
 
         :return: The avg_runtime of this JobStat.  # noqa: E501
-        :rtype: Decimal
+        :rtype: float
         """
         return self._avg_runtime
 
@@ -189,7 +189,7 @@ class JobStat(object):
         The average runtime in seconds of all jobs in the period.  # noqa: E501
 
         :param avg_runtime: The avg_runtime of this JobStat.  # noqa: E501
-        :type: Decimal
+        :type: float
         """
 
         self._avg_runtime = avg_runtime
@@ -201,7 +201,7 @@ class JobStat(object):
         The max runtime in seconds of all jobs in the period.  # noqa: E501
 
         :return: The max_runtime of this JobStat.  # noqa: E501
-        :rtype: Decimal
+        :rtype: float
         """
         return self._max_runtime
 
@@ -212,7 +212,7 @@ class JobStat(object):
         The max runtime in seconds of all jobs in the period.  # noqa: E501
 
         :param max_runtime: The max_runtime of this JobStat.  # noqa: E501
-        :type: Decimal
+        :type: float
         """
 
         self._max_runtime = max_runtime
@@ -224,7 +224,7 @@ class JobStat(object):
         The min runtime in seconds of all jobs in the period.  # noqa: E501
 
         :return: The min_runtime of this JobStat.  # noqa: E501
-        :rtype: Decimal
+        :rtype: float
         """
         return self._min_runtime
 
@@ -235,7 +235,7 @@ class JobStat(object):
         The min runtime in seconds of all jobs in the period.  # noqa: E501
 
         :param min_runtime: The min_runtime of this JobStat.  # noqa: E501
-        :type: Decimal
+        :type: float
         """
 
         self._min_runtime = min_runtime

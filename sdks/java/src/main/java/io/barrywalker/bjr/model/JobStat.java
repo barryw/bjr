@@ -20,7 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.barrywalker.bjr.model.Decimal;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -29,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * JobStat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-03T14:40:04.229Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-03T15:26:54.185Z[GMT]")
 public class JobStat {
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
@@ -45,15 +44,15 @@ public class JobStat {
 
   public static final String SERIALIZED_NAME_AVG_RUNTIME = "avg_runtime";
   @SerializedName(SERIALIZED_NAME_AVG_RUNTIME)
-  private Decimal avgRuntime = null;
+  private Float avgRuntime;
 
   public static final String SERIALIZED_NAME_MAX_RUNTIME = "max_runtime";
   @SerializedName(SERIALIZED_NAME_MAX_RUNTIME)
-  private Decimal maxRuntime = null;
+  private Float maxRuntime;
 
   public static final String SERIALIZED_NAME_MIN_RUNTIME = "min_runtime";
   @SerializedName(SERIALIZED_NAME_MIN_RUNTIME)
-  private Decimal minRuntime = null;
+  private Float minRuntime;
 
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
@@ -145,7 +144,7 @@ public class JobStat {
   }
 
 
-  public JobStat avgRuntime(Decimal avgRuntime) {
+  public JobStat avgRuntime(Float avgRuntime) {
     
     this.avgRuntime = avgRuntime;
     return this;
@@ -158,17 +157,17 @@ public class JobStat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The average runtime in seconds of all jobs in the period.")
 
-  public Decimal getAvgRuntime() {
+  public Float getAvgRuntime() {
     return avgRuntime;
   }
 
 
-  public void setAvgRuntime(Decimal avgRuntime) {
+  public void setAvgRuntime(Float avgRuntime) {
     this.avgRuntime = avgRuntime;
   }
 
 
-  public JobStat maxRuntime(Decimal maxRuntime) {
+  public JobStat maxRuntime(Float maxRuntime) {
     
     this.maxRuntime = maxRuntime;
     return this;
@@ -181,17 +180,17 @@ public class JobStat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The max runtime in seconds of all jobs in the period.")
 
-  public Decimal getMaxRuntime() {
+  public Float getMaxRuntime() {
     return maxRuntime;
   }
 
 
-  public void setMaxRuntime(Decimal maxRuntime) {
+  public void setMaxRuntime(Float maxRuntime) {
     this.maxRuntime = maxRuntime;
   }
 
 
-  public JobStat minRuntime(Decimal minRuntime) {
+  public JobStat minRuntime(Float minRuntime) {
     
     this.minRuntime = minRuntime;
     return this;
@@ -204,12 +203,12 @@ public class JobStat {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The min runtime in seconds of all jobs in the period.")
 
-  public Decimal getMinRuntime() {
+  public Float getMinRuntime() {
     return minRuntime;
   }
 
 
-  public void setMinRuntime(Decimal minRuntime) {
+  public void setMinRuntime(Float minRuntime) {
     this.minRuntime = minRuntime;
   }
 

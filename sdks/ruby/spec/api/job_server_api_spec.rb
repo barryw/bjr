@@ -76,7 +76,7 @@ describe 'JobServerApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :start_date The start date from which to get minutely metrics from
   # @option opts [String] :end_date The end date from which to get minutely metrics from
-  # @return [JobStatMessage]
+  # @return [nil]
   describe 'stats_by_minute test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

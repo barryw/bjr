@@ -44,7 +44,7 @@ namespace BJR.Model
         /// <param name="endDt">The period end date..</param>
         /// <param name="createdAt">The date the record was created..</param>
         /// <param name="updatedAt">The date the record was last updated..</param>
-        public JobStat(int runs = default(int), int failed = default(int), int jobCount = default(int), ModelDecimal avgRuntime = default(ModelDecimal), ModelDecimal maxRuntime = default(ModelDecimal), ModelDecimal minRuntime = default(ModelDecimal), string period = default(string), DateTime startDt = default(DateTime), DateTime endDt = default(DateTime), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public JobStat(int runs = default(int), int failed = default(int), int jobCount = default(int), float avgRuntime = default(float), float maxRuntime = default(float), float minRuntime = default(float), string period = default(string), DateTime startDt = default(DateTime), DateTime endDt = default(DateTime), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Runs = runs;
             this.Failed = failed;
@@ -85,21 +85,21 @@ namespace BJR.Model
         /// </summary>
         /// <value>The average runtime in seconds of all jobs in the period.</value>
         [DataMember(Name="avg_runtime", EmitDefaultValue=false)]
-        public ModelDecimal AvgRuntime { get; set; }
+        public float AvgRuntime { get; set; }
 
         /// <summary>
         /// The max runtime in seconds of all jobs in the period.
         /// </summary>
         /// <value>The max runtime in seconds of all jobs in the period.</value>
         [DataMember(Name="max_runtime", EmitDefaultValue=false)]
-        public ModelDecimal MaxRuntime { get; set; }
+        public float MaxRuntime { get; set; }
 
         /// <summary>
         /// The min runtime in seconds of all jobs in the period.
         /// </summary>
         /// <value>The min runtime in seconds of all jobs in the period.</value>
         [DataMember(Name="min_runtime", EmitDefaultValue=false)]
-        public ModelDecimal MinRuntime { get; set; }
+        public float MinRuntime { get; set; }
 
         /// <summary>
         /// The runtime period.

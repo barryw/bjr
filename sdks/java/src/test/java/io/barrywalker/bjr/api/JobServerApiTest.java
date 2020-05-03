@@ -95,7 +95,7 @@ public class JobServerApiTest {
     public void statsByMinuteTest() throws ApiException {
         String startDate = null;
         String endDate = null;
-        JobStatMessage response = api.statsByMinute(startDate, endDate);
+        api.statsByMinute(startDate, endDate);
 
         // TODO: test validations
     }

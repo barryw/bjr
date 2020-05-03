@@ -435,7 +435,7 @@ public class JobServerApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            "application/json"
+            
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -466,7 +466,6 @@ public class JobServerApi {
      * Get minutely job statistics
      * @param startDate The start date from which to get minutely metrics from (optional)
      * @param endDate The end date from which to get minutely metrics from (optional)
-     * @return JobStatMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -474,9 +473,8 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
      </table>
      */
-    public JobStatMessage statsByMinute(String startDate, String endDate) throws ApiException {
-        ApiResponse<JobStatMessage> localVarResp = statsByMinuteWithHttpInfo(startDate, endDate);
-        return localVarResp.getData();
+    public void statsByMinute(String startDate, String endDate) throws ApiException {
+        statsByMinuteWithHttpInfo(startDate, endDate);
     }
 
     /**
@@ -484,7 +482,7 @@ public class JobServerApi {
      * Get minutely job statistics
      * @param startDate The start date from which to get minutely metrics from (optional)
      * @param endDate The end date from which to get minutely metrics from (optional)
-     * @return ApiResponse&lt;JobStatMessage&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -492,10 +490,9 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<JobStatMessage> statsByMinuteWithHttpInfo(String startDate, String endDate) throws ApiException {
+    public ApiResponse<Void> statsByMinuteWithHttpInfo(String startDate, String endDate) throws ApiException {
         okhttp3.Call localVarCall = statsByMinuteValidateBeforeCall(startDate, endDate, null);
-        Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -512,11 +509,10 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call statsByMinuteAsync(String startDate, String endDate, final ApiCallback<JobStatMessage> _callback) throws ApiException {
+    public okhttp3.Call statsByMinuteAsync(String startDate, String endDate, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = statsByMinuteValidateBeforeCall(startDate, endDate, _callback);
-        Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**

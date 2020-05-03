@@ -12,12 +12,11 @@
  */
 
 import ApiClient from '../ApiClient';
-import Decimal from './Decimal';
 
 /**
  * The JobStat model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobStat
- * @version 1.1.3
+ * @version 1.1.4
  */
 class JobStat {
     /**
@@ -58,13 +57,13 @@ class JobStat {
                 obj['job_count'] = ApiClient.convertToType(data['job_count'], 'Number');
             }
             if (data.hasOwnProperty('avg_runtime')) {
-                obj['avg_runtime'] = ApiClient.convertToType(data['avg_runtime'], Decimal);
+                obj['avg_runtime'] = ApiClient.convertToType(data['avg_runtime'], 'Number');
             }
             if (data.hasOwnProperty('max_runtime')) {
-                obj['max_runtime'] = ApiClient.convertToType(data['max_runtime'], Decimal);
+                obj['max_runtime'] = ApiClient.convertToType(data['max_runtime'], 'Number');
             }
             if (data.hasOwnProperty('min_runtime')) {
-                obj['min_runtime'] = ApiClient.convertToType(data['min_runtime'], Decimal);
+                obj['min_runtime'] = ApiClient.convertToType(data['min_runtime'], 'Number');
             }
             if (data.hasOwnProperty('period')) {
                 obj['period'] = ApiClient.convertToType(data['period'], 'String');
@@ -108,19 +107,19 @@ JobStat.prototype['job_count'] = undefined;
 
 /**
  * The average runtime in seconds of all jobs in the period.
- * @member {module:io.barrywalker.bjr/io.barrywalker.bjr.model/Decimal} avg_runtime
+ * @member {Number} avg_runtime
  */
 JobStat.prototype['avg_runtime'] = undefined;
 
 /**
  * The max runtime in seconds of all jobs in the period.
- * @member {module:io.barrywalker.bjr/io.barrywalker.bjr.model/Decimal} max_runtime
+ * @member {Number} max_runtime
  */
 JobStat.prototype['max_runtime'] = undefined;
 
 /**
  * The min runtime in seconds of all jobs in the period.
- * @member {module:io.barrywalker.bjr/io.barrywalker.bjr.model/Decimal} min_runtime
+ * @member {Number} min_runtime
  */
 JobStat.prototype['min_runtime'] = undefined;
 

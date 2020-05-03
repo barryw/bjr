@@ -17,7 +17,7 @@ describe 'Job Server API' do
       response '200', 'Minutely stats received successfully' do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
-        schema '$ref' => '#/components/schemas/JobStatMessage'
+        #schema '$ref' => '#/components/schemas/JobStatMessage'
 
         before do |request|
           create(:minutely_stat1, user: admin, start_dt: DateTime.now - 1.minute, end_dt: DateTime.now,
@@ -27,15 +27,17 @@ describe 'Job Server API' do
 
         run_test! do |response|
           json = JSON.parse(response.body)
+          puts json
+
           expect(json['is_error']).to be false
           expect(json['object_type']).to eq('jobstats')
           expect(json['object'].length).to eq(1)
           expect(json['object'][0]['job_count']).to eq(10)
           expect(json['object'][0]['runs']).to eq(35)
           expect(json['object'][0]['failed']).to eq(2)
-          expect(json['object'][0]['avg_runtime']).to eq('2.6')
-          expect(json['object'][0]['min_runtime']).to eq('1.8')
-          expect(json['object'][0]['max_runtime']).to eq('3.2')
+          expect(json['object'][0]['avg_runtime']).to eq(2.6)
+          expect(json['object'][0]['min_runtime']).to eq(1.8)
+          expect(json['object'][0]['max_runtime']).to eq(3.2)
           expect(json['message']).to eq(I18n.t('jobserver.messages.minutely_job_stats.received'))
         end
       end

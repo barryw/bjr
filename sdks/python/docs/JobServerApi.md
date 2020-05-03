@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_minute**
-> JobStatMessage stats_by_minute(start_date=start_date, end_date=end_date)
+> stats_by_minute(start_date=start_date, end_date=end_date)
 
 Job statistics by minute
 
@@ -274,8 +274,7 @@ end_date = 'end_date_example' # str | The end date from which to get minutely me
 
     try:
         # Job statistics by minute
-        api_response = api_instance.stats_by_minute(start_date=start_date, end_date=end_date)
-        pprint(api_response)
+        api_instance.stats_by_minute(start_date=start_date, end_date=end_date)
     except ApiException as e:
         print("Exception when calling JobServerApi->stats_by_minute: %s\n" % e)
 ```
@@ -289,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobStatMessage**](JobStatMessage.md)
+void (empty response body)
 
 ### Authorization
 
@@ -298,7 +297,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 ### HTTP response details
 | Status code | Description | Response headers |

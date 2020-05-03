@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ## StatsByMinute
 
-> JobStatMessage StatsByMinute (string startDate = null, string endDate = null)
+> void StatsByMinute (string startDate = null, string endDate = null)
 
 Job statistics by minute
 
@@ -286,8 +286,7 @@ namespace Example
             try
             {
                 // Job statistics by minute
-                JobStatMessage result = apiInstance.StatsByMinute(startDate, endDate);
-                Debug.WriteLine(result);
+                apiInstance.StatsByMinute(startDate, endDate);
             }
             catch (ApiException e)
             {
@@ -310,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobStatMessage**](JobStatMessage.md)
+void (empty response body)
 
 ### Authorization
 
@@ -319,7 +318,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -110,8 +110,8 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string startDate = null;
             //string endDate = null;
-            //var response = instance.StatsByMinute(startDate, endDate);
-            //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
+            //instance.StatsByMinute(startDate, endDate);
+            
         }
         
         /// <summary>

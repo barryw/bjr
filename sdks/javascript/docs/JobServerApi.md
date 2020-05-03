@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ## statsByMinute
 
-> JobStatMessage statsByMinute(opts)
+> statsByMinute(opts)
 
 Job statistics by minute
 
@@ -196,7 +196,7 @@ apiInstance.statsByMinute(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 });
 ```
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobStatMessage**](JobStatMessage.md)
+null (empty response body)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 
 ## statsByWeek
