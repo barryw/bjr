@@ -28,27 +28,28 @@ The job data is stored in a MySQL database, and state is managed in Redis. Every
 
 You can add tags to your jobs so that you can search on them. You can also add success and failure callback URLs so that you can be notified when jobs succeed and fail. These callbacks will be called with a POST and sent information about the job run.
 
+I also set out to make it very cloud & Kubernetes friendly. There are deployment options for Kubernetes using Helm, a Packer build to generate AMIs and Terraform code to deploy those AMIs into a working deployment.
 
 #### Configuration
 
 If you're just running a development environment, the defaults are probably fine. For everything else, here's what you'll want to configure:
 
-`RAILS_ENV`: The Rails environment to run in. For development/test instances, use `development`. For production, use `production`. Defaults to development
+`RAILS_ENV`: The Rails environment to run in. For development/test instances, use `development`. For production, use `production`. Defaults to development\
 
-`JWT_EXPIRY_SECONDS` : Set to the number of seconds that a JWT should live. The default is 3600 seconds. Once expired, you'll need to reauthenticate to get a new JWT.
+`JWT_EXPIRY_SECONDS` : Set to the number of seconds that a JWT should live. The default is 3600 seconds. Once expired, you'll need to reauthenticate to get a new JWT.\
 
-`REDIS_HOST`: The Redis host to connect to. This will default to localhost. Your API server nodes and worker nodes must see the same Redis server.
-`REDIS_PORT`: The Redis port to connect to. This will default to 6379. Your API server nodes and worker nodes must see the same Redis server.
-`REDIS_SIDEKIQ_DB`: The Redis database to use for Sidekiq. Defaults to 0.
+`REDIS_HOST`: The Redis host to connect to. This will default to localhost. Your API server nodes and worker nodes must see the same Redis server.\
+`REDIS_PORT`: The Redis port to connect to. This will default to 6379. Your API server nodes and worker nodes must see the same Redis server.\
+`REDIS_SIDEKIQ_DB`: The Redis database to use for Sidekiq. Defaults to 0.\
 
-`BJR_DATABASE_USERNAME`: The username for the BJR MySQL database. Defaults to bjr
-`BJR_DATABASE_PASSWORD`: The password for the BJR MySQL database. Defaults to bjr
-`BJR_DATABASE_HOST`: The hostname to connect to the BJR MySQL database at. Defaults to 127.0.0.1
-`BJR_DATABASE_PORT`: The port to connect to the BJR MySQL database at. Defaults to 3306
-`BJR_DATABASE`: The name of the database to use for BJR data. Defaults to `bjr_{RAILS_ENV}`
+`BJR_DATABASE_USERNAME`: The username for the BJR MySQL database. Defaults to bjr\
+`BJR_DATABASE_PASSWORD`: The password for the BJR MySQL database. Defaults to bjr\
+`BJR_DATABASE_HOST`: The hostname to connect to the BJR MySQL database at. Defaults to 127.0.0.1\
+`BJR_DATABASE_PORT`: The port to connect to the BJR MySQL database at. Defaults to 3306\
+`BJR_DATABASE`: The name of the database to use for BJR data. Defaults to `bjr_{RAILS_ENV}`\
 
-`WEB_CONCURRENCY`: Puma will run in clustered mode by default. This is the number of web workers. Defaults to 2
-`PORT`: The port that Puma will listen on. Defaults to 3000
+`WEB_CONCURRENCY`: Puma will run in clustered mode by default. This is the number of web workers. Defaults to 2\
+`PORT`: The port that Puma will listen on. Defaults to 3000\
 
 
 #### Running
