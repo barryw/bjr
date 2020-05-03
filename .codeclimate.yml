@@ -4,3 +4,5 @@ exclude_patterns:
   - deploy/**
   - packer/**
   - terraform/**
+  - spec/**
+  - db/**
