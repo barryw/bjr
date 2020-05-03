@@ -82,8 +82,6 @@ Once you've built an API and worker AMI, you can then deploy them with the Terra
 
 ##### Kubernetes
 
-Ahhh.. Kubernetes.. the latest sexy. The thing that everybody wants, but few understands.
-
 If you're looking to deploy this to Kubernetes (that's where I do my testing, btw), then you're in luck. There's a Helm chart in `deploy` that will allow you to do a quick-and-dirty deploy of everything you need, including MySQL and Redis. Right now it's using Helm 2 with Tiller, but I plan to migrate to Helm 3.
 
 First, make sure you have Helm 2 installed (2.16) and then 'cd' to the `deploy` directory.
