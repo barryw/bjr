@@ -26,6 +26,7 @@ jobs:
 
     - name: Execute RSpec tests
       env:
+        RAILS_ENV: test
         BJR_DATABASE_PORT: ${{ job.services.mysql.ports[3306] }}
         BJR_DATABASE_HOST: 127.0.0.1
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
