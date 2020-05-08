@@ -64,7 +64,7 @@ If you don't have `foreman` installed, you can install it with Homebrew by execu
 
 Start it with `foreman start`
 
-It will run a single API server listening on :3000, a single worker and a Redis server. Once it's up, you can connect to it at `http://localhost:3000`
+It will run a single API server listening on :4000, a single worker and a Redis server. Once it's up, you can connect to it at `http://localhost:4000`
 
 ##### Local dev with docker-compose
 
@@ -112,11 +112,14 @@ make undeploy
 
 #### Building Docker images
 
+TODO
 
 
 #### SDKs
 
 The BJR API server has a Swagger UI available at `/api-docs` which you can use to interact with BJR. The `swagger.yaml` lives in `swagger/v1` and can be used to generate SDKs for several languages using OpenAPI codegen.
+
+__NOTE__: If you change the functionality of the API server, make sure you run `rake rswag` before generating the SDKs since the SDKs are generated from the swagger.yaml.
 
 In order to generate the SDKs, you will need to be running `docker`. To generate them, run
 
@@ -143,7 +146,7 @@ All endpoints with the exception of `authenticate` require an authentication tok
 With a fresh install of BJR running on localhost (this can be done by executing `foreman start` from the project root directory), get an authentication token with
 
 ```bash
-curl -H "Content-type: application/json" -H "Accept: application/json" http://localhost:3000/authenticate -d '{"username": "admin", "password": "password1234"}'
+curl -H "Content-type: application/json" -H "Accept: application/json" http://localhost:4000/authenticate -d '{"username": "admin", "password": "password1234"}'
 ```
 
 You'll receive a message like this:
@@ -157,7 +160,7 @@ Grab the value of `auth_token`. This is what you'll pass to subsequent requests,
 Let's create a simple job that just echos "Hello World" to STDOUT
 
 ```bash
-curl -X POST -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1ODc2NjI5ODJ9.EUt2SHLC7-sg3Sn_5ciTNYL4hj0kh8CpLP2Fl_EMiDk" -H "Content-type: application/json" -H "Accept: application/json" http://localhost:3000/job_api -d '{"name": "My First Job", "command": "echo Hello World", "cron": "* * * * *"}'
+curl -X POST -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1ODc2NjI5ODJ9.EUt2SHLC7-sg3Sn_5ciTNYL4hj0kh8CpLP2Fl_EMiDk" -H "Content-type: application/json" -H "Accept: application/json" http://localhost:4000/job_api -d '{"name": "My First Job", "command": "echo Hello World", "cron": "* * * * *"}'
 ```
 
 ```json
@@ -167,7 +170,7 @@ curl -X POST -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE
 The `cron` expression says to run this every minute. After a minute or so, let's see how it's doing. You'll need to make sure to specify the same job id that you received back. It will most likely be different from this example:
 
 ```bash
-curl -X GET -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1ODc2NjI5ODJ9.EUt2SHLC7-sg3Sn_5ciTNYL4hj0kh8CpLP2Fl_EMiDk" -H "Content-type: application/json" -H "Accept: application/json" http://localhost:3000/job_api/27/runs
+curl -X GET -H "Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1ODc2NjI5ODJ9.EUt2SHLC7-sg3Sn_5ciTNYL4hj0kh8CpLP2Fl_EMiDk" -H "Content-type: application/json" -H "Accept: application/json" http://localhost:4000/job_api/27/runs
 ```
 
 ```json
