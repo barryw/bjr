@@ -30,9 +30,13 @@ class ShellJob < ApplicationJob
 
   def write_command(job)
     file = Tempfile.new("job#{job.id}")
-    file.puts '#!/bin/bash'
-    file.puts
-    file.puts "# Shell script for job #{job.id}"
+
+    if !job.command.start_with? "#!"
+      file.puts '#!/bin/bash'
+      file.puts
+      file.puts "# Shell script for job #{job.id}"
+    end
+
     file.puts job.command
     file.close
 

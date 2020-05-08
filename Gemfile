@@ -44,6 +44,7 @@ group :development, :test do
   gem 'rswag-specs'
   gem 'rubocop-rails'
   gem 'simplecov'
+  gem 'dotenv-rails'
 end
 
 group :test do

@@ -31,7 +31,6 @@ describe 'Job Server API' do
 
         run_test! do |response|
           json = JSON.parse(response.body)
-          puts json
 
           expect(json['is_error']).to be false
           expect(json['object_type']).to eq('jobstats')
@@ -77,7 +76,6 @@ describe 'Job Server API' do
 
         run_test! do |response|
           json = JSON.parse(response.body)
-          puts json
 
           expect(json['is_error']).to be false
           expect(json['object_type']).to eq('jobstats')

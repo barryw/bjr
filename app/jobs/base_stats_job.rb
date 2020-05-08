@@ -63,8 +63,6 @@ class BaseStatsJob < ApplicationJob
       1.day
     when :week
       1.week
-    else
-      raise "#{period} is not an acceptable period"
     end
 
     incr
@@ -80,8 +78,6 @@ class BaseStatsJob < ApplicationJob
       process_start_dt.change(hour: 0)
     when :week
       process_start_dt
-    else
-      raise "#{period} is not an acceptable period"
     end
 
     current_dt

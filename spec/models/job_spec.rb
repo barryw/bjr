@@ -29,6 +29,17 @@ RSpec.describe Job, type: :model do
     expect(run.stderr).to eq('stderr')
   end
 
+  it 'gracefully handles an error when marking a job as complete' do
+    admin = create(:admin1)
+    job = create(:job1, user: admin)
+    run = create(:successful_job_run, job: job, start_time: Time.current)
+    expect(run).to receive(:update_run).with(0, true, 'error message', 'stdout', 'stderr').and_raise(StandardError)
+    job.stop_job(run, 0, true, 'error message', 'stdout', 'stderr')
+    expect(job.success).to be false
+    expect(job.running).to be false
+    expect(job.last_run).not_to be nil
+  end
+
   it "returns a list of upcoming jobs" do
     admin = create(:admin1)
     job1 = create(:job1, name: 'job 1', user: admin, cron: "* * * * *")
