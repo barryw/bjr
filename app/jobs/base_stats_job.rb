@@ -8,19 +8,27 @@ class BaseStatsJob < ApplicationJob
       logger.debug "Processing #{period}ly job stats for user #{user.username}"
       logger.debug("No job runs for user #{user.username}. Continuing.") && next unless user_has_job_runs(user)
 
-      process_start_dt = start_processing_date(user, period) + 1.second
-      time_incr = time_increment(period)
-      end_dt = end_date(period)
-
-      stat_start_dt = processing_dates(process_start_dt, period)
-
-      while stat_start_dt < end_dt
-        stat_end_dt = stat_start_dt + time_incr - 1.second
-        generate_row(user, stat_start_dt, stat_end_dt, period)
-        stat_start_dt += time_incr
-      end
+      stat_start_dt, time_incr, end_dt = date_ranges(user, period)
+      iterate_over_ranges(user, period, stat_start_dt, time_incr, end_dt)
 
       logger.debug "Finished stats run for user #{user.username}"
+    end
+  end
+
+  def date_ranges(user, period)
+    process_start_dt = start_processing_date(user, period) + 1.second
+    stat_start_dt = processing_dates(process_start_dt, period)
+    time_incr = time_increment(period)
+    end_dt = end_date(period)
+
+    [stat_start_dt, time_incr, end_dt]
+  end
+
+  def iterate_over_ranges(user, period, stat_start_dt, time_incr, end_dt)
+    while stat_start_dt < end_dt
+      stat_end_dt = stat_start_dt + time_incr - 1.second
+      generate_row(user, stat_start_dt, stat_end_dt, period)
+      stat_start_dt += time_incr
     end
   end
 
