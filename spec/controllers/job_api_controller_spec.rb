@@ -376,6 +376,14 @@ RSpec.describe JobApiController, type: :controller do
       delete :destroy, params: { 'id': job.id }
       expect(response).to have_http_status(:success)
     end
+
+    it 'cannot delete a running job' do
+      user = create(:admin1)
+      job = create(:job1, user: user, running: true)
+      authenticated_header(user)
+      delete :destroy, params: { 'id': job.id }
+      expect(response).to have_http_status(:conflict)
+    end
   end
 
   describe 'GET #occurrences' do

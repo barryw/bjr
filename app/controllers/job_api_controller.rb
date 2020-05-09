@@ -60,6 +60,7 @@ class JobApiController < ApplicationController
   end
 
   def destroy
+    error I18n.t('jobs.errors.cant_delete_running', id: @job.id), :conflict and return if @job.running?
     @job.destroy
     message I18n.t('jobs.messages.deleted', id: @job.id), :ok
   end

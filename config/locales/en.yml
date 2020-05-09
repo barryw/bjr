@@ -27,7 +27,7 @@ en:
       update_failed: "Failed to update job '%{id}': %{error}"
       already_exists: A job with this name already exists.
       end_date_required: You must supply an end date parameter.
-      concurrency_violation: This job was updated by another process. Re-fetch the job and try your update again.
+      cant_delete_running: "Job '%{id}' cannot be deleted because it's running. Try disabling it first."
   users:
     messages:
       received: User(s) received successfully.
