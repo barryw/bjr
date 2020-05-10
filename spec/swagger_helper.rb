@@ -24,6 +24,35 @@ RSpec.configure do |config|
       },
       components: {
         schemas: {
+          TodaysStats: {
+            type: :object,
+            properties: {
+              total_jobs: { type: :integer, description: 'The total number of jobs that are scheduled.' },
+              total_jobs_trend: { type: :number, format: 'float', description: 'The trend direction of total_jobs.' },
+              enabled_jobs: { type: :integer, description: 'The total number of jobs that are enabled. This will be a subset of total_jobs.' },
+              enabled_jobs_trend: { type: :number, format: 'float', description: 'The trend direction of enabled_jobs.' },
+              run_jobs: { type: :integer, description: 'The number of jobs that have been run today.' },
+              run_jobs_trend: { type: :number, format: 'float', description: 'The trend direction of run_jobs.' },
+              failed_jobs: { type: :integer, description: 'The number of jobs that have failed today.' },
+              failed_jobs_trend: { type: :number, format: 'float', description: 'The trend direction of failed_jobs.' },
+              avg_job_runtime: { type: :number, format: 'float', description: 'The average job run time.' },
+              avg_job_runtime_trend: { type: :number, format: 'float', description: 'The trend direction of avg_job_runtime.' },
+              max_job_runtime: { type: :number, format: 'float', description: 'The max job run time.' },
+              max_job_runtime_trend: { type: :number, format: 'float', description: 'The trend direction of max_job_runtime.' },
+              min_job_runtime: { type: :number, format: 'float', description: 'The min job run time.' },
+              min_job_runtime_trend: { type: :number, format: 'float', description: 'The trend direction of min_job_runtime.' }
+            }
+          },
+          TodaysStatsMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/TodaysStats' }
+            }
+          },
           JobStat: {
             type: :object,
             properties: {

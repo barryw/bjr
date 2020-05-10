@@ -162,6 +162,27 @@ namespace BJR.Api
         /// <returns>ApiResponse of JobStatMessage</returns>
         ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
         /// <summary>
+        /// Todays Stats
+        /// </summary>
+        /// <remarks>
+        /// Get the high level job statistics for today
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timezone"> (optional)</param>
+        /// <returns>TodaysStatsMessage</returns>
+        TodaysStatsMessage TodaysStats (string timezone = default(string));
+
+        /// <summary>
+        /// Todays Stats
+        /// </summary>
+        /// <remarks>
+        /// Get the high level job statistics for today
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timezone"> (optional)</param>
+        /// <returns>ApiResponse of TodaysStatsMessage</returns>
+        ApiResponse<TodaysStatsMessage> TodaysStatsWithHttpInfo (string timezone = default(string));
+        /// <summary>
         /// List of upcoming jobs
         /// </summary>
         /// <remarks>
@@ -321,6 +342,27 @@ namespace BJR.Api
         /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
         System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        /// <summary>
+        /// Todays Stats
+        /// </summary>
+        /// <remarks>
+        /// Get the high level job statistics for today
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timezone"> (optional)</param>
+        /// <returns>Task of TodaysStatsMessage</returns>
+        System.Threading.Tasks.Task<TodaysStatsMessage> TodaysStatsAsync (string timezone = default(string));
+
+        /// <summary>
+        /// Todays Stats
+        /// </summary>
+        /// <remarks>
+        /// Get the high level job statistics for today
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timezone"> (optional)</param>
+        /// <returns>Task of ApiResponse (TodaysStatsMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TodaysStatsMessage>> TodaysStatsAsyncWithHttpInfo (string timezone = default(string));
         /// <summary>
         /// List of upcoming jobs
         /// </summary>
@@ -1242,6 +1284,145 @@ namespace BJR.Api
             return new ApiResponse<JobStatMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (JobStatMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(JobStatMessage)));
+        }
+
+        /// <summary>
+        /// Todays Stats Get the high level job statistics for today
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timezone"> (optional)</param>
+        /// <returns>TodaysStatsMessage</returns>
+        public TodaysStatsMessage TodaysStats (string timezone = default(string))
+        {
+             ApiResponse<TodaysStatsMessage> localVarResponse = TodaysStatsWithHttpInfo(timezone);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Todays Stats Get the high level job statistics for today
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timezone"> (optional)</param>
+        /// <returns>ApiResponse of TodaysStatsMessage</returns>
+        public ApiResponse<TodaysStatsMessage> TodaysStatsWithHttpInfo (string timezone = default(string))
+        {
+
+            var localVarPath = "/job_server_api/todays_stats";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
+
+            // authentication (bearerAuth) required
+            // http beerer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TodaysStats", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TodaysStatsMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (TodaysStatsMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TodaysStatsMessage)));
+        }
+
+        /// <summary>
+        /// Todays Stats Get the high level job statistics for today
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timezone"> (optional)</param>
+        /// <returns>Task of TodaysStatsMessage</returns>
+        public async System.Threading.Tasks.Task<TodaysStatsMessage> TodaysStatsAsync (string timezone = default(string))
+        {
+             ApiResponse<TodaysStatsMessage> localVarResponse = await TodaysStatsAsyncWithHttpInfo(timezone);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Todays Stats Get the high level job statistics for today
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="timezone"> (optional)</param>
+        /// <returns>Task of ApiResponse (TodaysStatsMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TodaysStatsMessage>> TodaysStatsAsyncWithHttpInfo (string timezone = default(string))
+        {
+
+            var localVarPath = "/job_server_api/todays_stats";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
+
+            // authentication (bearerAuth) required
+            // http bearer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TodaysStats", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TodaysStatsMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (TodaysStatsMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TodaysStatsMessage)));
         }
 
         /// <summary>

@@ -15,11 +15,12 @@
 import ApiClient from "../ApiClient";
 import JobArrayMessage from '../io.barrywalker.bjr.model/JobArrayMessage';
 import JobStatMessage from '../io.barrywalker.bjr.model/JobStatMessage';
+import TodaysStatsMessage from '../io.barrywalker.bjr.model/TodaysStatsMessage';
 
 /**
 * JobServer service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi
-* @version 1.3.5
+* @version 1.3.6
 */
 export default class JobServerApi {
 
@@ -267,6 +268,47 @@ export default class JobServerApi {
       let returnType = JobStatMessage;
       return this.apiClient.callApi(
         '/job_server_api/weekly_job_stats', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the todaysStats operation.
+     * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~todaysStatsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/TodaysStatsMessage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Todays Stats
+     * Get the high level job statistics for today
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.timezone 
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~todaysStatsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/TodaysStatsMessage}
+     */
+    todaysStats(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'timezone': opts['timezone']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = TodaysStatsMessage;
+      return this.apiClient.callApi(
+        '/job_server_api/todays_stats', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

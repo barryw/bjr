@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**stats_by_hour**](JobServerApi.md#stats_by_hour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
 [**stats_by_minute**](JobServerApi.md#stats_by_minute) | **GET** /job_server_api/minutely_job_stats | Job statistics by minute
 [**stats_by_week**](JobServerApi.md#stats_by_week) | **GET** /job_server_api/weekly_job_stats | Job statistics by week
+[**todays_stats**](JobServerApi.md#todays_stats) | **GET** /job_server_api/todays_stats | Todays Stats
 [**upcoming_jobs**](JobServerApi.md#upcoming_jobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 
 
@@ -304,6 +305,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobStatMessage**](JobStatMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## todays_stats
+
+> TodaysStatsMessage todays_stats(opts)
+
+Todays Stats
+
+Get the high level job statistics for today
+
+### Example
+
+```ruby
+# load the gem
+require 'bjr4r'
+# setup authorization
+BJR.configure do |config|
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = BJR::JobServerApi.new
+opts = {
+  timezone: 'timezone_example' # String | 
+}
+
+begin
+  #Todays Stats
+  result = api_instance.todays_stats(opts)
+  p result
+rescue BJR::ApiError => e
+  puts "Exception when calling JobServerApi->todays_stats: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **timezone** | **String**|  | [optional] 
+
+### Return type
+
+[**TodaysStatsMessage**](TodaysStatsMessage.md)
 
 ### Authorization
 

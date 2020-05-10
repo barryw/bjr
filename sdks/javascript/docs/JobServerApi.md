@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**statsByHour**](JobServerApi.md#statsByHour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
 [**statsByMinute**](JobServerApi.md#statsByMinute) | **GET** /job_server_api/minutely_job_stats | Job statistics by minute
 [**statsByWeek**](JobServerApi.md#statsByWeek) | **GET** /job_server_api/weekly_job_stats | Job statistics by week
+[**todaysStats**](JobServerApi.md#todaysStats) | **GET** /job_server_api/todays_stats | Todays Stats
 [**upcomingJobs**](JobServerApi.md#upcomingJobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 
 
@@ -289,6 +290,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobStatMessage**](JobStatMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## todaysStats
+
+> TodaysStatsMessage todaysStats(opts)
+
+Todays Stats
+
+Get the high level job statistics for today
+
+### Example
+
+```javascript
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new Bjr4js.JobServerApi();
+let opts = {
+  'timezone': "timezone_example" // String | 
+};
+apiInstance.todaysStats(opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **timezone** | **String**|  | [optional] 
+
+### Return type
+
+[**TodaysStatsMessage**](TodaysStatsMessage.md)
 
 ### Authorization
 

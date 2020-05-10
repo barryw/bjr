@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get '/job_server_api/recent_jobs', to: 'job_server_api#recent_jobs', as: 'recent_jobs'
   get '/job_server_api/upcoming_jobs', to: 'job_server_api#upcoming_jobs', as: 'upcoming_jobs'
 
+  get '/job_server_api/todays_stats', to: 'job_server_api#todays_stats', as: 'todays_stats'
+
   # Swagger UI
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'

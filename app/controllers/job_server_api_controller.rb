@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'sidekiq/api'
+require 'trends'
 
 #
 # Handles requests for information about the job servers themselves
@@ -57,6 +58,14 @@ class JobServerApiController < ApplicationController
   def upcoming_jobs
     jobs = Job.upcoming(current_user, @count)
     message I18n.t('jobserver.messages.upcoming_jobs.received'), :ok, false, jobs, 'jobs'
+  end
+
+  #
+  # Return high-level stats for today
+  #
+  def todays_stats
+    stats = JobStat.todays_stats(current_user)
+    message I18n.t('jobserver.messages.todays_stats.received'), :ok, false, stats, 'todaysstats'
   end
 
   private

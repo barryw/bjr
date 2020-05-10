@@ -108,6 +108,18 @@ describe 'JobServerApi' do
     end
   end
 
+  # unit tests for todays_stats
+  # Todays Stats
+  # Get the high level job statistics for today
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :timezone 
+  # @return [TodaysStatsMessage]
+  describe 'todays_stats test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for upcoming_jobs
   # List of upcoming jobs
   # A list of jobs that are about to execute

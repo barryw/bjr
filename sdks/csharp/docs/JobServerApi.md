@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**StatsByHour**](JobServerApi.md#statsbyhour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
 [**StatsByMinute**](JobServerApi.md#statsbyminute) | **GET** /job_server_api/minutely_job_stats | Job statistics by minute
 [**StatsByWeek**](JobServerApi.md#statsbyweek) | **GET** /job_server_api/weekly_job_stats | Job statistics by week
+[**TodaysStats**](JobServerApi.md#todaysstats) | **GET** /job_server_api/todays_stats | Todays Stats
 [**UpcomingJobs**](JobServerApi.md#upcomingjobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 
 
@@ -429,6 +430,84 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Weekly stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TodaysStats
+
+> TodaysStatsMessage TodaysStats (string timezone = null)
+
+Todays Stats
+
+Get the high level job statistics for today
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
+
+namespace Example
+{
+    public class TodaysStatsExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://localhost";
+            // Configure HTTP bearer authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new JobServerApi(Configuration.Default);
+            var timezone = timezone_example;  // string |  (optional) 
+
+            try
+            {
+                // Todays Stats
+                TodaysStatsMessage result = apiInstance.TodaysStats(timezone);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling JobServerApi.TodaysStats: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **timezone** | **string**|  | [optional] 
+
+### Return type
+
+[**TodaysStatsMessage**](TodaysStatsMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Get the high level job statistics for today |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

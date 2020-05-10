@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-05-10T12:39:27.924Z[GMT]
+  - Build date: 2020-05-10T17:15:34.471Z[GMT]
 
 API specification for the BJR job server.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>bjr4j</artifactId>
-  <version>1.3.5</version>
+  <version>1.3.6</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:bjr4j:1.3.5"
+compile "org.openapitools:bjr4j:1.3.6"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bjr4j-1.3.5.jar`
+* `target/bjr4j-1.3.6.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -113,6 +113,7 @@ Class | Method | HTTP request | Description
 *JobServerApi* | [**statsByHour**](docs/JobServerApi.md#statsByHour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
 *JobServerApi* | [**statsByMinute**](docs/JobServerApi.md#statsByMinute) | **GET** /job_server_api/minutely_job_stats | Job statistics by minute
 *JobServerApi* | [**statsByWeek**](docs/JobServerApi.md#statsByWeek) | **GET** /job_server_api/weekly_job_stats | Job statistics by week
+*JobServerApi* | [**todaysStats**](docs/JobServerApi.md#todaysStats) | **GET** /job_server_api/todays_stats | Todays Stats
 *JobServerApi* | [**upcomingJobs**](docs/JobServerApi.md#upcomingJobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 *JobsApi* | [**createJob**](docs/JobsApi.md#createJob) | **POST** /job_api | Creates a job
 *JobsApi* | [**deleteJob**](docs/JobsApi.md#deleteJob) | **DELETE** /job_api/{id} | Deletes a job
@@ -152,6 +153,8 @@ Class | Method | HTTP request | Description
  - [Tag](docs/Tag.md)
  - [TagMessage](docs/TagMessage.md)
  - [TimezoneMessage](docs/TimezoneMessage.md)
+ - [TodaysStats](docs/TodaysStats.md)
+ - [TodaysStatsMessage](docs/TodaysStatsMessage.md)
  - [UserArrayMessage](docs/UserArrayMessage.md)
  - [UserNewIn](docs/UserNewIn.md)
  - [UserUpdateIn](docs/UserUpdateIn.md)

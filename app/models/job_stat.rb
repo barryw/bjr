@@ -6,9 +6,42 @@ class JobStat < ApplicationRecord
   enum period: %i[minute hour day week]
 
   scope :mine, ->(user_id) { where(user_id: user_id) }
+  scope :minutely_today, ->(user_id) { mine(user_id).where(period: :minute, created_at: DateTime.now.midnight..DateTime.tomorrow.midnight - 1.second) }
 
   def self.max_processed_date(user, period)
     where(user_id: user.id, period: period).maximum(:end_dt)
+  end
+
+  def self.todays_stats(user)
+    stats = JobStat.minutely_today(user)
+    total_jobs_array = stats.collect { |stat| stat.total_jobs }
+    enabled_jobs_array = stats.collect { |stat| stat.total_enabled }
+    run_jobs_array = stats.collect { |stat| stat.runs }
+    failed_jobs_array = stats.collect { |stat| stat.failed }
+    avg_runtime_array = stats.collect { |stat| stat.avg_runtime }
+    max_runtime_array = stats.collect { |stat| stat.max_runtime }
+    min_runtime_array = stats.collect { |stat| stat.min_runtime }
+
+    total_jobs = total_jobs_array[-1] || 0
+    enabled_jobs = enabled_jobs_array[-1] || 0
+    run_jobs = run_jobs_array.sum || 0
+    failed_jobs = failed_jobs_array.inject(0, :+)
+    avg_job_runtime = avg_runtime_array.size == 0 ? 0.0 : avg_runtime_array.inject(0, :+).to_f / avg_runtime_array.size
+    max_job_runtime = max_runtime_array.max || 0.0
+    min_job_runtime = min_runtime_array.min || 0.0
+
+    total_jobs_trend = total_jobs_array.size < 2 ? 0.0 : total_jobs_array.trend_line[:slope]
+    enabled_jobs_trend = enabled_jobs_array.size < 2 ? 0.0 : enabled_jobs_array.trend_line[:slope]
+    run_jobs_trend = run_jobs_array.size < 2 ? 0.0 : run_jobs_array.trend_line[:slope]
+    failed_jobs_trend = failed_jobs_array.size < 2 ? 0.0 : failed_jobs_array.trend_line[:slope]
+    avg_job_runtime_trend = avg_runtime_array.size < 2 ? 0.0 : avg_runtime_array.trend_line[:slope]
+    max_job_runtime_trend = max_runtime_array.size < 2 ? 0.0 : max_runtime_array.trend_line[:slope]
+    min_job_runtime_trend = min_runtime_array.size < 2 ? 0.0 : min_runtime_array.trend_line[:slope]
+
+    { total_jobs: total_jobs, enabled_jobs: enabled_jobs, total_jobs_trend: total_jobs_trend.to_f, enabled_jobs_trend: enabled_jobs_trend.to_f,
+      run_jobs: run_jobs, run_jobs_trend: run_jobs_trend, failed_jobs: failed_jobs, failed_jobs_trend: failed_jobs_trend.to_f,
+      avg_job_runtime: avg_job_runtime.to_f, avg_job_runtime_trend: avg_job_runtime_trend.to_f, max_job_runtime: max_job_runtime.to_f,
+      max_job_runtime_trend: max_job_runtime_trend.to_f, min_job_runtime: min_job_runtime.to_f, min_job_runtime_trend: min_job_runtime_trend.to_f }
   end
 
   def as_json(_options = {})

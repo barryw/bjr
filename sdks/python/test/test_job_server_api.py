@@ -63,6 +63,13 @@ class TestJobServerApi(unittest.TestCase):
         """
         pass
 
+    def test_todays_stats(self):
+        """Test case for todays_stats
+
+        Todays Stats  # noqa: E501
+        """
+        pass
+
     def test_upcoming_jobs(self):
         """Test case for upcoming_jobs
 

@@ -98,6 +98,16 @@
         done();
       });
     });
+    describe('todaysStats', function() {
+      it('should call todaysStats successfully', function(done) {
+        //uncomment below and update the code to test todaysStats
+        //instance.todaysStats(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('upcomingJobs', function() {
       it('should call upcomingJobs successfully', function(done) {
         //uncomment below and update the code to test upcomingJobs

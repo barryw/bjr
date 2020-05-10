@@ -432,6 +432,31 @@ paths:
       - Jobs
       x-contentType: application/json
       x-accepts: application/json
+  /job_server_api/todays_stats:
+    get:
+      description: Get the high level job statistics for today
+      operationId: todaysStats
+      parameters:
+      - explode: true
+        in: query
+        name: timezone
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodaysStatsMessage'
+          description: Get the high level job statistics for today
+      security:
+      - bearerAuth: []
+      summary: Todays Stats
+      tags:
+      - JobServer
+      x-accepts: application/json
   /job_server_api/minutely_job_stats:
     get:
       description: Get minutely job statistics
@@ -1025,6 +1050,114 @@ paths:
       x-accepts: application/json
 components:
   schemas:
+    TodaysStats:
+      example:
+        total_jobs: 6
+        avg_job_runtime: 2.027123
+        run_jobs: 2
+        run_jobs_trend: 7.0614014
+        min_job_runtime_trend: 1.4894159
+        enabled_jobs_trend: 5.637377
+        max_job_runtime: 7.386282
+        enabled_jobs: 5
+        failed_jobs: 9
+        min_job_runtime: 1.0246457
+        total_jobs_trend: 1.4658129
+        failed_jobs_trend: 3.6160767
+        avg_job_runtime_trend: 4.145608
+        max_job_runtime_trend: 1.2315135
+      properties:
+        total_jobs:
+          description: The total number of jobs that are scheduled.
+          type: integer
+        total_jobs_trend:
+          description: The trend direction of total_jobs.
+          format: float
+          type: number
+        enabled_jobs:
+          description: The total number of jobs that are enabled. This will be a subset
+            of total_jobs.
+          type: integer
+        enabled_jobs_trend:
+          description: The trend direction of enabled_jobs.
+          format: float
+          type: number
+        run_jobs:
+          description: The number of jobs that have been run today.
+          type: integer
+        run_jobs_trend:
+          description: The trend direction of run_jobs.
+          format: float
+          type: number
+        failed_jobs:
+          description: The number of jobs that have failed today.
+          type: integer
+        failed_jobs_trend:
+          description: The trend direction of failed_jobs.
+          format: float
+          type: number
+        avg_job_runtime:
+          description: The average job run time.
+          format: float
+          type: number
+        avg_job_runtime_trend:
+          description: The trend direction of avg_job_runtime.
+          format: float
+          type: number
+        max_job_runtime:
+          description: The max job run time.
+          format: float
+          type: number
+        max_job_runtime_trend:
+          description: The trend direction of max_job_runtime.
+          format: float
+          type: number
+        min_job_runtime:
+          description: The min job run time.
+          format: float
+          type: number
+        min_job_runtime_trend:
+          description: The trend direction of min_job_runtime.
+          format: float
+          type: number
+      type: object
+    TodaysStatsMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+          total_jobs: 6
+          avg_job_runtime: 2.027123
+          run_jobs: 2
+          run_jobs_trend: 7.0614014
+          min_job_runtime_trend: 1.4894159
+          enabled_jobs_trend: 5.637377
+          max_job_runtime: 7.386282
+          enabled_jobs: 5
+          failed_jobs: 9
+          min_job_runtime: 1.0246457
+          total_jobs_trend: 1.4658129
+          failed_jobs_trend: 3.6160767
+          avg_job_runtime_trend: 4.145608
+          max_job_runtime_trend: 1.2315135
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          $ref: '#/components/schemas/TodaysStats'
+      type: object
     JobStat:
       example:
         avg_runtime: 5.637377

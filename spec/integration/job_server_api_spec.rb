@@ -3,6 +3,50 @@
 require 'swagger_helper'
 
 describe 'Job Server API' do
+  path '/job_server_api/todays_stats' do
+    get 'Todays Stats' do
+      description 'Get the high level job statistics for today'
+      tags 'JobServer'
+      operationId 'todaysStats'
+      security [bearerAuth: []]
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :timezone, in: :query, type: :string, required: false
+
+      response '200', 'Get the high level job statistics for today' do
+        let(:admin) { create(:admin1) }
+        let(:Authorization) { auth_token(admin) }
+        schema '$ref' => '#/components/schemas/TodaysStatsMessage'
+
+        before do |request|
+          travel_to DateTime.now.midnight
+          create(:minutely_stat1, user: admin, start_dt: DateTime.now + 1.hour, end_dt: DateTime.now + 1.hours + 1.minute,
+                 total_jobs: 200, total_enabled: 190, job_count: 10, runs: 35, failed: 2, avg_runtime: 2.6, max_runtime: 3.2, min_runtime: 1.8)
+          create(:minutely_stat1, user: admin, start_dt: DateTime.now + 1.hour + 1.minute, end_dt: DateTime.now + 1.hour + 2.minutes,
+                 total_jobs: 210, total_enabled: 200, job_count: 20, runs: 70, failed: 2, avg_runtime: 3.8, max_runtime: 8.0, min_runtime: 2.0)
+          submit_request(request.metadata)
+        end
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json['object']['total_jobs']).to eq(210)
+          expect(json['object']['enabled_jobs']).to eq(200)
+          expect(json['object']['total_jobs_trend']).to eq(10.0)
+          expect(json['object']['enabled_jobs_trend']).to eq(10.0)
+          expect(json['object']['run_jobs']).to eq(105)
+          expect(json['object']['run_jobs_trend']).to eq(35.0)
+          expect(json['object']['failed_jobs']).to eq(4)
+          expect(json['object']['avg_job_runtime']).to eq(3.2)
+          expect(json['object']['avg_job_runtime_trend']).to eq(1.2)
+          expect(json['object']['max_job_runtime']).to eq(8.0)
+          expect(json['object']['max_job_runtime_trend']).to eq(4.8)
+          expect(json['object']['min_job_runtime']).to eq(1.8)
+          expect(json['object']['min_job_runtime_trend']).to eq(0.2)
+        end
+      end
+    end
+  end
+
   path '/job_server_api/minutely_job_stats' do
     get 'Job statistics by minute' do
       description 'Get minutely job statistics'

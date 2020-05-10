@@ -140,6 +140,18 @@ namespace BJR.Test
         }
         
         /// <summary>
+        /// Test TodaysStats
+        /// </summary>
+        [Test]
+        public void TodaysStatsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string timezone = null;
+            //var response = instance.TodaysStats(timezone);
+            //Assert.IsInstanceOf(typeof(TodaysStatsMessage), response, "response is TodaysStatsMessage");
+        }
+        
+        /// <summary>
         /// Test UpcomingJobs
         /// </summary>
         [Test]

@@ -2,6 +2,7 @@ en:
   common:
     errors:
       invalid_timezone: "Invalid timezone '%{timezone}' specified. Acceptable timezone list: %{timezone_list_url}"
+      server_error: "A server error has occurred. Use the error ID '%{errorid}' to track it down."
   tags:
     messages:
       received: Tags received successfully.
@@ -50,6 +51,8 @@ en:
       received: Version received successfully.
   jobserver:
     messages:
+      todays_stats:
+        received: Today's Stats received successfully.
       recent_jobs:
         received: Recently run jobs received successfully.
         failed: The 'count' parameter must be less than 20.

@@ -16,6 +16,7 @@ package io.barrywalker.bjr.api;
 import io.barrywalker.bjr.ApiException;
 import io.barrywalker.bjr.model.JobArrayMessage;
 import io.barrywalker.bjr.model.JobStatMessage;
+import io.barrywalker.bjr.model.TodaysStatsMessage;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -125,6 +126,22 @@ public class JobServerApiTest {
         Integer page = null;
         String timezone = null;
         JobStatMessage response = api.statsByWeek(startDate, endDate, perPage, page, timezone);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Todays Stats
+     *
+     * Get the high level job statistics for today
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void todaysStatsTest() throws ApiException {
+        String timezone = null;
+        TodaysStatsMessage response = api.todaysStats(timezone);
 
         // TODO: test validations
     }

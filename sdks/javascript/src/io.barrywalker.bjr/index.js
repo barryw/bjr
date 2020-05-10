@@ -31,6 +31,8 @@ import SingleUserMessage from './io.barrywalker.bjr.model/SingleUserMessage';
 import Tag from './io.barrywalker.bjr.model/Tag';
 import TagMessage from './io.barrywalker.bjr.model/TagMessage';
 import TimezoneMessage from './io.barrywalker.bjr.model/TimezoneMessage';
+import TodaysStats from './io.barrywalker.bjr.model/TodaysStats';
+import TodaysStatsMessage from './io.barrywalker.bjr.model/TodaysStatsMessage';
 import UserArrayMessage from './io.barrywalker.bjr.model/UserArrayMessage';
 import UserNewIn from './io.barrywalker.bjr.model/UserNewIn';
 import UserUpdateIn from './io.barrywalker.bjr.model/UserUpdateIn';
@@ -70,7 +72,7 @@ import UsersApi from './io.barrywalker.bjr.api/UsersApi';
 * </pre>
 * </p>
 * @module io.barrywalker.bjr/index
-* @version 1.3.5
+* @version 1.3.6
 */
 export {
     /**
@@ -186,6 +188,18 @@ export {
      * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/TimezoneMessage}
      */
     TimezoneMessage,
+
+    /**
+     * The TodaysStats model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/TodaysStats}
+     */
+    TodaysStats,
+
+    /**
+     * The TodaysStatsMessage model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/TodaysStatsMessage}
+     */
+    TodaysStatsMessage,
 
     /**
      * The UserArrayMessage model constructor.

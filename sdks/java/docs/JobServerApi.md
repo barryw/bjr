@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**statsByHour**](JobServerApi.md#statsByHour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
 [**statsByMinute**](JobServerApi.md#statsByMinute) | **GET** /job_server_api/minutely_job_stats | Job statistics by minute
 [**statsByWeek**](JobServerApi.md#statsByWeek) | **GET** /job_server_api/weekly_job_stats | Job statistics by week
+[**todaysStats**](JobServerApi.md#todaysStats) | **GET** /job_server_api/todays_stats | Todays Stats
 [**upcomingJobs**](JobServerApi.md#upcomingJobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 
 
@@ -379,6 +380,73 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Weekly stats received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
+
+<a name="todaysStats"></a>
+# **todaysStats**
+> TodaysStatsMessage todaysStats(timezone)
+
+Todays Stats
+
+Get the high level job statistics for today
+
+### Example
+```java
+// Import classes:
+import io.barrywalker.bjr.ApiClient;
+import io.barrywalker.bjr.ApiException;
+import io.barrywalker.bjr.Configuration;
+import io.barrywalker.bjr.auth.*;
+import io.barrywalker.bjr.models.*;
+import io.barrywalker.bjr.api.JobServerApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
+
+    JobServerApi apiInstance = new JobServerApi(defaultClient);
+    String timezone = "timezone_example"; // String | 
+    try {
+      TodaysStatsMessage result = apiInstance.todaysStats(timezone);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling JobServerApi#todaysStats");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **timezone** | **String**|  | [optional]
+
+### Return type
+
+[**TodaysStatsMessage**](TodaysStatsMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Get the high level job statistics for today |  -  |
 
 <a name="upcomingJobs"></a>
 # **upcomingJobs**
