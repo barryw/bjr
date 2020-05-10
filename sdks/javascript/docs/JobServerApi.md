@@ -86,7 +86,8 @@ let opts = {
   'startDate': "startDate_example", // String | The start date from which to get daily metrics from
   'endDate': "endDate_example", // String | The end date from which to get daily metrics from
   'perPage': 56, // Number | 
-  'page': 56 // Number | 
+  'page': 56, // Number | 
+  'timezone': "timezone_example" // String | 
 };
 apiInstance.statsByDay(opts, (error, data, response) => {
   if (error) {
@@ -106,6 +107,7 @@ Name | Type | Description  | Notes
  **endDate** | **String**| The end date from which to get daily metrics from | [optional] 
  **perPage** | **Number**|  | [optional] 
  **page** | **Number**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -143,7 +145,8 @@ let opts = {
   'startDate': "startDate_example", // String | The start date from which to get hourly metrics from
   'endDate': "endDate_example", // String | The end date from which to get hourly metrics from
   'perPage': 56, // Number | 
-  'page': 56 // Number | 
+  'page': 56, // Number | 
+  'timezone': "timezone_example" // String | 
 };
 apiInstance.statsByHour(opts, (error, data, response) => {
   if (error) {
@@ -163,6 +166,7 @@ Name | Type | Description  | Notes
  **endDate** | **String**| The end date from which to get hourly metrics from | [optional] 
  **perPage** | **Number**|  | [optional] 
  **page** | **Number**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -200,7 +204,8 @@ let opts = {
   'startDate': "startDate_example", // String | The start date from which to get minutely metrics from
   'endDate': "endDate_example", // String | The end date from which to get minutely metrics from
   'perPage': 56, // Number | 
-  'page': 56 // Number | 
+  'page': 56, // Number | 
+  'timezone': "timezone_example" // String | 
 };
 apiInstance.statsByMinute(opts, (error, data, response) => {
   if (error) {
@@ -220,6 +225,7 @@ Name | Type | Description  | Notes
  **endDate** | **String**| The end date from which to get minutely metrics from | [optional] 
  **perPage** | **Number**|  | [optional] 
  **page** | **Number**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -257,7 +263,8 @@ let opts = {
   'startDate': "startDate_example", // String | The start date from which to get weekly metrics from
   'endDate': "endDate_example", // String | The end date from which to get weekly metrics from
   'perPage': 56, // Number | 
-  'page': 56 // Number | 
+  'page': 56, // Number | 
+  'timezone': "timezone_example" // String | 
 };
 apiInstance.statsByWeek(opts, (error, data, response) => {
   if (error) {
@@ -277,6 +284,7 @@ Name | Type | Description  | Notes
  **endDate** | **String**| The end date from which to get weekly metrics from | [optional] 
  **perPage** | **Number**|  | [optional] 
  **page** | **Number**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 

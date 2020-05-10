@@ -174,6 +174,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get daily metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -183,7 +184,7 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Daily stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call statsByDayCall(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call statsByDayCall(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -207,6 +208,10 @@ public class JobServerApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        if (timezone != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timezone", timezone));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -229,10 +234,10 @@ public class JobServerApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call statsByDayValidateBeforeCall(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call statsByDayValidateBeforeCall(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = statsByDayCall(startDate, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = statsByDayCall(startDate, endDate, perPage, page, timezone, _callback);
         return localVarCall;
 
     }
@@ -244,6 +249,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get daily metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @return JobStatMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -252,8 +258,8 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Daily stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public JobStatMessage statsByDay(String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        ApiResponse<JobStatMessage> localVarResp = statsByDayWithHttpInfo(startDate, endDate, perPage, page);
+    public JobStatMessage statsByDay(String startDate, String endDate, Integer perPage, Integer page, String timezone) throws ApiException {
+        ApiResponse<JobStatMessage> localVarResp = statsByDayWithHttpInfo(startDate, endDate, perPage, page, timezone);
         return localVarResp.getData();
     }
 
@@ -264,6 +270,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get daily metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @return ApiResponse&lt;JobStatMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -272,8 +279,8 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Daily stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<JobStatMessage> statsByDayWithHttpInfo(String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        okhttp3.Call localVarCall = statsByDayValidateBeforeCall(startDate, endDate, perPage, page, null);
+    public ApiResponse<JobStatMessage> statsByDayWithHttpInfo(String startDate, String endDate, Integer perPage, Integer page, String timezone) throws ApiException {
+        okhttp3.Call localVarCall = statsByDayValidateBeforeCall(startDate, endDate, perPage, page, timezone, null);
         Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -285,6 +292,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get daily metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -294,9 +302,9 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Daily stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call statsByDayAsync(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback<JobStatMessage> _callback) throws ApiException {
+    public okhttp3.Call statsByDayAsync(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback<JobStatMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = statsByDayValidateBeforeCall(startDate, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = statsByDayValidateBeforeCall(startDate, endDate, perPage, page, timezone, _callback);
         Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -307,6 +315,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get hourly metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -316,7 +325,7 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Hourly stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call statsByHourCall(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call statsByHourCall(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -340,6 +349,10 @@ public class JobServerApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        if (timezone != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timezone", timezone));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -362,10 +375,10 @@ public class JobServerApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call statsByHourValidateBeforeCall(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call statsByHourValidateBeforeCall(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = statsByHourCall(startDate, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = statsByHourCall(startDate, endDate, perPage, page, timezone, _callback);
         return localVarCall;
 
     }
@@ -377,6 +390,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get hourly metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @return JobStatMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -385,8 +399,8 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Hourly stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public JobStatMessage statsByHour(String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        ApiResponse<JobStatMessage> localVarResp = statsByHourWithHttpInfo(startDate, endDate, perPage, page);
+    public JobStatMessage statsByHour(String startDate, String endDate, Integer perPage, Integer page, String timezone) throws ApiException {
+        ApiResponse<JobStatMessage> localVarResp = statsByHourWithHttpInfo(startDate, endDate, perPage, page, timezone);
         return localVarResp.getData();
     }
 
@@ -397,6 +411,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get hourly metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @return ApiResponse&lt;JobStatMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -405,8 +420,8 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Hourly stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<JobStatMessage> statsByHourWithHttpInfo(String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        okhttp3.Call localVarCall = statsByHourValidateBeforeCall(startDate, endDate, perPage, page, null);
+    public ApiResponse<JobStatMessage> statsByHourWithHttpInfo(String startDate, String endDate, Integer perPage, Integer page, String timezone) throws ApiException {
+        okhttp3.Call localVarCall = statsByHourValidateBeforeCall(startDate, endDate, perPage, page, timezone, null);
         Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -418,6 +433,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get hourly metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -427,9 +443,9 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Hourly stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call statsByHourAsync(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback<JobStatMessage> _callback) throws ApiException {
+    public okhttp3.Call statsByHourAsync(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback<JobStatMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = statsByHourValidateBeforeCall(startDate, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = statsByHourValidateBeforeCall(startDate, endDate, perPage, page, timezone, _callback);
         Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -440,6 +456,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get minutely metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -449,7 +466,7 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call statsByMinuteCall(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call statsByMinuteCall(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -473,6 +490,10 @@ public class JobServerApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        if (timezone != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timezone", timezone));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -495,10 +516,10 @@ public class JobServerApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call statsByMinuteValidateBeforeCall(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call statsByMinuteValidateBeforeCall(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = statsByMinuteCall(startDate, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = statsByMinuteCall(startDate, endDate, perPage, page, timezone, _callback);
         return localVarCall;
 
     }
@@ -510,6 +531,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get minutely metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @return JobStatMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -518,8 +540,8 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public JobStatMessage statsByMinute(String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        ApiResponse<JobStatMessage> localVarResp = statsByMinuteWithHttpInfo(startDate, endDate, perPage, page);
+    public JobStatMessage statsByMinute(String startDate, String endDate, Integer perPage, Integer page, String timezone) throws ApiException {
+        ApiResponse<JobStatMessage> localVarResp = statsByMinuteWithHttpInfo(startDate, endDate, perPage, page, timezone);
         return localVarResp.getData();
     }
 
@@ -530,6 +552,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get minutely metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @return ApiResponse&lt;JobStatMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -538,8 +561,8 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<JobStatMessage> statsByMinuteWithHttpInfo(String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        okhttp3.Call localVarCall = statsByMinuteValidateBeforeCall(startDate, endDate, perPage, page, null);
+    public ApiResponse<JobStatMessage> statsByMinuteWithHttpInfo(String startDate, String endDate, Integer perPage, Integer page, String timezone) throws ApiException {
+        okhttp3.Call localVarCall = statsByMinuteValidateBeforeCall(startDate, endDate, perPage, page, timezone, null);
         Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -551,6 +574,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get minutely metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -560,9 +584,9 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Minutely stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call statsByMinuteAsync(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback<JobStatMessage> _callback) throws ApiException {
+    public okhttp3.Call statsByMinuteAsync(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback<JobStatMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = statsByMinuteValidateBeforeCall(startDate, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = statsByMinuteValidateBeforeCall(startDate, endDate, perPage, page, timezone, _callback);
         Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -573,6 +597,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get weekly metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -582,7 +607,7 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Weekly stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call statsByWeekCall(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call statsByWeekCall(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -606,6 +631,10 @@ public class JobServerApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        if (timezone != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timezone", timezone));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -628,10 +657,10 @@ public class JobServerApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call statsByWeekValidateBeforeCall(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call statsByWeekValidateBeforeCall(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = statsByWeekCall(startDate, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = statsByWeekCall(startDate, endDate, perPage, page, timezone, _callback);
         return localVarCall;
 
     }
@@ -643,6 +672,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get weekly metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @return JobStatMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -651,8 +681,8 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Weekly stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public JobStatMessage statsByWeek(String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        ApiResponse<JobStatMessage> localVarResp = statsByWeekWithHttpInfo(startDate, endDate, perPage, page);
+    public JobStatMessage statsByWeek(String startDate, String endDate, Integer perPage, Integer page, String timezone) throws ApiException {
+        ApiResponse<JobStatMessage> localVarResp = statsByWeekWithHttpInfo(startDate, endDate, perPage, page, timezone);
         return localVarResp.getData();
     }
 
@@ -663,6 +693,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get weekly metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @return ApiResponse&lt;JobStatMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -671,8 +702,8 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Weekly stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<JobStatMessage> statsByWeekWithHttpInfo(String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        okhttp3.Call localVarCall = statsByWeekValidateBeforeCall(startDate, endDate, perPage, page, null);
+    public ApiResponse<JobStatMessage> statsByWeekWithHttpInfo(String startDate, String endDate, Integer perPage, Integer page, String timezone) throws ApiException {
+        okhttp3.Call localVarCall = statsByWeekValidateBeforeCall(startDate, endDate, perPage, page, timezone, null);
         Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -684,6 +715,7 @@ public class JobServerApi {
      * @param endDate The end date from which to get weekly metrics from (optional)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -693,9 +725,9 @@ public class JobServerApi {
         <tr><td> 200 </td><td> Weekly stats received successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call statsByWeekAsync(String startDate, String endDate, Integer perPage, Integer page, final ApiCallback<JobStatMessage> _callback) throws ApiException {
+    public okhttp3.Call statsByWeekAsync(String startDate, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback<JobStatMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = statsByWeekValidateBeforeCall(startDate, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = statsByWeekValidateBeforeCall(startDate, endDate, perPage, page, timezone, _callback);
         Type localVarReturnType = new TypeToken<JobStatMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

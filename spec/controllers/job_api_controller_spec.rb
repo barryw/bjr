@@ -3,6 +3,24 @@
 require 'rails_helper'
 
 RSpec.describe JobApiController, type: :controller do
+  describe 'POST #run_now' do
+    it 'receives a 409 when trying to run a job that is already running' do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, user: user, running: true)
+      post :run_now, params: { id: job.id }
+      expect(response).to have_http_status(:conflict)
+    end
+
+    it 'receives a 200 when queuing a job to run now and it is not already running' do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, user: user)
+      post :run_now, params: { id: job.id }
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   describe 'POST #create' do
     it 'returns http failure' do
       post :create, params: { 'name': 'foo' }
@@ -32,6 +50,12 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(create(:admin1))
       post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST' }
       expect(response).to have_http_status(:success)
+    end
+
+    it 'fails properly on bad timezones' do
+      authenticated_header(create(:admin1))
+      post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EDT' }
+      expect(response).to have_http_status(:bad_request)
     end
 
     it 'returns http success and tags a job' do
@@ -104,7 +128,7 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       job = create(:job1, user: user)
       allow_any_instance_of(Job).to receive(:save!).and_raise('The database is misbehaving.')
-      put :update, params: { id: job.id, 'name': 'I will fail', 'cron': '0 * * * *', command: 'ps ax', timezone: 'EDT' }
+      put :update, params: { id: job.id, 'name': 'I will fail', 'cron': '0 * * * *', command: 'ps ax', timezone: 'UTC' }
       expect(response).to have_http_status(:conflict)
       json = JSON.parse(response.body)
       expect(json['status_code']).to eq(409)
@@ -455,12 +479,13 @@ RSpec.describe JobApiController, type: :controller do
     it 'returns http success while trying to get runs that started after a date and finished before a date' do
       user = create(:admin1)
       job = create(:job1, user: user)
-      create(:successful_job_run, job: job, start_time: Time.current - 3.hours, end_time: Time.current - 2.hours)
-      create(:successful_job_run, job: job, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
+      jr1 = create(:successful_job_run, job: job, start_time: Time.current - 3.hours, end_time: Time.current - 2.hours)
+      jr2 = create(:successful_job_run, job: job, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       authenticated_header(user)
-      get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours }
+      get :runs, params: { 'id': job.id, 'start_date': Time.current - 4.hours, 'end_date': Time.current - 1.hours }
       json = JSON.parse(response.body)
       expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(jr1.id)
     end
 
     it 'returns http success while trying to get runs that succeeded' do
@@ -481,7 +506,7 @@ RSpec.describe JobApiController, type: :controller do
       create(:successful_job_run, job: job, success: true, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       run2 = create(:failed_job_run, job: job, success: false, start_time: Time.current - 2.hours, end_time: Time.current - 1.hours)
       authenticated_header(user)
-      get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current - 1.hours, 'succeeded': false }
+      get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current, 'succeeded': false }
       json = JSON.parse(response.body)
       expect(json['object'].length).to eq(1)
       expect(json['object'][0]['id']).to eq(run2.id)

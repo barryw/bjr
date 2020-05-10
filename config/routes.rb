@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # Job API
   resources :job_api
+  post '/job_api/:id/run_now', to: 'job_api#run_now', as: 'job_api_run_now'
   get '/job_api/:id/runs', to: 'job_api#runs', as: 'job_api_runs'
   get '/job_api/:id/occurrences/:end_date', to: 'job_api#occurrences', as: 'job_api_occurrences'
 

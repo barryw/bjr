@@ -83,17 +83,17 @@ module BJR
     # Deletes a job
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SingleJobMessage]
     def delete_job(id, opts = {})
-      delete_job_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = delete_job_with_http_info(id, opts)
+      data
     end
 
     # Deletes a job
     # Deletes a job
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SingleJobMessage, Integer, Hash)>] SingleJobMessage data, response status code and response headers
     def delete_job_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: JobsApi.delete_job ...'
@@ -110,6 +110,8 @@ module BJR
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -118,7 +120,7 @@ module BJR
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SingleJobMessage' 
 
       # auth_names
       auth_names = opts[:auth_names] || ['bearerAuth']
@@ -210,6 +212,7 @@ module BJR
     # @option opts [Boolean] :succeeded 
     # @option opts [String] :start_date 
     # @option opts [String] :end_date 
+    # @option opts [String] :timezone 
     # @return [JobRunArrayMessage]
     def get_job_runs(id, opts = {})
       data, _status_code, _headers = get_job_runs_with_http_info(id, opts)
@@ -225,6 +228,7 @@ module BJR
     # @option opts [Boolean] :succeeded 
     # @option opts [String] :start_date 
     # @option opts [String] :end_date 
+    # @option opts [String] :timezone 
     # @return [Array<(JobRunArrayMessage, Integer, Hash)>] JobRunArrayMessage data, response status code and response headers
     def get_job_runs_with_http_info(id, opts = {})
       if @api_client.config.debugging
@@ -244,6 +248,7 @@ module BJR
       query_params[:'succeeded'] = opts[:'succeeded'] if !opts[:'succeeded'].nil?
       query_params[:'start_date'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
+      query_params[:'timezone'] = opts[:'timezone'] if !opts[:'timezone'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -285,6 +290,7 @@ module BJR
     # @option opts [String] :incexc 
     # @option opts [String] :start_date Specify a start date to search jobs by.
     # @option opts [String] :end_date Specify an end date to search jobs by.
+    # @option opts [String] :timezone 
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
     # @return [JobArrayMessage]
@@ -300,6 +306,7 @@ module BJR
     # @option opts [String] :incexc 
     # @option opts [String] :start_date Specify a start date to search jobs by.
     # @option opts [String] :end_date Specify an end date to search jobs by.
+    # @option opts [String] :timezone 
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
     # @return [Array<(JobArrayMessage, Integer, Hash)>] JobArrayMessage data, response status code and response headers
@@ -320,6 +327,7 @@ module BJR
       query_params[:'incexc'] = opts[:'incexc'] if !opts[:'incexc'].nil?
       query_params[:'start_date'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
+      query_params[:'timezone'] = opts[:'timezone'] if !opts[:'timezone'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
 
@@ -363,6 +371,7 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
+    # @option opts [String] :timezone 
     # @return [OccurrenceMessage]
     def job_occurrences(id, end_date, opts = {})
       data, _status_code, _headers = job_occurrences_with_http_info(id, end_date, opts)
@@ -376,6 +385,7 @@ module BJR
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
+    # @option opts [String] :timezone 
     # @return [Array<(OccurrenceMessage, Integer, Hash)>] OccurrenceMessage data, response status code and response headers
     def job_occurrences_with_http_info(id, end_date, opts = {})
       if @api_client.config.debugging
@@ -396,6 +406,7 @@ module BJR
       query_params = opts[:query_params] || {}
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'timezone'] = opts[:'timezone'] if !opts[:'timezone'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -426,6 +437,66 @@ module BJR
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: JobsApi#job_occurrences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Run a job now
+    # Queues a job to run now
+    # @param id [Integer] The id of the job to execute now
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def run_job_now(id, opts = {})
+      run_job_now_with_http_info(id, opts)
+      nil
+    end
+
+    # Run a job now
+    # Queues a job to run now
+    # @param id [Integer] The id of the job to execute now
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def run_job_now_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: JobsApi.run_job_now ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling JobsApi.run_job_now"
+      end
+      # resource path
+      local_var_path = '/job_api/{id}/run_now'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] 
+
+      # auth_names
+      auth_names = opts[:auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: JobsApi#run_job_now\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

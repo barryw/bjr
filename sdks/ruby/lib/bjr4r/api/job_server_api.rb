@@ -85,6 +85,7 @@ module BJR
     # @option opts [String] :end_date The end date from which to get daily metrics from
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
+    # @option opts [String] :timezone 
     # @return [JobStatMessage]
     def stats_by_day(opts = {})
       data, _status_code, _headers = stats_by_day_with_http_info(opts)
@@ -98,6 +99,7 @@ module BJR
     # @option opts [String] :end_date The end date from which to get daily metrics from
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
+    # @option opts [String] :timezone 
     # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
     def stats_by_day_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -112,6 +114,7 @@ module BJR
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'timezone'] = opts[:'timezone'] if !opts[:'timezone'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -153,6 +156,7 @@ module BJR
     # @option opts [String] :end_date The end date from which to get hourly metrics from
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
+    # @option opts [String] :timezone 
     # @return [JobStatMessage]
     def stats_by_hour(opts = {})
       data, _status_code, _headers = stats_by_hour_with_http_info(opts)
@@ -166,6 +170,7 @@ module BJR
     # @option opts [String] :end_date The end date from which to get hourly metrics from
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
+    # @option opts [String] :timezone 
     # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
     def stats_by_hour_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -180,6 +185,7 @@ module BJR
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'timezone'] = opts[:'timezone'] if !opts[:'timezone'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -221,6 +227,7 @@ module BJR
     # @option opts [String] :end_date The end date from which to get minutely metrics from
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
+    # @option opts [String] :timezone 
     # @return [JobStatMessage]
     def stats_by_minute(opts = {})
       data, _status_code, _headers = stats_by_minute_with_http_info(opts)
@@ -234,6 +241,7 @@ module BJR
     # @option opts [String] :end_date The end date from which to get minutely metrics from
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
+    # @option opts [String] :timezone 
     # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
     def stats_by_minute_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -248,6 +256,7 @@ module BJR
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'timezone'] = opts[:'timezone'] if !opts[:'timezone'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -289,6 +298,7 @@ module BJR
     # @option opts [String] :end_date The end date from which to get weekly metrics from
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
+    # @option opts [String] :timezone 
     # @return [JobStatMessage]
     def stats_by_week(opts = {})
       data, _status_code, _headers = stats_by_week_with_http_info(opts)
@@ -302,6 +312,7 @@ module BJR
     # @option opts [String] :end_date The end date from which to get weekly metrics from
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
+    # @option opts [String] :timezone 
     # @return [Array<(JobStatMessage, Integer, Hash)>] JobStatMessage data, response status code and response headers
     def stats_by_week_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -316,6 +327,7 @@ module BJR
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'timezone'] = opts[:'timezone'] if !opts[:'timezone'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

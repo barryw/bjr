@@ -39,12 +39,14 @@ namespace BJR.Model
         /// <param name="avgRuntime">The average runtime in seconds of all jobs in the period..</param>
         /// <param name="maxRuntime">The max runtime in seconds of all jobs in the period..</param>
         /// <param name="minRuntime">The min runtime in seconds of all jobs in the period..</param>
+        /// <param name="totalJobs">The total number of jobs..</param>
+        /// <param name="totalEnabled">Of the total number of jobs, this is how many were enabled..</param>
         /// <param name="period">The runtime period..</param>
         /// <param name="startDt">The period start date..</param>
         /// <param name="endDt">The period end date..</param>
         /// <param name="createdAt">The date the record was created..</param>
         /// <param name="updatedAt">The date the record was last updated..</param>
-        public JobStat(int runs = default(int), int failed = default(int), int jobCount = default(int), float avgRuntime = default(float), float maxRuntime = default(float), float minRuntime = default(float), string period = default(string), DateTime startDt = default(DateTime), DateTime endDt = default(DateTime), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public JobStat(int runs = default(int), int failed = default(int), int jobCount = default(int), float avgRuntime = default(float), float maxRuntime = default(float), float minRuntime = default(float), int totalJobs = default(int), int totalEnabled = default(int), string period = default(string), DateTime startDt = default(DateTime), DateTime endDt = default(DateTime), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Runs = runs;
             this.Failed = failed;
@@ -52,6 +54,8 @@ namespace BJR.Model
             this.AvgRuntime = avgRuntime;
             this.MaxRuntime = maxRuntime;
             this.MinRuntime = minRuntime;
+            this.TotalJobs = totalJobs;
+            this.TotalEnabled = totalEnabled;
             this.Period = period;
             this.StartDt = startDt;
             this.EndDt = endDt;
@@ -102,6 +106,20 @@ namespace BJR.Model
         public float MinRuntime { get; set; }
 
         /// <summary>
+        /// The total number of jobs.
+        /// </summary>
+        /// <value>The total number of jobs.</value>
+        [DataMember(Name="total_jobs", EmitDefaultValue=false)]
+        public int TotalJobs { get; set; }
+
+        /// <summary>
+        /// Of the total number of jobs, this is how many were enabled.
+        /// </summary>
+        /// <value>Of the total number of jobs, this is how many were enabled.</value>
+        [DataMember(Name="total_enabled", EmitDefaultValue=false)]
+        public int TotalEnabled { get; set; }
+
+        /// <summary>
         /// The runtime period.
         /// </summary>
         /// <value>The runtime period.</value>
@@ -150,6 +168,8 @@ namespace BJR.Model
             sb.Append("  AvgRuntime: ").Append(AvgRuntime).Append("\n");
             sb.Append("  MaxRuntime: ").Append(MaxRuntime).Append("\n");
             sb.Append("  MinRuntime: ").Append(MinRuntime).Append("\n");
+            sb.Append("  TotalJobs: ").Append(TotalJobs).Append("\n");
+            sb.Append("  TotalEnabled: ").Append(TotalEnabled).Append("\n");
             sb.Append("  Period: ").Append(Period).Append("\n");
             sb.Append("  StartDt: ").Append(StartDt).Append("\n");
             sb.Append("  EndDt: ").Append(EndDt).Append("\n");
@@ -220,6 +240,16 @@ namespace BJR.Model
                     this.MinRuntime.Equals(input.MinRuntime))
                 ) && 
                 (
+                    this.TotalJobs == input.TotalJobs ||
+                    (this.TotalJobs != null &&
+                    this.TotalJobs.Equals(input.TotalJobs))
+                ) && 
+                (
+                    this.TotalEnabled == input.TotalEnabled ||
+                    (this.TotalEnabled != null &&
+                    this.TotalEnabled.Equals(input.TotalEnabled))
+                ) && 
+                (
                     this.Period == input.Period ||
                     (this.Period != null &&
                     this.Period.Equals(input.Period))
@@ -267,6 +297,10 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.MaxRuntime.GetHashCode();
                 if (this.MinRuntime != null)
                     hashCode = hashCode * 59 + this.MinRuntime.GetHashCode();
+                if (this.TotalJobs != null)
+                    hashCode = hashCode * 59 + this.TotalJobs.GetHashCode();
+                if (this.TotalEnabled != null)
+                    hashCode = hashCode * 59 + this.TotalEnabled.GetHashCode();
                 if (this.Period != null)
                     hashCode = hashCode * 59 + this.Period.GetHashCode();
                 if (this.StartDt != null)

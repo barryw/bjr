@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 <a name="statsByDay"></a>
 # **statsByDay**
-> JobStatMessage statsByDay(startDate, endDate, perPage, page)
+> JobStatMessage statsByDay(startDate, endDate, perPage, page, timezone)
 
 Job statistics by day
 
@@ -112,8 +112,9 @@ public class Example {
     String endDate = "endDate_example"; // String | The end date from which to get daily metrics from
     Integer perPage = 56; // Integer | 
     Integer page = 56; // Integer | 
+    String timezone = "timezone_example"; // String | 
     try {
-      JobStatMessage result = apiInstance.statsByDay(startDate, endDate, perPage, page);
+      JobStatMessage result = apiInstance.statsByDay(startDate, endDate, perPage, page, timezone);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobServerApi#statsByDay");
@@ -134,6 +135,7 @@ Name | Type | Description  | Notes
  **endDate** | **String**| The end date from which to get daily metrics from | [optional]
  **perPage** | **Integer**|  | [optional]
  **page** | **Integer**|  | [optional]
+ **timezone** | **String**|  | [optional]
 
 ### Return type
 
@@ -155,7 +157,7 @@ Name | Type | Description  | Notes
 
 <a name="statsByHour"></a>
 # **statsByHour**
-> JobStatMessage statsByHour(startDate, endDate, perPage, page)
+> JobStatMessage statsByHour(startDate, endDate, perPage, page, timezone)
 
 Job statistics by hour
 
@@ -185,8 +187,9 @@ public class Example {
     String endDate = "endDate_example"; // String | The end date from which to get hourly metrics from
     Integer perPage = 56; // Integer | 
     Integer page = 56; // Integer | 
+    String timezone = "timezone_example"; // String | 
     try {
-      JobStatMessage result = apiInstance.statsByHour(startDate, endDate, perPage, page);
+      JobStatMessage result = apiInstance.statsByHour(startDate, endDate, perPage, page, timezone);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobServerApi#statsByHour");
@@ -207,6 +210,7 @@ Name | Type | Description  | Notes
  **endDate** | **String**| The end date from which to get hourly metrics from | [optional]
  **perPage** | **Integer**|  | [optional]
  **page** | **Integer**|  | [optional]
+ **timezone** | **String**|  | [optional]
 
 ### Return type
 
@@ -228,7 +232,7 @@ Name | Type | Description  | Notes
 
 <a name="statsByMinute"></a>
 # **statsByMinute**
-> JobStatMessage statsByMinute(startDate, endDate, perPage, page)
+> JobStatMessage statsByMinute(startDate, endDate, perPage, page, timezone)
 
 Job statistics by minute
 
@@ -258,8 +262,9 @@ public class Example {
     String endDate = "endDate_example"; // String | The end date from which to get minutely metrics from
     Integer perPage = 56; // Integer | 
     Integer page = 56; // Integer | 
+    String timezone = "timezone_example"; // String | 
     try {
-      JobStatMessage result = apiInstance.statsByMinute(startDate, endDate, perPage, page);
+      JobStatMessage result = apiInstance.statsByMinute(startDate, endDate, perPage, page, timezone);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobServerApi#statsByMinute");
@@ -280,6 +285,7 @@ Name | Type | Description  | Notes
  **endDate** | **String**| The end date from which to get minutely metrics from | [optional]
  **perPage** | **Integer**|  | [optional]
  **page** | **Integer**|  | [optional]
+ **timezone** | **String**|  | [optional]
 
 ### Return type
 
@@ -301,7 +307,7 @@ Name | Type | Description  | Notes
 
 <a name="statsByWeek"></a>
 # **statsByWeek**
-> JobStatMessage statsByWeek(startDate, endDate, perPage, page)
+> JobStatMessage statsByWeek(startDate, endDate, perPage, page, timezone)
 
 Job statistics by week
 
@@ -331,8 +337,9 @@ public class Example {
     String endDate = "endDate_example"; // String | The end date from which to get weekly metrics from
     Integer perPage = 56; // Integer | 
     Integer page = 56; // Integer | 
+    String timezone = "timezone_example"; // String | 
     try {
-      JobStatMessage result = apiInstance.statsByWeek(startDate, endDate, perPage, page);
+      JobStatMessage result = apiInstance.statsByWeek(startDate, endDate, perPage, page, timezone);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobServerApi#statsByWeek");
@@ -353,6 +360,7 @@ Name | Type | Description  | Notes
  **endDate** | **String**| The end date from which to get weekly metrics from | [optional]
  **perPage** | **Integer**|  | [optional]
  **page** | **Integer**|  | [optional]
+ **timezone** | **String**|  | [optional]
 
 ### Return type
 

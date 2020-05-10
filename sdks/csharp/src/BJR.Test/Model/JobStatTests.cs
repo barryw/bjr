@@ -114,6 +114,22 @@ namespace BJR.Test
             // TODO unit test for the property 'MinRuntime'
         }
         /// <summary>
+        /// Test the property 'TotalJobs'
+        /// </summary>
+        [Test]
+        public void TotalJobsTest()
+        {
+            // TODO unit test for the property 'TotalJobs'
+        }
+        /// <summary>
+        /// Test the property 'TotalEnabled'
+        /// </summary>
+        [Test]
+        public void TotalEnabledTest()
+        {
+            // TODO unit test for the property 'TotalEnabled'
+        }
+        /// <summary>
         /// Test the property 'Period'
         /// </summary>
         [Test]

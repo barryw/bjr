@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * JobStat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-03T22:50:15.065Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-10T12:39:27.924Z[GMT]")
 public class JobStat {
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
@@ -53,6 +53,14 @@ public class JobStat {
   public static final String SERIALIZED_NAME_MIN_RUNTIME = "min_runtime";
   @SerializedName(SERIALIZED_NAME_MIN_RUNTIME)
   private Float minRuntime;
+
+  public static final String SERIALIZED_NAME_TOTAL_JOBS = "total_jobs";
+  @SerializedName(SERIALIZED_NAME_TOTAL_JOBS)
+  private Integer totalJobs;
+
+  public static final String SERIALIZED_NAME_TOTAL_ENABLED = "total_enabled";
+  @SerializedName(SERIALIZED_NAME_TOTAL_ENABLED)
+  private Integer totalEnabled;
 
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
@@ -213,6 +221,52 @@ public class JobStat {
   }
 
 
+  public JobStat totalJobs(Integer totalJobs) {
+    
+    this.totalJobs = totalJobs;
+    return this;
+  }
+
+   /**
+   * The total number of jobs.
+   * @return totalJobs
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The total number of jobs.")
+
+  public Integer getTotalJobs() {
+    return totalJobs;
+  }
+
+
+  public void setTotalJobs(Integer totalJobs) {
+    this.totalJobs = totalJobs;
+  }
+
+
+  public JobStat totalEnabled(Integer totalEnabled) {
+    
+    this.totalEnabled = totalEnabled;
+    return this;
+  }
+
+   /**
+   * Of the total number of jobs, this is how many were enabled.
+   * @return totalEnabled
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Of the total number of jobs, this is how many were enabled.")
+
+  public Integer getTotalEnabled() {
+    return totalEnabled;
+  }
+
+
+  public void setTotalEnabled(Integer totalEnabled) {
+    this.totalEnabled = totalEnabled;
+  }
+
+
   public JobStat period(String period) {
     
     this.period = period;
@@ -343,6 +397,8 @@ public class JobStat {
         Objects.equals(this.avgRuntime, jobStat.avgRuntime) &&
         Objects.equals(this.maxRuntime, jobStat.maxRuntime) &&
         Objects.equals(this.minRuntime, jobStat.minRuntime) &&
+        Objects.equals(this.totalJobs, jobStat.totalJobs) &&
+        Objects.equals(this.totalEnabled, jobStat.totalEnabled) &&
         Objects.equals(this.period, jobStat.period) &&
         Objects.equals(this.startDt, jobStat.startDt) &&
         Objects.equals(this.endDt, jobStat.endDt) &&
@@ -352,7 +408,7 @@ public class JobStat {
 
   @Override
   public int hashCode() {
-    return Objects.hash(runs, failed, jobCount, avgRuntime, maxRuntime, minRuntime, period, startDt, endDt, createdAt, updatedAt);
+    return Objects.hash(runs, failed, jobCount, avgRuntime, maxRuntime, minRuntime, totalJobs, totalEnabled, period, startDt, endDt, createdAt, updatedAt);
   }
 
 
@@ -366,6 +422,8 @@ public class JobStat {
     sb.append("    avgRuntime: ").append(toIndentedString(avgRuntime)).append("\n");
     sb.append("    maxRuntime: ").append(toIndentedString(maxRuntime)).append("\n");
     sb.append("    minRuntime: ").append(toIndentedString(minRuntime)).append("\n");
+    sb.append("    totalJobs: ").append(toIndentedString(totalJobs)).append("\n");
+    sb.append("    totalEnabled: ").append(toIndentedString(totalEnabled)).append("\n");
     sb.append("    period: ").append(toIndentedString(period)).append("\n");
     sb.append("    startDt: ").append(toIndentedString(startDt)).append("\n");
     sb.append("    endDt: ").append(toIndentedString(endDt)).append("\n");

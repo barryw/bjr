@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**getJobRuns**](JobsApi.md#getJobRuns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**getJobs**](JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
 [**jobOccurrences**](JobsApi.md#jobOccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
+[**runJobNow**](JobsApi.md#runJobNow) | **POST** /job_api/{id}/run_now | Run a job now
 [**updateJob**](JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
 
 
@@ -67,7 +68,7 @@ Name | Type | Description  | Notes
 
 ## deleteJob
 
-> deleteJob(id)
+> SingleJobMessage deleteJob(id)
 
 Deletes a job
 
@@ -88,7 +89,7 @@ apiInstance.deleteJob(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -102,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -111,7 +112,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## getJob
@@ -187,7 +188,8 @@ let opts = {
   'page': 56, // Number | 
   'succeeded': true, // Boolean | 
   'startDate': "startDate_example", // String | 
-  'endDate': "endDate_example" // String | 
+  'endDate': "endDate_example", // String | 
+  'timezone': "timezone_example" // String | 
 };
 apiInstance.getJobRuns(id, opts, (error, data, response) => {
   if (error) {
@@ -209,6 +211,7 @@ Name | Type | Description  | Notes
  **succeeded** | **Boolean**|  | [optional] 
  **startDate** | **String**|  | [optional] 
  **endDate** | **String**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -247,6 +250,7 @@ let opts = {
   'incexc': "incexc_example", // String | 
   'startDate': "startDate_example", // String | Specify a start date to search jobs by.
   'endDate': "endDate_example", // String | Specify an end date to search jobs by.
+  'timezone': "timezone_example", // String | 
   'perPage': 56, // Number | 
   'page': 56 // Number | 
 };
@@ -268,6 +272,7 @@ Name | Type | Description  | Notes
  **incexc** | **String**|  | [optional] 
  **startDate** | **String**| Specify a start date to search jobs by. | [optional] 
  **endDate** | **String**| Specify an end date to search jobs by. | [optional] 
+ **timezone** | **String**|  | [optional] 
  **perPage** | **Number**|  | [optional] 
  **page** | **Number**|  | [optional] 
 
@@ -307,7 +312,8 @@ let id = 56; // Number | The id of the job to retrieve occurrences for
 let endDate = "endDate_example"; // String | The date to retrieve occurrences up to
 let opts = {
   'perPage': 56, // Number | 
-  'page': 56 // Number | 
+  'page': 56, // Number | 
+  'timezone': "timezone_example" // String | 
 };
 apiInstance.jobOccurrences(id, endDate, opts, (error, data, response) => {
   if (error) {
@@ -327,6 +333,7 @@ Name | Type | Description  | Notes
  **endDate** | **String**| The date to retrieve occurrences up to | 
  **perPage** | **Number**|  | [optional] 
  **page** | **Number**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -340,6 +347,55 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+
+## runJobNow
+
+> runJobNow(id)
+
+Run a job now
+
+Queues a job to run now
+
+### Example
+
+```javascript
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new Bjr4js.JobsApi();
+let id = 56; // Number | The id of the job to execute now
+apiInstance.runJobNow(id, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Number**| The id of the job to execute now | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
 ## updateJob

@@ -53,8 +53,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns></returns>
-        void DeleteJob (int id);
+        /// <returns>SingleJobMessage</returns>
+        SingleJobMessage DeleteJob (int id);
 
         /// <summary>
         /// Deletes a job
@@ -64,8 +64,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteJobWithHttpInfo (int id);
+        /// <returns>ApiResponse of SingleJobMessage</returns>
+        ApiResponse<SingleJobMessage> DeleteJobWithHttpInfo (int id);
         /// <summary>
         /// Retrieves a single job
         /// </summary>
@@ -100,8 +100,9 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>JobRunArrayMessage</returns>
-        JobRunArrayMessage GetJobRuns (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string));
+        JobRunArrayMessage GetJobRuns (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string));
 
         /// <summary>
         /// Retrieve the runs for a job
@@ -116,8 +117,9 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobRunArrayMessage</returns>
-        ApiResponse<JobRunArrayMessage> GetJobRunsWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string));
+        ApiResponse<JobRunArrayMessage> GetJobRunsWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string));
         /// <summary>
         /// Retrieves jobs
         /// </summary>
@@ -129,10 +131,11 @@ namespace BJR.Api
         /// <param name="incexc"> (optional)</param>
         /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        JobArrayMessage GetJobs (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        JobArrayMessage GetJobs (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), string timezone = default(string), int perPage = default(int), int page = default(int));
 
         /// <summary>
         /// Retrieves jobs
@@ -145,10 +148,11 @@ namespace BJR.Api
         /// <param name="incexc"> (optional)</param>
         /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), string timezone = default(string), int perPage = default(int), int page = default(int));
         /// <summary>
         /// Upcoming job occurrences
         /// </summary>
@@ -160,8 +164,9 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>OccurrenceMessage</returns>
-        OccurrenceMessage JobOccurrences (int id, string endDate, int perPage = default(int), int page = default(int));
+        OccurrenceMessage JobOccurrences (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string));
 
         /// <summary>
         /// Upcoming job occurrences
@@ -174,8 +179,30 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of OccurrenceMessage</returns>
-        ApiResponse<OccurrenceMessage> JobOccurrencesWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int));
+        ApiResponse<OccurrenceMessage> JobOccurrencesWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string));
+        /// <summary>
+        /// Run a job now
+        /// </summary>
+        /// <remarks>
+        /// Queues a job to run now
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to execute now</param>
+        /// <returns></returns>
+        void RunJobNow (int id);
+
+        /// <summary>
+        /// Run a job now
+        /// </summary>
+        /// <remarks>
+        /// Queues a job to run now
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to execute now</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> RunJobNowWithHttpInfo (int id);
         /// <summary>
         /// Updates a single job
         /// </summary>
@@ -230,8 +257,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteJobAsync (int id);
+        /// <returns>Task of SingleJobMessage</returns>
+        System.Threading.Tasks.Task<SingleJobMessage> DeleteJobAsync (int id);
 
         /// <summary>
         /// Deletes a job
@@ -241,8 +268,8 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteJobAsyncWithHttpInfo (int id);
+        /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> DeleteJobAsyncWithHttpInfo (int id);
         /// <summary>
         /// Retrieves a single job
         /// </summary>
@@ -277,8 +304,9 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of JobRunArrayMessage</returns>
-        System.Threading.Tasks.Task<JobRunArrayMessage> GetJobRunsAsync (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string));
+        System.Threading.Tasks.Task<JobRunArrayMessage> GetJobRunsAsync (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string));
 
         /// <summary>
         /// Retrieve the runs for a job
@@ -293,8 +321,9 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobRunArrayMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobRunArrayMessage>> GetJobRunsAsyncWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string));
+        System.Threading.Tasks.Task<ApiResponse<JobRunArrayMessage>> GetJobRunsAsyncWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string));
         /// <summary>
         /// Retrieves jobs
         /// </summary>
@@ -306,10 +335,11 @@ namespace BJR.Api
         /// <param name="incexc"> (optional)</param>
         /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>Task of JobArrayMessage</returns>
-        System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), string timezone = default(string), int perPage = default(int), int page = default(int));
 
         /// <summary>
         /// Retrieves jobs
@@ -322,10 +352,11 @@ namespace BJR.Api
         /// <param name="incexc"> (optional)</param>
         /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), string timezone = default(string), int perPage = default(int), int page = default(int));
         /// <summary>
         /// Upcoming job occurrences
         /// </summary>
@@ -337,8 +368,9 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of OccurrenceMessage</returns>
-        System.Threading.Tasks.Task<OccurrenceMessage> JobOccurrencesAsync (int id, string endDate, int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<OccurrenceMessage> JobOccurrencesAsync (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string));
 
         /// <summary>
         /// Upcoming job occurrences
@@ -351,8 +383,30 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (OccurrenceMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OccurrenceMessage>> JobOccurrencesAsyncWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<OccurrenceMessage>> JobOccurrencesAsyncWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string));
+        /// <summary>
+        /// Run a job now
+        /// </summary>
+        /// <remarks>
+        /// Queues a job to run now
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to execute now</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task RunJobNowAsync (int id);
+
+        /// <summary>
+        /// Run a job now
+        /// </summary>
+        /// <remarks>
+        /// Queues a job to run now
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to execute now</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> RunJobNowAsyncWithHttpInfo (int id);
         /// <summary>
         /// Updates a single job
         /// </summary>
@@ -647,10 +701,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns></returns>
-        public void DeleteJob (int id)
+        /// <returns>SingleJobMessage</returns>
+        public SingleJobMessage DeleteJob (int id)
         {
-             DeleteJobWithHttpInfo(id);
+             ApiResponse<SingleJobMessage> localVarResponse = DeleteJobWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -658,8 +713,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteJobWithHttpInfo (int id)
+        /// <returns>ApiResponse of SingleJobMessage</returns>
+        public ApiResponse<SingleJobMessage> DeleteJobWithHttpInfo (int id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -680,6 +735,7 @@ namespace BJR.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -707,9 +763,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SingleJobMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SingleJobMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJobMessage)));
         }
 
         /// <summary>
@@ -717,10 +773,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteJobAsync (int id)
+        /// <returns>Task of SingleJobMessage</returns>
+        public async System.Threading.Tasks.Task<SingleJobMessage> DeleteJobAsync (int id)
         {
-             await DeleteJobAsyncWithHttpInfo(id);
+             ApiResponse<SingleJobMessage> localVarResponse = await DeleteJobAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -729,8 +786,8 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteJobAsyncWithHttpInfo (int id)
+        /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> DeleteJobAsyncWithHttpInfo (int id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -751,6 +808,7 @@ namespace BJR.Api
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -778,9 +836,9 @@ namespace BJR.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SingleJobMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SingleJobMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SingleJobMessage)));
         }
 
         /// <summary>
@@ -938,10 +996,11 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>JobRunArrayMessage</returns>
-        public JobRunArrayMessage GetJobRuns (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string))
+        public JobRunArrayMessage GetJobRuns (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string))
         {
-             ApiResponse<JobRunArrayMessage> localVarResponse = GetJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
+             ApiResponse<JobRunArrayMessage> localVarResponse = GetJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate, timezone);
              return localVarResponse.Data;
         }
 
@@ -955,8 +1014,9 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobRunArrayMessage</returns>
-        public ApiResponse<JobRunArrayMessage> GetJobRunsWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string))
+        public ApiResponse<JobRunArrayMessage> GetJobRunsWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -989,6 +1049,7 @@ namespace BJR.Api
             if (succeeded != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "succeeded", succeeded)); // query parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -1025,10 +1086,11 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of JobRunArrayMessage</returns>
-        public async System.Threading.Tasks.Task<JobRunArrayMessage> GetJobRunsAsync (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string))
+        public async System.Threading.Tasks.Task<JobRunArrayMessage> GetJobRunsAsync (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string))
         {
-             ApiResponse<JobRunArrayMessage> localVarResponse = await GetJobRunsAsyncWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
+             ApiResponse<JobRunArrayMessage> localVarResponse = await GetJobRunsAsyncWithHttpInfo(id, perPage, page, succeeded, startDate, endDate, timezone);
              return localVarResponse.Data;
 
         }
@@ -1043,8 +1105,9 @@ namespace BJR.Api
         /// <param name="succeeded"> (optional)</param>
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobRunArrayMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobRunArrayMessage>> GetJobRunsAsyncWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<JobRunArrayMessage>> GetJobRunsAsyncWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1077,6 +1140,7 @@ namespace BJR.Api
             if (succeeded != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "succeeded", succeeded)); // query parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required
@@ -1111,12 +1175,13 @@ namespace BJR.Api
         /// <param name="incexc"> (optional)</param>
         /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        public JobArrayMessage GetJobs (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public JobArrayMessage GetJobs (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), string timezone = default(string), int perPage = default(int), int page = default(int))
         {
-             ApiResponse<JobArrayMessage> localVarResponse = GetJobsWithHttpInfo(tags, incexc, startDate, endDate, perPage, page);
+             ApiResponse<JobArrayMessage> localVarResponse = GetJobsWithHttpInfo(tags, incexc, startDate, endDate, timezone, perPage, page);
              return localVarResponse.Data;
         }
 
@@ -1128,10 +1193,11 @@ namespace BJR.Api
         /// <param name="incexc"> (optional)</param>
         /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        public ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), string timezone = default(string), int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/job_api";
@@ -1159,6 +1225,7 @@ namespace BJR.Api
             if (incexc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "incexc", incexc)); // query parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
@@ -1195,12 +1262,13 @@ namespace BJR.Api
         /// <param name="incexc"> (optional)</param>
         /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>Task of JobArrayMessage</returns>
-        public async System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), string timezone = default(string), int perPage = default(int), int page = default(int))
         {
-             ApiResponse<JobArrayMessage> localVarResponse = await GetJobsAsyncWithHttpInfo(tags, incexc, startDate, endDate, perPage, page);
+             ApiResponse<JobArrayMessage> localVarResponse = await GetJobsAsyncWithHttpInfo(tags, incexc, startDate, endDate, timezone, perPage, page);
              return localVarResponse.Data;
 
         }
@@ -1213,10 +1281,11 @@ namespace BJR.Api
         /// <param name="incexc"> (optional)</param>
         /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
         /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), string timezone = default(string), int perPage = default(int), int page = default(int))
         {
 
             var localVarPath = "/job_api";
@@ -1244,6 +1313,7 @@ namespace BJR.Api
             if (incexc != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "incexc", incexc)); // query parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start_date", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
 
@@ -1280,10 +1350,11 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>OccurrenceMessage</returns>
-        public OccurrenceMessage JobOccurrences (int id, string endDate, int perPage = default(int), int page = default(int))
+        public OccurrenceMessage JobOccurrences (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string))
         {
-             ApiResponse<OccurrenceMessage> localVarResponse = JobOccurrencesWithHttpInfo(id, endDate, perPage, page);
+             ApiResponse<OccurrenceMessage> localVarResponse = JobOccurrencesWithHttpInfo(id, endDate, perPage, page, timezone);
              return localVarResponse.Data;
         }
 
@@ -1295,8 +1366,9 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of OccurrenceMessage</returns>
-        public ApiResponse<OccurrenceMessage> JobOccurrencesWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int))
+        public ApiResponse<OccurrenceMessage> JobOccurrencesWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1330,6 +1402,7 @@ namespace BJR.Api
             if (endDate != null) localVarPathParams.Add("end_date", this.Configuration.ApiClient.ParameterToString(endDate)); // path parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -1364,10 +1437,11 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of OccurrenceMessage</returns>
-        public async System.Threading.Tasks.Task<OccurrenceMessage> JobOccurrencesAsync (int id, string endDate, int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<OccurrenceMessage> JobOccurrencesAsync (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string))
         {
-             ApiResponse<OccurrenceMessage> localVarResponse = await JobOccurrencesAsyncWithHttpInfo(id, endDate, perPage, page);
+             ApiResponse<OccurrenceMessage> localVarResponse = await JobOccurrencesAsyncWithHttpInfo(id, endDate, perPage, page, timezone);
              return localVarResponse.Data;
 
         }
@@ -1380,8 +1454,9 @@ namespace BJR.Api
         /// <param name="endDate">The date to retrieve occurrences up to</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (OccurrenceMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<OccurrenceMessage>> JobOccurrencesAsyncWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<OccurrenceMessage>> JobOccurrencesAsyncWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1415,6 +1490,7 @@ namespace BJR.Api
             if (endDate != null) localVarPathParams.Add("end_date", this.Configuration.ApiClient.ParameterToString(endDate)); // path parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required
@@ -1439,6 +1515,147 @@ namespace BJR.Api
             return new ApiResponse<OccurrenceMessage>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (OccurrenceMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OccurrenceMessage)));
+        }
+
+        /// <summary>
+        /// Run a job now Queues a job to run now
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to execute now</param>
+        /// <returns></returns>
+        public void RunJobNow (int id)
+        {
+             RunJobNowWithHttpInfo(id);
+        }
+
+        /// <summary>
+        /// Run a job now Queues a job to run now
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to execute now</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> RunJobNowWithHttpInfo (int id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling JobsApi->RunJobNow");
+
+            var localVarPath = "/job_api/{id}/run_now";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+
+            // authentication (bearerAuth) required
+            // http beerer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RunJobNow", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
+        /// <summary>
+        /// Run a job now Queues a job to run now
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to execute now</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task RunJobNowAsync (int id)
+        {
+             await RunJobNowAsyncWithHttpInfo(id);
+
+        }
+
+        /// <summary>
+        /// Run a job now Queues a job to run now
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">The id of the job to execute now</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RunJobNowAsyncWithHttpInfo (int id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling JobsApi->RunJobNow");
+
+            var localVarPath = "/job_api/{id}/run_now";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+
+            // authentication (bearerAuth) required
+            // http bearer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("RunJobNow", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
         }
 
         /// <summary>

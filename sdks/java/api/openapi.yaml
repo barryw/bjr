@@ -34,6 +34,35 @@ paths:
       - Authentication
       x-contentType: application/json
       x-accepts: application/json
+  /job_api/{id}/run_now:
+    post:
+      description: Queues a job to run now
+      operationId: runJobNow
+      parameters:
+      - description: The id of the job to execute now
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content: {}
+          description: Job queued to execute
+        "404":
+          content: {}
+          description: Job not found
+        "409":
+          content: {}
+          description: Job is already running
+      security:
+      - bearerAuth: []
+      summary: Run a job now
+      tags:
+      - Jobs
+      x-accepts: application/json
   /job_api/{id}/occurrences/{end_date}:
     get:
       description: Retrieves a list of upcoming occurrences for a job
@@ -68,6 +97,13 @@ paths:
         required: false
         schema:
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: timezone
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -141,6 +177,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: timezone
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: per_page
         required: false
         schema:
@@ -195,6 +238,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/SingleJobMessage'
           description: Job created successfully.
+        "400":
+          content: {}
+          description: Invalid timezone name.
         "403":
           content: {}
           description: A job with this name already exists.
@@ -252,6 +298,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: timezone
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -292,10 +345,23 @@ paths:
         style: simple
       responses:
         "200":
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleJobMessage'
           description: Job %{id} deleted successfully.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleJobMessage'
+          description: Job '%{id}' cannot be deleted because it's running. Try disabling
+            it first.
         "404":
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleJobMessage'
           description: Job not found.
       security:
       - bearerAuth: []
@@ -401,6 +467,13 @@ paths:
         schema:
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: timezone
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -461,6 +534,13 @@ paths:
         required: false
         schema:
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: timezone
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -523,6 +603,13 @@ paths:
         schema:
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: timezone
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -583,6 +670,13 @@ paths:
         required: false
         schema:
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: timezone
+        required: false
+        schema:
+          type: string
         style: form
       responses:
         "200":
@@ -934,16 +1028,18 @@ components:
     JobStat:
       example:
         avg_runtime: 5.637377
-        start_dt: 2000-01-23T04:56:07.000+00:00
+        total_jobs: 9
         period: period
         end_dt: 2000-01-23T04:56:07.000+00:00
-        job_count: 5
         min_runtime: 7.0614014
-        max_runtime: 2.302136
-        updated_at: 2000-01-23T04:56:07.000+00:00
         created_at: 2000-01-23T04:56:07.000+00:00
         failed: 1
+        start_dt: 2000-01-23T04:56:07.000+00:00
+        job_count: 5
+        max_runtime: 2.302136
+        updated_at: 2000-01-23T04:56:07.000+00:00
         runs: 6
+        total_enabled: 3
       properties:
         runs:
           description: The number of job runs in the period.
@@ -966,6 +1062,12 @@ components:
           description: The min runtime in seconds of all jobs in the period.
           format: float
           type: number
+        total_jobs:
+          description: The total number of jobs.
+          type: integer
+        total_enabled:
+          description: Of the total number of jobs, this is how many were enabled.
+          type: integer
         period:
           description: The runtime period.
           type: string
@@ -998,27 +1100,31 @@ components:
         message: message
         object:
         - avg_runtime: 5.637377
-          start_dt: 2000-01-23T04:56:07.000+00:00
+          total_jobs: 9
           period: period
           end_dt: 2000-01-23T04:56:07.000+00:00
-          job_count: 5
           min_runtime: 7.0614014
-          max_runtime: 2.302136
-          updated_at: 2000-01-23T04:56:07.000+00:00
           created_at: 2000-01-23T04:56:07.000+00:00
           failed: 1
+          start_dt: 2000-01-23T04:56:07.000+00:00
+          job_count: 5
+          max_runtime: 2.302136
+          updated_at: 2000-01-23T04:56:07.000+00:00
           runs: 6
+          total_enabled: 3
         - avg_runtime: 5.637377
-          start_dt: 2000-01-23T04:56:07.000+00:00
+          total_jobs: 9
           period: period
           end_dt: 2000-01-23T04:56:07.000+00:00
-          job_count: 5
           min_runtime: 7.0614014
-          max_runtime: 2.302136
-          updated_at: 2000-01-23T04:56:07.000+00:00
           created_at: 2000-01-23T04:56:07.000+00:00
           failed: 1
+          start_dt: 2000-01-23T04:56:07.000+00:00
+          job_count: 5
+          max_runtime: 2.302136
+          updated_at: 2000-01-23T04:56:07.000+00:00
           runs: 6
+          total_enabled: 3
       properties:
         message:
           description: The status message returned from the API call.

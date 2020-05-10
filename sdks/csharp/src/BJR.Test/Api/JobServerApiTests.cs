@@ -86,7 +86,8 @@ namespace BJR.Test
             //string endDate = null;
             //int perPage = null;
             //int page = null;
-            //var response = instance.StatsByDay(startDate, endDate, perPage, page);
+            //string timezone = null;
+            //var response = instance.StatsByDay(startDate, endDate, perPage, page, timezone);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
         }
         
@@ -101,7 +102,8 @@ namespace BJR.Test
             //string endDate = null;
             //int perPage = null;
             //int page = null;
-            //var response = instance.StatsByHour(startDate, endDate, perPage, page);
+            //string timezone = null;
+            //var response = instance.StatsByHour(startDate, endDate, perPage, page, timezone);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
         }
         
@@ -116,7 +118,8 @@ namespace BJR.Test
             //string endDate = null;
             //int perPage = null;
             //int page = null;
-            //var response = instance.StatsByMinute(startDate, endDate, perPage, page);
+            //string timezone = null;
+            //var response = instance.StatsByMinute(startDate, endDate, perPage, page, timezone);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
         }
         
@@ -131,7 +134,8 @@ namespace BJR.Test
             //string endDate = null;
             //int perPage = null;
             //int page = null;
-            //var response = instance.StatsByWeek(startDate, endDate, perPage, page);
+            //string timezone = null;
+            //var response = instance.StatsByWeek(startDate, endDate, perPage, page, timezone);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
         }
         

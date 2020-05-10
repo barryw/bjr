@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**get_job_runs**](JobsApi.md#get_job_runs) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**get_jobs**](JobsApi.md#get_jobs) | **GET** /job_api | Retrieves jobs
 [**job_occurrences**](JobsApi.md#job_occurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
+[**run_job_now**](JobsApi.md#run_job_now) | **POST** /job_api/{id}/run_now | Run a job now
 [**update_job**](JobsApi.md#update_job) | **PUT** /job_api/{id} | Updates a single job
 
 
@@ -70,7 +71,7 @@ Name | Type | Description  | Notes
 
 ## delete_job
 
-> delete_job(id)
+> SingleJobMessage delete_job(id)
 
 Deletes a job
 
@@ -92,7 +93,8 @@ id = 56 # Integer |
 
 begin
   #Deletes a job
-  api_instance.delete_job(id)
+  result = api_instance.delete_job(id)
+  p result
 rescue BJR::ApiError => e
   puts "Exception when calling JobsApi->delete_job: #{e}"
 end
@@ -107,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -116,7 +118,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## get_job
@@ -197,7 +199,8 @@ opts = {
   page: 56, # Integer | 
   succeeded: true, # Boolean | 
   start_date: 'start_date_example', # String | 
-  end_date: 'end_date_example' # String | 
+  end_date: 'end_date_example', # String | 
+  timezone: 'timezone_example' # String | 
 }
 
 begin
@@ -220,6 +223,7 @@ Name | Type | Description  | Notes
  **succeeded** | **Boolean**|  | [optional] 
  **start_date** | **String**|  | [optional] 
  **end_date** | **String**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -260,6 +264,7 @@ opts = {
   incexc: 'incexc_example', # String | 
   start_date: 'start_date_example', # String | Specify a start date to search jobs by.
   end_date: 'end_date_example', # String | Specify an end date to search jobs by.
+  timezone: 'timezone_example', # String | 
   per_page: 56, # Integer | 
   page: 56 # Integer | 
 }
@@ -282,6 +287,7 @@ Name | Type | Description  | Notes
  **incexc** | **String**|  | [optional] 
  **start_date** | **String**| Specify a start date to search jobs by. | [optional] 
  **end_date** | **String**| Specify an end date to search jobs by. | [optional] 
+ **timezone** | **String**|  | [optional] 
  **per_page** | **Integer**|  | [optional] 
  **page** | **Integer**|  | [optional] 
 
@@ -323,7 +329,8 @@ id = 56 # Integer | The id of the job to retrieve occurrences for
 end_date = 'end_date_example' # String | The date to retrieve occurrences up to
 opts = {
   per_page: 56, # Integer | 
-  page: 56 # Integer | 
+  page: 56, # Integer | 
+  timezone: 'timezone_example' # String | 
 }
 
 begin
@@ -344,6 +351,7 @@ Name | Type | Description  | Notes
  **end_date** | **String**| The date to retrieve occurrences up to | 
  **per_page** | **Integer**|  | [optional] 
  **page** | **Integer**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -357,6 +365,57 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+
+## run_job_now
+
+> run_job_now(id)
+
+Run a job now
+
+Queues a job to run now
+
+### Example
+
+```ruby
+# load the gem
+require 'bjr4r'
+# setup authorization
+BJR.configure do |config|
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = BJR::JobsApi.new
+id = 56 # Integer | The id of the job to execute now
+
+begin
+  #Run a job now
+  api_instance.run_job_now(id)
+rescue BJR::ApiError => e
+  puts "Exception when calling JobsApi->run_job_now: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The id of the job to execute now | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
 ## update_job

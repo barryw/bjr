@@ -17,7 +17,7 @@ import SingleJob from './SingleJob';
 /**
  * The JobArrayMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobArrayMessage
- * @version 1.1.6
+ * @version 1.3.5
  */
 class JobArrayMessage {
     /**

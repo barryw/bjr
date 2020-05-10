@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**getJobRuns**](JobsApi.md#getJobRuns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**getJobs**](JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
 [**jobOccurrences**](JobsApi.md#jobOccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
+[**runJobNow**](JobsApi.md#runJobNow) | **POST** /job_api/{id}/run_now | Run a job now
 [**updateJob**](JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
 
 
@@ -79,11 +80,12 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Job created successfully. |  -  |
+**400** | Invalid timezone name. |  -  |
 **403** | A job with this name already exists. |  -  |
 
 <a name="deleteJob"></a>
 # **deleteJob**
-> deleteJob(id)
+> SingleJobMessage deleteJob(id)
 
 Deletes a job
 
@@ -111,7 +113,8 @@ public class Example {
     JobsApi apiInstance = new JobsApi(defaultClient);
     Integer id = 56; // Integer | 
     try {
-      apiInstance.deleteJob(id);
+      SingleJobMessage result = apiInstance.deleteJob(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobsApi#deleteJob");
       System.err.println("Status code: " + e.getCode());
@@ -131,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -140,12 +143,13 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Job %{id} deleted successfully. |  -  |
+**409** | Job &#39;%{id}&#39; cannot be deleted because it&#39;s running. Try disabling it first. |  -  |
 **404** | Job not found. |  -  |
 
 <a name="getJob"></a>
@@ -218,7 +222,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobRuns"></a>
 # **getJobRuns**
-> JobRunArrayMessage getJobRuns(id, perPage, page, succeeded, startDate, endDate)
+> JobRunArrayMessage getJobRuns(id, perPage, page, succeeded, startDate, endDate, timezone)
 
 Retrieve the runs for a job
 
@@ -250,8 +254,9 @@ public class Example {
     Boolean succeeded = true; // Boolean | 
     String startDate = "startDate_example"; // String | 
     String endDate = "endDate_example"; // String | 
+    String timezone = "timezone_example"; // String | 
     try {
-      JobRunArrayMessage result = apiInstance.getJobRuns(id, perPage, page, succeeded, startDate, endDate);
+      JobRunArrayMessage result = apiInstance.getJobRuns(id, perPage, page, succeeded, startDate, endDate, timezone);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobsApi#getJobRuns");
@@ -274,6 +279,7 @@ Name | Type | Description  | Notes
  **succeeded** | **Boolean**|  | [optional]
  **startDate** | **String**|  | [optional]
  **endDate** | **String**|  | [optional]
+ **timezone** | **String**|  | [optional]
 
 ### Return type
 
@@ -295,7 +301,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobs"></a>
 # **getJobs**
-> JobArrayMessage getJobs(tags, incexc, startDate, endDate, perPage, page)
+> JobArrayMessage getJobs(tags, incexc, startDate, endDate, timezone, perPage, page)
 
 Retrieves jobs
 
@@ -325,10 +331,11 @@ public class Example {
     String incexc = "incexc_example"; // String | 
     String startDate = "startDate_example"; // String | Specify a start date to search jobs by.
     String endDate = "endDate_example"; // String | Specify an end date to search jobs by.
+    String timezone = "timezone_example"; // String | 
     Integer perPage = 56; // Integer | 
     Integer page = 56; // Integer | 
     try {
-      JobArrayMessage result = apiInstance.getJobs(tags, incexc, startDate, endDate, perPage, page);
+      JobArrayMessage result = apiInstance.getJobs(tags, incexc, startDate, endDate, timezone, perPage, page);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobsApi#getJobs");
@@ -349,6 +356,7 @@ Name | Type | Description  | Notes
  **incexc** | **String**|  | [optional] [enum: all, any, except]
  **startDate** | **String**| Specify a start date to search jobs by. | [optional]
  **endDate** | **String**| Specify an end date to search jobs by. | [optional]
+ **timezone** | **String**|  | [optional]
  **perPage** | **Integer**|  | [optional]
  **page** | **Integer**|  | [optional]
 
@@ -372,7 +380,7 @@ Name | Type | Description  | Notes
 
 <a name="jobOccurrences"></a>
 # **jobOccurrences**
-> OccurrenceMessage jobOccurrences(id, endDate, perPage, page)
+> OccurrenceMessage jobOccurrences(id, endDate, perPage, page, timezone)
 
 Upcoming job occurrences
 
@@ -402,8 +410,9 @@ public class Example {
     String endDate = "endDate_example"; // String | The date to retrieve occurrences up to
     Integer perPage = 56; // Integer | 
     Integer page = 56; // Integer | 
+    String timezone = "timezone_example"; // String | 
     try {
-      OccurrenceMessage result = apiInstance.jobOccurrences(id, endDate, perPage, page);
+      OccurrenceMessage result = apiInstance.jobOccurrences(id, endDate, perPage, page, timezone);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobsApi#jobOccurrences");
@@ -424,6 +433,7 @@ Name | Type | Description  | Notes
  **endDate** | **String**| The date to retrieve occurrences up to |
  **perPage** | **Integer**|  | [optional]
  **page** | **Integer**|  | [optional]
+ **timezone** | **String**|  | [optional]
 
 ### Return type
 
@@ -443,6 +453,74 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Occurrences received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 **404** | Job not found |  -  |
+
+<a name="runJobNow"></a>
+# **runJobNow**
+> runJobNow(id)
+
+Run a job now
+
+Queues a job to run now
+
+### Example
+```java
+// Import classes:
+import io.barrywalker.bjr.ApiClient;
+import io.barrywalker.bjr.ApiException;
+import io.barrywalker.bjr.Configuration;
+import io.barrywalker.bjr.auth.*;
+import io.barrywalker.bjr.models.*;
+import io.barrywalker.bjr.api.JobsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure HTTP bearer authorization: bearerAuth
+    HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+    bearerAuth.setBearerToken("BEARER TOKEN");
+
+    JobsApi apiInstance = new JobsApi(defaultClient);
+    Integer id = 56; // Integer | The id of the job to execute now
+    try {
+      apiInstance.runJobNow(id);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling JobsApi#runJobNow");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| The id of the job to execute now |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Job queued to execute |  -  |
+**404** | Job not found |  -  |
+**409** | Job is already running |  -  |
 
 <a name="updateJob"></a>
 # **updateJob**

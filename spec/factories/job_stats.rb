@@ -5,6 +5,8 @@ FactoryBot.define do
     avg_runtime { 3 }
     min_runtime { 1 }
     max_runtime { 10 }
+    total_jobs { 100 }
+    total_enabled { 90 }
     period { :minute }
   end
 
@@ -14,6 +16,8 @@ FactoryBot.define do
     avg_runtime { 30 }
     min_runtime { 10 }
     max_runtime { 100 }
+    total_jobs { 100 }
+    total_enabled { 90 }
     period { :minute }
   end
 
@@ -23,6 +27,8 @@ FactoryBot.define do
     avg_runtime { 30 }
     min_runtime { 10 }
     max_runtime { 100 }
+    total_jobs { 100 }
+    total_enabled { 90 }
     period { :hour }
   end
 
@@ -32,6 +38,8 @@ FactoryBot.define do
     avg_runtime { 30 }
     min_runtime { 10 }
     max_runtime { 100 }
+    total_jobs { 100 }
+    total_enabled { 90 }
     period { :day }
   end
 
@@ -41,6 +49,8 @@ FactoryBot.define do
     avg_runtime { 30 }
     min_runtime { 10 }
     max_runtime { 100 }
+    total_jobs { 100 }
+    total_enabled { 90 }
     period { :week }
   end
 end

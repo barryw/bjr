@@ -160,6 +160,7 @@ class JobServerApi(object):
         :param str end_date: The end date from which to get daily metrics from
         :param int per_page:
         :param int page:
+        :param str timezone:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -188,6 +189,7 @@ class JobServerApi(object):
         :param str end_date: The end date from which to get daily metrics from
         :param int per_page:
         :param int page:
+        :param str timezone:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -208,7 +210,8 @@ class JobServerApi(object):
             'start_date',
             'end_date',
             'per_page',
-            'page'
+            'page',
+            'timezone'
         ]
         all_params.extend(
             [
@@ -241,6 +244,8 @@ class JobServerApi(object):
             query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
         if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
             query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
+            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
         header_params = {}
 
@@ -285,6 +290,7 @@ class JobServerApi(object):
         :param str end_date: The end date from which to get hourly metrics from
         :param int per_page:
         :param int page:
+        :param str timezone:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -313,6 +319,7 @@ class JobServerApi(object):
         :param str end_date: The end date from which to get hourly metrics from
         :param int per_page:
         :param int page:
+        :param str timezone:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -333,7 +340,8 @@ class JobServerApi(object):
             'start_date',
             'end_date',
             'per_page',
-            'page'
+            'page',
+            'timezone'
         ]
         all_params.extend(
             [
@@ -366,6 +374,8 @@ class JobServerApi(object):
             query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
         if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
             query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
+            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
         header_params = {}
 
@@ -410,6 +420,7 @@ class JobServerApi(object):
         :param str end_date: The end date from which to get minutely metrics from
         :param int per_page:
         :param int page:
+        :param str timezone:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -438,6 +449,7 @@ class JobServerApi(object):
         :param str end_date: The end date from which to get minutely metrics from
         :param int per_page:
         :param int page:
+        :param str timezone:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -458,7 +470,8 @@ class JobServerApi(object):
             'start_date',
             'end_date',
             'per_page',
-            'page'
+            'page',
+            'timezone'
         ]
         all_params.extend(
             [
@@ -491,6 +504,8 @@ class JobServerApi(object):
             query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
         if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
             query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
+            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
         header_params = {}
 
@@ -535,6 +550,7 @@ class JobServerApi(object):
         :param str end_date: The end date from which to get weekly metrics from
         :param int per_page:
         :param int page:
+        :param str timezone:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -563,6 +579,7 @@ class JobServerApi(object):
         :param str end_date: The end date from which to get weekly metrics from
         :param int per_page:
         :param int page:
+        :param str timezone:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -583,7 +600,8 @@ class JobServerApi(object):
             'start_date',
             'end_date',
             'per_page',
-            'page'
+            'page',
+            'timezone'
         ]
         all_params.extend(
             [
@@ -616,6 +634,8 @@ class JobServerApi(object):
             query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
         if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
             query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
+            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
         header_params = {}
 

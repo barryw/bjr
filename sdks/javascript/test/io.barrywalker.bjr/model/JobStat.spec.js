@@ -90,6 +90,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property totalJobs (base name: "total_jobs")', function() {
+      // uncomment below and update the code to test the property totalJobs
+      //var instane = new Bjr4js.JobStat();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property totalEnabled (base name: "total_enabled")', function() {
+      // uncomment below and update the code to test the property totalEnabled
+      //var instane = new Bjr4js.JobStat();
+      //expect(instance).to.be();
+    });
+
     it('should have the property period (base name: "period")', function() {
       // uncomment below and update the code to test the property period
       //var instane = new Bjr4js.JobStat();

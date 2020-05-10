@@ -32,6 +32,12 @@ module BJR
     # The min runtime in seconds of all jobs in the period.
     attr_accessor :min_runtime
 
+    # The total number of jobs.
+    attr_accessor :total_jobs
+
+    # Of the total number of jobs, this is how many were enabled.
+    attr_accessor :total_enabled
+
     # The runtime period.
     attr_accessor :period
 
@@ -56,6 +62,8 @@ module BJR
         :'avg_runtime' => :'avg_runtime',
         :'max_runtime' => :'max_runtime',
         :'min_runtime' => :'min_runtime',
+        :'total_jobs' => :'total_jobs',
+        :'total_enabled' => :'total_enabled',
         :'period' => :'period',
         :'start_dt' => :'start_dt',
         :'end_dt' => :'end_dt',
@@ -73,6 +81,8 @@ module BJR
         :'avg_runtime' => :'Float',
         :'max_runtime' => :'Float',
         :'min_runtime' => :'Float',
+        :'total_jobs' => :'Integer',
+        :'total_enabled' => :'Integer',
         :'period' => :'String',
         :'start_dt' => :'DateTime',
         :'end_dt' => :'DateTime',
@@ -126,6 +136,14 @@ module BJR
         self.min_runtime = attributes[:'min_runtime']
       end
 
+      if attributes.key?(:'total_jobs')
+        self.total_jobs = attributes[:'total_jobs']
+      end
+
+      if attributes.key?(:'total_enabled')
+        self.total_enabled = attributes[:'total_enabled']
+      end
+
       if attributes.key?(:'period')
         self.period = attributes[:'period']
       end
@@ -171,6 +189,8 @@ module BJR
           avg_runtime == o.avg_runtime &&
           max_runtime == o.max_runtime &&
           min_runtime == o.min_runtime &&
+          total_jobs == o.total_jobs &&
+          total_enabled == o.total_enabled &&
           period == o.period &&
           start_dt == o.start_dt &&
           end_dt == o.end_dt &&
@@ -187,7 +207,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [runs, failed, job_count, avg_runtime, max_runtime, min_runtime, period, start_dt, end_dt, created_at, updated_at].hash
+      [runs, failed, job_count, avg_runtime, max_runtime, min_runtime, total_jobs, total_enabled, period, start_dt, end_dt, created_at, updated_at].hash
     end
 
     # Builds the object from hash

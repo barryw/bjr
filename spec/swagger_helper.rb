@@ -33,6 +33,8 @@ RSpec.configure do |config|
               avg_runtime: { type: :number, format: 'float', description: 'The average runtime in seconds of all jobs in the period.' },
               max_runtime: { type: :number, format: 'float', description: 'The max runtime in seconds of all jobs in the period.' },
               min_runtime: { type: :number, format: 'float', description: 'The min runtime in seconds of all jobs in the period.' },
+              total_jobs: { type: :integer, description: 'The total number of jobs.' },
+              total_enabled: { type: :integer, description: 'Of the total number of jobs, this is how many were enabled.' },
               period: { type: :string, description: 'The runtime period.' },
               start_dt: { type: :string, format: 'date-time', description: 'The period start date.' },
               end_dt: { type: :string, format: 'date-time', description: 'The period end date.' },

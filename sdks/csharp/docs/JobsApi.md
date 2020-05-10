@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetJobRuns**](JobsApi.md#getjobruns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**GetJobs**](JobsApi.md#getjobs) | **GET** /job_api | Retrieves jobs
 [**JobOccurrences**](JobsApi.md#joboccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
+[**RunJobNow**](JobsApi.md#runjobnow) | **POST** /job_api/{id}/run_now | Run a job now
 [**UpdateJob**](JobsApi.md#updatejob) | **PUT** /job_api/{id} | Updates a single job
 
 
@@ -85,6 +86,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Job created successfully. |  -  |
+| **400** | Invalid timezone name. |  -  |
 | **403** | A job with this name already exists. |  -  |
 
 [[Back to top]](#)
@@ -95,7 +97,7 @@ Name | Type | Description  | Notes
 
 ## DeleteJob
 
-> void DeleteJob (int id)
+> SingleJobMessage DeleteJob (int id)
 
 Deletes a job
 
@@ -126,7 +128,8 @@ namespace Example
             try
             {
                 // Deletes a job
-                apiInstance.DeleteJob(id);
+                SingleJobMessage result = apiInstance.DeleteJob(id);
+                Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
@@ -148,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -157,12 +160,13 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Job %{id} deleted successfully. |  -  |
+| **409** | Job &#39;%{id}&#39; cannot be deleted because it&#39;s running. Try disabling it first. |  -  |
 | **404** | Job not found. |  -  |
 
 [[Back to top]](#)
@@ -252,7 +256,7 @@ Name | Type | Description  | Notes
 
 ## GetJobRuns
 
-> JobRunArrayMessage GetJobRuns (int id, int perPage = null, int page = null, bool succeeded = null, string startDate = null, string endDate = null)
+> JobRunArrayMessage GetJobRuns (int id, int perPage = null, int page = null, bool succeeded = null, string startDate = null, string endDate = null, string timezone = null)
 
 Retrieve the runs for a job
 
@@ -284,11 +288,12 @@ namespace Example
             var succeeded = true;  // bool |  (optional) 
             var startDate = startDate_example;  // string |  (optional) 
             var endDate = endDate_example;  // string |  (optional) 
+            var timezone = timezone_example;  // string |  (optional) 
 
             try
             {
                 // Retrieve the runs for a job
-                JobRunArrayMessage result = apiInstance.GetJobRuns(id, perPage, page, succeeded, startDate, endDate);
+                JobRunArrayMessage result = apiInstance.GetJobRuns(id, perPage, page, succeeded, startDate, endDate, timezone);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -313,6 +318,7 @@ Name | Type | Description  | Notes
  **succeeded** | **bool**|  | [optional] 
  **startDate** | **string**|  | [optional] 
  **endDate** | **string**|  | [optional] 
+ **timezone** | **string**|  | [optional] 
 
 ### Return type
 
@@ -340,7 +346,7 @@ Name | Type | Description  | Notes
 
 ## GetJobs
 
-> JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, int perPage = null, int page = null)
+> JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, string timezone = null, int perPage = null, int page = null)
 
 Retrieves jobs
 
@@ -370,13 +376,14 @@ namespace Example
             var incexc = incexc_example;  // string |  (optional) 
             var startDate = startDate_example;  // string | Specify a start date to search jobs by. (optional) 
             var endDate = endDate_example;  // string | Specify an end date to search jobs by. (optional) 
+            var timezone = timezone_example;  // string |  (optional) 
             var perPage = 56;  // int |  (optional) 
             var page = 56;  // int |  (optional) 
 
             try
             {
                 // Retrieves jobs
-                JobArrayMessage result = apiInstance.GetJobs(tags, incexc, startDate, endDate, perPage, page);
+                JobArrayMessage result = apiInstance.GetJobs(tags, incexc, startDate, endDate, timezone, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -399,6 +406,7 @@ Name | Type | Description  | Notes
  **incexc** | **string**|  | [optional] 
  **startDate** | **string**| Specify a start date to search jobs by. | [optional] 
  **endDate** | **string**| Specify an end date to search jobs by. | [optional] 
+ **timezone** | **string**|  | [optional] 
  **perPage** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
 
@@ -428,7 +436,7 @@ Name | Type | Description  | Notes
 
 ## JobOccurrences
 
-> OccurrenceMessage JobOccurrences (int id, string endDate, int perPage = null, int page = null)
+> OccurrenceMessage JobOccurrences (int id, string endDate, int perPage = null, int page = null, string timezone = null)
 
 Upcoming job occurrences
 
@@ -458,11 +466,12 @@ namespace Example
             var endDate = endDate_example;  // string | The date to retrieve occurrences up to
             var perPage = 56;  // int |  (optional) 
             var page = 56;  // int |  (optional) 
+            var timezone = timezone_example;  // string |  (optional) 
 
             try
             {
                 // Upcoming job occurrences
-                OccurrenceMessage result = apiInstance.JobOccurrences(id, endDate, perPage, page);
+                OccurrenceMessage result = apiInstance.JobOccurrences(id, endDate, perPage, page, timezone);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -485,6 +494,7 @@ Name | Type | Description  | Notes
  **endDate** | **string**| The date to retrieve occurrences up to | 
  **perPage** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **timezone** | **string**|  | [optional] 
 
 ### Return type
 
@@ -504,6 +514,85 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | Occurrences received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 | **404** | Job not found |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RunJobNow
+
+> void RunJobNow (int id)
+
+Run a job now
+
+Queues a job to run now
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
+
+namespace Example
+{
+    public class RunJobNowExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "http://localhost";
+            // Configure HTTP bearer authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new JobsApi(Configuration.Default);
+            var id = 56;  // int | The id of the job to execute now
+
+            try
+            {
+                // Run a job now
+                apiInstance.RunJobNow(id);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling JobsApi.RunJobNow: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the job to execute now | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Job queued to execute |  -  |
+| **404** | Job not found |  -  |
+| **409** | Job is already running |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

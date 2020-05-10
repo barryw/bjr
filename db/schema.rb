@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_015341) do
+ActiveRecord::Schema.define(version: 2020_05_10_121349) do
 
   create_table "job_runs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.boolean "success"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2020_04_30_015341) do
     t.string "error_message"
     t.text "stdout", limit: 4294967295
     t.text "stderr", limit: 4294967295
-    t.datetime "start_time", null: false
-    t.datetime "end_time"
+    t.datetime "start_time", precision: 6, null: false
+    t.datetime "end_time", precision: 6
     t.bigint "job_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,14 +41,16 @@ ActiveRecord::Schema.define(version: 2020_04_30_015341) do
     t.datetime "end_dt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_jobs", null: false
+    t.integer "total_enabled", null: false
     t.index ["user_id"], name: "index_job_stats_on_user_id"
   end
 
   create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", limit: 100, null: false
     t.string "cron", limit: 20, null: false
-    t.datetime "last_run"
-    t.datetime "next_run", null: false
+    t.datetime "last_run", precision: 6
+    t.datetime "next_run", precision: 6, null: false
     t.string "command", null: false
     t.string "timezone", limit: 50, default: "UTC"
     t.boolean "enabled", default: true

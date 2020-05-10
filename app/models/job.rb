@@ -19,8 +19,8 @@ class Job < ApplicationRecord
   scope :running, ->(running) { where(running: running) }
   scope :successful, ->(successful) { where(success: successful) }
   scope :include_by_ids, ->(ids) { where('jobs.id in (?)', ids) }
-  scope :recent, ->(user_id, count) { where(user_id: user_id).order(last_run: :desc).limit(count) }
-  scope :upcoming, ->(user_id, count) { where(user_id: user_id).where("next_run > ?", DateTime.now).order(next_run: :asc).limit(count) }
+  scope :recent, ->(user_id, count) { mine(user_id).order(last_run: :desc).limit(count) }
+  scope :upcoming, ->(user_id, count) { mine(user_id).where("next_run > ?", DateTime.now).order(next_run: :asc).limit(count) }
 
   TAG_SEARCH = %w[any all exclude].freeze
 

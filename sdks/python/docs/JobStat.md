@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **avg_runtime** | **float** | The average runtime in seconds of all jobs in the period. | [optional] 
 **max_runtime** | **float** | The max runtime in seconds of all jobs in the period. | [optional] 
 **min_runtime** | **float** | The min runtime in seconds of all jobs in the period. | [optional] 
+**total_jobs** | **int** | The total number of jobs. | [optional] 
+**total_enabled** | **int** | Of the total number of jobs, this is how many were enabled. | [optional] 
 **period** | **str** | The runtime period. | [optional] 
 **start_dt** | **datetime** | The period start date. | [optional] 
 **end_dt** | **datetime** | The period end date. | [optional] 

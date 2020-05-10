@@ -91,7 +91,8 @@ opts = {
   start_date: 'start_date_example', # String | The start date from which to get daily metrics from
   end_date: 'end_date_example', # String | The end date from which to get daily metrics from
   per_page: 56, # Integer | 
-  page: 56 # Integer | 
+  page: 56, # Integer | 
+  timezone: 'timezone_example' # String | 
 }
 
 begin
@@ -112,6 +113,7 @@ Name | Type | Description  | Notes
  **end_date** | **String**| The end date from which to get daily metrics from | [optional] 
  **per_page** | **Integer**|  | [optional] 
  **page** | **Integer**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -151,7 +153,8 @@ opts = {
   start_date: 'start_date_example', # String | The start date from which to get hourly metrics from
   end_date: 'end_date_example', # String | The end date from which to get hourly metrics from
   per_page: 56, # Integer | 
-  page: 56 # Integer | 
+  page: 56, # Integer | 
+  timezone: 'timezone_example' # String | 
 }
 
 begin
@@ -172,6 +175,7 @@ Name | Type | Description  | Notes
  **end_date** | **String**| The end date from which to get hourly metrics from | [optional] 
  **per_page** | **Integer**|  | [optional] 
  **page** | **Integer**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -211,7 +215,8 @@ opts = {
   start_date: 'start_date_example', # String | The start date from which to get minutely metrics from
   end_date: 'end_date_example', # String | The end date from which to get minutely metrics from
   per_page: 56, # Integer | 
-  page: 56 # Integer | 
+  page: 56, # Integer | 
+  timezone: 'timezone_example' # String | 
 }
 
 begin
@@ -232,6 +237,7 @@ Name | Type | Description  | Notes
  **end_date** | **String**| The end date from which to get minutely metrics from | [optional] 
  **per_page** | **Integer**|  | [optional] 
  **page** | **Integer**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -271,7 +277,8 @@ opts = {
   start_date: 'start_date_example', # String | The start date from which to get weekly metrics from
   end_date: 'end_date_example', # String | The end date from which to get weekly metrics from
   per_page: 56, # Integer | 
-  page: 56 # Integer | 
+  page: 56, # Integer | 
+  timezone: 'timezone_example' # String | 
 }
 
 begin
@@ -292,6 +299,7 @@ Name | Type | Description  | Notes
  **end_date** | **String**| The end date from which to get weekly metrics from | [optional] 
  **per_page** | **Integer**|  | [optional] 
  **page** | **Integer**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 

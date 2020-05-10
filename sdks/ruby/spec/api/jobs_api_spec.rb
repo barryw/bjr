@@ -49,7 +49,7 @@ describe 'JobsApi' do
   # Deletes a job
   # @param id 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SingleJobMessage]
   describe 'delete_job test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -78,6 +78,7 @@ describe 'JobsApi' do
   # @option opts [Boolean] :succeeded 
   # @option opts [String] :start_date 
   # @option opts [String] :end_date 
+  # @option opts [String] :timezone 
   # @return [JobRunArrayMessage]
   describe 'get_job_runs test' do
     it 'should work' do
@@ -93,6 +94,7 @@ describe 'JobsApi' do
   # @option opts [String] :incexc 
   # @option opts [String] :start_date Specify a start date to search jobs by.
   # @option opts [String] :end_date Specify an end date to search jobs by.
+  # @option opts [String] :timezone 
   # @option opts [Integer] :per_page 
   # @option opts [Integer] :page 
   # @return [JobArrayMessage]
@@ -110,8 +112,21 @@ describe 'JobsApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :per_page 
   # @option opts [Integer] :page 
+  # @option opts [String] :timezone 
   # @return [OccurrenceMessage]
   describe 'job_occurrences test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for run_job_now
+  # Run a job now
+  # Queues a job to run now
+  # @param id The id of the job to execute now
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'run_job_now test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

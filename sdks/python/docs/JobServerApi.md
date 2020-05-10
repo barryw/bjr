@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_day**
-> JobStatMessage stats_by_day(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+> JobStatMessage stats_by_day(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
 
 Job statistics by day
 
@@ -125,10 +125,11 @@ with bjr4py.ApiClient(configuration) as api_client:
 end_date = 'end_date_example' # str | The end date from which to get daily metrics from (optional)
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
+timezone = 'timezone_example' # str |  (optional)
 
     try:
         # Job statistics by day
-        api_response = api_instance.stats_by_day(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+        api_response = api_instance.stats_by_day(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobServerApi->stats_by_day: %s\n" % e)
@@ -142,6 +143,7 @@ Name | Type | Description  | Notes
  **end_date** | **str**| The end date from which to get daily metrics from | [optional] 
  **per_page** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **timezone** | **str**|  | [optional] 
 
 ### Return type
 
@@ -164,7 +166,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_hour**
-> JobStatMessage stats_by_hour(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+> JobStatMessage stats_by_hour(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
 
 Job statistics by hour
 
@@ -203,10 +205,11 @@ with bjr4py.ApiClient(configuration) as api_client:
 end_date = 'end_date_example' # str | The end date from which to get hourly metrics from (optional)
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
+timezone = 'timezone_example' # str |  (optional)
 
     try:
         # Job statistics by hour
-        api_response = api_instance.stats_by_hour(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+        api_response = api_instance.stats_by_hour(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobServerApi->stats_by_hour: %s\n" % e)
@@ -220,6 +223,7 @@ Name | Type | Description  | Notes
  **end_date** | **str**| The end date from which to get hourly metrics from | [optional] 
  **per_page** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **timezone** | **str**|  | [optional] 
 
 ### Return type
 
@@ -242,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_minute**
-> JobStatMessage stats_by_minute(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+> JobStatMessage stats_by_minute(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
 
 Job statistics by minute
 
@@ -281,10 +285,11 @@ with bjr4py.ApiClient(configuration) as api_client:
 end_date = 'end_date_example' # str | The end date from which to get minutely metrics from (optional)
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
+timezone = 'timezone_example' # str |  (optional)
 
     try:
         # Job statistics by minute
-        api_response = api_instance.stats_by_minute(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+        api_response = api_instance.stats_by_minute(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobServerApi->stats_by_minute: %s\n" % e)
@@ -298,6 +303,7 @@ Name | Type | Description  | Notes
  **end_date** | **str**| The end date from which to get minutely metrics from | [optional] 
  **per_page** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **timezone** | **str**|  | [optional] 
 
 ### Return type
 
@@ -320,7 +326,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_week**
-> JobStatMessage stats_by_week(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+> JobStatMessage stats_by_week(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
 
 Job statistics by week
 
@@ -359,10 +365,11 @@ with bjr4py.ApiClient(configuration) as api_client:
 end_date = 'end_date_example' # str | The end date from which to get weekly metrics from (optional)
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
+timezone = 'timezone_example' # str |  (optional)
 
     try:
         # Job statistics by week
-        api_response = api_instance.stats_by_week(start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+        api_response = api_instance.stats_by_week(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobServerApi->stats_by_week: %s\n" % e)
@@ -376,6 +383,7 @@ Name | Type | Description  | Notes
  **end_date** | **str**| The end date from which to get weekly metrics from | [optional] 
  **per_page** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **timezone** | **str**|  | [optional] 
 
 ### Return type
 

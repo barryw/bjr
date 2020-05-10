@@ -168,7 +168,7 @@ class JobsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: SingleJobMessage
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -195,7 +195,7 @@ class JobsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: None
+        :return: tuple(SingleJobMessage, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -241,6 +241,10 @@ class JobsApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['bearerAuth']  # noqa: E501
 
@@ -252,7 +256,7 @@ class JobsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SingleJobMessage',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -390,6 +394,7 @@ class JobsApi(object):
         :param bool succeeded:
         :param str start_date:
         :param str end_date:
+        :param str timezone:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -420,6 +425,7 @@ class JobsApi(object):
         :param bool succeeded:
         :param str start_date:
         :param str end_date:
+        :param str timezone:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -442,7 +448,8 @@ class JobsApi(object):
             'page',
             'succeeded',
             'start_date',
-            'end_date'
+            'end_date',
+            'timezone'
         ]
         all_params.extend(
             [
@@ -483,6 +490,8 @@ class JobsApi(object):
             query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
         if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
             query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
+        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
+            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
         header_params = {}
 
@@ -527,6 +536,7 @@ class JobsApi(object):
         :param str incexc:
         :param str start_date: Specify a start date to search jobs by.
         :param str end_date: Specify an end date to search jobs by.
+        :param str timezone:
         :param int per_page:
         :param int page:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -557,6 +567,7 @@ class JobsApi(object):
         :param str incexc:
         :param str start_date: Specify a start date to search jobs by.
         :param str end_date: Specify an end date to search jobs by.
+        :param str timezone:
         :param int per_page:
         :param int page:
         :param _return_http_data_only: response data without head status code
@@ -580,6 +591,7 @@ class JobsApi(object):
             'incexc',
             'start_date',
             'end_date',
+            'timezone',
             'per_page',
             'page'
         ]
@@ -614,6 +626,8 @@ class JobsApi(object):
             query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
         if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
             query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
+        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
+            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
         if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
             query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
         if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
@@ -662,6 +676,7 @@ class JobsApi(object):
         :param str end_date: The date to retrieve occurrences up to (required)
         :param int per_page:
         :param int page:
+        :param str timezone:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -690,6 +705,7 @@ class JobsApi(object):
         :param str end_date: The date to retrieve occurrences up to (required)
         :param int per_page:
         :param int page:
+        :param str timezone:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -710,7 +726,8 @@ class JobsApi(object):
             'id',
             'end_date',
             'per_page',
-            'page'
+            'page',
+            'timezone'
         ]
         all_params.extend(
             [
@@ -751,6 +768,8 @@ class JobsApi(object):
             query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
         if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
             query_params.append(('page', local_var_params['page']))  # noqa: E501
+        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
+            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
         header_params = {}
 
@@ -774,6 +793,116 @@ class JobsApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='OccurrenceMessage',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def run_job_now(self, id, **kwargs):  # noqa: E501
+        """Run a job now  # noqa: E501
+
+        Queues a job to run now  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.run_job_now(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int id: The id of the job to execute now (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.run_job_now_with_http_info(id, **kwargs)  # noqa: E501
+
+    def run_job_now_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Run a job now  # noqa: E501
+
+        Queues a job to run now  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.run_job_now_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param int id: The id of the job to execute now (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method run_job_now" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `run_job_now`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in local_var_params:
+            path_params['id'] = local_var_params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/job_api/{id}/run_now', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

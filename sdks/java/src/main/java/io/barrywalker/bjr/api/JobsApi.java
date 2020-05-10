@@ -68,6 +68,7 @@ public class JobsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Job created successfully. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid timezone name. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
      </table>
      */
@@ -119,6 +120,7 @@ public class JobsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Job created successfully. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid timezone name. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
      </table>
      */
@@ -137,6 +139,7 @@ public class JobsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Job created successfully. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid timezone name. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
      </table>
      */
@@ -157,6 +160,7 @@ public class JobsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Job created successfully. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid timezone name. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
      </table>
      */
@@ -177,6 +181,7 @@ public class JobsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Job %{id} deleted successfully. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Job &#39;%{id}&#39; cannot be deleted because it&#39;s running. Try disabling it first. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Job not found. </td><td>  -  </td></tr>
      </table>
      */
@@ -193,7 +198,7 @@ public class JobsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
-            
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -228,34 +233,39 @@ public class JobsApi {
      * Deletes a job
      * Deletes a job
      * @param id  (required)
+     * @return SingleJobMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Job %{id} deleted successfully. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Job &#39;%{id}&#39; cannot be deleted because it&#39;s running. Try disabling it first. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Job not found. </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteJob(Integer id) throws ApiException {
-        deleteJobWithHttpInfo(id);
+    public SingleJobMessage deleteJob(Integer id) throws ApiException {
+        ApiResponse<SingleJobMessage> localVarResp = deleteJobWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
      * Deletes a job
      * Deletes a job
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SingleJobMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Job %{id} deleted successfully. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Job &#39;%{id}&#39; cannot be deleted because it&#39;s running. Try disabling it first. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Job not found. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteJobWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<SingleJobMessage> deleteJobWithHttpInfo(Integer id) throws ApiException {
         okhttp3.Call localVarCall = deleteJobValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SingleJobMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -269,13 +279,15 @@ public class JobsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Job %{id} deleted successfully. </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Job &#39;%{id}&#39; cannot be deleted because it&#39;s running. Try disabling it first. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Job not found. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteJobAsync(Integer id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteJobAsync(Integer id, final ApiCallback<SingleJobMessage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteJobValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SingleJobMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -401,6 +413,7 @@ public class JobsApi {
      * @param succeeded  (optional)
      * @param startDate  (optional)
      * @param endDate  (optional)
+     * @param timezone  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -410,7 +423,7 @@ public class JobsApi {
         <tr><td> 200 </td><td> Runs received successfully. </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getJobRunsCall(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getJobRunsCall(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, String timezone, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -439,6 +452,10 @@ public class JobsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("end_date", endDate));
         }
 
+        if (timezone != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timezone", timezone));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -461,7 +478,7 @@ public class JobsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getJobRunsValidateBeforeCall(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getJobRunsValidateBeforeCall(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, String timezone, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
@@ -469,7 +486,7 @@ public class JobsApi {
         }
         
 
-        okhttp3.Call localVarCall = getJobRunsCall(id, perPage, page, succeeded, startDate, endDate, _callback);
+        okhttp3.Call localVarCall = getJobRunsCall(id, perPage, page, succeeded, startDate, endDate, timezone, _callback);
         return localVarCall;
 
     }
@@ -483,6 +500,7 @@ public class JobsApi {
      * @param succeeded  (optional)
      * @param startDate  (optional)
      * @param endDate  (optional)
+     * @param timezone  (optional)
      * @return JobRunArrayMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -491,8 +509,8 @@ public class JobsApi {
         <tr><td> 200 </td><td> Runs received successfully. </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public JobRunArrayMessage getJobRuns(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate) throws ApiException {
-        ApiResponse<JobRunArrayMessage> localVarResp = getJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate);
+    public JobRunArrayMessage getJobRuns(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, String timezone) throws ApiException {
+        ApiResponse<JobRunArrayMessage> localVarResp = getJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate, timezone);
         return localVarResp.getData();
     }
 
@@ -505,6 +523,7 @@ public class JobsApi {
      * @param succeeded  (optional)
      * @param startDate  (optional)
      * @param endDate  (optional)
+     * @param timezone  (optional)
      * @return ApiResponse&lt;JobRunArrayMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -513,8 +532,8 @@ public class JobsApi {
         <tr><td> 200 </td><td> Runs received successfully. </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<JobRunArrayMessage> getJobRunsWithHttpInfo(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate) throws ApiException {
-        okhttp3.Call localVarCall = getJobRunsValidateBeforeCall(id, perPage, page, succeeded, startDate, endDate, null);
+    public ApiResponse<JobRunArrayMessage> getJobRunsWithHttpInfo(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, String timezone) throws ApiException {
+        okhttp3.Call localVarCall = getJobRunsValidateBeforeCall(id, perPage, page, succeeded, startDate, endDate, timezone, null);
         Type localVarReturnType = new TypeToken<JobRunArrayMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -528,6 +547,7 @@ public class JobsApi {
      * @param succeeded  (optional)
      * @param startDate  (optional)
      * @param endDate  (optional)
+     * @param timezone  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -537,9 +557,9 @@ public class JobsApi {
         <tr><td> 200 </td><td> Runs received successfully. </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getJobRunsAsync(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, final ApiCallback<JobRunArrayMessage> _callback) throws ApiException {
+    public okhttp3.Call getJobRunsAsync(Integer id, Integer perPage, Integer page, Boolean succeeded, String startDate, String endDate, String timezone, final ApiCallback<JobRunArrayMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getJobRunsValidateBeforeCall(id, perPage, page, succeeded, startDate, endDate, _callback);
+        okhttp3.Call localVarCall = getJobRunsValidateBeforeCall(id, perPage, page, succeeded, startDate, endDate, timezone, _callback);
         Type localVarReturnType = new TypeToken<JobRunArrayMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -550,6 +570,7 @@ public class JobsApi {
      * @param incexc  (optional)
      * @param startDate Specify a start date to search jobs by. (optional)
      * @param endDate Specify an end date to search jobs by. (optional)
+     * @param timezone  (optional)
      * @param perPage  (optional)
      * @param page  (optional)
      * @param _callback Callback for upload/download progress
@@ -561,7 +582,7 @@ public class JobsApi {
         <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getJobsCall(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getJobsCall(String tags, String incexc, String startDate, String endDate, String timezone, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -585,6 +606,10 @@ public class JobsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("end_date", endDate));
         }
 
+        if (timezone != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timezone", timezone));
+        }
+
         if (perPage != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("per_page", perPage));
         }
@@ -615,10 +640,10 @@ public class JobsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getJobsValidateBeforeCall(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getJobsValidateBeforeCall(String tags, String incexc, String startDate, String endDate, String timezone, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getJobsCall(tags, incexc, startDate, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = getJobsCall(tags, incexc, startDate, endDate, timezone, perPage, page, _callback);
         return localVarCall;
 
     }
@@ -630,6 +655,7 @@ public class JobsApi {
      * @param incexc  (optional)
      * @param startDate Specify a start date to search jobs by. (optional)
      * @param endDate Specify an end date to search jobs by. (optional)
+     * @param timezone  (optional)
      * @param perPage  (optional)
      * @param page  (optional)
      * @return JobArrayMessage
@@ -640,8 +666,8 @@ public class JobsApi {
         <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public JobArrayMessage getJobs(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        ApiResponse<JobArrayMessage> localVarResp = getJobsWithHttpInfo(tags, incexc, startDate, endDate, perPage, page);
+    public JobArrayMessage getJobs(String tags, String incexc, String startDate, String endDate, String timezone, Integer perPage, Integer page) throws ApiException {
+        ApiResponse<JobArrayMessage> localVarResp = getJobsWithHttpInfo(tags, incexc, startDate, endDate, timezone, perPage, page);
         return localVarResp.getData();
     }
 
@@ -652,6 +678,7 @@ public class JobsApi {
      * @param incexc  (optional)
      * @param startDate Specify a start date to search jobs by. (optional)
      * @param endDate Specify an end date to search jobs by. (optional)
+     * @param timezone  (optional)
      * @param perPage  (optional)
      * @param page  (optional)
      * @return ApiResponse&lt;JobArrayMessage&gt;
@@ -662,8 +689,8 @@ public class JobsApi {
         <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<JobArrayMessage> getJobsWithHttpInfo(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page) throws ApiException {
-        okhttp3.Call localVarCall = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, perPage, page, null);
+    public ApiResponse<JobArrayMessage> getJobsWithHttpInfo(String tags, String incexc, String startDate, String endDate, String timezone, Integer perPage, Integer page) throws ApiException {
+        okhttp3.Call localVarCall = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, timezone, perPage, page, null);
         Type localVarReturnType = new TypeToken<JobArrayMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -675,6 +702,7 @@ public class JobsApi {
      * @param incexc  (optional)
      * @param startDate Specify a start date to search jobs by. (optional)
      * @param endDate Specify an end date to search jobs by. (optional)
+     * @param timezone  (optional)
      * @param perPage  (optional)
      * @param page  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -686,9 +714,9 @@ public class JobsApi {
         <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getJobsAsync(String tags, String incexc, String startDate, String endDate, Integer perPage, Integer page, final ApiCallback<JobArrayMessage> _callback) throws ApiException {
+    public okhttp3.Call getJobsAsync(String tags, String incexc, String startDate, String endDate, String timezone, Integer perPage, Integer page, final ApiCallback<JobArrayMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, timezone, perPage, page, _callback);
         Type localVarReturnType = new TypeToken<JobArrayMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -699,6 +727,7 @@ public class JobsApi {
      * @param endDate The date to retrieve occurrences up to (required)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -709,7 +738,7 @@ public class JobsApi {
         <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call jobOccurrencesCall(Integer id, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call jobOccurrencesCall(Integer id, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -727,6 +756,10 @@ public class JobsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        if (timezone != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timezone", timezone));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -749,7 +782,7 @@ public class JobsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call jobOccurrencesValidateBeforeCall(Integer id, String endDate, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call jobOccurrencesValidateBeforeCall(Integer id, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
@@ -762,7 +795,7 @@ public class JobsApi {
         }
         
 
-        okhttp3.Call localVarCall = jobOccurrencesCall(id, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = jobOccurrencesCall(id, endDate, perPage, page, timezone, _callback);
         return localVarCall;
 
     }
@@ -774,6 +807,7 @@ public class JobsApi {
      * @param endDate The date to retrieve occurrences up to (required)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @return OccurrenceMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -783,8 +817,8 @@ public class JobsApi {
         <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
      </table>
      */
-    public OccurrenceMessage jobOccurrences(Integer id, String endDate, Integer perPage, Integer page) throws ApiException {
-        ApiResponse<OccurrenceMessage> localVarResp = jobOccurrencesWithHttpInfo(id, endDate, perPage, page);
+    public OccurrenceMessage jobOccurrences(Integer id, String endDate, Integer perPage, Integer page, String timezone) throws ApiException {
+        ApiResponse<OccurrenceMessage> localVarResp = jobOccurrencesWithHttpInfo(id, endDate, perPage, page, timezone);
         return localVarResp.getData();
     }
 
@@ -795,6 +829,7 @@ public class JobsApi {
      * @param endDate The date to retrieve occurrences up to (required)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @return ApiResponse&lt;OccurrenceMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -804,8 +839,8 @@ public class JobsApi {
         <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OccurrenceMessage> jobOccurrencesWithHttpInfo(Integer id, String endDate, Integer perPage, Integer page) throws ApiException {
-        okhttp3.Call localVarCall = jobOccurrencesValidateBeforeCall(id, endDate, perPage, page, null);
+    public ApiResponse<OccurrenceMessage> jobOccurrencesWithHttpInfo(Integer id, String endDate, Integer perPage, Integer page, String timezone) throws ApiException {
+        okhttp3.Call localVarCall = jobOccurrencesValidateBeforeCall(id, endDate, perPage, page, timezone, null);
         Type localVarReturnType = new TypeToken<OccurrenceMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -817,6 +852,7 @@ public class JobsApi {
      * @param endDate The date to retrieve occurrences up to (required)
      * @param perPage  (optional)
      * @param page  (optional)
+     * @param timezone  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -827,11 +863,126 @@ public class JobsApi {
         <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call jobOccurrencesAsync(Integer id, String endDate, Integer perPage, Integer page, final ApiCallback<OccurrenceMessage> _callback) throws ApiException {
+    public okhttp3.Call jobOccurrencesAsync(Integer id, String endDate, Integer perPage, Integer page, String timezone, final ApiCallback<OccurrenceMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = jobOccurrencesValidateBeforeCall(id, endDate, perPage, page, _callback);
+        okhttp3.Call localVarCall = jobOccurrencesValidateBeforeCall(id, endDate, perPage, page, timezone, _callback);
         Type localVarReturnType = new TypeToken<OccurrenceMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for runJobNow
+     * @param id The id of the job to execute now (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Job queued to execute </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Job is already running </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call runJobNowCall(Integer id, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/job_api/{id}/run_now"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call runJobNowValidateBeforeCall(Integer id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling runJobNow(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = runJobNowCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Run a job now
+     * Queues a job to run now
+     * @param id The id of the job to execute now (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Job queued to execute </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Job is already running </td><td>  -  </td></tr>
+     </table>
+     */
+    public void runJobNow(Integer id) throws ApiException {
+        runJobNowWithHttpInfo(id);
+    }
+
+    /**
+     * Run a job now
+     * Queues a job to run now
+     * @param id The id of the job to execute now (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Job queued to execute </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Job is already running </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> runJobNowWithHttpInfo(Integer id) throws ApiException {
+        okhttp3.Call localVarCall = runJobNowValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Run a job now (asynchronously)
+     * Queues a job to run now
+     * @param id The id of the job to execute now (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Job queued to execute </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Job not found </td><td>  -  </td></tr>
+        <tr><td> 409 </td><td> Job is already running </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call runJobNowAsync(Integer id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = runJobNowValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**

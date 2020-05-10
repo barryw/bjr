@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**get_job_runs**](JobsApi.md#get_job_runs) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 [**get_jobs**](JobsApi.md#get_jobs) | **GET** /job_api | Retrieves jobs
 [**job_occurrences**](JobsApi.md#job_occurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
+[**run_job_now**](JobsApi.md#run_job_now) | **POST** /job_api/{id}/run_now | Run a job now
 [**update_job**](JobsApi.md#update_job) | **PUT** /job_api/{id} | Updates a single job
 
 
@@ -82,12 +83,13 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Job created successfully. |  -  |
+**400** | Invalid timezone name. |  -  |
 **403** | A job with this name already exists. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_job**
-> delete_job(id)
+> SingleJobMessage delete_job(id)
 
 Deletes a job
 
@@ -126,7 +128,8 @@ with bjr4py.ApiClient(configuration) as api_client:
 
     try:
         # Deletes a job
-        api_instance.delete_job(id)
+        api_response = api_instance.delete_job(id)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobsApi->delete_job: %s\n" % e)
 ```
@@ -139,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SingleJobMessage**](SingleJobMessage.md)
 
 ### Authorization
 
@@ -148,12 +151,13 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Job %{id} deleted successfully. |  -  |
+**409** | Job &#39;%{id}&#39; cannot be deleted because it&#39;s running. Try disabling it first. |  -  |
 **404** | Job not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -232,7 +236,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job_runs**
-> JobRunArrayMessage get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date)
+> JobRunArrayMessage get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date, timezone=timezone)
 
 Retrieve the runs for a job
 
@@ -273,10 +277,11 @@ page = 56 # int |  (optional)
 succeeded = True # bool |  (optional)
 start_date = 'start_date_example' # str |  (optional)
 end_date = 'end_date_example' # str |  (optional)
+timezone = 'timezone_example' # str |  (optional)
 
     try:
         # Retrieve the runs for a job
-        api_response = api_instance.get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date)
+        api_response = api_instance.get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date, timezone=timezone)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobsApi->get_job_runs: %s\n" % e)
@@ -292,6 +297,7 @@ Name | Type | Description  | Notes
  **succeeded** | **bool**|  | [optional] 
  **start_date** | **str**|  | [optional] 
  **end_date** | **str**|  | [optional] 
+ **timezone** | **str**|  | [optional] 
 
 ### Return type
 
@@ -314,7 +320,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_jobs**
-> JobArrayMessage get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+> JobArrayMessage get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, timezone=timezone, per_page=per_page, page=page)
 
 Retrieves jobs
 
@@ -353,12 +359,13 @@ with bjr4py.ApiClient(configuration) as api_client:
 incexc = 'incexc_example' # str |  (optional)
 start_date = 'start_date_example' # str | Specify a start date to search jobs by. (optional)
 end_date = 'end_date_example' # str | Specify an end date to search jobs by. (optional)
+timezone = 'timezone_example' # str |  (optional)
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
 
     try:
         # Retrieves jobs
-        api_response = api_instance.get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, per_page=per_page, page=page)
+        api_response = api_instance.get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, timezone=timezone, per_page=per_page, page=page)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobsApi->get_jobs: %s\n" % e)
@@ -372,6 +379,7 @@ Name | Type | Description  | Notes
  **incexc** | **str**|  | [optional] 
  **start_date** | **str**| Specify a start date to search jobs by. | [optional] 
  **end_date** | **str**| Specify an end date to search jobs by. | [optional] 
+ **timezone** | **str**|  | [optional] 
  **per_page** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
 
@@ -396,7 +404,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **job_occurrences**
-> OccurrenceMessage job_occurrences(id, end_date, per_page=per_page, page=page)
+> OccurrenceMessage job_occurrences(id, end_date, per_page=per_page, page=page, timezone=timezone)
 
 Upcoming job occurrences
 
@@ -435,10 +443,11 @@ with bjr4py.ApiClient(configuration) as api_client:
 end_date = 'end_date_example' # str | The date to retrieve occurrences up to
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
+timezone = 'timezone_example' # str |  (optional)
 
     try:
         # Upcoming job occurrences
-        api_response = api_instance.job_occurrences(id, end_date, per_page=per_page, page=page)
+        api_response = api_instance.job_occurrences(id, end_date, per_page=per_page, page=page, timezone=timezone)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobsApi->job_occurrences: %s\n" % e)
@@ -452,6 +461,7 @@ Name | Type | Description  | Notes
  **end_date** | **str**| The date to retrieve occurrences up to | 
  **per_page** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **timezone** | **str**|  | [optional] 
 
 ### Return type
 
@@ -471,6 +481,79 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Occurrences received successfully |  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  |
 **404** | Job not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **run_job_now**
+> run_job_now(id)
+
+Run a job now
+
+Queues a job to run now
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+```python
+from __future__ import print_function
+import time
+import bjr4py
+from bjr4py.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.JobsApi(api_client)
+    id = 56 # int | The id of the job to execute now
+
+    try:
+        # Run a job now
+        api_instance.run_job_now(id)
+    except ApiException as e:
+        print("Exception when calling JobsApi->run_job_now: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The id of the job to execute now | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Job queued to execute |  -  |
+**404** | Job not found |  -  |
+**409** | Job is already running |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

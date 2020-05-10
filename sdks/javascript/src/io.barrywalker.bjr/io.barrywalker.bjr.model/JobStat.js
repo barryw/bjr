@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The JobStat model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobStat
- * @version 1.1.6
+ * @version 1.3.5
  */
 class JobStat {
     /**
@@ -64,6 +64,12 @@ class JobStat {
             }
             if (data.hasOwnProperty('min_runtime')) {
                 obj['min_runtime'] = ApiClient.convertToType(data['min_runtime'], 'Number');
+            }
+            if (data.hasOwnProperty('total_jobs')) {
+                obj['total_jobs'] = ApiClient.convertToType(data['total_jobs'], 'Number');
+            }
+            if (data.hasOwnProperty('total_enabled')) {
+                obj['total_enabled'] = ApiClient.convertToType(data['total_enabled'], 'Number');
             }
             if (data.hasOwnProperty('period')) {
                 obj['period'] = ApiClient.convertToType(data['period'], 'String');
@@ -122,6 +128,18 @@ JobStat.prototype['max_runtime'] = undefined;
  * @member {Number} min_runtime
  */
 JobStat.prototype['min_runtime'] = undefined;
+
+/**
+ * The total number of jobs.
+ * @member {Number} total_jobs
+ */
+JobStat.prototype['total_jobs'] = undefined;
+
+/**
+ * Of the total number of jobs, this is how many were enabled.
+ * @member {Number} total_enabled
+ */
+JobStat.prototype['total_enabled'] = undefined;
 
 /**
  * The runtime period.

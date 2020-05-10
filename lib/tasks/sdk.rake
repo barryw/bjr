@@ -39,9 +39,9 @@ task 'sdk:bumpver', [:position] => [:environment] do |_t, _args|
     new_ver = ''
     case position
     when 'major'
-      new_ver = "#{major.to_i + 1}.#{minor}.#{patch}"
+      new_ver = "#{major.to_i + 1}.0.0"
     when 'minor'
-      new_ver = "#{major}.#{minor.to_i + 1}.#{patch}"
+      new_ver = "#{major}.#{minor.to_i + 1}.0"
     when 'patch'
       new_ver = "#{major}.#{minor}.#{patch.to_i + 1}"
     else

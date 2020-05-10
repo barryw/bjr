@@ -22,7 +22,7 @@ import SingleJobMessage from '../io.barrywalker.bjr.model/SingleJobMessage';
 /**
 * Jobs service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi
-* @version 1.1.6
+* @version 1.3.5
 */
 export default class JobsApi {
 
@@ -82,7 +82,7 @@ export default class JobsApi {
      * Callback function to receive the result of the deleteJob operation.
      * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi~deleteJobCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/SingleJobMessage} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -91,6 +91,7 @@ export default class JobsApi {
      * Deletes a job
      * @param {Number} id 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi~deleteJobCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/SingleJobMessage}
      */
     deleteJob(id, callback) {
       let postBody = null;
@@ -111,8 +112,8 @@ export default class JobsApi {
 
       let authNames = ['bearerAuth'];
       let contentTypes = [];
-      let accepts = [];
-      let returnType = null;
+      let accepts = ['application/json'];
+      let returnType = SingleJobMessage;
       return this.apiClient.callApi(
         '/job_api/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -181,6 +182,7 @@ export default class JobsApi {
      * @param {Boolean} opts.succeeded 
      * @param {String} opts.startDate 
      * @param {String} opts.endDate 
+     * @param {String} opts.timezone 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi~getJobRunsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/JobRunArrayMessage}
      */
@@ -200,7 +202,8 @@ export default class JobsApi {
         'page': opts['page'],
         'succeeded': opts['succeeded'],
         'start_date': opts['startDate'],
-        'end_date': opts['endDate']
+        'end_date': opts['endDate'],
+        'timezone': opts['timezone']
       };
       let headerParams = {
       };
@@ -234,6 +237,7 @@ export default class JobsApi {
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/String} opts.incexc 
      * @param {String} opts.startDate Specify a start date to search jobs by.
      * @param {String} opts.endDate Specify an end date to search jobs by.
+     * @param {String} opts.timezone 
      * @param {Number} opts.perPage 
      * @param {Number} opts.page 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi~getJobsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -250,6 +254,7 @@ export default class JobsApi {
         'incexc': opts['incexc'],
         'start_date': opts['startDate'],
         'end_date': opts['endDate'],
+        'timezone': opts['timezone'],
         'per_page': opts['perPage'],
         'page': opts['page']
       };
@@ -285,6 +290,7 @@ export default class JobsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.perPage 
      * @param {Number} opts.page 
+     * @param {String} opts.timezone 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi~jobOccurrencesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/OccurrenceMessage}
      */
@@ -306,7 +312,8 @@ export default class JobsApi {
       };
       let queryParams = {
         'per_page': opts['perPage'],
-        'page': opts['page']
+        'page': opts['page'],
+        'timezone': opts['timezone']
       };
       let headerParams = {
       };
@@ -319,6 +326,48 @@ export default class JobsApi {
       let returnType = OccurrenceMessage;
       return this.apiClient.callApi(
         '/job_api/{id}/occurrences/{end_date}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the runJobNow operation.
+     * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi~runJobNowCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Run a job now
+     * Queues a job to run now
+     * @param {Number} id The id of the job to execute now
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi~runJobNowCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    runJobNow(id, callback) {
+      let postBody = null;
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling runJobNow");
+      }
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/job_api/{id}/run_now', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

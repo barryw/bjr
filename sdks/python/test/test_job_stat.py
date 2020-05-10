@@ -42,6 +42,8 @@ class TestJobStat(unittest.TestCase):
                 avg_runtime = 1.337, 
                 max_runtime = 1.337, 
                 min_runtime = 1.337, 
+                total_jobs = 56, 
+                total_enabled = 56, 
                 period = '0', 
                 start_dt = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 end_dt = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 

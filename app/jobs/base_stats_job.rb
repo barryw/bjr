@@ -37,13 +37,17 @@ class BaseStatsJob < ApplicationJob
     failed = JobRun.fails_in_range(user.id, current_dt, new_end).count
     job_count = JobRun.job_count_in_range(user.id, current_dt, new_end)
 
+    total_jobs = Job.mine(user.id).count
+    total_enabled = Job.mine(user.id).enabled(true).count
+
     avg_runtime = JobRun.avg_runtime_in_range(user.id, current_dt, new_end)
     max_runtime = JobRun.max_runtime_in_range(user.id, current_dt, new_end)
     min_runtime = JobRun.min_runtime_in_range(user.id, current_dt, new_end)
 
     JobStat.create(user_id: user.id, runs: runs, failed: failed, avg_runtime: avg_runtime,
                    min_runtime: min_runtime, max_runtime: max_runtime, start_dt: current_dt,
-                   end_dt: new_end, period: period, job_count: job_count)
+                   end_dt: new_end, period: period, job_count: job_count, total_jobs: total_jobs,
+                   total_enabled: total_enabled)
   end
 
   def end_date(period)

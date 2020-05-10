@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## StatsByDay
 
-> JobStatMessage StatsByDay (string startDate = null, string endDate = null, int perPage = null, int page = null)
+> JobStatMessage StatsByDay (string startDate = null, string endDate = null, int perPage = null, int page = null, string timezone = null)
 
 Job statistics by day
 
@@ -124,11 +124,12 @@ namespace Example
             var endDate = endDate_example;  // string | The end date from which to get daily metrics from (optional) 
             var perPage = 56;  // int |  (optional) 
             var page = 56;  // int |  (optional) 
+            var timezone = timezone_example;  // string |  (optional) 
 
             try
             {
                 // Job statistics by day
-                JobStatMessage result = apiInstance.StatsByDay(startDate, endDate, perPage, page);
+                JobStatMessage result = apiInstance.StatsByDay(startDate, endDate, perPage, page, timezone);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -151,6 +152,7 @@ Name | Type | Description  | Notes
  **endDate** | **string**| The end date from which to get daily metrics from | [optional] 
  **perPage** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **timezone** | **string**|  | [optional] 
 
 ### Return type
 
@@ -178,7 +180,7 @@ Name | Type | Description  | Notes
 
 ## StatsByHour
 
-> JobStatMessage StatsByHour (string startDate = null, string endDate = null, int perPage = null, int page = null)
+> JobStatMessage StatsByHour (string startDate = null, string endDate = null, int perPage = null, int page = null, string timezone = null)
 
 Job statistics by hour
 
@@ -208,11 +210,12 @@ namespace Example
             var endDate = endDate_example;  // string | The end date from which to get hourly metrics from (optional) 
             var perPage = 56;  // int |  (optional) 
             var page = 56;  // int |  (optional) 
+            var timezone = timezone_example;  // string |  (optional) 
 
             try
             {
                 // Job statistics by hour
-                JobStatMessage result = apiInstance.StatsByHour(startDate, endDate, perPage, page);
+                JobStatMessage result = apiInstance.StatsByHour(startDate, endDate, perPage, page, timezone);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -235,6 +238,7 @@ Name | Type | Description  | Notes
  **endDate** | **string**| The end date from which to get hourly metrics from | [optional] 
  **perPage** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **timezone** | **string**|  | [optional] 
 
 ### Return type
 
@@ -262,7 +266,7 @@ Name | Type | Description  | Notes
 
 ## StatsByMinute
 
-> JobStatMessage StatsByMinute (string startDate = null, string endDate = null, int perPage = null, int page = null)
+> JobStatMessage StatsByMinute (string startDate = null, string endDate = null, int perPage = null, int page = null, string timezone = null)
 
 Job statistics by minute
 
@@ -292,11 +296,12 @@ namespace Example
             var endDate = endDate_example;  // string | The end date from which to get minutely metrics from (optional) 
             var perPage = 56;  // int |  (optional) 
             var page = 56;  // int |  (optional) 
+            var timezone = timezone_example;  // string |  (optional) 
 
             try
             {
                 // Job statistics by minute
-                JobStatMessage result = apiInstance.StatsByMinute(startDate, endDate, perPage, page);
+                JobStatMessage result = apiInstance.StatsByMinute(startDate, endDate, perPage, page, timezone);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -319,6 +324,7 @@ Name | Type | Description  | Notes
  **endDate** | **string**| The end date from which to get minutely metrics from | [optional] 
  **perPage** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **timezone** | **string**|  | [optional] 
 
 ### Return type
 
@@ -346,7 +352,7 @@ Name | Type | Description  | Notes
 
 ## StatsByWeek
 
-> JobStatMessage StatsByWeek (string startDate = null, string endDate = null, int perPage = null, int page = null)
+> JobStatMessage StatsByWeek (string startDate = null, string endDate = null, int perPage = null, int page = null, string timezone = null)
 
 Job statistics by week
 
@@ -376,11 +382,12 @@ namespace Example
             var endDate = endDate_example;  // string | The end date from which to get weekly metrics from (optional) 
             var perPage = 56;  // int |  (optional) 
             var page = 56;  // int |  (optional) 
+            var timezone = timezone_example;  // string |  (optional) 
 
             try
             {
                 // Job statistics by week
-                JobStatMessage result = apiInstance.StatsByWeek(startDate, endDate, perPage, page);
+                JobStatMessage result = apiInstance.StatsByWeek(startDate, endDate, perPage, page, timezone);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -403,6 +410,7 @@ Name | Type | Description  | Notes
  **endDate** | **string**| The end date from which to get weekly metrics from | [optional] 
  **perPage** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 
+ **timezone** | **string**|  | [optional] 
 
 ### Return type
 

@@ -108,6 +108,16 @@
         done();
       });
     });
+    describe('runJobNow', function() {
+      it('should call runJobNow successfully', function(done) {
+        //uncomment below and update the code to test runJobNow
+        //instance.runJobNow(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('updateJob', function() {
       it('should call updateJob successfully', function(done) {
         //uncomment below and update the code to test updateJob

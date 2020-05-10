@@ -83,8 +83,8 @@ namespace BJR.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int id = null;
-            //instance.DeleteJob(id);
-            
+            //var response = instance.DeleteJob(id);
+            //Assert.IsInstanceOf(typeof(SingleJobMessage), response, "response is SingleJobMessage");
         }
         
         /// <summary>
@@ -112,7 +112,8 @@ namespace BJR.Test
             //bool succeeded = null;
             //string startDate = null;
             //string endDate = null;
-            //var response = instance.GetJobRuns(id, perPage, page, succeeded, startDate, endDate);
+            //string timezone = null;
+            //var response = instance.GetJobRuns(id, perPage, page, succeeded, startDate, endDate, timezone);
             //Assert.IsInstanceOf(typeof(JobRunArrayMessage), response, "response is JobRunArrayMessage");
         }
         
@@ -127,9 +128,10 @@ namespace BJR.Test
             //string incexc = null;
             //string startDate = null;
             //string endDate = null;
+            //string timezone = null;
             //int perPage = null;
             //int page = null;
-            //var response = instance.GetJobs(tags, incexc, startDate, endDate, perPage, page);
+            //var response = instance.GetJobs(tags, incexc, startDate, endDate, timezone, perPage, page);
             //Assert.IsInstanceOf(typeof(JobArrayMessage), response, "response is JobArrayMessage");
         }
         
@@ -144,8 +146,21 @@ namespace BJR.Test
             //string endDate = null;
             //int perPage = null;
             //int page = null;
-            //var response = instance.JobOccurrences(id, endDate, perPage, page);
+            //string timezone = null;
+            //var response = instance.JobOccurrences(id, endDate, perPage, page, timezone);
             //Assert.IsInstanceOf(typeof(OccurrenceMessage), response, "response is OccurrenceMessage");
+        }
+        
+        /// <summary>
+        /// Test RunJobNow
+        /// </summary>
+        [Test]
+        public void RunJobNowTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int id = null;
+            //instance.RunJobNow(id);
+            
         }
         
         /// <summary>

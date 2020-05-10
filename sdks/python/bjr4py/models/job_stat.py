@@ -39,6 +39,8 @@ class JobStat(object):
         'avg_runtime': 'float',
         'max_runtime': 'float',
         'min_runtime': 'float',
+        'total_jobs': 'int',
+        'total_enabled': 'int',
         'period': 'str',
         'start_dt': 'datetime',
         'end_dt': 'datetime',
@@ -53,6 +55,8 @@ class JobStat(object):
         'avg_runtime': 'avg_runtime',
         'max_runtime': 'max_runtime',
         'min_runtime': 'min_runtime',
+        'total_jobs': 'total_jobs',
+        'total_enabled': 'total_enabled',
         'period': 'period',
         'start_dt': 'start_dt',
         'end_dt': 'end_dt',
@@ -60,7 +64,7 @@ class JobStat(object):
         'updated_at': 'updated_at'
     }
 
-    def __init__(self, runs=None, failed=None, job_count=None, avg_runtime=None, max_runtime=None, min_runtime=None, period=None, start_dt=None, end_dt=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, runs=None, failed=None, job_count=None, avg_runtime=None, max_runtime=None, min_runtime=None, total_jobs=None, total_enabled=None, period=None, start_dt=None, end_dt=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """JobStat - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -72,6 +76,8 @@ class JobStat(object):
         self._avg_runtime = None
         self._max_runtime = None
         self._min_runtime = None
+        self._total_jobs = None
+        self._total_enabled = None
         self._period = None
         self._start_dt = None
         self._end_dt = None
@@ -91,6 +97,10 @@ class JobStat(object):
             self.max_runtime = max_runtime
         if min_runtime is not None:
             self.min_runtime = min_runtime
+        if total_jobs is not None:
+            self.total_jobs = total_jobs
+        if total_enabled is not None:
+            self.total_enabled = total_enabled
         if period is not None:
             self.period = period
         if start_dt is not None:
@@ -239,6 +249,52 @@ class JobStat(object):
         """
 
         self._min_runtime = min_runtime
+
+    @property
+    def total_jobs(self):
+        """Gets the total_jobs of this JobStat.  # noqa: E501
+
+        The total number of jobs.  # noqa: E501
+
+        :return: The total_jobs of this JobStat.  # noqa: E501
+        :rtype: int
+        """
+        return self._total_jobs
+
+    @total_jobs.setter
+    def total_jobs(self, total_jobs):
+        """Sets the total_jobs of this JobStat.
+
+        The total number of jobs.  # noqa: E501
+
+        :param total_jobs: The total_jobs of this JobStat.  # noqa: E501
+        :type: int
+        """
+
+        self._total_jobs = total_jobs
+
+    @property
+    def total_enabled(self):
+        """Gets the total_enabled of this JobStat.  # noqa: E501
+
+        Of the total number of jobs, this is how many were enabled.  # noqa: E501
+
+        :return: The total_enabled of this JobStat.  # noqa: E501
+        :rtype: int
+        """
+        return self._total_enabled
+
+    @total_enabled.setter
+    def total_enabled(self, total_enabled):
+        """Sets the total_enabled of this JobStat.
+
+        Of the total number of jobs, this is how many were enabled.  # noqa: E501
+
+        :param total_enabled: The total_enabled of this JobStat.  # noqa: E501
+        :type: int
+        """
+
+        self._total_enabled = total_enabled
 
     @property
     def period(self):

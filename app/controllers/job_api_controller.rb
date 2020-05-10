@@ -4,7 +4,7 @@
 # Handles calls to the /job_api routes
 #
 class JobApiController < ApplicationController
-  before_action :job, only: %i[show update destroy failures runs occurrences runs]
+  before_action :job, only: %i[show update destroy failures runs occurrences runs run_now]
 
   def index
     jobs = Job.find_jobs(current_user, params[:start_date], params[:end_date],
@@ -63,6 +63,13 @@ class JobApiController < ApplicationController
     error I18n.t('jobs.errors.cant_delete_running', id: @job.id), :conflict and return if @job.running?
     @job.destroy
     message I18n.t('jobs.messages.deleted', id: @job.id), :ok
+  end
+
+  # Queue the job to run now unless it's already running
+  def run_now
+    error I18n.t('jobs.errors.already_running', id: @job.id), :conflict and return if @job.running?
+    ShellJob.perform_later @job.id
+    message I18n.t('jobs.messages.started', id: @job.id), :ok
   end
 
   # Return the runs for a job

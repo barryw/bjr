@@ -3,6 +3,56 @@
 require 'swagger_helper'
 
 describe 'Job API' do
+  path '/job_api/{id}/run_now' do
+    post 'Run a job now' do
+      description 'Queues a job to run now'
+      tags 'Jobs'
+      operationId 'runJobNow'
+      security [bearerAuth: []]
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :id, in: :path, required: true, type: :integer, description: 'The id of the job to execute now'
+
+      response '200', 'Job queued to execute' do
+        let(:admin) { create(:admin1) }
+        let(:job) { create(:job1, user: admin) }
+        let(:Authorization) { auth_token(admin) }
+        let(:id) { job.id }
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json['status_code']).to eq(200)
+          expect(json['is_error']).to be false
+        end
+      end
+
+      response '404', 'Job not found' do
+        let(:admin) { create(:admin1) }
+        let(:Authorization) { auth_token(admin) }
+        let(:id) { 1 }
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json['status_code']).to eq(404)
+          expect(json['is_error']).to be true
+        end
+      end
+
+      response '409', 'Job is already running' do
+        let(:admin) { create(:admin1) }
+        let(:Authorization) { auth_token(admin) }
+        let(:job) { create(:job1, user: admin, running: true) }
+        let(:id) { job.id }
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json['status_code']).to eq(409)
+          expect(json['is_error']).to be true
+        end
+      end
+    end
+  end
+
   path '/job_api/{id}/occurrences/{end_date}' do
     get 'Upcoming job occurrences' do
       description 'Retrieves a list of upcoming occurrences for a job'
@@ -15,6 +65,7 @@ describe 'Job API' do
       parameter name: :end_date, in: :path, required: true, type: :string, description: 'The date to retrieve occurrences up to'
       parameter name: :per_page, in: :query, type: :integer, required: false
       parameter name: :page, in: :query, type: :integer, required: false
+      parameter name: :timezone, in: :query, type: :string, required: false
 
       response '200', 'Occurrences received successfully' do
         header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
@@ -79,7 +130,7 @@ describe 'Job API' do
         end
       end
 
-      response '403', 'Invalid timezone name.' do
+      response '400', 'Invalid timezone name.' do
         let(:admin) { create(:admin1) }
         let(:exiting_job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }
@@ -88,7 +139,7 @@ describe 'Job API' do
         run_test! do |response|
           json = JSON.parse(response.body)
           expect(json['is_error']).to be true
-          expect(json['status_code']).to eq(403)
+          expect(json['status_code']).to eq(400)
           expect(json['message']).to eq("Invalid timezone 'ASS' specified. Acceptable timezone list: http://www.example.com/timezones")
         end
       end
@@ -123,6 +174,7 @@ describe 'Job API' do
       parameter name: :incexc, in: :query, schema: { type: :string, enum: %w[all any except], description: 'How to handle the case where many tags are specified.' }, required: false
       parameter name: :start_date, in: :query, type: :string, description: 'Specify a start date to search jobs by.', required: false
       parameter name: :end_date, in: :query, type: :string, description: 'Specify an end date to search jobs by.', required: false
+      parameter name: :timezone, in: :query, type: :string, required: false
       parameter name: :per_page, in: :query, type: :integer, required: false
       parameter name: :page, in: :query, type: :integer, required: false
 
@@ -162,6 +214,7 @@ describe 'Job API' do
       parameter name: :succeeded, in: :query, type: :boolean, required: false
       parameter name: :start_date, in: :query, type: :string, required: false
       parameter name: :end_date, in: :query, type: :string, required: false
+      parameter name: :timezone, in: :query, type: :string, required: false
 
       response '200', 'Runs received successfully.' do
         header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
@@ -274,6 +327,7 @@ describe 'Job API' do
         let(:job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
+        schema '$ref' => '#/components/schemas/SingleJobMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)
@@ -281,10 +335,24 @@ describe 'Job API' do
         end
       end
 
+      response '409', I18n.t('jobs.errors.cant_delete_running') do
+        let(:admin) { create(:admin1) }
+        let(:job) { create(:job1, user: admin, running: true) }
+        let(:Authorization) { auth_token(admin) }
+        let(:id) { job.id }
+        schema '$ref' => '#/components/schemas/SingleJobMessage'
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+          expect(json['status_code']).to eq(409)
+        end
+      end
+
       response '404', I18n.t('jobs.errors.not_found') do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { 0 }
+        schema '$ref' => '#/components/schemas/SingleJobMessage'
 
         run_test! do |response|
           json = JSON.parse(response.body)

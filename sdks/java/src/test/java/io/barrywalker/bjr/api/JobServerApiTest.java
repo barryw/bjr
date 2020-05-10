@@ -63,7 +63,8 @@ public class JobServerApiTest {
         String endDate = null;
         Integer perPage = null;
         Integer page = null;
-        JobStatMessage response = api.statsByDay(startDate, endDate, perPage, page);
+        String timezone = null;
+        JobStatMessage response = api.statsByDay(startDate, endDate, perPage, page, timezone);
 
         // TODO: test validations
     }
@@ -82,7 +83,8 @@ public class JobServerApiTest {
         String endDate = null;
         Integer perPage = null;
         Integer page = null;
-        JobStatMessage response = api.statsByHour(startDate, endDate, perPage, page);
+        String timezone = null;
+        JobStatMessage response = api.statsByHour(startDate, endDate, perPage, page, timezone);
 
         // TODO: test validations
     }
@@ -101,7 +103,8 @@ public class JobServerApiTest {
         String endDate = null;
         Integer perPage = null;
         Integer page = null;
-        JobStatMessage response = api.statsByMinute(startDate, endDate, perPage, page);
+        String timezone = null;
+        JobStatMessage response = api.statsByMinute(startDate, endDate, perPage, page, timezone);
 
         // TODO: test validations
     }
@@ -120,7 +123,8 @@ public class JobServerApiTest {
         String endDate = null;
         Integer perPage = null;
         Integer page = null;
-        JobStatMessage response = api.statsByWeek(startDate, endDate, perPage, page);
+        String timezone = null;
+        JobStatMessage response = api.statsByWeek(startDate, endDate, perPage, page, timezone);
 
         // TODO: test validations
     }

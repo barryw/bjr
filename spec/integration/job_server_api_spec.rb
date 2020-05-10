@@ -15,6 +15,7 @@ describe 'Job Server API' do
       parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get minutely metrics from'
       parameter name: :per_page, in: :query, type: :integer, required: false
       parameter name: :page, in: :query, type: :integer, required: false
+      parameter name: :timezone, in: :query, type: :string, required: false
 
       response '200', 'Minutely stats received successfully' do
         header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
@@ -59,6 +60,7 @@ describe 'Job Server API' do
       parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get hourly metrics from'
       parameter name: :per_page, in: :query, type: :integer, required: false
       parameter name: :page, in: :query, type: :integer, required: false
+      parameter name: :timezone, in: :query, type: :string, required: false
 
       response '200', 'Hourly stats received successfully' do
         header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
@@ -98,6 +100,7 @@ describe 'Job Server API' do
       parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get daily metrics from'
       parameter name: :per_page, in: :query, type: :integer, required: false
       parameter name: :page, in: :query, type: :integer, required: false
+      parameter name: :timezone, in: :query, type: :string, required: false
 
       response '200', 'Daily stats received successfully' do
         header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
@@ -135,6 +138,7 @@ describe 'Job Server API' do
       parameter name: :end_date, in: :query, type: :string, required: false, description: 'The end date from which to get weekly metrics from'
       parameter name: :per_page, in: :query, type: :integer, required: false
       parameter name: :page, in: :query, type: :integer, required: false
+      parameter name: :timezone, in: :query, type: :string, required: false
 
       response '200', 'Weekly stats received successfully' do
         header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'

@@ -20,6 +20,7 @@ en:
       created: Job %{id} created successfully.
       deleted: Job %{id} deleted successfully.
       updated: Job %{id} updated successfully.
+      started: Job %{id} queued to run.
       runs: Runs for job %{id}
     errors:
       not_found: Job not found.
@@ -28,6 +29,7 @@ en:
       already_exists: A job with this name already exists.
       end_date_required: You must supply an end date parameter.
       cant_delete_running: "Job '%{id}' cannot be deleted because it's running. Try disabling it first."
+      already_running: "Job '%{id}' is already running."
   users:
     messages:
       received: User(s) received successfully.

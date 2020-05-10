@@ -90,6 +90,22 @@ public class JobStatTest {
     }
 
     /**
+     * Test the property 'totalJobs'
+     */
+    @Test
+    public void totalJobsTest() {
+        // TODO: test totalJobs
+    }
+
+    /**
+     * Test the property 'totalEnabled'
+     */
+    @Test
+    public void totalEnabledTest() {
+        // TODO: test totalEnabled
+    }
+
+    /**
      * Test the property 'period'
      */
     @Test

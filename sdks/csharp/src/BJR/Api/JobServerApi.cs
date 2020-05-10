@@ -56,8 +56,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by day
@@ -70,8 +71,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
         /// <summary>
         /// Job statistics by hour
         /// </summary>
@@ -83,8 +85,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by hour
@@ -97,8 +100,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
         /// <summary>
         /// Job statistics by minute
         /// </summary>
@@ -110,8 +114,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByMinute (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        JobStatMessage StatsByMinute (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by minute
@@ -124,8 +129,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
         /// <summary>
         /// Job statistics by week
         /// </summary>
@@ -137,8 +143,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by week
@@ -151,8 +158,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
         /// <summary>
         /// List of upcoming jobs
         /// </summary>
@@ -208,8 +216,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by day
@@ -222,8 +231,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
         /// <summary>
         /// Job statistics by hour
         /// </summary>
@@ -235,8 +245,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by hour
@@ -249,8 +260,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
         /// <summary>
         /// Job statistics by minute
         /// </summary>
@@ -262,8 +274,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by minute
@@ -276,8 +289,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
         /// <summary>
         /// Job statistics by week
         /// </summary>
@@ -289,8 +303,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by week
@@ -303,8 +318,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
         /// <summary>
         /// List of upcoming jobs
         /// </summary>
@@ -584,10 +600,11 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
-             ApiResponse<JobStatMessage> localVarResponse = StatsByDayWithHttpInfo(startDate, endDate, perPage, page);
+             ApiResponse<JobStatMessage> localVarResponse = StatsByDayWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
         }
 
@@ -599,8 +616,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/daily_job_stats";
@@ -628,6 +646,7 @@ namespace BJR.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -662,10 +681,11 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByDayAsyncWithHttpInfo(startDate, endDate, perPage, page);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByDayAsyncWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
 
         }
@@ -678,8 +698,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get daily metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/daily_job_stats";
@@ -707,6 +728,7 @@ namespace BJR.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required
@@ -741,10 +763,11 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
-             ApiResponse<JobStatMessage> localVarResponse = StatsByHourWithHttpInfo(startDate, endDate, perPage, page);
+             ApiResponse<JobStatMessage> localVarResponse = StatsByHourWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
         }
 
@@ -756,8 +779,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/hourly_job_stats";
@@ -785,6 +809,7 @@ namespace BJR.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -819,10 +844,11 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByHourAsyncWithHttpInfo(startDate, endDate, perPage, page);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByHourAsyncWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
 
         }
@@ -835,8 +861,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get hourly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/hourly_job_stats";
@@ -864,6 +891,7 @@ namespace BJR.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required
@@ -898,10 +926,11 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByMinute (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public JobStatMessage StatsByMinute (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
-             ApiResponse<JobStatMessage> localVarResponse = StatsByMinuteWithHttpInfo(startDate, endDate, perPage, page);
+             ApiResponse<JobStatMessage> localVarResponse = StatsByMinuteWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
         }
 
@@ -913,8 +942,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/minutely_job_stats";
@@ -942,6 +972,7 @@ namespace BJR.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -976,10 +1007,11 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByMinuteAsyncWithHttpInfo(startDate, endDate, perPage, page);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByMinuteAsyncWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
 
         }
@@ -992,8 +1024,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get minutely metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/minutely_job_stats";
@@ -1021,6 +1054,7 @@ namespace BJR.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required
@@ -1055,10 +1089,11 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
-             ApiResponse<JobStatMessage> localVarResponse = StatsByWeekWithHttpInfo(startDate, endDate, perPage, page);
+             ApiResponse<JobStatMessage> localVarResponse = StatsByWeekWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
         }
 
@@ -1070,8 +1105,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/weekly_job_stats";
@@ -1099,6 +1135,7 @@ namespace BJR.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http beerer authentication required
@@ -1133,10 +1170,11 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByWeekAsyncWithHttpInfo(startDate, endDate, perPage, page);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByWeekAsyncWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
 
         }
@@ -1149,8 +1187,9 @@ namespace BJR.Api
         /// <param name="endDate">The end date from which to get weekly metrics from (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="timezone"> (optional)</param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/weekly_job_stats";
@@ -1178,6 +1217,7 @@ namespace BJR.Api
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end_date", endDate)); // query parameter
             if (perPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "per_page", perPage)); // query parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (timezone != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timezone", timezone)); // query parameter
 
             // authentication (bearerAuth) required
             // http bearer authentication required

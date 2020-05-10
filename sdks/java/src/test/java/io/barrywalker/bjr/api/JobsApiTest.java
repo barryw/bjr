@@ -63,7 +63,7 @@ public class JobsApiTest {
     @Test
     public void deleteJobTest() throws ApiException {
         Integer id = null;
-        api.deleteJob(id);
+        SingleJobMessage response = api.deleteJob(id);
 
         // TODO: test validations
     }
@@ -100,7 +100,8 @@ public class JobsApiTest {
         Boolean succeeded = null;
         String startDate = null;
         String endDate = null;
-        JobRunArrayMessage response = api.getJobRuns(id, perPage, page, succeeded, startDate, endDate);
+        String timezone = null;
+        JobRunArrayMessage response = api.getJobRuns(id, perPage, page, succeeded, startDate, endDate, timezone);
 
         // TODO: test validations
     }
@@ -119,9 +120,10 @@ public class JobsApiTest {
         String incexc = null;
         String startDate = null;
         String endDate = null;
+        String timezone = null;
         Integer perPage = null;
         Integer page = null;
-        JobArrayMessage response = api.getJobs(tags, incexc, startDate, endDate, perPage, page);
+        JobArrayMessage response = api.getJobs(tags, incexc, startDate, endDate, timezone, perPage, page);
 
         // TODO: test validations
     }
@@ -140,7 +142,24 @@ public class JobsApiTest {
         String endDate = null;
         Integer perPage = null;
         Integer page = null;
-        OccurrenceMessage response = api.jobOccurrences(id, endDate, perPage, page);
+        String timezone = null;
+        OccurrenceMessage response = api.jobOccurrences(id, endDate, perPage, page, timezone);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Run a job now
+     *
+     * Queues a job to run now
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void runJobNowTest() throws ApiException {
+        Integer id = null;
+        api.runJobNow(id);
 
         // TODO: test validations
     }

@@ -52,6 +52,7 @@ describe 'JobServerApi' do
   # @option opts [String] :end_date The end date from which to get daily metrics from
   # @option opts [Integer] :per_page 
   # @option opts [Integer] :page 
+  # @option opts [String] :timezone 
   # @return [JobStatMessage]
   describe 'stats_by_day test' do
     it 'should work' do
@@ -67,6 +68,7 @@ describe 'JobServerApi' do
   # @option opts [String] :end_date The end date from which to get hourly metrics from
   # @option opts [Integer] :per_page 
   # @option opts [Integer] :page 
+  # @option opts [String] :timezone 
   # @return [JobStatMessage]
   describe 'stats_by_hour test' do
     it 'should work' do
@@ -82,6 +84,7 @@ describe 'JobServerApi' do
   # @option opts [String] :end_date The end date from which to get minutely metrics from
   # @option opts [Integer] :per_page 
   # @option opts [Integer] :page 
+  # @option opts [String] :timezone 
   # @return [JobStatMessage]
   describe 'stats_by_minute test' do
     it 'should work' do
@@ -97,6 +100,7 @@ describe 'JobServerApi' do
   # @option opts [String] :end_date The end date from which to get weekly metrics from
   # @option opts [Integer] :per_page 
   # @option opts [Integer] :page 
+  # @option opts [String] :timezone 
   # @return [JobStatMessage]
   describe 'stats_by_week test' do
     it 'should work' do

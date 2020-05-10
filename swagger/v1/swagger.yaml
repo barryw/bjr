@@ -30,6 +30,12 @@ components:
           type: number
           format: float
           description: The min runtime in seconds of all jobs in the period.
+        total_jobs:
+          type: integer
+          description: The total number of jobs.
+        total_enabled:
+          type: integer
+          description: Of the total number of jobs, this is how many were enabled.
         period:
           type: string
           description: The runtime period.
@@ -521,6 +527,32 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/AuthIn"
+  "/job_api/{id}/run_now":
+    post:
+      summary: Run a job now
+      description: Queues a job to run now
+      tags:
+      - Jobs
+      operationId: runJobNow
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The id of the job to execute now
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Job queued to execute
+          content: {}
+        '404':
+          description: Job not found
+          content: {}
+        '409':
+          description: Job is already running
+          content: {}
   "/job_api/{id}/occurrences/{end_date}":
     get:
       summary: Upcoming job occurrences
@@ -553,6 +585,11 @@ paths:
         required: false
         schema:
           type: integer
+      - name: timezone
+        in: query
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           description: Occurrences received successfully
@@ -589,6 +626,9 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/SingleJobMessage"
+        '400':
+          description: Invalid timezone name.
+          content: {}
         '403':
           description: A job with this name already exists.
           content: {}
@@ -631,6 +671,11 @@ paths:
       - name: end_date
         in: query
         description: Specify an end date to search jobs by.
+        required: false
+        schema:
+          type: string
+      - name: timezone
+        in: query
         required: false
         schema:
           type: string
@@ -696,6 +741,11 @@ paths:
         schema:
           type: string
       - name: end_date
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: timezone
         in: query
         required: false
         schema:
@@ -766,10 +816,23 @@ paths:
       responses:
         '200':
           description: Job %{id} deleted successfully.
-          content: {}
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleJobMessage"
+        '409':
+          description: Job '%{id}' cannot be deleted because it's running. Try disabling
+            it first.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleJobMessage"
         '404':
           description: Job not found.
-          content: {}
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleJobMessage"
     get:
       summary: Retrieves a single job
       description: Retrieves a single job
@@ -826,6 +889,11 @@ paths:
         required: false
         schema:
           type: integer
+      - name: timezone
+        in: query
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           description: Minutely stats received successfully
@@ -874,6 +942,11 @@ paths:
         required: false
         schema:
           type: integer
+      - name: timezone
+        in: query
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           description: Hourly stats received successfully
@@ -922,6 +995,11 @@ paths:
         required: false
         schema:
           type: integer
+      - name: timezone
+        in: query
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           description: Daily stats received successfully
@@ -970,6 +1048,11 @@ paths:
         required: false
         schema:
           type: integer
+      - name: timezone
+        in: query
+        required: false
+        schema:
+          type: string
       responses:
         '200':
           description: Weekly stats received successfully

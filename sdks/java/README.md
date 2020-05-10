@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-05-03T22:50:15.065Z[GMT]
+  - Build date: 2020-05-10T12:39:27.924Z[GMT]
 
 API specification for the BJR job server.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>bjr4j</artifactId>
-  <version>1.1.6</version>
+  <version>1.3.5</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:bjr4j:1.1.6"
+compile "org.openapitools:bjr4j:1.3.5"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bjr4j-1.1.6.jar`
+* `target/bjr4j-1.3.5.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
 *JobsApi* | [**getJobRuns**](docs/JobsApi.md#getJobRuns) | **GET** /job_api/{id}/runs | Retrieve the runs for a job
 *JobsApi* | [**getJobs**](docs/JobsApi.md#getJobs) | **GET** /job_api | Retrieves jobs
 *JobsApi* | [**jobOccurrences**](docs/JobsApi.md#jobOccurrences) | **GET** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
+*JobsApi* | [**runJobNow**](docs/JobsApi.md#runJobNow) | **POST** /job_api/{id}/run_now | Run a job now
 *JobsApi* | [**updateJob**](docs/JobsApi.md#updateJob) | **PUT** /job_api/{id} | Updates a single job
 *StaticApi* | [**getTags**](docs/StaticApi.md#getTags) | **GET** /tags | Get tags
 *StaticApi* | [**getTimezones**](docs/StaticApi.md#getTimezones) | **GET** /timezones | Get timezones
