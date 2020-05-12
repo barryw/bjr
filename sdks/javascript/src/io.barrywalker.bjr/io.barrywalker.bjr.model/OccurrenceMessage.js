@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The OccurrenceMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/OccurrenceMessage
- * @version 1.3.6
+ * @version 1.3.7
  */
 class OccurrenceMessage {
     /**

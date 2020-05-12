@@ -288,8 +288,8 @@ RSpec.configure do |config|
               tags: { type: :array, description: 'An array of tags associated with the job.', items: { type: :string, nullable: true } },
               created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
               updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' },
-              success_callback: { type: :string, description: 'This url will receive a POST request with details about all successful job runs.', nullable: true },
-              failure_callback: { type: :string, description: 'This url will receive a POST request with details about all unsuccessful job runs.', nullable: true }
+              success_callback: { type: :string, description: 'This url will receive a POST request with details about all successful job runs.' },
+              failure_callback: { type: :string, description: 'This url will receive a POST request with details about all unsuccessful job runs.' }
             }
           },
           JobArray: {

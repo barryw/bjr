@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The Tag model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/Tag
- * @version 1.3.6
+ * @version 1.3.7
  */
 class Tag {
     /**

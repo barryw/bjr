@@ -116,8 +116,10 @@ class SingleJob(object):
             self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
-        self.success_callback = success_callback
-        self.failure_callback = failure_callback
+        if success_callback is not None:
+            self.success_callback = success_callback
+        if failure_callback is not None:
+            self.failure_callback = failure_callback
 
     @property
     def id(self):

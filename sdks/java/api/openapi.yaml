@@ -1865,12 +1865,10 @@ components:
         success_callback:
           description: This url will receive a POST request with details about all
             successful job runs.
-          nullable: true
           type: string
         failure_callback:
           description: This url will receive a POST request with details about all
             unsuccessful job runs.
-          nullable: true
           type: string
       type: object
     JobArray:
