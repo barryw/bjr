@@ -7,5 +7,5 @@
   "gemRequiredRubyVersion": ">=2.0",
   "gemSummary": "Ruby SDK for the BJR API server",
   "moduleName": "BJR",
-  "gemVersion": "1.3.7"
+  "gemVersion": "1.3.8"
 }

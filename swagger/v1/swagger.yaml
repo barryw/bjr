@@ -524,10 +524,12 @@ components:
           type: string
           description: This url will receive a POST request with details about all
             successful job runs.
+          nullable: true
         failure_callback:
           type: string
           description: This url will receive a POST request with details about all
             unsuccessful job runs.
+          nullable: true
     JobArray:
       type: array
       items:

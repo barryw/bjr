@@ -51,6 +51,8 @@ namespace BJR.Model
         public SingleJob(int id = default(int), string name = default(string), string cron = default(string), bool enabled = default(bool), string command = default(string), DateTime? lastRun = default(DateTime?), DateTime nextRun = default(DateTime), bool success = default(bool), bool running = default(bool), string timezone = default(string), List<string> tags = default(List<string>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string successCallback = default(string), string failureCallback = default(string))
         {
             this.LastRun = lastRun;
+            this.SuccessCallback = successCallback;
+            this.FailureCallback = failureCallback;
             this.Id = id;
             this.Name = name;
             this.Cron = cron;
@@ -163,14 +165,14 @@ namespace BJR.Model
         /// This url will receive a POST request with details about all successful job runs.
         /// </summary>
         /// <value>This url will receive a POST request with details about all successful job runs.</value>
-        [DataMember(Name="success_callback", EmitDefaultValue=false)]
+        [DataMember(Name="success_callback", EmitDefaultValue=true)]
         public string SuccessCallback { get; set; }
 
         /// <summary>
         /// This url will receive a POST request with details about all unsuccessful job runs.
         /// </summary>
         /// <value>This url will receive a POST request with details about all unsuccessful job runs.</value>
-        [DataMember(Name="failure_callback", EmitDefaultValue=false)]
+        [DataMember(Name="failure_callback", EmitDefaultValue=true)]
         public string FailureCallback { get; set; }
 
         /// <summary>

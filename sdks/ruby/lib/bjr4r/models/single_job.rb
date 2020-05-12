@@ -105,6 +105,8 @@ module BJR
     def self.openapi_nullable
       Set.new([
         :'last_run',
+        :'success_callback',
+        :'failure_callback'
       ])
     end
 
