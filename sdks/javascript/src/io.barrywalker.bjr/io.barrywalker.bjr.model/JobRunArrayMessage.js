@@ -17,7 +17,7 @@ import SingleJobRun from './SingleJobRun';
 /**
  * The JobRunArrayMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobRunArrayMessage
- * @version 1.3.8
+ * @version 1.3.9
  */
 class JobRunArrayMessage {
     /**

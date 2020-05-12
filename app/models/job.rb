@@ -128,7 +128,7 @@ class Job < ApplicationRecord
       cron: cron,
       enabled: enabled,
       command: command,
-      last_run: last_run,
+      last_run: last_run || nil,
       next_run: next_run,
       running: running,
       success: success,

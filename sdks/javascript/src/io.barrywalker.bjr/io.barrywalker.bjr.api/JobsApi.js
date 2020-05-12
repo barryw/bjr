@@ -22,7 +22,7 @@ import SingleJobMessage from '../io.barrywalker.bjr.model/SingleJobMessage';
 /**
 * Jobs service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi
-* @version 1.3.8
+* @version 1.3.9
 */
 export default class JobsApi {
 

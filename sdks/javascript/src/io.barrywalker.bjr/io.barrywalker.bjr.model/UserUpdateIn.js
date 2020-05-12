@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The UserUpdateIn model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/UserUpdateIn
- * @version 1.3.8
+ * @version 1.3.9
  */
 class UserUpdateIn {
     /**

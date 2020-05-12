@@ -225,8 +225,8 @@ describe 'Job Server API' do
         schema '$ref' => '#/components/schemas/JobArrayMessage'
 
         before do |request|
-          job1 = create(:job1, user: admin)
-          job2 = create(:job2, user: admin)
+          job1 = create(:job1, user: admin, last_run: nil)
+          job2 = create(:job2, user: admin, last_run: nil)
           create(:successful_job_run, job: job1, start_time: DateTime.now - 30.seconds, end_time: DateTime.now)
           create(:successful_job_run, job: job2, start_time: DateTime.now - 30.seconds, end_time: DateTime.now)
 
