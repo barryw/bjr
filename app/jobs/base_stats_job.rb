@@ -6,7 +6,6 @@ class BaseStatsJob < ApplicationJob
   def generate_stats(period)
     User.find_each do |user|
       logger.debug "Processing #{period}ly job stats for user #{user.username}"
-      logger.debug("No job runs for user #{user.username}. Continuing.") && next unless user_has_job_runs(user)
 
       stat_start_dt, time_incr, end_dt = date_ranges(user, period)
       iterate_over_ranges(user, period, stat_start_dt, time_incr, end_dt)
@@ -93,10 +92,6 @@ class BaseStatsJob < ApplicationJob
     end
 
     current_dt
-  end
-
-  def user_has_job_runs(user)
-    JobRun.count_for_user(user.id).positive?
   end
 
   def start_processing_date(user, period)

@@ -13,7 +13,7 @@ class JobStat < ApplicationRecord
   end
 
   def self.todays_stats(user)
-    stats = JobStat.minutely_today(user)
+    stats = JobStat.minutely_today(user).order(created_at: :asc)
     total_jobs_array = stats.collect { |stat| stat.total_jobs }
     enabled_jobs_array = stats.collect { |stat| stat.total_enabled }
     run_jobs_array = stats.collect { |stat| stat.runs }
