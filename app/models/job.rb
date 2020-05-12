@@ -20,7 +20,7 @@ class Job < ApplicationRecord
   scope :successful, ->(successful) { where(success: successful) }
   scope :include_by_ids, ->(ids) { where('jobs.id in (?)', ids) }
   scope :recent, ->(user_id, count) { mine(user_id).order(last_run: :desc).limit(count) }
-  scope :upcoming, ->(user_id, count) { mine(user_id).where("next_run > ?", DateTime.now).order(next_run: :asc).limit(count) }
+  scope :upcoming, ->(user_id, count) { mine(user_id).where("next_run > ? and enabled = ? and running = ?", DateTime.now, true, false).order(next_run: :asc).limit(count) }
 
   TAG_SEARCH = %w[any all exclude].freeze
 
@@ -136,8 +136,8 @@ class Job < ApplicationRecord
       updated_at: updated_at,
       timezone: timezone,
       tags: tags.collect(&:name),
-      success_callback: success_callback || '',
-      failure_callback: failure_callback || ''
+      success_callback: success_callback,
+      failure_callback: failure_callback
     }
   end
 

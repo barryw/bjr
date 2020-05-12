@@ -40,10 +40,21 @@ RSpec.describe Job, type: :model do
     expect(job.last_run).not_to be nil
   end
 
-  it "returns a list of upcoming jobs" do
+  it 'returns a list of upcoming jobs but excludes disabled jobs' do
     admin = create(:admin1)
     job1 = create(:job1, name: 'job 1', user: admin, cron: "* * * * *")
     job2 = create(:job2, name: 'job 2', user: admin, cron: "*/5 * * * *")
+
+    jobs = Job.upcoming(admin.id, 2)
+    expect(jobs.count).to eq(1)
+    expect(jobs[0].id).to eq(job1.id)
+  end
+
+  it 'returns a list of upcoming jobs but excludes running jobs' do
+    admin = create(:admin1)
+    job1 = create(:job1, name: 'job 1', user: admin, cron: '* * * * *')
+    job2 = create(:job2, name: 'job 2', user: admin, cron: '*/5 * * * *', enabled: true)
+    job3 = create(:job1, name: 'job 3', user: admin, cron: '*/10 * * * *', running: true)
 
     jobs = Job.upcoming(admin.id, 2)
     expect(jobs.count).to eq(2)
