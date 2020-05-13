@@ -156,6 +156,28 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['status_code']).to eq(200)
       expect(json['object']['enabled']).to eq(false)
     end
+
+    it 'can disable a job by passing in an int' do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, user: user, enabled: true)
+      put :update, params: { id: job.id, enabled: 0 }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['status_code']).to eq(200)
+      expect(json['object']['enabled']).to eq(false)
+    end
+
+    it 'can disable a job by passing in a string' do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, user: user, enabled: true)
+      put :update, params: { id: job.id, enabled: 'false' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['status_code']).to eq(200)
+      expect(json['object']['enabled']).to eq(false)
+    end
   end
 
   describe 'GET #index' do

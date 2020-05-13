@@ -44,7 +44,7 @@ class JobApiController < ApplicationController
     @job.cron = params[:cron] unless (@job.cron == params[:cron]) || params[:cron].blank?
     @job.command = params[:command] unless (@job.command == params[:command]) || params[:command].blank?
     @job.timezone = params[:timezone] unless (@job.timezone == params[:timezone]) || params[:timezone].blank?
-    @job.enabled = params[:enabled].to_bool if params[:enabled].present?
+    @job.enabled = to_bool(params[:enabled]) if params[:enabled].present?
     @job.success_callback = params[:success_callback] if params[:success_callback].present?
     @job.failure_callback = params[:failure_callback] if params[:failure_callback].present?
     ActiveRecord::Base.transaction do
