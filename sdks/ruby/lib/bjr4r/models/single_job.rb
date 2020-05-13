@@ -88,7 +88,7 @@ module BJR
         :'cron' => :'String',
         :'enabled' => :'Boolean',
         :'command' => :'String',
-        :'last_run' => :'DateTime',
+        :'last_run' => :'String',
         :'next_run' => :'DateTime',
         :'success' => :'Boolean',
         :'running' => :'Boolean',

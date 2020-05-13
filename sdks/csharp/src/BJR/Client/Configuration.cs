@@ -29,7 +29,7 @@ namespace BJR.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.3.11";
+        public const string Version = "1.3.12";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -114,7 +114,7 @@ namespace BJR.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "OpenAPI-Generator/1.3.11/csharp";
+            UserAgent = "OpenAPI-Generator/1.3.12/csharp";
             BasePath = "http://localhost";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -187,7 +187,7 @@ namespace BJR.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "OpenAPI-Generator/1.3.11/csharp"
+            string userAgent = "OpenAPI-Generator/1.3.12/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -421,7 +421,7 @@ namespace BJR.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: v1\n";
-            report += "    SDK Package Version: 1.3.11\n";
+            report += "    SDK Package Version: 1.3.12\n";
 
             return report;
         }

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **cron** | **str** | The cron expression for the job. | [optional] 
 **enabled** | **bool** | Whether the job is enabled or not. | [optional] 
 **command** | **str** | The command that is executed when the job fires. | [optional] 
-**last_run** | **datetime** | The last time the job ran. | [optional] 
+**last_run** | **str** | The last time the job ran. | [optional] 
 **next_run** | **datetime** | The date and time of the job&#39;s next run. | [optional] 
 **success** | **bool** | Whether the last run of the job was successful. | [optional] 
 **running** | **bool** | Whether the job is currently running. | [optional] 

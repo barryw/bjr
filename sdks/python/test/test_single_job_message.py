@@ -46,7 +46,7 @@ class TestSingleJobMessage(unittest.TestCase):
                     cron = '0', 
                     enabled = True, 
                     command = '0', 
-                    last_run = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
+                    last_run = '0', 
                     next_run = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     success = True, 
                     running = True, 

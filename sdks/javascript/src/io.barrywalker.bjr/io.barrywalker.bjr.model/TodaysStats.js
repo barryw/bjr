@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TodaysStats model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/TodaysStats
- * @version 1.3.11
+ * @version 1.3.12
  */
 class TodaysStats {
     /**

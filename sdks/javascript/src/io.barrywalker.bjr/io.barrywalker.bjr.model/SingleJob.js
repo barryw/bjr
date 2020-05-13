@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SingleJob model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/SingleJob
- * @version 1.3.11
+ * @version 1.3.12
  */
 class SingleJob {
     /**
@@ -63,7 +63,7 @@ class SingleJob {
                 obj['command'] = ApiClient.convertToType(data['command'], 'String');
             }
             if (data.hasOwnProperty('last_run')) {
-                obj['last_run'] = ApiClient.convertToType(data['last_run'], 'Date');
+                obj['last_run'] = ApiClient.convertToType(data['last_run'], 'String');
             }
             if (data.hasOwnProperty('next_run')) {
                 obj['next_run'] = ApiClient.convertToType(data['next_run'], 'Date');
@@ -131,7 +131,7 @@ SingleJob.prototype['command'] = undefined;
 
 /**
  * The last time the job ran.
- * @member {Date} last_run
+ * @member {String} last_run
  */
 SingleJob.prototype['last_run'] = undefined;
 

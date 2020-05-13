@@ -38,7 +38,7 @@ class SingleJob(object):
         'cron': 'str',
         'enabled': 'bool',
         'command': 'str',
-        'last_run': 'datetime',
+        'last_run': 'str',
         'next_run': 'datetime',
         'success': 'bool',
         'running': 'bool',
@@ -241,7 +241,7 @@ class SingleJob(object):
         The last time the job ran.  # noqa: E501
 
         :return: The last_run of this SingleJob.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._last_run
 
@@ -252,7 +252,7 @@ class SingleJob(object):
         The last time the job ran.  # noqa: E501
 
         :param last_run: The last_run of this SingleJob.  # noqa: E501
-        :type: datetime
+        :type: str
         """
 
         self._last_run = last_run

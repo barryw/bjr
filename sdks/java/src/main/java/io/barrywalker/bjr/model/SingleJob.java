@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * SingleJob
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-13T00:24:08.767Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-13T00:55:16.204Z[GMT]")
 public class SingleJob {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -54,7 +54,7 @@ public class SingleJob {
 
   public static final String SERIALIZED_NAME_LAST_RUN = "last_run";
   @SerializedName(SERIALIZED_NAME_LAST_RUN)
-  private OffsetDateTime lastRun;
+  private String lastRun;
 
   public static final String SERIALIZED_NAME_NEXT_RUN = "next_run";
   @SerializedName(SERIALIZED_NAME_NEXT_RUN)
@@ -208,7 +208,7 @@ public class SingleJob {
   }
 
 
-  public SingleJob lastRun(OffsetDateTime lastRun) {
+  public SingleJob lastRun(String lastRun) {
     
     this.lastRun = lastRun;
     return this;
@@ -221,12 +221,12 @@ public class SingleJob {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The last time the job ran.")
 
-  public OffsetDateTime getLastRun() {
+  public String getLastRun() {
     return lastRun;
   }
 
 
-  public void setLastRun(OffsetDateTime lastRun) {
+  public void setLastRun(String lastRun) {
     this.lastRun = lastRun;
   }
 

@@ -48,7 +48,7 @@ namespace BJR.Model
         /// <param name="updatedAt">The UTC date and time that the object was last modified..</param>
         /// <param name="successCallback">This url will receive a POST request with details about all successful job runs..</param>
         /// <param name="failureCallback">This url will receive a POST request with details about all unsuccessful job runs..</param>
-        public SingleJob(int id = default(int), string name = default(string), string cron = default(string), bool enabled = default(bool), string command = default(string), DateTime? lastRun = default(DateTime?), DateTime nextRun = default(DateTime), bool success = default(bool), bool running = default(bool), string timezone = default(string), List<string> tags = default(List<string>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string successCallback = default(string), string failureCallback = default(string))
+        public SingleJob(int id = default(int), string name = default(string), string cron = default(string), bool enabled = default(bool), string command = default(string), string lastRun = default(string), DateTime nextRun = default(DateTime), bool success = default(bool), bool running = default(bool), string timezone = default(string), List<string> tags = default(List<string>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string successCallback = default(string), string failureCallback = default(string))
         {
             this.LastRun = lastRun;
             this.SuccessCallback = successCallback;
@@ -110,7 +110,7 @@ namespace BJR.Model
         /// </summary>
         /// <value>The last time the job ran.</value>
         [DataMember(Name="last_run", EmitDefaultValue=true)]
-        public DateTime? LastRun { get; set; }
+        public string LastRun { get; set; }
 
         /// <summary>
         /// The date and time of the job&#39;s next run.

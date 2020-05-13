@@ -1705,7 +1705,7 @@ components:
           cron: cron
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
-          last_run: 2000-01-23T04:56:07.000+00:00
+          last_run: last_run
           enabled: true
           command: command
           tags:
@@ -1745,7 +1745,7 @@ components:
         - cron: cron
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
-          last_run: 2000-01-23T04:56:07.000+00:00
+          last_run: last_run
           enabled: true
           command: command
           tags:
@@ -1762,7 +1762,7 @@ components:
         - cron: cron
           timezone: timezone
           created_at: 2000-01-23T04:56:07.000+00:00
-          last_run: 2000-01-23T04:56:07.000+00:00
+          last_run: last_run
           enabled: true
           command: command
           tags:
@@ -1799,7 +1799,7 @@ components:
         cron: cron
         timezone: timezone
         created_at: 2000-01-23T04:56:07.000+00:00
-        last_run: 2000-01-23T04:56:07.000+00:00
+        last_run: last_run
         enabled: true
         command: command
         tags:
@@ -1832,7 +1832,6 @@ components:
           type: string
         last_run:
           description: The last time the job ran.
-          format: date-time
           nullable: true
           type: string
         next_run:

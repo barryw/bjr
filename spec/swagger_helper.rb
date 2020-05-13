@@ -280,7 +280,7 @@ RSpec.configure do |config|
               cron: { type: :string, description: 'The cron expression for the job.' },
               enabled: { type: :boolean, description: 'Whether the job is enabled or not.' },
               command: { type: :string, description: 'The command that is executed when the job fires.' },
-              last_run: { type: :string, format: 'date-time', description: 'The last time the job ran.', nullable: true },
+              last_run: { type: :string, description: 'The last time the job ran.', nullable: true },
               next_run: { type: :string, format: 'date-time', description: 'The date and time of the job\'s next run.' },
               success: { type: :boolean, description: 'Whether the last run of the job was successful.' },
               running: { type: :boolean, description: 'Whether the job is currently running.' },

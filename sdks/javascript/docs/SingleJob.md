@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **cron** | **String** | The cron expression for the job. | [optional] 
 **enabled** | **Boolean** | Whether the job is enabled or not. | [optional] 
 **command** | **String** | The command that is executed when the job fires. | [optional] 
-**lastRun** | **Date** | The last time the job ran. | [optional] 
+**lastRun** | **String** | The last time the job ran. | [optional] 
 **nextRun** | **Date** | The date and time of the job&#39;s next run. | [optional] 
 **success** | **Boolean** | Whether the last run of the job was successful. | [optional] 
 **running** | **Boolean** | Whether the job is currently running. | [optional] 
