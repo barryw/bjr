@@ -7,5 +7,5 @@
   "invokerPackage": "io.barrywalker.bjr",
   "apiPackage": "io.barrywalker.bjr.api",
   "modelPackage": "io.barrywalker.bjr.model",
-  "artifactVersion": "1.3.10"
+  "artifactVersion": "1.3.11"
 }
