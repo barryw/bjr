@@ -88,9 +88,9 @@ class Job < ApplicationRecord
 
   def self.find_jobs(user, occur_start, occur_end, tags, incexc, enabled, succeeded, running, name)
     search = Job.mine(user)
-    search = search.enabled(enabled) unless enabled.blank?
-    search = search.running(running) unless running.blank?
-    search = search.successful(succeeded) unless succeeded.blank?
+    search = search.enabled(enabled) unless enabled.nil?
+    search = search.running(running) unless running.nil?
+    search = search.successful(succeeded) unless succeeded.nil?
     search = search.named_like(name) unless name.blank?
     search = search.merge(Job.search_tags(search, tags, incexc)) unless tags.blank?
 
