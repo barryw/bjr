@@ -10,7 +10,7 @@ class JobApiController < ApplicationController
   def index
     jobs = Job.find_jobs(current_user, params[:start_date], params[:end_date],
                          params[:tags], params[:incexc], params[:enabled],
-                         params[:succeeded], params[:running])
+                         params[:succeeded], params[:running], params[:name])
 
     jobs_return = paginate jobs
     message I18n.t('jobs.messages.received'), :ok, false, jobs_return, 'jobarray'

@@ -397,6 +397,29 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['object'].length).to eq(1)
       expect(json['object'][0]['id']).to eq(job2.id)
     end
+
+    it 'finds jobs by name' do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, name: 'barrys-job')
+      authenticated_header(user)
+      get :index, params: { name: 'barry' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(job1.id)
+    end
+
+    it 'tries to find a job by name and fails' do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, name: 'barrys-job')
+      authenticated_header(user)
+      get :index, params: { name: 'jimbob' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['object'].length).to eq(0)
+    end
   end
 
   describe 'GET #show' do

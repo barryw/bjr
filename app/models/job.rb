@@ -18,6 +18,7 @@ class Job < ApplicationRecord
   scope :enabled, ->(enabled) { where(enabled: enabled) }
   scope :running, ->(running) { where(running: running) }
   scope :successful, ->(successful) { where(success: successful) }
+  scope :named_like, ->(name) { where('name like ?', "%#{sanitize_sql_like(name)}%") }
   scope :include_by_ids, ->(ids) { where('jobs.id in (?)', ids) }
   scope :recent, ->(user_id, count) { mine(user_id).order(last_run: :desc).limit(count) }
   scope :upcoming, ->(user_id, count) { mine(user_id).where("next_run > ? and enabled = ? and running = ?", DateTime.now, true, false).order(next_run: :asc).limit(count) }
@@ -85,11 +86,12 @@ class Job < ApplicationRecord
     query
   end
 
-  def self.find_jobs(user, occur_start, occur_end, tags, incexc, enabled, succeeded, running)
+  def self.find_jobs(user, occur_start, occur_end, tags, incexc, enabled, succeeded, running, name)
     search = Job.mine(user)
     search = search.enabled(enabled) unless enabled.blank?
     search = search.running(running) unless running.blank?
     search = search.successful(succeeded) unless succeeded.blank?
+    search = search.named_like(name) unless name.blank?
     search = search.merge(Job.search_tags(search, tags, incexc)) unless tags.blank?
 
     # Occurrence is a special case since we can't do it with an activerecord relation
