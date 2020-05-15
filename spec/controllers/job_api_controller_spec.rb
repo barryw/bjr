@@ -420,6 +420,20 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['object_type']).to eq('jobarray')
       expect(json['object'].length).to eq(0)
     end
+
+    it 'can not get jobs for other users' do
+      user1 = create(:admin1)
+      user2 = create(:admin2)
+      job1 = create(:job1, user: user1, name: 'barrys-job')
+      job2 = create(:job1, user: user2, name: 'barrys-job')
+      authenticated_header(user1)
+      get :index, params: { name: 'barry' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(job1.id)
+    end
   end
 
   describe 'GET #show' do
