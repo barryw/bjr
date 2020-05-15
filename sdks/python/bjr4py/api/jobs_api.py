@@ -536,6 +536,10 @@ class JobsApi(object):
         :param str incexc:
         :param str start_date: Specify a start date to search jobs by.
         :param str end_date: Specify an end date to search jobs by.
+        :param bool enabled: Search on whether a job is enabled or not.
+        :param bool succeeded: Search on whether a job's last run was successful or not.
+        :param bool running: Search on whether a job is currently running or not.
+        :param str name: Search on a job's name.
         :param str timezone:
         :param int per_page:
         :param int page:
@@ -567,6 +571,10 @@ class JobsApi(object):
         :param str incexc:
         :param str start_date: Specify a start date to search jobs by.
         :param str end_date: Specify an end date to search jobs by.
+        :param bool enabled: Search on whether a job is enabled or not.
+        :param bool succeeded: Search on whether a job's last run was successful or not.
+        :param bool running: Search on whether a job is currently running or not.
+        :param str name: Search on a job's name.
         :param str timezone:
         :param int per_page:
         :param int page:
@@ -591,6 +599,10 @@ class JobsApi(object):
             'incexc',
             'start_date',
             'end_date',
+            'enabled',
+            'succeeded',
+            'running',
+            'name',
             'timezone',
             'per_page',
             'page'
@@ -626,6 +638,14 @@ class JobsApi(object):
             query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
         if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
             query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
+        if 'enabled' in local_var_params and local_var_params['enabled'] is not None:  # noqa: E501
+            query_params.append(('enabled', local_var_params['enabled']))  # noqa: E501
+        if 'succeeded' in local_var_params and local_var_params['succeeded'] is not None:  # noqa: E501
+            query_params.append(('succeeded', local_var_params['succeeded']))  # noqa: E501
+        if 'running' in local_var_params and local_var_params['running'] is not None:  # noqa: E501
+            query_params.append(('running', local_var_params['running']))  # noqa: E501
+        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
+            query_params.append(('name', local_var_params['name']))  # noqa: E501
         if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
             query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
         if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501

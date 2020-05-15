@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobs"></a>
 # **getJobs**
-> JobArrayMessage getJobs(tags, incexc, startDate, endDate, timezone, perPage, page)
+> JobArrayMessage getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page)
 
 Retrieves jobs
 
@@ -331,11 +331,15 @@ public class Example {
     String incexc = "incexc_example"; // String | 
     String startDate = "startDate_example"; // String | Specify a start date to search jobs by.
     String endDate = "endDate_example"; // String | Specify an end date to search jobs by.
+    Boolean enabled = true; // Boolean | Search on whether a job is enabled or not.
+    Boolean succeeded = true; // Boolean | Search on whether a job's last run was successful or not.
+    Boolean running = true; // Boolean | Search on whether a job is currently running or not.
+    String name = "name_example"; // String | Search on a job's name.
     String timezone = "timezone_example"; // String | 
     Integer perPage = 56; // Integer | 
     Integer page = 56; // Integer | 
     try {
-      JobArrayMessage result = apiInstance.getJobs(tags, incexc, startDate, endDate, timezone, perPage, page);
+      JobArrayMessage result = apiInstance.getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobsApi#getJobs");
@@ -356,6 +360,10 @@ Name | Type | Description  | Notes
  **incexc** | **String**|  | [optional] [enum: all, any, except]
  **startDate** | **String**| Specify a start date to search jobs by. | [optional]
  **endDate** | **String**| Specify an end date to search jobs by. | [optional]
+ **enabled** | **Boolean**| Search on whether a job is enabled or not. | [optional]
+ **succeeded** | **Boolean**| Search on whether a job&#39;s last run was successful or not. | [optional]
+ **running** | **Boolean**| Search on whether a job is currently running or not. | [optional]
+ **name** | **String**| Search on a job&#39;s name. | [optional]
  **timezone** | **String**|  | [optional]
  **perPage** | **Integer**|  | [optional]
  **page** | **Integer**|  | [optional]

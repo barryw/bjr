@@ -7,6 +7,17 @@ class JobApiController < ApplicationController
   include ApplicationHelper
   before_action :job, only: %i[show update destroy failures runs occurrences runs run_now]
 
+  #
+  # Get a collection of paginated jobs. Can be searched on the following attributes:
+  # - start_date
+  # - end_date
+  # - tags
+  # - whether the tags should be searched as 'all', 'any' or 'exclude'
+  # - enabled
+  # - succeeded
+  # - running
+  # - name
+  #
   def index
     jobs = Job.find_jobs(current_user, params[:start_date], params[:end_date],
                          params[:tags], params[:incexc], params[:enabled],
@@ -16,10 +27,16 @@ class JobApiController < ApplicationController
     message I18n.t('jobs.messages.received'), :ok, false, jobs_return, 'jobarray'
   end
 
+  #
+  # Get a single job
+  #
   def show
     message I18n.t('jobs.messages.received'), :ok, false, @job, 'job'
   end
 
+  #
+  # Create a new job. Name must be unique
+  #
   def create
     ActiveRecord::Base.transaction do
       job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command],
@@ -39,6 +56,9 @@ class JobApiController < ApplicationController
     error I18n.t('jobs.errors.create_failed', error: $!), :conflict
   end
 
+  #
+  # Update an existing job
+  #
   def update
     @job.name = params[:name] unless (@job.name == params[:name]) || params[:name].blank?
     @job.cron = params[:cron] unless (@job.cron == params[:cron]) || params[:cron].blank?
@@ -60,26 +80,35 @@ class JobApiController < ApplicationController
     error I18n.t('jobs.errors.update_failed', id: @job.id, error: $!), :conflict
   end
 
+  #
+  # Destroy a single job
+  #
   def destroy
     error I18n.t('jobs.errors.cant_delete_running', id: @job.id), :conflict and return if @job.running?
     @job.destroy
     message I18n.t('jobs.messages.deleted', id: @job.id), :ok
   end
 
+  #
   # Queue the job to run now unless it's already running
+  #
   def run_now
     error I18n.t('jobs.errors.already_running', id: @job.id), :conflict and return if @job.running?
     ShellJob.perform_later @job.id
     message I18n.t('jobs.messages.started', id: @job.id), :ok
   end
 
+  #
   # Return the runs for a job
+  #
   def runs
     runs = paginate @job.filter_runs(params[:start_date], params[:end_date], params[:succeeded]).page params[:page]
     message I18n.t('jobruns.messages.received'), :ok, false, runs, 'jobruns'
   end
 
+  #
   # Return the occurrences for this job up to a certain date
+  #
   def occurrences
     end_date = Chronic.parse(params[:end_date])
     no_end_date && return if end_date.nil?

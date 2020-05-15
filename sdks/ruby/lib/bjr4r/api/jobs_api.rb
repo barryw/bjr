@@ -290,6 +290,10 @@ module BJR
     # @option opts [String] :incexc 
     # @option opts [String] :start_date Specify a start date to search jobs by.
     # @option opts [String] :end_date Specify an end date to search jobs by.
+    # @option opts [Boolean] :enabled Search on whether a job is enabled or not.
+    # @option opts [Boolean] :succeeded Search on whether a job&#39;s last run was successful or not.
+    # @option opts [Boolean] :running Search on whether a job is currently running or not.
+    # @option opts [String] :name Search on a job&#39;s name.
     # @option opts [String] :timezone 
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
@@ -306,6 +310,10 @@ module BJR
     # @option opts [String] :incexc 
     # @option opts [String] :start_date Specify a start date to search jobs by.
     # @option opts [String] :end_date Specify an end date to search jobs by.
+    # @option opts [Boolean] :enabled Search on whether a job is enabled or not.
+    # @option opts [Boolean] :succeeded Search on whether a job&#39;s last run was successful or not.
+    # @option opts [Boolean] :running Search on whether a job is currently running or not.
+    # @option opts [String] :name Search on a job&#39;s name.
     # @option opts [String] :timezone 
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
@@ -327,6 +335,10 @@ module BJR
       query_params[:'incexc'] = opts[:'incexc'] if !opts[:'incexc'].nil?
       query_params[:'start_date'] = opts[:'start_date'] if !opts[:'start_date'].nil?
       query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
+      query_params[:'enabled'] = opts[:'enabled'] if !opts[:'enabled'].nil?
+      query_params[:'succeeded'] = opts[:'succeeded'] if !opts[:'succeeded'].nil?
+      query_params[:'running'] = opts[:'running'] if !opts[:'running'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'timezone'] = opts[:'timezone'] if !opts[:'timezone'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?

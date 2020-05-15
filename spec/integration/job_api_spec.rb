@@ -174,6 +174,10 @@ describe 'Job API' do
       parameter name: :incexc, in: :query, schema: { type: :string, enum: %w[all any except], description: 'How to handle the case where many tags are specified.' }, required: false
       parameter name: :start_date, in: :query, type: :string, description: 'Specify a start date to search jobs by.', required: false
       parameter name: :end_date, in: :query, type: :string, description: 'Specify an end date to search jobs by.', required: false
+      parameter name: :enabled, in: :query, type: :boolean, description: 'Search on whether a job is enabled or not.', required: false
+      parameter name: :succeeded, in: :query, type: :boolean, description: 'Search on whether a job\'s last run was successful or not.', required: false
+      parameter name: :running, in: :query, type: :boolean, description: 'Search on whether a job is currently running or not.', required: false
+      parameter name: :name, in: :query, type: :string, description: 'Search on a job\'s name.', required: false
       parameter name: :timezone, in: :query, type: :string, required: false
       parameter name: :per_page, in: :query, type: :integer, required: false
       parameter name: :page, in: :query, type: :integer, required: false

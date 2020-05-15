@@ -94,6 +94,10 @@ describe 'JobsApi' do
   # @option opts [String] :incexc 
   # @option opts [String] :start_date Specify a start date to search jobs by.
   # @option opts [String] :end_date Specify an end date to search jobs by.
+  # @option opts [Boolean] :enabled Search on whether a job is enabled or not.
+  # @option opts [Boolean] :succeeded Search on whether a job&#39;s last run was successful or not.
+  # @option opts [Boolean] :running Search on whether a job is currently running or not.
+  # @option opts [String] :name Search on a job&#39;s name.
   # @option opts [String] :timezone 
   # @option opts [Integer] :per_page 
   # @option opts [Integer] :page 

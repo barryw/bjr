@@ -175,6 +175,38 @@ paths:
         schema:
           type: string
         style: form
+      - description: Search on whether a job is enabled or not.
+        explode: true
+        in: query
+        name: enabled
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: Search on whether a job's last run was successful or not.
+        explode: true
+        in: query
+        name: succeeded
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: Search on whether a job is currently running or not.
+        explode: true
+        in: query
+        name: running
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: Search on a job's name.
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
       - explode: true
         in: query
         name: timezone

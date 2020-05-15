@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ## GetJobs
 
-> JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, string timezone = null, int perPage = null, int page = null)
+> JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, bool enabled = null, bool succeeded = null, bool running = null, string name = null, string timezone = null, int perPage = null, int page = null)
 
 Retrieves jobs
 
@@ -376,6 +376,10 @@ namespace Example
             var incexc = incexc_example;  // string |  (optional) 
             var startDate = startDate_example;  // string | Specify a start date to search jobs by. (optional) 
             var endDate = endDate_example;  // string | Specify an end date to search jobs by. (optional) 
+            var enabled = true;  // bool | Search on whether a job is enabled or not. (optional) 
+            var succeeded = true;  // bool | Search on whether a job's last run was successful or not. (optional) 
+            var running = true;  // bool | Search on whether a job is currently running or not. (optional) 
+            var name = name_example;  // string | Search on a job's name. (optional) 
             var timezone = timezone_example;  // string |  (optional) 
             var perPage = 56;  // int |  (optional) 
             var page = 56;  // int |  (optional) 
@@ -383,7 +387,7 @@ namespace Example
             try
             {
                 // Retrieves jobs
-                JobArrayMessage result = apiInstance.GetJobs(tags, incexc, startDate, endDate, timezone, perPage, page);
+                JobArrayMessage result = apiInstance.GetJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -406,6 +410,10 @@ Name | Type | Description  | Notes
  **incexc** | **string**|  | [optional] 
  **startDate** | **string**| Specify a start date to search jobs by. | [optional] 
  **endDate** | **string**| Specify an end date to search jobs by. | [optional] 
+ **enabled** | **bool**| Search on whether a job is enabled or not. | [optional] 
+ **succeeded** | **bool**| Search on whether a job&#39;s last run was successful or not. | [optional] 
+ **running** | **bool**| Search on whether a job is currently running or not. | [optional] 
+ **name** | **string**| Search on a job&#39;s name. | [optional] 
  **timezone** | **string**|  | [optional] 
  **perPage** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 

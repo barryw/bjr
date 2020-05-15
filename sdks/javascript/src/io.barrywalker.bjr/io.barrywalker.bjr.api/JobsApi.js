@@ -22,7 +22,7 @@ import SingleJobMessage from '../io.barrywalker.bjr.model/SingleJobMessage';
 /**
 * Jobs service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi
-* @version 1.3.12
+* @version 1.3.13
 */
 export default class JobsApi {
 
@@ -237,6 +237,10 @@ export default class JobsApi {
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/String} opts.incexc 
      * @param {String} opts.startDate Specify a start date to search jobs by.
      * @param {String} opts.endDate Specify an end date to search jobs by.
+     * @param {Boolean} opts.enabled Search on whether a job is enabled or not.
+     * @param {Boolean} opts.succeeded Search on whether a job's last run was successful or not.
+     * @param {Boolean} opts.running Search on whether a job is currently running or not.
+     * @param {String} opts.name Search on a job's name.
      * @param {String} opts.timezone 
      * @param {Number} opts.perPage 
      * @param {Number} opts.page 
@@ -254,6 +258,10 @@ export default class JobsApi {
         'incexc': opts['incexc'],
         'start_date': opts['startDate'],
         'end_date': opts['endDate'],
+        'enabled': opts['enabled'],
+        'succeeded': opts['succeeded'],
+        'running': opts['running'],
+        'name': opts['name'],
         'timezone': opts['timezone'],
         'per_page': opts['perPage'],
         'page': opts['page']

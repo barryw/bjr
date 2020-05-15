@@ -746,6 +746,30 @@ paths:
         required: false
         schema:
           type: string
+      - name: enabled
+        in: query
+        description: Search on whether a job is enabled or not.
+        required: false
+        schema:
+          type: boolean
+      - name: succeeded
+        in: query
+        description: Search on whether a job's last run was successful or not.
+        required: false
+        schema:
+          type: boolean
+      - name: running
+        in: query
+        description: Search on whether a job is currently running or not.
+        required: false
+        schema:
+          type: boolean
+      - name: name
+        in: query
+        description: Search on a job's name.
+        required: false
+        schema:
+          type: string
       - name: timezone
         in: query
         required: false

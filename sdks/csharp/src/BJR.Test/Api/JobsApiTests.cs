@@ -128,10 +128,14 @@ namespace BJR.Test
             //string incexc = null;
             //string startDate = null;
             //string endDate = null;
+            //bool enabled = null;
+            //bool succeeded = null;
+            //bool running = null;
+            //string name = null;
             //string timezone = null;
             //int perPage = null;
             //int page = null;
-            //var response = instance.GetJobs(tags, incexc, startDate, endDate, timezone, perPage, page);
+            //var response = instance.GetJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page);
             //Assert.IsInstanceOf(typeof(JobArrayMessage), response, "response is JobArrayMessage");
         }
         
