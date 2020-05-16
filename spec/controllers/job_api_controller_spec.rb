@@ -434,6 +434,32 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['object'].length).to eq(1)
       expect(json['object'][0]['id']).to eq(job1.id)
     end
+
+    it 'can search on timezone' do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, name: 'Job in Eastern timezone', timezone: 'America/New_York')
+      job2 = create(:job1, user: user, name: 'Job in UTC', timezone: 'UTC')
+      authenticated_header(user)
+      get :index, params: { search_timezone: 'UTC' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(job2.id)
+    end
+
+    it 'can search on the command using a LIKE expression' do
+      user = create(:admin1)
+      job1 = create(:job1, user: user, name: 'Sleep command job', command: 'sleep 20')
+      job2 = create(:job1, user: user, name: 'Curl command job', command: 'curl https://www.example.com')
+      authenticated_header(user)
+      get :index, params: { command: 'sleep' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['object_type']).to eq('jobarray')
+      expect(json['object'].length).to eq(1)
+      expect(json['object'][0]['id']).to eq(job1.id)
+    end
   end
 
   describe 'GET #show' do

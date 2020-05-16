@@ -6,7 +6,8 @@ sdks = [{ description: 'C# SDK', language: 'csharp', version_attr: 'packageVersi
         { description: 'Python SDK', language: 'python', version_attr: 'packageVersion' },
         { description: 'Javascript SDK', language: 'javascript', version_attr: 'projectVersion' },
         { description: 'Java SDK', language: 'java', version_attr: 'artifactVersion' },
-        { description: 'Ruby SDK', language: 'ruby', version_attr: 'gemVersion' }]
+        { description: 'Ruby SDK', language: 'ruby', version_attr: 'gemVersion' },
+        { description: 'C# .NET Core', language: 'csharp-netcore', version_attr: 'packageVersion' }]
 
 desc 'Do everything needed to update the SDKs. Specify position as patch, minor or major to bump the SDK versions.'
 task 'sdk:all', [:position] => [:environment] do |_t, _args|

@@ -124,10 +124,12 @@ public class JobsApiTest {
         Boolean succeeded = null;
         Boolean running = null;
         String name = null;
+        String searchTimezone = null;
+        String command = null;
         String timezone = null;
         Integer perPage = null;
         Integer page = null;
-        JobArrayMessage response = api.getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page);
+        JobArrayMessage response = api.getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page);
 
         // TODO: test validations
     }

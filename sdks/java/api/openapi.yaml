@@ -207,6 +207,22 @@ paths:
         schema:
           type: string
         style: form
+      - description: Search for jobs in a timezone.
+        explode: true
+        in: query
+        name: search_timezone
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Search for jobs by the command that they execute.
+        explode: true
+        in: query
+        name: command
+        required: false
+        schema:
+          type: string
+        style: form
       - explode: true
         in: query
         name: timezone

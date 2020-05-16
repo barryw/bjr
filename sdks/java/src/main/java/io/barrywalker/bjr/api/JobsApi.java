@@ -574,6 +574,8 @@ public class JobsApi {
      * @param succeeded Search on whether a job&#39;s last run was successful or not. (optional)
      * @param running Search on whether a job is currently running or not. (optional)
      * @param name Search on a job&#39;s name. (optional)
+     * @param searchTimezone Search for jobs in a timezone. (optional)
+     * @param command Search for jobs by the command that they execute. (optional)
      * @param timezone  (optional)
      * @param perPage  (optional)
      * @param page  (optional)
@@ -586,7 +588,7 @@ public class JobsApi {
         <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getJobsCall(String tags, String incexc, String startDate, String endDate, Boolean enabled, Boolean succeeded, Boolean running, String name, String timezone, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getJobsCall(String tags, String incexc, String startDate, String endDate, Boolean enabled, Boolean succeeded, Boolean running, String name, String searchTimezone, String command, String timezone, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -626,6 +628,14 @@ public class JobsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
         }
 
+        if (searchTimezone != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("search_timezone", searchTimezone));
+        }
+
+        if (command != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("command", command));
+        }
+
         if (timezone != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("timezone", timezone));
         }
@@ -660,10 +670,10 @@ public class JobsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getJobsValidateBeforeCall(String tags, String incexc, String startDate, String endDate, Boolean enabled, Boolean succeeded, Boolean running, String name, String timezone, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getJobsValidateBeforeCall(String tags, String incexc, String startDate, String endDate, Boolean enabled, Boolean succeeded, Boolean running, String name, String searchTimezone, String command, String timezone, Integer perPage, Integer page, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = getJobsCall(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page, _callback);
+        okhttp3.Call localVarCall = getJobsCall(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page, _callback);
         return localVarCall;
 
     }
@@ -679,6 +689,8 @@ public class JobsApi {
      * @param succeeded Search on whether a job&#39;s last run was successful or not. (optional)
      * @param running Search on whether a job is currently running or not. (optional)
      * @param name Search on a job&#39;s name. (optional)
+     * @param searchTimezone Search for jobs in a timezone. (optional)
+     * @param command Search for jobs by the command that they execute. (optional)
      * @param timezone  (optional)
      * @param perPage  (optional)
      * @param page  (optional)
@@ -690,8 +702,8 @@ public class JobsApi {
         <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public JobArrayMessage getJobs(String tags, String incexc, String startDate, String endDate, Boolean enabled, Boolean succeeded, Boolean running, String name, String timezone, Integer perPage, Integer page) throws ApiException {
-        ApiResponse<JobArrayMessage> localVarResp = getJobsWithHttpInfo(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page);
+    public JobArrayMessage getJobs(String tags, String incexc, String startDate, String endDate, Boolean enabled, Boolean succeeded, Boolean running, String name, String searchTimezone, String command, String timezone, Integer perPage, Integer page) throws ApiException {
+        ApiResponse<JobArrayMessage> localVarResp = getJobsWithHttpInfo(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page);
         return localVarResp.getData();
     }
 
@@ -706,6 +718,8 @@ public class JobsApi {
      * @param succeeded Search on whether a job&#39;s last run was successful or not. (optional)
      * @param running Search on whether a job is currently running or not. (optional)
      * @param name Search on a job&#39;s name. (optional)
+     * @param searchTimezone Search for jobs in a timezone. (optional)
+     * @param command Search for jobs by the command that they execute. (optional)
      * @param timezone  (optional)
      * @param perPage  (optional)
      * @param page  (optional)
@@ -717,8 +731,8 @@ public class JobsApi {
         <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<JobArrayMessage> getJobsWithHttpInfo(String tags, String incexc, String startDate, String endDate, Boolean enabled, Boolean succeeded, Boolean running, String name, String timezone, Integer perPage, Integer page) throws ApiException {
-        okhttp3.Call localVarCall = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page, null);
+    public ApiResponse<JobArrayMessage> getJobsWithHttpInfo(String tags, String incexc, String startDate, String endDate, Boolean enabled, Boolean succeeded, Boolean running, String name, String searchTimezone, String command, String timezone, Integer perPage, Integer page) throws ApiException {
+        okhttp3.Call localVarCall = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page, null);
         Type localVarReturnType = new TypeToken<JobArrayMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -734,6 +748,8 @@ public class JobsApi {
      * @param succeeded Search on whether a job&#39;s last run was successful or not. (optional)
      * @param running Search on whether a job is currently running or not. (optional)
      * @param name Search on a job&#39;s name. (optional)
+     * @param searchTimezone Search for jobs in a timezone. (optional)
+     * @param command Search for jobs by the command that they execute. (optional)
      * @param timezone  (optional)
      * @param perPage  (optional)
      * @param page  (optional)
@@ -746,9 +762,9 @@ public class JobsApi {
         <tr><td> 200 </td><td> Jobs returned successfully </td><td>  * per-page - The number of items in this page. <br>  * total - The total number of items available. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getJobsAsync(String tags, String incexc, String startDate, String endDate, Boolean enabled, Boolean succeeded, Boolean running, String name, String timezone, Integer perPage, Integer page, final ApiCallback<JobArrayMessage> _callback) throws ApiException {
+    public okhttp3.Call getJobsAsync(String tags, String incexc, String startDate, String endDate, Boolean enabled, Boolean succeeded, Boolean running, String name, String searchTimezone, String command, String timezone, Integer perPage, Integer page, final ApiCallback<JobArrayMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page, _callback);
+        okhttp3.Call localVarCall = getJobsValidateBeforeCall(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page, _callback);
         Type localVarReturnType = new TypeToken<JobArrayMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

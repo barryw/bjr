@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_jobs**
-> JobArrayMessage get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, enabled=enabled, succeeded=succeeded, running=running, name=name, timezone=timezone, per_page=per_page, page=page)
+> JobArrayMessage get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, enabled=enabled, succeeded=succeeded, running=running, name=name, search_timezone=search_timezone, command=command, timezone=timezone, per_page=per_page, page=page)
 
 Retrieves jobs
 
@@ -363,13 +363,15 @@ enabled = True # bool | Search on whether a job is enabled or not. (optional)
 succeeded = True # bool | Search on whether a job's last run was successful or not. (optional)
 running = True # bool | Search on whether a job is currently running or not. (optional)
 name = 'name_example' # str | Search on a job's name. (optional)
+search_timezone = 'search_timezone_example' # str | Search for jobs in a timezone. (optional)
+command = 'command_example' # str | Search for jobs by the command that they execute. (optional)
 timezone = 'timezone_example' # str |  (optional)
 per_page = 56 # int |  (optional)
 page = 56 # int |  (optional)
 
     try:
         # Retrieves jobs
-        api_response = api_instance.get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, enabled=enabled, succeeded=succeeded, running=running, name=name, timezone=timezone, per_page=per_page, page=page)
+        api_response = api_instance.get_jobs(tags=tags, incexc=incexc, start_date=start_date, end_date=end_date, enabled=enabled, succeeded=succeeded, running=running, name=name, search_timezone=search_timezone, command=command, timezone=timezone, per_page=per_page, page=page)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobsApi->get_jobs: %s\n" % e)
@@ -387,6 +389,8 @@ Name | Type | Description  | Notes
  **succeeded** | **bool**| Search on whether a job&#39;s last run was successful or not. | [optional] 
  **running** | **bool**| Search on whether a job is currently running or not. | [optional] 
  **name** | **str**| Search on a job&#39;s name. | [optional] 
+ **search_timezone** | **str**| Search for jobs in a timezone. | [optional] 
+ **command** | **str**| Search for jobs by the command that they execute. | [optional] 
  **timezone** | **str**|  | [optional] 
  **per_page** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 

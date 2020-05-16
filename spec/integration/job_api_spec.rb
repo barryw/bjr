@@ -178,6 +178,8 @@ describe 'Job API' do
       parameter name: :succeeded, in: :query, type: :boolean, description: 'Search on whether a job\'s last run was successful or not.', required: false
       parameter name: :running, in: :query, type: :boolean, description: 'Search on whether a job is currently running or not.', required: false
       parameter name: :name, in: :query, type: :string, description: 'Search on a job\'s name.', required: false
+      parameter name: :search_timezone, in: :query, type: :string, description: 'Search for jobs in a timezone.', required: false
+      parameter name: :command, in: :query, type: :string, description: 'Search for jobs by the command that they execute.', required: false
       parameter name: :timezone, in: :query, type: :string, required: false
       parameter name: :per_page, in: :query, type: :integer, required: false
       parameter name: :page, in: :query, type: :integer, required: false

@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobs"></a>
 # **getJobs**
-> JobArrayMessage getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page)
+> JobArrayMessage getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page)
 
 Retrieves jobs
 
@@ -335,11 +335,13 @@ public class Example {
     Boolean succeeded = true; // Boolean | Search on whether a job's last run was successful or not.
     Boolean running = true; // Boolean | Search on whether a job is currently running or not.
     String name = "name_example"; // String | Search on a job's name.
+    String searchTimezone = "searchTimezone_example"; // String | Search for jobs in a timezone.
+    String command = "command_example"; // String | Search for jobs by the command that they execute.
     String timezone = "timezone_example"; // String | 
     Integer perPage = 56; // Integer | 
     Integer page = 56; // Integer | 
     try {
-      JobArrayMessage result = apiInstance.getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page);
+      JobArrayMessage result = apiInstance.getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobsApi#getJobs");
@@ -364,6 +366,8 @@ Name | Type | Description  | Notes
  **succeeded** | **Boolean**| Search on whether a job&#39;s last run was successful or not. | [optional]
  **running** | **Boolean**| Search on whether a job is currently running or not. | [optional]
  **name** | **String**| Search on a job&#39;s name. | [optional]
+ **searchTimezone** | **String**| Search for jobs in a timezone. | [optional]
+ **command** | **String**| Search for jobs by the command that they execute. | [optional]
  **timezone** | **String**|  | [optional]
  **perPage** | **Integer**|  | [optional]
  **page** | **Integer**|  | [optional]

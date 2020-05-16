@@ -770,6 +770,18 @@ paths:
         required: false
         schema:
           type: string
+      - name: search_timezone
+        in: query
+        description: Search for jobs in a timezone.
+        required: false
+        schema:
+          type: string
+      - name: command
+        in: query
+        description: Search for jobs by the command that they execute.
+        required: false
+        schema:
+          type: string
       - name: timezone
         in: query
         required: false

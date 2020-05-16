@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ## GetJobs
 
-> JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, bool enabled = null, bool succeeded = null, bool running = null, string name = null, string timezone = null, int perPage = null, int page = null)
+> JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, bool enabled = null, bool succeeded = null, bool running = null, string name = null, string searchTimezone = null, string command = null, string timezone = null, int perPage = null, int page = null)
 
 Retrieves jobs
 
@@ -380,6 +380,8 @@ namespace Example
             var succeeded = true;  // bool | Search on whether a job's last run was successful or not. (optional) 
             var running = true;  // bool | Search on whether a job is currently running or not. (optional) 
             var name = name_example;  // string | Search on a job's name. (optional) 
+            var searchTimezone = searchTimezone_example;  // string | Search for jobs in a timezone. (optional) 
+            var command = command_example;  // string | Search for jobs by the command that they execute. (optional) 
             var timezone = timezone_example;  // string |  (optional) 
             var perPage = 56;  // int |  (optional) 
             var page = 56;  // int |  (optional) 
@@ -387,7 +389,7 @@ namespace Example
             try
             {
                 // Retrieves jobs
-                JobArrayMessage result = apiInstance.GetJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, timezone, perPage, page);
+                JobArrayMessage result = apiInstance.GetJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -414,6 +416,8 @@ Name | Type | Description  | Notes
  **succeeded** | **bool**| Search on whether a job&#39;s last run was successful or not. | [optional] 
  **running** | **bool**| Search on whether a job is currently running or not. | [optional] 
  **name** | **string**| Search on a job&#39;s name. | [optional] 
+ **searchTimezone** | **string**| Search for jobs in a timezone. | [optional] 
+ **command** | **string**| Search for jobs by the command that they execute. | [optional] 
  **timezone** | **string**|  | [optional] 
  **perPage** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 

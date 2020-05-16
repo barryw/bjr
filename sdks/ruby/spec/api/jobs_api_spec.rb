@@ -98,6 +98,8 @@ describe 'JobsApi' do
   # @option opts [Boolean] :succeeded Search on whether a job&#39;s last run was successful or not.
   # @option opts [Boolean] :running Search on whether a job is currently running or not.
   # @option opts [String] :name Search on a job&#39;s name.
+  # @option opts [String] :search_timezone Search for jobs in a timezone.
+  # @option opts [String] :command Search for jobs by the command that they execute.
   # @option opts [String] :timezone 
   # @option opts [Integer] :per_page 
   # @option opts [Integer] :page 

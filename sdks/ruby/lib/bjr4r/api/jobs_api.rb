@@ -294,6 +294,8 @@ module BJR
     # @option opts [Boolean] :succeeded Search on whether a job&#39;s last run was successful or not.
     # @option opts [Boolean] :running Search on whether a job is currently running or not.
     # @option opts [String] :name Search on a job&#39;s name.
+    # @option opts [String] :search_timezone Search for jobs in a timezone.
+    # @option opts [String] :command Search for jobs by the command that they execute.
     # @option opts [String] :timezone 
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
@@ -314,6 +316,8 @@ module BJR
     # @option opts [Boolean] :succeeded Search on whether a job&#39;s last run was successful or not.
     # @option opts [Boolean] :running Search on whether a job is currently running or not.
     # @option opts [String] :name Search on a job&#39;s name.
+    # @option opts [String] :search_timezone Search for jobs in a timezone.
+    # @option opts [String] :command Search for jobs by the command that they execute.
     # @option opts [String] :timezone 
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
@@ -339,6 +343,8 @@ module BJR
       query_params[:'succeeded'] = opts[:'succeeded'] if !opts[:'succeeded'].nil?
       query_params[:'running'] = opts[:'running'] if !opts[:'running'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'search_timezone'] = opts[:'search_timezone'] if !opts[:'search_timezone'].nil?
+      query_params[:'command'] = opts[:'command'] if !opts[:'command'].nil?
       query_params[:'timezone'] = opts[:'timezone'] if !opts[:'timezone'].nil?
       query_params[:'per_page'] = opts[:'per_page'] if !opts[:'per_page'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?

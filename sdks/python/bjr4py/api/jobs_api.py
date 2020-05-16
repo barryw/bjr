@@ -540,6 +540,8 @@ class JobsApi(object):
         :param bool succeeded: Search on whether a job's last run was successful or not.
         :param bool running: Search on whether a job is currently running or not.
         :param str name: Search on a job's name.
+        :param str search_timezone: Search for jobs in a timezone.
+        :param str command: Search for jobs by the command that they execute.
         :param str timezone:
         :param int per_page:
         :param int page:
@@ -575,6 +577,8 @@ class JobsApi(object):
         :param bool succeeded: Search on whether a job's last run was successful or not.
         :param bool running: Search on whether a job is currently running or not.
         :param str name: Search on a job's name.
+        :param str search_timezone: Search for jobs in a timezone.
+        :param str command: Search for jobs by the command that they execute.
         :param str timezone:
         :param int per_page:
         :param int page:
@@ -603,6 +607,8 @@ class JobsApi(object):
             'succeeded',
             'running',
             'name',
+            'search_timezone',
+            'command',
             'timezone',
             'per_page',
             'page'
@@ -646,6 +652,10 @@ class JobsApi(object):
             query_params.append(('running', local_var_params['running']))  # noqa: E501
         if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
             query_params.append(('name', local_var_params['name']))  # noqa: E501
+        if 'search_timezone' in local_var_params and local_var_params['search_timezone'] is not None:  # noqa: E501
+            query_params.append(('search_timezone', local_var_params['search_timezone']))  # noqa: E501
+        if 'command' in local_var_params and local_var_params['command'] is not None:  # noqa: E501
+            query_params.append(('command', local_var_params['command']))  # noqa: E501
         if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
             query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
         if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501

@@ -268,6 +268,8 @@ opts = {
   succeeded: true, # Boolean | Search on whether a job's last run was successful or not.
   running: true, # Boolean | Search on whether a job is currently running or not.
   name: 'name_example', # String | Search on a job's name.
+  search_timezone: 'search_timezone_example', # String | Search for jobs in a timezone.
+  command: 'command_example', # String | Search for jobs by the command that they execute.
   timezone: 'timezone_example', # String | 
   per_page: 56, # Integer | 
   page: 56 # Integer | 
@@ -295,6 +297,8 @@ Name | Type | Description  | Notes
  **succeeded** | **Boolean**| Search on whether a job&#39;s last run was successful or not. | [optional] 
  **running** | **Boolean**| Search on whether a job is currently running or not. | [optional] 
  **name** | **String**| Search on a job&#39;s name. | [optional] 
+ **search_timezone** | **String**| Search for jobs in a timezone. | [optional] 
+ **command** | **String**| Search for jobs by the command that they execute. | [optional] 
  **timezone** | **String**|  | [optional] 
  **per_page** | **Integer**|  | [optional] 
  **page** | **Integer**|  | [optional] 
