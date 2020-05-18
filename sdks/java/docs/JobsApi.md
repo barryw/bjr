@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Job created successfully. |  -  |
 **400** | Invalid timezone name. |  -  |
-**403** | A job with this name already exists. |  -  |
+**409** | A job with this name already exists. |  -  |
 
 <a name="deleteJob"></a>
 # **deleteJob**
@@ -602,6 +602,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Job updated successfully. |  -  |
-**403** | Job could not be updated. |  -  |
+**409** | Job could not be updated. |  -  |
 **404** | Job not found. |  -  |
 

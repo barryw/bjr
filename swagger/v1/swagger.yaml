@@ -701,7 +701,7 @@ paths:
         '400':
           description: Invalid timezone name.
           content: {}
-        '403':
+        '409':
           description: A job with this name already exists.
           content: {}
       requestBody:
@@ -896,7 +896,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/SingleJobMessage"
-        '403':
+        '409':
           description: Job could not be updated.
           content: {}
         '404':

@@ -13,6 +13,11 @@ class Job < ApplicationRecord
   belongs_to :user
   has_many :job_runs, dependent: :delete_all
 
+  validates :name, presence: true
+  validates :name, uniqueness: { scope: :user_id }
+  validates :cron, presence: true
+  validates :command, presence: true
+
   scope :schedulable, -> { where('next_run < ? and enabled = ? and running = ?', Time.current, true, false) }
   scope :mine, ->(user_id) { where(user_id: user_id) }
   scope :enabled, ->(enabled) { where(enabled: enabled) }

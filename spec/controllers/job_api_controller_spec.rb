@@ -82,6 +82,36 @@ RSpec.describe JobApiController, type: :controller do
       travel_back
       Time.zone = 'UTC'
     end
+
+    it 'gets a helpful message back when no name is given' do
+      authenticated_header(create(:admin1))
+      post :create, params: { cron: '* * * *', command: 'ps ax' }
+      expect(response).not_to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['status_code']).to eq(409)
+      expect(json['is_error']).to be true
+      expect(json['message']).to match(/Name can't be blank/)
+    end
+
+    it 'gets a helpful message back when no cron is given' do
+      authenticated_header(create(:admin1))
+      post :create, params: { name: 'test1', command: 'ps ax' }
+      expect(response).not_to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['status_code']).to eq(409)
+      expect(json['is_error']).to be true
+      expect(json['message']).to match(/Cron can't be blank/)
+    end
+
+    it 'gets a helpful message back when no command is given' do
+      authenticated_header(create(:admin1))
+      post :create, params: { name: 'test1', cron: '* * * *' }
+      expect(response).not_to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['status_code']).to eq(409)
+      expect(json['is_error']).to be true
+      expect(json['message']).to match(/Command can't be blank/)
+    end
   end
 
   describe 'PUT #update' do
@@ -97,7 +127,18 @@ RSpec.describe JobApiController, type: :controller do
       job2 = create(:job2, user: user)
 
       put :update, params: { id: job.id, name: job2.name }
-      expect(response.status).to eq(403)
+      expect(response.status).to eq(409)
+    end
+
+    it 'allows duplicated job names for different users' do
+      user1 = create(:admin1)
+      user2 = create(:admin2)
+      job1 = create(:job1, user: user1, name: 'test1')
+      job2 = create(:job2, user: user2, name: 'test2')
+      authenticated_header(user1)
+
+      put :update, params: { id: job1.id, name: job2.name }
+      expect(response).to have_http_status(:success)
     end
 
     it 'returns http success' do
