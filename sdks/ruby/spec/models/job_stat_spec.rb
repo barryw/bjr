@@ -80,6 +80,24 @@ describe 'JobStat' do
     end
   end
 
+  describe 'test attribute "avg_job_lag"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "max_job_lag"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "min_job_lag"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "period"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

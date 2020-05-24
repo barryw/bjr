@@ -102,6 +102,24 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avgJobLag (base name: "avg_job_lag")', function() {
+      // uncomment below and update the code to test the property avgJobLag
+      //var instane = new Bjr4js.JobStat();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxJobLag (base name: "max_job_lag")', function() {
+      // uncomment below and update the code to test the property maxJobLag
+      //var instane = new Bjr4js.JobStat();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property minJobLag (base name: "min_job_lag")', function() {
+      // uncomment below and update the code to test the property minJobLag
+      //var instane = new Bjr4js.JobStat();
+      //expect(instance).to.be();
+    });
+
     it('should have the property period (base name: "period")', function() {
       // uncomment below and update the code to test the property period
       //var instane = new Bjr4js.JobStat();

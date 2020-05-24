@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_115558) do
+ActiveRecord::Schema.define(version: 2020_05_24_125723) do
 
   create_table "job_runs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.boolean "success"
@@ -45,6 +45,9 @@ ActiveRecord::Schema.define(version: 2020_05_24_115558) do
     t.datetime "updated_at", null: false
     t.integer "total_jobs", null: false
     t.integer "total_enabled", null: false
+    t.decimal "avg_job_lag", precision: 10, scale: 4, default: "0.0"
+    t.integer "max_job_lag"
+    t.integer "min_job_lag"
     t.index ["user_id"], name: "index_job_stats_on_user_id"
   end
 
@@ -88,7 +91,7 @@ ActiveRecord::Schema.define(version: 2020_05_24_115558) do
   end
 
   create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.string "name", collation: "utf8mb4_bin"
+    t.string "name", collation: "utf8_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end

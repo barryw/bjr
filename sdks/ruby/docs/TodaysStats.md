@@ -18,6 +18,12 @@ Name | Type | Description | Notes
 **max_job_runtime_trend** | **Float** | The trend direction of max_job_runtime. | [optional] 
 **min_job_runtime** | **Float** | The min job run time. | [optional] 
 **min_job_runtime_trend** | **Float** | The trend direction of min_job_runtime. | [optional] 
+**avg_job_lag** | **Float** | The average job lag. | [optional] 
+**avg_job_lag_trend** | **Float** | The trend direction of avg_job_lag. | [optional] 
+**max_job_lag** | **Float** | The max job lag. | [optional] 
+**max_job_lag_trend** | **Float** | The trend direction of max_job_lag. | [optional] 
+**min_job_lag** | **Float** | The min job lag. | [optional] 
+**min_job_lag_trend** | **Float** | The trend direction of min_job_lag. | [optional] 
 
 ## Code Sample
 
@@ -37,7 +43,13 @@ instance = BJR::TodaysStats.new(total_jobs: null,
                                  max_job_runtime: null,
                                  max_job_runtime_trend: null,
                                  min_job_runtime: null,
-                                 min_job_runtime_trend: null)
+                                 min_job_runtime_trend: null,
+                                 avg_job_lag: null,
+                                 avg_job_lag_trend: null,
+                                 max_job_lag: null,
+                                 max_job_lag_trend: null,
+                                 min_job_lag: null,
+                                 min_job_lag_trend: null)
 ```
 
 

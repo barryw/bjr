@@ -169,6 +169,54 @@ namespace BJR.Test
         {
             // TODO unit test for the property 'MinJobRuntimeTrend'
         }
+        /// <summary>
+        /// Test the property 'AvgJobLag'
+        /// </summary>
+        [Fact]
+        public void AvgJobLagTest()
+        {
+            // TODO unit test for the property 'AvgJobLag'
+        }
+        /// <summary>
+        /// Test the property 'AvgJobLagTrend'
+        /// </summary>
+        [Fact]
+        public void AvgJobLagTrendTest()
+        {
+            // TODO unit test for the property 'AvgJobLagTrend'
+        }
+        /// <summary>
+        /// Test the property 'MaxJobLag'
+        /// </summary>
+        [Fact]
+        public void MaxJobLagTest()
+        {
+            // TODO unit test for the property 'MaxJobLag'
+        }
+        /// <summary>
+        /// Test the property 'MaxJobLagTrend'
+        /// </summary>
+        [Fact]
+        public void MaxJobLagTrendTest()
+        {
+            // TODO unit test for the property 'MaxJobLagTrend'
+        }
+        /// <summary>
+        /// Test the property 'MinJobLag'
+        /// </summary>
+        [Fact]
+        public void MinJobLagTest()
+        {
+            // TODO unit test for the property 'MinJobLag'
+        }
+        /// <summary>
+        /// Test the property 'MinJobLagTrend'
+        /// </summary>
+        [Fact]
+        public void MinJobLagTrendTest()
+        {
+            // TODO unit test for the property 'MinJobLagTrend'
+        }
 
     }
 

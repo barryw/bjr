@@ -12,6 +12,9 @@ Name | Type | Description | Notes
 **min_runtime** | **Float** | The min runtime in seconds of all jobs in the period. | [optional] 
 **total_jobs** | **Integer** | The total number of jobs. | [optional] 
 **total_enabled** | **Integer** | Of the total number of jobs, this is how many were enabled. | [optional] 
+**avg_job_lag** | **Float** | The average job lag in seconds. | [optional] 
+**max_job_lag** | **Integer** | The maximum job lag in seconds. | [optional] 
+**min_job_lag** | **Integer** | The minimum job lag in seconds. | [optional] 
 **period** | **String** | The runtime period. | [optional] 
 **start_dt** | **DateTime** | The period start date. | [optional] 
 **end_dt** | **DateTime** | The period end date. | [optional] 
@@ -31,6 +34,9 @@ instance = BJR::JobStat.new(runs: null,
                                  min_runtime: null,
                                  total_jobs: null,
                                  total_enabled: null,
+                                 avg_job_lag: null,
+                                 max_job_lag: null,
+                                 min_job_lag: null,
                                  period: null,
                                  start_dt: null,
                                  end_dt: null,

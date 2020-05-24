@@ -19,6 +19,12 @@ Name | Type | Description | Notes
 **MaxJobRuntimeTrend** | **float** | The trend direction of max_job_runtime. | [optional] 
 **MinJobRuntime** | **float** | The min job run time. | [optional] 
 **MinJobRuntimeTrend** | **float** | The trend direction of min_job_runtime. | [optional] 
+**AvgJobLag** | **float** | The average job lag. | [optional] 
+**AvgJobLagTrend** | **float** | The trend direction of avg_job_lag. | [optional] 
+**MaxJobLag** | **float** | The max job lag. | [optional] 
+**MaxJobLagTrend** | **float** | The trend direction of max_job_lag. | [optional] 
+**MinJobLag** | **float** | The min job lag. | [optional] 
+**MinJobLagTrend** | **float** | The trend direction of min_job_lag. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

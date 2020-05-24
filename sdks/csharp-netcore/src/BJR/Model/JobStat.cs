@@ -42,12 +42,15 @@ namespace BJR.Model
         /// <param name="minRuntime">The min runtime in seconds of all jobs in the period..</param>
         /// <param name="totalJobs">The total number of jobs..</param>
         /// <param name="totalEnabled">Of the total number of jobs, this is how many were enabled..</param>
+        /// <param name="avgJobLag">The average job lag in seconds..</param>
+        /// <param name="maxJobLag">The maximum job lag in seconds..</param>
+        /// <param name="minJobLag">The minimum job lag in seconds..</param>
         /// <param name="period">The runtime period..</param>
         /// <param name="startDt">The period start date..</param>
         /// <param name="endDt">The period end date..</param>
         /// <param name="createdAt">The date the record was created..</param>
         /// <param name="updatedAt">The date the record was last updated..</param>
-        public JobStat(int runs = default(int), int failed = default(int), int jobCount = default(int), float avgRuntime = default(float), float maxRuntime = default(float), float minRuntime = default(float), int totalJobs = default(int), int totalEnabled = default(int), string period = default(string), DateTime startDt = default(DateTime), DateTime endDt = default(DateTime), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public JobStat(int runs = default(int), int failed = default(int), int jobCount = default(int), float avgRuntime = default(float), float maxRuntime = default(float), float minRuntime = default(float), int totalJobs = default(int), int totalEnabled = default(int), float avgJobLag = default(float), int maxJobLag = default(int), int minJobLag = default(int), string period = default(string), DateTime startDt = default(DateTime), DateTime endDt = default(DateTime), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Runs = runs;
             this.Failed = failed;
@@ -57,6 +60,9 @@ namespace BJR.Model
             this.MinRuntime = minRuntime;
             this.TotalJobs = totalJobs;
             this.TotalEnabled = totalEnabled;
+            this.AvgJobLag = avgJobLag;
+            this.MaxJobLag = maxJobLag;
+            this.MinJobLag = minJobLag;
             this.Period = period;
             this.StartDt = startDt;
             this.EndDt = endDt;
@@ -121,6 +127,27 @@ namespace BJR.Model
         public int TotalEnabled { get; set; }
 
         /// <summary>
+        /// The average job lag in seconds.
+        /// </summary>
+        /// <value>The average job lag in seconds.</value>
+        [DataMember(Name="avg_job_lag", EmitDefaultValue=false)]
+        public float AvgJobLag { get; set; }
+
+        /// <summary>
+        /// The maximum job lag in seconds.
+        /// </summary>
+        /// <value>The maximum job lag in seconds.</value>
+        [DataMember(Name="max_job_lag", EmitDefaultValue=false)]
+        public int MaxJobLag { get; set; }
+
+        /// <summary>
+        /// The minimum job lag in seconds.
+        /// </summary>
+        /// <value>The minimum job lag in seconds.</value>
+        [DataMember(Name="min_job_lag", EmitDefaultValue=false)]
+        public int MinJobLag { get; set; }
+
+        /// <summary>
         /// The runtime period.
         /// </summary>
         /// <value>The runtime period.</value>
@@ -171,6 +198,9 @@ namespace BJR.Model
             sb.Append("  MinRuntime: ").Append(MinRuntime).Append("\n");
             sb.Append("  TotalJobs: ").Append(TotalJobs).Append("\n");
             sb.Append("  TotalEnabled: ").Append(TotalEnabled).Append("\n");
+            sb.Append("  AvgJobLag: ").Append(AvgJobLag).Append("\n");
+            sb.Append("  MaxJobLag: ").Append(MaxJobLag).Append("\n");
+            sb.Append("  MinJobLag: ").Append(MinJobLag).Append("\n");
             sb.Append("  Period: ").Append(Period).Append("\n");
             sb.Append("  StartDt: ").Append(StartDt).Append("\n");
             sb.Append("  EndDt: ").Append(EndDt).Append("\n");
@@ -243,6 +273,18 @@ namespace BJR.Model
                     this.TotalEnabled.Equals(input.TotalEnabled)
                 ) && 
                 (
+                    this.AvgJobLag == input.AvgJobLag ||
+                    this.AvgJobLag.Equals(input.AvgJobLag)
+                ) && 
+                (
+                    this.MaxJobLag == input.MaxJobLag ||
+                    this.MaxJobLag.Equals(input.MaxJobLag)
+                ) && 
+                (
+                    this.MinJobLag == input.MinJobLag ||
+                    this.MinJobLag.Equals(input.MinJobLag)
+                ) && 
+                (
                     this.Period == input.Period ||
                     (this.Period != null &&
                     this.Period.Equals(input.Period))
@@ -286,6 +328,9 @@ namespace BJR.Model
                 hashCode = hashCode * 59 + this.MinRuntime.GetHashCode();
                 hashCode = hashCode * 59 + this.TotalJobs.GetHashCode();
                 hashCode = hashCode * 59 + this.TotalEnabled.GetHashCode();
+                hashCode = hashCode * 59 + this.AvgJobLag.GetHashCode();
+                hashCode = hashCode * 59 + this.MaxJobLag.GetHashCode();
+                hashCode = hashCode * 59 + this.MinJobLag.GetHashCode();
                 if (this.Period != null)
                     hashCode = hashCode * 59 + this.Period.GetHashCode();
                 if (this.StartDt != null)

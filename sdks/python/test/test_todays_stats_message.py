@@ -54,7 +54,13 @@ class TestTodaysStatsMessage(unittest.TestCase):
                     max_job_runtime = 1.337, 
                     max_job_runtime_trend = 1.337, 
                     min_job_runtime = 1.337, 
-                    min_job_runtime_trend = 1.337, )
+                    min_job_runtime_trend = 1.337, 
+                    avg_job_lag = 1.337, 
+                    avg_job_lag_trend = 1.337, 
+                    max_job_lag = 1.337, 
+                    max_job_lag_trend = 1.337, 
+                    min_job_lag = 1.337, 
+                    min_job_lag_trend = 1.337, )
             )
         else :
             return TodaysStatsMessage(

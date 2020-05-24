@@ -43,10 +43,15 @@ class BaseStatsJob < ApplicationJob
     max_runtime = JobRun.max_runtime_in_range(user.id, current_dt, new_end)
     min_runtime = JobRun.min_runtime_in_range(user.id, current_dt, new_end)
 
+    avg_lag = JobRun.avg_job_lag_in_range(user.id, current_dt, new_end)
+    max_lag = JobRun.max_job_lag_in_range(user.id, current_dt, new_end)
+    min_lag = JobRun.min_job_lag_in_range(user.id, current_dt, new_end)
+
     JobStat.create(user_id: user.id, runs: runs, failed: failed, avg_runtime: avg_runtime,
                    min_runtime: min_runtime, max_runtime: max_runtime, start_dt: current_dt,
                    end_dt: new_end, period: period, job_count: job_count, total_jobs: total_jobs,
-                   total_enabled: total_enabled)
+                   total_enabled: total_enabled, avg_job_lag: avg_lag, min_job_lag: min_lag,
+                   max_job_lag: max_lag)
   end
 
   def end_date(period)

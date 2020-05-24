@@ -47,7 +47,13 @@ namespace BJR.Model
         /// <param name="maxJobRuntimeTrend">The trend direction of max_job_runtime..</param>
         /// <param name="minJobRuntime">The min job run time..</param>
         /// <param name="minJobRuntimeTrend">The trend direction of min_job_runtime..</param>
-        public TodaysStats(int totalJobs = default(int), float totalJobsTrend = default(float), int enabledJobs = default(int), float enabledJobsTrend = default(float), int runJobs = default(int), float runJobsTrend = default(float), int failedJobs = default(int), float failedJobsTrend = default(float), float avgJobRuntime = default(float), float avgJobRuntimeTrend = default(float), float maxJobRuntime = default(float), float maxJobRuntimeTrend = default(float), float minJobRuntime = default(float), float minJobRuntimeTrend = default(float))
+        /// <param name="avgJobLag">The average job lag..</param>
+        /// <param name="avgJobLagTrend">The trend direction of avg_job_lag..</param>
+        /// <param name="maxJobLag">The max job lag..</param>
+        /// <param name="maxJobLagTrend">The trend direction of max_job_lag..</param>
+        /// <param name="minJobLag">The min job lag..</param>
+        /// <param name="minJobLagTrend">The trend direction of min_job_lag..</param>
+        public TodaysStats(int totalJobs = default(int), float totalJobsTrend = default(float), int enabledJobs = default(int), float enabledJobsTrend = default(float), int runJobs = default(int), float runJobsTrend = default(float), int failedJobs = default(int), float failedJobsTrend = default(float), float avgJobRuntime = default(float), float avgJobRuntimeTrend = default(float), float maxJobRuntime = default(float), float maxJobRuntimeTrend = default(float), float minJobRuntime = default(float), float minJobRuntimeTrend = default(float), float avgJobLag = default(float), float avgJobLagTrend = default(float), float maxJobLag = default(float), float maxJobLagTrend = default(float), float minJobLag = default(float), float minJobLagTrend = default(float))
         {
             this.TotalJobs = totalJobs;
             this.TotalJobsTrend = totalJobsTrend;
@@ -63,6 +69,12 @@ namespace BJR.Model
             this.MaxJobRuntimeTrend = maxJobRuntimeTrend;
             this.MinJobRuntime = minJobRuntime;
             this.MinJobRuntimeTrend = minJobRuntimeTrend;
+            this.AvgJobLag = avgJobLag;
+            this.AvgJobLagTrend = avgJobLagTrend;
+            this.MaxJobLag = maxJobLag;
+            this.MaxJobLagTrend = maxJobLagTrend;
+            this.MinJobLag = minJobLag;
+            this.MinJobLagTrend = minJobLagTrend;
         }
         
         /// <summary>
@@ -164,6 +176,48 @@ namespace BJR.Model
         public float MinJobRuntimeTrend { get; set; }
 
         /// <summary>
+        /// The average job lag.
+        /// </summary>
+        /// <value>The average job lag.</value>
+        [DataMember(Name="avg_job_lag", EmitDefaultValue=false)]
+        public float AvgJobLag { get; set; }
+
+        /// <summary>
+        /// The trend direction of avg_job_lag.
+        /// </summary>
+        /// <value>The trend direction of avg_job_lag.</value>
+        [DataMember(Name="avg_job_lag_trend", EmitDefaultValue=false)]
+        public float AvgJobLagTrend { get; set; }
+
+        /// <summary>
+        /// The max job lag.
+        /// </summary>
+        /// <value>The max job lag.</value>
+        [DataMember(Name="max_job_lag", EmitDefaultValue=false)]
+        public float MaxJobLag { get; set; }
+
+        /// <summary>
+        /// The trend direction of max_job_lag.
+        /// </summary>
+        /// <value>The trend direction of max_job_lag.</value>
+        [DataMember(Name="max_job_lag_trend", EmitDefaultValue=false)]
+        public float MaxJobLagTrend { get; set; }
+
+        /// <summary>
+        /// The min job lag.
+        /// </summary>
+        /// <value>The min job lag.</value>
+        [DataMember(Name="min_job_lag", EmitDefaultValue=false)]
+        public float MinJobLag { get; set; }
+
+        /// <summary>
+        /// The trend direction of min_job_lag.
+        /// </summary>
+        /// <value>The trend direction of min_job_lag.</value>
+        [DataMember(Name="min_job_lag_trend", EmitDefaultValue=false)]
+        public float MinJobLagTrend { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -185,6 +239,12 @@ namespace BJR.Model
             sb.Append("  MaxJobRuntimeTrend: ").Append(MaxJobRuntimeTrend).Append("\n");
             sb.Append("  MinJobRuntime: ").Append(MinJobRuntime).Append("\n");
             sb.Append("  MinJobRuntimeTrend: ").Append(MinJobRuntimeTrend).Append("\n");
+            sb.Append("  AvgJobLag: ").Append(AvgJobLag).Append("\n");
+            sb.Append("  AvgJobLagTrend: ").Append(AvgJobLagTrend).Append("\n");
+            sb.Append("  MaxJobLag: ").Append(MaxJobLag).Append("\n");
+            sb.Append("  MaxJobLagTrend: ").Append(MaxJobLagTrend).Append("\n");
+            sb.Append("  MinJobLag: ").Append(MinJobLag).Append("\n");
+            sb.Append("  MinJobLagTrend: ").Append(MinJobLagTrend).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -288,6 +348,36 @@ namespace BJR.Model
                     this.MinJobRuntimeTrend == input.MinJobRuntimeTrend ||
                     (this.MinJobRuntimeTrend != null &&
                     this.MinJobRuntimeTrend.Equals(input.MinJobRuntimeTrend))
+                ) && 
+                (
+                    this.AvgJobLag == input.AvgJobLag ||
+                    (this.AvgJobLag != null &&
+                    this.AvgJobLag.Equals(input.AvgJobLag))
+                ) && 
+                (
+                    this.AvgJobLagTrend == input.AvgJobLagTrend ||
+                    (this.AvgJobLagTrend != null &&
+                    this.AvgJobLagTrend.Equals(input.AvgJobLagTrend))
+                ) && 
+                (
+                    this.MaxJobLag == input.MaxJobLag ||
+                    (this.MaxJobLag != null &&
+                    this.MaxJobLag.Equals(input.MaxJobLag))
+                ) && 
+                (
+                    this.MaxJobLagTrend == input.MaxJobLagTrend ||
+                    (this.MaxJobLagTrend != null &&
+                    this.MaxJobLagTrend.Equals(input.MaxJobLagTrend))
+                ) && 
+                (
+                    this.MinJobLag == input.MinJobLag ||
+                    (this.MinJobLag != null &&
+                    this.MinJobLag.Equals(input.MinJobLag))
+                ) && 
+                (
+                    this.MinJobLagTrend == input.MinJobLagTrend ||
+                    (this.MinJobLagTrend != null &&
+                    this.MinJobLagTrend.Equals(input.MinJobLagTrend))
                 );
         }
 
@@ -328,6 +418,18 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.MinJobRuntime.GetHashCode();
                 if (this.MinJobRuntimeTrend != null)
                     hashCode = hashCode * 59 + this.MinJobRuntimeTrend.GetHashCode();
+                if (this.AvgJobLag != null)
+                    hashCode = hashCode * 59 + this.AvgJobLag.GetHashCode();
+                if (this.AvgJobLagTrend != null)
+                    hashCode = hashCode * 59 + this.AvgJobLagTrend.GetHashCode();
+                if (this.MaxJobLag != null)
+                    hashCode = hashCode * 59 + this.MaxJobLag.GetHashCode();
+                if (this.MaxJobLagTrend != null)
+                    hashCode = hashCode * 59 + this.MaxJobLagTrend.GetHashCode();
+                if (this.MinJobLag != null)
+                    hashCode = hashCode * 59 + this.MinJobLag.GetHashCode();
+                if (this.MinJobLagTrend != null)
+                    hashCode = hashCode * 59 + this.MinJobLagTrend.GetHashCode();
                 return hashCode;
             }
         }

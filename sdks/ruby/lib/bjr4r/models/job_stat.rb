@@ -38,6 +38,15 @@ module BJR
     # Of the total number of jobs, this is how many were enabled.
     attr_accessor :total_enabled
 
+    # The average job lag in seconds.
+    attr_accessor :avg_job_lag
+
+    # The maximum job lag in seconds.
+    attr_accessor :max_job_lag
+
+    # The minimum job lag in seconds.
+    attr_accessor :min_job_lag
+
     # The runtime period.
     attr_accessor :period
 
@@ -64,6 +73,9 @@ module BJR
         :'min_runtime' => :'min_runtime',
         :'total_jobs' => :'total_jobs',
         :'total_enabled' => :'total_enabled',
+        :'avg_job_lag' => :'avg_job_lag',
+        :'max_job_lag' => :'max_job_lag',
+        :'min_job_lag' => :'min_job_lag',
         :'period' => :'period',
         :'start_dt' => :'start_dt',
         :'end_dt' => :'end_dt',
@@ -83,6 +95,9 @@ module BJR
         :'min_runtime' => :'Float',
         :'total_jobs' => :'Integer',
         :'total_enabled' => :'Integer',
+        :'avg_job_lag' => :'Float',
+        :'max_job_lag' => :'Integer',
+        :'min_job_lag' => :'Integer',
         :'period' => :'String',
         :'start_dt' => :'DateTime',
         :'end_dt' => :'DateTime',
@@ -144,6 +159,18 @@ module BJR
         self.total_enabled = attributes[:'total_enabled']
       end
 
+      if attributes.key?(:'avg_job_lag')
+        self.avg_job_lag = attributes[:'avg_job_lag']
+      end
+
+      if attributes.key?(:'max_job_lag')
+        self.max_job_lag = attributes[:'max_job_lag']
+      end
+
+      if attributes.key?(:'min_job_lag')
+        self.min_job_lag = attributes[:'min_job_lag']
+      end
+
       if attributes.key?(:'period')
         self.period = attributes[:'period']
       end
@@ -191,6 +218,9 @@ module BJR
           min_runtime == o.min_runtime &&
           total_jobs == o.total_jobs &&
           total_enabled == o.total_enabled &&
+          avg_job_lag == o.avg_job_lag &&
+          max_job_lag == o.max_job_lag &&
+          min_job_lag == o.min_job_lag &&
           period == o.period &&
           start_dt == o.start_dt &&
           end_dt == o.end_dt &&
@@ -207,7 +237,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [runs, failed, job_count, avg_runtime, max_runtime, min_runtime, total_jobs, total_enabled, period, start_dt, end_dt, created_at, updated_at].hash
+      [runs, failed, job_count, avg_runtime, max_runtime, min_runtime, total_jobs, total_enabled, avg_job_lag, max_job_lag, min_job_lag, period, start_dt, end_dt, created_at, updated_at].hash
     end
 
     # Builds the object from hash

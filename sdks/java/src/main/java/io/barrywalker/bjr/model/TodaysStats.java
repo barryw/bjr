@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TodaysStats
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-24T12:48:03.040Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-24T13:23:56.514Z[GMT]")
 public class TodaysStats {
   public static final String SERIALIZED_NAME_TOTAL_JOBS = "total_jobs";
   @SerializedName(SERIALIZED_NAME_TOTAL_JOBS)
@@ -84,6 +84,30 @@ public class TodaysStats {
   public static final String SERIALIZED_NAME_MIN_JOB_RUNTIME_TREND = "min_job_runtime_trend";
   @SerializedName(SERIALIZED_NAME_MIN_JOB_RUNTIME_TREND)
   private Float minJobRuntimeTrend;
+
+  public static final String SERIALIZED_NAME_AVG_JOB_LAG = "avg_job_lag";
+  @SerializedName(SERIALIZED_NAME_AVG_JOB_LAG)
+  private Float avgJobLag;
+
+  public static final String SERIALIZED_NAME_AVG_JOB_LAG_TREND = "avg_job_lag_trend";
+  @SerializedName(SERIALIZED_NAME_AVG_JOB_LAG_TREND)
+  private Float avgJobLagTrend;
+
+  public static final String SERIALIZED_NAME_MAX_JOB_LAG = "max_job_lag";
+  @SerializedName(SERIALIZED_NAME_MAX_JOB_LAG)
+  private Float maxJobLag;
+
+  public static final String SERIALIZED_NAME_MAX_JOB_LAG_TREND = "max_job_lag_trend";
+  @SerializedName(SERIALIZED_NAME_MAX_JOB_LAG_TREND)
+  private Float maxJobLagTrend;
+
+  public static final String SERIALIZED_NAME_MIN_JOB_LAG = "min_job_lag";
+  @SerializedName(SERIALIZED_NAME_MIN_JOB_LAG)
+  private Float minJobLag;
+
+  public static final String SERIALIZED_NAME_MIN_JOB_LAG_TREND = "min_job_lag_trend";
+  @SerializedName(SERIALIZED_NAME_MIN_JOB_LAG_TREND)
+  private Float minJobLagTrend;
 
 
   public TodaysStats totalJobs(Integer totalJobs) {
@@ -408,6 +432,144 @@ public class TodaysStats {
   }
 
 
+  public TodaysStats avgJobLag(Float avgJobLag) {
+    
+    this.avgJobLag = avgJobLag;
+    return this;
+  }
+
+   /**
+   * The average job lag.
+   * @return avgJobLag
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The average job lag.")
+
+  public Float getAvgJobLag() {
+    return avgJobLag;
+  }
+
+
+  public void setAvgJobLag(Float avgJobLag) {
+    this.avgJobLag = avgJobLag;
+  }
+
+
+  public TodaysStats avgJobLagTrend(Float avgJobLagTrend) {
+    
+    this.avgJobLagTrend = avgJobLagTrend;
+    return this;
+  }
+
+   /**
+   * The trend direction of avg_job_lag.
+   * @return avgJobLagTrend
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The trend direction of avg_job_lag.")
+
+  public Float getAvgJobLagTrend() {
+    return avgJobLagTrend;
+  }
+
+
+  public void setAvgJobLagTrend(Float avgJobLagTrend) {
+    this.avgJobLagTrend = avgJobLagTrend;
+  }
+
+
+  public TodaysStats maxJobLag(Float maxJobLag) {
+    
+    this.maxJobLag = maxJobLag;
+    return this;
+  }
+
+   /**
+   * The max job lag.
+   * @return maxJobLag
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The max job lag.")
+
+  public Float getMaxJobLag() {
+    return maxJobLag;
+  }
+
+
+  public void setMaxJobLag(Float maxJobLag) {
+    this.maxJobLag = maxJobLag;
+  }
+
+
+  public TodaysStats maxJobLagTrend(Float maxJobLagTrend) {
+    
+    this.maxJobLagTrend = maxJobLagTrend;
+    return this;
+  }
+
+   /**
+   * The trend direction of max_job_lag.
+   * @return maxJobLagTrend
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The trend direction of max_job_lag.")
+
+  public Float getMaxJobLagTrend() {
+    return maxJobLagTrend;
+  }
+
+
+  public void setMaxJobLagTrend(Float maxJobLagTrend) {
+    this.maxJobLagTrend = maxJobLagTrend;
+  }
+
+
+  public TodaysStats minJobLag(Float minJobLag) {
+    
+    this.minJobLag = minJobLag;
+    return this;
+  }
+
+   /**
+   * The min job lag.
+   * @return minJobLag
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The min job lag.")
+
+  public Float getMinJobLag() {
+    return minJobLag;
+  }
+
+
+  public void setMinJobLag(Float minJobLag) {
+    this.minJobLag = minJobLag;
+  }
+
+
+  public TodaysStats minJobLagTrend(Float minJobLagTrend) {
+    
+    this.minJobLagTrend = minJobLagTrend;
+    return this;
+  }
+
+   /**
+   * The trend direction of min_job_lag.
+   * @return minJobLagTrend
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The trend direction of min_job_lag.")
+
+  public Float getMinJobLagTrend() {
+    return minJobLagTrend;
+  }
+
+
+  public void setMinJobLagTrend(Float minJobLagTrend) {
+    this.minJobLagTrend = minJobLagTrend;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -430,12 +592,18 @@ public class TodaysStats {
         Objects.equals(this.maxJobRuntime, todaysStats.maxJobRuntime) &&
         Objects.equals(this.maxJobRuntimeTrend, todaysStats.maxJobRuntimeTrend) &&
         Objects.equals(this.minJobRuntime, todaysStats.minJobRuntime) &&
-        Objects.equals(this.minJobRuntimeTrend, todaysStats.minJobRuntimeTrend);
+        Objects.equals(this.minJobRuntimeTrend, todaysStats.minJobRuntimeTrend) &&
+        Objects.equals(this.avgJobLag, todaysStats.avgJobLag) &&
+        Objects.equals(this.avgJobLagTrend, todaysStats.avgJobLagTrend) &&
+        Objects.equals(this.maxJobLag, todaysStats.maxJobLag) &&
+        Objects.equals(this.maxJobLagTrend, todaysStats.maxJobLagTrend) &&
+        Objects.equals(this.minJobLag, todaysStats.minJobLag) &&
+        Objects.equals(this.minJobLagTrend, todaysStats.minJobLagTrend);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalJobs, totalJobsTrend, enabledJobs, enabledJobsTrend, runJobs, runJobsTrend, failedJobs, failedJobsTrend, avgJobRuntime, avgJobRuntimeTrend, maxJobRuntime, maxJobRuntimeTrend, minJobRuntime, minJobRuntimeTrend);
+    return Objects.hash(totalJobs, totalJobsTrend, enabledJobs, enabledJobsTrend, runJobs, runJobsTrend, failedJobs, failedJobsTrend, avgJobRuntime, avgJobRuntimeTrend, maxJobRuntime, maxJobRuntimeTrend, minJobRuntime, minJobRuntimeTrend, avgJobLag, avgJobLagTrend, maxJobLag, maxJobLagTrend, minJobLag, minJobLagTrend);
   }
 
 
@@ -457,6 +625,12 @@ public class TodaysStats {
     sb.append("    maxJobRuntimeTrend: ").append(toIndentedString(maxJobRuntimeTrend)).append("\n");
     sb.append("    minJobRuntime: ").append(toIndentedString(minJobRuntime)).append("\n");
     sb.append("    minJobRuntimeTrend: ").append(toIndentedString(minJobRuntimeTrend)).append("\n");
+    sb.append("    avgJobLag: ").append(toIndentedString(avgJobLag)).append("\n");
+    sb.append("    avgJobLagTrend: ").append(toIndentedString(avgJobLagTrend)).append("\n");
+    sb.append("    maxJobLag: ").append(toIndentedString(maxJobLag)).append("\n");
+    sb.append("    maxJobLagTrend: ").append(toIndentedString(maxJobLagTrend)).append("\n");
+    sb.append("    minJobLag: ").append(toIndentedString(minJobLag)).append("\n");
+    sb.append("    minJobLagTrend: ").append(toIndentedString(minJobLagTrend)).append("\n");
     sb.append("}");
     return sb.toString();
   }

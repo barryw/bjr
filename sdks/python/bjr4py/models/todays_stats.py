@@ -46,7 +46,13 @@ class TodaysStats(object):
         'max_job_runtime': 'float',
         'max_job_runtime_trend': 'float',
         'min_job_runtime': 'float',
-        'min_job_runtime_trend': 'float'
+        'min_job_runtime_trend': 'float',
+        'avg_job_lag': 'float',
+        'avg_job_lag_trend': 'float',
+        'max_job_lag': 'float',
+        'max_job_lag_trend': 'float',
+        'min_job_lag': 'float',
+        'min_job_lag_trend': 'float'
     }
 
     attribute_map = {
@@ -63,10 +69,16 @@ class TodaysStats(object):
         'max_job_runtime': 'max_job_runtime',
         'max_job_runtime_trend': 'max_job_runtime_trend',
         'min_job_runtime': 'min_job_runtime',
-        'min_job_runtime_trend': 'min_job_runtime_trend'
+        'min_job_runtime_trend': 'min_job_runtime_trend',
+        'avg_job_lag': 'avg_job_lag',
+        'avg_job_lag_trend': 'avg_job_lag_trend',
+        'max_job_lag': 'max_job_lag',
+        'max_job_lag_trend': 'max_job_lag_trend',
+        'min_job_lag': 'min_job_lag',
+        'min_job_lag_trend': 'min_job_lag_trend'
     }
 
-    def __init__(self, total_jobs=None, total_jobs_trend=None, enabled_jobs=None, enabled_jobs_trend=None, run_jobs=None, run_jobs_trend=None, failed_jobs=None, failed_jobs_trend=None, avg_job_runtime=None, avg_job_runtime_trend=None, max_job_runtime=None, max_job_runtime_trend=None, min_job_runtime=None, min_job_runtime_trend=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, total_jobs=None, total_jobs_trend=None, enabled_jobs=None, enabled_jobs_trend=None, run_jobs=None, run_jobs_trend=None, failed_jobs=None, failed_jobs_trend=None, avg_job_runtime=None, avg_job_runtime_trend=None, max_job_runtime=None, max_job_runtime_trend=None, min_job_runtime=None, min_job_runtime_trend=None, avg_job_lag=None, avg_job_lag_trend=None, max_job_lag=None, max_job_lag_trend=None, min_job_lag=None, min_job_lag_trend=None, local_vars_configuration=None):  # noqa: E501
         """TodaysStats - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -86,6 +98,12 @@ class TodaysStats(object):
         self._max_job_runtime_trend = None
         self._min_job_runtime = None
         self._min_job_runtime_trend = None
+        self._avg_job_lag = None
+        self._avg_job_lag_trend = None
+        self._max_job_lag = None
+        self._max_job_lag_trend = None
+        self._min_job_lag = None
+        self._min_job_lag_trend = None
         self.discriminator = None
 
         if total_jobs is not None:
@@ -116,6 +134,18 @@ class TodaysStats(object):
             self.min_job_runtime = min_job_runtime
         if min_job_runtime_trend is not None:
             self.min_job_runtime_trend = min_job_runtime_trend
+        if avg_job_lag is not None:
+            self.avg_job_lag = avg_job_lag
+        if avg_job_lag_trend is not None:
+            self.avg_job_lag_trend = avg_job_lag_trend
+        if max_job_lag is not None:
+            self.max_job_lag = max_job_lag
+        if max_job_lag_trend is not None:
+            self.max_job_lag_trend = max_job_lag_trend
+        if min_job_lag is not None:
+            self.min_job_lag = min_job_lag
+        if min_job_lag_trend is not None:
+            self.min_job_lag_trend = min_job_lag_trend
 
     @property
     def total_jobs(self):
@@ -438,6 +468,144 @@ class TodaysStats(object):
         """
 
         self._min_job_runtime_trend = min_job_runtime_trend
+
+    @property
+    def avg_job_lag(self):
+        """Gets the avg_job_lag of this TodaysStats.  # noqa: E501
+
+        The average job lag.  # noqa: E501
+
+        :return: The avg_job_lag of this TodaysStats.  # noqa: E501
+        :rtype: float
+        """
+        return self._avg_job_lag
+
+    @avg_job_lag.setter
+    def avg_job_lag(self, avg_job_lag):
+        """Sets the avg_job_lag of this TodaysStats.
+
+        The average job lag.  # noqa: E501
+
+        :param avg_job_lag: The avg_job_lag of this TodaysStats.  # noqa: E501
+        :type: float
+        """
+
+        self._avg_job_lag = avg_job_lag
+
+    @property
+    def avg_job_lag_trend(self):
+        """Gets the avg_job_lag_trend of this TodaysStats.  # noqa: E501
+
+        The trend direction of avg_job_lag.  # noqa: E501
+
+        :return: The avg_job_lag_trend of this TodaysStats.  # noqa: E501
+        :rtype: float
+        """
+        return self._avg_job_lag_trend
+
+    @avg_job_lag_trend.setter
+    def avg_job_lag_trend(self, avg_job_lag_trend):
+        """Sets the avg_job_lag_trend of this TodaysStats.
+
+        The trend direction of avg_job_lag.  # noqa: E501
+
+        :param avg_job_lag_trend: The avg_job_lag_trend of this TodaysStats.  # noqa: E501
+        :type: float
+        """
+
+        self._avg_job_lag_trend = avg_job_lag_trend
+
+    @property
+    def max_job_lag(self):
+        """Gets the max_job_lag of this TodaysStats.  # noqa: E501
+
+        The max job lag.  # noqa: E501
+
+        :return: The max_job_lag of this TodaysStats.  # noqa: E501
+        :rtype: float
+        """
+        return self._max_job_lag
+
+    @max_job_lag.setter
+    def max_job_lag(self, max_job_lag):
+        """Sets the max_job_lag of this TodaysStats.
+
+        The max job lag.  # noqa: E501
+
+        :param max_job_lag: The max_job_lag of this TodaysStats.  # noqa: E501
+        :type: float
+        """
+
+        self._max_job_lag = max_job_lag
+
+    @property
+    def max_job_lag_trend(self):
+        """Gets the max_job_lag_trend of this TodaysStats.  # noqa: E501
+
+        The trend direction of max_job_lag.  # noqa: E501
+
+        :return: The max_job_lag_trend of this TodaysStats.  # noqa: E501
+        :rtype: float
+        """
+        return self._max_job_lag_trend
+
+    @max_job_lag_trend.setter
+    def max_job_lag_trend(self, max_job_lag_trend):
+        """Sets the max_job_lag_trend of this TodaysStats.
+
+        The trend direction of max_job_lag.  # noqa: E501
+
+        :param max_job_lag_trend: The max_job_lag_trend of this TodaysStats.  # noqa: E501
+        :type: float
+        """
+
+        self._max_job_lag_trend = max_job_lag_trend
+
+    @property
+    def min_job_lag(self):
+        """Gets the min_job_lag of this TodaysStats.  # noqa: E501
+
+        The min job lag.  # noqa: E501
+
+        :return: The min_job_lag of this TodaysStats.  # noqa: E501
+        :rtype: float
+        """
+        return self._min_job_lag
+
+    @min_job_lag.setter
+    def min_job_lag(self, min_job_lag):
+        """Sets the min_job_lag of this TodaysStats.
+
+        The min job lag.  # noqa: E501
+
+        :param min_job_lag: The min_job_lag of this TodaysStats.  # noqa: E501
+        :type: float
+        """
+
+        self._min_job_lag = min_job_lag
+
+    @property
+    def min_job_lag_trend(self):
+        """Gets the min_job_lag_trend of this TodaysStats.  # noqa: E501
+
+        The trend direction of min_job_lag.  # noqa: E501
+
+        :return: The min_job_lag_trend of this TodaysStats.  # noqa: E501
+        :rtype: float
+        """
+        return self._min_job_lag_trend
+
+    @min_job_lag_trend.setter
+    def min_job_lag_trend(self, min_job_lag_trend):
+        """Sets the min_job_lag_trend of this TodaysStats.
+
+        The trend direction of min_job_lag.  # noqa: E501
+
+        :param min_job_lag_trend: The min_job_lag_trend of this TodaysStats.  # noqa: E501
+        :type: float
+        """
+
+        self._min_job_lag_trend = min_job_lag_trend
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -56,6 +56,24 @@ module BJR
     # The trend direction of min_job_runtime.
     attr_accessor :min_job_runtime_trend
 
+    # The average job lag.
+    attr_accessor :avg_job_lag
+
+    # The trend direction of avg_job_lag.
+    attr_accessor :avg_job_lag_trend
+
+    # The max job lag.
+    attr_accessor :max_job_lag
+
+    # The trend direction of max_job_lag.
+    attr_accessor :max_job_lag_trend
+
+    # The min job lag.
+    attr_accessor :min_job_lag
+
+    # The trend direction of min_job_lag.
+    attr_accessor :min_job_lag_trend
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -72,7 +90,13 @@ module BJR
         :'max_job_runtime' => :'max_job_runtime',
         :'max_job_runtime_trend' => :'max_job_runtime_trend',
         :'min_job_runtime' => :'min_job_runtime',
-        :'min_job_runtime_trend' => :'min_job_runtime_trend'
+        :'min_job_runtime_trend' => :'min_job_runtime_trend',
+        :'avg_job_lag' => :'avg_job_lag',
+        :'avg_job_lag_trend' => :'avg_job_lag_trend',
+        :'max_job_lag' => :'max_job_lag',
+        :'max_job_lag_trend' => :'max_job_lag_trend',
+        :'min_job_lag' => :'min_job_lag',
+        :'min_job_lag_trend' => :'min_job_lag_trend'
       }
     end
 
@@ -92,7 +116,13 @@ module BJR
         :'max_job_runtime' => :'Float',
         :'max_job_runtime_trend' => :'Float',
         :'min_job_runtime' => :'Float',
-        :'min_job_runtime_trend' => :'Float'
+        :'min_job_runtime_trend' => :'Float',
+        :'avg_job_lag' => :'Float',
+        :'avg_job_lag_trend' => :'Float',
+        :'max_job_lag' => :'Float',
+        :'max_job_lag_trend' => :'Float',
+        :'min_job_lag' => :'Float',
+        :'min_job_lag_trend' => :'Float'
       }
     end
 
@@ -172,6 +202,30 @@ module BJR
       if attributes.key?(:'min_job_runtime_trend')
         self.min_job_runtime_trend = attributes[:'min_job_runtime_trend']
       end
+
+      if attributes.key?(:'avg_job_lag')
+        self.avg_job_lag = attributes[:'avg_job_lag']
+      end
+
+      if attributes.key?(:'avg_job_lag_trend')
+        self.avg_job_lag_trend = attributes[:'avg_job_lag_trend']
+      end
+
+      if attributes.key?(:'max_job_lag')
+        self.max_job_lag = attributes[:'max_job_lag']
+      end
+
+      if attributes.key?(:'max_job_lag_trend')
+        self.max_job_lag_trend = attributes[:'max_job_lag_trend']
+      end
+
+      if attributes.key?(:'min_job_lag')
+        self.min_job_lag = attributes[:'min_job_lag']
+      end
+
+      if attributes.key?(:'min_job_lag_trend')
+        self.min_job_lag_trend = attributes[:'min_job_lag_trend']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -205,7 +259,13 @@ module BJR
           max_job_runtime == o.max_job_runtime &&
           max_job_runtime_trend == o.max_job_runtime_trend &&
           min_job_runtime == o.min_job_runtime &&
-          min_job_runtime_trend == o.min_job_runtime_trend
+          min_job_runtime_trend == o.min_job_runtime_trend &&
+          avg_job_lag == o.avg_job_lag &&
+          avg_job_lag_trend == o.avg_job_lag_trend &&
+          max_job_lag == o.max_job_lag &&
+          max_job_lag_trend == o.max_job_lag_trend &&
+          min_job_lag == o.min_job_lag &&
+          min_job_lag_trend == o.min_job_lag_trend
     end
 
     # @see the `==` method
@@ -217,7 +277,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [total_jobs, total_jobs_trend, enabled_jobs, enabled_jobs_trend, run_jobs, run_jobs_trend, failed_jobs, failed_jobs_trend, avg_job_runtime, avg_job_runtime_trend, max_job_runtime, max_job_runtime_trend, min_job_runtime, min_job_runtime_trend].hash
+      [total_jobs, total_jobs_trend, enabled_jobs, enabled_jobs_trend, run_jobs, run_jobs_trend, failed_jobs, failed_jobs_trend, avg_job_runtime, avg_job_runtime_trend, max_job_runtime, max_job_runtime_trend, min_job_runtime, min_job_runtime_trend, avg_job_lag, avg_job_lag_trend, max_job_lag, max_job_lag_trend, min_job_lag, min_job_lag_trend].hash
     end
 
     # Builds the object from hash

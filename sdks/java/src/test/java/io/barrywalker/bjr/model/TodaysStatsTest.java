@@ -152,4 +152,52 @@ public class TodaysStatsTest {
         // TODO: test minJobRuntimeTrend
     }
 
+    /**
+     * Test the property 'avgJobLag'
+     */
+    @Test
+    public void avgJobLagTest() {
+        // TODO: test avgJobLag
+    }
+
+    /**
+     * Test the property 'avgJobLagTrend'
+     */
+    @Test
+    public void avgJobLagTrendTest() {
+        // TODO: test avgJobLagTrend
+    }
+
+    /**
+     * Test the property 'maxJobLag'
+     */
+    @Test
+    public void maxJobLagTest() {
+        // TODO: test maxJobLag
+    }
+
+    /**
+     * Test the property 'maxJobLagTrend'
+     */
+    @Test
+    public void maxJobLagTrendTest() {
+        // TODO: test maxJobLagTrend
+    }
+
+    /**
+     * Test the property 'minJobLag'
+     */
+    @Test
+    public void minJobLagTest() {
+        // TODO: test minJobLag
+    }
+
+    /**
+     * Test the property 'minJobLagTrend'
+     */
+    @Test
+    public void minJobLagTrendTest() {
+        // TODO: test minJobLagTrend
+    }
+
 }

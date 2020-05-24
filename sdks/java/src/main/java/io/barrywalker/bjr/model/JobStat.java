@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * JobStat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-24T12:48:03.040Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-24T13:23:56.514Z[GMT]")
 public class JobStat {
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
@@ -61,6 +61,18 @@ public class JobStat {
   public static final String SERIALIZED_NAME_TOTAL_ENABLED = "total_enabled";
   @SerializedName(SERIALIZED_NAME_TOTAL_ENABLED)
   private Integer totalEnabled;
+
+  public static final String SERIALIZED_NAME_AVG_JOB_LAG = "avg_job_lag";
+  @SerializedName(SERIALIZED_NAME_AVG_JOB_LAG)
+  private Float avgJobLag;
+
+  public static final String SERIALIZED_NAME_MAX_JOB_LAG = "max_job_lag";
+  @SerializedName(SERIALIZED_NAME_MAX_JOB_LAG)
+  private Integer maxJobLag;
+
+  public static final String SERIALIZED_NAME_MIN_JOB_LAG = "min_job_lag";
+  @SerializedName(SERIALIZED_NAME_MIN_JOB_LAG)
+  private Integer minJobLag;
 
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
@@ -267,6 +279,75 @@ public class JobStat {
   }
 
 
+  public JobStat avgJobLag(Float avgJobLag) {
+    
+    this.avgJobLag = avgJobLag;
+    return this;
+  }
+
+   /**
+   * The average job lag in seconds.
+   * @return avgJobLag
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The average job lag in seconds.")
+
+  public Float getAvgJobLag() {
+    return avgJobLag;
+  }
+
+
+  public void setAvgJobLag(Float avgJobLag) {
+    this.avgJobLag = avgJobLag;
+  }
+
+
+  public JobStat maxJobLag(Integer maxJobLag) {
+    
+    this.maxJobLag = maxJobLag;
+    return this;
+  }
+
+   /**
+   * The maximum job lag in seconds.
+   * @return maxJobLag
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The maximum job lag in seconds.")
+
+  public Integer getMaxJobLag() {
+    return maxJobLag;
+  }
+
+
+  public void setMaxJobLag(Integer maxJobLag) {
+    this.maxJobLag = maxJobLag;
+  }
+
+
+  public JobStat minJobLag(Integer minJobLag) {
+    
+    this.minJobLag = minJobLag;
+    return this;
+  }
+
+   /**
+   * The minimum job lag in seconds.
+   * @return minJobLag
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The minimum job lag in seconds.")
+
+  public Integer getMinJobLag() {
+    return minJobLag;
+  }
+
+
+  public void setMinJobLag(Integer minJobLag) {
+    this.minJobLag = minJobLag;
+  }
+
+
   public JobStat period(String period) {
     
     this.period = period;
@@ -399,6 +480,9 @@ public class JobStat {
         Objects.equals(this.minRuntime, jobStat.minRuntime) &&
         Objects.equals(this.totalJobs, jobStat.totalJobs) &&
         Objects.equals(this.totalEnabled, jobStat.totalEnabled) &&
+        Objects.equals(this.avgJobLag, jobStat.avgJobLag) &&
+        Objects.equals(this.maxJobLag, jobStat.maxJobLag) &&
+        Objects.equals(this.minJobLag, jobStat.minJobLag) &&
         Objects.equals(this.period, jobStat.period) &&
         Objects.equals(this.startDt, jobStat.startDt) &&
         Objects.equals(this.endDt, jobStat.endDt) &&
@@ -408,7 +492,7 @@ public class JobStat {
 
   @Override
   public int hashCode() {
-    return Objects.hash(runs, failed, jobCount, avgRuntime, maxRuntime, minRuntime, totalJobs, totalEnabled, period, startDt, endDt, createdAt, updatedAt);
+    return Objects.hash(runs, failed, jobCount, avgRuntime, maxRuntime, minRuntime, totalJobs, totalEnabled, avgJobLag, maxJobLag, minJobLag, period, startDt, endDt, createdAt, updatedAt);
   }
 
 
@@ -424,6 +508,9 @@ public class JobStat {
     sb.append("    minRuntime: ").append(toIndentedString(minRuntime)).append("\n");
     sb.append("    totalJobs: ").append(toIndentedString(totalJobs)).append("\n");
     sb.append("    totalEnabled: ").append(toIndentedString(totalEnabled)).append("\n");
+    sb.append("    avgJobLag: ").append(toIndentedString(avgJobLag)).append("\n");
+    sb.append("    maxJobLag: ").append(toIndentedString(maxJobLag)).append("\n");
+    sb.append("    minJobLag: ").append(toIndentedString(minJobLag)).append("\n");
     sb.append("    period: ").append(toIndentedString(period)).append("\n");
     sb.append("    startDt: ").append(toIndentedString(startDt)).append("\n");
     sb.append("    endDt: ").append(toIndentedString(endDt)).append("\n");

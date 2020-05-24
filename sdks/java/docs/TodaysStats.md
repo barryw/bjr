@@ -20,6 +20,12 @@ Name | Type | Description | Notes
 **maxJobRuntimeTrend** | **Float** | The trend direction of max_job_runtime. |  [optional]
 **minJobRuntime** | **Float** | The min job run time. |  [optional]
 **minJobRuntimeTrend** | **Float** | The trend direction of min_job_runtime. |  [optional]
+**avgJobLag** | **Float** | The average job lag. |  [optional]
+**avgJobLagTrend** | **Float** | The trend direction of avg_job_lag. |  [optional]
+**maxJobLag** | **Float** | The max job lag. |  [optional]
+**maxJobLagTrend** | **Float** | The trend direction of max_job_lag. |  [optional]
+**minJobLag** | **Float** | The min job lag. |  [optional]
+**minJobLagTrend** | **Float** | The trend direction of min_job_lag. |  [optional]
 
 
 

@@ -41,6 +41,9 @@ class JobStat(object):
         'min_runtime': 'float',
         'total_jobs': 'int',
         'total_enabled': 'int',
+        'avg_job_lag': 'float',
+        'max_job_lag': 'int',
+        'min_job_lag': 'int',
         'period': 'str',
         'start_dt': 'datetime',
         'end_dt': 'datetime',
@@ -57,6 +60,9 @@ class JobStat(object):
         'min_runtime': 'min_runtime',
         'total_jobs': 'total_jobs',
         'total_enabled': 'total_enabled',
+        'avg_job_lag': 'avg_job_lag',
+        'max_job_lag': 'max_job_lag',
+        'min_job_lag': 'min_job_lag',
         'period': 'period',
         'start_dt': 'start_dt',
         'end_dt': 'end_dt',
@@ -64,7 +70,7 @@ class JobStat(object):
         'updated_at': 'updated_at'
     }
 
-    def __init__(self, runs=None, failed=None, job_count=None, avg_runtime=None, max_runtime=None, min_runtime=None, total_jobs=None, total_enabled=None, period=None, start_dt=None, end_dt=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, runs=None, failed=None, job_count=None, avg_runtime=None, max_runtime=None, min_runtime=None, total_jobs=None, total_enabled=None, avg_job_lag=None, max_job_lag=None, min_job_lag=None, period=None, start_dt=None, end_dt=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """JobStat - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -78,6 +84,9 @@ class JobStat(object):
         self._min_runtime = None
         self._total_jobs = None
         self._total_enabled = None
+        self._avg_job_lag = None
+        self._max_job_lag = None
+        self._min_job_lag = None
         self._period = None
         self._start_dt = None
         self._end_dt = None
@@ -101,6 +110,12 @@ class JobStat(object):
             self.total_jobs = total_jobs
         if total_enabled is not None:
             self.total_enabled = total_enabled
+        if avg_job_lag is not None:
+            self.avg_job_lag = avg_job_lag
+        if max_job_lag is not None:
+            self.max_job_lag = max_job_lag
+        if min_job_lag is not None:
+            self.min_job_lag = min_job_lag
         if period is not None:
             self.period = period
         if start_dt is not None:
@@ -295,6 +310,75 @@ class JobStat(object):
         """
 
         self._total_enabled = total_enabled
+
+    @property
+    def avg_job_lag(self):
+        """Gets the avg_job_lag of this JobStat.  # noqa: E501
+
+        The average job lag in seconds.  # noqa: E501
+
+        :return: The avg_job_lag of this JobStat.  # noqa: E501
+        :rtype: float
+        """
+        return self._avg_job_lag
+
+    @avg_job_lag.setter
+    def avg_job_lag(self, avg_job_lag):
+        """Sets the avg_job_lag of this JobStat.
+
+        The average job lag in seconds.  # noqa: E501
+
+        :param avg_job_lag: The avg_job_lag of this JobStat.  # noqa: E501
+        :type: float
+        """
+
+        self._avg_job_lag = avg_job_lag
+
+    @property
+    def max_job_lag(self):
+        """Gets the max_job_lag of this JobStat.  # noqa: E501
+
+        The maximum job lag in seconds.  # noqa: E501
+
+        :return: The max_job_lag of this JobStat.  # noqa: E501
+        :rtype: int
+        """
+        return self._max_job_lag
+
+    @max_job_lag.setter
+    def max_job_lag(self, max_job_lag):
+        """Sets the max_job_lag of this JobStat.
+
+        The maximum job lag in seconds.  # noqa: E501
+
+        :param max_job_lag: The max_job_lag of this JobStat.  # noqa: E501
+        :type: int
+        """
+
+        self._max_job_lag = max_job_lag
+
+    @property
+    def min_job_lag(self):
+        """Gets the min_job_lag of this JobStat.  # noqa: E501
+
+        The minimum job lag in seconds.  # noqa: E501
+
+        :return: The min_job_lag of this JobStat.  # noqa: E501
+        :rtype: int
+        """
+        return self._min_job_lag
+
+    @min_job_lag.setter
+    def min_job_lag(self, min_job_lag):
+        """Sets the min_job_lag of this JobStat.
+
+        The minimum job lag in seconds.  # noqa: E501
+
+        :param min_job_lag: The min_job_lag of this JobStat.  # noqa: E501
+        :type: int
+        """
+
+        self._min_job_lag = min_job_lag
 
     @property
     def period(self):

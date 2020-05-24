@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The JobStat model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobStat
- * @version 1.5.2
+ * @version 1.5.4
  */
 class JobStat {
     /**
@@ -70,6 +70,15 @@ class JobStat {
             }
             if (data.hasOwnProperty('total_enabled')) {
                 obj['total_enabled'] = ApiClient.convertToType(data['total_enabled'], 'Number');
+            }
+            if (data.hasOwnProperty('avg_job_lag')) {
+                obj['avg_job_lag'] = ApiClient.convertToType(data['avg_job_lag'], 'Number');
+            }
+            if (data.hasOwnProperty('max_job_lag')) {
+                obj['max_job_lag'] = ApiClient.convertToType(data['max_job_lag'], 'Number');
+            }
+            if (data.hasOwnProperty('min_job_lag')) {
+                obj['min_job_lag'] = ApiClient.convertToType(data['min_job_lag'], 'Number');
             }
             if (data.hasOwnProperty('period')) {
                 obj['period'] = ApiClient.convertToType(data['period'], 'String');
@@ -140,6 +149,24 @@ JobStat.prototype['total_jobs'] = undefined;
  * @member {Number} total_enabled
  */
 JobStat.prototype['total_enabled'] = undefined;
+
+/**
+ * The average job lag in seconds.
+ * @member {Number} avg_job_lag
+ */
+JobStat.prototype['avg_job_lag'] = undefined;
+
+/**
+ * The maximum job lag in seconds.
+ * @member {Number} max_job_lag
+ */
+JobStat.prototype['max_job_lag'] = undefined;
+
+/**
+ * The minimum job lag in seconds.
+ * @member {Number} min_job_lag
+ */
+JobStat.prototype['min_job_lag'] = undefined;
 
 /**
  * The runtime period.

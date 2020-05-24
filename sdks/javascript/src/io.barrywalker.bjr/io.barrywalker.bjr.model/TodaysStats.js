@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TodaysStats model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/TodaysStats
- * @version 1.5.2
+ * @version 1.5.4
  */
 class TodaysStats {
     /**
@@ -88,6 +88,24 @@ class TodaysStats {
             }
             if (data.hasOwnProperty('min_job_runtime_trend')) {
                 obj['min_job_runtime_trend'] = ApiClient.convertToType(data['min_job_runtime_trend'], 'Number');
+            }
+            if (data.hasOwnProperty('avg_job_lag')) {
+                obj['avg_job_lag'] = ApiClient.convertToType(data['avg_job_lag'], 'Number');
+            }
+            if (data.hasOwnProperty('avg_job_lag_trend')) {
+                obj['avg_job_lag_trend'] = ApiClient.convertToType(data['avg_job_lag_trend'], 'Number');
+            }
+            if (data.hasOwnProperty('max_job_lag')) {
+                obj['max_job_lag'] = ApiClient.convertToType(data['max_job_lag'], 'Number');
+            }
+            if (data.hasOwnProperty('max_job_lag_trend')) {
+                obj['max_job_lag_trend'] = ApiClient.convertToType(data['max_job_lag_trend'], 'Number');
+            }
+            if (data.hasOwnProperty('min_job_lag')) {
+                obj['min_job_lag'] = ApiClient.convertToType(data['min_job_lag'], 'Number');
+            }
+            if (data.hasOwnProperty('min_job_lag_trend')) {
+                obj['min_job_lag_trend'] = ApiClient.convertToType(data['min_job_lag_trend'], 'Number');
             }
         }
         return obj;
@@ -179,6 +197,42 @@ TodaysStats.prototype['min_job_runtime'] = undefined;
  * @member {Number} min_job_runtime_trend
  */
 TodaysStats.prototype['min_job_runtime_trend'] = undefined;
+
+/**
+ * The average job lag.
+ * @member {Number} avg_job_lag
+ */
+TodaysStats.prototype['avg_job_lag'] = undefined;
+
+/**
+ * The trend direction of avg_job_lag.
+ * @member {Number} avg_job_lag_trend
+ */
+TodaysStats.prototype['avg_job_lag_trend'] = undefined;
+
+/**
+ * The max job lag.
+ * @member {Number} max_job_lag
+ */
+TodaysStats.prototype['max_job_lag'] = undefined;
+
+/**
+ * The trend direction of max_job_lag.
+ * @member {Number} max_job_lag_trend
+ */
+TodaysStats.prototype['max_job_lag_trend'] = undefined;
+
+/**
+ * The min job lag.
+ * @member {Number} min_job_lag
+ */
+TodaysStats.prototype['min_job_lag'] = undefined;
+
+/**
+ * The trend direction of min_job_lag.
+ * @member {Number} min_job_lag_trend
+ */
+TodaysStats.prototype['min_job_lag_trend'] = undefined;
 
 
 

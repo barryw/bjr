@@ -122,6 +122,30 @@ namespace BJR.Test
             // TODO unit test for the property 'TotalEnabled'
         }
         /// <summary>
+        /// Test the property 'AvgJobLag'
+        /// </summary>
+        [Fact]
+        public void AvgJobLagTest()
+        {
+            // TODO unit test for the property 'AvgJobLag'
+        }
+        /// <summary>
+        /// Test the property 'MaxJobLag'
+        /// </summary>
+        [Fact]
+        public void MaxJobLagTest()
+        {
+            // TODO unit test for the property 'MaxJobLag'
+        }
+        /// <summary>
+        /// Test the property 'MinJobLag'
+        /// </summary>
+        [Fact]
+        public void MinJobLagTest()
+        {
+            // TODO unit test for the property 'MinJobLag'
+        }
+        /// <summary>
         /// Test the property 'Period'
         /// </summary>
         [Fact]

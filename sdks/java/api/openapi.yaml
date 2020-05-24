@@ -1101,18 +1101,24 @@ components:
     TodaysStats:
       example:
         total_jobs: 6
+        min_job_lag: 5.025005
         avg_job_runtime: 2.027123
+        avg_job_lag: 6.846853
         run_jobs: 2
         run_jobs_trend: 7.0614014
         min_job_runtime_trend: 1.4894159
+        avg_job_lag_trend: 7.4577446
         enabled_jobs_trend: 5.637377
+        max_job_lag_trend: 4.9652185
         max_job_runtime: 7.386282
         enabled_jobs: 5
         failed_jobs: 9
         min_job_runtime: 1.0246457
+        max_job_lag: 1.1730742
         total_jobs_trend: 1.4658129
         failed_jobs_trend: 3.6160767
         avg_job_runtime_trend: 4.145608
+        min_job_lag_trend: 9.965781
         max_job_runtime_trend: 1.2315135
       properties:
         total_jobs:
@@ -1168,6 +1174,30 @@ components:
           description: The trend direction of min_job_runtime.
           format: float
           type: number
+        avg_job_lag:
+          description: The average job lag.
+          format: float
+          type: number
+        avg_job_lag_trend:
+          description: The trend direction of avg_job_lag.
+          format: float
+          type: number
+        max_job_lag:
+          description: The max job lag.
+          format: float
+          type: number
+        max_job_lag_trend:
+          description: The trend direction of max_job_lag.
+          format: float
+          type: number
+        min_job_lag:
+          description: The min job lag.
+          format: float
+          type: number
+        min_job_lag_trend:
+          description: The trend direction of min_job_lag.
+          format: float
+          type: number
       type: object
     TodaysStatsMessage:
       example:
@@ -1177,18 +1207,24 @@ components:
         message: message
         object:
           total_jobs: 6
+          min_job_lag: 5.025005
           avg_job_runtime: 2.027123
+          avg_job_lag: 6.846853
           run_jobs: 2
           run_jobs_trend: 7.0614014
           min_job_runtime_trend: 1.4894159
+          avg_job_lag_trend: 7.4577446
           enabled_jobs_trend: 5.637377
+          max_job_lag_trend: 4.9652185
           max_job_runtime: 7.386282
           enabled_jobs: 5
           failed_jobs: 9
           min_job_runtime: 1.0246457
+          max_job_lag: 1.1730742
           total_jobs_trend: 1.4658129
           failed_jobs_trend: 3.6160767
           avg_job_runtime_trend: 4.145608
+          min_job_lag_trend: 9.965781
           max_job_runtime_trend: 1.2315135
       properties:
         message:
@@ -1213,9 +1249,12 @@ components:
         period: period
         end_dt: 2000-01-23T04:56:07.000+00:00
         min_runtime: 7.0614014
+        min_job_lag: 7
+        avg_job_lag: 2.027123
         created_at: 2000-01-23T04:56:07.000+00:00
         failed: 1
         start_dt: 2000-01-23T04:56:07.000+00:00
+        max_job_lag: 4
         job_count: 5
         max_runtime: 2.302136
         updated_at: 2000-01-23T04:56:07.000+00:00
@@ -1248,6 +1287,16 @@ components:
           type: integer
         total_enabled:
           description: Of the total number of jobs, this is how many were enabled.
+          type: integer
+        avg_job_lag:
+          description: The average job lag in seconds.
+          format: float
+          type: number
+        max_job_lag:
+          description: The maximum job lag in seconds.
+          type: integer
+        min_job_lag:
+          description: The minimum job lag in seconds.
           type: integer
         period:
           description: The runtime period.
@@ -1285,9 +1334,12 @@ components:
           period: period
           end_dt: 2000-01-23T04:56:07.000+00:00
           min_runtime: 7.0614014
+          min_job_lag: 7
+          avg_job_lag: 2.027123
           created_at: 2000-01-23T04:56:07.000+00:00
           failed: 1
           start_dt: 2000-01-23T04:56:07.000+00:00
+          max_job_lag: 4
           job_count: 5
           max_runtime: 2.302136
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -1298,9 +1350,12 @@ components:
           period: period
           end_dt: 2000-01-23T04:56:07.000+00:00
           min_runtime: 7.0614014
+          min_job_lag: 7
+          avg_job_lag: 2.027123
           created_at: 2000-01-23T04:56:07.000+00:00
           failed: 1
           start_dt: 2000-01-23T04:56:07.000+00:00
+          max_job_lag: 4
           job_count: 5
           max_runtime: 2.302136
           updated_at: 2000-01-23T04:56:07.000+00:00

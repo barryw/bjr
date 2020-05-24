@@ -40,7 +40,13 @@ RSpec.configure do |config|
               max_job_runtime: { type: :number, format: 'float', description: 'The max job run time.' },
               max_job_runtime_trend: { type: :number, format: 'float', description: 'The trend direction of max_job_runtime.' },
               min_job_runtime: { type: :number, format: 'float', description: 'The min job run time.' },
-              min_job_runtime_trend: { type: :number, format: 'float', description: 'The trend direction of min_job_runtime.' }
+              min_job_runtime_trend: { type: :number, format: 'float', description: 'The trend direction of min_job_runtime.' },
+              avg_job_lag: { type: :number, format: 'float', description: 'The average job lag.' },
+              avg_job_lag_trend: { type: :number, format: 'float', description: 'The trend direction of avg_job_lag.' },
+              max_job_lag: { type: :number, format: 'float', description: 'The max job lag.' },
+              max_job_lag_trend: { type: :number, format: 'float', description: 'The trend direction of max_job_lag.' },
+              min_job_lag: { type: :number, format: 'float', description: 'The min job lag.' },
+              min_job_lag_trend: { type: :number, format: 'float', description: 'The trend direction of min_job_lag.' }
             }
           },
           TodaysStatsMessage: {
@@ -64,6 +70,9 @@ RSpec.configure do |config|
               min_runtime: { type: :number, format: 'float', description: 'The min runtime in seconds of all jobs in the period.' },
               total_jobs: { type: :integer, description: 'The total number of jobs.' },
               total_enabled: { type: :integer, description: 'Of the total number of jobs, this is how many were enabled.' },
+              avg_job_lag: { type: :number, format: 'float', description: 'The average job lag in seconds.' },
+              max_job_lag: { type: :integer, description: 'The maximum job lag in seconds.' },
+              min_job_lag: { type: :integer, description: 'The minimum job lag in seconds.' },
               period: { type: :string, description: 'The runtime period.' },
               start_dt: { type: :string, format: 'date-time', description: 'The period start date.' },
               end_dt: { type: :string, format: 'date-time', description: 'The period end date.' },

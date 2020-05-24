@@ -138,6 +138,42 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avgJobLag (base name: "avg_job_lag")', function() {
+      // uncomment below and update the code to test the property avgJobLag
+      //var instane = new Bjr4js.TodaysStats();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property avgJobLagTrend (base name: "avg_job_lag_trend")', function() {
+      // uncomment below and update the code to test the property avgJobLagTrend
+      //var instane = new Bjr4js.TodaysStats();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxJobLag (base name: "max_job_lag")', function() {
+      // uncomment below and update the code to test the property maxJobLag
+      //var instane = new Bjr4js.TodaysStats();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxJobLagTrend (base name: "max_job_lag_trend")', function() {
+      // uncomment below and update the code to test the property maxJobLagTrend
+      //var instane = new Bjr4js.TodaysStats();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property minJobLag (base name: "min_job_lag")', function() {
+      // uncomment below and update the code to test the property minJobLag
+      //var instane = new Bjr4js.TodaysStats();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property minJobLagTrend (base name: "min_job_lag_trend")', function() {
+      // uncomment below and update the code to test the property minJobLagTrend
+      //var instane = new Bjr4js.TodaysStats();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
