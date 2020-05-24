@@ -31,7 +31,7 @@ namespace BJR.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.4.3";
+        public const string Version = "1.5.2";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -100,7 +100,7 @@ namespace BJR.Client
         [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration()
         {
-            UserAgent = "OpenAPI-Generator/1.4.3/csharp";
+            UserAgent = "OpenAPI-Generator/1.5.2/csharp";
             BasePath = "http://localhost";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -356,7 +356,7 @@ namespace BJR.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: v1\n";
-            report += "    SDK Package Version: 1.4.3\n";
+            report += "    SDK Package Version: 1.5.2\n";
 
             return report;
         }

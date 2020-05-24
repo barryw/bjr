@@ -102,6 +102,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property scheduledStartTime (base name: "scheduled_start_time")', function() {
+      // uncomment below and update the code to test the property scheduledStartTime
+      //var instane = new Bjr4js.SingleJobRun();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property scheduleDiffInSeconds (base name: "schedule_diff_in_seconds")', function() {
+      // uncomment below and update the code to test the property scheduleDiffInSeconds
+      //var instane = new Bjr4js.SingleJobRun();
+      //expect(instance).to.be();
+    });
+
     it('should have the property jobId (base name: "job_id")', function() {
       // uncomment below and update the code to test the property jobId
       //var instane = new Bjr4js.SingleJobRun();

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SingleJobRun model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/SingleJobRun
- * @version 1.4.3
+ * @version 1.5.2
  */
 class SingleJobRun {
     /**
@@ -70,6 +70,12 @@ class SingleJobRun {
             }
             if (data.hasOwnProperty('end_time')) {
                 obj['end_time'] = ApiClient.convertToType(data['end_time'], 'Date');
+            }
+            if (data.hasOwnProperty('scheduled_start_time')) {
+                obj['scheduled_start_time'] = ApiClient.convertToType(data['scheduled_start_time'], 'Date');
+            }
+            if (data.hasOwnProperty('schedule_diff_in_seconds')) {
+                obj['schedule_diff_in_seconds'] = ApiClient.convertToType(data['schedule_diff_in_seconds'], 'Number');
             }
             if (data.hasOwnProperty('job_id')) {
                 obj['job_id'] = ApiClient.convertToType(data['job_id'], 'Number');
@@ -134,6 +140,18 @@ SingleJobRun.prototype['start_time'] = undefined;
  * @member {Date} end_time
  */
 SingleJobRun.prototype['end_time'] = undefined;
+
+/**
+ * The date and time that the job should have run.
+ * @member {Date} scheduled_start_time
+ */
+SingleJobRun.prototype['scheduled_start_time'] = undefined;
+
+/**
+ * The difference in seconds between when the job was scheduled to run and when it ran.
+ * @member {Number} schedule_diff_in_seconds
+ */
+SingleJobRun.prototype['schedule_diff_in_seconds'] = undefined;
 
 /**
  * The job that the run is associated with.

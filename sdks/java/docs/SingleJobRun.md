@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **stderr** | **String** | The text written to STDERR as part of the job. |  [optional]
 **startTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time that the run started. |  [optional]
 **endTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time that the run ended. |  [optional]
+**scheduledStartTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time that the job should have run. |  [optional]
+**scheduleDiffInSeconds** | **Integer** | The difference in seconds between when the job was scheduled to run and when it ran. |  [optional]
 **jobId** | **Integer** | The job that the run is associated with. |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time that the run record was created in UTC. |  [optional]
 **updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time that the run record was last updated in UTC. |  [optional]

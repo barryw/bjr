@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **stderr** | **String** | The text written to STDERR as part of the job. | [optional] 
 **start_time** | **DateTime** | The date and time that the run started. | [optional] 
 **end_time** | **DateTime** | The date and time that the run ended. | [optional] 
+**scheduled_start_time** | **DateTime** | The date and time that the job should have run. | [optional] 
+**schedule_diff_in_seconds** | **Integer** | The difference in seconds between when the job was scheduled to run and when it ran. | [optional] 
 **job_id** | **Integer** | The job that the run is associated with. | [optional] 
 **created_at** | **DateTime** | The date and time that the run record was created in UTC. | [optional] 
 **updated_at** | **DateTime** | The date and time that the run record was last updated in UTC. | [optional] 
@@ -29,6 +31,8 @@ instance = BJR::SingleJobRun.new(id: null,
                                  stderr: null,
                                  start_time: null,
                                  end_time: null,
+                                 scheduled_start_time: null,
+                                 schedule_diff_in_seconds: null,
                                  job_id: null,
                                  created_at: null,
                                  updated_at: null)

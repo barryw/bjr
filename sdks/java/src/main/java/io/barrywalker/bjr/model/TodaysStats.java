@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TodaysStats
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-18T00:47:50.786Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-24T12:48:03.040Z[GMT]")
 public class TodaysStats {
   public static final String SERIALIZED_NAME_TOTAL_JOBS = "total_jobs";
   @SerializedName(SERIALIZED_NAME_TOTAL_JOBS)

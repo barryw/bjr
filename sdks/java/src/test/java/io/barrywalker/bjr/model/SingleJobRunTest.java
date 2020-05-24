@@ -106,6 +106,22 @@ public class SingleJobRunTest {
     }
 
     /**
+     * Test the property 'scheduledStartTime'
+     */
+    @Test
+    public void scheduledStartTimeTest() {
+        // TODO: test scheduledStartTime
+    }
+
+    /**
+     * Test the property 'scheduleDiffInSeconds'
+     */
+    @Test
+    public void scheduleDiffInSecondsTest() {
+        // TODO: test scheduleDiffInSeconds
+    }
+
+    /**
      * Test the property 'jobId'
      */
     @Test

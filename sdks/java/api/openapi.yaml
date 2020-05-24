@@ -1485,27 +1485,31 @@ components:
         message: message
         object:
         - error_message: error_message
-          start_time: 2000-01-23T04:56:07.000+00:00
           stdout: stdout
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          success: true
-          job_id: 5
           end_time: 2000-01-23T04:56:07.000+00:00
           created_at: 2000-01-23T04:56:07.000+00:00
-          id: 6
           stderr: stderr
+          start_time: 2000-01-23T04:56:07.000+00:00
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          success: true
+          schedule_diff_in_seconds: 5
+          job_id: 5
+          id: 6
           return_code: 1
+          scheduled_start_time: 2000-01-23T04:56:07.000+00:00
         - error_message: error_message
-          start_time: 2000-01-23T04:56:07.000+00:00
           stdout: stdout
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          success: true
-          job_id: 5
           end_time: 2000-01-23T04:56:07.000+00:00
           created_at: 2000-01-23T04:56:07.000+00:00
-          id: 6
           stderr: stderr
+          start_time: 2000-01-23T04:56:07.000+00:00
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          success: true
+          schedule_diff_in_seconds: 5
+          job_id: 5
+          id: 6
           return_code: 1
+          scheduled_start_time: 2000-01-23T04:56:07.000+00:00
       properties:
         message:
           description: The status message returned from the API call.
@@ -1527,16 +1531,18 @@ components:
     SingleJobRun:
       example:
         error_message: error_message
-        start_time: 2000-01-23T04:56:07.000+00:00
         stdout: stdout
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        success: true
-        job_id: 5
         end_time: 2000-01-23T04:56:07.000+00:00
         created_at: 2000-01-23T04:56:07.000+00:00
-        id: 6
         stderr: stderr
+        start_time: 2000-01-23T04:56:07.000+00:00
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        success: true
+        schedule_diff_in_seconds: 5
+        job_id: 5
+        id: 6
         return_code: 1
+        scheduled_start_time: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           description: The object's primary key. This uniquely identifies the object
@@ -1568,6 +1574,14 @@ components:
           description: The date and time that the run ended.
           format: date-time
           type: string
+        scheduled_start_time:
+          description: The date and time that the job should have run.
+          format: date-time
+          type: string
+        schedule_diff_in_seconds:
+          description: The difference in seconds between when the job was scheduled
+            to run and when it ran.
+          type: integer
         job_id:
           description: The job that the run is associated with.
           type: integer

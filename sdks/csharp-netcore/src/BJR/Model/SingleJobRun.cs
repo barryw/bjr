@@ -42,10 +42,12 @@ namespace BJR.Model
         /// <param name="stderr">The text written to STDERR as part of the job..</param>
         /// <param name="startTime">The date and time that the run started..</param>
         /// <param name="endTime">The date and time that the run ended..</param>
+        /// <param name="scheduledStartTime">The date and time that the job should have run..</param>
+        /// <param name="scheduleDiffInSeconds">The difference in seconds between when the job was scheduled to run and when it ran..</param>
         /// <param name="jobId">The job that the run is associated with..</param>
         /// <param name="createdAt">The date and time that the run record was created in UTC..</param>
         /// <param name="updatedAt">The date and time that the run record was last updated in UTC..</param>
-        public SingleJobRun(int id = default(int), bool success = default(bool), int returnCode = default(int), string errorMessage = default(string), string stdout = default(string), string stderr = default(string), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), int jobId = default(int), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public SingleJobRun(int id = default(int), bool success = default(bool), int returnCode = default(int), string errorMessage = default(string), string stdout = default(string), string stderr = default(string), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), DateTime scheduledStartTime = default(DateTime), int scheduleDiffInSeconds = default(int), int jobId = default(int), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Id = id;
             this.Success = success;
@@ -55,6 +57,8 @@ namespace BJR.Model
             this.Stderr = stderr;
             this.StartTime = startTime;
             this.EndTime = endTime;
+            this.ScheduledStartTime = scheduledStartTime;
+            this.ScheduleDiffInSeconds = scheduleDiffInSeconds;
             this.JobId = jobId;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
@@ -117,6 +121,20 @@ namespace BJR.Model
         public DateTime EndTime { get; set; }
 
         /// <summary>
+        /// The date and time that the job should have run.
+        /// </summary>
+        /// <value>The date and time that the job should have run.</value>
+        [DataMember(Name="scheduled_start_time", EmitDefaultValue=false)]
+        public DateTime ScheduledStartTime { get; set; }
+
+        /// <summary>
+        /// The difference in seconds between when the job was scheduled to run and when it ran.
+        /// </summary>
+        /// <value>The difference in seconds between when the job was scheduled to run and when it ran.</value>
+        [DataMember(Name="schedule_diff_in_seconds", EmitDefaultValue=false)]
+        public int ScheduleDiffInSeconds { get; set; }
+
+        /// <summary>
         /// The job that the run is associated with.
         /// </summary>
         /// <value>The job that the run is associated with.</value>
@@ -153,6 +171,8 @@ namespace BJR.Model
             sb.Append("  Stderr: ").Append(Stderr).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
+            sb.Append("  ScheduledStartTime: ").Append(ScheduledStartTime).Append("\n");
+            sb.Append("  ScheduleDiffInSeconds: ").Append(ScheduleDiffInSeconds).Append("\n");
             sb.Append("  JobId: ").Append(JobId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
@@ -228,6 +248,15 @@ namespace BJR.Model
                     this.EndTime.Equals(input.EndTime))
                 ) && 
                 (
+                    this.ScheduledStartTime == input.ScheduledStartTime ||
+                    (this.ScheduledStartTime != null &&
+                    this.ScheduledStartTime.Equals(input.ScheduledStartTime))
+                ) && 
+                (
+                    this.ScheduleDiffInSeconds == input.ScheduleDiffInSeconds ||
+                    this.ScheduleDiffInSeconds.Equals(input.ScheduleDiffInSeconds)
+                ) && 
+                (
                     this.JobId == input.JobId ||
                     this.JobId.Equals(input.JobId)
                 ) && 
@@ -265,6 +294,9 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.StartTime.GetHashCode();
                 if (this.EndTime != null)
                     hashCode = hashCode * 59 + this.EndTime.GetHashCode();
+                if (this.ScheduledStartTime != null)
+                    hashCode = hashCode * 59 + this.ScheduledStartTime.GetHashCode();
+                hashCode = hashCode * 59 + this.ScheduleDiffInSeconds.GetHashCode();
                 hashCode = hashCode * 59 + this.JobId.GetHashCode();
                 if (this.CreatedAt != null)
                     hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();

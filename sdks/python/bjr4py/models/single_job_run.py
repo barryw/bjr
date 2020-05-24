@@ -41,6 +41,8 @@ class SingleJobRun(object):
         'stderr': 'str',
         'start_time': 'datetime',
         'end_time': 'datetime',
+        'scheduled_start_time': 'datetime',
+        'schedule_diff_in_seconds': 'int',
         'job_id': 'int',
         'created_at': 'datetime',
         'updated_at': 'datetime'
@@ -55,12 +57,14 @@ class SingleJobRun(object):
         'stderr': 'stderr',
         'start_time': 'start_time',
         'end_time': 'end_time',
+        'scheduled_start_time': 'scheduled_start_time',
+        'schedule_diff_in_seconds': 'schedule_diff_in_seconds',
         'job_id': 'job_id',
         'created_at': 'created_at',
         'updated_at': 'updated_at'
     }
 
-    def __init__(self, id=None, success=None, return_code=None, error_message=None, stdout=None, stderr=None, start_time=None, end_time=None, job_id=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, success=None, return_code=None, error_message=None, stdout=None, stderr=None, start_time=None, end_time=None, scheduled_start_time=None, schedule_diff_in_seconds=None, job_id=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """SingleJobRun - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -74,6 +78,8 @@ class SingleJobRun(object):
         self._stderr = None
         self._start_time = None
         self._end_time = None
+        self._scheduled_start_time = None
+        self._schedule_diff_in_seconds = None
         self._job_id = None
         self._created_at = None
         self._updated_at = None
@@ -92,6 +98,10 @@ class SingleJobRun(object):
             self.start_time = start_time
         if end_time is not None:
             self.end_time = end_time
+        if scheduled_start_time is not None:
+            self.scheduled_start_time = scheduled_start_time
+        if schedule_diff_in_seconds is not None:
+            self.schedule_diff_in_seconds = schedule_diff_in_seconds
         if job_id is not None:
             self.job_id = job_id
         if created_at is not None:
@@ -282,6 +292,52 @@ class SingleJobRun(object):
         """
 
         self._end_time = end_time
+
+    @property
+    def scheduled_start_time(self):
+        """Gets the scheduled_start_time of this SingleJobRun.  # noqa: E501
+
+        The date and time that the job should have run.  # noqa: E501
+
+        :return: The scheduled_start_time of this SingleJobRun.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._scheduled_start_time
+
+    @scheduled_start_time.setter
+    def scheduled_start_time(self, scheduled_start_time):
+        """Sets the scheduled_start_time of this SingleJobRun.
+
+        The date and time that the job should have run.  # noqa: E501
+
+        :param scheduled_start_time: The scheduled_start_time of this SingleJobRun.  # noqa: E501
+        :type: datetime
+        """
+
+        self._scheduled_start_time = scheduled_start_time
+
+    @property
+    def schedule_diff_in_seconds(self):
+        """Gets the schedule_diff_in_seconds of this SingleJobRun.  # noqa: E501
+
+        The difference in seconds between when the job was scheduled to run and when it ran.  # noqa: E501
+
+        :return: The schedule_diff_in_seconds of this SingleJobRun.  # noqa: E501
+        :rtype: int
+        """
+        return self._schedule_diff_in_seconds
+
+    @schedule_diff_in_seconds.setter
+    def schedule_diff_in_seconds(self, schedule_diff_in_seconds):
+        """Sets the schedule_diff_in_seconds of this SingleJobRun.
+
+        The difference in seconds between when the job was scheduled to run and when it ran.  # noqa: E501
+
+        :param schedule_diff_in_seconds: The schedule_diff_in_seconds of this SingleJobRun.  # noqa: E501
+        :type: int
+        """
+
+        self._schedule_diff_in_seconds = schedule_diff_in_seconds
 
     @property
     def job_id(self):

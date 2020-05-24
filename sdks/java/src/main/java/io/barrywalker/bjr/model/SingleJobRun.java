@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * SingleJobRun
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-18T00:47:50.786Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-24T12:48:03.040Z[GMT]")
 public class SingleJobRun {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -61,6 +61,14 @@ public class SingleJobRun {
   public static final String SERIALIZED_NAME_END_TIME = "end_time";
   @SerializedName(SERIALIZED_NAME_END_TIME)
   private OffsetDateTime endTime;
+
+  public static final String SERIALIZED_NAME_SCHEDULED_START_TIME = "scheduled_start_time";
+  @SerializedName(SERIALIZED_NAME_SCHEDULED_START_TIME)
+  private OffsetDateTime scheduledStartTime;
+
+  public static final String SERIALIZED_NAME_SCHEDULE_DIFF_IN_SECONDS = "schedule_diff_in_seconds";
+  @SerializedName(SERIALIZED_NAME_SCHEDULE_DIFF_IN_SECONDS)
+  private Integer scheduleDiffInSeconds;
 
   public static final String SERIALIZED_NAME_JOB_ID = "job_id";
   @SerializedName(SERIALIZED_NAME_JOB_ID)
@@ -259,6 +267,52 @@ public class SingleJobRun {
   }
 
 
+  public SingleJobRun scheduledStartTime(OffsetDateTime scheduledStartTime) {
+    
+    this.scheduledStartTime = scheduledStartTime;
+    return this;
+  }
+
+   /**
+   * The date and time that the job should have run.
+   * @return scheduledStartTime
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The date and time that the job should have run.")
+
+  public OffsetDateTime getScheduledStartTime() {
+    return scheduledStartTime;
+  }
+
+
+  public void setScheduledStartTime(OffsetDateTime scheduledStartTime) {
+    this.scheduledStartTime = scheduledStartTime;
+  }
+
+
+  public SingleJobRun scheduleDiffInSeconds(Integer scheduleDiffInSeconds) {
+    
+    this.scheduleDiffInSeconds = scheduleDiffInSeconds;
+    return this;
+  }
+
+   /**
+   * The difference in seconds between when the job was scheduled to run and when it ran.
+   * @return scheduleDiffInSeconds
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The difference in seconds between when the job was scheduled to run and when it ran.")
+
+  public Integer getScheduleDiffInSeconds() {
+    return scheduleDiffInSeconds;
+  }
+
+
+  public void setScheduleDiffInSeconds(Integer scheduleDiffInSeconds) {
+    this.scheduleDiffInSeconds = scheduleDiffInSeconds;
+  }
+
+
   public SingleJobRun jobId(Integer jobId) {
     
     this.jobId = jobId;
@@ -345,6 +399,8 @@ public class SingleJobRun {
         Objects.equals(this.stderr, singleJobRun.stderr) &&
         Objects.equals(this.startTime, singleJobRun.startTime) &&
         Objects.equals(this.endTime, singleJobRun.endTime) &&
+        Objects.equals(this.scheduledStartTime, singleJobRun.scheduledStartTime) &&
+        Objects.equals(this.scheduleDiffInSeconds, singleJobRun.scheduleDiffInSeconds) &&
         Objects.equals(this.jobId, singleJobRun.jobId) &&
         Objects.equals(this.createdAt, singleJobRun.createdAt) &&
         Objects.equals(this.updatedAt, singleJobRun.updatedAt);
@@ -352,7 +408,7 @@ public class SingleJobRun {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, success, returnCode, errorMessage, stdout, stderr, startTime, endTime, jobId, createdAt, updatedAt);
+    return Objects.hash(id, success, returnCode, errorMessage, stdout, stderr, startTime, endTime, scheduledStartTime, scheduleDiffInSeconds, jobId, createdAt, updatedAt);
   }
 
 
@@ -368,6 +424,8 @@ public class SingleJobRun {
     sb.append("    stderr: ").append(toIndentedString(stderr)).append("\n");
     sb.append("    startTime: ").append(toIndentedString(startTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    scheduledStartTime: ").append(toIndentedString(scheduledStartTime)).append("\n");
+    sb.append("    scheduleDiffInSeconds: ").append(toIndentedString(scheduleDiffInSeconds)).append("\n");
     sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");

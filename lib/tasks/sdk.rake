@@ -9,11 +9,11 @@ sdks = [{ description: 'C# SDK', language: 'csharp', version_attr: 'packageVersi
         { description: 'Ruby SDK', language: 'ruby', version_attr: 'gemVersion' },
         { description: 'C# .NET Core', language: 'csharp-netcore', version_attr: 'packageVersion' }]
 
-desc 'Do everything needed to update the SDKs. Specify position as patch, minor or major to bump the SDK versions.'
-task 'sdk:all', [:position] => [:environment] do |_t, _args|
+desc 'Do everything needed to update the SDKs. Pass in the version to set them all to.'
+task 'sdk:all', [:version] => [:environment] do |_t, _args|
   Rake::Task["spec"].invoke
   Rake::Task["rswag"].invoke
-  Rake::Task["sdk:bumpver"].invoke(_args[:position])
+  Rake::Task["sdk:setver"].invoke(_args[:version])
   Rake::Task["sdk:generate"].invoke
 end
 
@@ -28,28 +28,16 @@ task 'sdk:generate' do |_t, _args|
   end
 end
 
-desc 'Bump the patch version of the SDKs. Specify position as patch, minor or major to bump the SDK versions.'
-task 'sdk:bumpver', [:position] => [:environment] do |_t, _args|
+desc 'Set the version on all of the SDKs.'
+task 'sdk:setver', [:version] => [:environment] do |_t, _args|
   sdks.each do |sdk|
-    position = _args[:position]
+    version = _args[:version]
 
     file = File.read("#{Rails.root}/sdks/#{sdk[:language]}.json")
     json = JSON.parse(file)
-    cur_ver = json[sdk[:version_attr]]
-    major, minor, patch = cur_ver.split('.')
-    new_ver = ''
-    case position
-    when 'major'
-      new_ver = "#{major.to_i + 1}.0.0"
-    when 'minor'
-      new_ver = "#{major}.#{minor.to_i + 1}.0"
-    when 'patch'
-      new_ver = "#{major}.#{minor}.#{patch.to_i + 1}"
-    else
-      raise 'position must be major, minor or patch'
-    end
-    puts "Bumping #{sdk[:description]} patch version from #{cur_ver} -> #{new_ver}"
-    json[sdk[:version_attr]] = new_ver
+
+    puts "Setting #{sdk[:description]} version as #{version}"
+    json[sdk[:version_attr]] = version
     File.write("#{Rails.root}/sdks/#{sdk[:language]}.json", JSON.pretty_generate(json))
   end
 end

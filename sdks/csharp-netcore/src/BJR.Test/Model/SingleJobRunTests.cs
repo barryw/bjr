@@ -122,6 +122,22 @@ namespace BJR.Test
             // TODO unit test for the property 'EndTime'
         }
         /// <summary>
+        /// Test the property 'ScheduledStartTime'
+        /// </summary>
+        [Fact]
+        public void ScheduledStartTimeTest()
+        {
+            // TODO unit test for the property 'ScheduledStartTime'
+        }
+        /// <summary>
+        /// Test the property 'ScheduleDiffInSeconds'
+        /// </summary>
+        [Fact]
+        public void ScheduleDiffInSecondsTest()
+        {
+            // TODO unit test for the property 'ScheduleDiffInSeconds'
+        }
+        /// <summary>
         /// Test the property 'JobId'
         /// </summary>
         [Fact]

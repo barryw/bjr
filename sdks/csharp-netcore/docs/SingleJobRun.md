@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Stderr** | **string** | The text written to STDERR as part of the job. | [optional] 
 **StartTime** | **DateTime** | The date and time that the run started. | [optional] 
 **EndTime** | **DateTime** | The date and time that the run ended. | [optional] 
+**ScheduledStartTime** | **DateTime** | The date and time that the job should have run. | [optional] 
+**ScheduleDiffInSeconds** | **int** | The difference in seconds between when the job was scheduled to run and when it ran. | [optional] 
 **JobId** | **int** | The job that the run is associated with. | [optional] 
 **CreatedAt** | **DateTime** | The date and time that the run record was created in UTC. | [optional] 
 **UpdatedAt** | **DateTime** | The date and time that the run record was last updated in UTC. | [optional] 

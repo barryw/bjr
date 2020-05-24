@@ -176,6 +176,8 @@ RSpec.configure do |config|
               stderr: { type: :string, description: 'The text written to STDERR as part of the job.', nullable: true },
               start_time: { type: :string, format: 'date-time', description: 'The date and time that the run started.' },
               end_time: { type: :string, format: 'date-time', description: 'The date and time that the run ended.' },
+              scheduled_start_time: { type: :string, format: 'date-time', description: 'The date and time that the job should have run.' },
+              schedule_diff_in_seconds: { type: :integer, description: 'The difference in seconds between when the job was scheduled to run and when it ran.' },
               job_id: { type: :integer, description: 'The job that the run is associated with.' },
               created_at: { type: :string, format: 'date-time', description: 'The date and time that the run record was created in UTC.' },
               updated_at: { type: :string, format: 'date-time', description: 'The date and time that the run record was last updated in UTC.' }

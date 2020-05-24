@@ -38,6 +38,12 @@ module BJR
     # The date and time that the run ended.
     attr_accessor :end_time
 
+    # The date and time that the job should have run.
+    attr_accessor :scheduled_start_time
+
+    # The difference in seconds between when the job was scheduled to run and when it ran.
+    attr_accessor :schedule_diff_in_seconds
+
     # The job that the run is associated with.
     attr_accessor :job_id
 
@@ -58,6 +64,8 @@ module BJR
         :'stderr' => :'stderr',
         :'start_time' => :'start_time',
         :'end_time' => :'end_time',
+        :'scheduled_start_time' => :'scheduled_start_time',
+        :'schedule_diff_in_seconds' => :'schedule_diff_in_seconds',
         :'job_id' => :'job_id',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
@@ -75,6 +83,8 @@ module BJR
         :'stderr' => :'String',
         :'start_time' => :'DateTime',
         :'end_time' => :'DateTime',
+        :'scheduled_start_time' => :'DateTime',
+        :'schedule_diff_in_seconds' => :'Integer',
         :'job_id' => :'Integer',
         :'created_at' => :'DateTime',
         :'updated_at' => :'DateTime'
@@ -137,6 +147,14 @@ module BJR
         self.end_time = attributes[:'end_time']
       end
 
+      if attributes.key?(:'scheduled_start_time')
+        self.scheduled_start_time = attributes[:'scheduled_start_time']
+      end
+
+      if attributes.key?(:'schedule_diff_in_seconds')
+        self.schedule_diff_in_seconds = attributes[:'schedule_diff_in_seconds']
+      end
+
       if attributes.key?(:'job_id')
         self.job_id = attributes[:'job_id']
       end
@@ -176,6 +194,8 @@ module BJR
           stderr == o.stderr &&
           start_time == o.start_time &&
           end_time == o.end_time &&
+          scheduled_start_time == o.scheduled_start_time &&
+          schedule_diff_in_seconds == o.schedule_diff_in_seconds &&
           job_id == o.job_id &&
           created_at == o.created_at &&
           updated_at == o.updated_at
@@ -190,7 +210,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, success, return_code, error_message, stdout, stderr, start_time, end_time, job_id, created_at, updated_at].hash
+      [id, success, return_code, error_message, stdout, stderr, start_time, end_time, scheduled_start_time, schedule_diff_in_seconds, job_id, created_at, updated_at].hash
     end
 
     # Builds the object from hash
