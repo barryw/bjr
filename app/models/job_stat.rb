@@ -14,16 +14,18 @@ class JobStat < ApplicationRecord
 
   def self.todays_stats(user)
     stats = JobStat.minutely_today(user).order(created_at: :asc)
-    total_jobs_array = stats.collect { |stat| stat.total_jobs }
-    enabled_jobs_array = stats.collect { |stat| stat.total_enabled }
-    run_jobs_array = stats.collect { |stat| stat.runs }
-    failed_jobs_array = stats.collect { |stat| stat.failed }
-    avg_runtime_array = stats.collect { |stat| stat.avg_runtime }
-    max_runtime_array = stats.collect { |stat| stat.max_runtime }
-    min_runtime_array = stats.collect { |stat| stat.min_runtime }
-    avg_job_lag_array = stats.collect { |stat| stat.avg_job_lag }
-    max_job_lag_array = stats.collect { |stat| stat.max_job_lag }
-    min_job_lag_array = stats.collect { |stat| stat.min_job_lag }
+    total_jobs_array = stats.collect { |stat| stat.total_jobs || 0 }
+    enabled_jobs_array = stats.collect { |stat| stat.total_enabled || 0 }
+    run_jobs_array = stats.collect { |stat| stat.runs || 0 }
+    failed_jobs_array = stats.collect { |stat| stat.failed || 0 }
+
+    avg_runtime_array = stats.collect { |stat| stat.avg_runtime || 0 }
+    max_runtime_array = stats.collect { |stat| stat.max_runtime || 0 }
+    min_runtime_array = stats.collect { |stat| stat.min_runtime || 0 }
+
+    avg_job_lag_array = stats.collect { |stat| stat.avg_job_lag || 0 }
+    max_job_lag_array = stats.collect { |stat| stat.max_job_lag || 0 }
+    min_job_lag_array = stats.collect { |stat| stat.min_job_lag || 0 }
 
     total_jobs = total_jobs_array[-1] || 0
     enabled_jobs = enabled_jobs_array[-1] || 0

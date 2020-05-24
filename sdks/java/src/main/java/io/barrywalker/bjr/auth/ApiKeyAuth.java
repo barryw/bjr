@@ -18,7 +18,7 @@ import io.barrywalker.bjr.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-24T13:23:56.514Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-24T15:57:19.172Z[GMT]")
 public class ApiKeyAuth implements Authentication {
   private final String location;
   private final String paramName;

@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * AuthOut
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-24T13:23:56.514Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-24T15:57:19.172Z[GMT]")
 public class AuthOut {
   public static final String SERIALIZED_NAME_AUTH_TOKEN = "auth_token";
   @SerializedName(SERIALIZED_NAME_AUTH_TOKEN)

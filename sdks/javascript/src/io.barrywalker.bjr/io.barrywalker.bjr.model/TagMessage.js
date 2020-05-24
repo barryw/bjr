@@ -17,7 +17,7 @@ import Tag from './Tag';
 /**
  * The TagMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/TagMessage
- * @version 1.5.4
+ * @version 1.5.5
  */
 class TagMessage {
     /**

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TimezoneMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/TimezoneMessage
- * @version 1.5.4
+ * @version 1.5.5
  */
 class TimezoneMessage {
     /**
