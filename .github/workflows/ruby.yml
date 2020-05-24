@@ -43,5 +43,5 @@ jobs:
         DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
       run: |
         docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
-        rake build:docker
-        rake build:docker:push
+        bundle exec rake build:docker
+        bundle exec rake build:docker:push
