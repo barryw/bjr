@@ -76,8 +76,6 @@ as a bundled Redis
 {{- if .Values.redis.useKubernetesRedis -}}
 - name: REDIS_HOST
   value: "bjr-redis-master"
-- name: REDIS_SENTINELS
-  value: "bjr-redis-headless"
 - name: REDIS_PORT
   value: "6379"
 - name: REDIS_SIDEKIQ_DB

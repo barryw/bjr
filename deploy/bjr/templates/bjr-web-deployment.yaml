@@ -63,6 +63,7 @@ spec:
             secretKeyRef:
               name: {{ template "bjr.secretName" . }}
               key: secret-key-base
+        {{- include "bjr.redis" . | nindent 8 }}
         - name: JWT_EXPIRY_SECONDS
           value: {{ .Values.serverSettings.jwtLifetime | quote }}
         ports:
