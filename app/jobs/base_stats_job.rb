@@ -100,6 +100,6 @@ class BaseStatsJob < ApplicationJob
   end
 
   def start_processing_date(user, period)
-    JobStat.max_processed_date(user, period) || JobRun.earliest_job_run(user)
+    JobStat.max_processed_date(user, period) || JobRun.earliest_job_run(user) || DateTime.now
   end
 end

@@ -4,6 +4,9 @@ require 'json'
 
 desc 'Bump the versions of the server and the SDKs'
 task 'version', [:position] => [:environment] do |_t, _args|
+  Rake::Task["spec"].invoke
+  Rake::Task["rswag"].invoke
+
   cur_ver = File.read('.version').strip
   position = _args[:position]
 
@@ -23,8 +26,6 @@ task 'version', [:position] => [:environment] do |_t, _args|
 
   File.write('.version', "#{new_ver}\n")
 
-  Rake::Task["spec"].invoke
-  Rake::Task["rswag"].invoke
   Rake::Task["sdk:setver"].invoke(new_ver)
   Rake::Task["sdk:generate"].invoke
 end

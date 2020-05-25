@@ -107,4 +107,7 @@ redis:
     port: 6379
     sidekiqDb: 0
   cluster:
-    enabled: false
+    enabled: true
+  sentinel:
+    enabled: true
+    usePassword: false

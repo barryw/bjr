@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AuthOut model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/AuthOut
- * @version 1.5.5
+ * @version 1.6.0
  */
 class AuthOut {
     /**
