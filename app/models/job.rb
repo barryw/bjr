@@ -59,8 +59,8 @@ class Job < ApplicationRecord
   end
 
   # When a job starts, this is called to mark the job as running and create a run
-  def start_job
-    run = JobRun.create(job: self, start_time: Time.current, scheduled_start_time: self.next_run,
+  def start_job(is_manual)
+    run = JobRun.create(job: self, start_time: Time.current, scheduled_start_time: self.next_run, is_manual: is_manual,
                         schedule_diff_in_seconds: [0, (Time.current.to_i - self.next_run.to_i)].max)
     self.running = true
     save

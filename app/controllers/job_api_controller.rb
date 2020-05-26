@@ -95,7 +95,7 @@ class JobApiController < ApplicationController
   #
   def run_now
     error I18n.t('jobs.errors.already_running', id: @job.id), :conflict and return if @job.running?
-    ShellJob.perform_later @job.id
+    ShellJob.perform_later(@job.id, true)
     message I18n.t('jobs.messages.started', id: @job.id), :ok
   end
 

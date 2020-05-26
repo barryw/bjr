@@ -44,6 +44,7 @@ class SingleJobRun(object):
         'scheduled_start_time': 'datetime',
         'schedule_diff_in_seconds': 'int',
         'job_id': 'int',
+        'is_manual': 'bool',
         'created_at': 'datetime',
         'updated_at': 'datetime'
     }
@@ -60,11 +61,12 @@ class SingleJobRun(object):
         'scheduled_start_time': 'scheduled_start_time',
         'schedule_diff_in_seconds': 'schedule_diff_in_seconds',
         'job_id': 'job_id',
+        'is_manual': 'is_manual',
         'created_at': 'created_at',
         'updated_at': 'updated_at'
     }
 
-    def __init__(self, id=None, success=None, return_code=None, error_message=None, stdout=None, stderr=None, start_time=None, end_time=None, scheduled_start_time=None, schedule_diff_in_seconds=None, job_id=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, success=None, return_code=None, error_message=None, stdout=None, stderr=None, start_time=None, end_time=None, scheduled_start_time=None, schedule_diff_in_seconds=None, job_id=None, is_manual=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """SingleJobRun - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -81,6 +83,7 @@ class SingleJobRun(object):
         self._scheduled_start_time = None
         self._schedule_diff_in_seconds = None
         self._job_id = None
+        self._is_manual = None
         self._created_at = None
         self._updated_at = None
         self.discriminator = None
@@ -104,6 +107,8 @@ class SingleJobRun(object):
             self.schedule_diff_in_seconds = schedule_diff_in_seconds
         if job_id is not None:
             self.job_id = job_id
+        if is_manual is not None:
+            self.is_manual = is_manual
         if created_at is not None:
             self.created_at = created_at
         if updated_at is not None:
@@ -361,6 +366,29 @@ class SingleJobRun(object):
         """
 
         self._job_id = job_id
+
+    @property
+    def is_manual(self):
+        """Gets the is_manual of this SingleJobRun.  # noqa: E501
+
+        True if the job was run manually as opposed to run on a schedule.  # noqa: E501
+
+        :return: The is_manual of this SingleJobRun.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_manual
+
+    @is_manual.setter
+    def is_manual(self, is_manual):
+        """Sets the is_manual of this SingleJobRun.
+
+        True if the job was run manually as opposed to run on a schedule.  # noqa: E501
+
+        :param is_manual: The is_manual of this SingleJobRun.  # noqa: E501
+        :type: bool
+        """
+
+        self._is_manual = is_manual
 
     @property
     def created_at(self):

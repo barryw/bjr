@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ScheduledStartTime** | **DateTime** | The date and time that the job should have run. | [optional] 
 **ScheduleDiffInSeconds** | **int** | The difference in seconds between when the job was scheduled to run and when it ran. | [optional] 
 **JobId** | **int** | The job that the run is associated with. | [optional] 
+**IsManual** | **bool** | True if the job was run manually as opposed to run on a schedule. | [optional] 
 **CreatedAt** | **DateTime** | The date and time that the run record was created in UTC. | [optional] 
 **UpdatedAt** | **DateTime** | The date and time that the run record was last updated in UTC. | [optional] 
 

@@ -120,6 +120,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property isManual (base name: "is_manual")', function() {
+      // uncomment below and update the code to test the property isManual
+      //var instane = new Bjr4js.SingleJobRun();
+      //expect(instance).to.be();
+    });
+
     it('should have the property createdAt (base name: "created_at")', function() {
       // uncomment below and update the code to test the property createdAt
       //var instane = new Bjr4js.SingleJobRun();

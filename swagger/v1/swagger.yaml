@@ -352,6 +352,9 @@ components:
         job_id:
           type: integer
           description: The job that the run is associated with.
+        is_manual:
+          type: boolean
+          description: True if the job was run manually as opposed to run on a schedule.
         created_at:
           type: string
           format: date-time

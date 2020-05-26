@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * SingleJobRun
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-26T01:11:40.112Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-26T22:18:34.144Z[GMT]")
 public class SingleJobRun {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -73,6 +73,10 @@ public class SingleJobRun {
   public static final String SERIALIZED_NAME_JOB_ID = "job_id";
   @SerializedName(SERIALIZED_NAME_JOB_ID)
   private Integer jobId;
+
+  public static final String SERIALIZED_NAME_IS_MANUAL = "is_manual";
+  @SerializedName(SERIALIZED_NAME_IS_MANUAL)
+  private Boolean isManual;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "created_at";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -336,6 +340,29 @@ public class SingleJobRun {
   }
 
 
+  public SingleJobRun isManual(Boolean isManual) {
+    
+    this.isManual = isManual;
+    return this;
+  }
+
+   /**
+   * True if the job was run manually as opposed to run on a schedule.
+   * @return isManual
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "True if the job was run manually as opposed to run on a schedule.")
+
+  public Boolean getIsManual() {
+    return isManual;
+  }
+
+
+  public void setIsManual(Boolean isManual) {
+    this.isManual = isManual;
+  }
+
+
   public SingleJobRun createdAt(OffsetDateTime createdAt) {
     
     this.createdAt = createdAt;
@@ -402,13 +429,14 @@ public class SingleJobRun {
         Objects.equals(this.scheduledStartTime, singleJobRun.scheduledStartTime) &&
         Objects.equals(this.scheduleDiffInSeconds, singleJobRun.scheduleDiffInSeconds) &&
         Objects.equals(this.jobId, singleJobRun.jobId) &&
+        Objects.equals(this.isManual, singleJobRun.isManual) &&
         Objects.equals(this.createdAt, singleJobRun.createdAt) &&
         Objects.equals(this.updatedAt, singleJobRun.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, success, returnCode, errorMessage, stdout, stderr, startTime, endTime, scheduledStartTime, scheduleDiffInSeconds, jobId, createdAt, updatedAt);
+    return Objects.hash(id, success, returnCode, errorMessage, stdout, stderr, startTime, endTime, scheduledStartTime, scheduleDiffInSeconds, jobId, isManual, createdAt, updatedAt);
   }
 
 
@@ -427,6 +455,7 @@ public class SingleJobRun {
     sb.append("    scheduledStartTime: ").append(toIndentedString(scheduledStartTime)).append("\n");
     sb.append("    scheduleDiffInSeconds: ").append(toIndentedString(scheduleDiffInSeconds)).append("\n");
     sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
+    sb.append("    isManual: ").append(toIndentedString(isManual)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");

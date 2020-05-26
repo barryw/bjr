@@ -146,6 +146,14 @@ namespace BJR.Test
             // TODO unit test for the property 'JobId'
         }
         /// <summary>
+        /// Test the property 'IsManual'
+        /// </summary>
+        [Fact]
+        public void IsManualTest()
+        {
+            // TODO unit test for the property 'IsManual'
+        }
+        /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
         [Fact]

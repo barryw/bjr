@@ -130,6 +130,14 @@ public class SingleJobRunTest {
     }
 
     /**
+     * Test the property 'isManual'
+     */
+    @Test
+    public void isManualTest() {
+        // TODO: test isManual
+    }
+
+    /**
      * Test the property 'createdAt'
      */
     @Test

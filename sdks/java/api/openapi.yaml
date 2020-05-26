@@ -1542,6 +1542,7 @@ components:
         - error_message: error_message
           stdout: stdout
           end_time: 2000-01-23T04:56:07.000+00:00
+          is_manual: true
           created_at: 2000-01-23T04:56:07.000+00:00
           stderr: stderr
           start_time: 2000-01-23T04:56:07.000+00:00
@@ -1555,6 +1556,7 @@ components:
         - error_message: error_message
           stdout: stdout
           end_time: 2000-01-23T04:56:07.000+00:00
+          is_manual: true
           created_at: 2000-01-23T04:56:07.000+00:00
           stderr: stderr
           start_time: 2000-01-23T04:56:07.000+00:00
@@ -1588,6 +1590,7 @@ components:
         error_message: error_message
         stdout: stdout
         end_time: 2000-01-23T04:56:07.000+00:00
+        is_manual: true
         created_at: 2000-01-23T04:56:07.000+00:00
         stderr: stderr
         start_time: 2000-01-23T04:56:07.000+00:00
@@ -1640,6 +1643,9 @@ components:
         job_id:
           description: The job that the run is associated with.
           type: integer
+        is_manual:
+          description: True if the job was run manually as opposed to run on a schedule.
+          type: boolean
         created_at:
           description: The date and time that the run record was created in UTC.
           format: date-time

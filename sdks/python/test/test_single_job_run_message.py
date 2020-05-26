@@ -52,6 +52,7 @@ class TestSingleJobRunMessage(unittest.TestCase):
                     scheduled_start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     schedule_diff_in_seconds = 56, 
                     job_id = 56, 
+                    is_manual = True, 
                     created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                     updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
             )

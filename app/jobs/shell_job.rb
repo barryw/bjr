@@ -8,9 +8,9 @@ require 'open3'
 class ShellJob < ApplicationJob
   queue_as :job_runner
 
-  def perform(jobid)
+  def perform(jobid, is_manual=false)
     job = Job.find(jobid)
-    run = job.start_job
+    run = job.start_job(is_manual)
     file = write_command(job)
 
     success = true

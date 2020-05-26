@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SingleJobRun model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/SingleJobRun
- * @version 1.5.6
+ * @version 1.5.7
  */
 class SingleJobRun {
     /**
@@ -79,6 +79,9 @@ class SingleJobRun {
             }
             if (data.hasOwnProperty('job_id')) {
                 obj['job_id'] = ApiClient.convertToType(data['job_id'], 'Number');
+            }
+            if (data.hasOwnProperty('is_manual')) {
+                obj['is_manual'] = ApiClient.convertToType(data['is_manual'], 'Boolean');
             }
             if (data.hasOwnProperty('created_at')) {
                 obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
@@ -158,6 +161,12 @@ SingleJobRun.prototype['schedule_diff_in_seconds'] = undefined;
  * @member {Number} job_id
  */
 SingleJobRun.prototype['job_id'] = undefined;
+
+/**
+ * True if the job was run manually as opposed to run on a schedule.
+ * @member {Boolean} is_manual
+ */
+SingleJobRun.prototype['is_manual'] = undefined;
 
 /**
  * The date and time that the run record was created in UTC.

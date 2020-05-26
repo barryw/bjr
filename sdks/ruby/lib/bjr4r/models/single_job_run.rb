@@ -47,6 +47,9 @@ module BJR
     # The job that the run is associated with.
     attr_accessor :job_id
 
+    # True if the job was run manually as opposed to run on a schedule.
+    attr_accessor :is_manual
+
     # The date and time that the run record was created in UTC.
     attr_accessor :created_at
 
@@ -67,6 +70,7 @@ module BJR
         :'scheduled_start_time' => :'scheduled_start_time',
         :'schedule_diff_in_seconds' => :'schedule_diff_in_seconds',
         :'job_id' => :'job_id',
+        :'is_manual' => :'is_manual',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at'
       }
@@ -86,6 +90,7 @@ module BJR
         :'scheduled_start_time' => :'DateTime',
         :'schedule_diff_in_seconds' => :'Integer',
         :'job_id' => :'Integer',
+        :'is_manual' => :'Boolean',
         :'created_at' => :'DateTime',
         :'updated_at' => :'DateTime'
       }
@@ -159,6 +164,10 @@ module BJR
         self.job_id = attributes[:'job_id']
       end
 
+      if attributes.key?(:'is_manual')
+        self.is_manual = attributes[:'is_manual']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -197,6 +206,7 @@ module BJR
           scheduled_start_time == o.scheduled_start_time &&
           schedule_diff_in_seconds == o.schedule_diff_in_seconds &&
           job_id == o.job_id &&
+          is_manual == o.is_manual &&
           created_at == o.created_at &&
           updated_at == o.updated_at
     end
@@ -210,7 +220,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, success, return_code, error_message, stdout, stderr, start_time, end_time, scheduled_start_time, schedule_diff_in_seconds, job_id, created_at, updated_at].hash
+      [id, success, return_code, error_message, stdout, stderr, start_time, end_time, scheduled_start_time, schedule_diff_in_seconds, job_id, is_manual, created_at, updated_at].hash
     end
 
     # Builds the object from hash

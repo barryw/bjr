@@ -44,9 +44,10 @@ namespace BJR.Model
         /// <param name="scheduledStartTime">The date and time that the job should have run..</param>
         /// <param name="scheduleDiffInSeconds">The difference in seconds between when the job was scheduled to run and when it ran..</param>
         /// <param name="jobId">The job that the run is associated with..</param>
+        /// <param name="isManual">True if the job was run manually as opposed to run on a schedule..</param>
         /// <param name="createdAt">The date and time that the run record was created in UTC..</param>
         /// <param name="updatedAt">The date and time that the run record was last updated in UTC..</param>
-        public SingleJobRun(int id = default(int), bool success = default(bool), int returnCode = default(int), string errorMessage = default(string), string stdout = default(string), string stderr = default(string), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), DateTime scheduledStartTime = default(DateTime), int scheduleDiffInSeconds = default(int), int jobId = default(int), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public SingleJobRun(int id = default(int), bool success = default(bool), int returnCode = default(int), string errorMessage = default(string), string stdout = default(string), string stderr = default(string), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), DateTime scheduledStartTime = default(DateTime), int scheduleDiffInSeconds = default(int), int jobId = default(int), bool isManual = default(bool), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.ErrorMessage = errorMessage;
             this.Stdout = stdout;
@@ -62,6 +63,7 @@ namespace BJR.Model
             this.ScheduledStartTime = scheduledStartTime;
             this.ScheduleDiffInSeconds = scheduleDiffInSeconds;
             this.JobId = jobId;
+            this.IsManual = isManual;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
@@ -144,6 +146,13 @@ namespace BJR.Model
         public int JobId { get; set; }
 
         /// <summary>
+        /// True if the job was run manually as opposed to run on a schedule.
+        /// </summary>
+        /// <value>True if the job was run manually as opposed to run on a schedule.</value>
+        [DataMember(Name="is_manual", EmitDefaultValue=false)]
+        public bool IsManual { get; set; }
+
+        /// <summary>
         /// The date and time that the run record was created in UTC.
         /// </summary>
         /// <value>The date and time that the run record was created in UTC.</value>
@@ -176,6 +185,7 @@ namespace BJR.Model
             sb.Append("  ScheduledStartTime: ").Append(ScheduledStartTime).Append("\n");
             sb.Append("  ScheduleDiffInSeconds: ").Append(ScheduleDiffInSeconds).Append("\n");
             sb.Append("  JobId: ").Append(JobId).Append("\n");
+            sb.Append("  IsManual: ").Append(IsManual).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
@@ -268,6 +278,11 @@ namespace BJR.Model
                     this.JobId.Equals(input.JobId))
                 ) && 
                 (
+                    this.IsManual == input.IsManual ||
+                    (this.IsManual != null &&
+                    this.IsManual.Equals(input.IsManual))
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -310,6 +325,8 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.ScheduleDiffInSeconds.GetHashCode();
                 if (this.JobId != null)
                     hashCode = hashCode * 59 + this.JobId.GetHashCode();
+                if (this.IsManual != null)
+                    hashCode = hashCode * 59 + this.IsManual.GetHashCode();
                 if (this.CreatedAt != null)
                     hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
                 if (this.UpdatedAt != null)

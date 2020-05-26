@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **scheduledStartTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time that the job should have run. |  [optional]
 **scheduleDiffInSeconds** | **Integer** | The difference in seconds between when the job was scheduled to run and when it ran. |  [optional]
 **jobId** | **Integer** | The job that the run is associated with. |  [optional]
+**isManual** | **Boolean** | True if the job was run manually as opposed to run on a schedule. |  [optional]
 **createdAt** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time that the run record was created in UTC. |  [optional]
 **updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time that the run record was last updated in UTC. |  [optional]
 

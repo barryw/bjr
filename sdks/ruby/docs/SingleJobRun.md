@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **scheduled_start_time** | **DateTime** | The date and time that the job should have run. | [optional] 
 **schedule_diff_in_seconds** | **Integer** | The difference in seconds between when the job was scheduled to run and when it ran. | [optional] 
 **job_id** | **Integer** | The job that the run is associated with. | [optional] 
+**is_manual** | **Boolean** | True if the job was run manually as opposed to run on a schedule. | [optional] 
 **created_at** | **DateTime** | The date and time that the run record was created in UTC. | [optional] 
 **updated_at** | **DateTime** | The date and time that the run record was last updated in UTC. | [optional] 
 
@@ -34,6 +35,7 @@ instance = BJR::SingleJobRun.new(id: null,
                                  scheduled_start_time: null,
                                  schedule_diff_in_seconds: null,
                                  job_id: null,
+                                 is_manual: null,
                                  created_at: null,
                                  updated_at: null)
 ```

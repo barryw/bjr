@@ -19,9 +19,9 @@ class JobRun < ApplicationRecord
   scope :max_runtime_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).maximum('timestampdiff(microsecond, start_time, end_time)/1000000') }
   scope :min_runtime_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).minimum('timestampdiff(microsecond, start_time, end_time)/1000000') }
 
-  scope :avg_job_lag_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).average(:schedule_diff_in_seconds) }
-  scope :max_job_lag_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).maximum(:schedule_diff_in_seconds) }
-  scope :min_job_lag_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).minimum(:schedule_diff_in_seconds) }
+  scope :avg_job_lag_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).where(is_manual: false).average(:schedule_diff_in_seconds) }
+  scope :max_job_lag_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).where(is_manual: false).maximum(:schedule_diff_in_seconds) }
+  scope :min_job_lag_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).where(is_manual: false).minimum(:schedule_diff_in_seconds) }
 
   def self.earliest_job_run(user)
     joins(:job).where(jobs: { user_id: user.id }).minimum(:start_time)

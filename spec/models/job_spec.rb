@@ -3,13 +3,25 @@
 require 'rails_helper'
 
 RSpec.describe Job, type: :model do
-  it 'does the right thing when a job starts' do
+  it 'does the right thing when a job starts from a schedule' do
     admin = create(:admin1)
     job = create(:job1, user: admin)
-    run = job.start_job
+    run = job.start_job(false)
 
     expect(run).not_to be_nil
     expect(run.job_id).to eq(job.id)
+    expect(run.is_manual).to be false
+    expect(job.running).to be true
+  end
+
+  it 'does the right thing when a job is started manually' do
+    admin = create(:admin1)
+    job = create(:job1, user: admin)
+    run = job.start_job(true)
+
+    expect(run).not_to be_nil
+    expect(run.job_id).to eq(job.id)
+    expect(run.is_manual).to be true
     expect(job.running).to be true
   end
 
