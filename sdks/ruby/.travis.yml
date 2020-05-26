@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build bjr4r.gemspec
-  - gem install ./bjr4r-1.5.5.gem
+  - gem install ./bjr4r-1.5.6.gem

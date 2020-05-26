@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.5.5"
+__version__ = "1.5.6"
 
 # import apis into sdk package
 from bjr4py.api.authentication_api import AuthenticationApi
