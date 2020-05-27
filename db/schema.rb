@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_220022) do
+ActiveRecord::Schema.define(version: 2020_05_27_112211) do
 
   create_table "job_runs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.boolean "success"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_220022) do
     t.integer "schedule_diff_in_seconds"
     t.boolean "is_manual", default: false
     t.index ["job_id", "created_at"], name: "index_job_runs_on_job_id_and_created_at"
+    t.index ["job_id", "start_time", "is_manual"], name: "index_job_runs_on_job_id_and_start_time_and_is_manual"
     t.index ["job_id"], name: "index_job_runs_on_job_id"
     t.index ["start_time"], name: "index_job_runs_on_start_time"
   end
