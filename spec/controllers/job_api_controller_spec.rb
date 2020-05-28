@@ -88,7 +88,7 @@ RSpec.describe JobApiController, type: :controller do
       post :create, params: { cron: '* * * *', command: 'ps ax' }
       expect(response).not_to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json['status_code']).to eq(409)
+      expect(json['status_code']).to eq(422)
       expect(json['is_error']).to be true
       expect(json['message']).to match(/Name can't be blank/)
     end
@@ -98,7 +98,7 @@ RSpec.describe JobApiController, type: :controller do
       post :create, params: { name: 'test1', command: 'ps ax' }
       expect(response).not_to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json['status_code']).to eq(409)
+      expect(json['status_code']).to eq(422)
       expect(json['is_error']).to be true
       expect(json['message']).to match(/Cron can't be blank/)
     end
@@ -108,7 +108,7 @@ RSpec.describe JobApiController, type: :controller do
       post :create, params: { name: 'test1', cron: '* * * *' }
       expect(response).not_to have_http_status(:success)
       json = JSON.parse(response.body)
-      expect(json['status_code']).to eq(409)
+      expect(json['status_code']).to eq(422)
       expect(json['is_error']).to be true
       expect(json['message']).to match(/Command can't be blank/)
     end
@@ -127,7 +127,7 @@ RSpec.describe JobApiController, type: :controller do
       job2 = create(:job2, user: user)
 
       put :update, params: { id: job.id, name: job2.name }
-      expect(response.status).to eq(409)
+      expect(response.status).to eq(422)
     end
 
     it 'allows duplicated job names for different users' do
@@ -219,6 +219,19 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['status_code']).to eq(200)
       expect(json['object']['enabled']).to eq(false)
     end
+
+    it 'can update a job with success and failure callbacks' do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, user: user, enabled: true)
+      put :update, params: { id: job.id, success_callback: 'https://www.blah.com', failure_callback: 'https://www.blah.com' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['status_code']).to eq(200)
+      expect(json['object']['success_callback']).to eq('https://www.blah.com')
+      expect(json['object']['failure_callback']).to eq('https://www.blah.com')
+    end
+
   end
 
   describe 'GET #index' do

@@ -94,6 +94,65 @@ class Job < ApplicationRecord
     query
   end
 
+  #
+  # Take a string expression and convert it into something that find_jobs can deal with. This allows our smart folders
+  # to return jobs that match an expression.
+  #
+  def self.search_jobs(user, expression)
+    tags = ''
+    enabled = nil
+    succeeded = nil
+    running = nil
+    name = ''
+    timezone = ''
+    command = ''
+    incexc = ''
+    occur_start = nil
+    occur_end = nil
+
+    pieces = expression.split(' ')
+    pieces.each do |piece|
+      prefix, search = piece.split(':')
+      case prefix
+      when 'name'
+        name = search
+      when 'command', 'cmd'
+        command = search
+      when 'timezone', 'tz'
+        timezone = search
+      when 'running', 'executing'
+        running = true
+      when 'stopped'
+        running = false
+      when 'enabled'
+        enabled = true
+      when 'disabled'
+        enabled = false
+      when 'succeeded', 'success'
+        succeeded = true
+      when 'failed', 'fail', 'failing', 'broken'
+        succeeded = false
+      when 'tags', 'tag'
+        if search.start_with? '!'
+          incexc = 'exclude'
+          tags = search[1..-1]
+        elsif search.start_with? '&'
+          incexc = 'all'
+          tags = search[1..-1]
+        elsif search.start_with? '|'
+          incexc = 'any'
+          tags = search[1..-1]
+        else
+          incexc = 'any'
+          tags = search
+        end
+      end
+    end
+
+    puts "#{user.id}, #{occur_start}, #{occur_end}, #{tags}, #{incexc}, #{enabled}, #{succeeded}, #{running}, #{name}, #{timezone}, #{command}"
+    find_jobs(user, occur_start, occur_end, tags, incexc, enabled, succeeded, running, name, timezone, command)
+  end
+
   def self.find_jobs(user, occur_start, occur_end, tags, incexc, enabled, succeeded, running, name, timezone, command)
     search = Job.mine(user)
     search = search.enabled(enabled) unless enabled.nil?

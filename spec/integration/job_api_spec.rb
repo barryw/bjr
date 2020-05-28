@@ -144,7 +144,7 @@ describe 'Job API' do
         end
       end
 
-      response '409', I18n.t('jobs.errors.already_exists') do
+      response '422', I18n.t('jobs.errors.already_exists') do
         let(:admin) { create(:admin1) }
         let(:Authorization) { auth_token(admin) }
         let(:params) { { name: 'job1', cron: '*/5 * * * *', command: 'echo Hello World', timezone: 'UTC', enabled: 'true', tags: 'tag1, tag2' } }
@@ -158,7 +158,7 @@ describe 'Job API' do
           json = JSON.parse(response.body)
           expect(json['message']).to match(/Name has already been taken/)
           expect(json['is_error']).to be true
-          expect(json['status_code']).to eq(409)
+          expect(json['status_code']).to eq(422)
         end
       end
     end
@@ -287,7 +287,7 @@ describe 'Job API' do
         end
       end
 
-      response '409', 'Job could not be updated.' do
+      response '422', 'Job could not be updated.' do
         let(:admin) { create(:admin1) }
         let(:job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }
@@ -302,7 +302,7 @@ describe 'Job API' do
         run_test! do |response|
           json = JSON.parse(response.body)
           expect(json['is_error']).to be true
-          expect(json['status_code']).to eq(409)
+          expect(json['status_code']).to eq(422)
         end
       end
 

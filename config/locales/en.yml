@@ -15,6 +15,17 @@ en:
   jobruns:
     messages:
       received: Job runs received successfully.
+  folders:
+    messages:
+      received: Folder(s) received successfully.
+      created: Folder %{id} created successfully.
+      deleted: Folder %{id} deleted successfully.
+      updated: Folder %{id} updated successfully.
+    errors:
+      not_found: Folder not found.
+      create_failed: "Failed to create folder: %{error}"
+      update_failed: "Failed to update folder '%{id}': %{error}"
+      already_exists: A folder with this name already exists.
   jobs:
     messages:
       received: Job(s) received successfully.

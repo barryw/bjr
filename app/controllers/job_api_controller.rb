@@ -46,9 +46,8 @@ class JobApiController < ApplicationController
       job.tag(current_user, params[:tags])
       message I18n.t('jobs.messages.created', id: job.id), :created, false, job, 'job'
     end
-  rescue ActiveRecord::RecordNotUnique
-    logger.warn "Attempted to create Job named #{params[:name]}, but it already exists."
-    not_unique
+  rescue ActiveRecord::RecordInvalid => re
+    error re.record.errors.full_messages.join(' '), :unprocessable_entity
   rescue TZInfo::InvalidTimezoneIdentifier
     error I18n.t('common.errors.invalid_timezone', timezone: params[:timezone],
                                                    timezone_list_url: static_api_timezones_url), :forbidden
@@ -73,9 +72,8 @@ class JobApiController < ApplicationController
       @job.save!
     end
     message I18n.t('jobs.messages.updated', id: @job.id), :ok, false, @job, 'job'
-  rescue ActiveRecord::RecordNotUnique
-    logger.warn "Attempted to update Job #{@job.id} with name #{params[:name]}, but it already exists."
-    not_unique
+  rescue ActiveRecord::RecordInvalid => re
+    error re.record.errors.full_messages.join(' '), :unprocessable_entity
   rescue StandardError
     logger.error "Failed to update Job #{@job.id}: #{$!}"
     error I18n.t('jobs.errors.update_failed', id: @job.id, error: $!), :conflict
@@ -123,10 +121,6 @@ class JobApiController < ApplicationController
   def job
     @job = Job.mine(current_user).where(id: params[:id]).first
     error(I18n.t('jobs.errors.not_found'), :not_found) && return if @job.blank?
-  end
-
-  def not_unique
-    error I18n.t('jobs.errors.already_exists'), :forbidden
   end
 
   def no_end_date
