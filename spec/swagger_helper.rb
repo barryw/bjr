@@ -154,6 +154,38 @@ RSpec.configure do |config|
               taggings_count: { type: :integer }
             }
           },
+          SingleFolderMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/SingleFolder' }
+            }
+          },
+          FolderArrayMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { '$ref': '#/components/schemas/FolderArray' }
+            }
+          },
+          FolderArray: {
+            type: :array,
+            items: { '$ref': '#/components/schemas/SingleFolder' }
+          },
+          SingleFolder: {
+            type: :object,
+            properties: {
+              id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
+              name: { type: :string, description: 'The folder\'s name. Must be unique.' },
+              expression: { type: :string, description: 'The search expression used to determine which jobs appear in this folder.' }
+            }
+          },
           SingleJobRunMessage: {
             type: :object,
             properties: {

@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Job created successfully. |  -  |
 **400** | Invalid timezone name. |  -  |
-**409** | A job with this name already exists. |  -  |
+**422** | A job with this name already exists. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -640,7 +640,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Job updated successfully. |  -  |
-**409** | Job could not be updated. |  -  |
+**422** | Job could not be updated. |  -  |
 **404** | Job not found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

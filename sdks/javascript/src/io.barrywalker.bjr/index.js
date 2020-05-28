@@ -15,6 +15,7 @@
 import ApiClient from './ApiClient';
 import AuthIn from './io.barrywalker.bjr.model/AuthIn';
 import AuthOut from './io.barrywalker.bjr.model/AuthOut';
+import FolderArrayMessage from './io.barrywalker.bjr.model/FolderArrayMessage';
 import JobArrayMessage from './io.barrywalker.bjr.model/JobArrayMessage';
 import JobIn from './io.barrywalker.bjr.model/JobIn';
 import JobRunArrayMessage from './io.barrywalker.bjr.model/JobRunArrayMessage';
@@ -22,6 +23,8 @@ import JobStat from './io.barrywalker.bjr.model/JobStat';
 import JobStatMessage from './io.barrywalker.bjr.model/JobStatMessage';
 import OccurrenceMessage from './io.barrywalker.bjr.model/OccurrenceMessage';
 import ServerVersion from './io.barrywalker.bjr.model/ServerVersion';
+import SingleFolder from './io.barrywalker.bjr.model/SingleFolder';
+import SingleFolderMessage from './io.barrywalker.bjr.model/SingleFolderMessage';
 import SingleJob from './io.barrywalker.bjr.model/SingleJob';
 import SingleJobMessage from './io.barrywalker.bjr.model/SingleJobMessage';
 import SingleJobRun from './io.barrywalker.bjr.model/SingleJobRun';
@@ -37,6 +40,7 @@ import UserArrayMessage from './io.barrywalker.bjr.model/UserArrayMessage';
 import UserNewIn from './io.barrywalker.bjr.model/UserNewIn';
 import UserUpdateIn from './io.barrywalker.bjr.model/UserUpdateIn';
 import AuthenticationApi from './io.barrywalker.bjr.api/AuthenticationApi';
+import FoldersApi from './io.barrywalker.bjr.api/FoldersApi';
 import JobServerApi from './io.barrywalker.bjr.api/JobServerApi';
 import JobsApi from './io.barrywalker.bjr.api/JobsApi';
 import StaticApi from './io.barrywalker.bjr.api/StaticApi';
@@ -72,7 +76,7 @@ import UsersApi from './io.barrywalker.bjr.api/UsersApi';
 * </pre>
 * </p>
 * @module io.barrywalker.bjr/index
-* @version 1.5.7
+* @version 1.6.0
 */
 export {
     /**
@@ -92,6 +96,12 @@ export {
      * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/AuthOut}
      */
     AuthOut,
+
+    /**
+     * The FolderArrayMessage model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/FolderArrayMessage}
+     */
+    FolderArrayMessage,
 
     /**
      * The JobArrayMessage model constructor.
@@ -134,6 +144,18 @@ export {
      * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/ServerVersion}
      */
     ServerVersion,
+
+    /**
+     * The SingleFolder model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/SingleFolder}
+     */
+    SingleFolder,
+
+    /**
+     * The SingleFolderMessage model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/SingleFolderMessage}
+     */
+    SingleFolderMessage,
 
     /**
      * The SingleJob model constructor.
@@ -224,6 +246,12 @@ export {
     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.api/AuthenticationApi}
     */
     AuthenticationApi,
+
+    /**
+    * The FoldersApi service constructor.
+    * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.api/FoldersApi}
+    */
+    FoldersApi,
 
     /**
     * The JobServerApi service constructor.

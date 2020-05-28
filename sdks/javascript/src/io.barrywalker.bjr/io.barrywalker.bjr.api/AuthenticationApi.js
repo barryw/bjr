@@ -19,7 +19,7 @@ import AuthOut from '../io.barrywalker.bjr.model/AuthOut';
 /**
 * Authentication service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/AuthenticationApi
-* @version 1.5.7
+* @version 1.6.0
 */
 export default class AuthenticationApi {
 

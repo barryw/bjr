@@ -69,7 +69,7 @@ public class JobsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Job created successfully. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid timezone name. </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createJobCall(JobIn jobIn, final ApiCallback _callback) throws ApiException {
@@ -121,7 +121,7 @@ public class JobsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Job created successfully. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid timezone name. </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
      </table>
      */
     public SingleJobMessage createJob(JobIn jobIn) throws ApiException {
@@ -140,7 +140,7 @@ public class JobsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Job created successfully. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid timezone name. </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<SingleJobMessage> createJobWithHttpInfo(JobIn jobIn) throws ApiException {
@@ -161,7 +161,7 @@ public class JobsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Job created successfully. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Invalid timezone name. </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> A job with this name already exists. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call createJobAsync(JobIn jobIn, final ApiCallback<SingleJobMessage> _callback) throws ApiException {
@@ -1044,7 +1044,7 @@ public class JobsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Job updated successfully. </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Job could not be updated. </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Job could not be updated. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Job not found. </td><td>  -  </td></tr>
      </table>
      */
@@ -1103,7 +1103,7 @@ public class JobsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Job updated successfully. </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Job could not be updated. </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Job could not be updated. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Job not found. </td><td>  -  </td></tr>
      </table>
      */
@@ -1123,7 +1123,7 @@ public class JobsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Job updated successfully. </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Job could not be updated. </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Job could not be updated. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Job not found. </td><td>  -  </td></tr>
      </table>
      */
@@ -1145,7 +1145,7 @@ public class JobsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Job updated successfully. </td><td>  -  </td></tr>
-        <tr><td> 409 </td><td> Job could not be updated. </td><td>  -  </td></tr>
+        <tr><td> 422 </td><td> Job could not be updated. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Job not found. </td><td>  -  </td></tr>
      </table>
      */

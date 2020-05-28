@@ -14,10 +14,11 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.5.7"
+__version__ = "1.6.0"
 
 # import apis into sdk package
 from bjr4py.api.authentication_api import AuthenticationApi
+from bjr4py.api.folders_api import FoldersApi
 from bjr4py.api.job_server_api import JobServerApi
 from bjr4py.api.jobs_api import JobsApi
 from bjr4py.api.static_api import StaticApi
@@ -34,6 +35,7 @@ from bjr4py.exceptions import ApiException
 # import models into sdk package
 from bjr4py.models.auth_in import AuthIn
 from bjr4py.models.auth_out import AuthOut
+from bjr4py.models.folder_array_message import FolderArrayMessage
 from bjr4py.models.job_array_message import JobArrayMessage
 from bjr4py.models.job_in import JobIn
 from bjr4py.models.job_run_array_message import JobRunArrayMessage
@@ -41,6 +43,8 @@ from bjr4py.models.job_stat import JobStat
 from bjr4py.models.job_stat_message import JobStatMessage
 from bjr4py.models.occurrence_message import OccurrenceMessage
 from bjr4py.models.server_version import ServerVersion
+from bjr4py.models.single_folder import SingleFolder
+from bjr4py.models.single_folder_message import SingleFolderMessage
 from bjr4py.models.single_job import SingleJob
 from bjr4py.models.single_job_message import SingleJobMessage
 from bjr4py.models.single_job_run import SingleJobRun

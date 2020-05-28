@@ -274,6 +274,58 @@ components:
           type: string
         taggings_count:
           type: integer
+    SingleFolderMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/SingleFolder"
+    FolderArrayMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          "$ref": "#/components/schemas/FolderArray"
+    FolderArray:
+      type: array
+      items:
+        "$ref": "#/components/schemas/SingleFolder"
+    SingleFolder:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The object's primary key. This uniquely identifies the object
+            in the system.
+        name:
+          type: string
+          description: The folder's name. Must be unique.
+        expression:
+          type: string
+          description: The search expression used to determine which jobs appear in
+            this folder.
     SingleJobRunMessage:
       type: object
       properties:
@@ -644,6 +696,201 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/AuthIn"
+  "/folder_api":
+    get:
+      summary: Return paginated list of all folders
+      description: Return paginated list of all folders
+      tags:
+      - Folders
+      operationId: getFolders
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Folders returned successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/FolderArrayMessage"
+    post:
+      summary: Create a new Folder
+      description: Create a new Folder
+      tags:
+      - Folders
+      operationId: createFolder
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: expression
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Folder created successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleFolderMessage"
+        '422':
+          description: Failed to create new folder
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleFolderMessage"
+  "/folder_api/{id}":
+    get:
+      summary: Return a single folder
+      description: Return a single folder
+      tags:
+      - Folders
+      operationId: getFolder
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Folder returned successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleFolderMessage"
+        '404':
+          description: Folder not found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleFolderMessage"
+    put:
+      summary: Update an existing folder
+      description: Update an existing folder
+      tags:
+      - Folders
+      operationId: updateFolder
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: expression
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Folder updated successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleFolderMessage"
+        '404':
+          description: Folder not found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleFolderMessage"
+        '422':
+          description: Failed to update folder
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleFolderMessage"
+    delete:
+      summary: Delete an existing folder
+      description: Delete an existing folder
+      tags:
+      - Folders
+      operationId: deleteFolder
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Folder deleted successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleFolderMessage"
+        '404':
+          description: Folder not found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleFolderMessage"
+  "/folder_api/{id}/jobs":
+    get:
+      summary: Return list of jobs in a folder
+      description: Return list of jobs in a folder
+      tags:
+      - Folders
+      operationId: getFolderJobs
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Jobs returned successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/JobArrayMessage"
+        '404':
+          description: Folder not found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SingleJobMessage"
   "/job_api/{id}/run_now":
     post:
       summary: Run a job now
@@ -746,7 +993,7 @@ paths:
         '400':
           description: Invalid timezone name.
           content: {}
-        '409':
+        '422':
           description: A job with this name already exists.
           content: {}
       requestBody:
@@ -941,7 +1188,7 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/SingleJobMessage"
-        '409':
+        '422':
           description: Job could not be updated.
           content: {}
         '404':

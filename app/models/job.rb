@@ -149,7 +149,6 @@ class Job < ApplicationRecord
       end
     end
 
-    puts "#{user.id}, #{occur_start}, #{occur_end}, #{tags}, #{incexc}, #{enabled}, #{succeeded}, #{running}, #{name}, #{timezone}, #{command}"
     find_jobs(user, occur_start, occur_end, tags, incexc, enabled, succeeded, running, name, timezone, command)
   end
 

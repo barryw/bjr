@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-05-26T22:18:34.144Z[GMT]
+  - Build date: 2020-05-28T23:30:54.997Z[GMT]
 
 API specification for the BJR job server.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>bjr4j</artifactId>
-  <version>1.5.7</version>
+  <version>1.6.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:bjr4j:1.5.7"
+compile "org.openapitools:bjr4j:1.6.0"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bjr4j-1.5.7.jar`
+* `target/bjr4j-1.6.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -108,6 +108,12 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AuthenticationApi* | [**authenticateUser**](docs/AuthenticationApi.md#authenticateUser) | **POST** /authenticate | Authenticates a user and returns a token
+*FoldersApi* | [**createFolder**](docs/FoldersApi.md#createFolder) | **POST** /folder_api | Create a new Folder
+*FoldersApi* | [**deleteFolder**](docs/FoldersApi.md#deleteFolder) | **DELETE** /folder_api/{id} | Delete an existing folder
+*FoldersApi* | [**getFolder**](docs/FoldersApi.md#getFolder) | **GET** /folder_api/{id} | Return a single folder
+*FoldersApi* | [**getFolderJobs**](docs/FoldersApi.md#getFolderJobs) | **GET** /folder_api/{id}/jobs | Return list of jobs in a folder
+*FoldersApi* | [**getFolders**](docs/FoldersApi.md#getFolders) | **GET** /folder_api | Return paginated list of all folders
+*FoldersApi* | [**updateFolder**](docs/FoldersApi.md#updateFolder) | **PUT** /folder_api/{id} | Update an existing folder
 *JobServerApi* | [**recentJobs**](docs/JobServerApi.md#recentJobs) | **GET** /job_server_api/recent_jobs | List of recent jobs
 *JobServerApi* | [**statsByDay**](docs/JobServerApi.md#statsByDay) | **GET** /job_server_api/daily_job_stats | Job statistics by day
 *JobServerApi* | [**statsByHour**](docs/JobServerApi.md#statsByHour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
@@ -137,6 +143,7 @@ Class | Method | HTTP request | Description
 
  - [AuthIn](docs/AuthIn.md)
  - [AuthOut](docs/AuthOut.md)
+ - [FolderArrayMessage](docs/FolderArrayMessage.md)
  - [JobArrayMessage](docs/JobArrayMessage.md)
  - [JobIn](docs/JobIn.md)
  - [JobRunArrayMessage](docs/JobRunArrayMessage.md)
@@ -144,6 +151,8 @@ Class | Method | HTTP request | Description
  - [JobStatMessage](docs/JobStatMessage.md)
  - [OccurrenceMessage](docs/OccurrenceMessage.md)
  - [ServerVersion](docs/ServerVersion.md)
+ - [SingleFolder](docs/SingleFolder.md)
+ - [SingleFolderMessage](docs/SingleFolderMessage.md)
  - [SingleJob](docs/SingleJob.md)
  - [SingleJobMessage](docs/SingleJobMessage.md)
  - [SingleJobRun](docs/SingleJobRun.md)
