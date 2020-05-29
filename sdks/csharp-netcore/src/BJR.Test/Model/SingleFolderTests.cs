@@ -81,6 +81,14 @@ namespace BJR.Test
         {
             // TODO unit test for the property 'Expression'
         }
+        /// <summary>
+        /// Test the property 'JobCount'
+        /// </summary>
+        [Fact]
+        public void JobCountTest()
+        {
+            // TODO unit test for the property 'JobCount'
+        }
 
     }
 

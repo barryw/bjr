@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SingleFolder model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/SingleFolder
- * @version 1.6.1
+ * @version 1.6.2
  */
 class SingleFolder {
     /**
@@ -56,6 +56,9 @@ class SingleFolder {
             if (data.hasOwnProperty('expression')) {
                 obj['expression'] = ApiClient.convertToType(data['expression'], 'String');
             }
+            if (data.hasOwnProperty('job_count')) {
+                obj['job_count'] = ApiClient.convertToType(data['job_count'], 'Number');
+            }
         }
         return obj;
     }
@@ -80,6 +83,12 @@ SingleFolder.prototype['name'] = undefined;
  * @member {String} expression
  */
 SingleFolder.prototype['expression'] = undefined;
+
+/**
+ * The number of jobs that match the folder's expression.
+ * @member {Number} job_count
+ */
+SingleFolder.prototype['job_count'] = undefined;
 
 
 

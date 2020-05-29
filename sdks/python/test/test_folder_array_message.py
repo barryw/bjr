@@ -44,7 +44,8 @@ class TestFolderArrayMessage(unittest.TestCase):
                     bjr4py.models.single_folder.SingleFolder(
                         id = 56, 
                         name = '0', 
-                        expression = '0', )
+                        expression = '0', 
+                        job_count = 56, )
                     ]
             )
         else :

@@ -35,16 +35,18 @@ class SingleFolder(object):
     openapi_types = {
         'id': 'int',
         'name': 'str',
-        'expression': 'str'
+        'expression': 'str',
+        'job_count': 'int'
     }
 
     attribute_map = {
         'id': 'id',
         'name': 'name',
-        'expression': 'expression'
+        'expression': 'expression',
+        'job_count': 'job_count'
     }
 
-    def __init__(self, id=None, name=None, expression=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, expression=None, job_count=None, local_vars_configuration=None):  # noqa: E501
         """SingleFolder - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -53,6 +55,7 @@ class SingleFolder(object):
         self._id = None
         self._name = None
         self._expression = None
+        self._job_count = None
         self.discriminator = None
 
         if id is not None:
@@ -61,6 +64,8 @@ class SingleFolder(object):
             self.name = name
         if expression is not None:
             self.expression = expression
+        if job_count is not None:
+            self.job_count = job_count
 
     @property
     def id(self):
@@ -130,6 +135,29 @@ class SingleFolder(object):
         """
 
         self._expression = expression
+
+    @property
+    def job_count(self):
+        """Gets the job_count of this SingleFolder.  # noqa: E501
+
+        The number of jobs that match the folder's expression.  # noqa: E501
+
+        :return: The job_count of this SingleFolder.  # noqa: E501
+        :rtype: int
+        """
+        return self._job_count
+
+    @job_count.setter
+    def job_count(self, job_count):
+        """Sets the job_count of this SingleFolder.
+
+        The number of jobs that match the folder's expression.  # noqa: E501
+
+        :param job_count: The job_count of this SingleFolder.  # noqa: E501
+        :type: int
+        """
+
+        self._job_count = job_count
 
     def to_dict(self):
         """Returns the model properties as a dict"""

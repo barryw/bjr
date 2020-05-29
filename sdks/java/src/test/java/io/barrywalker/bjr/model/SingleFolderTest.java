@@ -64,4 +64,12 @@ public class SingleFolderTest {
         // TODO: test expression
     }
 
+    /**
+     * Test the property 'jobCount'
+     */
+    @Test
+    public void jobCountTest() {
+        // TODO: test jobCount
+    }
+
 }

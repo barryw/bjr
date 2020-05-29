@@ -11,7 +11,11 @@ class Folder < ApplicationRecord
     Job.search_jobs(user, expression)
   end
 
+  def job_count
+    jobs.count
+  end
+
   def as_json(_options = {})
-    super(only: %i[id name expression created_at updated_at])
+    { id: self.id, name: self.name, job_count: self.job_count, expression: self.expression, created_at: self.created_at, updated_at: self.updated_at }
   end
 end

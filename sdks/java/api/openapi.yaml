@@ -1748,6 +1748,7 @@ components:
         message: message
         object:
           expression: expression
+          job_count: 1
           name: name
           id: 6
       properties:
@@ -1774,9 +1775,11 @@ components:
         message: message
         object:
         - expression: expression
+          job_count: 1
           name: name
           id: 6
         - expression: expression
+          job_count: 1
           name: name
           id: 6
       properties:
@@ -1804,6 +1807,7 @@ components:
     SingleFolder:
       example:
         expression: expression
+        job_count: 1
         name: name
         id: 6
       properties:
@@ -1818,6 +1822,9 @@ components:
           description: The search expression used to determine which jobs appear in
             this folder.
           type: string
+        job_count:
+          description: The number of jobs that match the folder's expression.
+          type: integer
       type: object
     SingleJobRunMessage:
       properties:

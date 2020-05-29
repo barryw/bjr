@@ -23,12 +23,16 @@ module BJR
     # The search expression used to determine which jobs appear in this folder.
     attr_accessor :expression
 
+    # The number of jobs that match the folder's expression.
+    attr_accessor :job_count
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'name' => :'name',
-        :'expression' => :'expression'
+        :'expression' => :'expression',
+        :'job_count' => :'job_count'
       }
     end
 
@@ -37,7 +41,8 @@ module BJR
       {
         :'id' => :'Integer',
         :'name' => :'String',
-        :'expression' => :'String'
+        :'expression' => :'String',
+        :'job_count' => :'Integer'
       }
     end
 
@@ -73,6 +78,10 @@ module BJR
       if attributes.key?(:'expression')
         self.expression = attributes[:'expression']
       end
+
+      if attributes.key?(:'job_count')
+        self.job_count = attributes[:'job_count']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -95,7 +104,8 @@ module BJR
       self.class == o.class &&
           id == o.id &&
           name == o.name &&
-          expression == o.expression
+          expression == o.expression &&
+          job_count == o.job_count
     end
 
     # @see the `==` method
@@ -107,7 +117,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, expression].hash
+      [id, name, expression, job_count].hash
     end
 
     # Builds the object from hash

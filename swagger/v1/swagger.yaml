@@ -326,6 +326,9 @@ components:
           type: string
           description: The search expression used to determine which jobs appear in
             this folder.
+        job_count:
+          type: integer
+          description: The number of jobs that match the folder's expression.
     SingleJobRunMessage:
       type: object
       properties:

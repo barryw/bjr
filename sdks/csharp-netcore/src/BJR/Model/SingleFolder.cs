@@ -37,11 +37,13 @@ namespace BJR.Model
         /// <param name="id">The object&#39;s primary key. This uniquely identifies the object in the system..</param>
         /// <param name="name">The folder&#39;s name. Must be unique..</param>
         /// <param name="expression">The search expression used to determine which jobs appear in this folder..</param>
-        public SingleFolder(int id = default(int), string name = default(string), string expression = default(string))
+        /// <param name="jobCount">The number of jobs that match the folder&#39;s expression..</param>
+        public SingleFolder(int id = default(int), string name = default(string), string expression = default(string), int jobCount = default(int))
         {
             this.Id = id;
             this.Name = name;
             this.Expression = expression;
+            this.JobCount = jobCount;
         }
         
         /// <summary>
@@ -66,6 +68,13 @@ namespace BJR.Model
         public string Expression { get; set; }
 
         /// <summary>
+        /// The number of jobs that match the folder&#39;s expression.
+        /// </summary>
+        /// <value>The number of jobs that match the folder&#39;s expression.</value>
+        [DataMember(Name="job_count", EmitDefaultValue=false)]
+        public int JobCount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -76,6 +85,7 @@ namespace BJR.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Expression: ").Append(Expression).Append("\n");
+            sb.Append("  JobCount: ").Append(JobCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,6 +133,10 @@ namespace BJR.Model
                     this.Expression == input.Expression ||
                     (this.Expression != null &&
                     this.Expression.Equals(input.Expression))
+                ) && 
+                (
+                    this.JobCount == input.JobCount ||
+                    this.JobCount.Equals(input.JobCount)
                 );
         }
 
@@ -140,6 +154,7 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Expression != null)
                     hashCode = hashCode * 59 + this.Expression.GetHashCode();
+                hashCode = hashCode * 59 + this.JobCount.GetHashCode();
                 return hashCode;
             }
         }

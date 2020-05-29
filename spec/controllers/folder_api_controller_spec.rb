@@ -94,8 +94,12 @@ RSpec.describe FolderApiController, type: :controller do
     it 'gets all of a users folders' do
       user = create(:admin1)
       authenticated_header(user)
-      folder1 = create(:success, user: user)
-      folder2 = create(:failed, user: user)
+      job1 = create(:job1, user: user, name: 'job1', success: true)
+      job2 = create(:job1, user: user, name: 'job2', success: true)
+      job3 = create(:job1, user: user, name: 'job3', success: false)
+
+      folder1 = create(:success, user: user, expression: 'success')
+      folder2 = create(:failed, user: user, expression: 'failed')
 
       get :index
 
@@ -104,6 +108,8 @@ RSpec.describe FolderApiController, type: :controller do
       expect(json['status_code']).to eq(200)
       expect(json['object_type']).to eq('folderarray')
       expect(json['object'].length).to eq(2)
+      expect(json['object'][0]['job_count']).to eq(2)
+      expect(json['object'][1]['job_count']).to eq(1)
     end
 
     it 'doesnt get folders for other users' do

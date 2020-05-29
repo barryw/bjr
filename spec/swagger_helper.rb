@@ -183,7 +183,8 @@ RSpec.configure do |config|
             properties: {
               id: { type: :integer, description: 'The object\'s primary key. This uniquely identifies the object in the system.' },
               name: { type: :string, description: 'The folder\'s name. Must be unique.' },
-              expression: { type: :string, description: 'The search expression used to determine which jobs appear in this folder.' }
+              expression: { type: :string, description: 'The search expression used to determine which jobs appear in this folder.' },
+              job_count: { type: :integer, description: 'The number of jobs that match the folder\'s expression.' }
             }
           },
           SingleJobRunMessage: {

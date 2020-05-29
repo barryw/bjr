@@ -72,6 +72,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property jobCount (base name: "job_count")', function() {
+      // uncomment below and update the code to test the property jobCount
+      //var instane = new Bjr4js.SingleFolder();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * SingleFolder
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-29T00:51:13.702Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-29T02:21:36.038Z[GMT]")
 public class SingleFolder {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -40,6 +40,10 @@ public class SingleFolder {
   public static final String SERIALIZED_NAME_EXPRESSION = "expression";
   @SerializedName(SERIALIZED_NAME_EXPRESSION)
   private String expression;
+
+  public static final String SERIALIZED_NAME_JOB_COUNT = "job_count";
+  @SerializedName(SERIALIZED_NAME_JOB_COUNT)
+  private Integer jobCount;
 
 
   public SingleFolder id(Integer id) {
@@ -111,6 +115,29 @@ public class SingleFolder {
   }
 
 
+  public SingleFolder jobCount(Integer jobCount) {
+    
+    this.jobCount = jobCount;
+    return this;
+  }
+
+   /**
+   * The number of jobs that match the folder&#39;s expression.
+   * @return jobCount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The number of jobs that match the folder's expression.")
+
+  public Integer getJobCount() {
+    return jobCount;
+  }
+
+
+  public void setJobCount(Integer jobCount) {
+    this.jobCount = jobCount;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -122,12 +149,13 @@ public class SingleFolder {
     SingleFolder singleFolder = (SingleFolder) o;
     return Objects.equals(this.id, singleFolder.id) &&
         Objects.equals(this.name, singleFolder.name) &&
-        Objects.equals(this.expression, singleFolder.expression);
+        Objects.equals(this.expression, singleFolder.expression) &&
+        Objects.equals(this.jobCount, singleFolder.jobCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, expression);
+    return Objects.hash(id, name, expression, jobCount);
   }
 
 
@@ -138,6 +166,7 @@ public class SingleFolder {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+    sb.append("    jobCount: ").append(toIndentedString(jobCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
