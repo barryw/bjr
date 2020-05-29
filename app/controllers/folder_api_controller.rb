@@ -19,7 +19,7 @@ class FolderApiController < ApplicationController
   # Paginate all jobs in a folder. The job list is built dynamically based on the folder's expression.
   #
   def jobs
-    jobs = paginate Job.search_jobs(current_user, @folder.expression)
+    jobs = paginate @folder.jobs
     message I18n.t('jobs.messages.received'), :ok, false, jobs, 'jobarray'
   end
 
