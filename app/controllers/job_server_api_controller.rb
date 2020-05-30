@@ -8,9 +8,27 @@ require 'trends'
 #
 class JobServerApiController < ApplicationController
   include ApplicationHelper
+  include SidekiqHelper
 
+  before_action :require_root, only: %i[quiesce_worker busy_thread_count]
+  before_action :require_host, only: %i[quiesce_worker]
   before_action :date_range, only: %i[minutely_job_stats hourly_job_stats]
   before_action :count, only: %i[recent_jobs upcoming_jobs]
+
+  #
+  # Prepare the workers to be upgraded
+  #
+  def quiesce_worker
+    quiesce(params[:host])
+    message I18n.t('jobserver.messages.workers.quiesced'), :ok, false, {}, ''
+  end
+
+  #
+  # Return the number of busy threads across workers
+  #
+  def busy_thread_count
+    message I18n.t('jobserver.messages.workers.received'), :ok, false, workers, 'workers'
+  end
 
   #
   # Return minutely stats
@@ -69,6 +87,20 @@ class JobServerApiController < ApplicationController
   end
 
   private
+
+  #
+  # Make sure the host parameter is specified for quiescing or stopping worker hosts
+  #
+  def require_host
+    error I18n.t('jobserver.messages.workers.host_required'), :bad_request and return if params[:host].blank?
+  end
+
+  #
+  # Protect routes to require root user privs
+  #
+  def require_root
+    error I18n.t('common.errors.unauthorized'), :unauthorized unless current_user.is_root
+  end
 
   def date_range
     @start_date = date_parse(params[:start_date])

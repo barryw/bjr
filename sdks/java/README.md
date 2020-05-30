@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-05-29T02:21:36.038Z[GMT]
+  - Build date: 2020-05-30T11:53:43.621Z[GMT]
 
 API specification for the BJR job server.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>bjr4j</artifactId>
-  <version>1.6.2</version>
+  <version>1.7.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:bjr4j:1.6.2"
+compile "org.openapitools:bjr4j:1.7.0"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bjr4j-1.6.2.jar`
+* `target/bjr4j-1.7.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -114,6 +114,8 @@ Class | Method | HTTP request | Description
 *FoldersApi* | [**getFolderJobs**](docs/FoldersApi.md#getFolderJobs) | **GET** /folder_api/{id}/jobs | Return list of jobs in a folder
 *FoldersApi* | [**getFolders**](docs/FoldersApi.md#getFolders) | **GET** /folder_api | Return paginated list of all folders
 *FoldersApi* | [**updateFolder**](docs/FoldersApi.md#updateFolder) | **PUT** /folder_api/{id} | Update an existing folder
+*JobServerApi* | [**getBusyThreadCount**](docs/JobServerApi.md#getBusyThreadCount) | **GET** /job_server_api/busy_thread_count | Retrieve the count of busy workers across worker pods/nodes
+*JobServerApi* | [**quiesceNode**](docs/JobServerApi.md#quiesceNode) | **POST** /job_server_api/quiesce_worker | Quiesce a single worker pod/node
 *JobServerApi* | [**recentJobs**](docs/JobServerApi.md#recentJobs) | **GET** /job_server_api/recent_jobs | List of recent jobs
 *JobServerApi* | [**statsByDay**](docs/JobServerApi.md#statsByDay) | **GET** /job_server_api/daily_job_stats | Job statistics by day
 *JobServerApi* | [**statsByHour**](docs/JobServerApi.md#statsByHour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
@@ -143,7 +145,11 @@ Class | Method | HTTP request | Description
 
  - [AuthIn](docs/AuthIn.md)
  - [AuthOut](docs/AuthOut.md)
+ - [BusyThreadCountMessage](docs/BusyThreadCountMessage.md)
+ - [BusyThreadCountMessageObject](docs/BusyThreadCountMessageObject.md)
+ - [BusyThreadCountMessageObjectHosts](docs/BusyThreadCountMessageObjectHosts.md)
  - [FolderArrayMessage](docs/FolderArrayMessage.md)
+ - [GenericMessage](docs/GenericMessage.md)
  - [JobArrayMessage](docs/JobArrayMessage.md)
  - [JobIn](docs/JobIn.md)
  - [JobRunArrayMessage](docs/JobRunArrayMessage.md)

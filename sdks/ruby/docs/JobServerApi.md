@@ -4,6 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_busy_thread_count**](JobServerApi.md#get_busy_thread_count) | **GET** /job_server_api/busy_thread_count | Retrieve the count of busy workers across worker pods/nodes
+[**quiesce_node**](JobServerApi.md#quiesce_node) | **POST** /job_server_api/quiesce_worker | Quiesce a single worker pod/node
 [**recent_jobs**](JobServerApi.md#recent_jobs) | **GET** /job_server_api/recent_jobs | List of recent jobs
 [**stats_by_day**](JobServerApi.md#stats_by_day) | **GET** /job_server_api/daily_job_stats | Job statistics by day
 [**stats_by_hour**](JobServerApi.md#stats_by_hour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
@@ -12,6 +14,106 @@ Method | HTTP request | Description
 [**todays_stats**](JobServerApi.md#todays_stats) | **GET** /job_server_api/todays_stats | Todays Stats
 [**upcoming_jobs**](JobServerApi.md#upcoming_jobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 
+
+
+## get_busy_thread_count
+
+> BusyThreadCountMessage get_busy_thread_count
+
+Retrieve the count of busy workers across worker pods/nodes
+
+Retrieve the count of busy workers across worker pods/nodes
+
+### Example
+
+```ruby
+# load the gem
+require 'bjr4r'
+# setup authorization
+BJR.configure do |config|
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = BJR::JobServerApi.new
+
+begin
+  #Retrieve the count of busy workers across worker pods/nodes
+  result = api_instance.get_busy_thread_count
+  p result
+rescue BJR::ApiError => e
+  puts "Exception when calling JobServerApi->get_busy_thread_count: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BusyThreadCountMessage**](BusyThreadCountMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## quiesce_node
+
+> GenericMessage quiesce_node(host)
+
+Quiesce a single worker pod/node
+
+Quiesce a single worker pod/node
+
+### Example
+
+```ruby
+# load the gem
+require 'bjr4r'
+# setup authorization
+BJR.configure do |config|
+  # Configure Bearer authorization (JWT): bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = BJR::JobServerApi.new
+host = 'host_example' # String | The hostname of the worker pod/node to quiesce
+
+begin
+  #Quiesce a single worker pod/node
+  result = api_instance.quiesce_node(host)
+  p result
+rescue BJR::ApiError => e
+  puts "Exception when calling JobServerApi->quiesce_node: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **host** | **String**| The hostname of the worker pod/node to quiesce | 
+
+### Return type
+
+[**GenericMessage**](GenericMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## recent_jobs

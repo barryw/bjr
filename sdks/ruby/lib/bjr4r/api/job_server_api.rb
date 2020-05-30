@@ -19,6 +19,125 @@ module BJR
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Retrieve the count of busy workers across worker pods/nodes
+    # Retrieve the count of busy workers across worker pods/nodes
+    # @param [Hash] opts the optional parameters
+    # @return [BusyThreadCountMessage]
+    def get_busy_thread_count(opts = {})
+      data, _status_code, _headers = get_busy_thread_count_with_http_info(opts)
+      data
+    end
+
+    # Retrieve the count of busy workers across worker pods/nodes
+    # Retrieve the count of busy workers across worker pods/nodes
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BusyThreadCountMessage, Integer, Hash)>] BusyThreadCountMessage data, response status code and response headers
+    def get_busy_thread_count_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: JobServerApi.get_busy_thread_count ...'
+      end
+      # resource path
+      local_var_path = '/job_server_api/busy_thread_count'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'BusyThreadCountMessage' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: JobServerApi#get_busy_thread_count\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Quiesce a single worker pod/node
+    # Quiesce a single worker pod/node
+    # @param host [String] The hostname of the worker pod/node to quiesce
+    # @param [Hash] opts the optional parameters
+    # @return [GenericMessage]
+    def quiesce_node(host, opts = {})
+      data, _status_code, _headers = quiesce_node_with_http_info(host, opts)
+      data
+    end
+
+    # Quiesce a single worker pod/node
+    # Quiesce a single worker pod/node
+    # @param host [String] The hostname of the worker pod/node to quiesce
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GenericMessage, Integer, Hash)>] GenericMessage data, response status code and response headers
+    def quiesce_node_with_http_info(host, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: JobServerApi.quiesce_node ...'
+      end
+      # verify the required parameter 'host' is set
+      if @api_client.config.client_side_validation && host.nil?
+        fail ArgumentError, "Missing the required parameter 'host' when calling JobServerApi.quiesce_node"
+      end
+      # resource path
+      local_var_path = '/job_server_api/quiesce_worker'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'host'] = host
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'GenericMessage' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || ['bearerAuth']
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: JobServerApi#quiesce_node\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List of recent jobs
     # Get a list of the most recently run jobs
     # @param [Hash] opts the optional parameters

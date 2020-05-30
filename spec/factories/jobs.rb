@@ -7,6 +7,7 @@ FactoryBot.define do
     command { 'ls -l' }
     timezone { 'UTC' }
     enabled { true }
+    last_run { DateTime.now }
   end
 
   factory :job2, class: Job do
@@ -15,5 +16,6 @@ FactoryBot.define do
     command { 'ps ax' }
     timezone { 'UTC' }
     enabled { false }
+    last_run { DateTime.now }
   end
 end

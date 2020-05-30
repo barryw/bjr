@@ -24,6 +24,38 @@ RSpec.configure do |config|
       },
       components: {
         schemas: {
+          GenericMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { type: :object }
+            }
+          },
+          BusyThreadCountMessage: {
+            type: :object,
+            properties: {
+              message: { type: :string, description: 'The status message returned from the API call.' },
+              is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
+              object_type: { type: :string, description: 'The type of object being returned.' },
+              status_code: { type: :integer, description: 'The HTTP status code returned.' },
+              object: { type: :object,
+                properties: {
+                  total_busy: { type: :integer, description: 'The total number of busy workers across all pods/hosts.' },
+                  hosts: { type: :array, items: { type: :object,
+                                                  properties: {
+                                                    name: { type: :string, description: 'The name of the worker host.' },
+                                                    busy: { type: :integer, description: 'The number of busy threads on the worker.' },
+                                                    pid: { type: :integer, description: 'The process ID of the worker process.' }
+                                                  }
+                    }
+                  }
+                }
+              }
+            }
+          },
           TodaysStats: {
             type: :object,
             properties: {

@@ -17,7 +17,7 @@ import TodaysStats from './TodaysStats';
 /**
  * The TodaysStatsMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/TodaysStatsMessage
- * @version 1.6.2
+ * @version 1.7.0
  */
 class TodaysStatsMessage {
     /**

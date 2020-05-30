@@ -3,6 +3,85 @@
 require 'swagger_helper'
 
 describe 'Job Server API' do
+  path '/job_server_api/quiesce_worker' do
+    post 'Quiesce a single worker pod/node' do
+      description 'Quiesce a single worker pod/node'
+      tags 'JobServer'
+      operationId 'quiesceNode'
+      security [bearerAuth: []]
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :host, in: :query, type: :string, required: true, description: 'The hostname of the worker pod/node to quiesce'
+
+      response '200', 'Worker quiesced successfully' do
+        let(:root) { create(:root) }
+        let(:Authorization) { auth_token(root) }
+        schema '$ref' => '#/components/schemas/GenericMessage'
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+
+          expect(json['is_error']).to be false
+          expect(json['status_code']).to eq(200)
+          expect(json['message']).to eq(I18n.t('jobserver.messages.workers.quiesced'))
+        end
+      end
+
+      response '401', 'Not authorized' do
+        let(:admin) { create(:admin1) }
+        let(:Authorization) { auth_token(admin) }
+        schema '$ref' => '#/components/schemas/GenericMessage'
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+
+          expect(json['is_error']).to be true
+          expect(json['status_code']).to eq(401)
+          expect(json['message']).to eq(I18n.t('common.errors.unauthorized'))
+        end
+      end
+    end
+  end
+
+  path '/job_server_api/busy_thread_count' do
+    get 'Retrieve the count of busy workers across worker pods/nodes' do
+      description 'Retrieve the count of busy workers across worker pods/nodes'
+      tags 'JobServer'
+      operationId 'getBusyThreadCount'
+      security [bearerAuth: []]
+      consumes 'application/json'
+      produces 'application/json'
+
+      response '200', 'Busy thread count stats returned successfully' do
+        let(:root) { create(:root) }
+        let(:Authorization) { auth_token(root) }
+        schema '$ref' => '#/components/schemas/BusyThreadCountMessage'
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+
+          expect(json['is_error']).to be false
+          expect(json['status_code']).to eq(200)
+          expect(json['message']).to eq(I18n.t('jobserver.messages.workers.received'))
+        end
+      end
+
+      response '401', 'Not authorized' do
+        let(:admin) { create(:admin1) }
+        let(:Authorization) { auth_token(admin) }
+        schema '$ref' => '#/components/schemas/GenericMessage'
+
+        run_test! do |response|
+          json = JSON.parse(response.body)
+
+          expect(json['is_error']).to be true
+          expect(json['status_code']).to eq(401)
+          expect(json['message']).to eq(I18n.t('common.errors.unauthorized'))
+        end
+      end
+    end
+  end
+
   path '/job_server_api/todays_stats' do
     get 'Todays Stats' do
       description 'Get the high level job statistics for today'
@@ -225,8 +304,8 @@ describe 'Job Server API' do
         schema '$ref' => '#/components/schemas/JobArrayMessage'
 
         before do |request|
-          job1 = create(:job1, user: admin, last_run: nil)
-          job2 = create(:job2, user: admin, last_run: nil)
+          job1 = create(:job1, user: admin)
+          job2 = create(:job2, user: admin)
           create(:successful_job_run, job: job1, start_time: DateTime.now - 30.seconds, end_time: DateTime.now)
           create(:successful_job_run, job: job2, start_time: DateTime.now - 30.seconds, end_time: DateTime.now)
 

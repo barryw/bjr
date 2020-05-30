@@ -14,6 +14,8 @@
 package io.barrywalker.bjr.api;
 
 import io.barrywalker.bjr.ApiException;
+import io.barrywalker.bjr.model.BusyThreadCountMessage;
+import io.barrywalker.bjr.model.GenericMessage;
 import io.barrywalker.bjr.model.JobArrayMessage;
 import io.barrywalker.bjr.model.JobStatMessage;
 import io.barrywalker.bjr.model.TodaysStatsMessage;
@@ -33,6 +35,37 @@ public class JobServerApiTest {
 
     private final JobServerApi api = new JobServerApi();
 
+    
+    /**
+     * Retrieve the count of busy workers across worker pods/nodes
+     *
+     * Retrieve the count of busy workers across worker pods/nodes
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getBusyThreadCountTest() throws ApiException {
+        BusyThreadCountMessage response = api.getBusyThreadCount();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Quiesce a single worker pod/node
+     *
+     * Quiesce a single worker pod/node
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void quiesceNodeTest() throws ApiException {
+        String host = null;
+        GenericMessage response = api.quiesceNode(host);
+
+        // TODO: test validations
+    }
     
     /**
      * List of recent jobs

@@ -7,10 +7,8 @@ class UserApiController < ApplicationController
   before_action :user, only: %i[show update destroy]
 
   def index
-    users = User.all
-
-    users_return = paginate users
-    message I18n.t('users.messages.received'), :ok, false, users_return, 'userarray'
+    users = paginate User.all
+    message I18n.t('users.messages.received'), :ok, false, users, 'userarray'
   end
 
   def show
@@ -18,7 +16,7 @@ class UserApiController < ApplicationController
   end
 
   def create
-    user = User.create!(username: params[:username], password: params[:password], password_confirmation: params[:password])
+    user = User.create!(username: params[:username], password: params[:password], password_confirmation: params[:password], is_root: false)
     message I18n.t('users.messages.created', id: user.id), :created, false, user, 'user'
   rescue ActiveRecord::RecordNotUnique
     error I18n.t('users.errors.already_exists'), :forbidden

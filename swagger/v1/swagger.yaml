@@ -6,6 +6,58 @@ info:
   version: v1
 components:
   schemas:
+    GenericMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          type: object
+    BusyThreadCountMessage:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The status message returned from the API call.
+        is_error:
+          type: boolean
+          description: True if there was an error performing the API call.
+        object_type:
+          type: string
+          description: The type of object being returned.
+        status_code:
+          type: integer
+          description: The HTTP status code returned.
+        object:
+          type: object
+          properties:
+            total_busy:
+              type: integer
+              description: The total number of busy workers across all pods/hosts.
+            hosts:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the worker host.
+                  busy:
+                    type: integer
+                    description: The number of busy threads on the worker.
+                  pid:
+                    type: integer
+                    description: The process ID of the worker process.
     TodaysStats:
       type: object
       properties:
@@ -1260,6 +1312,57 @@ paths:
         '404':
           description: Job not found.
           content: {}
+  "/job_server_api/quiesce_worker":
+    post:
+      summary: Quiesce a single worker pod/node
+      description: Quiesce a single worker pod/node
+      tags:
+      - JobServer
+      operationId: quiesceNode
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: host
+        in: query
+        required: true
+        description: The hostname of the worker pod/node to quiesce
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Worker quiesced successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/GenericMessage"
+        '401':
+          description: Not authorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/GenericMessage"
+  "/job_server_api/busy_thread_count":
+    get:
+      summary: Retrieve the count of busy workers across worker pods/nodes
+      description: Retrieve the count of busy workers across worker pods/nodes
+      tags:
+      - JobServer
+      operationId: getBusyThreadCount
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Busy thread count stats returned successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/BusyThreadCountMessage"
+        '401':
+          description: Not authorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/GenericMessage"
   "/job_server_api/todays_stats":
     get:
       summary: Todays Stats

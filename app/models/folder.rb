@@ -12,7 +12,7 @@ class Folder < ApplicationRecord
   end
 
   def job_count
-    jobs.count
+    jobs.size
   end
 
   def as_json(_options = {})

@@ -36,6 +36,10 @@ Rails.application.routes.draw do
 
   get '/job_server_api/todays_stats', to: 'job_server_api#todays_stats', as: 'todays_stats'
 
+  post '/job_server_api/quiesce_worker', to: 'job_server_api#quiesce_worker', as: 'quiesce_worker'
+  post '/job_server_api/stop_worker', to: 'job_server_api#stop_worker', as: 'stop_worker'
+  get '/job_server_api/busy_thread_count', to: 'job_server_api#busy_thread_count', as: 'busy_thread_count'
+
   # Swagger UI
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'

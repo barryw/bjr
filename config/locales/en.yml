@@ -1,6 +1,7 @@
 en:
   common:
     errors:
+      unauthorized: You are not authorized to perform this action.
       invalid_timezone: "Invalid timezone '%{timezone}' specified. Acceptable timezone list: %{timezone_list_url}"
       server_error: "A server error has occurred. Use the error ID '%{errorid}' to track it down."
   tags:
@@ -16,6 +17,12 @@ en:
     messages:
       received: Job runs received successfully.
   folders:
+    initial_set:
+      successful_jobs: Successful Jobs
+      failed_jobs: Failed Jobs
+      running_jobs: Running Jobs
+      disabled_jobs: Disabled Jobs
+      example_jobs: Example Jobs
     messages:
       received: Folder(s) received successfully.
       created: Folder %{id} created successfully.
@@ -62,6 +69,11 @@ en:
       received: Version received successfully.
   jobserver:
     messages:
+      workers:
+        received: Worker status received successfully.
+        quiesced: Workers have been told to stop accepting new work and to finish current work.
+        stopped: Workers have been told to stop.
+        host_required: The 'host' parameter is required for this API call.
       todays_stats:
         received: Today's Stats received successfully.
       recent_jobs:

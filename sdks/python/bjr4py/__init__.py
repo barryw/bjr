@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.6.2"
+__version__ = "1.7.0"
 
 # import apis into sdk package
 from bjr4py.api.authentication_api import AuthenticationApi
@@ -35,7 +35,11 @@ from bjr4py.exceptions import ApiException
 # import models into sdk package
 from bjr4py.models.auth_in import AuthIn
 from bjr4py.models.auth_out import AuthOut
+from bjr4py.models.busy_thread_count_message import BusyThreadCountMessage
+from bjr4py.models.busy_thread_count_message_object import BusyThreadCountMessageObject
+from bjr4py.models.busy_thread_count_message_object_hosts import BusyThreadCountMessageObjectHosts
 from bjr4py.models.folder_array_message import FolderArrayMessage
+from bjr4py.models.generic_message import GenericMessage
 from bjr4py.models.job_array_message import JobArrayMessage
 from bjr4py.models.job_in import JobIn
 from bjr4py.models.job_run_array_message import JobRunArrayMessage

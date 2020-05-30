@@ -25,6 +25,46 @@ namespace BJR.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Retrieve the count of busy workers across worker pods/nodes
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the count of busy workers across worker pods/nodes
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>BusyThreadCountMessage</returns>
+        BusyThreadCountMessage GetBusyThreadCount ();
+
+        /// <summary>
+        /// Retrieve the count of busy workers across worker pods/nodes
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the count of busy workers across worker pods/nodes
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of BusyThreadCountMessage</returns>
+        ApiResponse<BusyThreadCountMessage> GetBusyThreadCountWithHttpInfo ();
+        /// <summary>
+        /// Quiesce a single worker pod/node
+        /// </summary>
+        /// <remarks>
+        /// Quiesce a single worker pod/node
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <returns>GenericMessage</returns>
+        GenericMessage QuiesceNode (string host);
+
+        /// <summary>
+        /// Quiesce a single worker pod/node
+        /// </summary>
+        /// <remarks>
+        /// Quiesce a single worker pod/node
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <returns>ApiResponse of GenericMessage</returns>
+        ApiResponse<GenericMessage> QuiesceNodeWithHttpInfo (string host);
+        /// <summary>
         /// List of recent jobs
         /// </summary>
         /// <remarks>
@@ -205,6 +245,46 @@ namespace BJR.Api
         ApiResponse<JobArrayMessage> UpcomingJobsWithHttpInfo (int count = default(int));
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Retrieve the count of busy workers across worker pods/nodes
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the count of busy workers across worker pods/nodes
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of BusyThreadCountMessage</returns>
+        System.Threading.Tasks.Task<BusyThreadCountMessage> GetBusyThreadCountAsync ();
+
+        /// <summary>
+        /// Retrieve the count of busy workers across worker pods/nodes
+        /// </summary>
+        /// <remarks>
+        /// Retrieve the count of busy workers across worker pods/nodes
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (BusyThreadCountMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<BusyThreadCountMessage>> GetBusyThreadCountAsyncWithHttpInfo ();
+        /// <summary>
+        /// Quiesce a single worker pod/node
+        /// </summary>
+        /// <remarks>
+        /// Quiesce a single worker pod/node
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <returns>Task of GenericMessage</returns>
+        System.Threading.Tasks.Task<GenericMessage> QuiesceNodeAsync (string host);
+
+        /// <summary>
+        /// Quiesce a single worker pod/node
+        /// </summary>
+        /// <remarks>
+        /// Quiesce a single worker pod/node
+        /// </remarks>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <returns>Task of ApiResponse (GenericMessage)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GenericMessage>> QuiesceNodeAsyncWithHttpInfo (string host);
         /// <summary>
         /// List of recent jobs
         /// </summary>
@@ -493,6 +573,284 @@ namespace BJR.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Retrieve the count of busy workers across worker pods/nodes Retrieve the count of busy workers across worker pods/nodes
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>BusyThreadCountMessage</returns>
+        public BusyThreadCountMessage GetBusyThreadCount ()
+        {
+             ApiResponse<BusyThreadCountMessage> localVarResponse = GetBusyThreadCountWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve the count of busy workers across worker pods/nodes Retrieve the count of busy workers across worker pods/nodes
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of BusyThreadCountMessage</returns>
+        public ApiResponse<BusyThreadCountMessage> GetBusyThreadCountWithHttpInfo ()
+        {
+
+            var localVarPath = "/job_server_api/busy_thread_count";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (bearerAuth) required
+            // http beerer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetBusyThreadCount", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<BusyThreadCountMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (BusyThreadCountMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BusyThreadCountMessage)));
+        }
+
+        /// <summary>
+        /// Retrieve the count of busy workers across worker pods/nodes Retrieve the count of busy workers across worker pods/nodes
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of BusyThreadCountMessage</returns>
+        public async System.Threading.Tasks.Task<BusyThreadCountMessage> GetBusyThreadCountAsync ()
+        {
+             ApiResponse<BusyThreadCountMessage> localVarResponse = await GetBusyThreadCountAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Retrieve the count of busy workers across worker pods/nodes Retrieve the count of busy workers across worker pods/nodes
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (BusyThreadCountMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<BusyThreadCountMessage>> GetBusyThreadCountAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/job_server_api/busy_thread_count";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+
+            // authentication (bearerAuth) required
+            // http bearer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetBusyThreadCount", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<BusyThreadCountMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (BusyThreadCountMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BusyThreadCountMessage)));
+        }
+
+        /// <summary>
+        /// Quiesce a single worker pod/node Quiesce a single worker pod/node
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <returns>GenericMessage</returns>
+        public GenericMessage QuiesceNode (string host)
+        {
+             ApiResponse<GenericMessage> localVarResponse = QuiesceNodeWithHttpInfo(host);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Quiesce a single worker pod/node Quiesce a single worker pod/node
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <returns>ApiResponse of GenericMessage</returns>
+        public ApiResponse<GenericMessage> QuiesceNodeWithHttpInfo (string host)
+        {
+            // verify the required parameter 'host' is set
+            if (host == null)
+                throw new ApiException(400, "Missing required parameter 'host' when calling JobServerApi->QuiesceNode");
+
+            var localVarPath = "/job_server_api/quiesce_worker";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (host != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "host", host)); // query parameter
+
+            // authentication (bearerAuth) required
+            // http beerer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("QuiesceNode", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GenericMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (GenericMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GenericMessage)));
+        }
+
+        /// <summary>
+        /// Quiesce a single worker pod/node Quiesce a single worker pod/node
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <returns>Task of GenericMessage</returns>
+        public async System.Threading.Tasks.Task<GenericMessage> QuiesceNodeAsync (string host)
+        {
+             ApiResponse<GenericMessage> localVarResponse = await QuiesceNodeAsyncWithHttpInfo(host);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Quiesce a single worker pod/node Quiesce a single worker pod/node
+        /// </summary>
+        /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <returns>Task of ApiResponse (GenericMessage)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GenericMessage>> QuiesceNodeAsyncWithHttpInfo (string host)
+        {
+            // verify the required parameter 'host' is set
+            if (host == null)
+                throw new ApiException(400, "Missing required parameter 'host' when calling JobServerApi->QuiesceNode");
+
+            var localVarPath = "/job_server_api/quiesce_worker";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (host != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "host", host)); // query parameter
+
+            // authentication (bearerAuth) required
+            // http bearer authentication required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("QuiesceNode", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GenericMessage>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (GenericMessage) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GenericMessage)));
         }
 
         /// <summary>

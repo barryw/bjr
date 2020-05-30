@@ -32,6 +32,29 @@ describe 'JobServerApi' do
     end
   end
 
+  # unit tests for get_busy_thread_count
+  # Retrieve the count of busy workers across worker pods/nodes
+  # Retrieve the count of busy workers across worker pods/nodes
+  # @param [Hash] opts the optional parameters
+  # @return [BusyThreadCountMessage]
+  describe 'get_busy_thread_count test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for quiesce_node
+  # Quiesce a single worker pod/node
+  # Quiesce a single worker pod/node
+  # @param host The hostname of the worker pod/node to quiesce
+  # @param [Hash] opts the optional parameters
+  # @return [GenericMessage]
+  describe 'quiesce_node test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for recent_jobs
   # List of recent jobs
   # Get a list of the most recently run jobs

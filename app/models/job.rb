@@ -22,12 +22,12 @@ class Job < ApplicationRecord
   scope :mine, ->(user_id) { where(user_id: user_id) }
   scope :enabled, ->(enabled) { where(enabled: enabled) }
   scope :running, ->(running) { where(running: running) }
-  scope :successful, ->(successful) { where(success: successful) }
+  scope :successful, ->(successful) { where(success: successful).where.not(last_run: nil) }
   scope :named_like, ->(name) { where('name like ?', "%#{sanitize_sql_like(name)}%") }
   scope :timezone, ->(timezone) { where(timezone: timezone) }
   scope :command, ->(command) { where('command like ?', "%#{sanitize_sql_like(command)}%") }
   scope :include_by_ids, ->(ids) { where('jobs.id in (?)', ids) }
-  scope :recent, ->(user_id, count) { mine(user_id).order(last_run: :desc).limit(count) }
+  scope :recent, ->(user_id, count) { mine(user_id).where.not(last_run: nil).order(last_run: :desc).limit(count) }
   scope :upcoming, ->(user_id, count) { mine(user_id).where("next_run > ? and enabled = ? and running = ?", DateTime.now, true, false).order(next_run: :asc).limit(count) }
 
   TAG_SEARCH = %w[any all exclude].freeze
@@ -44,8 +44,8 @@ class Job < ApplicationRecord
   end
 
   # Do the tagging
-  def tag(user, tags)
-    user.tag self, with: tags, on: :tags unless tags.nil?
+  def tag(tags)
+    self.user.tag self, with: tags, on: :tags unless tags.nil?
   end
 
   # Determines whether this job has a schedule ocurrence between 2 dates
@@ -128,7 +128,7 @@ class Job < ApplicationRecord
         enabled = true
       when 'disabled'
         enabled = false
-      when 'succeeded', 'success'
+      when 'succeeded', 'success', 'successful'
         succeeded = true
       when 'failed', 'fail', 'failing', 'broken'
         succeeded = false

@@ -74,8 +74,8 @@ describe 'Static API' do
         schema '$ref' => '#/components/schemas/TagMessage'
 
         before do |request|
-          job1.tag(admin, 'tag1,tag2,tag3')
-          job2.tag(admin, 'tag3, tag4, tag5')
+          job1.tag('tag1,tag2,tag3')
+          job2.tag('tag3, tag4, tag5')
           submit_request(request.metadata)
         end
 

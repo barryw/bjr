@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_224228) do
+ActiveRecord::Schema.define(version: 2020_05_29_215352) do
 
   create_table "folders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_224228) do
   end
 
   create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.string "name", collation: "utf8_bin"
+    t.string "name", collation: "utf8mb4_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_224228) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_root", default: false
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

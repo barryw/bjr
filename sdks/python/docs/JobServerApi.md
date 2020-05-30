@@ -4,6 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_busy_thread_count**](JobServerApi.md#get_busy_thread_count) | **GET** /job_server_api/busy_thread_count | Retrieve the count of busy workers across worker pods/nodes
+[**quiesce_node**](JobServerApi.md#quiesce_node) | **POST** /job_server_api/quiesce_worker | Quiesce a single worker pod/node
 [**recent_jobs**](JobServerApi.md#recent_jobs) | **GET** /job_server_api/recent_jobs | List of recent jobs
 [**stats_by_day**](JobServerApi.md#stats_by_day) | **GET** /job_server_api/daily_job_stats | Job statistics by day
 [**stats_by_hour**](JobServerApi.md#stats_by_hour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
@@ -12,6 +14,148 @@ Method | HTTP request | Description
 [**todays_stats**](JobServerApi.md#todays_stats) | **GET** /job_server_api/todays_stats | Todays Stats
 [**upcoming_jobs**](JobServerApi.md#upcoming_jobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 
+
+# **get_busy_thread_count**
+> BusyThreadCountMessage get_busy_thread_count()
+
+Retrieve the count of busy workers across worker pods/nodes
+
+Retrieve the count of busy workers across worker pods/nodes
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+```python
+from __future__ import print_function
+import time
+import bjr4py
+from bjr4py.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.JobServerApi(api_client)
+    
+    try:
+        # Retrieve the count of busy workers across worker pods/nodes
+        api_response = api_instance.get_busy_thread_count()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling JobServerApi->get_busy_thread_count: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BusyThreadCountMessage**](BusyThreadCountMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Busy thread count stats returned successfully |  -  |
+**401** | Not authorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **quiesce_node**
+> GenericMessage quiesce_node(host)
+
+Quiesce a single worker pod/node
+
+Quiesce a single worker pod/node
+
+### Example
+
+* Bearer (JWT) Authentication (bearerAuth):
+```python
+from __future__ import print_function
+import time
+import bjr4py
+from bjr4py.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = bjr4py.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): bearerAuth
+configuration = bjr4py.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with bjr4py.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = bjr4py.JobServerApi(api_client)
+    host = 'host_example' # str | The hostname of the worker pod/node to quiesce
+
+    try:
+        # Quiesce a single worker pod/node
+        api_response = api_instance.quiesce_node(host)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling JobServerApi->quiesce_node: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **host** | **str**| The hostname of the worker pod/node to quiesce | 
+
+### Return type
+
+[**GenericMessage**](GenericMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Worker quiesced successfully |  -  |
+**401** | Not authorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **recent_jobs**
 > JobArrayMessage recent_jobs(count=count)

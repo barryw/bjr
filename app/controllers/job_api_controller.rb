@@ -43,7 +43,7 @@ class JobApiController < ApplicationController
       job = Job.create!(name: params[:name], cron: params[:cron], command: params[:command],
                         timezone: params[:timezone], user: current_user, success_callback: params[:success_callback],
                         failure_callback: params[:failure_callback])
-      job.tag(current_user, params[:tags])
+      job.tag(params[:tags])
       message I18n.t('jobs.messages.created', id: job.id), :created, false, job, 'job'
     end
   rescue ActiveRecord::RecordInvalid => re
@@ -68,7 +68,7 @@ class JobApiController < ApplicationController
     @job.success_callback = params[:success_callback] if params[:success_callback].present?
     @job.failure_callback = params[:failure_callback] if params[:failure_callback].present?
     ActiveRecord::Base.transaction do
-      @job.tag(current_user, params[:tags])
+      @job.tag(params[:tags])
       @job.save!
     end
     message I18n.t('jobs.messages.updated', id: @job.id), :ok, false, @job, 'job'

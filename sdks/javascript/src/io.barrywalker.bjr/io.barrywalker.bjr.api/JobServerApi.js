@@ -13,6 +13,8 @@
 
 
 import ApiClient from "../ApiClient";
+import BusyThreadCountMessage from '../io.barrywalker.bjr.model/BusyThreadCountMessage';
+import GenericMessage from '../io.barrywalker.bjr.model/GenericMessage';
 import JobArrayMessage from '../io.barrywalker.bjr.model/JobArrayMessage';
 import JobStatMessage from '../io.barrywalker.bjr.model/JobStatMessage';
 import TodaysStatsMessage from '../io.barrywalker.bjr.model/TodaysStatsMessage';
@@ -20,7 +22,7 @@ import TodaysStatsMessage from '../io.barrywalker.bjr.model/TodaysStatsMessage';
 /**
 * JobServer service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi
-* @version 1.6.2
+* @version 1.7.0
 */
 export default class JobServerApi {
 
@@ -35,6 +37,86 @@ export default class JobServerApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+    /**
+     * Callback function to receive the result of the getBusyThreadCount operation.
+     * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~getBusyThreadCountCallback
+     * @param {String} error Error message, if any.
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/BusyThreadCountMessage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Retrieve the count of busy workers across worker pods/nodes
+     * Retrieve the count of busy workers across worker pods/nodes
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~getBusyThreadCountCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/BusyThreadCountMessage}
+     */
+    getBusyThreadCount(callback) {
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = BusyThreadCountMessage;
+      return this.apiClient.callApi(
+        '/job_server_api/busy_thread_count', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the quiesceNode operation.
+     * @callback module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~quiesceNodeCallback
+     * @param {String} error Error message, if any.
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/GenericMessage} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Quiesce a single worker pod/node
+     * Quiesce a single worker pod/node
+     * @param {String} host The hostname of the worker pod/node to quiesce
+     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi~quiesceNodeCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/GenericMessage}
+     */
+    quiesceNode(host, callback) {
+      let postBody = null;
+      // verify the required parameter 'host' is set
+      if (host === undefined || host === null) {
+        throw new Error("Missing the required parameter 'host' when calling quiesceNode");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'host': host
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = GenericMessage;
+      return this.apiClient.callApi(
+        '/job_server_api/quiesce_worker', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the recentJobs operation.

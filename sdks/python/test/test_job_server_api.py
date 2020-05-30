@@ -28,6 +28,20 @@ class TestJobServerApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_get_busy_thread_count(self):
+        """Test case for get_busy_thread_count
+
+        Retrieve the count of busy workers across worker pods/nodes  # noqa: E501
+        """
+        pass
+
+    def test_quiesce_node(self):
+        """Test case for quiesce_node
+
+        Quiesce a single worker pod/node  # noqa: E501
+        """
+        pass
+
     def test_recent_jobs(self):
         """Test case for recent_jobs
 

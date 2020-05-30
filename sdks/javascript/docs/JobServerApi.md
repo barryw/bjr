@@ -4,6 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getBusyThreadCount**](JobServerApi.md#getBusyThreadCount) | **GET** /job_server_api/busy_thread_count | Retrieve the count of busy workers across worker pods/nodes
+[**quiesceNode**](JobServerApi.md#quiesceNode) | **POST** /job_server_api/quiesce_worker | Quiesce a single worker pod/node
 [**recentJobs**](JobServerApi.md#recentJobs) | **GET** /job_server_api/recent_jobs | List of recent jobs
 [**statsByDay**](JobServerApi.md#statsByDay) | **GET** /job_server_api/daily_job_stats | Job statistics by day
 [**statsByHour**](JobServerApi.md#statsByHour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
@@ -12,6 +14,100 @@ Method | HTTP request | Description
 [**todaysStats**](JobServerApi.md#todaysStats) | **GET** /job_server_api/todays_stats | Todays Stats
 [**upcomingJobs**](JobServerApi.md#upcomingJobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 
+
+
+## getBusyThreadCount
+
+> BusyThreadCountMessage getBusyThreadCount()
+
+Retrieve the count of busy workers across worker pods/nodes
+
+Retrieve the count of busy workers across worker pods/nodes
+
+### Example
+
+```javascript
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new Bjr4js.JobServerApi();
+apiInstance.getBusyThreadCount((error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BusyThreadCountMessage**](BusyThreadCountMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## quiesceNode
+
+> GenericMessage quiesceNode(host)
+
+Quiesce a single worker pod/node
+
+Quiesce a single worker pod/node
+
+### Example
+
+```javascript
+import Bjr4js from 'bjr4js';
+let defaultClient = Bjr4js.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new Bjr4js.JobServerApi();
+let host = "host_example"; // String | The hostname of the worker pod/node to quiesce
+apiInstance.quiesceNode(host, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **host** | **String**| The hostname of the worker pod/node to quiesce | 
+
+### Return type
+
+[**GenericMessage**](GenericMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## recentJobs

@@ -15,7 +15,11 @@
 import ApiClient from './ApiClient';
 import AuthIn from './io.barrywalker.bjr.model/AuthIn';
 import AuthOut from './io.barrywalker.bjr.model/AuthOut';
+import BusyThreadCountMessage from './io.barrywalker.bjr.model/BusyThreadCountMessage';
+import BusyThreadCountMessageObject from './io.barrywalker.bjr.model/BusyThreadCountMessageObject';
+import BusyThreadCountMessageObjectHosts from './io.barrywalker.bjr.model/BusyThreadCountMessageObjectHosts';
 import FolderArrayMessage from './io.barrywalker.bjr.model/FolderArrayMessage';
+import GenericMessage from './io.barrywalker.bjr.model/GenericMessage';
 import JobArrayMessage from './io.barrywalker.bjr.model/JobArrayMessage';
 import JobIn from './io.barrywalker.bjr.model/JobIn';
 import JobRunArrayMessage from './io.barrywalker.bjr.model/JobRunArrayMessage';
@@ -76,7 +80,7 @@ import UsersApi from './io.barrywalker.bjr.api/UsersApi';
 * </pre>
 * </p>
 * @module io.barrywalker.bjr/index
-* @version 1.6.2
+* @version 1.7.0
 */
 export {
     /**
@@ -98,10 +102,34 @@ export {
     AuthOut,
 
     /**
+     * The BusyThreadCountMessage model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/BusyThreadCountMessage}
+     */
+    BusyThreadCountMessage,
+
+    /**
+     * The BusyThreadCountMessageObject model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/BusyThreadCountMessageObject}
+     */
+    BusyThreadCountMessageObject,
+
+    /**
+     * The BusyThreadCountMessageObjectHosts model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/BusyThreadCountMessageObjectHosts}
+     */
+    BusyThreadCountMessageObjectHosts,
+
+    /**
      * The FolderArrayMessage model constructor.
      * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/FolderArrayMessage}
      */
     FolderArrayMessage,
+
+    /**
+     * The GenericMessage model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/GenericMessage}
+     */
+    GenericMessage,
 
     /**
      * The JobArrayMessage model constructor.

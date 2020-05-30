@@ -91,9 +91,9 @@ RSpec.describe Job, type: :model do
     job2 = create(:job2, name: 'job 2', user: admin)
     job3 = create(:job2, name: 'job 3', user: admin)
 
-    job1.tag(admin, 'tag1,tag3')
-    job2.tag(admin, 'tag1,tag2,tag3')
-    job3.tag(admin, 'tag4')
+    job1.tag('tag1,tag3')
+    job2.tag('tag1,tag2,tag3')
+    job3.tag('tag4')
 
     jobs = Job.search_jobs(admin, 'tag:&tag1,tag3')
     expect(jobs.length).to eq(1)
@@ -106,9 +106,9 @@ RSpec.describe Job, type: :model do
     job2 = create(:job2, name: 'job 2', user: admin)
     job3 = create(:job2, name: 'job 3', user: admin)
 
-    job1.tag(admin, 'tag1,tag3')
-    job2.tag(admin, 'tag1,tag3')
-    job3.tag(admin, 'tag4')
+    job1.tag('tag1,tag3')
+    job2.tag('tag1,tag3')
+    job3.tag('tag4')
 
     jobs = Job.search_jobs(admin, 'tag:&tag1,tag3')
     expect(jobs.length).to eq(2)
@@ -122,9 +122,9 @@ RSpec.describe Job, type: :model do
     job2 = create(:job2, name: 'job 2', user: admin)
     job3 = create(:job2, name: 'job 3', user: admin)
 
-    job1.tag(admin, 'tag1,tag3,tag5')
-    job2.tag(admin, 'tag1,tag2,tag3')
-    job3.tag(admin, 'tag4')
+    job1.tag('tag1,tag3,tag5')
+    job2.tag('tag1,tag2,tag3')
+    job3.tag('tag4')
 
     jobs = Job.search_jobs(admin, 'tag:!tag1,tag3')
     expect(jobs.length).to eq(1)
@@ -137,9 +137,9 @@ RSpec.describe Job, type: :model do
     job2 = create(:job2, name: 'job 2', user: admin)
     job3 = create(:job2, name: 'job 3', user: admin)
 
-    job1.tag(admin, 'tag1,tag3,tag5')
-    job2.tag(admin, 'tag1,tag2,tag3')
-    job3.tag(admin, 'tag4')
+    job1.tag('tag1,tag3,tag5')
+    job2.tag('tag1,tag2,tag3')
+    job3.tag('tag4')
 
     jobs = Job.search_jobs(admin, 'tag:!tag4,tag5')
     expect(jobs.length).to eq(1)
@@ -152,9 +152,9 @@ RSpec.describe Job, type: :model do
     job2 = create(:job2, name: 'job 2', user: admin)
     job3 = create(:job2, name: 'job 3', user: admin)
 
-    job1.tag(admin, 'tag1,tag3,tag5')
-    job2.tag(admin, 'tag1,tag2,tag3')
-    job3.tag(admin, 'tag4')
+    job1.tag('tag1,tag3,tag5')
+    job2.tag('tag1,tag2,tag3')
+    job3.tag('tag4')
 
     jobs = Job.search_jobs(admin, 'tag:|tag1,tag3')
     expect(jobs.length).to eq(2)
@@ -168,9 +168,9 @@ RSpec.describe Job, type: :model do
     job2 = create(:job2, name: 'job 2', user: admin)
     job3 = create(:job2, name: 'job 3', user: admin)
 
-    job1.tag(admin, 'tag1,tag3,tag5')
-    job2.tag(admin, 'tag1,tag2,tag3')
-    job3.tag(admin, 'tag4')
+    job1.tag('tag1,tag3,tag5')
+    job2.tag('tag1,tag2,tag3')
+    job3.tag('tag4')
 
     jobs = Job.search_jobs(admin, 'tag:|tag1,tag3,tag4,tag5')
     expect(jobs.length).to eq(3)
@@ -185,9 +185,9 @@ RSpec.describe Job, type: :model do
     job2 = create(:job2, name: 'job 2', user: admin)
     job3 = create(:job2, name: 'job 3', user: admin)
 
-    job1.tag(admin, 'tag1,tag3,tag5')
-    job2.tag(admin, 'tag1,tag2,tag3')
-    job3.tag(admin, 'tag4')
+    job1.tag('tag1,tag3,tag5')
+    job2.tag('tag1,tag2,tag3')
+    job3.tag('tag4')
 
     jobs = Job.search_jobs(admin, 'tag:tag1,tag3,tag4,tag5')
     expect(jobs.length).to eq(3)

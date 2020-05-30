@@ -56,6 +56,29 @@ namespace BJR.Test
 
         
         /// <summary>
+        /// Test GetBusyThreadCount
+        /// </summary>
+        [Fact]
+        public void GetBusyThreadCountTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.GetBusyThreadCount();
+            //Assert.IsType<BusyThreadCountMessage> (response, "response is BusyThreadCountMessage");
+        }
+        
+        /// <summary>
+        /// Test QuiesceNode
+        /// </summary>
+        [Fact]
+        public void QuiesceNodeTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string host = null;
+            //var response = instance.QuiesceNode(host);
+            //Assert.IsType<GenericMessage> (response, "response is GenericMessage");
+        }
+        
+        /// <summary>
         /// Test RecentJobs
         /// </summary>
         [Fact]

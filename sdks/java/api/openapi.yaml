@@ -705,6 +705,61 @@ paths:
       - Jobs
       x-contentType: application/json
       x-accepts: application/json
+  /job_server_api/quiesce_worker:
+    post:
+      description: Quiesce a single worker pod/node
+      operationId: quiesceNode
+      parameters:
+      - description: The hostname of the worker pod/node to quiesce
+        explode: true
+        in: query
+        name: host
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericMessage'
+          description: Worker quiesced successfully
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericMessage'
+          description: Not authorized
+      security:
+      - bearerAuth: []
+      summary: Quiesce a single worker pod/node
+      tags:
+      - JobServer
+      x-accepts: application/json
+  /job_server_api/busy_thread_count:
+    get:
+      description: Retrieve the count of busy workers across worker pods/nodes
+      operationId: getBusyThreadCount
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusyThreadCountMessage'
+          description: Busy thread count stats returned successfully
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericMessage'
+          description: Not authorized
+      security:
+      - bearerAuth: []
+      summary: Retrieve the count of busy workers across worker pods/nodes
+      tags:
+      - JobServer
+      x-accepts: application/json
   /job_server_api/todays_stats:
     get:
       description: Get the high level job statistics for today
@@ -1323,6 +1378,60 @@ paths:
       x-accepts: application/json
 components:
   schemas:
+    GenericMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object: '{}'
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          type: object
+      type: object
+    BusyThreadCountMessage:
+      example:
+        status_code: 0
+        object_type: object_type
+        is_error: true
+        message: message
+        object:
+          hosts:
+          - busy: 1
+            name: name
+            pid: 5
+          - busy: 1
+            name: name
+            pid: 5
+          total_busy: 6
+      properties:
+        message:
+          description: The status message returned from the API call.
+          type: string
+        is_error:
+          description: True if there was an error performing the API call.
+          type: boolean
+        object_type:
+          description: The type of object being returned.
+          type: string
+        status_code:
+          description: The HTTP status code returned.
+          type: integer
+        object:
+          $ref: '#/components/schemas/BusyThreadCountMessage_object'
+      type: object
     TodaysStats:
       example:
         total_jobs: 6
@@ -2353,6 +2462,39 @@ components:
       - cron
       - name
       type: object
+    BusyThreadCountMessage_object_hosts:
+      example:
+        busy: 1
+        name: name
+        pid: 5
+      properties:
+        name:
+          description: The name of the worker host.
+          type: string
+        busy:
+          description: The number of busy threads on the worker.
+          type: integer
+        pid:
+          description: The process ID of the worker process.
+          type: integer
+    BusyThreadCountMessage_object:
+      example:
+        hosts:
+        - busy: 1
+          name: name
+          pid: 5
+        - busy: 1
+          name: name
+          pid: 5
+        total_busy: 6
+      properties:
+        total_busy:
+          description: The total number of busy workers across all pods/hosts.
+          type: integer
+        hosts:
+          items:
+            $ref: '#/components/schemas/BusyThreadCountMessage_object_hosts'
+          type: array
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

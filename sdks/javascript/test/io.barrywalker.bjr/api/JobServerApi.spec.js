@@ -48,6 +48,26 @@
   }
 
   describe('JobServerApi', function() {
+    describe('getBusyThreadCount', function() {
+      it('should call getBusyThreadCount successfully', function(done) {
+        //uncomment below and update the code to test getBusyThreadCount
+        //instance.getBusyThreadCount(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('quiesceNode', function() {
+      it('should call quiesceNode successfully', function(done) {
+        //uncomment below and update the code to test quiesceNode
+        //instance.quiesceNode(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('recentJobs', function() {
       it('should call recentJobs successfully', function(done) {
         //uncomment below and update the code to test recentJobs

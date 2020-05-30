@@ -27,6 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.barrywalker.bjr.model.BusyThreadCountMessage;
+import io.barrywalker.bjr.model.GenericMessage;
 import io.barrywalker.bjr.model.JobArrayMessage;
 import io.barrywalker.bjr.model.JobStatMessage;
 import io.barrywalker.bjr.model.TodaysStatsMessage;
@@ -56,6 +58,229 @@ public class JobServerApi {
         this.localVarApiClient = apiClient;
     }
 
+    /**
+     * Build call for getBusyThreadCount
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Busy thread count stats returned successfully </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBusyThreadCountCall(final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/job_server_api/busy_thread_count";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBusyThreadCountValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        
+
+        okhttp3.Call localVarCall = getBusyThreadCountCall(_callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Retrieve the count of busy workers across worker pods/nodes
+     * Retrieve the count of busy workers across worker pods/nodes
+     * @return BusyThreadCountMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Busy thread count stats returned successfully </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public BusyThreadCountMessage getBusyThreadCount() throws ApiException {
+        ApiResponse<BusyThreadCountMessage> localVarResp = getBusyThreadCountWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retrieve the count of busy workers across worker pods/nodes
+     * Retrieve the count of busy workers across worker pods/nodes
+     * @return ApiResponse&lt;BusyThreadCountMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Busy thread count stats returned successfully </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BusyThreadCountMessage> getBusyThreadCountWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBusyThreadCountValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<BusyThreadCountMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve the count of busy workers across worker pods/nodes (asynchronously)
+     * Retrieve the count of busy workers across worker pods/nodes
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Busy thread count stats returned successfully </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBusyThreadCountAsync(final ApiCallback<BusyThreadCountMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBusyThreadCountValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<BusyThreadCountMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for quiesceNode
+     * @param host The hostname of the worker pod/node to quiesce (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Worker quiesced successfully </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call quiesceNodeCall(String host, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/job_server_api/quiesce_worker";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (host != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("host", host));
+        }
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call quiesceNodeValidateBeforeCall(String host, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'host' is set
+        if (host == null) {
+            throw new ApiException("Missing the required parameter 'host' when calling quiesceNode(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = quiesceNodeCall(host, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Quiesce a single worker pod/node
+     * Quiesce a single worker pod/node
+     * @param host The hostname of the worker pod/node to quiesce (required)
+     * @return GenericMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Worker quiesced successfully </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public GenericMessage quiesceNode(String host) throws ApiException {
+        ApiResponse<GenericMessage> localVarResp = quiesceNodeWithHttpInfo(host);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Quiesce a single worker pod/node
+     * Quiesce a single worker pod/node
+     * @param host The hostname of the worker pod/node to quiesce (required)
+     * @return ApiResponse&lt;GenericMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Worker quiesced successfully </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GenericMessage> quiesceNodeWithHttpInfo(String host) throws ApiException {
+        okhttp3.Call localVarCall = quiesceNodeValidateBeforeCall(host, null);
+        Type localVarReturnType = new TypeToken<GenericMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Quiesce a single worker pod/node (asynchronously)
+     * Quiesce a single worker pod/node
+     * @param host The hostname of the worker pod/node to quiesce (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Worker quiesced successfully </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Not authorized </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call quiesceNodeAsync(String host, final ApiCallback<GenericMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = quiesceNodeValidateBeforeCall(host, _callback);
+        Type localVarReturnType = new TypeToken<GenericMessage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for recentJobs
      * @param count The number of jobs to return (max 20) (optional)

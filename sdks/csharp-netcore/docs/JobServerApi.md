@@ -4,6 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetBusyThreadCount**](JobServerApi.md#getbusythreadcount) | **GET** /job_server_api/busy_thread_count | Retrieve the count of busy workers across worker pods/nodes
+[**QuiesceNode**](JobServerApi.md#quiescenode) | **POST** /job_server_api/quiesce_worker | Quiesce a single worker pod/node
 [**RecentJobs**](JobServerApi.md#recentjobs) | **GET** /job_server_api/recent_jobs | List of recent jobs
 [**StatsByDay**](JobServerApi.md#statsbyday) | **GET** /job_server_api/daily_job_stats | Job statistics by day
 [**StatsByHour**](JobServerApi.md#statsbyhour) | **GET** /job_server_api/hourly_job_stats | Job statistics by hour
@@ -12,6 +14,150 @@ Method | HTTP request | Description
 [**TodaysStats**](JobServerApi.md#todaysstats) | **GET** /job_server_api/todays_stats | Todays Stats
 [**UpcomingJobs**](JobServerApi.md#upcomingjobs) | **GET** /job_server_api/upcoming_jobs | List of upcoming jobs
 
+
+<a name="getbusythreadcount"></a>
+# **GetBusyThreadCount**
+> BusyThreadCountMessage GetBusyThreadCount ()
+
+Retrieve the count of busy workers across worker pods/nodes
+
+Retrieve the count of busy workers across worker pods/nodes
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
+
+namespace Example
+{
+    public class GetBusyThreadCountExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "http://localhost";
+            // Configure Bearer token for authorization: bearerAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new JobServerApi(config);
+
+            try
+            {
+                // Retrieve the count of busy workers across worker pods/nodes
+                BusyThreadCountMessage result = apiInstance.GetBusyThreadCount();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling JobServerApi.GetBusyThreadCount: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BusyThreadCountMessage**](BusyThreadCountMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Busy thread count stats returned successfully |  -  |
+| **401** | Not authorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="quiescenode"></a>
+# **QuiesceNode**
+> GenericMessage QuiesceNode (string host)
+
+Quiesce a single worker pod/node
+
+Quiesce a single worker pod/node
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using BJR.Api;
+using BJR.Client;
+using BJR.Model;
+
+namespace Example
+{
+    public class QuiesceNodeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "http://localhost";
+            // Configure Bearer token for authorization: bearerAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new JobServerApi(config);
+            var host = host_example;  // string | The hostname of the worker pod/node to quiesce
+
+            try
+            {
+                // Quiesce a single worker pod/node
+                GenericMessage result = apiInstance.QuiesceNode(host);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling JobServerApi.QuiesceNode: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **host** | **string**| The hostname of the worker pod/node to quiesce | 
+
+### Return type
+
+[**GenericMessage**](GenericMessage.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Worker quiesced successfully |  -  |
+| **401** | Not authorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="recentjobs"></a>
 # **RecentJobs**
