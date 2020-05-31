@@ -20,7 +20,6 @@ import BusyThreadCountMessageObject from './io.barrywalker.bjr.model/BusyThreadC
 import BusyThreadCountMessageObjectHosts from './io.barrywalker.bjr.model/BusyThreadCountMessageObjectHosts';
 import FolderArrayMessage from './io.barrywalker.bjr.model/FolderArrayMessage';
 import GenericMessage from './io.barrywalker.bjr.model/GenericMessage';
-import HashMap from './io.barrywalker.bjr.model/HashMap';
 import JobArrayMessage from './io.barrywalker.bjr.model/JobArrayMessage';
 import JobIn from './io.barrywalker.bjr.model/JobIn';
 import JobRunArrayMessage from './io.barrywalker.bjr.model/JobRunArrayMessage';
@@ -39,6 +38,7 @@ import SingleUserMessage from './io.barrywalker.bjr.model/SingleUserMessage';
 import Tag from './io.barrywalker.bjr.model/Tag';
 import TagMessage from './io.barrywalker.bjr.model/TagMessage';
 import TimezoneMessage from './io.barrywalker.bjr.model/TimezoneMessage';
+import TimezoneMessageObject from './io.barrywalker.bjr.model/TimezoneMessageObject';
 import TodaysStats from './io.barrywalker.bjr.model/TodaysStats';
 import TodaysStatsMessage from './io.barrywalker.bjr.model/TodaysStatsMessage';
 import UserArrayMessage from './io.barrywalker.bjr.model/UserArrayMessage';
@@ -81,7 +81,7 @@ import UsersApi from './io.barrywalker.bjr.api/UsersApi';
 * </pre>
 * </p>
 * @module io.barrywalker.bjr/index
-* @version 1.7.2
+* @version 1.8.0
 */
 export {
     /**
@@ -131,12 +131,6 @@ export {
      * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/GenericMessage}
      */
     GenericMessage,
-
-    /**
-     * The HashMap model constructor.
-     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/HashMap}
-     */
-    HashMap,
 
     /**
      * The JobArrayMessage model constructor.
@@ -245,6 +239,12 @@ export {
      * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/TimezoneMessage}
      */
     TimezoneMessage,
+
+    /**
+     * The TimezoneMessageObject model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/TimezoneMessageObject}
+     */
+    TimezoneMessageObject,
 
     /**
      * The TodaysStats model constructor.

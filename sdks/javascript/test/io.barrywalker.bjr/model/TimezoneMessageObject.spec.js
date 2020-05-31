@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new Bjr4js.HashMap();
+    instance = new Bjr4js.TimezoneMessageObject();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,22 +47,22 @@
       object[property] = value;
   }
 
-  describe('HashMap', function() {
-    it('should create an instance of HashMap', function() {
-      // uncomment below and update the code to test HashMap
-      //var instane = new Bjr4js.HashMap();
-      //expect(instance).to.be.a(Bjr4js.HashMap);
+  describe('TimezoneMessageObject', function() {
+    it('should create an instance of TimezoneMessageObject', function() {
+      // uncomment below and update the code to test TimezoneMessageObject
+      //var instane = new Bjr4js.TimezoneMessageObject();
+      //expect(instance).to.be.a(Bjr4js.TimezoneMessageObject);
     });
 
-    it('should have the property key (base name: "key")', function() {
-      // uncomment below and update the code to test the property key
-      //var instane = new Bjr4js.HashMap();
+    it('should have the property display (base name: "display")', function() {
+      // uncomment below and update the code to test the property display
+      //var instane = new Bjr4js.TimezoneMessageObject();
       //expect(instance).to.be();
     });
 
     it('should have the property value (base name: "value")', function() {
       // uncomment below and update the code to test the property value
-      //var instane = new Bjr4js.HashMap();
+      //var instane = new Bjr4js.TimezoneMessageObject();
       //expect(instance).to.be();
     });
 

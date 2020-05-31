@@ -46,7 +46,7 @@ module BJR
         :'is_error' => :'Boolean',
         :'object_type' => :'String',
         :'status_code' => :'Integer',
-        :'object' => :'HashMap'
+        :'object' => :'TimezoneMessageObject'
       }
     end
 

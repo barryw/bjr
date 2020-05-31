@@ -286,16 +286,14 @@ components:
           type: integer
           description: The HTTP status code returned.
         object:
-          "$ref": "#/components/schemas/HashMap"
-    HashMap:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The hashmap's key.
-        value:
-          type: string
-          description: The hashmap's value.
+          type: object
+          properties:
+            display:
+              type: string
+              description: The display value of the timezone.
+            value:
+              type: string
+              description: The value to store in the database.
     StringArray:
       type: array
       items:

@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.barrywalker.bjr.model.TimezoneMessageObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -27,7 +28,7 @@ import java.io.IOException;
 /**
  * TimezoneMessage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-31T12:10:00.412Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-31T12:42:22.704Z[GMT]")
 public class TimezoneMessage {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -47,7 +48,7 @@ public class TimezoneMessage {
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)
-  private java.util.HashMap _object;
+  private TimezoneMessageObject _object;
 
 
   public TimezoneMessage message(String message) {
@@ -142,7 +143,7 @@ public class TimezoneMessage {
   }
 
 
-  public TimezoneMessage _object(java.util.HashMap _object) {
+  public TimezoneMessage _object(TimezoneMessageObject _object) {
     
     this._object = _object;
     return this;
@@ -155,12 +156,12 @@ public class TimezoneMessage {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public java.util.HashMap getObject() {
+  public TimezoneMessageObject getObject() {
     return _object;
   }
 
 
-  public void setObject(java.util.HashMap _object) {
+  public void setObject(TimezoneMessageObject _object) {
     this._object = _object;
   }
 

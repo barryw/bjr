@@ -17,7 +17,7 @@ import SingleFolder from './SingleFolder';
 /**
  * The SingleFolderMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/SingleFolderMessage
- * @version 1.7.2
+ * @version 1.8.0
  */
 class SingleFolderMessage {
     /**

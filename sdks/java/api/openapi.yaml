@@ -1772,8 +1772,8 @@ components:
         is_error: true
         message: message
         object:
+          display: display
           value: value
-          key: key
       properties:
         message:
           description: The status message returned from the API call.
@@ -1788,19 +1788,7 @@ components:
           description: The HTTP status code returned.
           type: integer
         object:
-          $ref: '#/components/schemas/HashMap'
-      type: object
-    HashMap:
-      example:
-        value: value
-        key: key
-      properties:
-        key:
-          description: The hashmap's key.
-          type: string
-        value:
-          description: The hashmap's value.
-          type: string
+          $ref: '#/components/schemas/TimezoneMessage_object'
       type: object
     StringArray:
       items:
@@ -2505,6 +2493,17 @@ components:
           items:
             $ref: '#/components/schemas/BusyThreadCountMessage_object_hosts'
           type: array
+    TimezoneMessage_object:
+      example:
+        display: display
+        value: value
+      properties:
+        display:
+          description: The display value of the timezone.
+          type: string
+        value:
+          description: The value to store in the database.
+          type: string
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

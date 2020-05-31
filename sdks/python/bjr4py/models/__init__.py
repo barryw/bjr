@@ -21,7 +21,6 @@ from bjr4py.models.busy_thread_count_message_object import BusyThreadCountMessag
 from bjr4py.models.busy_thread_count_message_object_hosts import BusyThreadCountMessageObjectHosts
 from bjr4py.models.folder_array_message import FolderArrayMessage
 from bjr4py.models.generic_message import GenericMessage
-from bjr4py.models.hash_map import HashMap
 from bjr4py.models.job_array_message import JobArrayMessage
 from bjr4py.models.job_in import JobIn
 from bjr4py.models.job_run_array_message import JobRunArrayMessage
@@ -40,6 +39,7 @@ from bjr4py.models.single_user_message import SingleUserMessage
 from bjr4py.models.tag import Tag
 from bjr4py.models.tag_message import TagMessage
 from bjr4py.models.timezone_message import TimezoneMessage
+from bjr4py.models.timezone_message_object import TimezoneMessageObject
 from bjr4py.models.todays_stats import TodaysStats
 from bjr4py.models.todays_stats_message import TodaysStatsMessage
 from bjr4py.models.user_array_message import UserArrayMessage

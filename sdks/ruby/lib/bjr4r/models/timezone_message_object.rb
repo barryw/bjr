@@ -13,17 +13,17 @@ OpenAPI Generator version: 4.3.1-SNAPSHOT
 require 'date'
 
 module BJR
-  class HashMap
-    # The hashmap's key.
-    attr_accessor :key
+  class TimezoneMessageObject
+    # The display value of the timezone.
+    attr_accessor :display
 
-    # The hashmap's value.
+    # The value to store in the database.
     attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'key' => :'key',
+        :'display' => :'display',
         :'value' => :'value'
       }
     end
@@ -31,7 +31,7 @@ module BJR
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'key' => :'String',
+        :'display' => :'String',
         :'value' => :'String'
       }
     end
@@ -46,19 +46,19 @@ module BJR
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BJR::HashMap` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BJR::TimezoneMessageObject` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BJR::HashMap`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BJR::TimezoneMessageObject`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'key')
-        self.key = attributes[:'key']
+      if attributes.key?(:'display')
+        self.display = attributes[:'display']
       end
 
       if attributes.key?(:'value')
@@ -84,7 +84,7 @@ module BJR
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          key == o.key &&
+          display == o.display &&
           value == o.value
     end
 
@@ -97,7 +97,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [key, value].hash
+      [display, value].hash
     end
 
     # Builds the object from hash

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **is_error** | **Boolean** | True if there was an error performing the API call. | [optional] 
 **object_type** | **String** | The type of object being returned. | [optional] 
 **status_code** | **Integer** | The HTTP status code returned. | [optional] 
-**object** | [**HashMap**](HashMap.md) |  | [optional] 
+**object** | [**TimezoneMessageObject**](TimezoneMessageObject.md) |  | [optional] 
 
 ## Code Sample
 

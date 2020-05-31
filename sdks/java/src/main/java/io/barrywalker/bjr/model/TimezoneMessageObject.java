@@ -25,60 +25,62 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * AuthIn
+ * TimezoneMessageObject
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-31T12:42:22.704Z[GMT]")
-public class AuthIn {
-  public static final String SERIALIZED_NAME_USERNAME = "username";
-  @SerializedName(SERIALIZED_NAME_USERNAME)
-  private String username;
+public class TimezoneMessageObject {
+  public static final String SERIALIZED_NAME_DISPLAY = "display";
+  @SerializedName(SERIALIZED_NAME_DISPLAY)
+  private String display;
 
-  public static final String SERIALIZED_NAME_PASSWORD = "password";
-  @SerializedName(SERIALIZED_NAME_PASSWORD)
-  private String password;
+  public static final String SERIALIZED_NAME_VALUE = "value";
+  @SerializedName(SERIALIZED_NAME_VALUE)
+  private String value;
 
 
-  public AuthIn username(String username) {
+  public TimezoneMessageObject display(String display) {
     
-    this.username = username;
+    this.display = display;
     return this;
   }
 
    /**
-   * The username of the user to authenticate as
-   * @return username
+   * The display value of the timezone.
+   * @return display
   **/
-  @ApiModelProperty(required = true, value = "The username of the user to authenticate as")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The display value of the timezone.")
 
-  public String getUsername() {
-    return username;
+  public String getDisplay() {
+    return display;
   }
 
 
-  public void setUsername(String username) {
-    this.username = username;
+  public void setDisplay(String display) {
+    this.display = display;
   }
 
 
-  public AuthIn password(String password) {
+  public TimezoneMessageObject value(String value) {
     
-    this.password = password;
+    this.value = value;
     return this;
   }
 
    /**
-   * The password of the user to authenticate as
-   * @return password
+   * The value to store in the database.
+   * @return value
   **/
-  @ApiModelProperty(required = true, value = "The password of the user to authenticate as")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The value to store in the database.")
 
-  public String getPassword() {
-    return password;
+  public String getValue() {
+    return value;
   }
 
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setValue(String value) {
+    this.value = value;
   }
 
 
@@ -90,23 +92,23 @@ public class AuthIn {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AuthIn authIn = (AuthIn) o;
-    return Objects.equals(this.username, authIn.username) &&
-        Objects.equals(this.password, authIn.password);
+    TimezoneMessageObject timezoneMessageObject = (TimezoneMessageObject) o;
+    return Objects.equals(this.display, timezoneMessageObject.display) &&
+        Objects.equals(this.value, timezoneMessageObject.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, password);
+    return Objects.hash(display, value);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AuthIn {\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("class TimezoneMessageObject {\n");
+    sb.append("    display: ").append(toIndentedString(display)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -40,8 +40,8 @@ class TestTimezoneMessage(unittest.TestCase):
                 is_error = True, 
                 object_type = '0', 
                 status_code = 56, 
-                object = bjr4py.models.hash_map.HashMap(
-                    key = '0', 
+                object = bjr4py.models.timezone_message_object.TimezoneMessage_object(
+                    display = '0', 
                     value = '0', )
             )
         else :

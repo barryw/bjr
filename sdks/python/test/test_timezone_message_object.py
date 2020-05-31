@@ -16,11 +16,11 @@ import unittest
 import datetime
 
 import bjr4py
-from bjr4py.models.hash_map import HashMap  # noqa: E501
+from bjr4py.models.timezone_message_object import TimezoneMessageObject  # noqa: E501
 from bjr4py.rest import ApiException
 
-class TestHashMap(unittest.TestCase):
-    """HashMap unit test stubs"""
+class TestTimezoneMessageObject(unittest.TestCase):
+    """TimezoneMessageObject unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,22 +29,22 @@ class TestHashMap(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test HashMap
+        """Test TimezoneMessageObject
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = bjr4py.models.hash_map.HashMap()  # noqa: E501
+        # model = bjr4py.models.timezone_message_object.TimezoneMessageObject()  # noqa: E501
         if include_optional :
-            return HashMap(
-                key = '0', 
+            return TimezoneMessageObject(
+                display = '0', 
                 value = '0'
             )
         else :
-            return HashMap(
+            return TimezoneMessageObject(
         )
 
-    def testHashMap(self):
-        """Test HashMap"""
+    def testTimezoneMessageObject(self):
+        """Test TimezoneMessageObject"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

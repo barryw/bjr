@@ -1,10 +1,11 @@
-# BJR.Model.HashMap
-## Properties
+# TimezoneMessageObject
 
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** | The hashmap&#39;s key. | [optional] 
-**Value** | **string** | The hashmap&#39;s value. | [optional] 
+**display** | **str** | The display value of the timezone. | [optional] 
+**value** | **str** | The value to store in the database. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 
