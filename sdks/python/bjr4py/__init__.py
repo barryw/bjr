@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.8.0"
+__version__ = "1.9.0"
 
 # import apis into sdk package
 from bjr4py.api.authentication_api import AuthenticationApi
@@ -58,7 +58,6 @@ from bjr4py.models.single_user_message import SingleUserMessage
 from bjr4py.models.tag import Tag
 from bjr4py.models.tag_message import TagMessage
 from bjr4py.models.timezone_message import TimezoneMessage
-from bjr4py.models.timezone_message_object import TimezoneMessageObject
 from bjr4py.models.todays_stats import TodaysStats
 from bjr4py.models.todays_stats_message import TodaysStatsMessage
 from bjr4py.models.user_array_message import UserArrayMessage

@@ -39,7 +39,7 @@ namespace BJR.Model
         /// <param name="objectType">The type of object being returned..</param>
         /// <param name="statusCode">The HTTP status code returned..</param>
         /// <param name="_object">_object.</param>
-        public TimezoneMessage(string message = default(string), bool isError = default(bool), string objectType = default(string), int statusCode = default(int), TimezoneMessageObject _object = default(TimezoneMessageObject))
+        public TimezoneMessage(string message = default(string), bool isError = default(bool), string objectType = default(string), int statusCode = default(int), Dictionary<string, string> _object = default(Dictionary<string, string>))
         {
             this.Message = message;
             this.IsError = isError;
@@ -80,7 +80,7 @@ namespace BJR.Model
         /// Gets or Sets Object
         /// </summary>
         [DataMember(Name="object", EmitDefaultValue=false)]
-        public TimezoneMessageObject Object { get; set; }
+        public Dictionary<string, string> Object { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -149,8 +149,9 @@ namespace BJR.Model
                 ) && 
                 (
                     this.Object == input.Object ||
-                    (this.Object != null &&
-                    this.Object.Equals(input.Object))
+                    this.Object != null &&
+                    input.Object != null &&
+                    this.Object.SequenceEqual(input.Object)
                 );
         }
 

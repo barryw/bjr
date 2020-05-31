@@ -20,15 +20,17 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.barrywalker.bjr.model.TimezoneMessageObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * TimezoneMessage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-31T12:42:22.704Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-31T12:57:44.444Z[GMT]")
 public class TimezoneMessage {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -48,7 +50,7 @@ public class TimezoneMessage {
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)
-  private TimezoneMessageObject _object;
+  private Map<String, String> _object = null;
 
 
   public TimezoneMessage message(String message) {
@@ -143,9 +145,17 @@ public class TimezoneMessage {
   }
 
 
-  public TimezoneMessage _object(TimezoneMessageObject _object) {
+  public TimezoneMessage _object(Map<String, String> _object) {
     
     this._object = _object;
+    return this;
+  }
+
+  public TimezoneMessage putObjectItem(String key, String _objectItem) {
+    if (this._object == null) {
+      this._object = new HashMap<String, String>();
+    }
+    this._object.put(key, _objectItem);
     return this;
   }
 
@@ -156,12 +166,12 @@ public class TimezoneMessage {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TimezoneMessageObject getObject() {
+  public Map<String, String> getObject() {
     return _object;
   }
 
 
-  public void setObject(TimezoneMessageObject _object) {
+  public void setObject(Map<String, String> _object) {
     this._object = _object;
   }
 

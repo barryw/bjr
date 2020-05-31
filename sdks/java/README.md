@@ -2,7 +2,7 @@
 
 BJR API V1
 - API version: v1
-  - Build date: 2020-05-31T12:42:22.704Z[GMT]
+  - Build date: 2020-05-31T12:57:44.444Z[GMT]
 
 API specification for the BJR job server.
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>org.openapitools</groupId>
   <artifactId>bjr4j</artifactId>
-  <version>1.8.0</version>
+  <version>1.9.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:bjr4j:1.8.0"
+compile "org.openapitools:bjr4j:1.9.0"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/bjr4j-1.8.0.jar`
+* `target/bjr4j-1.9.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -168,7 +168,6 @@ Class | Method | HTTP request | Description
  - [Tag](docs/Tag.md)
  - [TagMessage](docs/TagMessage.md)
  - [TimezoneMessage](docs/TimezoneMessage.md)
- - [TimezoneMessageObject](docs/TimezoneMessageObject.md)
  - [TodaysStats](docs/TodaysStats.md)
  - [TodaysStatsMessage](docs/TodaysStatsMessage.md)
  - [UserArrayMessage](docs/UserArrayMessage.md)

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **IsError** | **bool** | True if there was an error performing the API call. | [optional] 
 **ObjectType** | **string** | The type of object being returned. | [optional] 
 **StatusCode** | **int** | The HTTP status code returned. | [optional] 
-**Object** | [**TimezoneMessageObject**](TimezoneMessageObject.md) |  | [optional] 
+**Object** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

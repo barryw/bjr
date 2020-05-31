@@ -154,10 +154,7 @@ RSpec.configure do |config|
               object_type: { type: :string, description: 'The type of object being returned.' },
               status_code: { type: :integer, description: 'The HTTP status code returned.' },
               object: { type: :object,
-                        properties: {
-                          display: { type: :string, description: 'The display value of the timezone.' },
-                          value: { type: :string, description: 'The value to store in the database.' }
-                        }
+                        additionalProperties: { type: :string }
                       }
             }
           },

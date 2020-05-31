@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * JobStat
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-31T12:42:22.704Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-31T12:57:44.444Z[GMT]")
 public class JobStat {
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)

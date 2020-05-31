@@ -37,7 +37,7 @@ class TimezoneMessage(object):
         'is_error': 'bool',
         'object_type': 'str',
         'status_code': 'int',
-        'object': 'TimezoneMessageObject'
+        'object': 'dict(str, str)'
     }
 
     attribute_map = {
@@ -170,7 +170,7 @@ class TimezoneMessage(object):
 
 
         :return: The object of this TimezoneMessage.  # noqa: E501
-        :rtype: TimezoneMessageObject
+        :rtype: dict(str, str)
         """
         return self._object
 
@@ -180,7 +180,7 @@ class TimezoneMessage(object):
 
 
         :param object: The object of this TimezoneMessage.  # noqa: E501
-        :type: TimezoneMessageObject
+        :type: dict(str, str)
         """
 
         self._object = object

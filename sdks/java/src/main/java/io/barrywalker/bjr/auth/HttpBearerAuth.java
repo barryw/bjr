@@ -18,7 +18,7 @@ import io.barrywalker.bjr.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-31T12:42:22.704Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-05-31T12:57:44.444Z[GMT]")
 public class HttpBearerAuth implements Authentication {
   private final String scheme;
   private String bearerToken;

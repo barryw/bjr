@@ -287,13 +287,8 @@ components:
           description: The HTTP status code returned.
         object:
           type: object
-          properties:
-            display:
-              type: string
-              description: The display value of the timezone.
-            value:
-              type: string
-              description: The value to store in the database.
+          additionalProperties:
+            type: string
     StringArray:
       type: array
       items:

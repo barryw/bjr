@@ -46,7 +46,7 @@ module BJR
         :'is_error' => :'Boolean',
         :'object_type' => :'String',
         :'status_code' => :'Integer',
-        :'object' => :'TimezoneMessageObject'
+        :'object' => :'Hash<String, String>'
       }
     end
 
@@ -88,7 +88,9 @@ module BJR
       end
 
       if attributes.key?(:'object')
-        self.object = attributes[:'object']
+        if (value = attributes[:'object']).is_a?(Hash)
+          self.object = value
+        end
       end
     end
 

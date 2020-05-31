@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **isError** | **Boolean** | True if there was an error performing the API call. |  [optional]
 **objectType** | **String** | The type of object being returned. |  [optional]
 **statusCode** | **Integer** | The HTTP status code returned. |  [optional]
-**_object** | [**TimezoneMessageObject**](TimezoneMessageObject.md) |  |  [optional]
+**_object** | **Map&lt;String, String&gt;** |  |  [optional]
 
 
 
