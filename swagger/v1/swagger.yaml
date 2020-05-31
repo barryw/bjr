@@ -286,7 +286,16 @@ components:
           type: integer
           description: The HTTP status code returned.
         object:
-          "$ref": "#/components/schemas/StringArray"
+          "$ref": "#/components/schemas/HashMap"
+    HashMap:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The hashmap's key.
+        value:
+          type: string
+          description: The hashmap's value.
     StringArray:
       type: array
       items:

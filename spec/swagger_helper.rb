@@ -153,7 +153,14 @@ RSpec.configure do |config|
               is_error: { type: :boolean, description: 'True if there was an error performing the API call.' },
               object_type: { type: :string, description: 'The type of object being returned.' },
               status_code: { type: :integer, description: 'The HTTP status code returned.' },
-              object: { '$ref': '#/components/schemas/StringArray' }
+              object: { '$ref': '#/components/schemas/HashMap' }
+            }
+          },
+          HashMap: {
+            type: :object,
+            properties: {
+              key: { type: :string, description: 'The hashmap\'s key.' },
+              value: { type: :string, description: 'The hashmap\'s value.' }
             }
           },
           StringArray: {

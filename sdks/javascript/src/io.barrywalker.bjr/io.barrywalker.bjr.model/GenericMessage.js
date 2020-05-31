@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GenericMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/GenericMessage
- * @version 1.7.0
+ * @version 1.7.2
  */
 class GenericMessage {
     /**

@@ -20,7 +20,7 @@ import TimezoneMessage from '../io.barrywalker.bjr.model/TimezoneMessage';
 /**
 * Static service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/StaticApi
-* @version 1.7.0
+* @version 1.7.2
 */
 export default class StaticApi {
 

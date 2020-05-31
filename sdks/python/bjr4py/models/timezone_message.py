@@ -37,7 +37,7 @@ class TimezoneMessage(object):
         'is_error': 'bool',
         'object_type': 'str',
         'status_code': 'int',
-        'object': 'list[str]'
+        'object': 'HashMap'
     }
 
     attribute_map = {
@@ -170,7 +170,7 @@ class TimezoneMessage(object):
 
 
         :return: The object of this TimezoneMessage.  # noqa: E501
-        :rtype: list[str]
+        :rtype: HashMap
         """
         return self._object
 
@@ -180,7 +180,7 @@ class TimezoneMessage(object):
 
 
         :param object: The object of this TimezoneMessage.  # noqa: E501
-        :type: list[str]
+        :type: HashMap
         """
 
         self._object = object

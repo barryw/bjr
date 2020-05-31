@@ -20,6 +20,7 @@ import BusyThreadCountMessageObject from './io.barrywalker.bjr.model/BusyThreadC
 import BusyThreadCountMessageObjectHosts from './io.barrywalker.bjr.model/BusyThreadCountMessageObjectHosts';
 import FolderArrayMessage from './io.barrywalker.bjr.model/FolderArrayMessage';
 import GenericMessage from './io.barrywalker.bjr.model/GenericMessage';
+import HashMap from './io.barrywalker.bjr.model/HashMap';
 import JobArrayMessage from './io.barrywalker.bjr.model/JobArrayMessage';
 import JobIn from './io.barrywalker.bjr.model/JobIn';
 import JobRunArrayMessage from './io.barrywalker.bjr.model/JobRunArrayMessage';
@@ -80,7 +81,7 @@ import UsersApi from './io.barrywalker.bjr.api/UsersApi';
 * </pre>
 * </p>
 * @module io.barrywalker.bjr/index
-* @version 1.7.0
+* @version 1.7.2
 */
 export {
     /**
@@ -130,6 +131,12 @@ export {
      * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/GenericMessage}
      */
     GenericMessage,
+
+    /**
+     * The HashMap model constructor.
+     * @property {module:io.barrywalker.bjr/io.barrywalker.bjr.model/HashMap}
+     */
+    HashMap,
 
     /**
      * The JobArrayMessage model constructor.

@@ -46,7 +46,7 @@ module BJR
         :'is_error' => :'Boolean',
         :'object_type' => :'String',
         :'status_code' => :'Integer',
-        :'object' => :'Array<String>'
+        :'object' => :'HashMap'
       }
     end
 
@@ -88,9 +88,7 @@ module BJR
       end
 
       if attributes.key?(:'object')
-        if (value = attributes[:'object']).is_a?(Array)
-          self.object = value
-        end
+        self.object = attributes[:'object']
       end
     end
 

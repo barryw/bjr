@@ -12,11 +12,12 @@
  */
 
 import ApiClient from '../ApiClient';
+import HashMap from './HashMap';
 
 /**
  * The TimezoneMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/TimezoneMessage
- * @version 1.7.0
+ * @version 1.7.2
  */
 class TimezoneMessage {
     /**
@@ -60,7 +61,7 @@ class TimezoneMessage {
                 obj['status_code'] = ApiClient.convertToType(data['status_code'], 'Number');
             }
             if (data.hasOwnProperty('object')) {
-                obj['object'] = ApiClient.convertToType(data['object'], ['String']);
+                obj['object'] = HashMap.constructFromObject(data['object']);
             }
         }
         return obj;
@@ -94,7 +95,7 @@ TimezoneMessage.prototype['object_type'] = undefined;
 TimezoneMessage.prototype['status_code'] = undefined;
 
 /**
- * @member {Array.<String>} object
+ * @member {module:io.barrywalker.bjr/io.barrywalker.bjr.model/HashMap} object
  */
 TimezoneMessage.prototype['object'] = undefined;
 

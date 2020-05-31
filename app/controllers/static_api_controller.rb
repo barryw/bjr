@@ -7,7 +7,7 @@ class StaticApiController < ApplicationController
   skip_before_action :authenticate_request, only: %i[health version]
 
   def timezones
-    timezones = ActiveSupport::TimeZone::MAPPING.keys
+    timezones = ActiveSupport::TimeZone::MAPPING
     message I18n.t('timezones.messages.received'), :ok, false, timezones, 'tzarray'
   end
 

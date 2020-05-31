@@ -20,8 +20,10 @@ RSpec.describe StaticApiController, type: :controller do
       expect(json['is_error']).to be false
       expect(json['status_code']).to eq(200)
       expect(json['object_type']).to eq('tzarray')
-      expect(json['object'][0]).to eq('International Date Line West')
-      expect(json['object'][150]).to eq('Samoa')
+      expect(json['object']).to include('International Date Line West')
+      expect(json['object']['International Date Line West']).to eq('Etc/GMT+12')
+      expect(json['object']).to include('Samoa')
+      expect(json['object']['Samoa']).to eq('Pacific/Apia')
     end
   end
 

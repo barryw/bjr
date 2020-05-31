@@ -1772,8 +1772,8 @@ components:
         is_error: true
         message: message
         object:
-        - object
-        - object
+          value: value
+          key: key
       properties:
         message:
           description: The status message returned from the API call.
@@ -1788,9 +1788,19 @@ components:
           description: The HTTP status code returned.
           type: integer
         object:
-          items:
-            type: string
-          type: array
+          $ref: '#/components/schemas/HashMap'
+      type: object
+    HashMap:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          description: The hashmap's key.
+          type: string
+        value:
+          description: The hashmap's value.
+          type: string
       type: object
     StringArray:
       items:
