@@ -45,6 +45,7 @@ class Job < ApplicationRecord
 
   # Do the tagging
   def tag(tags)
+    self.tag_list = '' if tags.blank?
     self.user.tag self, with: tags, on: :tags unless tags.nil?
   end
 

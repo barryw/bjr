@@ -152,7 +152,7 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['object']['enabled']).to eq(true)
     end
 
-    it "returns http success when it updates the job's tags" do
+    it 'returns http success when it updates the job\'s tags' do
       user = create(:admin1)
       authenticated_header(user)
       job = create(:job1, user: user, tag_list: 'tag1')
@@ -162,6 +162,17 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['status_code']).to eq(200)
       expect(json['object']['enabled']).to eq(true)
       expect(json['object']['tags']).to include('tag2')
+    end
+
+    it 'can clear a jobs tags' do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, user: user, tag_list: 'tag1,tag2')
+      put :update, params: { id: job.id, tags: '' }
+      expect(response).to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['status_code']).to eq(200)
+      expect(json['object']['tags']).to eq([])
     end
 
     it 'returns http conflict when it fails to update a job' do
