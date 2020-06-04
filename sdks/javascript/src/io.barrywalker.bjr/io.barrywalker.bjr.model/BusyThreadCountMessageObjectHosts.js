@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BusyThreadCountMessageObjectHosts model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/BusyThreadCountMessageObjectHosts
- * @version 1.9.0
+ * @version 1.10.0
  */
 class BusyThreadCountMessageObjectHosts {
     /**
