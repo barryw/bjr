@@ -132,10 +132,12 @@ The SDKs will be generated in subfolders of the `sdks` directory. Each language 
 Currently, the SDKs are generated for the following languages:
 
 - C#
+- Go
 - Python
 - Java
 - Javascript
 - Ruby
+- Rust
 
 #### Interacting with BJR using curl
 
