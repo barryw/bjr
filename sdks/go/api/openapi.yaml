@@ -1138,7 +1138,7 @@ paths:
       tags:
       - Users
     post:
-      description: Create a new user
+      description: Create a new user. Only root users are allowed to create new users.
       operationId: createUser
       parameters: []
       requestBody:
@@ -1163,7 +1163,7 @@ paths:
       - Users
   /user_api/{id}:
     delete:
-      description: Deletes a user
+      description: Deletes a user. Only root users can delete other users.
       operationId: deleteUser
       parameters:
       - explode: false
@@ -1198,7 +1198,8 @@ paths:
       tags:
       - Users
     get:
-      description: Retrieve a single user
+      description: Retrieve a single user. If you're a non-root user, then you can
+        only retrieve your own user.
       operationId: getUser
       parameters:
       - explode: false
@@ -1230,7 +1231,8 @@ paths:
       tags:
       - Users
     put:
-      description: Update a single user
+      description: Update a single user. If you're a non-root users, then you can
+        only update your own user.
       operationId: updateUser
       parameters:
       - explode: false

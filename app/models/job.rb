@@ -33,7 +33,7 @@ class Job < ApplicationRecord
   TAG_SEARCH = %w[any all exclude].freeze
 
   before_validation(on: %i[create update]) do
-    self.timezone = 'UTC' if timezone.blank?
+    self.timezone = 'UTC' if self.timezone.blank?
     begin
       date = Date.current.in_time_zone(timezone)
     rescue StandardError

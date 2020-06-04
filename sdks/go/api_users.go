@@ -33,7 +33,7 @@ type CreateUserOpts struct {
 
 /*
 CreateUser Creates a user
-Create a new user
+Create a new user. Only root users are allowed to create new users.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *CreateUserOpts - Optional Parameters:
  * @param "UserNewIn" (optional.Interface of UserNewIn) - 
@@ -119,7 +119,7 @@ func (a *UsersApiService) CreateUser(ctx _context.Context, localVarOptionals *Cr
 
 /*
 DeleteUser Deletes a user
-Deletes a user
+Deletes a user. Only root users can delete other users.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return SingleUserMessage
@@ -216,7 +216,7 @@ func (a *UsersApiService) DeleteUser(ctx _context.Context, id int32) (SingleUser
 
 /*
 GetUser Retrieve a single user
-Retrieve a single user
+Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
 @return SingleUserMessage
@@ -399,7 +399,7 @@ type UpdateUserOpts struct {
 
 /*
 UpdateUser Update a single user
-Update a single user
+Update a single user. If you&#39;re a non-root users, then you can only update your own user.
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param optional nil or *UpdateUserOpts - Optional Parameters:

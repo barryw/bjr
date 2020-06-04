@@ -31,7 +31,7 @@ namespace BJR.Api
         /// Creates a user
         /// </summary>
         /// <remarks>
-        /// Create a new user
+        /// Create a new user. Only root users are allowed to create new users.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
@@ -42,7 +42,7 @@ namespace BJR.Api
         /// Creates a user
         /// </summary>
         /// <remarks>
-        /// Create a new user
+        /// Create a new user. Only root users are allowed to create new users.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
@@ -52,7 +52,7 @@ namespace BJR.Api
         /// Deletes a user
         /// </summary>
         /// <remarks>
-        /// Deletes a user
+        /// Deletes a user. Only root users can delete other users.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -63,7 +63,7 @@ namespace BJR.Api
         /// Deletes a user
         /// </summary>
         /// <remarks>
-        /// Deletes a user
+        /// Deletes a user. Only root users can delete other users.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -73,7 +73,7 @@ namespace BJR.Api
         /// Retrieve a single user
         /// </summary>
         /// <remarks>
-        /// Retrieve a single user
+        /// Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -84,7 +84,7 @@ namespace BJR.Api
         /// Retrieve a single user
         /// </summary>
         /// <remarks>
-        /// Retrieve a single user
+        /// Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -117,7 +117,7 @@ namespace BJR.Api
         /// Update a single user
         /// </summary>
         /// <remarks>
-        /// Update a single user
+        /// Update a single user. If you&#39;re a non-root users, then you can only update your own user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -129,7 +129,7 @@ namespace BJR.Api
         /// Update a single user
         /// </summary>
         /// <remarks>
-        /// Update a single user
+        /// Update a single user. If you&#39;re a non-root users, then you can only update your own user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -149,7 +149,7 @@ namespace BJR.Api
         /// Creates a user
         /// </summary>
         /// <remarks>
-        /// Create a new user
+        /// Create a new user. Only root users are allowed to create new users.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
@@ -160,7 +160,7 @@ namespace BJR.Api
         /// Creates a user
         /// </summary>
         /// <remarks>
-        /// Create a new user
+        /// Create a new user. Only root users are allowed to create new users.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
@@ -170,7 +170,7 @@ namespace BJR.Api
         /// Deletes a user
         /// </summary>
         /// <remarks>
-        /// Deletes a user
+        /// Deletes a user. Only root users can delete other users.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -181,7 +181,7 @@ namespace BJR.Api
         /// Deletes a user
         /// </summary>
         /// <remarks>
-        /// Deletes a user
+        /// Deletes a user. Only root users can delete other users.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -191,7 +191,7 @@ namespace BJR.Api
         /// Retrieve a single user
         /// </summary>
         /// <remarks>
-        /// Retrieve a single user
+        /// Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -202,7 +202,7 @@ namespace BJR.Api
         /// Retrieve a single user
         /// </summary>
         /// <remarks>
-        /// Retrieve a single user
+        /// Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -235,7 +235,7 @@ namespace BJR.Api
         /// Update a single user
         /// </summary>
         /// <remarks>
-        /// Update a single user
+        /// Update a single user. If you&#39;re a non-root users, then you can only update your own user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -247,7 +247,7 @@ namespace BJR.Api
         /// Update a single user
         /// </summary>
         /// <remarks>
-        /// Update a single user
+        /// Update a single user. If you&#39;re a non-root users, then you can only update your own user.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -375,7 +375,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Creates a user Create a new user
+        /// Creates a user Create a new user. Only root users are allowed to create new users.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
@@ -387,7 +387,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Creates a user Create a new user
+        /// Creates a user Create a new user. Only root users are allowed to create new users.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
@@ -433,7 +433,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Creates a user Create a new user
+        /// Creates a user Create a new user. Only root users are allowed to create new users.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
@@ -446,7 +446,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Creates a user Create a new user
+        /// Creates a user Create a new user. Only root users are allowed to create new users.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
@@ -494,7 +494,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Deletes a user Deletes a user
+        /// Deletes a user Deletes a user. Only root users can delete other users.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -506,7 +506,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Deletes a user Deletes a user
+        /// Deletes a user Deletes a user. Only root users can delete other users.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -551,7 +551,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Deletes a user Deletes a user
+        /// Deletes a user Deletes a user. Only root users can delete other users.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -564,7 +564,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Deletes a user Deletes a user
+        /// Deletes a user Deletes a user. Only root users can delete other users.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -611,7 +611,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Retrieve a single user Retrieve a single user
+        /// Retrieve a single user Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -623,7 +623,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Retrieve a single user Retrieve a single user
+        /// Retrieve a single user Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -668,7 +668,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Retrieve a single user Retrieve a single user
+        /// Retrieve a single user Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -681,7 +681,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Retrieve a single user Retrieve a single user
+        /// Retrieve a single user Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -863,7 +863,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Update a single user Update a single user
+        /// Update a single user Update a single user. If you&#39;re a non-root users, then you can only update your own user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -876,7 +876,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Update a single user Update a single user
+        /// Update a single user Update a single user. If you&#39;re a non-root users, then you can only update your own user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -924,7 +924,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Update a single user Update a single user
+        /// Update a single user Update a single user. If you&#39;re a non-root users, then you can only update your own user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -938,7 +938,7 @@ namespace BJR.Api
         }
 
         /// <summary>
-        /// Update a single user Update a single user
+        /// Update a single user Update a single user. If you&#39;re a non-root users, then you can only update your own user.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>

@@ -1704,7 +1704,7 @@ paths:
                 "$ref": "#/components/schemas/UserArrayMessage"
     post:
       summary: Creates a user
-      description: Create a new user
+      description: Create a new user. Only root users are allowed to create new users.
       tags:
       - Users
       operationId: createUser
@@ -1729,7 +1729,8 @@ paths:
   "/user_api/{id}":
     put:
       summary: Update a single user
-      description: Update a single user
+      description: Update a single user. If you're a non-root users, then you can
+        only update your own user.
       tags:
       - Users
       operationId: updateUser
@@ -1761,7 +1762,8 @@ paths:
               "$ref": "#/components/schemas/UserUpdateIn"
     get:
       summary: Retrieve a single user
-      description: Retrieve a single user
+      description: Retrieve a single user. If you're a non-root user, then you can
+        only retrieve your own user.
       tags:
       - Users
       operationId: getUser
@@ -1791,7 +1793,7 @@ paths:
           content: {}
     delete:
       summary: Deletes a user
-      description: Deletes a user
+      description: Deletes a user. Only root users can delete other users.
       tags:
       - Users
       operationId: deleteUser

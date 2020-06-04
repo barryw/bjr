@@ -21,7 +21,7 @@ import UserUpdateIn from '../io.barrywalker.bjr.model/UserUpdateIn';
 /**
 * Users service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/UsersApi
-* @version 2.0.0
+* @version 2.1.0
 */
 export default class UsersApi {
 
@@ -47,7 +47,7 @@ export default class UsersApi {
 
     /**
      * Creates a user
-     * Create a new user
+     * Create a new user. Only root users are allowed to create new users.
      * @param {Object} opts Optional parameters
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/UserNewIn} opts.userNewIn 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/UsersApi~createUserCallback} callback The callback function, accepting three arguments: error, data, response
@@ -87,7 +87,7 @@ export default class UsersApi {
 
     /**
      * Deletes a user
-     * Deletes a user
+     * Deletes a user. Only root users can delete other users.
      * @param {Number} id 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/UsersApi~deleteUserCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/SingleUserMessage}
@@ -130,7 +130,7 @@ export default class UsersApi {
 
     /**
      * Retrieve a single user
-     * Retrieve a single user
+     * Retrieve a single user. If you're a non-root user, then you can only retrieve your own user.
      * @param {Number} id 
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.api/UsersApi~getUserCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:io.barrywalker.bjr/io.barrywalker.bjr.model/SingleUserMessage}
@@ -216,7 +216,7 @@ export default class UsersApi {
 
     /**
      * Update a single user
-     * Update a single user
+     * Update a single user. If you're a non-root users, then you can only update your own user.
      * @param {Number} id 
      * @param {Object} opts Optional parameters
      * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/UserUpdateIn} opts.userUpdateIn 

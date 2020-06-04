@@ -17,7 +17,7 @@ Method | HTTP request | Description
 > crate::models::SingleUserMessage create_user(user_new_in)
 Creates a user
 
-Create a new user
+Create a new user. Only root users are allowed to create new users.
 
 ### Parameters
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::SingleUserMessage delete_user(id)
 Deletes a user
 
-Deletes a user
+Deletes a user. Only root users can delete other users.
 
 ### Parameters
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::SingleUserMessage get_user(id)
 Retrieve a single user
 
-Retrieve a single user
+Retrieve a single user. If you're a non-root user, then you can only retrieve your own user.
 
 ### Parameters
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Required | Notes
 > crate::models::SingleUserMessage update_user(id, user_update_in)
 Update a single user
 
-Update a single user
+Update a single user. If you're a non-root users, then you can only update your own user.
 
 ### Parameters
 

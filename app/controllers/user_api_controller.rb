@@ -4,10 +4,11 @@
 # Handles calls to the /user_api routes
 #
 class UserApiController < ApplicationController
+  before_action :require_root, only: %i[destroy create]
   before_action :user, only: %i[show update destroy]
 
   def index
-    users = paginate User.all
+    users = current_user.is_root ? (paginate User.all) : [current_user]
     message I18n.t('users.messages.received'), :ok, false, users, 'userarray'
   end
 
@@ -41,7 +42,7 @@ class UserApiController < ApplicationController
   private
 
   def user
-    @user = User.where(id: params[:id]).first
+    @user = current_user.is_root ? User.where(id: params[:id]).first : User.where('id = ? and id = ?', params[:id], current_user.id).first
     error(I18n.t('users.errors.not_found'), :not_found) && return if @user.blank?
   end
 end

@@ -38,7 +38,7 @@ public class UsersApiTest {
     /**
      * Creates a user
      *
-     * Create a new user
+     * Create a new user. Only root users are allowed to create new users.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -54,7 +54,7 @@ public class UsersApiTest {
     /**
      * Deletes a user
      *
-     * Deletes a user
+     * Deletes a user. Only root users can delete other users.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -70,7 +70,7 @@ public class UsersApiTest {
     /**
      * Retrieve a single user
      *
-     * Retrieve a single user
+     * Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -103,7 +103,7 @@ public class UsersApiTest {
     /**
      * Update a single user
      *
-     * Update a single user
+     * Update a single user. If you&#39;re a non-root users, then you can only update your own user.
      *
      * @throws ApiException
      *          if the Api call fails

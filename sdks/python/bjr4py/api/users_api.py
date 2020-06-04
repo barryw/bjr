@@ -39,7 +39,7 @@ class UsersApi(object):
     def create_user(self, **kwargs):  # noqa: E501
         """Creates a user  # noqa: E501
 
-        Create a new user  # noqa: E501
+        Create a new user. Only root users are allowed to create new users.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_user(async_req=True)
@@ -64,7 +64,7 @@ class UsersApi(object):
     def create_user_with_http_info(self, **kwargs):  # noqa: E501
         """Creates a user  # noqa: E501
 
-        Create a new user  # noqa: E501
+        Create a new user. Only root users are allowed to create new users.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_user_with_http_info(async_req=True)
@@ -153,7 +153,7 @@ class UsersApi(object):
     def delete_user(self, id, **kwargs):  # noqa: E501
         """Deletes a user  # noqa: E501
 
-        Deletes a user  # noqa: E501
+        Deletes a user. Only root users can delete other users.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.delete_user(id, async_req=True)
@@ -178,7 +178,7 @@ class UsersApi(object):
     def delete_user_with_http_info(self, id, **kwargs):  # noqa: E501
         """Deletes a user  # noqa: E501
 
-        Deletes a user  # noqa: E501
+        Deletes a user. Only root users can delete other users.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.delete_user_with_http_info(id, async_req=True)
@@ -267,7 +267,7 @@ class UsersApi(object):
     def get_user(self, id, **kwargs):  # noqa: E501
         """Retrieve a single user  # noqa: E501
 
-        Retrieve a single user  # noqa: E501
+        Retrieve a single user. If you're a non-root user, then you can only retrieve your own user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_user(id, async_req=True)
@@ -292,7 +292,7 @@ class UsersApi(object):
     def get_user_with_http_info(self, id, **kwargs):  # noqa: E501
         """Retrieve a single user  # noqa: E501
 
-        Retrieve a single user  # noqa: E501
+        Retrieve a single user. If you're a non-root user, then you can only retrieve your own user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_user_with_http_info(id, async_req=True)
@@ -496,7 +496,7 @@ class UsersApi(object):
     def update_user(self, id, **kwargs):  # noqa: E501
         """Update a single user  # noqa: E501
 
-        Update a single user  # noqa: E501
+        Update a single user. If you're a non-root users, then you can only update your own user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_user(id, async_req=True)
@@ -522,7 +522,7 @@ class UsersApi(object):
     def update_user_with_http_info(self, id, **kwargs):  # noqa: E501
         """Update a single user  # noqa: E501
 
-        Update a single user  # noqa: E501
+        Update a single user. If you're a non-root users, then you can only update your own user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_user_with_http_info(id, async_req=True)

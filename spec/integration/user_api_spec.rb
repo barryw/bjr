@@ -17,7 +17,7 @@ describe 'User API' do
       response '200', 'Users found' do
         header 'per-page', schema: { type: :integer }, description: 'The number of items in this page.'
         header 'total', schema: { type: :integer }, description: 'The total number of items available.'
-        let(:admin) { create(:admin1) }
+        let(:admin) { create(:root) }
         let(:Authorization) { auth_token(admin) }
         schema '$ref' => '#/components/schemas/UserArrayMessage'
 
@@ -34,7 +34,7 @@ describe 'User API' do
     end
 
     post 'Creates a user' do
-      description 'Create a new user'
+      description 'Create a new user. Only root users are allowed to create new users.'
       tags 'Users'
       operationId 'createUser'
       security [bearerAuth: []]
@@ -43,7 +43,7 @@ describe 'User API' do
       parameter name: :params, in: :body, schema: { '$ref' => '#/components/schemas/UserNewIn' }
 
       response '201', 'User created successfully' do
-        let(:admin) { create(:admin1) }
+        let(:admin) { create(:root) }
         let(:Authorization) { auth_token(admin) }
         let(:params) { { username: 'barry', password: 'test1234', password_confirmation: 'test1234' } }
         schema '$ref' => '#/components/schemas/SingleUserMessage'
@@ -55,7 +55,7 @@ describe 'User API' do
       end
 
       response '403', 'Username already exists' do
-        let(:admin) { create(:admin1) }
+        let(:admin) { create(:root) }
         let(:Authorization) { auth_token(admin) }
         let(:params) { { username: admin.username, password: 'test1234', password_confirmation: 'test1234' } }
 
@@ -66,7 +66,7 @@ describe 'User API' do
 
   path '/user_api/{id}' do
     put 'Update a single user' do
-      description 'Update a single user'
+      description 'Update a single user. If you\'re a non-root users, then you can only update your own user.'
       tags 'Users'
       operationId 'updateUser'
       security [bearerAuth: []]
@@ -101,7 +101,7 @@ describe 'User API' do
     end
 
     get 'Retrieve a single user' do
-      description 'Retrieve a single user'
+      description 'Retrieve a single user. If you\'re a non-root user, then you can only retrieve your own user.'
       tags 'Users'
       operationId 'getUser'
       security [bearerAuth: []]
@@ -148,7 +148,7 @@ describe 'User API' do
     end
 
     delete 'Deletes a user' do
-      description 'Deletes a user'
+      description 'Deletes a user. Only root users can delete other users.'
       tags 'Users'
       operationId 'deleteUser'
       security [bearerAuth: []]
@@ -158,7 +158,7 @@ describe 'User API' do
 
       response '200', 'User deleted successfully' do
         let(:deluser) { create(:admin2) }
-        let(:admin) { create(:admin1) }
+        let(:admin) { create(:root) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { deluser.id }
         schema '$ref' => '#/components/schemas/SingleUserMessage'
@@ -167,7 +167,7 @@ describe 'User API' do
       end
 
       response '403', 'You cannot delete yourself.' do
-        let(:admin) { create(:admin1) }
+        let(:admin) { create(:root) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { admin.id }
         schema '$ref' => '#/components/schemas/SingleUserMessage'
@@ -179,7 +179,7 @@ describe 'User API' do
       end
 
       response '404', 'The user with that id could not be found.' do
-        let(:admin) { create(:admin1) }
+        let(:admin) { create(:root) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { 0 }
         schema '$ref' => '#/components/schemas/SingleUserMessage'

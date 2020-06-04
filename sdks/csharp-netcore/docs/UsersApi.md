@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Creates a user
 
-Create a new user
+Create a new user. Only root users are allowed to create new users.
 
 ### Example
 ```csharp
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 Deletes a user
 
-Deletes a user
+Deletes a user. Only root users can delete other users.
 
 ### Example
 ```csharp
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 Retrieve a single user
 
-Retrieve a single user
+Retrieve a single user. If you're a non-root user, then you can only retrieve your own user.
 
 ### Example
 ```csharp
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 
 Update a single user
 
-Update a single user
+Update a single user. If you're a non-root users, then you can only update your own user.
 
 ### Example
 ```csharp

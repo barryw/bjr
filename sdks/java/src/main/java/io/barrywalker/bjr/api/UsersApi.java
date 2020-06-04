@@ -110,7 +110,7 @@ public class UsersApi {
 
     /**
      * Creates a user
-     * Create a new user
+     * Create a new user. Only root users are allowed to create new users.
      * @param userNewIn  (optional)
      * @return SingleUserMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -128,7 +128,7 @@ public class UsersApi {
 
     /**
      * Creates a user
-     * Create a new user
+     * Create a new user. Only root users are allowed to create new users.
      * @param userNewIn  (optional)
      * @return ApiResponse&lt;SingleUserMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -147,7 +147,7 @@ public class UsersApi {
 
     /**
      * Creates a user (asynchronously)
-     * Create a new user
+     * Create a new user. Only root users are allowed to create new users.
      * @param userNewIn  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -226,7 +226,7 @@ public class UsersApi {
 
     /**
      * Deletes a user
-     * Deletes a user
+     * Deletes a user. Only root users can delete other users.
      * @param id  (required)
      * @return SingleUserMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -245,7 +245,7 @@ public class UsersApi {
 
     /**
      * Deletes a user
-     * Deletes a user
+     * Deletes a user. Only root users can delete other users.
      * @param id  (required)
      * @return ApiResponse&lt;SingleUserMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -265,7 +265,7 @@ public class UsersApi {
 
     /**
      * Deletes a user (asynchronously)
-     * Deletes a user
+     * Deletes a user. Only root users can delete other users.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -345,7 +345,7 @@ public class UsersApi {
 
     /**
      * Retrieve a single user
-     * Retrieve a single user
+     * Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
      * @param id  (required)
      * @return SingleUserMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -364,7 +364,7 @@ public class UsersApi {
 
     /**
      * Retrieve a single user
-     * Retrieve a single user
+     * Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
      * @param id  (required)
      * @return ApiResponse&lt;SingleUserMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -384,7 +384,7 @@ public class UsersApi {
 
     /**
      * Retrieve a single user (asynchronously)
-     * Retrieve a single user
+     * Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -581,7 +581,7 @@ public class UsersApi {
 
     /**
      * Update a single user
-     * Update a single user
+     * Update a single user. If you&#39;re a non-root users, then you can only update your own user.
      * @param id  (required)
      * @param userUpdateIn  (optional)
      * @return SingleUserMessage
@@ -600,7 +600,7 @@ public class UsersApi {
 
     /**
      * Update a single user
-     * Update a single user
+     * Update a single user. If you&#39;re a non-root users, then you can only update your own user.
      * @param id  (required)
      * @param userUpdateIn  (optional)
      * @return ApiResponse&lt;SingleUserMessage&gt;
@@ -620,7 +620,7 @@ public class UsersApi {
 
     /**
      * Update a single user (asynchronously)
-     * Update a single user
+     * Update a single user. If you&#39;re a non-root users, then you can only update your own user.
      * @param id  (required)
      * @param userUpdateIn  (optional)
      * @param _callback The callback to be executed when the API call finishes

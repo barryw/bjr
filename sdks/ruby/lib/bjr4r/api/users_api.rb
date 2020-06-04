@@ -20,7 +20,7 @@ module BJR
       @api_client = api_client
     end
     # Creates a user
-    # Create a new user
+    # Create a new user. Only root users are allowed to create new users.
     # @param [Hash] opts the optional parameters
     # @option opts [UserNewIn] :user_new_in 
     # @return [SingleUserMessage]
@@ -30,7 +30,7 @@ module BJR
     end
 
     # Creates a user
-    # Create a new user
+    # Create a new user. Only root users are allowed to create new users.
     # @param [Hash] opts the optional parameters
     # @option opts [UserNewIn] :user_new_in 
     # @return [Array<(SingleUserMessage, Integer, Hash)>] SingleUserMessage data, response status code and response headers
@@ -80,7 +80,7 @@ module BJR
     end
 
     # Deletes a user
-    # Deletes a user
+    # Deletes a user. Only root users can delete other users.
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [SingleUserMessage]
@@ -90,7 +90,7 @@ module BJR
     end
 
     # Deletes a user
-    # Deletes a user
+    # Deletes a user. Only root users can delete other users.
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(SingleUserMessage, Integer, Hash)>] SingleUserMessage data, response status code and response headers
@@ -142,7 +142,7 @@ module BJR
     end
 
     # Retrieve a single user
-    # Retrieve a single user
+    # Retrieve a single user. If you're a non-root user, then you can only retrieve your own user.
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [SingleUserMessage]
@@ -152,7 +152,7 @@ module BJR
     end
 
     # Retrieve a single user
-    # Retrieve a single user
+    # Retrieve a single user. If you&#39;re a non-root user, then you can only retrieve your own user.
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(SingleUserMessage, Integer, Hash)>] SingleUserMessage data, response status code and response headers
@@ -266,7 +266,7 @@ module BJR
     end
 
     # Update a single user
-    # Update a single user
+    # Update a single user. If you're a non-root users, then you can only update your own user.
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [UserUpdateIn] :user_update_in 
@@ -277,7 +277,7 @@ module BJR
     end
 
     # Update a single user
-    # Update a single user
+    # Update a single user. If you&#39;re a non-root users, then you can only update your own user.
     # @param id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [UserUpdateIn] :user_update_in 

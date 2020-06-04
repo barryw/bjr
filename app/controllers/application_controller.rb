@@ -59,4 +59,11 @@ class ApplicationController < ActionController::API
                                                          timezone_list_url: static_api_timezones_url)
     raise TZInfo::InvalidTimezoneIdentifier.new
   end
+
+  #
+  # Some routes can only be performed by root
+  #
+  def require_root
+    error I18n.t('common.errors.unauthorized'), :unauthorized unless current_user.is_root
+  end
 end

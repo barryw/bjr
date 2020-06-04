@@ -95,13 +95,6 @@ class JobServerApiController < ApplicationController
     error I18n.t('jobserver.messages.workers.host_required'), :bad_request and return if params[:host].blank?
   end
 
-  #
-  # Protect routes to require root user privs
-  #
-  def require_root
-    error I18n.t('common.errors.unauthorized'), :unauthorized unless current_user.is_root
-  end
-
   def date_range
     @start_date = date_parse(params[:start_date])
     @end_date = date_parse(params[:end_date])
