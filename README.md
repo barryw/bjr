@@ -195,3 +195,20 @@ Link: <http://localhost:3000/job_api/27/runs?page=1>; rel="first", <http://local
 ```
 
 If you'd like to see what API routes are availble, run `rails routes`
+
+#### Job search expressions
+
+When you call the `GET /job_api` endpoint to fetch jobs, you can also pass in an `expression` parameter. This will allow you to filter jobs on a set of criteria. The following are valid ways of searching for jobs:
+
+- `name:my_job` will search for jobs with `my_job` in the name. This does a database LIKE search using `%my_job%` as the expression.
+- `tag:tag1,tag2` or `tag:|tag1,tag2` will search for jobs tagged with either `tag1` or `tag2`
+- `tag:&tag1,tag2` will search for jobs tagged with both `tag1` and `tag2`. If the jobs have other tags, this will NOT match them! The jobs must only have `tag1` and `tag2`.
+- `tag:!tag3,tag4` will search for jobs that are not tagged with `tag3` or `tag4`
+- `running` / `stopped` will search for jobs that are currently running or stopped
+- `enabled` / `disabled` will search for jobs that are currently enabled or disabled
+- `command:sleep` / `cmd:curl` search for jobs with a specific command
+
+
+You can also combine search criteria: `tag:&tag1,tag2 running` would find running jobs tagged with both tag1 and tag2.
+
+__NOTE__: There can be no space between the search operand and the search term (eg. `tag: tag1`) and spaces separate search criteria, so currently you can't have spaces in your search terms!
