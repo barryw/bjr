@@ -116,20 +116,11 @@ namespace BJR.Test
         public void GetJobsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string tags = null;
-            //string incexc = null;
-            //string startDate = null;
-            //string endDate = null;
-            //bool? enabled = null;
-            //bool? succeeded = null;
-            //bool? running = null;
-            //string name = null;
-            //string searchTimezone = null;
-            //string command = null;
+            //string expression = null;
             //string timezone = null;
             //int? perPage = null;
             //int? page = null;
-            //var response = instance.GetJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page);
+            //var response = instance.GetJobs(expression, timezone, perPage, page);
             //Assert.IsType<JobArrayMessage> (response, "response is JobArrayMessage");
         }
         

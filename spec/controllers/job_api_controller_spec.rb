@@ -288,7 +288,7 @@ RSpec.describe JobApiController, type: :controller do
       create(:job1, user: user, name: 'job1', tag_list: 'tag1')
       create(:job1, user: user, name: 'job2', tag_list: 'tag2')
       authenticated_header(user)
-      get :index, params: { tags: 'tag1' }
+      get :index, params: { expression: 'tags:tag1' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -303,7 +303,7 @@ RSpec.describe JobApiController, type: :controller do
       create(:job1, user: user, name: 'job1', tag_list: 'tag1')
       create(:job1, user: user, name: 'job2', tag_list: 'tag2')
       authenticated_header(user)
-      get :index, params: { tags: 'tag1', incexc: 'all' }
+      get :index, params: { expression: 'tag:&tag1' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -318,7 +318,7 @@ RSpec.describe JobApiController, type: :controller do
       create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag2')
       create(:job1, user: user, name: 'job2', tag_list: 'tag2')
       authenticated_header(user)
-      get :index, params: { tags: 'tag1, tag2', incexc: 'all' }
+      get :index, params: { expression: 'tags:&tag1,tag2' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -334,7 +334,7 @@ RSpec.describe JobApiController, type: :controller do
       create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag3')
       create(:job1, user: user, name: 'job2', tag_list: 'tag2')
       authenticated_header(user)
-      get :index, params: { tags: 'tag1, tag2', incexc: 'all' }
+      get :index, params: { expression: 'tags:&tag1,tag2' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['status_code']).to eq(200)
@@ -365,7 +365,7 @@ RSpec.describe JobApiController, type: :controller do
       create(:job1, user: user, name: 'job1', tag_list: 'tag1, tag3')
       job2 = create(:job1, user: user, name: 'job2', tag_list: 'tag1')
       authenticated_header(user)
-      get :index, params: { tags: 'tag3', incexc: 'exclude' }
+      get :index, params: { expression: 'tags:!tag3' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -394,7 +394,7 @@ RSpec.describe JobApiController, type: :controller do
       job1 = create(:job1, user: user, name: 'job1', cron: '0 0 * * *', tag_list: 'tag1')
       create(:job1, user: user, name: 'job2', cron: '0 0 * * *', tag_list: 'tag2')
       authenticated_header(user)
-      get :index, params: { start_date: 'yesterday', end_date: 'tomorrow', tags: 'tag1' }
+      get :index, params: { expression: 'start_date:yesterday end_date:tomorrow tags:tag1' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -408,8 +408,9 @@ RSpec.describe JobApiController, type: :controller do
       user = create(:admin1)
       create(:job1, user: user, name: 'job1', cron: '0 0 * * *')
       create(:job1, user: user, name: 'job2', cron: '0 0 * * *')
+
       authenticated_header(user)
-      get :index, params: { start_date: 'today at 2pm', end_date: 'today at 3pm' }
+      get :index, params: { expression: 'start_date:2pm end_date:3pm' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -421,9 +422,10 @@ RSpec.describe JobApiController, type: :controller do
     it 'returns http success looking for enabled jobs' do
       user = create(:admin1)
       job1 = create(:job1, user: user, name: 'job1', enabled: true)
-      create(:job1, user: user, name: 'job2', enabled: false)
+      job2 = create(:job1, user: user, name: 'job2', enabled: false)
+
       authenticated_header(user)
-      get :index, params: { enabled: true }
+      get :index, params: { expression: 'enabled' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -438,7 +440,7 @@ RSpec.describe JobApiController, type: :controller do
       create(:job1, user: user, name: 'job1', enabled: false, tag_list: 'tag1', cron: '0 0 * * *')
       job2 = create(:job1, user: user, name: 'job2', enabled: true, tag_list: 'tag1', cron: '0 0 * * *')
       authenticated_header(user)
-      get :index, params: { enabled: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow' }
+      get :index, params: { expression: 'enabled tags:tag1 start_date:yesterday end_date:tomorrow' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -453,7 +455,7 @@ RSpec.describe JobApiController, type: :controller do
       create(:job1, user: user, name: 'job1', running: false, tag_list: 'tag1', cron: '0 0 * * *')
       job2 = create(:job1, user: user, name: 'job2', running: true, tag_list: 'tag1', cron: '0 0 * * *')
       authenticated_header(user)
-      get :index, params: { running: true, tags: 'tag1', start_date: 'yesterday', end_date: 'tomorrow' }
+      get :index, params: { expression: 'running tags:tag1 start_date:yesterday end_date:tomorrow' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -479,7 +481,7 @@ RSpec.describe JobApiController, type: :controller do
       user = create(:admin1)
       job1 = create(:job1, user: user, name: 'barrys-job')
       authenticated_header(user)
-      get :index, params: { name: 'jimbob' }
+      get :index, params: { expression: 'name:jimbob' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -505,7 +507,7 @@ RSpec.describe JobApiController, type: :controller do
       job1 = create(:job1, user: user, name: 'Job in Eastern timezone', timezone: 'America/New_York')
       job2 = create(:job1, user: user, name: 'Job in UTC', timezone: 'UTC')
       authenticated_header(user)
-      get :index, params: { search_timezone: 'UTC' }
+      get :index, params: { expression: 'tz:UTC' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')
@@ -518,7 +520,7 @@ RSpec.describe JobApiController, type: :controller do
       job1 = create(:job1, user: user, name: 'Sleep command job', command: 'sleep 20')
       job2 = create(:job1, user: user, name: 'Curl command job', command: 'curl https://www.example.com')
       authenticated_header(user)
-      get :index, params: { command: 'sleep' }
+      get :index, params: { expression: 'cmd:sleep' }
       expect(response).to have_http_status(:success)
       json = JSON.parse(response.body)
       expect(json['object_type']).to eq('jobarray')

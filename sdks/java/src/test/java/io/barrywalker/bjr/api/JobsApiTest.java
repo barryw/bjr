@@ -116,20 +116,11 @@ public class JobsApiTest {
      */
     @Test
     public void getJobsTest() throws ApiException {
-        String tags = null;
-        String incexc = null;
-        String startDate = null;
-        String endDate = null;
-        Boolean enabled = null;
-        Boolean succeeded = null;
-        Boolean running = null;
-        String name = null;
-        String searchTimezone = null;
-        String command = null;
+        String expression = null;
         String timezone = null;
         Integer perPage = null;
         Integer page = null;
-        JobArrayMessage response = api.getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page);
+        JobArrayMessage response = api.getJobs(expression, timezone, perPage, page);
 
         // TODO: test validations
     }

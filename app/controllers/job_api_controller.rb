@@ -8,24 +8,19 @@ class JobApiController < ApplicationController
   before_action :job, only: %i[show update destroy failures runs occurrences runs run_now]
 
   #
-  # Get a collection of paginated jobs. Can be searched on the following attributes:
-  # - start_date
-  # - end_date
-  # - tags
-  # - whether the tags should be searched as 'all', 'any' or 'exclude'
-  # - enabled
-  # - succeeded
-  # - running
-  # - name
+  # Get a collection of paginated jobs. An expression can be passed along to search for jobs. Expression can look like:
+  #
+  # 'name:my_job' - search for jobs named like 'my_job'
+  # 'tags:&tag1,tag2' - search for jobs tagged with both tag1 and tag2
+  # 'tags:!tag1' - search for jobs without tag tag1
+  # 'running' - search for running jobs
+  # 'stopped' - search for stopped jobs
+  # 'enabled' - search for enabled jobs
+  # 'disabled' - search for disabled jobs
   #
   def index
-    jobs = Job.find_jobs(current_user, params[:start_date], params[:end_date],
-                         params[:tags], params[:incexc], to_bool(params[:enabled]),
-                         to_bool(params[:succeeded]), to_bool(params[:running]), params[:name],
-                         params[:search_timezone], params[:command])
-
-    jobs_return = paginate jobs
-    message I18n.t('jobs.messages.received'), :ok, false, jobs_return, 'jobarray'
+    jobs = paginate Job.search_jobs(current_user, params[:expression])
+    message I18n.t('jobs.messages.received'), :ok, false, jobs, 'jobarray'
   end
 
   #

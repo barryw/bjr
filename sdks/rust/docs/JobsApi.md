@@ -143,7 +143,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_jobs
 
-> crate::models::JobArrayMessage get_jobs(tags, incexc, start_date, end_date, enabled, succeeded, running, name, search_timezone, command, timezone, per_page, page)
+> crate::models::JobArrayMessage get_jobs(expression, timezone, per_page, page)
 Retrieves jobs
 
 Retrieves jobs
@@ -153,16 +153,7 @@ Retrieves jobs
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**tags** | Option<**String**> | Specify a comma-separated list of tags to search jobs by. |  |
-**incexc** | Option<**String**> |  |  |
-**start_date** | Option<**String**> | Specify a start date to search jobs by. |  |
-**end_date** | Option<**String**> | Specify an end date to search jobs by. |  |
-**enabled** | Option<**bool**> | Search on whether a job is enabled or not. |  |
-**succeeded** | Option<**bool**> | Search on whether a job's last run was successful or not. |  |
-**running** | Option<**bool**> | Search on whether a job is currently running or not. |  |
-**name** | Option<**String**> | Search on a job's name. |  |
-**search_timezone** | Option<**String**> | Search for jobs in a timezone. |  |
-**command** | Option<**String**> | Search for jobs by the command that they execute. |  |
+**expression** | Option<**String**> | A search expression to filter jobs. |  |
 **timezone** | Option<**String**> |  |  |
 **per_page** | Option<**i32**> |  |  |
 **page** | Option<**i32**> |  |  |

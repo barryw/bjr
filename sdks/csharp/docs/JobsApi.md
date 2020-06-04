@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ## GetJobs
 
-> JobArrayMessage GetJobs (string tags = null, string incexc = null, string startDate = null, string endDate = null, bool enabled = null, bool succeeded = null, bool running = null, string name = null, string searchTimezone = null, string command = null, string timezone = null, int perPage = null, int page = null)
+> JobArrayMessage GetJobs (string expression = null, string timezone = null, int perPage = null, int page = null)
 
 Retrieves jobs
 
@@ -372,16 +372,7 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new JobsApi(Configuration.Default);
-            var tags = tags_example;  // string | Specify a comma-separated list of tags to search jobs by. (optional) 
-            var incexc = incexc_example;  // string |  (optional) 
-            var startDate = startDate_example;  // string | Specify a start date to search jobs by. (optional) 
-            var endDate = endDate_example;  // string | Specify an end date to search jobs by. (optional) 
-            var enabled = true;  // bool | Search on whether a job is enabled or not. (optional) 
-            var succeeded = true;  // bool | Search on whether a job's last run was successful or not. (optional) 
-            var running = true;  // bool | Search on whether a job is currently running or not. (optional) 
-            var name = name_example;  // string | Search on a job's name. (optional) 
-            var searchTimezone = searchTimezone_example;  // string | Search for jobs in a timezone. (optional) 
-            var command = command_example;  // string | Search for jobs by the command that they execute. (optional) 
+            var expression = expression_example;  // string | A search expression to filter jobs. (optional) 
             var timezone = timezone_example;  // string |  (optional) 
             var perPage = 56;  // int |  (optional) 
             var page = 56;  // int |  (optional) 
@@ -389,7 +380,7 @@ namespace Example
             try
             {
                 // Retrieves jobs
-                JobArrayMessage result = apiInstance.GetJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page);
+                JobArrayMessage result = apiInstance.GetJobs(expression, timezone, perPage, page);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -408,16 +399,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tags** | **string**| Specify a comma-separated list of tags to search jobs by. | [optional] 
- **incexc** | **string**|  | [optional] 
- **startDate** | **string**| Specify a start date to search jobs by. | [optional] 
- **endDate** | **string**| Specify an end date to search jobs by. | [optional] 
- **enabled** | **bool**| Search on whether a job is enabled or not. | [optional] 
- **succeeded** | **bool**| Search on whether a job&#39;s last run was successful or not. | [optional] 
- **running** | **bool**| Search on whether a job is currently running or not. | [optional] 
- **name** | **string**| Search on a job&#39;s name. | [optional] 
- **searchTimezone** | **string**| Search for jobs in a timezone. | [optional] 
- **command** | **string**| Search for jobs by the command that they execute. | [optional] 
+ **expression** | **string**| A search expression to filter jobs. | [optional] 
  **timezone** | **string**|  | [optional] 
  **perPage** | **int**|  | [optional] 
  **page** | **int**|  | [optional] 

@@ -1067,67 +1067,9 @@ paths:
       security:
       - bearerAuth: []
       parameters:
-      - name: tags
+      - name: expression
         in: query
-        description: Specify a comma-separated list of tags to search jobs by.
-        required: false
-        schema:
-          type: string
-      - name: incexc
-        in: query
-        schema:
-          type: string
-          enum:
-          - all
-          - any
-          - except
-          description: How to handle the case where many tags are specified.
-        required: false
-      - name: start_date
-        in: query
-        description: Specify a start date to search jobs by.
-        required: false
-        schema:
-          type: string
-      - name: end_date
-        in: query
-        description: Specify an end date to search jobs by.
-        required: false
-        schema:
-          type: string
-      - name: enabled
-        in: query
-        description: Search on whether a job is enabled or not.
-        required: false
-        schema:
-          type: boolean
-      - name: succeeded
-        in: query
-        description: Search on whether a job's last run was successful or not.
-        required: false
-        schema:
-          type: boolean
-      - name: running
-        in: query
-        description: Search on whether a job is currently running or not.
-        required: false
-        schema:
-          type: boolean
-      - name: name
-        in: query
-        description: Search on a job's name.
-        required: false
-        schema:
-          type: string
-      - name: search_timezone
-        in: query
-        description: Search for jobs in a timezone.
-        required: false
-        schema:
-          type: string
-      - name: command
-        in: query
-        description: Search for jobs by the command that they execute.
+        description: A search expression to filter jobs.
         required: false
         schema:
           type: string

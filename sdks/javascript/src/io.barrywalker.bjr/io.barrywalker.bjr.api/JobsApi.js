@@ -22,7 +22,7 @@ import SingleJobMessage from '../io.barrywalker.bjr.model/SingleJobMessage';
 /**
 * Jobs service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobsApi
-* @version 1.10.0
+* @version 2.0.0
 */
 export default class JobsApi {
 
@@ -233,16 +233,7 @@ export default class JobsApi {
      * Retrieves jobs
      * Retrieves jobs
      * @param {Object} opts Optional parameters
-     * @param {String} opts.tags Specify a comma-separated list of tags to search jobs by.
-     * @param {module:io.barrywalker.bjr/io.barrywalker.bjr.model/String} opts.incexc 
-     * @param {String} opts.startDate Specify a start date to search jobs by.
-     * @param {String} opts.endDate Specify an end date to search jobs by.
-     * @param {Boolean} opts.enabled Search on whether a job is enabled or not.
-     * @param {Boolean} opts.succeeded Search on whether a job's last run was successful or not.
-     * @param {Boolean} opts.running Search on whether a job is currently running or not.
-     * @param {String} opts.name Search on a job's name.
-     * @param {String} opts.searchTimezone Search for jobs in a timezone.
-     * @param {String} opts.command Search for jobs by the command that they execute.
+     * @param {String} opts.expression A search expression to filter jobs.
      * @param {String} opts.timezone 
      * @param {Number} opts.perPage 
      * @param {Number} opts.page 
@@ -256,16 +247,7 @@ export default class JobsApi {
       let pathParams = {
       };
       let queryParams = {
-        'tags': opts['tags'],
-        'incexc': opts['incexc'],
-        'start_date': opts['startDate'],
-        'end_date': opts['endDate'],
-        'enabled': opts['enabled'],
-        'succeeded': opts['succeeded'],
-        'running': opts['running'],
-        'name': opts['name'],
-        'search_timezone': opts['searchTimezone'],
-        'command': opts['command'],
+        'expression': opts['expression'],
         'timezone': opts['timezone'],
         'per_page': opts['perPage'],
         'page': opts['page']

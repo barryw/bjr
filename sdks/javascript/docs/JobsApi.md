@@ -246,16 +246,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new Bjr4js.JobsApi();
 let opts = {
-  'tags': "tags_example", // String | Specify a comma-separated list of tags to search jobs by.
-  'incexc': "incexc_example", // String | 
-  'startDate': "startDate_example", // String | Specify a start date to search jobs by.
-  'endDate': "endDate_example", // String | Specify an end date to search jobs by.
-  'enabled': true, // Boolean | Search on whether a job is enabled or not.
-  'succeeded': true, // Boolean | Search on whether a job's last run was successful or not.
-  'running': true, // Boolean | Search on whether a job is currently running or not.
-  'name': "name_example", // String | Search on a job's name.
-  'searchTimezone': "searchTimezone_example", // String | Search for jobs in a timezone.
-  'command': "command_example", // String | Search for jobs by the command that they execute.
+  'expression': "expression_example", // String | A search expression to filter jobs.
   'timezone': "timezone_example", // String | 
   'perPage': 56, // Number | 
   'page': 56 // Number | 
@@ -274,16 +265,7 @@ apiInstance.getJobs(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tags** | **String**| Specify a comma-separated list of tags to search jobs by. | [optional] 
- **incexc** | **String**|  | [optional] 
- **startDate** | **String**| Specify a start date to search jobs by. | [optional] 
- **endDate** | **String**| Specify an end date to search jobs by. | [optional] 
- **enabled** | **Boolean**| Search on whether a job is enabled or not. | [optional] 
- **succeeded** | **Boolean**| Search on whether a job&#39;s last run was successful or not. | [optional] 
- **running** | **Boolean**| Search on whether a job is currently running or not. | [optional] 
- **name** | **String**| Search on a job&#39;s name. | [optional] 
- **searchTimezone** | **String**| Search for jobs in a timezone. | [optional] 
- **command** | **String**| Search for jobs by the command that they execute. | [optional] 
+ **expression** | **String**| A search expression to filter jobs. | [optional] 
  **timezone** | **String**|  | [optional] 
  **perPage** | **Number**|  | [optional] 
  **page** | **Number**|  | [optional] 

@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 <a name="getJobs"></a>
 # **getJobs**
-> JobArrayMessage getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page)
+> JobArrayMessage getJobs(expression, timezone, perPage, page)
 
 Retrieves jobs
 
@@ -327,21 +327,12 @@ public class Example {
     bearerAuth.setBearerToken("BEARER TOKEN");
 
     JobsApi apiInstance = new JobsApi(defaultClient);
-    String tags = "tags_example"; // String | Specify a comma-separated list of tags to search jobs by.
-    String incexc = "incexc_example"; // String | 
-    String startDate = "startDate_example"; // String | Specify a start date to search jobs by.
-    String endDate = "endDate_example"; // String | Specify an end date to search jobs by.
-    Boolean enabled = true; // Boolean | Search on whether a job is enabled or not.
-    Boolean succeeded = true; // Boolean | Search on whether a job's last run was successful or not.
-    Boolean running = true; // Boolean | Search on whether a job is currently running or not.
-    String name = "name_example"; // String | Search on a job's name.
-    String searchTimezone = "searchTimezone_example"; // String | Search for jobs in a timezone.
-    String command = "command_example"; // String | Search for jobs by the command that they execute.
+    String expression = "expression_example"; // String | A search expression to filter jobs.
     String timezone = "timezone_example"; // String | 
     Integer perPage = 56; // Integer | 
     Integer page = 56; // Integer | 
     try {
-      JobArrayMessage result = apiInstance.getJobs(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page);
+      JobArrayMessage result = apiInstance.getJobs(expression, timezone, perPage, page);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling JobsApi#getJobs");
@@ -358,16 +349,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tags** | **String**| Specify a comma-separated list of tags to search jobs by. | [optional]
- **incexc** | **String**|  | [optional] [enum: all, any, except]
- **startDate** | **String**| Specify a start date to search jobs by. | [optional]
- **endDate** | **String**| Specify an end date to search jobs by. | [optional]
- **enabled** | **Boolean**| Search on whether a job is enabled or not. | [optional]
- **succeeded** | **Boolean**| Search on whether a job&#39;s last run was successful or not. | [optional]
- **running** | **Boolean**| Search on whether a job is currently running or not. | [optional]
- **name** | **String**| Search on a job&#39;s name. | [optional]
- **searchTimezone** | **String**| Search for jobs in a timezone. | [optional]
- **command** | **String**| Search for jobs by the command that they execute. | [optional]
+ **expression** | **String**| A search expression to filter jobs. | [optional]
  **timezone** | **String**|  | [optional]
  **perPage** | **Integer**|  | [optional]
  **page** | **Integer**|  | [optional]

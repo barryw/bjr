@@ -407,16 +407,7 @@ func (a *JobsApiService) GetJobRuns(ctx _context.Context, id int32, localVarOpti
 
 // GetJobsOpts Optional parameters for the method 'GetJobs'
 type GetJobsOpts struct {
-    Tags optional.String
-    Incexc optional.String
-    StartDate optional.String
-    EndDate optional.String
-    Enabled optional.Bool
-    Succeeded optional.Bool
-    Running optional.Bool
-    Name optional.String
-    SearchTimezone optional.String
-    Command optional.String
+    Expression optional.String
     Timezone optional.String
     PerPage optional.Int32
     Page optional.Int32
@@ -427,16 +418,7 @@ GetJobs Retrieves jobs
 Retrieves jobs
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetJobsOpts - Optional Parameters:
- * @param "Tags" (optional.String) -  Specify a comma-separated list of tags to search jobs by.
- * @param "Incexc" (optional.String) - 
- * @param "StartDate" (optional.String) -  Specify a start date to search jobs by.
- * @param "EndDate" (optional.String) -  Specify an end date to search jobs by.
- * @param "Enabled" (optional.Bool) -  Search on whether a job is enabled or not.
- * @param "Succeeded" (optional.Bool) -  Search on whether a job's last run was successful or not.
- * @param "Running" (optional.Bool) -  Search on whether a job is currently running or not.
- * @param "Name" (optional.String) -  Search on a job's name.
- * @param "SearchTimezone" (optional.String) -  Search for jobs in a timezone.
- * @param "Command" (optional.String) -  Search for jobs by the command that they execute.
+ * @param "Expression" (optional.String) -  A search expression to filter jobs.
  * @param "Timezone" (optional.String) - 
  * @param "PerPage" (optional.Int32) - 
  * @param "Page" (optional.Int32) - 
@@ -458,35 +440,8 @@ func (a *JobsApiService) GetJobs(ctx _context.Context, localVarOptionals *GetJob
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if localVarOptionals != nil && localVarOptionals.Tags.IsSet() {
-		localVarQueryParams.Add("tags", parameterToString(localVarOptionals.Tags.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Incexc.IsSet() {
-		localVarQueryParams.Add("incexc", parameterToString(localVarOptionals.Incexc.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.StartDate.IsSet() {
-		localVarQueryParams.Add("start_date", parameterToString(localVarOptionals.StartDate.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.EndDate.IsSet() {
-		localVarQueryParams.Add("end_date", parameterToString(localVarOptionals.EndDate.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Enabled.IsSet() {
-		localVarQueryParams.Add("enabled", parameterToString(localVarOptionals.Enabled.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Succeeded.IsSet() {
-		localVarQueryParams.Add("succeeded", parameterToString(localVarOptionals.Succeeded.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Running.IsSet() {
-		localVarQueryParams.Add("running", parameterToString(localVarOptionals.Running.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Name.IsSet() {
-		localVarQueryParams.Add("name", parameterToString(localVarOptionals.Name.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.SearchTimezone.IsSet() {
-		localVarQueryParams.Add("search_timezone", parameterToString(localVarOptionals.SearchTimezone.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Command.IsSet() {
-		localVarQueryParams.Add("command", parameterToString(localVarOptionals.Command.Value(), ""))
+	if localVarOptionals != nil && localVarOptionals.Expression.IsSet() {
+		localVarQueryParams.Add("expression", parameterToString(localVarOptionals.Expression.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.Timezone.IsSet() {
 		localVarQueryParams.Add("timezone", parameterToString(localVarOptionals.Timezone.Value(), ""))

@@ -97,55 +97,61 @@ class Job < ApplicationRecord
 
   #
   # Take a string expression and convert it into something that find_jobs can deal with. This allows our smart folders
-  # to return jobs that match an expression.
+  # to return jobs that match an expression. It also allows UI search components to filter jobs.
   #
   def self.search_jobs(user, expression)
-    tags = ''
+    tags = nil
     enabled = nil
     succeeded = nil
     running = nil
-    name = ''
-    timezone = ''
-    command = ''
-    incexc = ''
+    name = nil
+    timezone = nil
+    command = nil
+    incexc = nil
     occur_start = nil
     occur_end = nil
 
-    pieces = expression.split(' ')
-    pieces.each do |piece|
-      prefix, search = piece.split(':')
-      case prefix
-      when 'name'
-        name = search
-      when 'command', 'cmd'
-        command = search
-      when 'timezone', 'tz'
-        timezone = search
-      when 'running', 'executing'
-        running = true
-      when 'stopped'
-        running = false
-      when 'enabled'
-        enabled = true
-      when 'disabled'
-        enabled = false
-      when 'succeeded', 'success', 'successful'
-        succeeded = true
-      when 'failed', 'fail', 'failing', 'broken'
-        succeeded = false
-      when 'tags', 'tag'
-        if search.start_with? '!'
-          incexc = 'exclude'
-          tags = search[1..-1]
-        elsif search.start_with? '&'
-          incexc = 'all'
-          tags = search[1..-1]
-        elsif search.start_with? '|'
-          incexc = 'any'
-          tags = search[1..-1]
-        else
-          incexc = 'any'
-          tags = search
+    if expression
+      pieces = expression.split(' ')
+      pieces.each do |piece|
+        prefix, search = piece.split(':')
+        case prefix
+        when 'name'
+          name = search
+        when 'command', 'cmd'
+          command = search
+        when 'timezone', 'tz'
+          timezone = search
+        when 'running', 'executing'
+          running = true
+        when 'stopped'
+          running = false
+        when 'enabled'
+          enabled = true
+        when 'disabled'
+          enabled = false
+        when 'succeeded', 'success', 'successful'
+          succeeded = true
+        when 'failed', 'fail', 'failing', 'broken'
+          succeeded = false
+        when 'start_date'
+          occur_start = search
+        when 'end_date'
+          occur_end = search
+        when 'tags', 'tag'
+          if search.start_with? '!'
+            incexc = 'exclude'
+            tags = search[1..-1]
+          elsif search.start_with? '&'
+            incexc = 'all'
+            tags = search[1..-1]
+          elsif search.start_with? '|'
+            incexc = 'any'
+            tags = search[1..-1]
+          else
+            incexc = 'any'
+            tags = search
+          end
         end
       end
     end

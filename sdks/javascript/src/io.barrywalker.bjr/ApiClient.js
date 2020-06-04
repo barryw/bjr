@@ -17,7 +17,7 @@ import querystring from "querystring";
 
 /**
 * @module io.barrywalker.bjr/ApiClient
-* @version 1.10.0
+* @version 2.0.0
 */
 
 /**

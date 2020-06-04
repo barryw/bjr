@@ -130,21 +130,12 @@ namespace BJR.Api
         /// Retrieves jobs
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
-        /// <param name="incexc"> (optional)</param>
-        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
-        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
-        /// <param name="enabled">Search on whether a job is enabled or not. (optional)</param>
-        /// <param name="succeeded">Search on whether a job&#39;s last run was successful or not. (optional)</param>
-        /// <param name="running">Search on whether a job is currently running or not. (optional)</param>
-        /// <param name="name">Search on a job&#39;s name. (optional)</param>
-        /// <param name="searchTimezone">Search for jobs in a timezone. (optional)</param>
-        /// <param name="command">Search for jobs by the command that they execute. (optional)</param>
+        /// <param name="expression">A search expression to filter jobs. (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        JobArrayMessage GetJobs (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), bool? enabled = default(bool?), bool? succeeded = default(bool?), bool? running = default(bool?), string name = default(string), string searchTimezone = default(string), string command = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?));
+        JobArrayMessage GetJobs (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?));
 
         /// <summary>
         /// Retrieves jobs
@@ -153,21 +144,12 @@ namespace BJR.Api
         /// Retrieves jobs
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
-        /// <param name="incexc"> (optional)</param>
-        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
-        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
-        /// <param name="enabled">Search on whether a job is enabled or not. (optional)</param>
-        /// <param name="succeeded">Search on whether a job&#39;s last run was successful or not. (optional)</param>
-        /// <param name="running">Search on whether a job is currently running or not. (optional)</param>
-        /// <param name="name">Search on a job&#39;s name. (optional)</param>
-        /// <param name="searchTimezone">Search for jobs in a timezone. (optional)</param>
-        /// <param name="command">Search for jobs by the command that they execute. (optional)</param>
+        /// <param name="expression">A search expression to filter jobs. (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), bool? enabled = default(bool?), bool? succeeded = default(bool?), bool? running = default(bool?), string name = default(string), string searchTimezone = default(string), string command = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?));
+        ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?));
         /// <summary>
         /// Upcoming job occurrences
         /// </summary>
@@ -353,21 +335,12 @@ namespace BJR.Api
         /// Retrieves jobs
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
-        /// <param name="incexc"> (optional)</param>
-        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
-        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
-        /// <param name="enabled">Search on whether a job is enabled or not. (optional)</param>
-        /// <param name="succeeded">Search on whether a job&#39;s last run was successful or not. (optional)</param>
-        /// <param name="running">Search on whether a job is currently running or not. (optional)</param>
-        /// <param name="name">Search on a job&#39;s name. (optional)</param>
-        /// <param name="searchTimezone">Search for jobs in a timezone. (optional)</param>
-        /// <param name="command">Search for jobs by the command that they execute. (optional)</param>
+        /// <param name="expression">A search expression to filter jobs. (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>Task of JobArrayMessage</returns>
-        System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), bool? enabled = default(bool?), bool? succeeded = default(bool?), bool? running = default(bool?), string name = default(string), string searchTimezone = default(string), string command = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?));
+        System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?));
 
         /// <summary>
         /// Retrieves jobs
@@ -376,21 +349,12 @@ namespace BJR.Api
         /// Retrieves jobs
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
-        /// <param name="incexc"> (optional)</param>
-        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
-        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
-        /// <param name="enabled">Search on whether a job is enabled or not. (optional)</param>
-        /// <param name="succeeded">Search on whether a job&#39;s last run was successful or not. (optional)</param>
-        /// <param name="running">Search on whether a job is currently running or not. (optional)</param>
-        /// <param name="name">Search on a job&#39;s name. (optional)</param>
-        /// <param name="searchTimezone">Search for jobs in a timezone. (optional)</param>
-        /// <param name="command">Search for jobs by the command that they execute. (optional)</param>
+        /// <param name="expression">A search expression to filter jobs. (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), bool? enabled = default(bool?), bool? succeeded = default(bool?), bool? running = default(bool?), string name = default(string), string searchTimezone = default(string), string command = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?));
+        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?));
         /// <summary>
         /// Upcoming job occurrences
         /// </summary>
@@ -1130,23 +1094,14 @@ namespace BJR.Api
         /// Retrieves jobs Retrieves jobs
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
-        /// <param name="incexc"> (optional)</param>
-        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
-        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
-        /// <param name="enabled">Search on whether a job is enabled or not. (optional)</param>
-        /// <param name="succeeded">Search on whether a job&#39;s last run was successful or not. (optional)</param>
-        /// <param name="running">Search on whether a job is currently running or not. (optional)</param>
-        /// <param name="name">Search on a job&#39;s name. (optional)</param>
-        /// <param name="searchTimezone">Search for jobs in a timezone. (optional)</param>
-        /// <param name="command">Search for jobs by the command that they execute. (optional)</param>
+        /// <param name="expression">A search expression to filter jobs. (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        public JobArrayMessage GetJobs (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), bool? enabled = default(bool?), bool? succeeded = default(bool?), bool? running = default(bool?), string name = default(string), string searchTimezone = default(string), string command = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?))
+        public JobArrayMessage GetJobs (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?))
         {
-             BJR.Client.ApiResponse<JobArrayMessage> localVarResponse = GetJobsWithHttpInfo(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page);
+             BJR.Client.ApiResponse<JobArrayMessage> localVarResponse = GetJobsWithHttpInfo(expression, timezone, perPage, page);
              return localVarResponse.Data;
         }
 
@@ -1154,21 +1109,12 @@ namespace BJR.Api
         /// Retrieves jobs Retrieves jobs
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
-        /// <param name="incexc"> (optional)</param>
-        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
-        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
-        /// <param name="enabled">Search on whether a job is enabled or not. (optional)</param>
-        /// <param name="succeeded">Search on whether a job&#39;s last run was successful or not. (optional)</param>
-        /// <param name="running">Search on whether a job is currently running or not. (optional)</param>
-        /// <param name="name">Search on a job&#39;s name. (optional)</param>
-        /// <param name="searchTimezone">Search for jobs in a timezone. (optional)</param>
-        /// <param name="command">Search for jobs by the command that they execute. (optional)</param>
+        /// <param name="expression">A search expression to filter jobs. (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        public BJR.Client.ApiResponse< JobArrayMessage > GetJobsWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), bool? enabled = default(bool?), bool? succeeded = default(bool?), bool? running = default(bool?), string name = default(string), string searchTimezone = default(string), string command = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?))
+        public BJR.Client.ApiResponse< JobArrayMessage > GetJobsWithHttpInfo (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?))
         {
             BJR.Client.RequestOptions localVarRequestOptions = new BJR.Client.RequestOptions();
 
@@ -1186,45 +1132,9 @@ namespace BJR.Api
             var localVarAccept = BJR.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            if (tags != null)
+            if (expression != null)
             {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "tags", tags));
-            }
-            if (incexc != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "incexc", incexc));
-            }
-            if (startDate != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "start_date", startDate));
-            }
-            if (endDate != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "end_date", endDate));
-            }
-            if (enabled != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "enabled", enabled));
-            }
-            if (succeeded != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "succeeded", succeeded));
-            }
-            if (running != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "running", running));
-            }
-            if (name != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "name", name));
-            }
-            if (searchTimezone != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "search_timezone", searchTimezone));
-            }
-            if (command != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "command", command));
+                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "expression", expression));
             }
             if (timezone != null)
             {
@@ -1262,23 +1172,14 @@ namespace BJR.Api
         /// Retrieves jobs Retrieves jobs
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
-        /// <param name="incexc"> (optional)</param>
-        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
-        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
-        /// <param name="enabled">Search on whether a job is enabled or not. (optional)</param>
-        /// <param name="succeeded">Search on whether a job&#39;s last run was successful or not. (optional)</param>
-        /// <param name="running">Search on whether a job is currently running or not. (optional)</param>
-        /// <param name="name">Search on a job&#39;s name. (optional)</param>
-        /// <param name="searchTimezone">Search for jobs in a timezone. (optional)</param>
-        /// <param name="command">Search for jobs by the command that they execute. (optional)</param>
+        /// <param name="expression">A search expression to filter jobs. (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>Task of JobArrayMessage</returns>
-        public async System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), bool? enabled = default(bool?), bool? succeeded = default(bool?), bool? running = default(bool?), string name = default(string), string searchTimezone = default(string), string command = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?))
+        public async System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?))
         {
-             BJR.Client.ApiResponse<JobArrayMessage> localVarResponse = await GetJobsAsyncWithHttpInfo(tags, incexc, startDate, endDate, enabled, succeeded, running, name, searchTimezone, command, timezone, perPage, page);
+             BJR.Client.ApiResponse<JobArrayMessage> localVarResponse = await GetJobsAsyncWithHttpInfo(expression, timezone, perPage, page);
              return localVarResponse.Data;
 
         }
@@ -1287,21 +1188,12 @@ namespace BJR.Api
         /// Retrieves jobs Retrieves jobs
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tags">Specify a comma-separated list of tags to search jobs by. (optional)</param>
-        /// <param name="incexc"> (optional)</param>
-        /// <param name="startDate">Specify a start date to search jobs by. (optional)</param>
-        /// <param name="endDate">Specify an end date to search jobs by. (optional)</param>
-        /// <param name="enabled">Search on whether a job is enabled or not. (optional)</param>
-        /// <param name="succeeded">Search on whether a job&#39;s last run was successful or not. (optional)</param>
-        /// <param name="running">Search on whether a job is currently running or not. (optional)</param>
-        /// <param name="name">Search on a job&#39;s name. (optional)</param>
-        /// <param name="searchTimezone">Search for jobs in a timezone. (optional)</param>
-        /// <param name="command">Search for jobs by the command that they execute. (optional)</param>
+        /// <param name="expression">A search expression to filter jobs. (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        public async System.Threading.Tasks.Task<BJR.Client.ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string tags = default(string), string incexc = default(string), string startDate = default(string), string endDate = default(string), bool? enabled = default(bool?), bool? succeeded = default(bool?), bool? running = default(bool?), string name = default(string), string searchTimezone = default(string), string command = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?))
+        public async System.Threading.Tasks.Task<BJR.Client.ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?))
         {
 
             BJR.Client.RequestOptions localVarRequestOptions = new BJR.Client.RequestOptions();
@@ -1320,45 +1212,9 @@ namespace BJR.Api
             foreach (var _accept in _accepts)
                 localVarRequestOptions.HeaderParameters.Add("Accept", _accept);
             
-            if (tags != null)
+            if (expression != null)
             {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "tags", tags));
-            }
-            if (incexc != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "incexc", incexc));
-            }
-            if (startDate != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "start_date", startDate));
-            }
-            if (endDate != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "end_date", endDate));
-            }
-            if (enabled != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "enabled", enabled));
-            }
-            if (succeeded != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "succeeded", succeeded));
-            }
-            if (running != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "running", running));
-            }
-            if (name != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "name", name));
-            }
-            if (searchTimezone != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "search_timezone", searchTimezone));
-            }
-            if (command != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "command", command));
+                localVarRequestOptions.QueryParameters.Add(BJR.Client.ClientUtils.ParameterToMultiMap("", "expression", expression));
             }
             if (timezone != null)
             {

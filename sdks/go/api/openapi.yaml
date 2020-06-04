@@ -354,86 +354,10 @@ paths:
       description: Retrieves jobs
       operationId: getJobs
       parameters:
-      - description: Specify a comma-separated list of tags to search jobs by.
+      - description: A search expression to filter jobs.
         explode: true
         in: query
-        name: tags
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: incexc
-        required: false
-        schema:
-          description: How to handle the case where many tags are specified.
-          enum:
-          - all
-          - any
-          - except
-          type: string
-        style: form
-      - description: Specify a start date to search jobs by.
-        explode: true
-        in: query
-        name: start_date
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Specify an end date to search jobs by.
-        explode: true
-        in: query
-        name: end_date
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Search on whether a job is enabled or not.
-        explode: true
-        in: query
-        name: enabled
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - description: Search on whether a job's last run was successful or not.
-        explode: true
-        in: query
-        name: succeeded
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - description: Search on whether a job is currently running or not.
-        explode: true
-        in: query
-        name: running
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - description: Search on a job's name.
-        explode: true
-        in: query
-        name: name
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Search for jobs in a timezone.
-        explode: true
-        in: query
-        name: search_timezone
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: Search for jobs by the command that they execute.
-        explode: true
-        in: query
-        name: command
+        name: expression
         required: false
         schema:
           type: string

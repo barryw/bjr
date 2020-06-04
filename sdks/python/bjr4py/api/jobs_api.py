@@ -532,16 +532,7 @@ class JobsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str tags: Specify a comma-separated list of tags to search jobs by.
-        :param str incexc:
-        :param str start_date: Specify a start date to search jobs by.
-        :param str end_date: Specify an end date to search jobs by.
-        :param bool enabled: Search on whether a job is enabled or not.
-        :param bool succeeded: Search on whether a job's last run was successful or not.
-        :param bool running: Search on whether a job is currently running or not.
-        :param str name: Search on a job's name.
-        :param str search_timezone: Search for jobs in a timezone.
-        :param str command: Search for jobs by the command that they execute.
+        :param str expression: A search expression to filter jobs.
         :param str timezone:
         :param int per_page:
         :param int page:
@@ -569,16 +560,7 @@ class JobsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str tags: Specify a comma-separated list of tags to search jobs by.
-        :param str incexc:
-        :param str start_date: Specify a start date to search jobs by.
-        :param str end_date: Specify an end date to search jobs by.
-        :param bool enabled: Search on whether a job is enabled or not.
-        :param bool succeeded: Search on whether a job's last run was successful or not.
-        :param bool running: Search on whether a job is currently running or not.
-        :param str name: Search on a job's name.
-        :param str search_timezone: Search for jobs in a timezone.
-        :param str command: Search for jobs by the command that they execute.
+        :param str expression: A search expression to filter jobs.
         :param str timezone:
         :param int per_page:
         :param int page:
@@ -599,16 +581,7 @@ class JobsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'tags',
-            'incexc',
-            'start_date',
-            'end_date',
-            'enabled',
-            'succeeded',
-            'running',
-            'name',
-            'search_timezone',
-            'command',
+            'expression',
             'timezone',
             'per_page',
             'page'
@@ -636,26 +609,8 @@ class JobsApi(object):
         path_params = {}
 
         query_params = []
-        if 'tags' in local_var_params and local_var_params['tags'] is not None:  # noqa: E501
-            query_params.append(('tags', local_var_params['tags']))  # noqa: E501
-        if 'incexc' in local_var_params and local_var_params['incexc'] is not None:  # noqa: E501
-            query_params.append(('incexc', local_var_params['incexc']))  # noqa: E501
-        if 'start_date' in local_var_params and local_var_params['start_date'] is not None:  # noqa: E501
-            query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
-        if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
-            query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
-        if 'enabled' in local_var_params and local_var_params['enabled'] is not None:  # noqa: E501
-            query_params.append(('enabled', local_var_params['enabled']))  # noqa: E501
-        if 'succeeded' in local_var_params and local_var_params['succeeded'] is not None:  # noqa: E501
-            query_params.append(('succeeded', local_var_params['succeeded']))  # noqa: E501
-        if 'running' in local_var_params and local_var_params['running'] is not None:  # noqa: E501
-            query_params.append(('running', local_var_params['running']))  # noqa: E501
-        if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
-            query_params.append(('name', local_var_params['name']))  # noqa: E501
-        if 'search_timezone' in local_var_params and local_var_params['search_timezone'] is not None:  # noqa: E501
-            query_params.append(('search_timezone', local_var_params['search_timezone']))  # noqa: E501
-        if 'command' in local_var_params and local_var_params['command'] is not None:  # noqa: E501
-            query_params.append(('command', local_var_params['command']))  # noqa: E501
+        if 'expression' in local_var_params and local_var_params['expression'] is not None:  # noqa: E501
+            query_params.append(('expression', local_var_params['expression']))  # noqa: E501
         if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
             query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
         if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501

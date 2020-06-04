@@ -199,16 +199,7 @@ Optional parameters are passed through a pointer to a GetJobsOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tags** | **optional.String**| Specify a comma-separated list of tags to search jobs by. | 
- **incexc** | **optional.String**|  | 
- **startDate** | **optional.String**| Specify a start date to search jobs by. | 
- **endDate** | **optional.String**| Specify an end date to search jobs by. | 
- **enabled** | **optional.Bool**| Search on whether a job is enabled or not. | 
- **succeeded** | **optional.Bool**| Search on whether a job&#39;s last run was successful or not. | 
- **running** | **optional.Bool**| Search on whether a job is currently running or not. | 
- **name** | **optional.String**| Search on a job&#39;s name. | 
- **searchTimezone** | **optional.String**| Search for jobs in a timezone. | 
- **command** | **optional.String**| Search for jobs by the command that they execute. | 
+ **expression** | **optional.String**| A search expression to filter jobs. | 
  **timezone** | **optional.String**|  | 
  **perPage** | **optional.Int32**|  | 
  **page** | **optional.Int32**|  | 

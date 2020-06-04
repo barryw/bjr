@@ -37,7 +37,7 @@ pub trait JobsApi {
     fn delete_job(&self, id: i32) -> Box<dyn Future<Item = crate::models::SingleJobMessage, Error = Error<serde_json::Value>>>;
     fn get_job(&self, id: i32) -> Box<dyn Future<Item = crate::models::SingleJobMessage, Error = Error<serde_json::Value>>>;
     fn get_job_runs(&self, id: i32, per_page: Option<i32>, page: Option<i32>, succeeded: Option<bool>, start_date: Option<&str>, end_date: Option<&str>, timezone: Option<&str>) -> Box<dyn Future<Item = crate::models::JobRunArrayMessage, Error = Error<serde_json::Value>>>;
-    fn get_jobs(&self, tags: Option<&str>, incexc: Option<&str>, start_date: Option<&str>, end_date: Option<&str>, enabled: Option<bool>, succeeded: Option<bool>, running: Option<bool>, name: Option<&str>, search_timezone: Option<&str>, command: Option<&str>, timezone: Option<&str>, per_page: Option<i32>, page: Option<i32>) -> Box<dyn Future<Item = crate::models::JobArrayMessage, Error = Error<serde_json::Value>>>;
+    fn get_jobs(&self, expression: Option<&str>, timezone: Option<&str>, per_page: Option<i32>, page: Option<i32>) -> Box<dyn Future<Item = crate::models::JobArrayMessage, Error = Error<serde_json::Value>>>;
     fn job_occurrences(&self, id: i32, end_date: &str, per_page: Option<i32>, page: Option<i32>, timezone: Option<&str>) -> Box<dyn Future<Item = crate::models::OccurrenceMessage, Error = Error<serde_json::Value>>>;
     fn run_job_now(&self, id: i32) -> Box<dyn Future<Item = (), Error = Error<serde_json::Value>>>;
     fn update_job(&self, id: i32, job_in: Option<crate::models::JobIn>) -> Box<dyn Future<Item = crate::models::SingleJobMessage, Error = Error<serde_json::Value>>>;
@@ -98,39 +98,12 @@ impl<C: hyper::client::Connect>JobsApi for JobsApiClient<C> {
         req.execute(self.configuration.borrow())
     }
 
-    fn get_jobs(&self, tags: Option<&str>, incexc: Option<&str>, start_date: Option<&str>, end_date: Option<&str>, enabled: Option<bool>, succeeded: Option<bool>, running: Option<bool>, name: Option<&str>, search_timezone: Option<&str>, command: Option<&str>, timezone: Option<&str>, per_page: Option<i32>, page: Option<i32>) -> Box<dyn Future<Item = crate::models::JobArrayMessage, Error = Error<serde_json::Value>>> {
+    fn get_jobs(&self, expression: Option<&str>, timezone: Option<&str>, per_page: Option<i32>, page: Option<i32>) -> Box<dyn Future<Item = crate::models::JobArrayMessage, Error = Error<serde_json::Value>>> {
         let mut req = __internal_request::Request::new(hyper::Method::Get, "/job_api".to_string())
             .with_auth(__internal_request::Auth::Basic)
         ;
-        if let Some(ref s) = tags {
-            req = req.with_query_param("tags".to_string(), s.to_string());
-        }
-        if let Some(ref s) = incexc {
-            req = req.with_query_param("incexc".to_string(), s.to_string());
-        }
-        if let Some(ref s) = start_date {
-            req = req.with_query_param("start_date".to_string(), s.to_string());
-        }
-        if let Some(ref s) = end_date {
-            req = req.with_query_param("end_date".to_string(), s.to_string());
-        }
-        if let Some(ref s) = enabled {
-            req = req.with_query_param("enabled".to_string(), s.to_string());
-        }
-        if let Some(ref s) = succeeded {
-            req = req.with_query_param("succeeded".to_string(), s.to_string());
-        }
-        if let Some(ref s) = running {
-            req = req.with_query_param("running".to_string(), s.to_string());
-        }
-        if let Some(ref s) = name {
-            req = req.with_query_param("name".to_string(), s.to_string());
-        }
-        if let Some(ref s) = search_timezone {
-            req = req.with_query_param("search_timezone".to_string(), s.to_string());
-        }
-        if let Some(ref s) = command {
-            req = req.with_query_param("command".to_string(), s.to_string());
+        if let Some(ref s) = expression {
+            req = req.with_query_param("expression".to_string(), s.to_string());
         }
         if let Some(ref s) = timezone {
             req = req.with_query_param("timezone".to_string(), s.to_string());

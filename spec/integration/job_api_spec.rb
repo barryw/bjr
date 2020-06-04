@@ -170,16 +170,7 @@ describe 'Job API' do
       security [bearerAuth: []]
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :tags, in: :query, type: :string, description: 'Specify a comma-separated list of tags to search jobs by.', required: false
-      parameter name: :incexc, in: :query, schema: { type: :string, enum: %w[all any except], description: 'How to handle the case where many tags are specified.' }, required: false
-      parameter name: :start_date, in: :query, type: :string, description: 'Specify a start date to search jobs by.', required: false
-      parameter name: :end_date, in: :query, type: :string, description: 'Specify an end date to search jobs by.', required: false
-      parameter name: :enabled, in: :query, type: :boolean, description: 'Search on whether a job is enabled or not.', required: false
-      parameter name: :succeeded, in: :query, type: :boolean, description: 'Search on whether a job\'s last run was successful or not.', required: false
-      parameter name: :running, in: :query, type: :boolean, description: 'Search on whether a job is currently running or not.', required: false
-      parameter name: :name, in: :query, type: :string, description: 'Search on a job\'s name.', required: false
-      parameter name: :search_timezone, in: :query, type: :string, description: 'Search for jobs in a timezone.', required: false
-      parameter name: :command, in: :query, type: :string, description: 'Search for jobs by the command that they execute.', required: false
+      parameter name: :expression, in: :query, type: :string, description: 'A search expression to filter jobs.', required: false
       parameter name: :timezone, in: :query, type: :string, required: false
       parameter name: :per_page, in: :query, type: :integer, required: false
       parameter name: :page, in: :query, type: :integer, required: false
