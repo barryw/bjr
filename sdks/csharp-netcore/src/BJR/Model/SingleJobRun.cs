@@ -48,7 +48,7 @@ namespace BJR.Model
         /// <param name="isManual">True if the job was run manually as opposed to run on a schedule..</param>
         /// <param name="createdAt">The date and time that the run record was created in UTC..</param>
         /// <param name="updatedAt">The date and time that the run record was last updated in UTC..</param>
-        public SingleJobRun(int id = default(int), bool success = default(bool), int returnCode = default(int), string errorMessage = default(string), string stdout = default(string), string stderr = default(string), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), DateTime scheduledStartTime = default(DateTime), int scheduleDiffInSeconds = default(int), int jobId = default(int), bool isManual = default(bool), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public SingleJobRun(int id = default(int), bool success = default(bool), int returnCode = default(int), string errorMessage = default(string), string stdout = default(string), string stderr = default(string), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), DateTime? scheduledStartTime = default(DateTime?), int? scheduleDiffInSeconds = default(int?), int jobId = default(int), bool isManual = default(bool), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Id = id;
             this.Success = success;
@@ -126,15 +126,15 @@ namespace BJR.Model
         /// The date and time that the job should have run.
         /// </summary>
         /// <value>The date and time that the job should have run.</value>
-        [DataMember(Name="scheduled_start_time", EmitDefaultValue=false)]
-        public DateTime ScheduledStartTime { get; set; }
+        [DataMember(Name="scheduled_start_time", EmitDefaultValue=true)]
+        public DateTime? ScheduledStartTime { get; set; }
 
         /// <summary>
         /// The difference in seconds between when the job was scheduled to run and when it ran.
         /// </summary>
         /// <value>The difference in seconds between when the job was scheduled to run and when it ran.</value>
-        [DataMember(Name="schedule_diff_in_seconds", EmitDefaultValue=false)]
-        public int ScheduleDiffInSeconds { get; set; }
+        [DataMember(Name="schedule_diff_in_seconds", EmitDefaultValue=true)]
+        public int? ScheduleDiffInSeconds { get; set; }
 
         /// <summary>
         /// The job that the run is associated with.
@@ -264,7 +264,8 @@ namespace BJR.Model
                 ) && 
                 (
                     this.ScheduleDiffInSeconds == input.ScheduleDiffInSeconds ||
-                    this.ScheduleDiffInSeconds.Equals(input.ScheduleDiffInSeconds)
+                    (this.ScheduleDiffInSeconds != null &&
+                    this.ScheduleDiffInSeconds.Equals(input.ScheduleDiffInSeconds))
                 ) && 
                 (
                     this.JobId == input.JobId ||
@@ -310,7 +311,8 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.EndTime.GetHashCode();
                 if (this.ScheduledStartTime != null)
                     hashCode = hashCode * 59 + this.ScheduledStartTime.GetHashCode();
-                hashCode = hashCode * 59 + this.ScheduleDiffInSeconds.GetHashCode();
+                if (this.ScheduleDiffInSeconds != null)
+                    hashCode = hashCode * 59 + this.ScheduleDiffInSeconds.GetHashCode();
                 hashCode = hashCode * 59 + this.JobId.GetHashCode();
                 hashCode = hashCode * 59 + this.IsManual.GetHashCode();
                 if (this.CreatedAt != null)

@@ -1980,10 +1980,12 @@ components:
         scheduled_start_time:
           description: The date and time that the job should have run.
           format: date-time
+          nullable: true
           type: string
         schedule_diff_in_seconds:
           description: The difference in seconds between when the job was scheduled
             to run and when it ran.
+          nullable: true
           type: integer
         job_id:
           description: The job that the run is associated with.

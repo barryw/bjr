@@ -21,7 +21,7 @@ import SingleJobMessage from '../io.barrywalker.bjr.model/SingleJobMessage';
 /**
 * Folders service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/FoldersApi
-* @version 2.2.0
+* @version 2.3.0
 */
 export default class FoldersApi {
 

@@ -30,9 +30,9 @@ type SingleJobRun struct {
 	// The date and time that the run ended.
 	EndTime time.Time `json:"end_time,omitempty"`
 	// The date and time that the job should have run.
-	ScheduledStartTime time.Time `json:"scheduled_start_time,omitempty"`
+	ScheduledStartTime *time.Time `json:"scheduled_start_time,omitempty"`
 	// The difference in seconds between when the job was scheduled to run and when it ran.
-	ScheduleDiffInSeconds int32 `json:"schedule_diff_in_seconds,omitempty"`
+	ScheduleDiffInSeconds *int32 `json:"schedule_diff_in_seconds,omitempty"`
 	// The job that the run is associated with.
 	JobId int32 `json:"job_id,omitempty"`
 	// True if the job was run manually as opposed to run on a schedule.

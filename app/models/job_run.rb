@@ -50,6 +50,6 @@ class JobRun < ApplicationRecord
   end
 
   def as_json(_options = {})
-    super(only: %i[id success return_code error_message stdout stderr start_time end_time job_id created_at updated_at])
+    super(only: %i[id success return_code error_message stdout stderr start_time end_time job_id scheduled_start_time schedule_diff_in_seconds is_manual created_at updated_at])
   end
 end

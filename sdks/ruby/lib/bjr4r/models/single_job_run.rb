@@ -102,6 +102,8 @@ module BJR
         :'error_message',
         :'stdout',
         :'stderr',
+        :'scheduled_start_time',
+        :'schedule_diff_in_seconds',
       ])
     end
 

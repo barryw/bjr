@@ -101,10 +101,8 @@ class SingleJobRun(object):
             self.start_time = start_time
         if end_time is not None:
             self.end_time = end_time
-        if scheduled_start_time is not None:
-            self.scheduled_start_time = scheduled_start_time
-        if schedule_diff_in_seconds is not None:
-            self.schedule_diff_in_seconds = schedule_diff_in_seconds
+        self.scheduled_start_time = scheduled_start_time
+        self.schedule_diff_in_seconds = schedule_diff_in_seconds
         if job_id is not None:
             self.job_id = job_id
         if is_manual is not None:
