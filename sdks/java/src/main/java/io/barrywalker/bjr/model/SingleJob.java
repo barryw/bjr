@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * SingleJob
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-04T15:35:23.277Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-06T23:10:31.977Z[GMT]")
 public class SingleJob {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
