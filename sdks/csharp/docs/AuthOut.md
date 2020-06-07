@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AuthToken** | **string** | The JWT authentication token. This must be passed in the Authorization header on subsequent requests. | [optional] 
+**UserId** | **int?** | The id of the authenticated user. | [optional] 
 **Message** | **string** | If authentication failed, this will contain the reason why. | [optional] 
 **IsError** | **bool** | This will be true if the authentication was successful, and false if not. | [optional] 
 **StatusCode** | **int** | The HTTP status code returned. | [optional] 

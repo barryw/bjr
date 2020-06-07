@@ -37,6 +37,7 @@ class TestAuthOut(unittest.TestCase):
         if include_optional :
             return AuthOut(
                 auth_token = '0', 
+                user_id = 56, 
                 message = '0', 
                 is_error = True, 
                 status_code = 56

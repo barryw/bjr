@@ -1,6 +1,6 @@
 [package]
 name = "BJR"
-version = "2.3.0"
+version = "2.3.1"
 authors = ["OpenAPI Generator team and contributors"]
 
 [dependencies]

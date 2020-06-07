@@ -34,6 +34,7 @@ class AuthOut(object):
     """
     openapi_types = {
         'auth_token': 'str',
+        'user_id': 'int',
         'message': 'str',
         'is_error': 'bool',
         'status_code': 'int'
@@ -41,18 +42,20 @@ class AuthOut(object):
 
     attribute_map = {
         'auth_token': 'auth_token',
+        'user_id': 'user_id',
         'message': 'message',
         'is_error': 'is_error',
         'status_code': 'status_code'
     }
 
-    def __init__(self, auth_token=None, message=None, is_error=None, status_code=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, auth_token=None, user_id=None, message=None, is_error=None, status_code=None, local_vars_configuration=None):  # noqa: E501
         """AuthOut - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._auth_token = None
+        self._user_id = None
         self._message = None
         self._is_error = None
         self._status_code = None
@@ -60,6 +63,7 @@ class AuthOut(object):
 
         if auth_token is not None:
             self.auth_token = auth_token
+        self.user_id = user_id
         if message is not None:
             self.message = message
         if is_error is not None:
@@ -89,6 +93,29 @@ class AuthOut(object):
         """
 
         self._auth_token = auth_token
+
+    @property
+    def user_id(self):
+        """Gets the user_id of this AuthOut.  # noqa: E501
+
+        The id of the authenticated user.  # noqa: E501
+
+        :return: The user_id of this AuthOut.  # noqa: E501
+        :rtype: int
+        """
+        return self._user_id
+
+    @user_id.setter
+    def user_id(self, user_id):
+        """Sets the user_id of this AuthOut.
+
+        The id of the authenticated user.  # noqa: E501
+
+        :param user_id: The user_id of this AuthOut.  # noqa: E501
+        :type: int
+        """
+
+        self._user_id = user_id
 
     @property
     def message(self):

@@ -34,12 +34,15 @@ namespace BJR.Model
         /// Initializes a new instance of the <see cref="AuthOut" /> class.
         /// </summary>
         /// <param name="authToken">The JWT authentication token. This must be passed in the Authorization header on subsequent requests..</param>
+        /// <param name="userId">The id of the authenticated user..</param>
         /// <param name="message">If authentication failed, this will contain the reason why..</param>
         /// <param name="isError">This will be true if the authentication was successful, and false if not..</param>
         /// <param name="statusCode">The HTTP status code returned..</param>
-        public AuthOut(string authToken = default(string), string message = default(string), bool isError = default(bool), int statusCode = default(int))
+        public AuthOut(string authToken = default(string), int? userId = default(int?), string message = default(string), bool isError = default(bool), int statusCode = default(int))
         {
+            this.UserId = userId;
             this.AuthToken = authToken;
+            this.UserId = userId;
             this.Message = message;
             this.IsError = isError;
             this.StatusCode = statusCode;
@@ -51,6 +54,13 @@ namespace BJR.Model
         /// <value>The JWT authentication token. This must be passed in the Authorization header on subsequent requests.</value>
         [DataMember(Name="auth_token", EmitDefaultValue=false)]
         public string AuthToken { get; set; }
+
+        /// <summary>
+        /// The id of the authenticated user.
+        /// </summary>
+        /// <value>The id of the authenticated user.</value>
+        [DataMember(Name="user_id", EmitDefaultValue=true)]
+        public int? UserId { get; set; }
 
         /// <summary>
         /// If authentication failed, this will contain the reason why.
@@ -82,6 +92,7 @@ namespace BJR.Model
             var sb = new StringBuilder();
             sb.Append("class AuthOut {\n");
             sb.Append("  AuthToken: ").Append(AuthToken).Append("\n");
+            sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  IsError: ").Append(IsError).Append("\n");
             sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
@@ -125,6 +136,11 @@ namespace BJR.Model
                     this.AuthToken.Equals(input.AuthToken))
                 ) && 
                 (
+                    this.UserId == input.UserId ||
+                    (this.UserId != null &&
+                    this.UserId.Equals(input.UserId))
+                ) && 
+                (
                     this.Message == input.Message ||
                     (this.Message != null &&
                     this.Message.Equals(input.Message))
@@ -152,6 +168,8 @@ namespace BJR.Model
                 int hashCode = 41;
                 if (this.AuthToken != null)
                     hashCode = hashCode * 59 + this.AuthToken.GetHashCode();
+                if (this.UserId != null)
+                    hashCode = hashCode * 59 + this.UserId.GetHashCode();
                 if (this.Message != null)
                     hashCode = hashCode * 59 + this.Message.GetHashCode();
                 if (this.IsError != null)

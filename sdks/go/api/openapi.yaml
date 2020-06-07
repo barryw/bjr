@@ -1986,7 +1986,8 @@ components:
       type: object
     AuthOut:
       example:
-        status_code: 0
+        status_code: 6
+        user_id: 0
         is_error: true
         auth_token: auth_token
         message: message
@@ -1995,6 +1996,10 @@ components:
           description: The JWT authentication token. This must be passed in the Authorization
             header on subsequent requests.
           type: string
+        user_id:
+          description: The id of the authenticated user.
+          nullable: true
+          type: integer
         message:
           description: If authentication failed, this will contain the reason why.
           type: string

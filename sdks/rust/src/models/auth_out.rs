@@ -16,6 +16,9 @@ pub struct AuthOut {
     /// The JWT authentication token. This must be passed in the Authorization header on subsequent requests.
     #[serde(rename = "auth_token", skip_serializing_if = "Option::is_none")]
     pub auth_token: Option<String>,
+    /// The id of the authenticated user.
+    #[serde(rename = "user_id", skip_serializing_if = "Option::is_none")]
+    pub user_id: Option<i32>,
     /// If authentication failed, this will contain the reason why.
     #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
     pub message: Option<String>,
@@ -31,6 +34,7 @@ impl AuthOut {
     pub fn new() -> AuthOut {
         AuthOut {
             auth_token: None,
+            user_id: None,
             message: None,
             is_error: None,
             status_code: None,

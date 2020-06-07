@@ -74,6 +74,14 @@ namespace BJR.Test
             // TODO unit test for the property 'AuthToken'
         }
         /// <summary>
+        /// Test the property 'UserId'
+        /// </summary>
+        [Test]
+        public void UserIdTest()
+        {
+            // TODO unit test for the property 'UserId'
+        }
+        /// <summary>
         /// Test the property 'Message'
         /// </summary>
         [Test]

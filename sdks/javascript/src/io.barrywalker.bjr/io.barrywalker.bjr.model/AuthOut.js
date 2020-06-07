@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AuthOut model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/AuthOut
- * @version 2.3.0
+ * @version 2.3.1
  */
 class AuthOut {
     /**
@@ -50,6 +50,9 @@ class AuthOut {
             if (data.hasOwnProperty('auth_token')) {
                 obj['auth_token'] = ApiClient.convertToType(data['auth_token'], 'String');
             }
+            if (data.hasOwnProperty('user_id')) {
+                obj['user_id'] = ApiClient.convertToType(data['user_id'], 'Number');
+            }
             if (data.hasOwnProperty('message')) {
                 obj['message'] = ApiClient.convertToType(data['message'], 'String');
             }
@@ -71,6 +74,12 @@ class AuthOut {
  * @member {String} auth_token
  */
 AuthOut.prototype['auth_token'] = undefined;
+
+/**
+ * The id of the authenticated user.
+ * @member {Number} user_id
+ */
+AuthOut.prototype['user_id'] = undefined;
 
 /**
  * If authentication failed, this will contain the reason why.

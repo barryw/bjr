@@ -17,6 +17,9 @@ module BJR
     # The JWT authentication token. This must be passed in the Authorization header on subsequent requests.
     attr_accessor :auth_token
 
+    # The id of the authenticated user.
+    attr_accessor :user_id
+
     # If authentication failed, this will contain the reason why.
     attr_accessor :message
 
@@ -30,6 +33,7 @@ module BJR
     def self.attribute_map
       {
         :'auth_token' => :'auth_token',
+        :'user_id' => :'user_id',
         :'message' => :'message',
         :'is_error' => :'is_error',
         :'status_code' => :'status_code'
@@ -40,6 +44,7 @@ module BJR
     def self.openapi_types
       {
         :'auth_token' => :'String',
+        :'user_id' => :'Integer',
         :'message' => :'String',
         :'is_error' => :'Boolean',
         :'status_code' => :'Integer'
@@ -49,6 +54,7 @@ module BJR
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'user_id',
       ])
     end
 
@@ -69,6 +75,10 @@ module BJR
 
       if attributes.key?(:'auth_token')
         self.auth_token = attributes[:'auth_token']
+      end
+
+      if attributes.key?(:'user_id')
+        self.user_id = attributes[:'user_id']
       end
 
       if attributes.key?(:'message')
@@ -103,6 +113,7 @@ module BJR
       return true if self.equal?(o)
       self.class == o.class &&
           auth_token == o.auth_token &&
+          user_id == o.user_id &&
           message == o.message &&
           is_error == o.is_error &&
           status_code == o.status_code
@@ -117,7 +128,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auth_token, message, is_error, status_code].hash
+      [auth_token, user_id, message, is_error, status_code].hash
     end
 
     # Builds the object from hash

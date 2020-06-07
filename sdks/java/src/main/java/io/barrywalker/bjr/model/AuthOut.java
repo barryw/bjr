@@ -27,11 +27,15 @@ import java.io.IOException;
 /**
  * AuthOut
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-06T23:16:50.241Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-07T02:38:00.535Z[GMT]")
 public class AuthOut {
   public static final String SERIALIZED_NAME_AUTH_TOKEN = "auth_token";
   @SerializedName(SERIALIZED_NAME_AUTH_TOKEN)
   private String authToken;
+
+  public static final String SERIALIZED_NAME_USER_ID = "user_id";
+  @SerializedName(SERIALIZED_NAME_USER_ID)
+  private Integer userId;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -66,6 +70,29 @@ public class AuthOut {
 
   public void setAuthToken(String authToken) {
     this.authToken = authToken;
+  }
+
+
+  public AuthOut userId(Integer userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+   /**
+   * The id of the authenticated user.
+   * @return userId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The id of the authenticated user.")
+
+  public Integer getUserId() {
+    return userId;
+  }
+
+
+  public void setUserId(Integer userId) {
+    this.userId = userId;
   }
 
 
@@ -148,6 +175,7 @@ public class AuthOut {
     }
     AuthOut authOut = (AuthOut) o;
     return Objects.equals(this.authToken, authOut.authToken) &&
+        Objects.equals(this.userId, authOut.userId) &&
         Objects.equals(this.message, authOut.message) &&
         Objects.equals(this.isError, authOut.isError) &&
         Objects.equals(this.statusCode, authOut.statusCode);
@@ -155,7 +183,7 @@ public class AuthOut {
 
   @Override
   public int hashCode() {
-    return Objects.hash(authToken, message, isError, statusCode);
+    return Objects.hash(authToken, userId, message, isError, statusCode);
   }
 
 
@@ -164,6 +192,7 @@ public class AuthOut {
     StringBuilder sb = new StringBuilder();
     sb.append("class AuthOut {\n");
     sb.append("    authToken: ").append(toIndentedString(authToken)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");

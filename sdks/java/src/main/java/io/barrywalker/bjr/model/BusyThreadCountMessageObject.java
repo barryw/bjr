@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * BusyThreadCountMessageObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-06T23:16:50.241Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-07T02:38:00.535Z[GMT]")
 public class BusyThreadCountMessageObject {
   public static final String SERIALIZED_NAME_TOTAL_BUSY = "total_busy";
   @SerializedName(SERIALIZED_NAME_TOTAL_BUSY)

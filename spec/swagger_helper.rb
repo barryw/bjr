@@ -276,6 +276,7 @@ RSpec.configure do |config|
             type: :object,
             properties: {
               auth_token: { type: :string, description: 'The JWT authentication token. This must be passed in the Authorization header on subsequent requests.' },
+              user_id: { type: :integer, description: 'The id of the authenticated user.', nullable: true },
               message: { type: :string, description: 'If authentication failed, this will contain the reason why.' },
               is_error: { type: :boolean, description: 'This will be true if the authentication was successful, and false if not.' },
               status_code: { type: :integer, description: 'The HTTP status code returned.' }

@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property userId (base name: "user_id")', function() {
+      // uncomment below and update the code to test the property userId
+      //var instane = new Bjr4js.AuthOut();
+      //expect(instance).to.be();
+    });
+
     it('should have the property message (base name: "message")', function() {
       // uncomment below and update the code to test the property message
       //var instane = new Bjr4js.AuthOut();

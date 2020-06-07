@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The JobStat model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobStat
- * @version 2.3.0
+ * @version 2.3.1
  */
 class JobStat {
     /**

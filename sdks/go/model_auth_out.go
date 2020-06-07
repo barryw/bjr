@@ -12,6 +12,8 @@ package BJR
 type AuthOut struct {
 	// The JWT authentication token. This must be passed in the Authorization header on subsequent requests.
 	AuthToken string `json:"auth_token,omitempty"`
+	// The id of the authenticated user.
+	UserId *int32 `json:"user_id,omitempty"`
 	// If authentication failed, this will contain the reason why.
 	Message string `json:"message,omitempty"`
 	// This will be true if the authentication was successful, and false if not.
