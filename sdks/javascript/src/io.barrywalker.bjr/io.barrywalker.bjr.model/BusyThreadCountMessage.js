@@ -17,7 +17,7 @@ import BusyThreadCountMessageObject from './BusyThreadCountMessageObject';
 /**
  * The BusyThreadCountMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/BusyThreadCountMessage
- * @version 2.3.1
+ * @version 2.3.2
  */
 class BusyThreadCountMessage {
     /**

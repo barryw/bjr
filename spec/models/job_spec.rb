@@ -74,6 +74,13 @@ RSpec.describe Job, type: :model do
     expect(jobs[1].id).to eq(job2.id)
   end
 
+  it 'returns a validation error on a bad cron string' do
+    admin = create(:admin1)
+    job = build(:job1, name: 'bad cron', user: admin, cron: 'bad cron')
+    expect(job).to_not be_valid
+    expect(job.errors[:cron]).to eq ["'bad cron' is an invalid cron expression."]
+  end
+
   it 'returns a list of recent jobs' do
     admin = create(:admin1)
     job1 = create(:job1, name: 'job 1', user: admin, last_run: DateTime.now - 1.minute)

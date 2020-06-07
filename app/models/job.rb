@@ -39,6 +39,11 @@ class Job < ApplicationRecord
     rescue StandardError
       raise TZInfo::InvalidTimezoneIdentifier
     end
+    begin
+      Cronex::ExpressionDescriptor.new(cron).description
+    rescue
+      errors.add(:cron, "'#{cron}' is an invalid cron expression.")
+    end
     schedule = ::IceCube::Schedule.from_cron(date, cron)
     self.next_run = schedule.next_occurrence
   end
@@ -61,7 +66,7 @@ class Job < ApplicationRecord
 
   # When a job starts, this is called to mark the job as running and create a run
   def start_job(is_manual)
-    run = JobRun.create(job: self, start_time: Time.current, scheduled_start_time: self.next_run, is_manual: is_manual,
+    run = JobRun.create(job: self, start_time: Time.current, scheduled_start_time: is_manual ? nil : self.next_run, is_manual: is_manual,
                         schedule_diff_in_seconds: [0, (Time.current.to_i - self.next_run.to_i)].max)
     self.running = true
     save
@@ -92,7 +97,7 @@ class Job < ApplicationRecord
     query = query.ended_before(end_dt) unless end_dt.blank?
     query = query.succeeded(success) unless success.blank?
 
-    query
+    query.order(end_time: :desc)
   end
 
   #

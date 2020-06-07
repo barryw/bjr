@@ -232,19 +232,19 @@ describe 'Job API' do
         run_test! do |response|
           json = JSON.parse(response.body)
           expect(json['object'].length).to eq(2)
-          expect(json['object'][0]['job_id']).to eq(job.id)
-          expect(json['object'][0]['success']).to be true
-          expect(json['object'][0]['return_code']).to eq(0)
-          expect(json['object'][0]['error_message']).to be nil
-          expect(json['object'][0]['stdout']).to eq('Hello, World!')
-          expect(json['object'][0]['stderr']).to be nil
-
           expect(json['object'][1]['job_id']).to eq(job.id)
-          expect(json['object'][1]['success']).to be false
-          expect(json['object'][1]['return_code']).to eq(1)
-          expect(json['object'][1]['error_message']).to eq('Failed to write Hello, World!')
-          expect(json['object'][1]['stdout']).to be nil
-          expect(json['object'][1]['stderr']).to eq('Everybody wants to rule the world!')
+          expect(json['object'][1]['success']).to be true
+          expect(json['object'][1]['return_code']).to eq(0)
+          expect(json['object'][1]['error_message']).to be nil
+          expect(json['object'][1]['stdout']).to eq('Hello, World!')
+          expect(json['object'][1]['stderr']).to be nil
+
+          expect(json['object'][0]['job_id']).to eq(job.id)
+          expect(json['object'][0]['success']).to be false
+          expect(json['object'][0]['return_code']).to eq(1)
+          expect(json['object'][0]['error_message']).to eq('Failed to write Hello, World!')
+          expect(json['object'][0]['stdout']).to be nil
+          expect(json['object'][0]['stderr']).to eq('Everybody wants to rule the world!')
         end
       end
     end

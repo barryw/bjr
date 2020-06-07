@@ -23,6 +23,7 @@ gem 'kaminari'
 gem 'rswag-api'
 gem 'rswag-ui'
 gem 'simple_command'
+gem 'cronex'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -46,6 +46,17 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['is_error']).to be true
     end
 
+    it 'fails when fed a bad cron string' do
+      user = create(:admin1)
+      authenticated_header(user)
+      post :create, params: { name: 'bad cron', cron: 'bad cron', command: 'echo bad' }
+      expect(response).not_to have_http_status(:success)
+      json = JSON.parse(response.body)
+      expect(json['is_error']).to be true
+      expect(json['status_code']).to eq(422)
+      expect(json['message']).to eq("Cron 'bad cron' is an invalid cron expression.")
+    end
+
     it 'returns http success' do
       authenticated_header(create(:admin1))
       post :create, params: { 'name': 'job', 'cron': '0 10 * * *', command: 'ls -ltr', timezone: 'EST' }
@@ -185,6 +196,18 @@ RSpec.describe JobApiController, type: :controller do
       json = JSON.parse(response.body)
       expect(json['status_code']).to eq(409)
       expect(json['is_error']).to be true
+    end
+
+    it 'returns http conflict when it tries to update with a bogus cron' do
+      user = create(:admin1)
+      authenticated_header(user)
+      job = create(:job1, user: user, cron: '*/5 * * * *')
+      put :update, params: { id: job.id, cron: 'bad cron' }
+      expect(response).to have_http_status(:unprocessable_entity)
+      json = JSON.parse(response.body)
+      expect(json['status_code']).to eq(422)
+      expect(json['is_error']).to be true
+      expect(json['message']).to eq("Cron 'bad cron' is an invalid cron expression.")
     end
 
     it 'can enable a disabled job' do
@@ -659,8 +682,8 @@ RSpec.describe JobApiController, type: :controller do
       get :runs, params: { 'id': job.id, 'start_date': Time.current - 4.hours, 'end_date': Time.current }
       json = JSON.parse(response.body)
       expect(json['object'].length).to eq(2)
-      expect(json['object'][0]['id']).to eq(jr1.id)
-      expect(json['object'][1]['id']).to eq(jr2.id)
+      expect(json['object'][1]['id']).to eq(jr1.id)
+      expect(json['object'][0]['id']).to eq(jr2.id)
     end
 
     it 'returns http success while trying to get runs that succeeded' do

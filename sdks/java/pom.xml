@@ -5,7 +5,7 @@
     <artifactId>bjr4j</artifactId>
     <packaging>jar</packaging>
     <name>bjr4j</name>
-    <version>2.3.1</version>
+    <version>2.3.2</version>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>BJR Client SDK for Java</description>
     <scm>
