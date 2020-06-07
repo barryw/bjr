@@ -224,7 +224,7 @@ describe 'Job API' do
         schema '$ref' => '#/components/schemas/JobRunArrayMessage'
 
         before do |request|
-          create(:successful_job_run, job: job, start_time: Time.current - 3.hours, end_time: Time.current - 2.hours)
+          create(:successful_job_run, job: job, start_time: Time.current - 3.hours - 1.minute, end_time: Time.current - 2.hours - 1.minute)
           create(:failed_job_run, job: job, start_time: Time.current - 3.hours, end_time: Time.current - 2.hours)
           submit_request(request.metadata)
         end

@@ -21,7 +21,7 @@ import UserUpdateIn from '../io.barrywalker.bjr.model/UserUpdateIn';
 /**
 * Users service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/UsersApi
-* @version 2.3.2
+* @version 2.3.3
 */
 export default class UsersApi {
 

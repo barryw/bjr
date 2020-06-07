@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SingleJobRun model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/SingleJobRun
- * @version 2.3.2
+ * @version 2.3.3
  */
 class SingleJobRun {
     /**
