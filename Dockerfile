@@ -13,7 +13,6 @@ RUN apt-get update -y \
                           curl wget jq ca-certificates tzdata libffi-dev ncat \
     && gem install bundler \
     && bundle install --without=development test \
-    && bundle exec rake assets:precompile \
     && apt-get remove -y build-essential \
     && apt-get autoremove -y
 
