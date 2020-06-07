@@ -21,6 +21,14 @@ Name | Type | Description | Notes
 **updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) | The UTC date and time that the object was last modified. |  [optional]
 **successCallback** | **String** | This url will receive a POST request with details about all successful job runs. |  [optional]
 **failureCallback** | **String** | This url will receive a POST request with details about all unsuccessful job runs. |  [optional]
+**avgRunDuration** | **Float** | The average runtime across all runs of this job. |  [optional]
+**maxRunDuration** | **Float** | The maximum runtime across all runs of this job. |  [optional]
+**minRunDuration** | **Float** | The minimum runtime across all runs of this job. |  [optional]
+**avgRunDurationTrend** | **Float** | The average runtime trend across all runs of this job. |  [optional]
+**avgRunLag** | **Float** | The average job lag across all runs of this job. |  [optional]
+**maxRunLag** | **Float** | The maximum job lag across all runs of this job. |  [optional]
+**minRunLag** | **Float** | The minimum job lag across all runs of this job. |  [optional]
+**avgRunLagTrend** | **Float** | The average job lag trend across all runs of this job. |  [optional]
 
 
 

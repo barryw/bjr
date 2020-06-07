@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SingleJob model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/SingleJob
- * @version 2.3.3
+ * @version 2.4.0
  */
 class SingleJob {
     /**
@@ -91,6 +91,30 @@ class SingleJob {
             }
             if (data.hasOwnProperty('failure_callback')) {
                 obj['failure_callback'] = ApiClient.convertToType(data['failure_callback'], 'String');
+            }
+            if (data.hasOwnProperty('avg_run_duration')) {
+                obj['avg_run_duration'] = ApiClient.convertToType(data['avg_run_duration'], 'Number');
+            }
+            if (data.hasOwnProperty('max_run_duration')) {
+                obj['max_run_duration'] = ApiClient.convertToType(data['max_run_duration'], 'Number');
+            }
+            if (data.hasOwnProperty('min_run_duration')) {
+                obj['min_run_duration'] = ApiClient.convertToType(data['min_run_duration'], 'Number');
+            }
+            if (data.hasOwnProperty('avg_run_duration_trend')) {
+                obj['avg_run_duration_trend'] = ApiClient.convertToType(data['avg_run_duration_trend'], 'Number');
+            }
+            if (data.hasOwnProperty('avg_run_lag')) {
+                obj['avg_run_lag'] = ApiClient.convertToType(data['avg_run_lag'], 'Number');
+            }
+            if (data.hasOwnProperty('max_run_lag')) {
+                obj['max_run_lag'] = ApiClient.convertToType(data['max_run_lag'], 'Number');
+            }
+            if (data.hasOwnProperty('min_run_lag')) {
+                obj['min_run_lag'] = ApiClient.convertToType(data['min_run_lag'], 'Number');
+            }
+            if (data.hasOwnProperty('avg_run_lag_trend')) {
+                obj['avg_run_lag_trend'] = ApiClient.convertToType(data['avg_run_lag_trend'], 'Number');
             }
         }
         return obj;
@@ -188,6 +212,54 @@ SingleJob.prototype['success_callback'] = undefined;
  * @member {String} failure_callback
  */
 SingleJob.prototype['failure_callback'] = undefined;
+
+/**
+ * The average runtime across all runs of this job.
+ * @member {Number} avg_run_duration
+ */
+SingleJob.prototype['avg_run_duration'] = undefined;
+
+/**
+ * The maximum runtime across all runs of this job.
+ * @member {Number} max_run_duration
+ */
+SingleJob.prototype['max_run_duration'] = undefined;
+
+/**
+ * The minimum runtime across all runs of this job.
+ * @member {Number} min_run_duration
+ */
+SingleJob.prototype['min_run_duration'] = undefined;
+
+/**
+ * The average runtime trend across all runs of this job.
+ * @member {Number} avg_run_duration_trend
+ */
+SingleJob.prototype['avg_run_duration_trend'] = undefined;
+
+/**
+ * The average job lag across all runs of this job.
+ * @member {Number} avg_run_lag
+ */
+SingleJob.prototype['avg_run_lag'] = undefined;
+
+/**
+ * The maximum job lag across all runs of this job.
+ * @member {Number} max_run_lag
+ */
+SingleJob.prototype['max_run_lag'] = undefined;
+
+/**
+ * The minimum job lag across all runs of this job.
+ * @member {Number} min_run_lag
+ */
+SingleJob.prototype['min_run_lag'] = undefined;
+
+/**
+ * The average job lag trend across all runs of this job.
+ * @member {Number} avg_run_lag_trend
+ */
+SingleJob.prototype['avg_run_lag_trend'] = undefined;
 
 
 

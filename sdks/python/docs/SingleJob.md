@@ -18,6 +18,14 @@ Name | Type | Description | Notes
 **updated_at** | **datetime** | The UTC date and time that the object was last modified. | [optional] 
 **success_callback** | **str** | This url will receive a POST request with details about all successful job runs. | [optional] 
 **failure_callback** | **str** | This url will receive a POST request with details about all unsuccessful job runs. | [optional] 
+**avg_run_duration** | **float** | The average runtime across all runs of this job. | [optional] 
+**max_run_duration** | **float** | The maximum runtime across all runs of this job. | [optional] 
+**min_run_duration** | **float** | The minimum runtime across all runs of this job. | [optional] 
+**avg_run_duration_trend** | **float** | The average runtime trend across all runs of this job. | [optional] 
+**avg_run_lag** | **float** | The average job lag across all runs of this job. | [optional] 
+**max_run_lag** | **float** | The maximum job lag across all runs of this job. | [optional] 
+**min_run_lag** | **float** | The minimum job lag across all runs of this job. | [optional] 
+**avg_run_lag_trend** | **float** | The average job lag trend across all runs of this job. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

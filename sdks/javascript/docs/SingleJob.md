@@ -19,5 +19,13 @@ Name | Type | Description | Notes
 **updatedAt** | **Date** | The UTC date and time that the object was last modified. | [optional] 
 **successCallback** | **String** | This url will receive a POST request with details about all successful job runs. | [optional] 
 **failureCallback** | **String** | This url will receive a POST request with details about all unsuccessful job runs. | [optional] 
+**avgRunDuration** | **Number** | The average runtime across all runs of this job. | [optional] 
+**maxRunDuration** | **Number** | The maximum runtime across all runs of this job. | [optional] 
+**minRunDuration** | **Number** | The minimum runtime across all runs of this job. | [optional] 
+**avgRunDurationTrend** | **Number** | The average runtime trend across all runs of this job. | [optional] 
+**avgRunLag** | **Number** | The average job lag across all runs of this job. | [optional] 
+**maxRunLag** | **Number** | The maximum job lag across all runs of this job. | [optional] 
+**minRunLag** | **Number** | The minimum job lag across all runs of this job. | [optional] 
+**avgRunLagTrend** | **Number** | The average job lag trend across all runs of this job. | [optional] 
 
 

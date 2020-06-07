@@ -48,11 +48,27 @@ namespace BJR.Model
         /// <param name="updatedAt">The UTC date and time that the object was last modified..</param>
         /// <param name="successCallback">This url will receive a POST request with details about all successful job runs..</param>
         /// <param name="failureCallback">This url will receive a POST request with details about all unsuccessful job runs..</param>
-        public SingleJob(int id = default(int), string name = default(string), string cron = default(string), bool enabled = default(bool), string command = default(string), string lastRun = default(string), DateTime nextRun = default(DateTime), bool success = default(bool), bool running = default(bool), string timezone = default(string), List<string> tags = default(List<string>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string successCallback = default(string), string failureCallback = default(string))
+        /// <param name="avgRunDuration">The average runtime across all runs of this job..</param>
+        /// <param name="maxRunDuration">The maximum runtime across all runs of this job..</param>
+        /// <param name="minRunDuration">The minimum runtime across all runs of this job..</param>
+        /// <param name="avgRunDurationTrend">The average runtime trend across all runs of this job..</param>
+        /// <param name="avgRunLag">The average job lag across all runs of this job..</param>
+        /// <param name="maxRunLag">The maximum job lag across all runs of this job..</param>
+        /// <param name="minRunLag">The minimum job lag across all runs of this job..</param>
+        /// <param name="avgRunLagTrend">The average job lag trend across all runs of this job..</param>
+        public SingleJob(int id = default(int), string name = default(string), string cron = default(string), bool enabled = default(bool), string command = default(string), string lastRun = default(string), DateTime nextRun = default(DateTime), bool success = default(bool), bool running = default(bool), string timezone = default(string), List<string> tags = default(List<string>), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string successCallback = default(string), string failureCallback = default(string), float? avgRunDuration = default(float?), float? maxRunDuration = default(float?), float? minRunDuration = default(float?), float? avgRunDurationTrend = default(float?), float? avgRunLag = default(float?), float? maxRunLag = default(float?), float? minRunLag = default(float?), float? avgRunLagTrend = default(float?))
         {
             this.LastRun = lastRun;
             this.SuccessCallback = successCallback;
             this.FailureCallback = failureCallback;
+            this.AvgRunDuration = avgRunDuration;
+            this.MaxRunDuration = maxRunDuration;
+            this.MinRunDuration = minRunDuration;
+            this.AvgRunDurationTrend = avgRunDurationTrend;
+            this.AvgRunLag = avgRunLag;
+            this.MaxRunLag = maxRunLag;
+            this.MinRunLag = minRunLag;
+            this.AvgRunLagTrend = avgRunLagTrend;
             this.Id = id;
             this.Name = name;
             this.Cron = cron;
@@ -68,6 +84,14 @@ namespace BJR.Model
             this.UpdatedAt = updatedAt;
             this.SuccessCallback = successCallback;
             this.FailureCallback = failureCallback;
+            this.AvgRunDuration = avgRunDuration;
+            this.MaxRunDuration = maxRunDuration;
+            this.MinRunDuration = minRunDuration;
+            this.AvgRunDurationTrend = avgRunDurationTrend;
+            this.AvgRunLag = avgRunLag;
+            this.MaxRunLag = maxRunLag;
+            this.MinRunLag = minRunLag;
+            this.AvgRunLagTrend = avgRunLagTrend;
         }
         
         /// <summary>
@@ -176,6 +200,62 @@ namespace BJR.Model
         public string FailureCallback { get; set; }
 
         /// <summary>
+        /// The average runtime across all runs of this job.
+        /// </summary>
+        /// <value>The average runtime across all runs of this job.</value>
+        [DataMember(Name="avg_run_duration", EmitDefaultValue=true)]
+        public float? AvgRunDuration { get; set; }
+
+        /// <summary>
+        /// The maximum runtime across all runs of this job.
+        /// </summary>
+        /// <value>The maximum runtime across all runs of this job.</value>
+        [DataMember(Name="max_run_duration", EmitDefaultValue=true)]
+        public float? MaxRunDuration { get; set; }
+
+        /// <summary>
+        /// The minimum runtime across all runs of this job.
+        /// </summary>
+        /// <value>The minimum runtime across all runs of this job.</value>
+        [DataMember(Name="min_run_duration", EmitDefaultValue=true)]
+        public float? MinRunDuration { get; set; }
+
+        /// <summary>
+        /// The average runtime trend across all runs of this job.
+        /// </summary>
+        /// <value>The average runtime trend across all runs of this job.</value>
+        [DataMember(Name="avg_run_duration_trend", EmitDefaultValue=true)]
+        public float? AvgRunDurationTrend { get; set; }
+
+        /// <summary>
+        /// The average job lag across all runs of this job.
+        /// </summary>
+        /// <value>The average job lag across all runs of this job.</value>
+        [DataMember(Name="avg_run_lag", EmitDefaultValue=true)]
+        public float? AvgRunLag { get; set; }
+
+        /// <summary>
+        /// The maximum job lag across all runs of this job.
+        /// </summary>
+        /// <value>The maximum job lag across all runs of this job.</value>
+        [DataMember(Name="max_run_lag", EmitDefaultValue=true)]
+        public float? MaxRunLag { get; set; }
+
+        /// <summary>
+        /// The minimum job lag across all runs of this job.
+        /// </summary>
+        /// <value>The minimum job lag across all runs of this job.</value>
+        [DataMember(Name="min_run_lag", EmitDefaultValue=true)]
+        public float? MinRunLag { get; set; }
+
+        /// <summary>
+        /// The average job lag trend across all runs of this job.
+        /// </summary>
+        /// <value>The average job lag trend across all runs of this job.</value>
+        [DataMember(Name="avg_run_lag_trend", EmitDefaultValue=true)]
+        public float? AvgRunLagTrend { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -198,6 +278,14 @@ namespace BJR.Model
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  SuccessCallback: ").Append(SuccessCallback).Append("\n");
             sb.Append("  FailureCallback: ").Append(FailureCallback).Append("\n");
+            sb.Append("  AvgRunDuration: ").Append(AvgRunDuration).Append("\n");
+            sb.Append("  MaxRunDuration: ").Append(MaxRunDuration).Append("\n");
+            sb.Append("  MinRunDuration: ").Append(MinRunDuration).Append("\n");
+            sb.Append("  AvgRunDurationTrend: ").Append(AvgRunDurationTrend).Append("\n");
+            sb.Append("  AvgRunLag: ").Append(AvgRunLag).Append("\n");
+            sb.Append("  MaxRunLag: ").Append(MaxRunLag).Append("\n");
+            sb.Append("  MinRunLag: ").Append(MinRunLag).Append("\n");
+            sb.Append("  AvgRunLagTrend: ").Append(AvgRunLagTrend).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -307,6 +395,46 @@ namespace BJR.Model
                     this.FailureCallback == input.FailureCallback ||
                     (this.FailureCallback != null &&
                     this.FailureCallback.Equals(input.FailureCallback))
+                ) && 
+                (
+                    this.AvgRunDuration == input.AvgRunDuration ||
+                    (this.AvgRunDuration != null &&
+                    this.AvgRunDuration.Equals(input.AvgRunDuration))
+                ) && 
+                (
+                    this.MaxRunDuration == input.MaxRunDuration ||
+                    (this.MaxRunDuration != null &&
+                    this.MaxRunDuration.Equals(input.MaxRunDuration))
+                ) && 
+                (
+                    this.MinRunDuration == input.MinRunDuration ||
+                    (this.MinRunDuration != null &&
+                    this.MinRunDuration.Equals(input.MinRunDuration))
+                ) && 
+                (
+                    this.AvgRunDurationTrend == input.AvgRunDurationTrend ||
+                    (this.AvgRunDurationTrend != null &&
+                    this.AvgRunDurationTrend.Equals(input.AvgRunDurationTrend))
+                ) && 
+                (
+                    this.AvgRunLag == input.AvgRunLag ||
+                    (this.AvgRunLag != null &&
+                    this.AvgRunLag.Equals(input.AvgRunLag))
+                ) && 
+                (
+                    this.MaxRunLag == input.MaxRunLag ||
+                    (this.MaxRunLag != null &&
+                    this.MaxRunLag.Equals(input.MaxRunLag))
+                ) && 
+                (
+                    this.MinRunLag == input.MinRunLag ||
+                    (this.MinRunLag != null &&
+                    this.MinRunLag.Equals(input.MinRunLag))
+                ) && 
+                (
+                    this.AvgRunLagTrend == input.AvgRunLagTrend ||
+                    (this.AvgRunLagTrend != null &&
+                    this.AvgRunLagTrend.Equals(input.AvgRunLagTrend))
                 );
         }
 
@@ -349,6 +477,22 @@ namespace BJR.Model
                     hashCode = hashCode * 59 + this.SuccessCallback.GetHashCode();
                 if (this.FailureCallback != null)
                     hashCode = hashCode * 59 + this.FailureCallback.GetHashCode();
+                if (this.AvgRunDuration != null)
+                    hashCode = hashCode * 59 + this.AvgRunDuration.GetHashCode();
+                if (this.MaxRunDuration != null)
+                    hashCode = hashCode * 59 + this.MaxRunDuration.GetHashCode();
+                if (this.MinRunDuration != null)
+                    hashCode = hashCode * 59 + this.MinRunDuration.GetHashCode();
+                if (this.AvgRunDurationTrend != null)
+                    hashCode = hashCode * 59 + this.AvgRunDurationTrend.GetHashCode();
+                if (this.AvgRunLag != null)
+                    hashCode = hashCode * 59 + this.AvgRunLag.GetHashCode();
+                if (this.MaxRunLag != null)
+                    hashCode = hashCode * 59 + this.MaxRunLag.GetHashCode();
+                if (this.MinRunLag != null)
+                    hashCode = hashCode * 59 + this.MinRunLag.GetHashCode();
+                if (this.AvgRunLagTrend != null)
+                    hashCode = hashCode * 59 + this.AvgRunLagTrend.GetHashCode();
                 return hashCode;
             }
         }

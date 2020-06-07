@@ -163,4 +163,68 @@ public class SingleJobTest {
         // TODO: test failureCallback
     }
 
+    /**
+     * Test the property 'avgRunDuration'
+     */
+    @Test
+    public void avgRunDurationTest() {
+        // TODO: test avgRunDuration
+    }
+
+    /**
+     * Test the property 'maxRunDuration'
+     */
+    @Test
+    public void maxRunDurationTest() {
+        // TODO: test maxRunDuration
+    }
+
+    /**
+     * Test the property 'minRunDuration'
+     */
+    @Test
+    public void minRunDurationTest() {
+        // TODO: test minRunDuration
+    }
+
+    /**
+     * Test the property 'avgRunDurationTrend'
+     */
+    @Test
+    public void avgRunDurationTrendTest() {
+        // TODO: test avgRunDurationTrend
+    }
+
+    /**
+     * Test the property 'avgRunLag'
+     */
+    @Test
+    public void avgRunLagTest() {
+        // TODO: test avgRunLag
+    }
+
+    /**
+     * Test the property 'maxRunLag'
+     */
+    @Test
+    public void maxRunLagTest() {
+        // TODO: test maxRunLag
+    }
+
+    /**
+     * Test the property 'minRunLag'
+     */
+    @Test
+    public void minRunLagTest() {
+        // TODO: test minRunLag
+    }
+
+    /**
+     * Test the property 'avgRunLagTrend'
+     */
+    @Test
+    public void avgRunLagTrendTest() {
+        // TODO: test avgRunLagTrend
+    }
+
 }

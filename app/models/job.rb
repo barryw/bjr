@@ -3,6 +3,7 @@
 require 'active_support/time'
 require 'ice_cube_cron'
 require 'chronic'
+require 'trends'
 
 #
 # Job model
@@ -202,6 +203,35 @@ class Job < ApplicationRecord
     jobs
   end
 
+  #
+  # Compute the run statistics for this job
+  #
+  def compute_run_stats
+    job_runtimes = JobRun.job_runtimes(id)
+
+    avg_runtime = JobRun.avg_runtime_for_job(id)
+    max_runtime = JobRun.max_runtime_for_job(id)
+    min_runtime = JobRun.min_runtime_for_job(id)
+
+    job_schedule_diffs = JobRun.job_schedule_diffs(id)
+
+    avg_lag = JobRun.avg_job_lag_for_job(id)
+    max_lag = JobRun.max_job_lag_for_job(id)
+    min_lag = JobRun.min_job_lag_for_job(id)
+
+    self.avg_run_duration_trend = job_runtimes.length < 2 ? 0 : job_runtimes.trend_line[:slope]
+    self.avg_run_duration = avg_runtime
+    self.max_run_duration = max_runtime
+    self.min_run_duration = min_runtime
+
+    self.avg_run_lag_trend = job_schedule_diffs.length < 2 ? 0 : job_schedule_diffs.trend_line[:slope]
+    self.avg_run_lag = avg_lag
+    self.max_run_lag = max_lag
+    self.min_run_lag = min_lag
+
+    save!
+  end
+
   # Called when the job is rendered as JSON
   def as_json(_options = {})
     {
@@ -219,7 +249,15 @@ class Job < ApplicationRecord
       timezone: timezone,
       tags: tags.collect(&:name),
       success_callback: success_callback || '',
-      failure_callback: failure_callback || ''
+      failure_callback: failure_callback || '',
+      avg_run_duration: avg_run_duration,
+      max_run_duration: max_run_duration,
+      min_run_duration: min_run_duration,
+      avg_run_duration_trend: avg_run_duration_trend,
+      avg_run_lag: avg_run_lag,
+      max_run_lag: max_run_lag,
+      min_run_lag: min_run_lag,
+      avg_run_lag_trend: avg_run_lag_trend,
     }
   end
 

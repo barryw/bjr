@@ -2142,21 +2142,29 @@ components:
         object:
           cron: cron
           timezone: timezone
+          avg_run_duration: 1.4658129
           created_at: 2000-01-23T04:56:07.000+00:00
           last_run: last_run
+          min_run_duration: 5.637377
+          avg_run_lag_trend: 2.027123
+          max_run_duration: 5.962134
           enabled: true
           command: command
+          min_run_lag: 3.6160767
           tags:
           - tags
           - tags
+          avg_run_duration_trend: 2.302136
           running: true
           success_callback: success_callback
+          avg_run_lag: 7.0614014
           next_run: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           success: true
           name: name
           failure_callback: failure_callback
           id: 6
+          max_run_lag: 9.301444
       properties:
         message:
           description: The status message returned from the API call.
@@ -2182,38 +2190,54 @@ components:
         object:
         - cron: cron
           timezone: timezone
+          avg_run_duration: 1.4658129
           created_at: 2000-01-23T04:56:07.000+00:00
           last_run: last_run
+          min_run_duration: 5.637377
+          avg_run_lag_trend: 2.027123
+          max_run_duration: 5.962134
           enabled: true
           command: command
+          min_run_lag: 3.6160767
           tags:
           - tags
           - tags
+          avg_run_duration_trend: 2.302136
           running: true
           success_callback: success_callback
+          avg_run_lag: 7.0614014
           next_run: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           success: true
           name: name
           failure_callback: failure_callback
           id: 6
+          max_run_lag: 9.301444
         - cron: cron
           timezone: timezone
+          avg_run_duration: 1.4658129
           created_at: 2000-01-23T04:56:07.000+00:00
           last_run: last_run
+          min_run_duration: 5.637377
+          avg_run_lag_trend: 2.027123
+          max_run_duration: 5.962134
           enabled: true
           command: command
+          min_run_lag: 3.6160767
           tags:
           - tags
           - tags
+          avg_run_duration_trend: 2.302136
           running: true
           success_callback: success_callback
+          avg_run_lag: 7.0614014
           next_run: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           success: true
           name: name
           failure_callback: failure_callback
           id: 6
+          max_run_lag: 9.301444
       properties:
         message:
           description: The status message returned from the API call.
@@ -2236,21 +2260,29 @@ components:
       example:
         cron: cron
         timezone: timezone
+        avg_run_duration: 1.4658129
         created_at: 2000-01-23T04:56:07.000+00:00
         last_run: last_run
+        min_run_duration: 5.637377
+        avg_run_lag_trend: 2.027123
+        max_run_duration: 5.962134
         enabled: true
         command: command
+        min_run_lag: 3.6160767
         tags:
         - tags
         - tags
+        avg_run_duration_trend: 2.302136
         running: true
         success_callback: success_callback
+        avg_run_lag: 7.0614014
         next_run: 2000-01-23T04:56:07.000+00:00
         updated_at: 2000-01-23T04:56:07.000+00:00
         success: true
         name: name
         failure_callback: failure_callback
         id: 6
+        max_run_lag: 9.301444
       properties:
         id:
           description: The object's primary key. This uniquely identifies the object
@@ -2309,6 +2341,46 @@ components:
             unsuccessful job runs.
           nullable: true
           type: string
+        avg_run_duration:
+          description: The average runtime across all runs of this job.
+          format: float
+          nullable: true
+          type: number
+        max_run_duration:
+          description: The maximum runtime across all runs of this job.
+          format: float
+          nullable: true
+          type: number
+        min_run_duration:
+          description: The minimum runtime across all runs of this job.
+          format: float
+          nullable: true
+          type: number
+        avg_run_duration_trend:
+          description: The average runtime trend across all runs of this job.
+          format: float
+          nullable: true
+          type: number
+        avg_run_lag:
+          description: The average job lag across all runs of this job.
+          format: float
+          nullable: true
+          type: number
+        max_run_lag:
+          description: The maximum job lag across all runs of this job.
+          format: float
+          nullable: true
+          type: number
+        min_run_lag:
+          description: The minimum job lag across all runs of this job.
+          format: float
+          nullable: true
+          type: number
+        avg_run_lag_trend:
+          description: The average job lag trend across all runs of this job.
+          format: float
+          nullable: true
+          type: number
       type: object
     JobArray:
       items:

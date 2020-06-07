@@ -52,7 +52,15 @@ class TestSingleJob(unittest.TestCase):
                 created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                 success_callback = '0', 
-                failure_callback = '0'
+                failure_callback = '0', 
+                avg_run_duration = 1.337, 
+                max_run_duration = 1.337, 
+                min_run_duration = 1.337, 
+                avg_run_duration_trend = 1.337, 
+                avg_run_lag = 1.337, 
+                max_run_lag = 1.337, 
+                min_run_lag = 1.337, 
+                avg_run_lag_trend = 1.337
             )
         else :
             return SingleJob(

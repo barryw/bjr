@@ -43,4 +43,20 @@ type SingleJob struct {
 	SuccessCallback *string `json:"success_callback,omitempty"`
 	// This url will receive a POST request with details about all unsuccessful job runs.
 	FailureCallback *string `json:"failure_callback,omitempty"`
+	// The average runtime across all runs of this job.
+	AvgRunDuration *float32 `json:"avg_run_duration,omitempty"`
+	// The maximum runtime across all runs of this job.
+	MaxRunDuration *float32 `json:"max_run_duration,omitempty"`
+	// The minimum runtime across all runs of this job.
+	MinRunDuration *float32 `json:"min_run_duration,omitempty"`
+	// The average runtime trend across all runs of this job.
+	AvgRunDurationTrend *float32 `json:"avg_run_duration_trend,omitempty"`
+	// The average job lag across all runs of this job.
+	AvgRunLag *float32 `json:"avg_run_lag,omitempty"`
+	// The maximum job lag across all runs of this job.
+	MaxRunLag *float32 `json:"max_run_lag,omitempty"`
+	// The minimum job lag across all runs of this job.
+	MinRunLag *float32 `json:"min_run_lag,omitempty"`
+	// The average job lag trend across all runs of this job.
+	AvgRunLagTrend *float32 `json:"avg_run_lag_trend,omitempty"`
 }

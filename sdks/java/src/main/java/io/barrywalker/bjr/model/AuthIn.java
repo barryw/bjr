@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * AuthIn
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-07T12:51:51.966Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-07T21:52:33.930Z[GMT]")
 public class AuthIn {
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)

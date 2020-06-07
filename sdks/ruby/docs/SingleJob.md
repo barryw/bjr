@@ -19,6 +19,14 @@ Name | Type | Description | Notes
 **updated_at** | **DateTime** | The UTC date and time that the object was last modified. | [optional] 
 **success_callback** | **String** | This url will receive a POST request with details about all successful job runs. | [optional] 
 **failure_callback** | **String** | This url will receive a POST request with details about all unsuccessful job runs. | [optional] 
+**avg_run_duration** | **Float** | The average runtime across all runs of this job. | [optional] 
+**max_run_duration** | **Float** | The maximum runtime across all runs of this job. | [optional] 
+**min_run_duration** | **Float** | The minimum runtime across all runs of this job. | [optional] 
+**avg_run_duration_trend** | **Float** | The average runtime trend across all runs of this job. | [optional] 
+**avg_run_lag** | **Float** | The average job lag across all runs of this job. | [optional] 
+**max_run_lag** | **Float** | The maximum job lag across all runs of this job. | [optional] 
+**min_run_lag** | **Float** | The minimum job lag across all runs of this job. | [optional] 
+**avg_run_lag_trend** | **Float** | The average job lag trend across all runs of this job. | [optional] 
 
 ## Code Sample
 
@@ -39,7 +47,15 @@ instance = BJR::SingleJob.new(id: null,
                                  created_at: null,
                                  updated_at: null,
                                  success_callback: null,
-                                 failure_callback: null)
+                                 failure_callback: null,
+                                 avg_run_duration: null,
+                                 max_run_duration: null,
+                                 min_run_duration: null,
+                                 avg_run_duration_trend: null,
+                                 avg_run_lag: null,
+                                 max_run_lag: null,
+                                 min_run_lag: null,
+                                 avg_run_lag_trend: null)
 ```
 
 

@@ -295,4 +295,25 @@ RSpec.describe Job, type: :model do
     expect(jobs.length).to eq(1)
     expect(jobs[0].id).to eq(job1.id)
   end
+
+  it 'computes correct run and lag stats' do
+    admin = create(:admin1)
+    job1 = create(:job1, name: 'job 1', user: admin, command: 'sleep 10')
+    run1 = create(:successful_job_run, job: job1, start_time: DateTime.now - 60.minutes, end_time: DateTime.now - 59.minutes, scheduled_start_time: DateTime.now - 61.minutes, schedule_diff_in_seconds: 60)
+    run2 = create(:successful_job_run, job: job1, start_time: DateTime.now - 59.minutes, end_time: DateTime.now - 57.minutes, scheduled_start_time: DateTime.now - 59.minutes, schedule_diff_in_seconds: 0)
+    run3 = create(:successful_job_run, job: job1, start_time: DateTime.now - 20.minutes, end_time: DateTime.now - 12.minutes, is_manual: true)
+    run4 = create(:successful_job_run, job: job1, start_time: DateTime.now - 58.minutes, end_time: DateTime.now - 55.minutes, scheduled_start_time: DateTime.now - 59.minutes, schedule_diff_in_seconds: 62)
+
+    job1.compute_run_stats
+    job1.reload
+
+    expect(job1.avg_run_duration).to be_within(0.0001).of(210.0)
+    expect(job1.max_run_duration).to be_within(0.0001).of(480.0)
+    expect(job1.min_run_duration).to be_within(0.0001).of(60.0)
+    expect(job1.avg_run_duration_trend).to be_within(0.0001).of(132.0)
+    expect(job1.avg_run_lag).to be_within(0.0001).of(40.6667)
+    expect(job1.max_run_lag).to be_within(0.0001).of(62.0)
+    expect(job1.min_run_lag).to be_within(0.0001).of(0)
+    expect(job1.avg_run_lag_trend).to be_within(0.0001).of(1.0)
+  end
 end

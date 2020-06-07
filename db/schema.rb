@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_215352) do
+ActiveRecord::Schema.define(version: 2020_06_07_180327) do
 
   create_table "folders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -78,6 +78,14 @@ ActiveRecord::Schema.define(version: 2020_05_29_215352) do
     t.datetime "updated_at", null: false
     t.string "success_callback"
     t.string "failure_callback"
+    t.decimal "avg_run_duration", precision: 10, scale: 4, default: "0.0"
+    t.decimal "min_run_duration", precision: 10, scale: 4, default: "0.0"
+    t.decimal "max_run_duration", precision: 10, scale: 4, default: "0.0"
+    t.decimal "avg_run_duration_trend", precision: 10, scale: 4, default: "0.0"
+    t.decimal "avg_run_lag", precision: 10, scale: 4, default: "0.0"
+    t.decimal "min_run_lag", precision: 10, scale: 4, default: "0.0"
+    t.decimal "max_run_lag", precision: 10, scale: 4, default: "0.0"
+    t.decimal "avg_run_lag_trend", precision: 10, scale: 4, default: "0.0"
     t.index ["name", "user_id"], name: "index_jobs_on_name_and_user_id", unique: true
     t.index ["next_run"], name: "index_jobs_on_next_run"
     t.index ["user_id"], name: "index_jobs_on_user_id"
@@ -103,7 +111,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_215352) do
   end
 
   create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
-    t.string "name", collation: "utf8mb4_bin"
+    t.string "name", collation: "utf8_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end

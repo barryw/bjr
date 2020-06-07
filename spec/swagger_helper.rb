@@ -369,7 +369,15 @@ RSpec.configure do |config|
               created_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was created.' },
               updated_at: { type: :string, format: 'date-time', description: 'The UTC date and time that the object was last modified.' },
               success_callback: { type: :string, description: 'This url will receive a POST request with details about all successful job runs.', nullable: true },
-              failure_callback: { type: :string, description: 'This url will receive a POST request with details about all unsuccessful job runs.', nullable: true }
+              failure_callback: { type: :string, description: 'This url will receive a POST request with details about all unsuccessful job runs.', nullable: true },
+              avg_run_duration: { type: :number, format: 'float', description: 'The average runtime across all runs of this job.', nullable: true },
+              max_run_duration: { type: :number, format: 'float', description: 'The maximum runtime across all runs of this job.', nullable: true },
+              min_run_duration: { type: :number, format: 'float', description: 'The minimum runtime across all runs of this job.', nullable: true },
+              avg_run_duration_trend: { type: :number, format: 'float', description: 'The average runtime trend across all runs of this job.', nullable: true },
+              avg_run_lag: { type: :number, format: 'float', description: 'The average job lag across all runs of this job.', nullable: true },
+              max_run_lag: { type: :number, format: 'float', description: 'The maximum job lag across all runs of this job.', nullable: true },
+              min_run_lag: { type: :number, format: 'float', description: 'The minimum job lag across all runs of this job.', nullable: true },
+              avg_run_lag_trend: { type: :number, format: 'float', description: 'The average job lag trend across all runs of this job.', nullable: true }
             }
           },
           JobArray: {

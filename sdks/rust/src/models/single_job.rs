@@ -58,6 +58,30 @@ pub struct SingleJob {
     /// This url will receive a POST request with details about all unsuccessful job runs.
     #[serde(rename = "failure_callback", skip_serializing_if = "Option::is_none")]
     pub failure_callback: Option<String>,
+    /// The average runtime across all runs of this job.
+    #[serde(rename = "avg_run_duration", skip_serializing_if = "Option::is_none")]
+    pub avg_run_duration: Option<f32>,
+    /// The maximum runtime across all runs of this job.
+    #[serde(rename = "max_run_duration", skip_serializing_if = "Option::is_none")]
+    pub max_run_duration: Option<f32>,
+    /// The minimum runtime across all runs of this job.
+    #[serde(rename = "min_run_duration", skip_serializing_if = "Option::is_none")]
+    pub min_run_duration: Option<f32>,
+    /// The average runtime trend across all runs of this job.
+    #[serde(rename = "avg_run_duration_trend", skip_serializing_if = "Option::is_none")]
+    pub avg_run_duration_trend: Option<f32>,
+    /// The average job lag across all runs of this job.
+    #[serde(rename = "avg_run_lag", skip_serializing_if = "Option::is_none")]
+    pub avg_run_lag: Option<f32>,
+    /// The maximum job lag across all runs of this job.
+    #[serde(rename = "max_run_lag", skip_serializing_if = "Option::is_none")]
+    pub max_run_lag: Option<f32>,
+    /// The minimum job lag across all runs of this job.
+    #[serde(rename = "min_run_lag", skip_serializing_if = "Option::is_none")]
+    pub min_run_lag: Option<f32>,
+    /// The average job lag trend across all runs of this job.
+    #[serde(rename = "avg_run_lag_trend", skip_serializing_if = "Option::is_none")]
+    pub avg_run_lag_trend: Option<f32>,
 }
 
 impl SingleJob {
@@ -78,6 +102,14 @@ impl SingleJob {
             updated_at: None,
             success_callback: None,
             failure_callback: None,
+            avg_run_duration: None,
+            max_run_duration: None,
+            min_run_duration: None,
+            avg_run_duration_trend: None,
+            avg_run_lag: None,
+            max_run_lag: None,
+            min_run_lag: None,
+            avg_run_lag_trend: None,
         }
     }
 }

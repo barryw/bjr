@@ -144,6 +144,54 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property avgRunDuration (base name: "avg_run_duration")', function() {
+      // uncomment below and update the code to test the property avgRunDuration
+      //var instane = new Bjr4js.SingleJob();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxRunDuration (base name: "max_run_duration")', function() {
+      // uncomment below and update the code to test the property maxRunDuration
+      //var instane = new Bjr4js.SingleJob();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property minRunDuration (base name: "min_run_duration")', function() {
+      // uncomment below and update the code to test the property minRunDuration
+      //var instane = new Bjr4js.SingleJob();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property avgRunDurationTrend (base name: "avg_run_duration_trend")', function() {
+      // uncomment below and update the code to test the property avgRunDurationTrend
+      //var instane = new Bjr4js.SingleJob();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property avgRunLag (base name: "avg_run_lag")', function() {
+      // uncomment below and update the code to test the property avgRunLag
+      //var instane = new Bjr4js.SingleJob();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property maxRunLag (base name: "max_run_lag")', function() {
+      // uncomment below and update the code to test the property maxRunLag
+      //var instane = new Bjr4js.SingleJob();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property minRunLag (base name: "min_run_lag")', function() {
+      // uncomment below and update the code to test the property minRunLag
+      //var instane = new Bjr4js.SingleJob();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property avgRunLagTrend (base name: "avg_run_lag_trend")', function() {
+      // uncomment below and update the code to test the property avgRunLagTrend
+      //var instane = new Bjr4js.SingleJob();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

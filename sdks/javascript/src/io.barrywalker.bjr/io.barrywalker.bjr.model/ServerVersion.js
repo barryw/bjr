@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerVersion model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/ServerVersion
- * @version 2.3.3
+ * @version 2.4.0
  */
 class ServerVersion {
     /**

@@ -689,6 +689,46 @@ components:
           description: This url will receive a POST request with details about all
             unsuccessful job runs.
           nullable: true
+        avg_run_duration:
+          type: number
+          format: float
+          description: The average runtime across all runs of this job.
+          nullable: true
+        max_run_duration:
+          type: number
+          format: float
+          description: The maximum runtime across all runs of this job.
+          nullable: true
+        min_run_duration:
+          type: number
+          format: float
+          description: The minimum runtime across all runs of this job.
+          nullable: true
+        avg_run_duration_trend:
+          type: number
+          format: float
+          description: The average runtime trend across all runs of this job.
+          nullable: true
+        avg_run_lag:
+          type: number
+          format: float
+          description: The average job lag across all runs of this job.
+          nullable: true
+        max_run_lag:
+          type: number
+          format: float
+          description: The maximum job lag across all runs of this job.
+          nullable: true
+        min_run_lag:
+          type: number
+          format: float
+          description: The minimum job lag across all runs of this job.
+          nullable: true
+        avg_run_lag_trend:
+          type: number
+          format: float
+          description: The average job lag trend across all runs of this job.
+          nullable: true
     JobArray:
       type: array
       items:

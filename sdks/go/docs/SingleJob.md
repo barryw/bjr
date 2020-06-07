@@ -19,6 +19,14 @@ Name | Type | Description | Notes
 **UpdatedAt** | [**time.Time**](time.Time.md) | The UTC date and time that the object was last modified. | [optional] 
 **SuccessCallback** | Pointer to **string** | This url will receive a POST request with details about all successful job runs. | [optional] 
 **FailureCallback** | Pointer to **string** | This url will receive a POST request with details about all unsuccessful job runs. | [optional] 
+**AvgRunDuration** | Pointer to **float32** | The average runtime across all runs of this job. | [optional] 
+**MaxRunDuration** | Pointer to **float32** | The maximum runtime across all runs of this job. | [optional] 
+**MinRunDuration** | Pointer to **float32** | The minimum runtime across all runs of this job. | [optional] 
+**AvgRunDurationTrend** | Pointer to **float32** | The average runtime trend across all runs of this job. | [optional] 
+**AvgRunLag** | Pointer to **float32** | The average job lag across all runs of this job. | [optional] 
+**MaxRunLag** | Pointer to **float32** | The maximum job lag across all runs of this job. | [optional] 
+**MinRunLag** | Pointer to **float32** | The minimum job lag across all runs of this job. | [optional] 
+**AvgRunLagTrend** | Pointer to **float32** | The average job lag trend across all runs of this job. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -177,6 +177,70 @@ namespace BJR.Test
         {
             // TODO unit test for the property 'FailureCallback'
         }
+        /// <summary>
+        /// Test the property 'AvgRunDuration'
+        /// </summary>
+        [Fact]
+        public void AvgRunDurationTest()
+        {
+            // TODO unit test for the property 'AvgRunDuration'
+        }
+        /// <summary>
+        /// Test the property 'MaxRunDuration'
+        /// </summary>
+        [Fact]
+        public void MaxRunDurationTest()
+        {
+            // TODO unit test for the property 'MaxRunDuration'
+        }
+        /// <summary>
+        /// Test the property 'MinRunDuration'
+        /// </summary>
+        [Fact]
+        public void MinRunDurationTest()
+        {
+            // TODO unit test for the property 'MinRunDuration'
+        }
+        /// <summary>
+        /// Test the property 'AvgRunDurationTrend'
+        /// </summary>
+        [Fact]
+        public void AvgRunDurationTrendTest()
+        {
+            // TODO unit test for the property 'AvgRunDurationTrend'
+        }
+        /// <summary>
+        /// Test the property 'AvgRunLag'
+        /// </summary>
+        [Fact]
+        public void AvgRunLagTest()
+        {
+            // TODO unit test for the property 'AvgRunLag'
+        }
+        /// <summary>
+        /// Test the property 'MaxRunLag'
+        /// </summary>
+        [Fact]
+        public void MaxRunLagTest()
+        {
+            // TODO unit test for the property 'MaxRunLag'
+        }
+        /// <summary>
+        /// Test the property 'MinRunLag'
+        /// </summary>
+        [Fact]
+        public void MinRunLagTest()
+        {
+            // TODO unit test for the property 'MinRunLag'
+        }
+        /// <summary>
+        /// Test the property 'AvgRunLagTrend'
+        /// </summary>
+        [Fact]
+        public void AvgRunLagTrendTest()
+        {
+            // TODO unit test for the property 'AvgRunLagTrend'
+        }
 
     }
 

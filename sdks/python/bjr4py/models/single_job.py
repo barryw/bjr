@@ -47,7 +47,15 @@ class SingleJob(object):
         'created_at': 'datetime',
         'updated_at': 'datetime',
         'success_callback': 'str',
-        'failure_callback': 'str'
+        'failure_callback': 'str',
+        'avg_run_duration': 'float',
+        'max_run_duration': 'float',
+        'min_run_duration': 'float',
+        'avg_run_duration_trend': 'float',
+        'avg_run_lag': 'float',
+        'max_run_lag': 'float',
+        'min_run_lag': 'float',
+        'avg_run_lag_trend': 'float'
     }
 
     attribute_map = {
@@ -65,10 +73,18 @@ class SingleJob(object):
         'created_at': 'created_at',
         'updated_at': 'updated_at',
         'success_callback': 'success_callback',
-        'failure_callback': 'failure_callback'
+        'failure_callback': 'failure_callback',
+        'avg_run_duration': 'avg_run_duration',
+        'max_run_duration': 'max_run_duration',
+        'min_run_duration': 'min_run_duration',
+        'avg_run_duration_trend': 'avg_run_duration_trend',
+        'avg_run_lag': 'avg_run_lag',
+        'max_run_lag': 'max_run_lag',
+        'min_run_lag': 'min_run_lag',
+        'avg_run_lag_trend': 'avg_run_lag_trend'
     }
 
-    def __init__(self, id=None, name=None, cron=None, enabled=None, command=None, last_run=None, next_run=None, success=None, running=None, timezone=None, tags=None, created_at=None, updated_at=None, success_callback=None, failure_callback=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, cron=None, enabled=None, command=None, last_run=None, next_run=None, success=None, running=None, timezone=None, tags=None, created_at=None, updated_at=None, success_callback=None, failure_callback=None, avg_run_duration=None, max_run_duration=None, min_run_duration=None, avg_run_duration_trend=None, avg_run_lag=None, max_run_lag=None, min_run_lag=None, avg_run_lag_trend=None, local_vars_configuration=None):  # noqa: E501
         """SingleJob - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -89,6 +105,14 @@ class SingleJob(object):
         self._updated_at = None
         self._success_callback = None
         self._failure_callback = None
+        self._avg_run_duration = None
+        self._max_run_duration = None
+        self._min_run_duration = None
+        self._avg_run_duration_trend = None
+        self._avg_run_lag = None
+        self._max_run_lag = None
+        self._min_run_lag = None
+        self._avg_run_lag_trend = None
         self.discriminator = None
 
         if id is not None:
@@ -118,6 +142,14 @@ class SingleJob(object):
             self.updated_at = updated_at
         self.success_callback = success_callback
         self.failure_callback = failure_callback
+        self.avg_run_duration = avg_run_duration
+        self.max_run_duration = max_run_duration
+        self.min_run_duration = min_run_duration
+        self.avg_run_duration_trend = avg_run_duration_trend
+        self.avg_run_lag = avg_run_lag
+        self.max_run_lag = max_run_lag
+        self.min_run_lag = min_run_lag
+        self.avg_run_lag_trend = avg_run_lag_trend
 
     @property
     def id(self):
@@ -463,6 +495,190 @@ class SingleJob(object):
         """
 
         self._failure_callback = failure_callback
+
+    @property
+    def avg_run_duration(self):
+        """Gets the avg_run_duration of this SingleJob.  # noqa: E501
+
+        The average runtime across all runs of this job.  # noqa: E501
+
+        :return: The avg_run_duration of this SingleJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._avg_run_duration
+
+    @avg_run_duration.setter
+    def avg_run_duration(self, avg_run_duration):
+        """Sets the avg_run_duration of this SingleJob.
+
+        The average runtime across all runs of this job.  # noqa: E501
+
+        :param avg_run_duration: The avg_run_duration of this SingleJob.  # noqa: E501
+        :type: float
+        """
+
+        self._avg_run_duration = avg_run_duration
+
+    @property
+    def max_run_duration(self):
+        """Gets the max_run_duration of this SingleJob.  # noqa: E501
+
+        The maximum runtime across all runs of this job.  # noqa: E501
+
+        :return: The max_run_duration of this SingleJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._max_run_duration
+
+    @max_run_duration.setter
+    def max_run_duration(self, max_run_duration):
+        """Sets the max_run_duration of this SingleJob.
+
+        The maximum runtime across all runs of this job.  # noqa: E501
+
+        :param max_run_duration: The max_run_duration of this SingleJob.  # noqa: E501
+        :type: float
+        """
+
+        self._max_run_duration = max_run_duration
+
+    @property
+    def min_run_duration(self):
+        """Gets the min_run_duration of this SingleJob.  # noqa: E501
+
+        The minimum runtime across all runs of this job.  # noqa: E501
+
+        :return: The min_run_duration of this SingleJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._min_run_duration
+
+    @min_run_duration.setter
+    def min_run_duration(self, min_run_duration):
+        """Sets the min_run_duration of this SingleJob.
+
+        The minimum runtime across all runs of this job.  # noqa: E501
+
+        :param min_run_duration: The min_run_duration of this SingleJob.  # noqa: E501
+        :type: float
+        """
+
+        self._min_run_duration = min_run_duration
+
+    @property
+    def avg_run_duration_trend(self):
+        """Gets the avg_run_duration_trend of this SingleJob.  # noqa: E501
+
+        The average runtime trend across all runs of this job.  # noqa: E501
+
+        :return: The avg_run_duration_trend of this SingleJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._avg_run_duration_trend
+
+    @avg_run_duration_trend.setter
+    def avg_run_duration_trend(self, avg_run_duration_trend):
+        """Sets the avg_run_duration_trend of this SingleJob.
+
+        The average runtime trend across all runs of this job.  # noqa: E501
+
+        :param avg_run_duration_trend: The avg_run_duration_trend of this SingleJob.  # noqa: E501
+        :type: float
+        """
+
+        self._avg_run_duration_trend = avg_run_duration_trend
+
+    @property
+    def avg_run_lag(self):
+        """Gets the avg_run_lag of this SingleJob.  # noqa: E501
+
+        The average job lag across all runs of this job.  # noqa: E501
+
+        :return: The avg_run_lag of this SingleJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._avg_run_lag
+
+    @avg_run_lag.setter
+    def avg_run_lag(self, avg_run_lag):
+        """Sets the avg_run_lag of this SingleJob.
+
+        The average job lag across all runs of this job.  # noqa: E501
+
+        :param avg_run_lag: The avg_run_lag of this SingleJob.  # noqa: E501
+        :type: float
+        """
+
+        self._avg_run_lag = avg_run_lag
+
+    @property
+    def max_run_lag(self):
+        """Gets the max_run_lag of this SingleJob.  # noqa: E501
+
+        The maximum job lag across all runs of this job.  # noqa: E501
+
+        :return: The max_run_lag of this SingleJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._max_run_lag
+
+    @max_run_lag.setter
+    def max_run_lag(self, max_run_lag):
+        """Sets the max_run_lag of this SingleJob.
+
+        The maximum job lag across all runs of this job.  # noqa: E501
+
+        :param max_run_lag: The max_run_lag of this SingleJob.  # noqa: E501
+        :type: float
+        """
+
+        self._max_run_lag = max_run_lag
+
+    @property
+    def min_run_lag(self):
+        """Gets the min_run_lag of this SingleJob.  # noqa: E501
+
+        The minimum job lag across all runs of this job.  # noqa: E501
+
+        :return: The min_run_lag of this SingleJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._min_run_lag
+
+    @min_run_lag.setter
+    def min_run_lag(self, min_run_lag):
+        """Sets the min_run_lag of this SingleJob.
+
+        The minimum job lag across all runs of this job.  # noqa: E501
+
+        :param min_run_lag: The min_run_lag of this SingleJob.  # noqa: E501
+        :type: float
+        """
+
+        self._min_run_lag = min_run_lag
+
+    @property
+    def avg_run_lag_trend(self):
+        """Gets the avg_run_lag_trend of this SingleJob.  # noqa: E501
+
+        The average job lag trend across all runs of this job.  # noqa: E501
+
+        :return: The avg_run_lag_trend of this SingleJob.  # noqa: E501
+        :rtype: float
+        """
+        return self._avg_run_lag_trend
+
+    @avg_run_lag_trend.setter
+    def avg_run_lag_trend(self, avg_run_lag_trend):
+        """Sets the avg_run_lag_trend of this SingleJob.
+
+        The average job lag trend across all runs of this job.  # noqa: E501
+
+        :param avg_run_lag_trend: The avg_run_lag_trend of this SingleJob.  # noqa: E501
+        :type: float
+        """
+
+        self._avg_run_lag_trend = avg_run_lag_trend
 
     def to_dict(self):
         """Returns the model properties as a dict"""

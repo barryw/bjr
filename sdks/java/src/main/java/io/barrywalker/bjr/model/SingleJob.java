@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * SingleJob
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-07T12:51:51.966Z[GMT]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-07T21:52:33.930Z[GMT]")
 public class SingleJob {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -91,6 +91,38 @@ public class SingleJob {
   public static final String SERIALIZED_NAME_FAILURE_CALLBACK = "failure_callback";
   @SerializedName(SERIALIZED_NAME_FAILURE_CALLBACK)
   private String failureCallback;
+
+  public static final String SERIALIZED_NAME_AVG_RUN_DURATION = "avg_run_duration";
+  @SerializedName(SERIALIZED_NAME_AVG_RUN_DURATION)
+  private Float avgRunDuration;
+
+  public static final String SERIALIZED_NAME_MAX_RUN_DURATION = "max_run_duration";
+  @SerializedName(SERIALIZED_NAME_MAX_RUN_DURATION)
+  private Float maxRunDuration;
+
+  public static final String SERIALIZED_NAME_MIN_RUN_DURATION = "min_run_duration";
+  @SerializedName(SERIALIZED_NAME_MIN_RUN_DURATION)
+  private Float minRunDuration;
+
+  public static final String SERIALIZED_NAME_AVG_RUN_DURATION_TREND = "avg_run_duration_trend";
+  @SerializedName(SERIALIZED_NAME_AVG_RUN_DURATION_TREND)
+  private Float avgRunDurationTrend;
+
+  public static final String SERIALIZED_NAME_AVG_RUN_LAG = "avg_run_lag";
+  @SerializedName(SERIALIZED_NAME_AVG_RUN_LAG)
+  private Float avgRunLag;
+
+  public static final String SERIALIZED_NAME_MAX_RUN_LAG = "max_run_lag";
+  @SerializedName(SERIALIZED_NAME_MAX_RUN_LAG)
+  private Float maxRunLag;
+
+  public static final String SERIALIZED_NAME_MIN_RUN_LAG = "min_run_lag";
+  @SerializedName(SERIALIZED_NAME_MIN_RUN_LAG)
+  private Float minRunLag;
+
+  public static final String SERIALIZED_NAME_AVG_RUN_LAG_TREND = "avg_run_lag_trend";
+  @SerializedName(SERIALIZED_NAME_AVG_RUN_LAG_TREND)
+  private Float avgRunLagTrend;
 
 
   public SingleJob id(Integer id) {
@@ -446,6 +478,190 @@ public class SingleJob {
   }
 
 
+  public SingleJob avgRunDuration(Float avgRunDuration) {
+    
+    this.avgRunDuration = avgRunDuration;
+    return this;
+  }
+
+   /**
+   * The average runtime across all runs of this job.
+   * @return avgRunDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The average runtime across all runs of this job.")
+
+  public Float getAvgRunDuration() {
+    return avgRunDuration;
+  }
+
+
+  public void setAvgRunDuration(Float avgRunDuration) {
+    this.avgRunDuration = avgRunDuration;
+  }
+
+
+  public SingleJob maxRunDuration(Float maxRunDuration) {
+    
+    this.maxRunDuration = maxRunDuration;
+    return this;
+  }
+
+   /**
+   * The maximum runtime across all runs of this job.
+   * @return maxRunDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The maximum runtime across all runs of this job.")
+
+  public Float getMaxRunDuration() {
+    return maxRunDuration;
+  }
+
+
+  public void setMaxRunDuration(Float maxRunDuration) {
+    this.maxRunDuration = maxRunDuration;
+  }
+
+
+  public SingleJob minRunDuration(Float minRunDuration) {
+    
+    this.minRunDuration = minRunDuration;
+    return this;
+  }
+
+   /**
+   * The minimum runtime across all runs of this job.
+   * @return minRunDuration
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The minimum runtime across all runs of this job.")
+
+  public Float getMinRunDuration() {
+    return minRunDuration;
+  }
+
+
+  public void setMinRunDuration(Float minRunDuration) {
+    this.minRunDuration = minRunDuration;
+  }
+
+
+  public SingleJob avgRunDurationTrend(Float avgRunDurationTrend) {
+    
+    this.avgRunDurationTrend = avgRunDurationTrend;
+    return this;
+  }
+
+   /**
+   * The average runtime trend across all runs of this job.
+   * @return avgRunDurationTrend
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The average runtime trend across all runs of this job.")
+
+  public Float getAvgRunDurationTrend() {
+    return avgRunDurationTrend;
+  }
+
+
+  public void setAvgRunDurationTrend(Float avgRunDurationTrend) {
+    this.avgRunDurationTrend = avgRunDurationTrend;
+  }
+
+
+  public SingleJob avgRunLag(Float avgRunLag) {
+    
+    this.avgRunLag = avgRunLag;
+    return this;
+  }
+
+   /**
+   * The average job lag across all runs of this job.
+   * @return avgRunLag
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The average job lag across all runs of this job.")
+
+  public Float getAvgRunLag() {
+    return avgRunLag;
+  }
+
+
+  public void setAvgRunLag(Float avgRunLag) {
+    this.avgRunLag = avgRunLag;
+  }
+
+
+  public SingleJob maxRunLag(Float maxRunLag) {
+    
+    this.maxRunLag = maxRunLag;
+    return this;
+  }
+
+   /**
+   * The maximum job lag across all runs of this job.
+   * @return maxRunLag
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The maximum job lag across all runs of this job.")
+
+  public Float getMaxRunLag() {
+    return maxRunLag;
+  }
+
+
+  public void setMaxRunLag(Float maxRunLag) {
+    this.maxRunLag = maxRunLag;
+  }
+
+
+  public SingleJob minRunLag(Float minRunLag) {
+    
+    this.minRunLag = minRunLag;
+    return this;
+  }
+
+   /**
+   * The minimum job lag across all runs of this job.
+   * @return minRunLag
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The minimum job lag across all runs of this job.")
+
+  public Float getMinRunLag() {
+    return minRunLag;
+  }
+
+
+  public void setMinRunLag(Float minRunLag) {
+    this.minRunLag = minRunLag;
+  }
+
+
+  public SingleJob avgRunLagTrend(Float avgRunLagTrend) {
+    
+    this.avgRunLagTrend = avgRunLagTrend;
+    return this;
+  }
+
+   /**
+   * The average job lag trend across all runs of this job.
+   * @return avgRunLagTrend
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The average job lag trend across all runs of this job.")
+
+  public Float getAvgRunLagTrend() {
+    return avgRunLagTrend;
+  }
+
+
+  public void setAvgRunLagTrend(Float avgRunLagTrend) {
+    this.avgRunLagTrend = avgRunLagTrend;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -469,12 +685,20 @@ public class SingleJob {
         Objects.equals(this.createdAt, singleJob.createdAt) &&
         Objects.equals(this.updatedAt, singleJob.updatedAt) &&
         Objects.equals(this.successCallback, singleJob.successCallback) &&
-        Objects.equals(this.failureCallback, singleJob.failureCallback);
+        Objects.equals(this.failureCallback, singleJob.failureCallback) &&
+        Objects.equals(this.avgRunDuration, singleJob.avgRunDuration) &&
+        Objects.equals(this.maxRunDuration, singleJob.maxRunDuration) &&
+        Objects.equals(this.minRunDuration, singleJob.minRunDuration) &&
+        Objects.equals(this.avgRunDurationTrend, singleJob.avgRunDurationTrend) &&
+        Objects.equals(this.avgRunLag, singleJob.avgRunLag) &&
+        Objects.equals(this.maxRunLag, singleJob.maxRunLag) &&
+        Objects.equals(this.minRunLag, singleJob.minRunLag) &&
+        Objects.equals(this.avgRunLagTrend, singleJob.avgRunLagTrend);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, cron, enabled, command, lastRun, nextRun, success, running, timezone, tags, createdAt, updatedAt, successCallback, failureCallback);
+    return Objects.hash(id, name, cron, enabled, command, lastRun, nextRun, success, running, timezone, tags, createdAt, updatedAt, successCallback, failureCallback, avgRunDuration, maxRunDuration, minRunDuration, avgRunDurationTrend, avgRunLag, maxRunLag, minRunLag, avgRunLagTrend);
   }
 
 
@@ -497,6 +721,14 @@ public class SingleJob {
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    successCallback: ").append(toIndentedString(successCallback)).append("\n");
     sb.append("    failureCallback: ").append(toIndentedString(failureCallback)).append("\n");
+    sb.append("    avgRunDuration: ").append(toIndentedString(avgRunDuration)).append("\n");
+    sb.append("    maxRunDuration: ").append(toIndentedString(maxRunDuration)).append("\n");
+    sb.append("    minRunDuration: ").append(toIndentedString(minRunDuration)).append("\n");
+    sb.append("    avgRunDurationTrend: ").append(toIndentedString(avgRunDurationTrend)).append("\n");
+    sb.append("    avgRunLag: ").append(toIndentedString(avgRunLag)).append("\n");
+    sb.append("    maxRunLag: ").append(toIndentedString(maxRunLag)).append("\n");
+    sb.append("    minRunLag: ").append(toIndentedString(minRunLag)).append("\n");
+    sb.append("    avgRunLagTrend: ").append(toIndentedString(avgRunLagTrend)).append("\n");
     sb.append("}");
     return sb.toString();
   }

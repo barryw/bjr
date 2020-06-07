@@ -3,6 +3,11 @@ job_finder:
   class: JobFinderJob
   queue: job_finder
 
+job_run_stats:
+  cron: "* * * * *"
+  class: JobRunStatsJob
+  queue: stats_runner
+
 stats_per_minute:
   cron: "* * * * *"
   class: StatsPerMinuteJob

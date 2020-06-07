@@ -59,6 +59,30 @@ module BJR
     # This url will receive a POST request with details about all unsuccessful job runs.
     attr_accessor :failure_callback
 
+    # The average runtime across all runs of this job.
+    attr_accessor :avg_run_duration
+
+    # The maximum runtime across all runs of this job.
+    attr_accessor :max_run_duration
+
+    # The minimum runtime across all runs of this job.
+    attr_accessor :min_run_duration
+
+    # The average runtime trend across all runs of this job.
+    attr_accessor :avg_run_duration_trend
+
+    # The average job lag across all runs of this job.
+    attr_accessor :avg_run_lag
+
+    # The maximum job lag across all runs of this job.
+    attr_accessor :max_run_lag
+
+    # The minimum job lag across all runs of this job.
+    attr_accessor :min_run_lag
+
+    # The average job lag trend across all runs of this job.
+    attr_accessor :avg_run_lag_trend
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -76,7 +100,15 @@ module BJR
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at',
         :'success_callback' => :'success_callback',
-        :'failure_callback' => :'failure_callback'
+        :'failure_callback' => :'failure_callback',
+        :'avg_run_duration' => :'avg_run_duration',
+        :'max_run_duration' => :'max_run_duration',
+        :'min_run_duration' => :'min_run_duration',
+        :'avg_run_duration_trend' => :'avg_run_duration_trend',
+        :'avg_run_lag' => :'avg_run_lag',
+        :'max_run_lag' => :'max_run_lag',
+        :'min_run_lag' => :'min_run_lag',
+        :'avg_run_lag_trend' => :'avg_run_lag_trend'
       }
     end
 
@@ -97,7 +129,15 @@ module BJR
         :'created_at' => :'DateTime',
         :'updated_at' => :'DateTime',
         :'success_callback' => :'String',
-        :'failure_callback' => :'String'
+        :'failure_callback' => :'String',
+        :'avg_run_duration' => :'Float',
+        :'max_run_duration' => :'Float',
+        :'min_run_duration' => :'Float',
+        :'avg_run_duration_trend' => :'Float',
+        :'avg_run_lag' => :'Float',
+        :'max_run_lag' => :'Float',
+        :'min_run_lag' => :'Float',
+        :'avg_run_lag_trend' => :'Float'
       }
     end
 
@@ -106,7 +146,15 @@ module BJR
       Set.new([
         :'last_run',
         :'success_callback',
-        :'failure_callback'
+        :'failure_callback',
+        :'avg_run_duration',
+        :'max_run_duration',
+        :'min_run_duration',
+        :'avg_run_duration_trend',
+        :'avg_run_lag',
+        :'max_run_lag',
+        :'min_run_lag',
+        :'avg_run_lag_trend'
       ])
     end
 
@@ -186,6 +234,38 @@ module BJR
       if attributes.key?(:'failure_callback')
         self.failure_callback = attributes[:'failure_callback']
       end
+
+      if attributes.key?(:'avg_run_duration')
+        self.avg_run_duration = attributes[:'avg_run_duration']
+      end
+
+      if attributes.key?(:'max_run_duration')
+        self.max_run_duration = attributes[:'max_run_duration']
+      end
+
+      if attributes.key?(:'min_run_duration')
+        self.min_run_duration = attributes[:'min_run_duration']
+      end
+
+      if attributes.key?(:'avg_run_duration_trend')
+        self.avg_run_duration_trend = attributes[:'avg_run_duration_trend']
+      end
+
+      if attributes.key?(:'avg_run_lag')
+        self.avg_run_lag = attributes[:'avg_run_lag']
+      end
+
+      if attributes.key?(:'max_run_lag')
+        self.max_run_lag = attributes[:'max_run_lag']
+      end
+
+      if attributes.key?(:'min_run_lag')
+        self.min_run_lag = attributes[:'min_run_lag']
+      end
+
+      if attributes.key?(:'avg_run_lag_trend')
+        self.avg_run_lag_trend = attributes[:'avg_run_lag_trend']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -220,7 +300,15 @@ module BJR
           created_at == o.created_at &&
           updated_at == o.updated_at &&
           success_callback == o.success_callback &&
-          failure_callback == o.failure_callback
+          failure_callback == o.failure_callback &&
+          avg_run_duration == o.avg_run_duration &&
+          max_run_duration == o.max_run_duration &&
+          min_run_duration == o.min_run_duration &&
+          avg_run_duration_trend == o.avg_run_duration_trend &&
+          avg_run_lag == o.avg_run_lag &&
+          max_run_lag == o.max_run_lag &&
+          min_run_lag == o.min_run_lag &&
+          avg_run_lag_trend == o.avg_run_lag_trend
     end
 
     # @see the `==` method
@@ -232,7 +320,7 @@ module BJR
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, cron, enabled, command, last_run, next_run, success, running, timezone, tags, created_at, updated_at, success_callback, failure_callback].hash
+      [id, name, cron, enabled, command, last_run, next_run, success, running, timezone, tags, created_at, updated_at, success_callback, failure_callback, avg_run_duration, max_run_duration, min_run_duration, avg_run_duration_trend, avg_run_lag, max_run_lag, min_run_lag, avg_run_lag_trend].hash
     end
 
     # Builds the object from hash
