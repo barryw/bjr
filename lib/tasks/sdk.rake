@@ -12,10 +12,10 @@ sdks = [{ description: 'C# SDK', language: 'csharp', version_attr: 'packageVersi
         { description: 'Go SDK', language: 'go', version_attr: 'packageVersion' }]
 
 desc 'Do everything needed to update the SDKs. Pass in the version to set them all to.'
-task 'sdk:all', [:version] => [:environment] do |_t, _args|
+task 'sdk:all', [:version] => [:environment] do |_t, args|
   Rake::Task['spec'].invoke
   Rake::Task['rswag'].invoke
-  Rake::Task['sdk:setver'].invoke(_args[:version])
+  Rake::Task['sdk:setver'].invoke(args[:version])
   Rake::Task['sdk:generate'].invoke
 end
 
@@ -31,9 +31,9 @@ task 'sdk:generate' do |_t, _args|
 end
 
 desc 'Set the version on all of the SDKs.'
-task 'sdk:setver', [:version] => [:environment] do |_t, _args|
+task 'sdk:setver', [:version] => [:environment] do |_t, args|
   sdks.each do |sdk|
-    version = _args[:version]
+    version = args[:version]
 
     file = File.read("#{Rails.root}/sdks/#{sdk[:language]}.json")
     json = JSON.parse(file)

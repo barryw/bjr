@@ -3,12 +3,12 @@
 require 'json'
 
 desc 'Bump the versions of the server and the SDKs'
-task 'version', [:position] => [:environment] do |_t, _args|
+task 'version', [:position] => [:environment] do |_t, args|
   Rake::Task['spec'].invoke
   Rake::Task['rswag'].invoke
 
   cur_ver = File.read('.version').strip
-  position = _args[:position]
+  position = args[:position]
 
   major, minor, patch = cur_ver.split('.')
   new_ver = ''

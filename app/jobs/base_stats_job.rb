@@ -64,7 +64,7 @@ class BaseStatsJob < ApplicationJob
                DateTime.now.midnight - 1.second
              when :week
                DateTime.now.midnight - 1.second
-    end
+             end
 
     end_dt
   end
@@ -79,7 +79,7 @@ class BaseStatsJob < ApplicationJob
              1.day
            when :week
              1.week
-    end
+           end
 
     incr
   end
@@ -94,7 +94,7 @@ class BaseStatsJob < ApplicationJob
                    process_start_dt.change(hour: 0)
                  when :week
                    process_start_dt
-    end
+                 end
 
     current_dt
   end
