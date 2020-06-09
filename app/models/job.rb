@@ -209,13 +209,13 @@ class Job < ApplicationRecord
   # Compute the run statistics for this job
   #
   def compute_run_stats
-    job_runtimes = JobRun.job_runtimes(id)[0..10]
+    job_runtimes = JobRun.job_runtimes(id)
 
     avg_runtime = JobRun.avg_runtime_for_job(id)
     max_runtime = JobRun.max_runtime_for_job(id)
     min_runtime = JobRun.min_runtime_for_job(id)
 
-    job_schedule_diffs = JobRun.job_schedule_diffs(id)[0..10]
+    job_schedule_diffs = JobRun.job_schedule_diffs(id)
 
     avg_lag = JobRun.avg_job_lag_for_job(id)
     max_lag = JobRun.max_job_lag_for_job(id)
