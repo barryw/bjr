@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The JobIn model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobIn
- * @version 2.4.0
+ * @version 2.4.1
  */
 class JobIn {
     /**

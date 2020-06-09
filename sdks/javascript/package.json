@@ -1,6 +1,6 @@
 {
   "name": "bjr4js",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "BJR Client SDK for Javascript",
   "license": "Unlicense",
   "main": "dist/io.barrywalker.bjr/index.js",

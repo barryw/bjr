@@ -33,20 +33,21 @@ class Job < ApplicationRecord
 
   TAG_SEARCH = %w[any all exclude].freeze
 
+  before_save :update_cron, if: Proc.new {|model| model.cron_changed? || model.timezone_changed?}
+
   before_validation(on: %i[create update]) do
-    self.timezone = 'UTC' if self.timezone.blank?
-    begin
-      date = Date.current.in_time_zone(timezone)
-    rescue StandardError
-      raise TZInfo::InvalidTimezoneIdentifier
-    end
     begin
       Cronex::ExpressionDescriptor.new(cron).description
     rescue
       errors.add(:cron, "'#{cron}' is an invalid cron expression.")
     end
-    schedule = ::IceCube::Schedule.from_cron(date, cron)
+  end
+
+  def update_cron
+    self.timezone = 'UTC' if self.timezone.blank?
     self.next_run = schedule.next_occurrence
+  rescue
+    raise TZInfo::InvalidTimezoneIdentifier
   end
 
   # Do the tagging
@@ -83,6 +84,7 @@ class Job < ApplicationRecord
     logger.error "Failed to update the job run for job #{id} : #{$!}"
   ensure
     self.last_run = Time.current
+    self.next_run = schedule.next_occurrence
     self.running = false
     save
   end
@@ -207,13 +209,13 @@ class Job < ApplicationRecord
   # Compute the run statistics for this job
   #
   def compute_run_stats
-    job_runtimes = JobRun.job_runtimes(id)
+    job_runtimes = JobRun.job_runtimes(id)[0..10]
 
     avg_runtime = JobRun.avg_runtime_for_job(id)
     max_runtime = JobRun.max_runtime_for_job(id)
     min_runtime = JobRun.min_runtime_for_job(id)
 
-    job_schedule_diffs = JobRun.job_schedule_diffs(id)
+    job_schedule_diffs = JobRun.job_schedule_diffs(id)[0..10]
 
     avg_lag = JobRun.avg_job_lag_for_job(id)
     max_lag = JobRun.max_job_lag_for_job(id)
@@ -264,7 +266,7 @@ class Job < ApplicationRecord
   private
 
   def schedule
-    date = Date.current.in_time_zone(timezone)
-    ::IceCube::Schedule.from_cron(date, cron)
+    date = Date.current.in_time_zone(self.timezone)
+    ::IceCube::Schedule.from_cron(date, self.cron)
   end
 end

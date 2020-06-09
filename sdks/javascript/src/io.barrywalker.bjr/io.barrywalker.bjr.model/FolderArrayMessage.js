@@ -17,7 +17,7 @@ import SingleFolder from './SingleFolder';
 /**
  * The FolderArrayMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/FolderArrayMessage
- * @version 2.4.0
+ * @version 2.4.1
  */
 class FolderArrayMessage {
     /**
