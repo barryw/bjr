@@ -1,5 +1,6 @@
-module SidekiqHelper
+# frozen_string_literal: true
 
+module SidekiqHelper
   #
   # Tell a worker host to stop accepting jobs and to finish the jobs its working on
   #
@@ -19,7 +20,7 @@ module SidekiqHelper
     ps = Sidekiq::ProcessSet.new
     ps.each do |process|
       busy['hosts'] = []
-      busy['hosts'] << {'name': process['hostname'], 'busy': process['busy'], 'pid': process['pid']}
+      busy['hosts'] << { 'name': process['hostname'], 'busy': process['busy'], 'pid': process['pid'] }
       total_busy += process['busy'].to_i
     end
 

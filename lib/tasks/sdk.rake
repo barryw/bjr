@@ -13,10 +13,10 @@ sdks = [{ description: 'C# SDK', language: 'csharp', version_attr: 'packageVersi
 
 desc 'Do everything needed to update the SDKs. Pass in the version to set them all to.'
 task 'sdk:all', [:version] => [:environment] do |_t, _args|
-  Rake::Task["spec"].invoke
-  Rake::Task["rswag"].invoke
-  Rake::Task["sdk:setver"].invoke(_args[:version])
-  Rake::Task["sdk:generate"].invoke
+  Rake::Task['spec'].invoke
+  Rake::Task['rswag'].invoke
+  Rake::Task['sdk:setver'].invoke(_args[:version])
+  Rake::Task['sdk:generate'].invoke
 end
 
 desc 'Generate the client SDKs'

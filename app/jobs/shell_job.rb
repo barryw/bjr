@@ -8,7 +8,7 @@ require 'open3'
 class ShellJob < ApplicationJob
   queue_as :job_runner
 
-  def perform(jobid, is_manual=false)
+  def perform(jobid, is_manual = false)
     job = Job.find(jobid)
     run = job.start_job(is_manual)
     file = write_command(job)
@@ -31,7 +31,7 @@ class ShellJob < ApplicationJob
   def write_command(job)
     file = Tempfile.new("job#{job.id}")
 
-    if !job.command.start_with? "#!"
+    unless job.command.start_with? '#!'
       file.puts '#!/bin/bash'
       file.puts
       file.puts "# Shell script for job #{job.id}"
@@ -43,7 +43,7 @@ class ShellJob < ApplicationJob
     logger.debug "Job #{job.id} file written to #{file.path}"
     logger.debug File.read(file.path)
 
-    File.chmod(0755, file.path)
+    File.chmod(0o755, file.path)
 
     file
   end

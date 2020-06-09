@@ -56,14 +56,14 @@ class BaseStatsJob < ApplicationJob
 
   def end_date(period)
     end_dt = case period
-    when :minute
-      DateTime.now.change(sec: 0)
-    when :hour
-      DateTime.now.change(sec: 0, min: 0)
-    when :day
-      DateTime.now.midnight - 1.second
-    when :week
-      DateTime.now.midnight - 1.second
+             when :minute
+               DateTime.now.change(sec: 0)
+             when :hour
+               DateTime.now.change(sec: 0, min: 0)
+             when :day
+               DateTime.now.midnight - 1.second
+             when :week
+               DateTime.now.midnight - 1.second
     end
 
     end_dt
@@ -71,14 +71,14 @@ class BaseStatsJob < ApplicationJob
 
   def time_increment(period)
     incr = case period
-    when :minute
-      1.minute
-    when :hour
-      1.hour
-    when :day
-      1.day
-    when :week
-      1.week
+           when :minute
+             1.minute
+           when :hour
+             1.hour
+           when :day
+             1.day
+           when :week
+             1.week
     end
 
     incr
@@ -86,14 +86,14 @@ class BaseStatsJob < ApplicationJob
 
   def processing_dates(process_start_dt, period)
     current_dt = case period
-    when :minute
-      process_start_dt.change(sec: 0)
-    when :hour
-      process_start_dt.change(min: 0)
-    when :day
-      process_start_dt.change(hour: 0)
-    when :week
-      process_start_dt
+                 when :minute
+                   process_start_dt.change(sec: 0)
+                 when :hour
+                   process_start_dt.change(min: 0)
+                 when :day
+                   process_start_dt.change(hour: 0)
+                 when :week
+                   process_start_dt
     end
 
     current_dt

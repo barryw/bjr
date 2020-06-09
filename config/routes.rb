@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   resources :user_api
 
   # Folder API
-  resources :folder_api, only: [:index, :show, :create, :update, :destroy]
-  get '/folder_api/:id/jobs', to: 'folder_api#jobs',as: 'folder_jobs'
+  resources :folder_api, only: %i[index show create update destroy]
+  get '/folder_api/:id/jobs', to: 'folder_api#jobs', as: 'folder_jobs'
 
   # Static API
   get '/timezones', to: 'static_api#timezones', as: 'static_api_timezones'

@@ -31,11 +31,11 @@ class JobStat < ApplicationRecord
     enabled_jobs = enabled_jobs_array[-1] || 0
     run_jobs = run_jobs_array.sum || 0
     failed_jobs = failed_jobs_array.inject(0, :+)
-    avg_job_runtime = avg_runtime_array.size == 0 ? 0.0 : avg_runtime_array.inject(0, :+).to_f / avg_runtime_array.size
+    avg_job_runtime = avg_runtime_array.empty? ? 0.0 : avg_runtime_array.inject(0, :+).to_f / avg_runtime_array.size
     max_job_runtime = max_runtime_array.max || 0.0
     min_job_runtime = min_runtime_array.min || 0.0
 
-    avg_job_lag = avg_job_lag_array.size == 0 ? 0.0 : avg_job_lag_array.inject(0, :+).to_f / avg_job_lag_array.size
+    avg_job_lag = avg_job_lag_array.empty? ? 0.0 : avg_job_lag_array.inject(0, :+).to_f / avg_job_lag_array.size
     max_job_lag = max_job_lag_array.max || 0
     min_job_lag = min_job_lag_array.min || 0
 

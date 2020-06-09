@@ -41,8 +41,8 @@ class JobApiController < ApplicationController
       job.tag(params[:tags])
       message I18n.t('jobs.messages.created', id: job.id), :created, false, job, 'job'
     end
-  rescue ActiveRecord::RecordInvalid => re
-    error re.record.errors.full_messages.join(' '), :unprocessable_entity
+  rescue ActiveRecord::RecordInvalid => e
+    error e.record.errors.full_messages.join(' '), :unprocessable_entity
   rescue TZInfo::InvalidTimezoneIdentifier
     error I18n.t('common.errors.invalid_timezone', timezone: params[:timezone],
                                                    timezone_list_url: static_api_timezones_url), :forbidden
@@ -67,8 +67,8 @@ class JobApiController < ApplicationController
       @job.save!
     end
     message I18n.t('jobs.messages.updated', id: @job.id), :ok, false, @job, 'job'
-  rescue ActiveRecord::RecordInvalid => re
-    error re.record.errors.full_messages.join(' '), :unprocessable_entity
+  rescue ActiveRecord::RecordInvalid => e
+    error e.record.errors.full_messages.join(' '), :unprocessable_entity
   rescue StandardError
     logger.error "Failed to update Job #{@job.id}: #{$!}"
     error I18n.t('jobs.errors.update_failed', id: @job.id, error: $!), :conflict
@@ -79,6 +79,7 @@ class JobApiController < ApplicationController
   #
   def destroy
     error I18n.t('jobs.errors.cant_delete_running', id: @job.id), :conflict and return if @job.running?
+
     @job.destroy
     message I18n.t('jobs.messages.deleted', id: @job.id), :ok
   end
@@ -88,6 +89,7 @@ class JobApiController < ApplicationController
   #
   def run_now
     error I18n.t('jobs.errors.already_running', id: @job.id), :conflict and return if @job.running?
+
     ShellJob.perform_later(@job.id, true)
     message I18n.t('jobs.messages.started', id: @job.id), :ok
   end

@@ -38,8 +38,8 @@ class FolderApiController < ApplicationController
       folder = Folder.create!(name: params[:name], expression: params[:expression], user: current_user)
       message I18n.t('folders.messages.created', id: folder.id), :created, false, folder, 'folder'
     end
-  rescue ActiveRecord::RecordInvalid => re
-    error re.record.errors.full_messages.join(' '), :unprocessable_entity
+  rescue ActiveRecord::RecordInvalid => e
+    error e.record.errors.full_messages.join(' '), :unprocessable_entity
   rescue StandardError
     logger.error "Failed to create Folder #{params[:name]}: #{$!}"
     error I18n.t('folders.errors.create_failed', error: $!), :conflict
@@ -56,8 +56,8 @@ class FolderApiController < ApplicationController
       @folder.save!
     end
     message I18n.t('folders.messages.updated', id: @folder.id), :ok, false, @folder, 'folder'
-  rescue ActiveRecord::RecordInvalid => re
-    error re.record.errors.full_messages.join(' '), :unprocessable_entity
+  rescue ActiveRecord::RecordInvalid => e
+    error e.record.errors.full_messages.join(' '), :unprocessable_entity
   rescue StandardError
     logger.error "Failed to update Job #{@folder.id}: #{$!}"
     error I18n.t('folders.errors.update_failed', id: @folder.id, error: $!), :conflict

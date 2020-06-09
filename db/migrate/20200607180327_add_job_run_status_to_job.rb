@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddJobRunStatusToJob < ActiveRecord::Migration[5.2]
   def change
     add_column :jobs, :avg_run_duration, :decimal, default: 0.0, precision: 10, scale: 4

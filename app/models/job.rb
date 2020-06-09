@@ -29,31 +29,29 @@ class Job < ApplicationRecord
   scope :command, ->(command) { where('command like ?', "%#{sanitize_sql_like(command)}%") }
   scope :include_by_ids, ->(ids) { where('jobs.id in (?)', ids) }
   scope :recent, ->(user_id, count) { mine(user_id).where.not(last_run: nil).order(last_run: :desc).limit(count) }
-  scope :upcoming, ->(user_id, count) { mine(user_id).where("next_run > ? and enabled = ? and running = ?", DateTime.now, true, false).order(next_run: :asc).limit(count) }
+  scope :upcoming, ->(user_id, count) { mine(user_id).where('next_run > ? and enabled = ? and running = ?', DateTime.now, true, false).order(next_run: :asc).limit(count) }
 
   TAG_SEARCH = %w[any all exclude].freeze
 
-  before_save :update_cron, if: Proc.new {|model| model.cron_changed? || model.timezone_changed?}
+  before_save :update_cron, if: proc { |model| model.cron_changed? || model.timezone_changed? }
 
   before_validation(on: %i[create update]) do
-    begin
-      Cronex::ExpressionDescriptor.new(cron).description
-    rescue
-      errors.add(:cron, "'#{cron}' is an invalid cron expression.")
-    end
+    Cronex::ExpressionDescriptor.new(cron).description
+  rescue StandardError
+    errors.add(:cron, "'#{cron}' is an invalid cron expression.")
   end
 
   def update_cron
-    self.timezone = 'UTC' if self.timezone.blank?
+    self.timezone = 'UTC' if timezone.blank?
     self.next_run = schedule.next_occurrence
-  rescue
+  rescue StandardError
     raise TZInfo::InvalidTimezoneIdentifier
   end
 
   # Do the tagging
   def tag(tags)
     self.tag_list = '' if tags.blank?
-    self.user.tag self, with: tags, on: :tags unless tags.nil?
+    user.tag self, with: tags, on: :tags unless tags.nil?
   end
 
   # Determines whether this job has a schedule ocurrence between 2 dates
@@ -68,8 +66,8 @@ class Job < ApplicationRecord
 
   # When a job starts, this is called to mark the job as running and create a run
   def start_job(is_manual)
-    run = JobRun.create(job: self, start_time: Time.current, scheduled_start_time: is_manual ? nil : self.next_run, is_manual: is_manual,
-                        schedule_diff_in_seconds: [0, (Time.current.to_i - self.next_run.to_i)].max)
+    run = JobRun.create(job: self, start_time: Time.current, scheduled_start_time: is_manual ? nil : next_run, is_manual: is_manual,
+                        schedule_diff_in_seconds: [0, (Time.current.to_i - next_run.to_i)].max)
     self.running = true
     save
     run
@@ -259,14 +257,14 @@ class Job < ApplicationRecord
       avg_run_lag: avg_run_lag,
       max_run_lag: max_run_lag,
       min_run_lag: min_run_lag,
-      avg_run_lag_trend: avg_run_lag_trend,
+      avg_run_lag_trend: avg_run_lag_trend
     }
   end
 
   private
 
   def schedule
-    date = Date.current.in_time_zone(self.timezone)
-    ::IceCube::Schedule.from_cron(date, self.cron)
+    date = Date.current.in_time_zone(timezone)
+    ::IceCube::Schedule.from_cron(date, cron)
   end
 end

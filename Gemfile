@@ -9,21 +9,21 @@ gem 'mysql2', '>= 0.4.4'
 gem 'rails', '~> 5.2.0'
 gem 'redis', '~> 4.0'
 
+gem 'oj'
 gem 'puma', '~> 3.11'
 gem 'sidekiq'
 gem 'sidekiq-cron'
-gem 'oj'
 
 gem 'acts-as-taggable-on'
 gem 'api-pagination'
 gem 'bcrypt', '~> 3.1.7'
+gem 'cronex'
 gem 'http_accept_language'
 gem 'jwt'
 gem 'kaminari'
 gem 'rswag-api'
 gem 'rswag-ui'
 gem 'simple_command'
-gem 'cronex'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

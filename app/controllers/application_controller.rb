@@ -26,10 +26,10 @@ class ApplicationController < ActionController::API
     yield
   rescue TZInfo::InvalidTimezoneIdentifier
     error I18n.t('common.errors.invalid_timezone', timezone: params[:timezone],
-                 timezone_list_url: static_api_timezones_url), :bad_request
-  rescue => ex
+                                                   timezone_list_url: static_api_timezones_url), :bad_request
+  rescue StandardError => e
     errorid = SecureRandom.uuid
-    logger.error "Error ID #{errorid}: #{$!}, #{ex.backtrace.join('\n')}"
+    logger.error "Error ID #{errorid}: #{$!}, #{e.backtrace.join('\n')}"
     error I18n.t('common.errors.server_error', errorid: errorid), :internal_server_error
   ensure
     Time.zone = old_time_zone
@@ -54,10 +54,10 @@ class ApplicationController < ActionController::API
   #
   def set_time_zone
     Time.zone = params[:timezone] || 'UTC'
-  rescue
+  rescue StandardError
     logger.warn I18n.t('common.errors.invalid_timezone', timezone: params[:timezone],
                                                          timezone_list_url: static_api_timezones_url)
-    raise TZInfo::InvalidTimezoneIdentifier.new
+    raise TZInfo::InvalidTimezoneIdentifier
   end
 
   #

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Folder < ApplicationRecord
   belongs_to :user
 
@@ -16,6 +18,6 @@ class Folder < ApplicationRecord
   end
 
   def as_json(_options = {})
-    { id: self.id, name: self.name, job_count: self.job_count, expression: self.expression, created_at: self.created_at, updated_at: self.updated_at }
+    { id: id, name: name, job_count: job_count, expression: expression, created_at: created_at, updated_at: updated_at }
   end
 end
