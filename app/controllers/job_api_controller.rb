@@ -107,7 +107,7 @@ class JobApiController < ApplicationController
   #
   def occurrences
     end_date = Chronic.parse(params[:end_date])
-    no_end_date && return if end_date.nil?
+    error(I18n.t('jobs.errors.end_date_required'), :forbidden) && return if end_date.nil?
 
     occurrences = paginate @job.occurrences(end_date)
     message I18n.t('occurrences.messages.received'), :ok, false, occurrences, 'occurrences'
@@ -118,9 +118,5 @@ class JobApiController < ApplicationController
   def job
     @job = Job.mine(current_user).where(id: params[:id]).first
     error(I18n.t('jobs.errors.not_found'), :not_found) && return if @job.blank?
-  end
-
-  def no_end_date
-    error I18n.t('jobs.errors.end_date_required'), :forbidden
   end
 end

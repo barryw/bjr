@@ -114,6 +114,43 @@ make undeploy
 
 TODO
 
+#### Walkthru
+
+The first time you start the BJR API server, it will create 2 users, 3 jobs and 5 folders. Each user will have the initial password of `password1234`, so it is strongly recommended that it be changed, and each user should have a different password. The 2 initial users are `root` and `admin`.
+
+The `root` user is meant to perform administrative tasks such as managing regular users and managing the job workers.
+
+The `admin` user is an initial regular user and can be removed by signing in as the `root` user and deleting it. It is only meant to be used to get started.
+
+Each user has their own set of jobs. When they log in, they can only see and manage their own jobs.
+
+#### Job search expressions
+
+When you call the `GET /job_api` endpoint to fetch jobs, you can also pass in an `expression` parameter. This will allow you to filter jobs on a set of criteria. The following are valid ways of searching for jobs:
+
+- `name:my_job` will search for jobs with `my_job` in the name. This does a database LIKE search using `%my_job%` as the expression.
+- `tag:tag1,tag2` or `tag:|tag1,tag2` will search for jobs tagged with either `tag1` or `tag2`
+- `tag:&tag1,tag2` will search for jobs tagged with both `tag1` and `tag2`. If the jobs have other tags, this will NOT match them! The jobs must only have `tag1` and `tag2`.
+- `tag:!tag3,tag4` will search for jobs that are not tagged with `tag3` or `tag4`
+- `running` / `stopped` will search for jobs that are currently running or stopped
+- `enabled` / `disabled` will search for jobs that are currently enabled or disabled
+- `command:sleep` / `cmd:curl` search for jobs with a specific command
+
+
+You can also combine search criteria: `tag:&tag1,tag2 running` would find running jobs tagged with both tag1 and tag2.
+
+__NOTE__: There can be no space between the search operand and the search term (eg. `tag: tag1`) and spaces separate search criteria, so currently you can't have spaces in your search terms!
+
+#### Smart Folders
+
+The API server has a set of endpoints for managing `Smart Folders` which are configured with a search expression. For example, you can create a folder containing running jobs and when you call the `GET /folder_api/:id/jobs` REST method, it will return jobs that are currently running.
+
+Folders use the same expression syntax defined in `Job search expressions` above.
+
+
+#### React Frontend
+
+There's a React-based frontend for BJR here: https://github.com/barryw/bjr_web
 
 #### SDKs
 
@@ -124,7 +161,7 @@ __NOTE__: If you change the functionality of the API server, make sure you run `
 In order to generate the SDKs, you will need to be running `docker`. To generate them, run
 
 ```bash
-rake generate:sdks
+rake sdk:generate
 ```
 
 The SDKs will be generated in subfolders of the `sdks` directory. Each language contains documentation on how to use the SDK.
@@ -195,20 +232,3 @@ Link: <http://localhost:3000/job_api/27/runs?page=1>; rel="first", <http://local
 ```
 
 If you'd like to see what API routes are availble, run `rails routes`
-
-#### Job search expressions
-
-When you call the `GET /job_api` endpoint to fetch jobs, you can also pass in an `expression` parameter. This will allow you to filter jobs on a set of criteria. The following are valid ways of searching for jobs:
-
-- `name:my_job` will search for jobs with `my_job` in the name. This does a database LIKE search using `%my_job%` as the expression.
-- `tag:tag1,tag2` or `tag:|tag1,tag2` will search for jobs tagged with either `tag1` or `tag2`
-- `tag:&tag1,tag2` will search for jobs tagged with both `tag1` and `tag2`. If the jobs have other tags, this will NOT match them! The jobs must only have `tag1` and `tag2`.
-- `tag:!tag3,tag4` will search for jobs that are not tagged with `tag3` or `tag4`
-- `running` / `stopped` will search for jobs that are currently running or stopped
-- `enabled` / `disabled` will search for jobs that are currently enabled or disabled
-- `command:sleep` / `cmd:curl` search for jobs with a specific command
-
-
-You can also combine search criteria: `tag:&tag1,tag2 running` would find running jobs tagged with both tag1 and tag2.
-
-__NOTE__: There can be no space between the search operand and the search term (eg. `tag: tag1`) and spaces separate search criteria, so currently you can't have spaces in your search terms!

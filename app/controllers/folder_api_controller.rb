@@ -34,10 +34,8 @@ class FolderApiController < ApplicationController
   # Create a new folder
   #
   def create
-    ActiveRecord::Base.transaction do
-      folder = Folder.create!(name: params[:name], expression: params[:expression], user: current_user)
-      message I18n.t('folders.messages.created', id: folder.id), :created, false, folder, 'folder'
-    end
+    folder = Folder.create!(name: params[:name], expression: params[:expression], user: current_user)
+    message I18n.t('folders.messages.created', id: folder.id), :created, false, folder, 'folder'
   rescue ActiveRecord::RecordInvalid => e
     error e.record.errors.full_messages.join(' '), :unprocessable_entity
   rescue StandardError
@@ -51,10 +49,7 @@ class FolderApiController < ApplicationController
   def update
     @folder.name = params[:name] unless (@folder.name == params[:name]) || params[:name].blank?
     @folder.expression = params[:expression] unless (@folder.expression == params[:expression]) || params[:expression].blank?
-
-    ActiveRecord::Base.transaction do
-      @folder.save!
-    end
+    @folder.save!
     message I18n.t('folders.messages.updated', id: @folder.id), :ok, false, @folder, 'folder'
   rescue ActiveRecord::RecordInvalid => e
     error e.record.errors.full_messages.join(' '), :unprocessable_entity
