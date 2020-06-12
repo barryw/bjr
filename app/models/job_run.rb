@@ -11,7 +11,7 @@ class JobRun < ApplicationRecord
   scope :ended_before, ->(end_dt) { where('end_time <= ?', end_dt) }
   scope :succeeded, ->(success) { where(success: success) }
 
-  scope :runs_in_range, ->(user_id, start_dt, end_dt) { joins(:job).where(jobs: { user_id: user_id }, start_time: start_dt..end_dt) }
+  scope :runs_in_range, ->(user_id, start_dt, end_dt) { joins(:job).where(jobs: { user_id: user_id, running: false }, start_time: start_dt..end_dt) }
   scope :fails_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).where(success: false) }
   scope :job_count_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).select('jobs.id').distinct.count }
 
@@ -23,15 +23,15 @@ class JobRun < ApplicationRecord
   scope :max_job_lag_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).where(is_manual: false).maximum(:schedule_diff_in_seconds) }
   scope :min_job_lag_in_range, ->(user_id, start_dt, end_dt) { runs_in_range(user_id, start_dt, end_dt).where(is_manual: false).minimum(:schedule_diff_in_seconds) }
 
-  scope :job_schedule_diffs, ->(job_id) { joins(:job).where(jobs: { id: job_id }, is_manual: false).order(end_time: :asc).pluck(:schedule_diff_in_seconds) }
-  scope :avg_job_lag_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id }, is_manual: false).average(:schedule_diff_in_seconds) }
-  scope :max_job_lag_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id }, is_manual: false).maximum(:schedule_diff_in_seconds) }
-  scope :min_job_lag_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id }, is_manual: false).minimum(:schedule_diff_in_seconds) }
+  scope :job_schedule_diffs, ->(job_id) { joins(:job).where(jobs: { id: job_id, running: false }, is_manual: false).order(end_time: :asc).pluck(:schedule_diff_in_seconds) }
+  scope :avg_job_lag_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id, running: false }, is_manual: false).average(:schedule_diff_in_seconds) }
+  scope :max_job_lag_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id, running: false }, is_manual: false).maximum(:schedule_diff_in_seconds) }
+  scope :min_job_lag_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id, running: false }, is_manual: false).minimum(:schedule_diff_in_seconds) }
 
-  scope :job_runtimes, ->(job_id) { joins(:job).where(jobs: { id: job_id }).order(end_time: :asc).pluck(Arel.sql('timestampdiff(microsecond, start_time, end_time)/1000000')) }
-  scope :avg_runtime_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id }).average(Arel.sql('timestampdiff(microsecond, start_time, end_time)/1000000')) }
-  scope :max_runtime_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id }).maximum(Arel.sql('timestampdiff(microsecond, start_time, end_time)/1000000')) }
-  scope :min_runtime_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id }).minimum(Arel.sql('timestampdiff(microsecond, start_time, end_time)/1000000')) }
+  scope :job_runtimes, ->(job_id) { joins(:job).where(jobs: { id: job_id, running: false }).order(end_time: :asc).pluck(Arel.sql('timestampdiff(microsecond, start_time, end_time)/1000000')) }
+  scope :avg_runtime_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id, running: false }).average(Arel.sql('timestampdiff(microsecond, start_time, end_time)/1000000')) }
+  scope :max_runtime_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id, running: false }).maximum(Arel.sql('timestampdiff(microsecond, start_time, end_time)/1000000')) }
+  scope :min_runtime_for_job, ->(job_id) { joins(:job).where(jobs: { id: job_id, running: false }).minimum(Arel.sql('timestampdiff(microsecond, start_time, end_time)/1000000')) }
 
   def self.earliest_job_run(user)
     joins(:job).where(jobs: { user_id: user.id }).minimum(:start_time)
