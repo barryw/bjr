@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'chronic'
 gem 'ice_cube'
 gem 'ice_cube_cron'
+gem 'fugit'
 
 gem 'httparty'
 

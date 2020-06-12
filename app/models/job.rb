@@ -19,7 +19,7 @@ class Job < ApplicationRecord
   validates :cron, presence: true
   validates :command, presence: true
 
-  scope :schedulable, -> { where('next_run < ? and enabled = ? and running = ?', Time.current, true, false) }
+  scope :schedulable, -> { where('next_run < ? and enabled = ? and running = ?', Time.current.utc, true, false) }
   scope :mine, ->(user_id) { where(user_id: user_id) }
   scope :enabled, ->(enabled) { where(enabled: enabled) }
   scope :running, ->(running) { where(running: running) }
@@ -43,7 +43,7 @@ class Job < ApplicationRecord
 
   def update_cron
     self.timezone = 'UTC' if timezone.blank?
-    self.next_run = schedule.next_occurrence
+    self.next_run = next_run_date
   rescue StandardError
     raise TZInfo::InvalidTimezoneIdentifier
   end
@@ -82,7 +82,7 @@ class Job < ApplicationRecord
     logger.error "Failed to update the job run for job #{id} : #{$!}"
   ensure
     self.last_run = Time.current
-    self.next_run = schedule.next_occurrence
+    self.next_run = next_run_date
     self.running = false
     save
   end
@@ -263,8 +263,12 @@ class Job < ApplicationRecord
 
   private
 
+  def next_run_date
+    Fugit::Cron.parse(cron).next_time.utc
+  end
+
   def schedule
-    date = Date.current.in_time_zone(timezone)
+    date = DateTime.now.in_time_zone(timezone).change(sec: 0)
     ::IceCube::Schedule.from_cron(date, cron)
   end
 end
