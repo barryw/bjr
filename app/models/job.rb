@@ -230,6 +230,8 @@ class Job < ApplicationRecord
     self.min_run_lag = min_lag
 
     save!
+  rescue
+    logger.error "Failed to compute run stats for job ID #{self.id}: #{$!}"
   end
 
   # Called when the job is rendered as JSON
