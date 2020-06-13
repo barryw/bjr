@@ -98,7 +98,7 @@ class Job < ApplicationRecord
     query = query.ended_before(end_dt) unless end_dt.blank?
     query = query.succeeded(success) unless success.blank?
 
-    query.order(end_time: :desc)
+    query.order(start_time: :desc)
   end
 
   #
