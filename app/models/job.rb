@@ -43,7 +43,7 @@ class Job < ApplicationRecord
 
   def update_cron
     self.timezone = 'UTC' if timezone.blank?
-    self.next_run = next_run_date
+    update_next_run
   rescue StandardError
     raise TZInfo::InvalidTimezoneIdentifier
   end
@@ -82,7 +82,7 @@ class Job < ApplicationRecord
     logger.error "Failed to update the job run for job #{id} : #{$!}"
   ensure
     self.last_run = Time.current
-    self.next_run = next_run_date
+    update_next_run
     self.running = false
     save
   end
@@ -265,12 +265,15 @@ class Job < ApplicationRecord
 
   private
 
-  def next_run_date
-    Fugit::Cron.parse(cron).next_time.utc
+  def update_next_run
+    zone = Time.zone
+    Time.zone = self.timezone
+    self.next_run = Fugit::Cron.parse(self.cron).next_time.utc
+    Time.zone = zone
   end
 
   def schedule
-    date = DateTime.now.in_time_zone(timezone).change(sec: 0)
+    date = DateTime.now.in_time_zone(timezone)
     ::IceCube::Schedule.from_cron(date, cron)
   end
 end
