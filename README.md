@@ -124,6 +124,20 @@ The `admin` user is an initial regular user and can be removed by signing in as 
 
 Each user has their own set of jobs. When they log in, they can only see and manage their own jobs.
 
+#### Anatomy of a job
+
+Jobs are just simple shell scripts that do something and exit with a return code. If the script exits with a code of 0, then the job is marked as successful. Anything else indicates a failure.
+
+STDOUT, STDERR and the script's return code are captured on every run of the job so that they can be inspected for debugging. These are also sent in the payload if you choose to use the success and failure callbacks.
+
+If you're running your BJR workers outside of Docker, then what your scripts can do is only limited by what's installed on the machine running your workers. For example, if your host OS has `curl` installed, then your jobs can call the `curl` command.
+
+If you're running your BJR workers in a Docker container, then you'll probably want to create your own worker images based on the `barrywalker71/bjr` image and install the tools that you need available.
+
+Unless your job's `command` starts with a shebang line (#!), they will be run under Bash.
+
+__NOTE__: BJR does not sanitize your job's command, so they have full access to the host operating system. Don't give strangers the ability to create jobs on your BJR server.
+
 #### Job search expressions
 
 When you call the `GET /job_api` endpoint to fetch jobs, you can also pass in an `expression` parameter. This will allow you to filter jobs on a set of criteria. The following are valid ways of searching for jobs:
