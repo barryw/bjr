@@ -79,7 +79,7 @@ describe 'Job API' do
 
         run_test! do |response|
           json = JSON.parse(response.body)
-          expect(json['object'].length).to eq(24)
+          expect(json['object'].length).to eq(25)
         end
       end
 
