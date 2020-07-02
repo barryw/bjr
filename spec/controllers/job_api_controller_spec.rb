@@ -400,8 +400,8 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['is_error']).to be false
       expect(json['status_code']).to eq(200)
       expect(json['object'].length).to eq(2)
-      expect(json['object'][0]['id']).to eq(job2.id)
-      expect(json['object'][1]['id']).to eq(job1.id)
+      expect(json['object'][0]['id']).to eq(job1.id)
+      expect(json['object'][1]['id']).to eq(job2.id)
       # TODO
     end
 

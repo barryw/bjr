@@ -185,7 +185,7 @@ class Job < ApplicationRecord
       search = job_ids.empty? ? Job.none : search.include_by_ids(job_ids)
     end
 
-    search.order(next_run: :desc)
+    search.order("next_run, id asc")
   end
 
   def self.search_tags(jobs, tags, incexc)

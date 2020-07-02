@@ -119,8 +119,8 @@ RSpec.describe Job, type: :model do
 
     jobs = Job.search_jobs(admin, 'tag:&tag1,tag3')
     expect(jobs.length).to eq(2)
-    expect(jobs[0].id).to eq(job1.id)
-    expect(jobs[1].id).to eq(job2.id)
+    expect(jobs[0].id).to eq(job2.id)
+    expect(jobs[1].id).to eq(job1.id)
   end
 
   it 'can search for jobs using an expression for !tags #1' do
@@ -165,8 +165,8 @@ RSpec.describe Job, type: :model do
 
     jobs = Job.search_jobs(admin, 'tag:|tag1,tag3')
     expect(jobs.length).to eq(2)
-    expect(jobs[0].id).to eq(job1.id)
-    expect(jobs[1].id).to eq(job2.id)
+    expect(jobs[0].id).to eq(job2.id)
+    expect(jobs[1].id).to eq(job1.id)
   end
 
   it 'can search for jobs using an expression for |tags #2' do
@@ -181,9 +181,9 @@ RSpec.describe Job, type: :model do
 
     jobs = Job.search_jobs(admin, 'tag:|tag1,tag3,tag4,tag5')
     expect(jobs.length).to eq(3)
-    expect(jobs[0].id).to eq(job1.id)
-    expect(jobs[1].id).to eq(job2.id)
-    expect(jobs[2].id).to eq(job3.id)
+    expect(jobs[0].id).to eq(job2.id)
+    expect(jobs[1].id).to eq(job3.id)
+    expect(jobs[2].id).to eq(job1.id)
   end
 
   it 'can search for jobs using an expression for tags (defaults to any)' do
@@ -198,9 +198,9 @@ RSpec.describe Job, type: :model do
 
     jobs = Job.search_jobs(admin, 'tag:tag1,tag3,tag4,tag5')
     expect(jobs.length).to eq(3)
-    expect(jobs[0].id).to eq(job1.id)
-    expect(jobs[1].id).to eq(job2.id)
-    expect(jobs[2].id).to eq(job3.id)
+    expect(jobs[0].id).to eq(job2.id)
+    expect(jobs[1].id).to eq(job3.id)
+    expect(jobs[2].id).to eq(job1.id)
   end
 
   it 'can search for jobs using an expression for name' do
@@ -211,9 +211,9 @@ RSpec.describe Job, type: :model do
 
     jobs = Job.search_jobs(admin, 'name:job')
     expect(jobs.length).to eq(3)
-    expect(jobs[0].id).to eq(job1.id)
-    expect(jobs[1].id).to eq(job2.id)
-    expect(jobs[2].id).to eq(job3.id)
+    expect(jobs[0].id).to eq(job2.id)
+    expect(jobs[1].id).to eq(job3.id)
+    expect(jobs[2].id).to eq(job1.id)
   end
 
   it 'can search for jobs using an expression for name and running' do
@@ -224,8 +224,8 @@ RSpec.describe Job, type: :model do
 
     jobs = Job.search_jobs(admin, 'name:job running')
     expect(jobs.length).to eq(2)
-    expect(jobs[0].id).to eq(job1.id)
-    expect(jobs[1].id).to eq(job3.id)
+    expect(jobs[0].id).to eq(job3.id)
+    expect(jobs[1].id).to eq(job1.id)
   end
 
   it 'can search for jobs using an expression for name and stopped' do
@@ -270,8 +270,8 @@ RSpec.describe Job, type: :model do
 
     jobs = Job.search_jobs(admin, 'name:job enabled')
     expect(jobs.length).to eq(2)
-    expect(jobs[0].id).to eq(job1.id)
-    expect(jobs[1].id).to eq(job3.id)
+    expect(jobs[0].id).to eq(job3.id)
+    expect(jobs[1].id).to eq(job1.id)
   end
 
   it 'can search for jobs that are disabled' do
