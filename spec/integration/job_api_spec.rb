@@ -74,7 +74,7 @@ describe 'Job API' do
         let(:job) { create(:job1, user: admin) }
         let(:Authorization) { auth_token(admin) }
         let(:id) { job.id }
-        let(:end_date) { DateTime.now + 1.day }
+        let(:end_date) { DateTime.now + 2.days }
         schema '$ref' => '#/components/schemas/OccurrenceMessage'
 
         run_test! do |response|
