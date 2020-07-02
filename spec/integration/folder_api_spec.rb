@@ -260,8 +260,8 @@ describe 'Folder API' do
           expect(json['status_code']).to eq(200)
           expect(json['is_error']).to be false
           expect(json['object_type']).to eq('jobarray')
-          expect(json['object'][0]['name']).to eq('Job 1')
-          expect(json['object'][1]['name']).to eq('Job 2')
+          expect(json['object'][0]['name']).to eq('Job 2')
+          expect(json['object'][1]['name']).to eq('Job 1')
         end
       end
 
