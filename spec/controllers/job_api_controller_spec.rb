@@ -19,6 +19,14 @@ RSpec.describe JobApiController, type: :controller do
       post :run_now, params: { id: job.id }
       expect(response).to have_http_status(:ok)
     end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      job = create(:job1, user: user)
+      post :run_now, params: { id: job.id }
+      expect(response).to have_http_status(:forbidden)
+    end
   end
 
   describe 'POST #create' do
@@ -122,6 +130,13 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['status_code']).to eq(422)
       expect(json['is_error']).to be true
       expect(json['message']).to match(/Command can't be blank/)
+    end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      post :create, params: { name: 'job1', cron: '0 0 * * *', command: 'ls -ltr', timezone: 'Samoa' }
+      expect(response).to have_http_status(:forbidden)
     end
   end
 
@@ -266,6 +281,13 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['object']['failure_callback']).to eq('https://www.blah.com')
     end
 
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      job = create(:job1, user: user, enabled: true)
+      put :update, params: { id: job.id, success_callback: 'https://www.blah.com', failure_callback: 'https://www.blah.com' }
+      expect(response).to have_http_status(:forbidden)
+    end
   end
 
   describe 'GET #index' do
@@ -550,6 +572,13 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['object'].length).to eq(1)
       expect(json['object'][0]['id']).to eq(job1.id)
     end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      get :index, params: { expression: 'cmd:sleep' }
+      expect(response).to have_http_status(:forbidden)
+    end
   end
 
   describe 'GET #show' do
@@ -582,6 +611,14 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['object']['command']).to eq(job.command)
       expect(json['object']['next_run']).not_to be_nil
     end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      job = create(:job1, user: user)
+      get :show, params: { 'id': job.id }
+      expect(response).to have_http_status(:forbidden)
+    end
   end
 
   describe 'DELETE #destroy' do
@@ -604,6 +641,14 @@ RSpec.describe JobApiController, type: :controller do
       authenticated_header(user)
       delete :destroy, params: { 'id': job.id }
       expect(response).to have_http_status(:conflict)
+    end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      job = create(:job1, user: user, running: true)
+      delete :destroy, params: { 'id': job.id }
+      expect(response).to have_http_status(:forbidden)
     end
   end
 
@@ -632,6 +677,14 @@ RSpec.describe JobApiController, type: :controller do
       expect(json['message']).to eq(I18n.t('jobs.errors.end_date_required'))
       expect(json['is_error']).to be true
       expect(json['status_code']).to eq(403)
+    end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      job = create(:job1, user: user, running: true)
+      get :occurrences, params: { 'id': job.id, 'end_date': '' }
+      expect(response).to have_http_status(:forbidden)
     end
   end
 
@@ -708,6 +761,14 @@ RSpec.describe JobApiController, type: :controller do
       json = JSON.parse(response.body)
       expect(json['object'].length).to eq(1)
       expect(json['object'][0]['id']).to eq(run2.id)
+    end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      job = create(:job1, user: user, running: true)
+      get :runs, params: { 'id': job.id, 'start_date': Time.current - 2.hours, 'end_date': Time.current, 'succeeded': false }
+      expect(response).to have_http_status(:forbidden)
     end
   end
 end

@@ -6,6 +6,7 @@
 class JobApiController < ApplicationController
   include ApplicationHelper
   before_action :job, only: %i[show update destroy failures runs occurrences runs run_now]
+  before_action :disallow_root
 
   #
   # Get a collection of paginated jobs. An expression can be passed along to search for jobs. Expression can look like:
@@ -118,5 +119,12 @@ class JobApiController < ApplicationController
   def job
     @job = Job.mine(current_user).where(id: params[:id]).first
     error(I18n.t('jobs.errors.not_found'), :not_found) && return if @job.blank?
+  end
+
+  #
+  # The root user is not allowed to have jobs
+  #
+  def disallow_root
+    error(I18n.t('jobs.errors.root_not_permitted'), :forbidden) && return if current_user.is_root?
   end
 end
