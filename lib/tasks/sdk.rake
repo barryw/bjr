@@ -9,7 +9,8 @@ sdks = [{ description: 'C# SDK', language: 'csharp', version_attr: 'packageVersi
         { description: 'Ruby SDK', language: 'ruby', version_attr: 'gemVersion' },
         { description: 'C# .NET Core', language: 'csharp-netcore', version_attr: 'packageVersion' },
         { description: 'Rust SDK', language: 'rust', version_attr: 'packageVersion' },
-        { description: 'Go SDK', language: 'go', version_attr: 'packageVersion' }]
+        { description: 'Go SDK', language: 'go', version_attr: 'packageVersion' },
+        { description: 'Dart DIO', language: 'dart-dio', version_attr: 'pubVersion' }]
 
 desc 'Do everything needed to update the SDKs. Pass in the version to set them all to.'
 task 'sdk:all', [:version] => [:environment] do |_t, args|

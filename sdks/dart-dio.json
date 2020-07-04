@@ -1,0 +1,8 @@
+{
+  "dateLibrary": "timemachine",
+  "pubAuthor": "Barry Walker",
+  "pubAuthorEmail": "barrywalker@gmail.com",
+  "pubDescription": "BJR Client SDK for Dart",
+  "pubName": "BJR",
+  "pubVersion": "2.5.1"
+}

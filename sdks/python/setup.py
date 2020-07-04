@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "bjr4py"
-VERSION = "2.5.0"
+VERSION = "2.5.1"
 # To install the library, run the following
 #
 # python setup.py install

@@ -1,0 +1,28 @@
+        import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
+
+part 'tag.g.dart';
+
+abstract class Tag implements Built<Tag, TagBuilder> {
+
+    
+        @nullable
+    @BuiltValueField(wireName: r'id')
+    int get id;
+    
+        @nullable
+    @BuiltValueField(wireName: r'name')
+    String get name;
+    
+        @nullable
+    @BuiltValueField(wireName: r'taggings_count')
+    int get taggingsCount;
+
+    // Boilerplate code needed to wire-up generated code
+    Tag._();
+
+    factory Tag([updates(TagBuilder b)]) = _$Tag;
+    static Serializer<Tag> get serializer => _$tagSerializer;
+
+}
+
