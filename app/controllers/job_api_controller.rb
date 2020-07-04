@@ -5,6 +5,7 @@
 #
 class JobApiController < ApplicationController
   include ApplicationHelper
+
   before_action :job, only: %i[show update destroy failures runs occurrences runs run_now]
   before_action :disallow_root
 
@@ -121,10 +122,4 @@ class JobApiController < ApplicationController
     error(I18n.t('jobs.errors.not_found'), :not_found) && return if @job.blank?
   end
 
-  #
-  # The root user is not allowed to have jobs
-  #
-  def disallow_root
-    error(I18n.t('jobs.errors.root_not_permitted'), :forbidden) && return if current_user.is_root?
-  end
 end

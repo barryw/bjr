@@ -66,4 +66,11 @@ class ApplicationController < ActionController::API
   def require_root
     error I18n.t('common.errors.unauthorized'), :unauthorized unless current_user.is_root
   end
+
+  #
+  # The root user is not allowed to have jobs
+  #
+  def disallow_root
+    error(I18n.t('common.errors.root_not_permitted'), :forbidden) && return if current_user.is_root?
+  end
 end

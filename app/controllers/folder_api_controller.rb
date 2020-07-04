@@ -5,7 +5,9 @@
 #
 class FolderApiController < ApplicationController
   include ApplicationHelper
+
   before_action :folder, only: %i[show update destroy jobs]
+  before_action :disallow_root
 
   #
   # Paginate all folders for a user

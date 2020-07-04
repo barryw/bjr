@@ -22,7 +22,7 @@ import TodaysStatsMessage from '../io.barrywalker.bjr.model/TodaysStatsMessage';
 /**
 * JobServer service.
 * @module io.barrywalker.bjr/io.barrywalker.bjr.api/JobServerApi
-* @version 2.4.1
+* @version 2.5.0
 */
 export default class JobServerApi {
 

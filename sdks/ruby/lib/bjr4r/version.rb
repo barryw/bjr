@@ -11,5 +11,5 @@ OpenAPI Generator version: 4.3.1-SNAPSHOT
 =end
 
 module BJR
-  VERSION = '2.4.1'
+  VERSION = '2.5.0'
 end

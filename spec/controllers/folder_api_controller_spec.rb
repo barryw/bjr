@@ -32,6 +32,13 @@ RSpec.describe FolderApiController, type: :controller do
       expect(json['status_code']).to eq(422)
       expect(json['message']).to eq('Name has already been taken')
     end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      post :create, params: { name: 'Test Folder', expression: 'success' }
+      expect(response).to have_http_status(:forbidden)
+    end
   end
 
   describe 'PUT #update' do
@@ -65,6 +72,14 @@ RSpec.describe FolderApiController, type: :controller do
       expect(json['status_code']).to eq(422)
       expect(json['message']).to eq('Name has already been taken')
     end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      folder1 = create(:success, user: user, name: 'Test Folder')
+      put :update, params: { id: folder1.id, name: 'No way jose' }
+      expect(response).to have_http_status(:forbidden)
+    end
   end
 
   describe 'DELETE #delete' do
@@ -87,6 +102,15 @@ RSpec.describe FolderApiController, type: :controller do
 
       delete :destroy, params: { id: folder1.id }
       expect(response).to have_http_status(:not_found)
+    end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      folder1 = create(:success, user: user, name: 'Test Folder')
+      delete :destroy, params: { id: folder1.id }
+
+      expect(response).to have_http_status(:forbidden)
     end
   end
 
@@ -128,6 +152,14 @@ RSpec.describe FolderApiController, type: :controller do
       expect(json['object'].length).to eq(1)
       expect(json['object'][0]['id']).to eq(folder1.id)
     end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      get :index
+
+      expect(response).to have_http_status(:forbidden)
+    end
   end
 
   describe 'GET #show' do
@@ -165,6 +197,15 @@ RSpec.describe FolderApiController, type: :controller do
       get :show, params: { id: folder1.id }
 
       expect(response).to have_http_status(:not_found)
+    end
+
+    it 'does not allow the root user to call this method' do
+      user = create(:root)
+      authenticated_header(user)
+      folder1 = create(:success, user: user)
+      get :show, params: { id: folder1.id }
+
+      expect(response).to have_http_status(:forbidden)
     end
   end
 

@@ -4,6 +4,7 @@ en:
       unauthorized: You are not authorized to perform this action.
       invalid_timezone: "Invalid timezone '%{timezone}' specified. Acceptable timezone list: %{timezone_list_url}"
       server_error: "A server error has occurred. Use the error ID '%{errorid}' to track it down."
+      root_not_permitted: The root user is not permitted to perform this action.
   tags:
     messages:
       received: Tags received successfully.
@@ -49,7 +50,6 @@ en:
       end_date_required: You must supply an end date parameter.
       cant_delete_running: "Job '%{id}' cannot be deleted because it's running. Try disabling it first."
       already_running: "Job '%{id}' is already running."
-      root_not_permitted: The root user is not permitted to have jobs. Create another user and run the jobs as that user.
   users:
     messages:
       received: User(s) received successfully.
