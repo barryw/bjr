@@ -147,13 +147,13 @@ class Job < ApplicationRecord
         when 'tags', 'tag'
           if search.start_with? '!'
             incexc = 'exclude'
-            tags = search[1..-1]
+            tags = search[1..]
           elsif search.start_with? '&'
             incexc = 'all'
-            tags = search[1..-1]
+            tags = search[1..]
           elsif search.start_with? '|'
             incexc = 'any'
-            tags = search[1..-1]
+            tags = search[1..]
           else
             incexc = 'any'
             tags = search
@@ -185,7 +185,7 @@ class Job < ApplicationRecord
       search = job_ids.empty? ? Job.none : search.include_by_ids(job_ids)
     end
 
-    search.order("next_run, id asc")
+    search.order('next_run, id asc')
   end
 
   def self.search_tags(jobs, tags, incexc)
@@ -230,8 +230,8 @@ class Job < ApplicationRecord
     self.min_run_lag = min_lag
 
     save!
-  rescue
-    logger.error "Failed to compute run stats for job ID #{self.id}: #{$!}"
+  rescue StandardError
+    logger.error "Failed to compute run stats for job ID #{id}: #{$!}"
   end
 
   # Called when the job is rendered as JSON
@@ -267,8 +267,8 @@ class Job < ApplicationRecord
 
   def update_next_run
     zone = Time.zone
-    Time.zone = self.timezone
-    self.next_run = Fugit::Cron.parse(self.cron).next_time.utc
+    Time.zone = timezone
+    self.next_run = Fugit::Cron.parse(cron).next_time.utc
     Time.zone = zone
   end
 

@@ -29,4 +29,4 @@ job1.tag('example')
 job2 = Job.create(name: 'Failing Job', cron: '*/5 * * * *', command: 'oops', user: u)
 job2.tag('example,failing')
 
-job3 = Job.create(name: 'Disabled Job', cron: '*/5 * * * *', command: 'echo I wont run', user: u, enabled: false)
+Job.create(name: 'Disabled Job', cron: '*/5 * * * *', command: 'echo I wont run', user: u, enabled: false)

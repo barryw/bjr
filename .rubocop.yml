@@ -1,18 +1,38 @@
 Layout/LineLength:
   Enabled: false
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
 Metrics/BlockLength:
   Enabled: false
 Metrics/MethodLength:
   Enabled: false
-Lint/RaiseException:
-  Enabled: true
-Lint/StructNewOverride:
+Style/Documentation:
+  Enabled: false
+Style/ExponentialNotation:
   Enabled: true
 Style/HashEachMethods:
   Enabled: true
 Style/HashTransformKeys:
   Enabled: true
 Style/HashTransformValues:
+  Enabled: true
+Style/RedundantFetchBlock:
+  Enabled: true
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+Style/RedundantRegexpEscape:
+  Enabled: true
+Style/SlicingWithRange:
   Enabled: true
 Style/SpecialGlobalVars:
   Enabled: false

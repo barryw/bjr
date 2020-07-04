@@ -29,11 +29,10 @@ gem 'simple_command'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'chronic'
+gem 'fugit'
+gem 'httparty'
 gem 'ice_cube'
 gem 'ice_cube_cron'
-gem 'fugit'
-
-gem 'httparty'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
