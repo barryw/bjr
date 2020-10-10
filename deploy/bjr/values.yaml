@@ -4,7 +4,7 @@ imagePullPolicy: Always
 # Settings for API nodes
 #
 apiNode:
-  image: barrywalker71/bjr
+  image: barrywalker/bjr
   imageTag: latest
   nodeSelector: {}
   resources:
@@ -20,7 +20,7 @@ apiNode:
 # Settings for worker nodes
 #
 workerNode:
-  image: barrywalker71/bjr
+  image: barrywalker/bjr
   imageTag: latest
   nodeSelector: {}
   resources:
@@ -36,7 +36,7 @@ workerNode:
 # Settings for BJR web nodes
 #
 webNode:
-  image: barrywalker71/bjr_web
+  image: barrywalker/bjr_web
   imageTag: latest
   nodeSelector: {}
   resources:

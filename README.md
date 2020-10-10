@@ -30,6 +30,18 @@ You can add tags to your jobs so that you can search on them. You can also add s
 
 I also set out to make it very cloud & Kubernetes friendly. There are deployment options for Kubernetes using Helm, a Packer build to generate AMIs and Terraform code to deploy those AMIs into a working deployment.
 
+#### What can this do for me?
+
+The target use case is essentially this workflow:
+
+- A web platform allows customers to create jobs to perform security scans of assets, which can be source code, build artifacts, Docker images or deployed applications.
+- The platform has an API endpoint to trigger the scan based on its ID. The API just needs the id of the job to run and a set of credentials to call the API.
+- We use the scheduler's API to create the job to run according to the customer's schedule which calls the platform API endpoint to trigger the scan.
+- Each job has a success and failure callback which can indicate failure on the platform.
+- We can tag the jobs with the customer's ID and the job's ID so that we can quickly see which customers are scheduling jobs and whether or not they're failing.
+
+This is a very simple use case, but doesn't appear to be well supported by other job scheduling tools.
+
 #### Configuration
 
 If you're just running a development environment, the defaults are probably fine. For everything else, here's what you'll want to configure:
@@ -132,7 +144,7 @@ STDOUT, STDERR and the script's return code are captured on every run of the job
 
 If you're running your BJR workers outside of Docker, then what your scripts can do is only limited by what's installed on the machine running your workers. For example, if your host OS has `curl` installed, then your jobs can call the `curl` command.
 
-If you're running your BJR workers in a Docker container, then you'll probably want to create your own worker images based on the `barrywalker71/bjr` image and install the tools that you need available.
+If you're running your BJR workers in a Docker container, then you'll probably want to create your own worker images based on the `barrywalker/bjr` image and install the tools that you need available.
 
 Unless your job's `command` starts with a shebang line (#!), they will be run under Bash.
 
