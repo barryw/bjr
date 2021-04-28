@@ -56,19 +56,19 @@
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instane = new Bjr4js.BusyThreadCountMessageObjectHosts();
+      //var instance = new Bjr4js.BusyThreadCountMessageObjectHosts();
       //expect(instance).to.be();
     });
 
     it('should have the property busy (base name: "busy")', function() {
       // uncomment below and update the code to test the property busy
-      //var instane = new Bjr4js.BusyThreadCountMessageObjectHosts();
+      //var instance = new Bjr4js.BusyThreadCountMessageObjectHosts();
       //expect(instance).to.be();
     });
 
     it('should have the property pid (base name: "pid")', function() {
       // uncomment below and update the code to test the property pid
-      //var instane = new Bjr4js.BusyThreadCountMessageObjectHosts();
+      //var instance = new Bjr4js.BusyThreadCountMessageObjectHosts();
       //expect(instance).to.be();
     });
 

@@ -14,28 +14,51 @@ Method | HTTP request | Description
 
 ## CreateUser
 
-> SingleUserMessage CreateUser(ctx, optional)
+> SingleUserMessage CreateUser(ctx).UserNewIn(userNewIn).Execute()
 
 Creates a user
 
-Create a new user. Only root users are allowed to create new users.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    userNewIn := *openapiclient.NewUserNewIn("Username_example", "Password_example", "PasswordConfirmation_example") // UserNewIn |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.UsersApi.CreateUser(context.Background()).UserNewIn(userNewIn).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.CreateUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateUser`: SingleUserMessage
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.CreateUser`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***CreateUserOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a CreateUserOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userNewIn** | [**optional.Interface of UserNewIn**](UserNewIn.md)|  | 
+ **userNewIn** | [**UserNewIn**](UserNewIn.md) |  | 
 
 ### Return type
 
@@ -57,19 +80,55 @@ Name | Type | Description  | Notes
 
 ## DeleteUser
 
-> SingleUserMessage DeleteUser(ctx, id)
+> SingleUserMessage DeleteUser(ctx, id).Execute()
 
 Deletes a user
 
-Deletes a user. Only root users can delete other users.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.UsersApi.DeleteUser(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.DeleteUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteUser`: SingleUserMessage
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.DeleteUser`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32**|  | 
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteUserRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -91,19 +150,55 @@ Name | Type | Description  | Notes
 
 ## GetUser
 
-> SingleUserMessage GetUser(ctx, id)
+> SingleUserMessage GetUser(ctx, id).Execute()
 
 Retrieve a single user
 
-Retrieve a single user. If you're a non-root user, then you can only retrieve your own user.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.UsersApi.GetUser(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.GetUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetUser`: SingleUserMessage
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.GetUser`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32**|  | 
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetUserRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -125,29 +220,53 @@ Name | Type | Description  | Notes
 
 ## GetUsers
 
-> UserArrayMessage GetUsers(ctx, optional)
+> UserArrayMessage GetUsers(ctx).PerPage(perPage).Page(page).Execute()
 
 Retrieves users
 
-Get a list of users
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    perPage := int32(56) // int32 |  (optional)
+    page := int32(56) // int32 |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.UsersApi.GetUsers(context.Background()).PerPage(perPage).Page(page).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.GetUsers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetUsers`: UserArrayMessage
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.GetUsers`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetUsersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***GetUsersOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetUsersOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **optional.Int32**|  | 
- **page** | **optional.Int32**|  | 
+ **perPage** | **int32** |  | 
+ **page** | **int32** |  | 
 
 ### Return type
 
@@ -169,30 +288,57 @@ Name | Type | Description  | Notes
 
 ## UpdateUser
 
-> SingleUserMessage UpdateUser(ctx, id, optional)
+> SingleUserMessage UpdateUser(ctx, id).UserUpdateIn(userUpdateIn).Execute()
 
 Update a single user
 
-Update a single user. If you're a non-root users, then you can only update your own user.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | 
+    userUpdateIn := *openapiclient.NewUserUpdateIn("Password_example", "PasswordConfirmation_example") // UserUpdateIn |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.UsersApi.UpdateUser(context.Background(), id).UserUpdateIn(userUpdateIn).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.UpdateUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateUser`: SingleUserMessage
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.UpdateUser`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32**|  | 
- **optional** | ***UpdateUserOpts** | optional parameters | nil if no parameters
+**id** | **int32** |  | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UpdateUserOpts struct
+Other parameters are passed through a pointer to a apiUpdateUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **userUpdateIn** | [**optional.Interface of UserUpdateIn**](UserUpdateIn.md)|  | 
+ **userUpdateIn** | [**UserUpdateIn**](UserUpdateIn.md) |  | 
 
 ### Return type
 

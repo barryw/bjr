@@ -82,6 +82,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -160,6 +161,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -240,6 +242,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -254,7 +257,7 @@ Name | Type | Description  | Notes
 
 ## GetFolderJobs
 
-> JobArrayMessage GetFolderJobs (int id, int perPage = null, int page = null)
+> JobArrayMessage GetFolderJobs (int id, int? perPage = null, int? page = null)
 
 Return list of jobs in a folder
 
@@ -281,8 +284,8 @@ namespace Example
 
             var apiInstance = new FoldersApi(Configuration.Default);
             var id = 56;  // int | 
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
 
             try
             {
@@ -307,8 +310,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
 
 ### Return type
 
@@ -322,6 +325,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -337,7 +341,7 @@ Name | Type | Description  | Notes
 
 ## GetFolders
 
-> FolderArrayMessage GetFolders (int perPage = null, int page = null)
+> FolderArrayMessage GetFolders (int? perPage = null, int? page = null)
 
 Return paginated list of all folders
 
@@ -363,8 +367,8 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new FoldersApi(Configuration.Default);
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
 
             try
             {
@@ -388,8 +392,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
 
 ### Return type
 
@@ -403,6 +407,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -485,6 +490,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

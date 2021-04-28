@@ -9,9 +9,9 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getTags**](StaticApi.md#getTags) | **get** /tags | Get tags
-[**getTimezones**](StaticApi.md#getTimezones) | **get** /timezones | Get timezones
-[**getVersion**](StaticApi.md#getVersion) | **get** /version | Server version
+[**getTags**](StaticApi.md#gettags) | **get** /tags | Get tags
+[**getTimezones**](StaticApi.md#gettimezones) | **get** /timezones | Get timezones
+[**getVersion**](StaticApi.md#getversion) | **get** /version | Server version
 
 
 # **getTags**
@@ -36,7 +36,7 @@ try {
     var result = api_instance.getTags(perPage, page);
     print(result);
 } catch (e) {
-    print("Exception when calling StaticApi->getTags: $e\n");
+    print('Exception when calling StaticApi->getTags: $e\n');
 }
 ```
 
@@ -44,8 +44,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -82,7 +82,7 @@ try {
     var result = api_instance.getTimezones();
     print(result);
 } catch (e) {
-    print("Exception when calling StaticApi->getTimezones: $e\n");
+    print('Exception when calling StaticApi->getTimezones: $e\n');
 }
 ```
 
@@ -121,7 +121,7 @@ try {
     var result = api_instance.getVersion();
     print(result);
 } catch (e) {
-    print("Exception when calling StaticApi->getVersion: $e\n");
+    print('Exception when calling StaticApi->getVersion: $e\n');
 }
 ```
 

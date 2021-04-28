@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,18 +8,24 @@
 """
 
 
-from __future__ import absolute_import
-
 import re  # noqa: F401
+import sys  # noqa: F401
 
-# python 2 and python 3 compatibility library
-import six
-
-from bjr4py.api_client import ApiClient
-from bjr4py.exceptions import (  # noqa: F401
-    ApiTypeError,
-    ApiValueError
+from bjr4py.api_client import ApiClient, Endpoint as _Endpoint
+from bjr4py.model_utils import (  # noqa: F401
+    check_allowed_values,
+    check_validations,
+    date,
+    datetime,
+    file_type,
+    none_type,
+    validate_and_convert_types
 )
+from bjr4py.model.busy_thread_count_message import BusyThreadCountMessage
+from bjr4py.model.generic_message import GenericMessage
+from bjr4py.model.job_array_message import JobArrayMessage
+from bjr4py.model.job_stat_message import JobStatMessage
+from bjr4py.model.todays_stats_message import TodaysStatsMessage
 
 
 class JobServerApi(object):
@@ -36,1071 +40,1115 @@ class JobServerApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_busy_thread_count(self, **kwargs):  # noqa: E501
-        """Retrieve the count of busy workers across worker pods/nodes  # noqa: E501
+        def __get_busy_thread_count(
+            self,
+            **kwargs
+        ):
+            """Retrieve the count of busy workers across worker pods/nodes  # noqa: E501
 
-        Retrieve the count of busy workers across worker pods/nodes  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_busy_thread_count(async_req=True)
-        >>> result = thread.get()
+            Retrieve the count of busy workers across worker pods/nodes  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        :param async_req bool: execute request asynchronously
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: BusyThreadCountMessage
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.get_busy_thread_count_with_http_info(**kwargs)  # noqa: E501
+            >>> thread = api.get_busy_thread_count(async_req=True)
+            >>> result = thread.get()
 
-    def get_busy_thread_count_with_http_info(self, **kwargs):  # noqa: E501
-        """Retrieve the count of busy workers across worker pods/nodes  # noqa: E501
 
-        Retrieve the count of busy workers across worker pods/nodes  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_busy_thread_count_with_http_info(async_req=True)
-        >>> result = thread.get()
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        :param async_req bool: execute request asynchronously
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(BusyThreadCountMessage, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
+            Returns:
+                BusyThreadCountMessage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
 
-        local_var_params = locals()
-
-        all_params = [
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.get_busy_thread_count = _Endpoint(
+            settings={
+                'response_type': (BusyThreadCountMessage,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/job_server_api/busy_thread_count',
+                'operation_id': 'get_busy_thread_count',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__get_busy_thread_count
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_busy_thread_count" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+        def __quiesce_node(
+            self,
+            host,
+            **kwargs
+        ):
+            """Quiesce a single worker pod/node  # noqa: E501
 
-        collection_formats = {}
+            Quiesce a single worker pod/node  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+            >>> thread = api.quiesce_node(host, async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
+            Args:
+                host (str): The hostname of the worker pod/node to quiesce
 
-        header_params = {}
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                GenericMessage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['host'] = \
+                host
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/job_server_api/busy_thread_count', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='BusyThreadCountMessage',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def quiesce_node(self, host, **kwargs):  # noqa: E501
-        """Quiesce a single worker pod/node  # noqa: E501
-
-        Quiesce a single worker pod/node  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.quiesce_node(host, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str host: The hostname of the worker pod/node to quiesce (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: GenericMessage
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.quiesce_node_with_http_info(host, **kwargs)  # noqa: E501
-
-    def quiesce_node_with_http_info(self, host, **kwargs):  # noqa: E501
-        """Quiesce a single worker pod/node  # noqa: E501
-
-        Quiesce a single worker pod/node  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.quiesce_node_with_http_info(host, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str host: The hostname of the worker pod/node to quiesce (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(GenericMessage, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'host'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.quiesce_node = _Endpoint(
+            settings={
+                'response_type': (GenericMessage,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/job_server_api/quiesce_worker',
+                'operation_id': 'quiesce_node',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'host',
+                ],
+                'required': [
+                    'host',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'host':
+                        (str,),
+                },
+                'attribute_map': {
+                    'host': 'host',
+                },
+                'location_map': {
+                    'host': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__quiesce_node
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method quiesce_node" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'host' is set
-        if self.api_client.client_side_validation and ('host' not in local_var_params or  # noqa: E501
-                                                        local_var_params['host'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `host` when calling `quiesce_node`")  # noqa: E501
+        def __recent_jobs(
+            self,
+            **kwargs
+        ):
+            """List of recent jobs  # noqa: E501
 
-        collection_formats = {}
+            Get a list of the most recently run jobs  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+            >>> thread = api.recent_jobs(async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'host' in local_var_params and local_var_params['host'] is not None:  # noqa: E501
-            query_params.append(('host', local_var_params['host']))  # noqa: E501
 
-        header_params = {}
+            Keyword Args:
+                count (int): The number of jobs to return (max 20). [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                JobArrayMessage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/job_server_api/quiesce_worker', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='GenericMessage',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def recent_jobs(self, **kwargs):  # noqa: E501
-        """List of recent jobs  # noqa: E501
-
-        Get a list of the most recently run jobs  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.recent_jobs(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int count: The number of jobs to return (max 20)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: JobArrayMessage
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.recent_jobs_with_http_info(**kwargs)  # noqa: E501
-
-    def recent_jobs_with_http_info(self, **kwargs):  # noqa: E501
-        """List of recent jobs  # noqa: E501
-
-        Get a list of the most recently run jobs  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.recent_jobs_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int count: The number of jobs to return (max 20)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(JobArrayMessage, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'count'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.recent_jobs = _Endpoint(
+            settings={
+                'response_type': (JobArrayMessage,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/job_server_api/recent_jobs',
+                'operation_id': 'recent_jobs',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'count',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'count':
+                        (int,),
+                },
+                'attribute_map': {
+                    'count': 'count',
+                },
+                'location_map': {
+                    'count': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__recent_jobs
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method recent_jobs" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+        def __stats_by_day(
+            self,
+            **kwargs
+        ):
+            """Job statistics by day  # noqa: E501
 
-        collection_formats = {}
+            Get daily job statistics  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+            >>> thread = api.stats_by_day(async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
-            query_params.append(('count', local_var_params['count']))  # noqa: E501
 
-        header_params = {}
+            Keyword Args:
+                start_date (str): The start date from which to get daily metrics from. [optional]
+                end_date (str): The end date from which to get daily metrics from. [optional]
+                per_page (int): [optional]
+                page (int): [optional]
+                timezone (str): [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                JobStatMessage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/job_server_api/recent_jobs', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='JobArrayMessage',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def stats_by_day(self, **kwargs):  # noqa: E501
-        """Job statistics by day  # noqa: E501
-
-        Get daily job statistics  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stats_by_day(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str start_date: The start date from which to get daily metrics from
-        :param str end_date: The end date from which to get daily metrics from
-        :param int per_page:
-        :param int page:
-        :param str timezone:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: JobStatMessage
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.stats_by_day_with_http_info(**kwargs)  # noqa: E501
-
-    def stats_by_day_with_http_info(self, **kwargs):  # noqa: E501
-        """Job statistics by day  # noqa: E501
-
-        Get daily job statistics  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stats_by_day_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str start_date: The start date from which to get daily metrics from
-        :param str end_date: The end date from which to get daily metrics from
-        :param int per_page:
-        :param int page:
-        :param str timezone:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(JobStatMessage, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'start_date',
-            'end_date',
-            'per_page',
-            'page',
-            'timezone'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.stats_by_day = _Endpoint(
+            settings={
+                'response_type': (JobStatMessage,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/job_server_api/daily_job_stats',
+                'operation_id': 'stats_by_day',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'start_date',
+                    'end_date',
+                    'per_page',
+                    'page',
+                    'timezone',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'start_date':
+                        (str,),
+                    'end_date':
+                        (str,),
+                    'per_page':
+                        (int,),
+                    'page':
+                        (int,),
+                    'timezone':
+                        (str,),
+                },
+                'attribute_map': {
+                    'start_date': 'start_date',
+                    'end_date': 'end_date',
+                    'per_page': 'per_page',
+                    'page': 'page',
+                    'timezone': 'timezone',
+                },
+                'location_map': {
+                    'start_date': 'query',
+                    'end_date': 'query',
+                    'per_page': 'query',
+                    'page': 'query',
+                    'timezone': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__stats_by_day
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method stats_by_day" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+        def __stats_by_hour(
+            self,
+            **kwargs
+        ):
+            """Job statistics by hour  # noqa: E501
 
-        collection_formats = {}
+            Get hourly job statistics for the day  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+            >>> thread = api.stats_by_hour(async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'start_date' in local_var_params and local_var_params['start_date'] is not None:  # noqa: E501
-            query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
-        if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
-            query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
-        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
-            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
-        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
-            query_params.append(('page', local_var_params['page']))  # noqa: E501
-        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
-            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
-        header_params = {}
+            Keyword Args:
+                start_date (str): The start date from which to get hourly metrics from. [optional]
+                end_date (str): The end date from which to get hourly metrics from. [optional]
+                per_page (int): [optional]
+                page (int): [optional]
+                timezone (str): [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                JobStatMessage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/job_server_api/daily_job_stats', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='JobStatMessage',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def stats_by_hour(self, **kwargs):  # noqa: E501
-        """Job statistics by hour  # noqa: E501
-
-        Get hourly job statistics for the day  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stats_by_hour(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str start_date: The start date from which to get hourly metrics from
-        :param str end_date: The end date from which to get hourly metrics from
-        :param int per_page:
-        :param int page:
-        :param str timezone:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: JobStatMessage
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.stats_by_hour_with_http_info(**kwargs)  # noqa: E501
-
-    def stats_by_hour_with_http_info(self, **kwargs):  # noqa: E501
-        """Job statistics by hour  # noqa: E501
-
-        Get hourly job statistics for the day  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stats_by_hour_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str start_date: The start date from which to get hourly metrics from
-        :param str end_date: The end date from which to get hourly metrics from
-        :param int per_page:
-        :param int page:
-        :param str timezone:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(JobStatMessage, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'start_date',
-            'end_date',
-            'per_page',
-            'page',
-            'timezone'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.stats_by_hour = _Endpoint(
+            settings={
+                'response_type': (JobStatMessage,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/job_server_api/hourly_job_stats',
+                'operation_id': 'stats_by_hour',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'start_date',
+                    'end_date',
+                    'per_page',
+                    'page',
+                    'timezone',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'start_date':
+                        (str,),
+                    'end_date':
+                        (str,),
+                    'per_page':
+                        (int,),
+                    'page':
+                        (int,),
+                    'timezone':
+                        (str,),
+                },
+                'attribute_map': {
+                    'start_date': 'start_date',
+                    'end_date': 'end_date',
+                    'per_page': 'per_page',
+                    'page': 'page',
+                    'timezone': 'timezone',
+                },
+                'location_map': {
+                    'start_date': 'query',
+                    'end_date': 'query',
+                    'per_page': 'query',
+                    'page': 'query',
+                    'timezone': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__stats_by_hour
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method stats_by_hour" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+        def __stats_by_minute(
+            self,
+            **kwargs
+        ):
+            """Job statistics by minute  # noqa: E501
 
-        collection_formats = {}
+            Get minutely job statistics  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+            >>> thread = api.stats_by_minute(async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'start_date' in local_var_params and local_var_params['start_date'] is not None:  # noqa: E501
-            query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
-        if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
-            query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
-        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
-            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
-        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
-            query_params.append(('page', local_var_params['page']))  # noqa: E501
-        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
-            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
-        header_params = {}
+            Keyword Args:
+                start_date (str): The start date from which to get minutely metrics from. [optional]
+                end_date (str): The end date from which to get minutely metrics from. [optional]
+                per_page (int): [optional]
+                page (int): [optional]
+                timezone (str): [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                JobStatMessage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/job_server_api/hourly_job_stats', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='JobStatMessage',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def stats_by_minute(self, **kwargs):  # noqa: E501
-        """Job statistics by minute  # noqa: E501
-
-        Get minutely job statistics  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stats_by_minute(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str start_date: The start date from which to get minutely metrics from
-        :param str end_date: The end date from which to get minutely metrics from
-        :param int per_page:
-        :param int page:
-        :param str timezone:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: JobStatMessage
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.stats_by_minute_with_http_info(**kwargs)  # noqa: E501
-
-    def stats_by_minute_with_http_info(self, **kwargs):  # noqa: E501
-        """Job statistics by minute  # noqa: E501
-
-        Get minutely job statistics  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stats_by_minute_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str start_date: The start date from which to get minutely metrics from
-        :param str end_date: The end date from which to get minutely metrics from
-        :param int per_page:
-        :param int page:
-        :param str timezone:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(JobStatMessage, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'start_date',
-            'end_date',
-            'per_page',
-            'page',
-            'timezone'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.stats_by_minute = _Endpoint(
+            settings={
+                'response_type': (JobStatMessage,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/job_server_api/minutely_job_stats',
+                'operation_id': 'stats_by_minute',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'start_date',
+                    'end_date',
+                    'per_page',
+                    'page',
+                    'timezone',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'start_date':
+                        (str,),
+                    'end_date':
+                        (str,),
+                    'per_page':
+                        (int,),
+                    'page':
+                        (int,),
+                    'timezone':
+                        (str,),
+                },
+                'attribute_map': {
+                    'start_date': 'start_date',
+                    'end_date': 'end_date',
+                    'per_page': 'per_page',
+                    'page': 'page',
+                    'timezone': 'timezone',
+                },
+                'location_map': {
+                    'start_date': 'query',
+                    'end_date': 'query',
+                    'per_page': 'query',
+                    'page': 'query',
+                    'timezone': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__stats_by_minute
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method stats_by_minute" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+        def __stats_by_week(
+            self,
+            **kwargs
+        ):
+            """Job statistics by week  # noqa: E501
 
-        collection_formats = {}
+            Get weekly job statistics  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+            >>> thread = api.stats_by_week(async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'start_date' in local_var_params and local_var_params['start_date'] is not None:  # noqa: E501
-            query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
-        if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
-            query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
-        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
-            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
-        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
-            query_params.append(('page', local_var_params['page']))  # noqa: E501
-        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
-            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
-        header_params = {}
+            Keyword Args:
+                start_date (str): The start date from which to get weekly metrics from. [optional]
+                end_date (str): The end date from which to get weekly metrics from. [optional]
+                per_page (int): [optional]
+                page (int): [optional]
+                timezone (str): [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                JobStatMessage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/job_server_api/minutely_job_stats', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='JobStatMessage',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def stats_by_week(self, **kwargs):  # noqa: E501
-        """Job statistics by week  # noqa: E501
-
-        Get weekly job statistics  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stats_by_week(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str start_date: The start date from which to get weekly metrics from
-        :param str end_date: The end date from which to get weekly metrics from
-        :param int per_page:
-        :param int page:
-        :param str timezone:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: JobStatMessage
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.stats_by_week_with_http_info(**kwargs)  # noqa: E501
-
-    def stats_by_week_with_http_info(self, **kwargs):  # noqa: E501
-        """Job statistics by week  # noqa: E501
-
-        Get weekly job statistics  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stats_by_week_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str start_date: The start date from which to get weekly metrics from
-        :param str end_date: The end date from which to get weekly metrics from
-        :param int per_page:
-        :param int page:
-        :param str timezone:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(JobStatMessage, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'start_date',
-            'end_date',
-            'per_page',
-            'page',
-            'timezone'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.stats_by_week = _Endpoint(
+            settings={
+                'response_type': (JobStatMessage,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/job_server_api/weekly_job_stats',
+                'operation_id': 'stats_by_week',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'start_date',
+                    'end_date',
+                    'per_page',
+                    'page',
+                    'timezone',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'start_date':
+                        (str,),
+                    'end_date':
+                        (str,),
+                    'per_page':
+                        (int,),
+                    'page':
+                        (int,),
+                    'timezone':
+                        (str,),
+                },
+                'attribute_map': {
+                    'start_date': 'start_date',
+                    'end_date': 'end_date',
+                    'per_page': 'per_page',
+                    'page': 'page',
+                    'timezone': 'timezone',
+                },
+                'location_map': {
+                    'start_date': 'query',
+                    'end_date': 'query',
+                    'per_page': 'query',
+                    'page': 'query',
+                    'timezone': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__stats_by_week
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method stats_by_week" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+        def __todays_stats(
+            self,
+            **kwargs
+        ):
+            """Todays Stats  # noqa: E501
 
-        collection_formats = {}
+            Get the high level job statistics for today  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+            >>> thread = api.todays_stats(async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'start_date' in local_var_params and local_var_params['start_date'] is not None:  # noqa: E501
-            query_params.append(('start_date', local_var_params['start_date']))  # noqa: E501
-        if 'end_date' in local_var_params and local_var_params['end_date'] is not None:  # noqa: E501
-            query_params.append(('end_date', local_var_params['end_date']))  # noqa: E501
-        if 'per_page' in local_var_params and local_var_params['per_page'] is not None:  # noqa: E501
-            query_params.append(('per_page', local_var_params['per_page']))  # noqa: E501
-        if 'page' in local_var_params and local_var_params['page'] is not None:  # noqa: E501
-            query_params.append(('page', local_var_params['page']))  # noqa: E501
-        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
-            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
-        header_params = {}
+            Keyword Args:
+                timezone (str): [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                TodaysStatsMessage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/job_server_api/weekly_job_stats', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='JobStatMessage',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def todays_stats(self, **kwargs):  # noqa: E501
-        """Todays Stats  # noqa: E501
-
-        Get the high level job statistics for today  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.todays_stats(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str timezone:
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: TodaysStatsMessage
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.todays_stats_with_http_info(**kwargs)  # noqa: E501
-
-    def todays_stats_with_http_info(self, **kwargs):  # noqa: E501
-        """Todays Stats  # noqa: E501
-
-        Get the high level job statistics for today  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.todays_stats_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str timezone:
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(TodaysStatsMessage, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'timezone'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.todays_stats = _Endpoint(
+            settings={
+                'response_type': (TodaysStatsMessage,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/job_server_api/todays_stats',
+                'operation_id': 'todays_stats',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'timezone',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'timezone':
+                        (str,),
+                },
+                'attribute_map': {
+                    'timezone': 'timezone',
+                },
+                'location_map': {
+                    'timezone': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__todays_stats
         )
 
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method todays_stats" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
+        def __upcoming_jobs(
+            self,
+            **kwargs
+        ):
+            """List of upcoming jobs  # noqa: E501
 
-        collection_formats = {}
+            A list of jobs that are about to execute  # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
 
-        path_params = {}
+            >>> thread = api.upcoming_jobs(async_req=True)
+            >>> result = thread.get()
 
-        query_params = []
-        if 'timezone' in local_var_params and local_var_params['timezone'] is not None:  # noqa: E501
-            query_params.append(('timezone', local_var_params['timezone']))  # noqa: E501
 
-        header_params = {}
+            Keyword Args:
+                count (int): The number of jobs to return (max 20). [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (float/tuple): timeout setting for this request. If one
+                    number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
 
-        form_params = []
-        local_var_files = {}
+            Returns:
+                JobArrayMessage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            return self.call_with_http_info(**kwargs)
 
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/job_server_api/todays_stats', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='TodaysStatsMessage',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def upcoming_jobs(self, **kwargs):  # noqa: E501
-        """List of upcoming jobs  # noqa: E501
-
-        A list of jobs that are about to execute  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.upcoming_jobs(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int count: The number of jobs to return (max 20)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: JobArrayMessage
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.upcoming_jobs_with_http_info(**kwargs)  # noqa: E501
-
-    def upcoming_jobs_with_http_info(self, **kwargs):  # noqa: E501
-        """List of upcoming jobs  # noqa: E501
-
-        A list of jobs that are about to execute  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.upcoming_jobs_with_http_info(async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param int count: The number of jobs to return (max 20)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(JobArrayMessage, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'count'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
+        self.upcoming_jobs = _Endpoint(
+            settings={
+                'response_type': (JobArrayMessage,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/job_server_api/upcoming_jobs',
+                'operation_id': 'upcoming_jobs',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'count',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'count':
+                        (int,),
+                },
+                'attribute_map': {
+                    'count': 'count',
+                },
+                'location_map': {
+                    'count': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__upcoming_jobs
         )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method upcoming_jobs" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
-            query_params.append(('count', local_var_params['count']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/job_server_api/upcoming_jobs', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='JobArrayMessage',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)

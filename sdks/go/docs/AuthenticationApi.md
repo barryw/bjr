@@ -10,28 +10,51 @@ Method | HTTP request | Description
 
 ## AuthenticateUser
 
-> AuthOut AuthenticateUser(ctx, optional)
+> AuthOut AuthenticateUser(ctx).AuthIn(authIn).Execute()
 
 Authenticates a user and returns a token
 
-Authenticates a user and returns a token
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    authIn := *openapiclient.NewAuthIn("Username_example", "Password_example") // AuthIn |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.AuthenticationApi.AuthenticateUser(context.Background()).AuthIn(authIn).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationApi.AuthenticateUser``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AuthenticateUser`: AuthOut
+    fmt.Fprintf(os.Stdout, "Response from `AuthenticationApi.AuthenticateUser`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthenticateUserRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***AuthenticateUserOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a AuthenticateUserOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authIn** | [**optional.Interface of AuthIn**](AuthIn.md)|  | 
+ **authIn** | [**AuthIn**](AuthIn.md) |  | 
 
 ### Return type
 

@@ -1,5 +1,13 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.7
+
+// ignore_for_file: unused_import
+
 library serializers;
 
+import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
@@ -37,140 +45,45 @@ import 'package:BJR/model/user_array_message.dart';
 import 'package:BJR/model/user_new_in.dart';
 import 'package:BJR/model/user_update_in.dart';
 
-
 part 'serializers.g.dart';
 
 @SerializersFor(const [
-AuthIn,
-AuthOut,
-BusyThreadCountMessage,
-BusyThreadCountMessageObject,
-BusyThreadCountMessageObjectHosts,
-FolderArrayMessage,
-GenericMessage,
-JobArrayMessage,
-JobIn,
-JobRunArrayMessage,
-JobStat,
-JobStatMessage,
-OccurrenceMessage,
-ServerVersion,
-SingleFolder,
-SingleFolderMessage,
-SingleJob,
-SingleJobMessage,
-SingleJobRun,
-SingleJobRunMessage,
-SingleUser,
-SingleUserMessage,
-Tag,
-TagMessage,
-TimezoneMessage,
-TodaysStats,
-TodaysStatsMessage,
-UserArrayMessage,
-UserNewIn,
-UserUpdateIn,
-
+  AuthIn,
+  AuthOut,
+  BusyThreadCountMessage,
+  BusyThreadCountMessageObject,
+  BusyThreadCountMessageObjectHosts,
+  FolderArrayMessage,
+  GenericMessage,
+  JobArrayMessage,
+  JobIn,
+  JobRunArrayMessage,
+  JobStat,
+  JobStatMessage,
+  OccurrenceMessage,
+  ServerVersion,
+  SingleFolder,
+  SingleFolderMessage,
+  SingleJob,
+  SingleJobMessage,
+  SingleJobRun,
+  SingleJobRunMessage,
+  SingleUser,
+  SingleUserMessage,
+  Tag,
+  TagMessage,
+  TimezoneMessage,
+  TodaysStats,
+  TodaysStatsMessage,
+  UserArrayMessage,
+  UserNewIn,
+  UserUpdateIn,
 ])
-
-//allow all models to be serialized within a list
 Serializers serializers = (_$serializers.toBuilder()
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(AuthIn)]),
-() => new ListBuilder<AuthIn>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(AuthOut)]),
-() => new ListBuilder<AuthOut>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(BusyThreadCountMessage)]),
-() => new ListBuilder<BusyThreadCountMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(BusyThreadCountMessageObject)]),
-() => new ListBuilder<BusyThreadCountMessageObject>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(BusyThreadCountMessageObjectHosts)]),
-() => new ListBuilder<BusyThreadCountMessageObjectHosts>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(FolderArrayMessage)]),
-() => new ListBuilder<FolderArrayMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(GenericMessage)]),
-() => new ListBuilder<GenericMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(JobArrayMessage)]),
-() => new ListBuilder<JobArrayMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(JobIn)]),
-() => new ListBuilder<JobIn>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(JobRunArrayMessage)]),
-() => new ListBuilder<JobRunArrayMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(JobStat)]),
-() => new ListBuilder<JobStat>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(JobStatMessage)]),
-() => new ListBuilder<JobStatMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(OccurrenceMessage)]),
-() => new ListBuilder<OccurrenceMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(ServerVersion)]),
-() => new ListBuilder<ServerVersion>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(SingleFolder)]),
-() => new ListBuilder<SingleFolder>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(SingleFolderMessage)]),
-() => new ListBuilder<SingleFolderMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(SingleJob)]),
-() => new ListBuilder<SingleJob>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(SingleJobMessage)]),
-() => new ListBuilder<SingleJobMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(SingleJobRun)]),
-() => new ListBuilder<SingleJobRun>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(SingleJobRunMessage)]),
-() => new ListBuilder<SingleJobRunMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(SingleUser)]),
-() => new ListBuilder<SingleUser>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(SingleUserMessage)]),
-() => new ListBuilder<SingleUserMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(Tag)]),
-() => new ListBuilder<Tag>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(TagMessage)]),
-() => new ListBuilder<TagMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(TimezoneMessage)]),
-() => new ListBuilder<TimezoneMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(TodaysStats)]),
-() => new ListBuilder<TodaysStats>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(TodaysStatsMessage)]),
-() => new ListBuilder<TodaysStatsMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(UserArrayMessage)]),
-() => new ListBuilder<UserArrayMessage>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(UserNewIn)]),
-() => new ListBuilder<UserNewIn>())
-..addBuilderFactory(
-const FullType(BuiltList, const [const FullType(UserUpdateIn)]),
-() => new ListBuilder<UserUpdateIn>())
-
-).build();
+      ..add(const OffsetDateSerializer())
+      ..add(const OffsetDateTimeSerializer())
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
-(serializers.toBuilder()
-..add(OffsetDateSerializer())
-..add(OffsetDateTimeSerializer())
-..addPlugin(StandardJsonPlugin())).build();
+    (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SingleFolder model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/SingleFolder
- * @version 2.5.1
+ * @version 2.6.0
  */
 class SingleFolder {
     /**

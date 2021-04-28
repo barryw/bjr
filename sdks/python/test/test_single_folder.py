@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import bjr4py
-from bjr4py.models.single_folder import SingleFolder  # noqa: E501
-from bjr4py.rest import ApiException
+from bjr4py.model.single_folder import SingleFolder
+
 
 class TestSingleFolder(unittest.TestCase):
     """SingleFolder unit test stubs"""
@@ -28,27 +24,11 @@ class TestSingleFolder(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test SingleFolder
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = bjr4py.models.single_folder.SingleFolder()  # noqa: E501
-        if include_optional :
-            return SingleFolder(
-                id = 56, 
-                name = '0', 
-                expression = '0', 
-                job_count = 56
-            )
-        else :
-            return SingleFolder(
-        )
-
     def testSingleFolder(self):
         """Test SingleFolder"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = SingleFolder()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

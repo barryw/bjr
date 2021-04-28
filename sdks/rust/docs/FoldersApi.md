@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_folder**](FoldersApi.md#create_folder) | **Post** /folder_api | Create a new Folder
-[**delete_folder**](FoldersApi.md#delete_folder) | **Delete** /folder_api/{id} | Delete an existing folder
-[**get_folder**](FoldersApi.md#get_folder) | **Get** /folder_api/{id} | Return a single folder
-[**get_folder_jobs**](FoldersApi.md#get_folder_jobs) | **Get** /folder_api/{id}/jobs | Return list of jobs in a folder
-[**get_folders**](FoldersApi.md#get_folders) | **Get** /folder_api | Return paginated list of all folders
-[**update_folder**](FoldersApi.md#update_folder) | **Put** /folder_api/{id} | Update an existing folder
+[**create_folder**](FoldersApi.md#create_folder) | **post** /folder_api | Create a new Folder
+[**delete_folder**](FoldersApi.md#delete_folder) | **delete** /folder_api/{id} | Delete an existing folder
+[**get_folder**](FoldersApi.md#get_folder) | **get** /folder_api/{id} | Return a single folder
+[**get_folder_jobs**](FoldersApi.md#get_folder_jobs) | **get** /folder_api/{id}/jobs | Return list of jobs in a folder
+[**get_folders**](FoldersApi.md#get_folders) | **get** /folder_api | Return paginated list of all folders
+[**update_folder**](FoldersApi.md#update_folder) | **put** /folder_api/{id} | Update an existing folder
 
 
 

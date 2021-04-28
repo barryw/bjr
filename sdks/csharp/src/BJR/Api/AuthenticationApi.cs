@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using RestSharp;
 using BJR.Client;
 using BJR.Model;
@@ -55,8 +56,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of AuthOut</returns>
-        System.Threading.Tasks.Task<AuthOut> AuthenticateUserAsync (AuthIn authIn = default(AuthIn));
+        System.Threading.Tasks.Task<AuthOut> AuthenticateUserAsync (AuthIn authIn = default(AuthIn), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Authenticates a user and returns a token
@@ -66,8 +68,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (AuthOut)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AuthOut>> AuthenticateUserAsyncWithHttpInfo (AuthIn authIn = default(AuthIn));
+        System.Threading.Tasks.Task<ApiResponse<AuthOut>> AuthenticateUserWithHttpInfoAsync (AuthIn authIn = default(AuthIn), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -255,10 +258,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of AuthOut</returns>
-        public async System.Threading.Tasks.Task<AuthOut> AuthenticateUserAsync (AuthIn authIn = default(AuthIn))
+        public async System.Threading.Tasks.Task<AuthOut> AuthenticateUserAsync (AuthIn authIn = default(AuthIn), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<AuthOut> localVarResponse = await AuthenticateUserAsyncWithHttpInfo(authIn);
+             ApiResponse<AuthOut> localVarResponse = await AuthenticateUserWithHttpInfoAsync(authIn, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -268,8 +272,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="authIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (AuthOut)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<AuthOut>> AuthenticateUserAsyncWithHttpInfo (AuthIn authIn = default(AuthIn))
+        public async System.Threading.Tasks.Task<ApiResponse<AuthOut>> AuthenticateUserWithHttpInfoAsync (AuthIn authIn = default(AuthIn), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/authenticate";
@@ -307,7 +312,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

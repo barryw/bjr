@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,20 +8,17 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import bjr4py
 from bjr4py.api.authentication_api import AuthenticationApi  # noqa: E501
-from bjr4py.rest import ApiException
 
 
 class TestAuthenticationApi(unittest.TestCase):
     """AuthenticationApi unit test stubs"""
 
     def setUp(self):
-        self.api = bjr4py.api.authentication_api.AuthenticationApi()  # noqa: E501
+        self.api = AuthenticationApi()  # noqa: E501
 
     def tearDown(self):
         pass

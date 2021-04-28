@@ -1,4 +1,5 @@
 # BJR.Model.UserUpdateIn
+
 ## Properties
 
 Name | Type | Description | Notes

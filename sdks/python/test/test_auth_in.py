@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import bjr4py
-from bjr4py.models.auth_in import AuthIn  # noqa: E501
-from bjr4py.rest import ApiException
+from bjr4py.model.auth_in import AuthIn
+
 
 class TestAuthIn(unittest.TestCase):
     """AuthIn unit test stubs"""
@@ -28,27 +24,11 @@ class TestAuthIn(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test AuthIn
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = bjr4py.models.auth_in.AuthIn()  # noqa: E501
-        if include_optional :
-            return AuthIn(
-                username = '0', 
-                password = '0'
-            )
-        else :
-            return AuthIn(
-                username = '0',
-                password = '0',
-        )
-
     def testAuthIn(self):
         """Test AuthIn"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = AuthIn()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

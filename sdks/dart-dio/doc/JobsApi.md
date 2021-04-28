@@ -9,14 +9,14 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createJob**](JobsApi.md#createJob) | **post** /job_api | Creates a job
-[**deleteJob**](JobsApi.md#deleteJob) | **delete** /job_api/{id} | Deletes a job
-[**getJob**](JobsApi.md#getJob) | **get** /job_api/{id} | Retrieves a single job
-[**getJobRuns**](JobsApi.md#getJobRuns) | **get** /job_api/{id}/runs | Retrieve the runs for a job
-[**getJobs**](JobsApi.md#getJobs) | **get** /job_api | Retrieves jobs
-[**jobOccurrences**](JobsApi.md#jobOccurrences) | **get** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
-[**runJobNow**](JobsApi.md#runJobNow) | **post** /job_api/{id}/run_now | Run a job now
-[**updateJob**](JobsApi.md#updateJob) | **put** /job_api/{id} | Updates a single job
+[**createJob**](JobsApi.md#createjob) | **post** /job_api | Creates a job
+[**deleteJob**](JobsApi.md#deletejob) | **delete** /job_api/{id} | Deletes a job
+[**getJob**](JobsApi.md#getjob) | **get** /job_api/{id} | Retrieves a single job
+[**getJobRuns**](JobsApi.md#getjobruns) | **get** /job_api/{id}/runs | Retrieve the runs for a job
+[**getJobs**](JobsApi.md#getjobs) | **get** /job_api | Retrieves jobs
+[**jobOccurrences**](JobsApi.md#joboccurrences) | **get** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
+[**runJobNow**](JobsApi.md#runjobnow) | **post** /job_api/{id}/run_now | Run a job now
+[**updateJob**](JobsApi.md#updatejob) | **put** /job_api/{id} | Updates a single job
 
 
 # **createJob**
@@ -40,7 +40,7 @@ try {
     var result = api_instance.createJob(jobIn);
     print(result);
 } catch (e) {
-    print("Exception when calling JobsApi->createJob: $e\n");
+    print('Exception when calling JobsApi->createJob: $e\n');
 }
 ```
 
@@ -86,7 +86,7 @@ try {
     var result = api_instance.deleteJob(id);
     print(result);
 } catch (e) {
-    print("Exception when calling JobsApi->deleteJob: $e\n");
+    print('Exception when calling JobsApi->deleteJob: $e\n');
 }
 ```
 
@@ -94,7 +94,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
+ **id** | **int**|  | 
 
 ### Return type
 
@@ -132,7 +132,7 @@ try {
     var result = api_instance.getJob(id);
     print(result);
 } catch (e) {
-    print("Exception when calling JobsApi->getJob: $e\n");
+    print('Exception when calling JobsApi->getJob: $e\n');
 }
 ```
 
@@ -140,7 +140,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
+ **id** | **int**|  | 
 
 ### Return type
 
@@ -184,7 +184,7 @@ try {
     var result = api_instance.getJobRuns(id, perPage, page, succeeded, startDate, endDate, timezone);
     print(result);
 } catch (e) {
-    print("Exception when calling JobsApi->getJobRuns: $e\n");
+    print('Exception when calling JobsApi->getJobRuns: $e\n');
 }
 ```
 
@@ -192,13 +192,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
- **succeeded** | **bool**|  | [optional] [default to null]
- **startDate** | **String**|  | [optional] [default to null]
- **endDate** | **String**|  | [optional] [default to null]
- **timezone** | **String**|  | [optional] [default to null]
+ **id** | **int**|  | 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
+ **succeeded** | **bool**|  | [optional] 
+ **startDate** | **String**|  | [optional] 
+ **endDate** | **String**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -239,7 +239,7 @@ try {
     var result = api_instance.getJobs(expression, timezone, perPage, page);
     print(result);
 } catch (e) {
-    print("Exception when calling JobsApi->getJobs: $e\n");
+    print('Exception when calling JobsApi->getJobs: $e\n');
 }
 ```
 
@@ -247,10 +247,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expression** | **String**| A search expression to filter jobs. | [optional] [default to null]
- **timezone** | **String**|  | [optional] [default to null]
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
+ **expression** | **String**| A search expression to filter jobs. | [optional] 
+ **timezone** | **String**|  | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -292,7 +292,7 @@ try {
     var result = api_instance.jobOccurrences(id, endDate, perPage, page, timezone);
     print(result);
 } catch (e) {
-    print("Exception when calling JobsApi->jobOccurrences: $e\n");
+    print('Exception when calling JobsApi->jobOccurrences: $e\n');
 }
 ```
 
@@ -300,11 +300,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| The id of the job to retrieve occurrences for | [default to null]
- **endDate** | **String**| The date to retrieve occurrences up to | [default to null]
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
- **timezone** | **String**|  | [optional] [default to null]
+ **id** | **int**| The id of the job to retrieve occurrences for | 
+ **endDate** | **String**| The date to retrieve occurrences up to | 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -341,7 +341,7 @@ var id = 56; // int | The id of the job to execute now
 try { 
     api_instance.runJobNow(id);
 } catch (e) {
-    print("Exception when calling JobsApi->runJobNow: $e\n");
+    print('Exception when calling JobsApi->runJobNow: $e\n');
 }
 ```
 
@@ -349,7 +349,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| The id of the job to execute now | [default to null]
+ **id** | **int**| The id of the job to execute now | 
 
 ### Return type
 
@@ -388,7 +388,7 @@ try {
     var result = api_instance.updateJob(id, jobIn);
     print(result);
 } catch (e) {
-    print("Exception when calling JobsApi->updateJob: $e\n");
+    print('Exception when calling JobsApi->updateJob: $e\n');
 }
 ```
 
@@ -396,7 +396,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
+ **id** | **int**|  | 
  **jobIn** | [**JobIn**](JobIn.md)|  | [optional] 
 
 ### Return type

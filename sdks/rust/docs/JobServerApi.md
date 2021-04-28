@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_busy_thread_count**](JobServerApi.md#get_busy_thread_count) | **Get** /job_server_api/busy_thread_count | Retrieve the count of busy workers across worker pods/nodes
-[**quiesce_node**](JobServerApi.md#quiesce_node) | **Post** /job_server_api/quiesce_worker | Quiesce a single worker pod/node
-[**recent_jobs**](JobServerApi.md#recent_jobs) | **Get** /job_server_api/recent_jobs | List of recent jobs
-[**stats_by_day**](JobServerApi.md#stats_by_day) | **Get** /job_server_api/daily_job_stats | Job statistics by day
-[**stats_by_hour**](JobServerApi.md#stats_by_hour) | **Get** /job_server_api/hourly_job_stats | Job statistics by hour
-[**stats_by_minute**](JobServerApi.md#stats_by_minute) | **Get** /job_server_api/minutely_job_stats | Job statistics by minute
-[**stats_by_week**](JobServerApi.md#stats_by_week) | **Get** /job_server_api/weekly_job_stats | Job statistics by week
-[**todays_stats**](JobServerApi.md#todays_stats) | **Get** /job_server_api/todays_stats | Todays Stats
-[**upcoming_jobs**](JobServerApi.md#upcoming_jobs) | **Get** /job_server_api/upcoming_jobs | List of upcoming jobs
+[**get_busy_thread_count**](JobServerApi.md#get_busy_thread_count) | **get** /job_server_api/busy_thread_count | Retrieve the count of busy workers across worker pods/nodes
+[**quiesce_node**](JobServerApi.md#quiesce_node) | **post** /job_server_api/quiesce_worker | Quiesce a single worker pod/node
+[**recent_jobs**](JobServerApi.md#recent_jobs) | **get** /job_server_api/recent_jobs | List of recent jobs
+[**stats_by_day**](JobServerApi.md#stats_by_day) | **get** /job_server_api/daily_job_stats | Job statistics by day
+[**stats_by_hour**](JobServerApi.md#stats_by_hour) | **get** /job_server_api/hourly_job_stats | Job statistics by hour
+[**stats_by_minute**](JobServerApi.md#stats_by_minute) | **get** /job_server_api/minutely_job_stats | Job statistics by minute
+[**stats_by_week**](JobServerApi.md#stats_by_week) | **get** /job_server_api/weekly_job_stats | Job statistics by week
+[**todays_stats**](JobServerApi.md#todays_stats) | **get** /job_server_api/todays_stats | Todays Stats
+[**upcoming_jobs**](JobServerApi.md#upcoming_jobs) | **get** /job_server_api/upcoming_jobs | List of upcoming jobs
 
 
 

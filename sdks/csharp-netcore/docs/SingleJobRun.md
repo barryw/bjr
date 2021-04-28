@@ -1,4 +1,5 @@
 # BJR.Model.SingleJobRun
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -93,7 +93,7 @@ namespace BJR.Test
         public void RecentJobsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //int count = null;
+            //int? count = null;
             //var response = instance.RecentJobs(count);
             //Assert.IsInstanceOf(typeof(JobArrayMessage), response, "response is JobArrayMessage");
         }
@@ -107,8 +107,8 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string startDate = null;
             //string endDate = null;
-            //int perPage = null;
-            //int page = null;
+            //int? perPage = null;
+            //int? page = null;
             //string timezone = null;
             //var response = instance.StatsByDay(startDate, endDate, perPage, page, timezone);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
@@ -123,8 +123,8 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string startDate = null;
             //string endDate = null;
-            //int perPage = null;
-            //int page = null;
+            //int? perPage = null;
+            //int? page = null;
             //string timezone = null;
             //var response = instance.StatsByHour(startDate, endDate, perPage, page, timezone);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
@@ -139,8 +139,8 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string startDate = null;
             //string endDate = null;
-            //int perPage = null;
-            //int page = null;
+            //int? perPage = null;
+            //int? page = null;
             //string timezone = null;
             //var response = instance.StatsByMinute(startDate, endDate, perPage, page, timezone);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
@@ -155,8 +155,8 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string startDate = null;
             //string endDate = null;
-            //int perPage = null;
-            //int page = null;
+            //int? perPage = null;
+            //int? page = null;
             //string timezone = null;
             //var response = instance.StatsByWeek(startDate, endDate, perPage, page, timezone);
             //Assert.IsInstanceOf(typeof(JobStatMessage), response, "response is JobStatMessage");
@@ -181,7 +181,7 @@ namespace BJR.Test
         public void UpcomingJobsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //int count = null;
+            //int? count = null;
             //var response = instance.UpcomingJobs(count);
             //Assert.IsInstanceOf(typeof(JobArrayMessage), response, "response is JobArrayMessage");
         }

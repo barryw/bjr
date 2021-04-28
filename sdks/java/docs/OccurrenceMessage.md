@@ -2,6 +2,7 @@
 
 # OccurrenceMessage
 
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -10,7 +11,7 @@ Name | Type | Description | Notes
 **isError** | **Boolean** | True if there was an error performing the API call. |  [optional]
 **objectType** | **String** | The type of object being returned. |  [optional]
 **statusCode** | **Integer** | The HTTP status code returned. |  [optional]
-**_object** | [**List&lt;OffsetDateTime&gt;**](OffsetDateTime.md) |  |  [optional]
+**_object** | **List&lt;OffsetDateTime&gt;** |  |  [optional]
 
 
 

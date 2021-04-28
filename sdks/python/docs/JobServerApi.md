@@ -26,10 +26,11 @@ Retrieve the count of busy workers across worker pods/nodes
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import job_server_api
+from bjr4py.model.busy_thread_count_message import BusyThreadCountMessage
+from bjr4py.model.generic_message import GenericMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -50,15 +51,17 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobServerApi(api_client)
-    
+    api_instance = job_server_api.JobServerApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Retrieve the count of busy workers across worker pods/nodes
         api_response = api_instance.get_busy_thread_count()
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobServerApi->get_busy_thread_count: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -75,6 +78,7 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -95,10 +99,10 @@ Quiesce a single worker pod/node
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import job_server_api
+from bjr4py.model.generic_message import GenericMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -119,22 +123,24 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobServerApi(api_client)
-    host = 'host_example' # str | The hostname of the worker pod/node to quiesce
+    api_instance = job_server_api.JobServerApi(api_client)
+    host = "host_example" # str | The hostname of the worker pod/node to quiesce
 
+    # example passing only required values which don't have defaults set
     try:
         # Quiesce a single worker pod/node
         api_response = api_instance.quiesce_node(host)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobServerApi->quiesce_node: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **str**| The hostname of the worker pod/node to quiesce | 
+ **host** | **str**| The hostname of the worker pod/node to quiesce |
 
 ### Return type
 
@@ -149,6 +155,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -158,7 +165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **recent_jobs**
-> JobArrayMessage recent_jobs(count=count)
+> JobArrayMessage recent_jobs()
 
 List of recent jobs
 
@@ -168,10 +175,10 @@ Get a list of the most recently run jobs
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import job_server_api
+from bjr4py.model.job_array_message import JobArrayMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -192,22 +199,25 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobServerApi(api_client)
-    count = 56 # int | The number of jobs to return (max 20) (optional)
+    api_instance = job_server_api.JobServerApi(api_client)
+    count = 1 # int | The number of jobs to return (max 20) (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # List of recent jobs
         api_response = api_instance.recent_jobs(count=count)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobServerApi->recent_jobs: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **count** | **int**| The number of jobs to return (max 20) | [optional] 
+ **count** | **int**| The number of jobs to return (max 20) | [optional]
 
 ### Return type
 
@@ -222,6 +232,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -231,7 +242,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_day**
-> JobStatMessage stats_by_day(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
+> JobStatMessage stats_by_day()
 
 Job statistics by day
 
@@ -241,10 +252,10 @@ Get daily job statistics
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import job_server_api
+from bjr4py.model.job_stat_message import JobStatMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -265,30 +276,33 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobServerApi(api_client)
-    start_date = 'start_date_example' # str | The start date from which to get daily metrics from (optional)
-end_date = 'end_date_example' # str | The end date from which to get daily metrics from (optional)
-per_page = 56 # int |  (optional)
-page = 56 # int |  (optional)
-timezone = 'timezone_example' # str |  (optional)
+    api_instance = job_server_api.JobServerApi(api_client)
+    start_date = "start_date_example" # str | The start date from which to get daily metrics from (optional)
+    end_date = "end_date_example" # str | The end date from which to get daily metrics from (optional)
+    per_page = 1 # int |  (optional)
+    page = 1 # int |  (optional)
+    timezone = "timezone_example" # str |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Job statistics by day
         api_response = api_instance.stats_by_day(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobServerApi->stats_by_day: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **start_date** | **str**| The start date from which to get daily metrics from | [optional] 
- **end_date** | **str**| The end date from which to get daily metrics from | [optional] 
- **per_page** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
- **timezone** | **str**|  | [optional] 
+ **start_date** | **str**| The start date from which to get daily metrics from | [optional]
+ **end_date** | **str**| The end date from which to get daily metrics from | [optional]
+ **per_page** | **int**|  | [optional]
+ **page** | **int**|  | [optional]
+ **timezone** | **str**|  | [optional]
 
 ### Return type
 
@@ -302,6 +316,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -311,7 +326,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_hour**
-> JobStatMessage stats_by_hour(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
+> JobStatMessage stats_by_hour()
 
 Job statistics by hour
 
@@ -321,10 +336,10 @@ Get hourly job statistics for the day
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import job_server_api
+from bjr4py.model.job_stat_message import JobStatMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -345,30 +360,33 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobServerApi(api_client)
-    start_date = 'start_date_example' # str | The start date from which to get hourly metrics from (optional)
-end_date = 'end_date_example' # str | The end date from which to get hourly metrics from (optional)
-per_page = 56 # int |  (optional)
-page = 56 # int |  (optional)
-timezone = 'timezone_example' # str |  (optional)
+    api_instance = job_server_api.JobServerApi(api_client)
+    start_date = "start_date_example" # str | The start date from which to get hourly metrics from (optional)
+    end_date = "end_date_example" # str | The end date from which to get hourly metrics from (optional)
+    per_page = 1 # int |  (optional)
+    page = 1 # int |  (optional)
+    timezone = "timezone_example" # str |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Job statistics by hour
         api_response = api_instance.stats_by_hour(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobServerApi->stats_by_hour: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **start_date** | **str**| The start date from which to get hourly metrics from | [optional] 
- **end_date** | **str**| The end date from which to get hourly metrics from | [optional] 
- **per_page** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
- **timezone** | **str**|  | [optional] 
+ **start_date** | **str**| The start date from which to get hourly metrics from | [optional]
+ **end_date** | **str**| The end date from which to get hourly metrics from | [optional]
+ **per_page** | **int**|  | [optional]
+ **page** | **int**|  | [optional]
+ **timezone** | **str**|  | [optional]
 
 ### Return type
 
@@ -382,6 +400,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -391,7 +410,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_minute**
-> JobStatMessage stats_by_minute(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
+> JobStatMessage stats_by_minute()
 
 Job statistics by minute
 
@@ -401,10 +420,10 @@ Get minutely job statistics
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import job_server_api
+from bjr4py.model.job_stat_message import JobStatMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -425,30 +444,33 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobServerApi(api_client)
-    start_date = 'start_date_example' # str | The start date from which to get minutely metrics from (optional)
-end_date = 'end_date_example' # str | The end date from which to get minutely metrics from (optional)
-per_page = 56 # int |  (optional)
-page = 56 # int |  (optional)
-timezone = 'timezone_example' # str |  (optional)
+    api_instance = job_server_api.JobServerApi(api_client)
+    start_date = "start_date_example" # str | The start date from which to get minutely metrics from (optional)
+    end_date = "end_date_example" # str | The end date from which to get minutely metrics from (optional)
+    per_page = 1 # int |  (optional)
+    page = 1 # int |  (optional)
+    timezone = "timezone_example" # str |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Job statistics by minute
         api_response = api_instance.stats_by_minute(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobServerApi->stats_by_minute: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **start_date** | **str**| The start date from which to get minutely metrics from | [optional] 
- **end_date** | **str**| The end date from which to get minutely metrics from | [optional] 
- **per_page** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
- **timezone** | **str**|  | [optional] 
+ **start_date** | **str**| The start date from which to get minutely metrics from | [optional]
+ **end_date** | **str**| The end date from which to get minutely metrics from | [optional]
+ **per_page** | **int**|  | [optional]
+ **page** | **int**|  | [optional]
+ **timezone** | **str**|  | [optional]
 
 ### Return type
 
@@ -462,6 +484,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -471,7 +494,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stats_by_week**
-> JobStatMessage stats_by_week(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
+> JobStatMessage stats_by_week()
 
 Job statistics by week
 
@@ -481,10 +504,10 @@ Get weekly job statistics
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import job_server_api
+from bjr4py.model.job_stat_message import JobStatMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -505,30 +528,33 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobServerApi(api_client)
-    start_date = 'start_date_example' # str | The start date from which to get weekly metrics from (optional)
-end_date = 'end_date_example' # str | The end date from which to get weekly metrics from (optional)
-per_page = 56 # int |  (optional)
-page = 56 # int |  (optional)
-timezone = 'timezone_example' # str |  (optional)
+    api_instance = job_server_api.JobServerApi(api_client)
+    start_date = "start_date_example" # str | The start date from which to get weekly metrics from (optional)
+    end_date = "end_date_example" # str | The end date from which to get weekly metrics from (optional)
+    per_page = 1 # int |  (optional)
+    page = 1 # int |  (optional)
+    timezone = "timezone_example" # str |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Job statistics by week
         api_response = api_instance.stats_by_week(start_date=start_date, end_date=end_date, per_page=per_page, page=page, timezone=timezone)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobServerApi->stats_by_week: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **start_date** | **str**| The start date from which to get weekly metrics from | [optional] 
- **end_date** | **str**| The end date from which to get weekly metrics from | [optional] 
- **per_page** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
- **timezone** | **str**|  | [optional] 
+ **start_date** | **str**| The start date from which to get weekly metrics from | [optional]
+ **end_date** | **str**| The end date from which to get weekly metrics from | [optional]
+ **per_page** | **int**|  | [optional]
+ **page** | **int**|  | [optional]
+ **timezone** | **str**|  | [optional]
 
 ### Return type
 
@@ -543,6 +569,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -551,7 +578,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **todays_stats**
-> TodaysStatsMessage todays_stats(timezone=timezone)
+> TodaysStatsMessage todays_stats()
 
 Todays Stats
 
@@ -561,10 +588,10 @@ Get the high level job statistics for today
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import job_server_api
+from bjr4py.model.todays_stats_message import TodaysStatsMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -585,22 +612,25 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobServerApi(api_client)
-    timezone = 'timezone_example' # str |  (optional)
+    api_instance = job_server_api.JobServerApi(api_client)
+    timezone = "timezone_example" # str |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Todays Stats
         api_response = api_instance.todays_stats(timezone=timezone)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobServerApi->todays_stats: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **timezone** | **str**|  | [optional] 
+ **timezone** | **str**|  | [optional]
 
 ### Return type
 
@@ -615,6 +645,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -623,7 +654,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upcoming_jobs**
-> JobArrayMessage upcoming_jobs(count=count)
+> JobArrayMessage upcoming_jobs()
 
 List of upcoming jobs
 
@@ -633,10 +664,10 @@ A list of jobs that are about to execute
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import job_server_api
+from bjr4py.model.job_array_message import JobArrayMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -657,22 +688,25 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobServerApi(api_client)
-    count = 56 # int | The number of jobs to return (max 20) (optional)
+    api_instance = job_server_api.JobServerApi(api_client)
+    count = 1 # int | The number of jobs to return (max 20) (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # List of upcoming jobs
         api_response = api_instance.upcoming_jobs(count=count)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobServerApi->upcoming_jobs: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **count** | **int**| The number of jobs to return (max 20) | [optional] 
+ **count** | **int**| The number of jobs to return (max 20) | [optional]
 
 ### Return type
 
@@ -686,6 +720,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

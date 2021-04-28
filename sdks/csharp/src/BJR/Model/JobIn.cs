@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -57,7 +57,7 @@ namespace BJR.Model
             {
                 this.Name = name;
             }
-            
+
             // to ensure "cron" is required (not null)
             if (cron == null)
             {
@@ -67,7 +67,7 @@ namespace BJR.Model
             {
                 this.Cron = cron;
             }
-            
+
             // to ensure "command" is required (not null)
             if (command == null)
             {
@@ -77,33 +77,33 @@ namespace BJR.Model
             {
                 this.Command = command;
             }
-            
+
             this.Timezone = timezone;
             this.Enabled = enabled;
             this.Tags = tags;
             this.SuccessCallback = successCallback;
             this.FailureCallback = failureCallback;
         }
-        
+
         /// <summary>
         /// The new name of the job. Must be unique.
         /// </summary>
         /// <value>The new name of the job. Must be unique.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
         /// <summary>
         /// The new cron expression for the job.
         /// </summary>
         /// <value>The new cron expression for the job.</value>
-        [DataMember(Name="cron", EmitDefaultValue=false)]
+        [DataMember(Name="cron", EmitDefaultValue=true)]
         public string Cron { get; set; }
 
         /// <summary>
         /// The command to run when the job fires.
         /// </summary>
         /// <value>The command to run when the job fires.</value>
-        [DataMember(Name="command", EmitDefaultValue=false)]
+        [DataMember(Name="command", EmitDefaultValue=true)]
         public string Command { get; set; }
 
         /// <summary>
@@ -160,14 +160,14 @@ namespace BJR.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

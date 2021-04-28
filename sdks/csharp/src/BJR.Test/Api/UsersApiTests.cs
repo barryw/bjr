@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -106,8 +106,8 @@ namespace BJR.Test
         public void GetUsersTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //int perPage = null;
-            //int page = null;
+            //int? perPage = null;
+            //int? page = null;
             //var response = instance.GetUsers(perPage, page);
             //Assert.IsInstanceOf(typeof(UserArrayMessage), response, "response is UserArrayMessage");
         }

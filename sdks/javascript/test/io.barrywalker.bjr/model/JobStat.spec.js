@@ -56,97 +56,97 @@
 
     it('should have the property runs (base name: "runs")', function() {
       // uncomment below and update the code to test the property runs
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property failed (base name: "failed")', function() {
       // uncomment below and update the code to test the property failed
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property jobCount (base name: "job_count")', function() {
       // uncomment below and update the code to test the property jobCount
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property avgRuntime (base name: "avg_runtime")', function() {
       // uncomment below and update the code to test the property avgRuntime
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property maxRuntime (base name: "max_runtime")', function() {
       // uncomment below and update the code to test the property maxRuntime
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property minRuntime (base name: "min_runtime")', function() {
       // uncomment below and update the code to test the property minRuntime
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property totalJobs (base name: "total_jobs")', function() {
       // uncomment below and update the code to test the property totalJobs
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property totalEnabled (base name: "total_enabled")', function() {
       // uncomment below and update the code to test the property totalEnabled
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property avgJobLag (base name: "avg_job_lag")', function() {
       // uncomment below and update the code to test the property avgJobLag
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property maxJobLag (base name: "max_job_lag")', function() {
       // uncomment below and update the code to test the property maxJobLag
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property minJobLag (base name: "min_job_lag")', function() {
       // uncomment below and update the code to test the property minJobLag
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property period (base name: "period")', function() {
       // uncomment below and update the code to test the property period
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property startDt (base name: "start_dt")', function() {
       // uncomment below and update the code to test the property startDt
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property endDt (base name: "end_dt")', function() {
       // uncomment below and update the code to test the property endDt
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property createdAt (base name: "created_at")', function() {
       // uncomment below and update the code to test the property createdAt
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 
     it('should have the property updatedAt (base name: "updated_at")', function() {
       // uncomment below and update the code to test the property updatedAt
-      //var instane = new Bjr4js.JobStat();
+      //var instance = new Bjr4js.JobStat();
       //expect(instance).to.be();
     });
 

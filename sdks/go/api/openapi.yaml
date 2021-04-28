@@ -266,13 +266,10 @@ paths:
         style: simple
       responses:
         "200":
-          content: {}
           description: Job queued to execute
         "404":
-          content: {}
           description: Job not found
         "409":
-          content: {}
           description: Job is already running
       security:
       - bearerAuth: []
@@ -342,7 +339,6 @@ paths:
                 type: integer
               style: simple
         "404":
-          content: {}
           description: Job not found
       security:
       - bearerAuth: []
@@ -425,10 +421,8 @@ paths:
                 $ref: '#/components/schemas/SingleJobMessage'
           description: Job created successfully.
         "400":
-          content: {}
           description: Invalid timezone name.
         "422":
-          content: {}
           description: A job with this name already exists.
       security:
       - bearerAuth: []
@@ -570,7 +564,6 @@ paths:
                 $ref: '#/components/schemas/SingleJobMessage'
           description: Job returned successfully
         "404":
-          content: {}
           description: Job not found.
       security:
       - bearerAuth: []
@@ -601,10 +594,8 @@ paths:
                 $ref: '#/components/schemas/SingleJobMessage'
           description: Job updated successfully.
         "422":
-          content: {}
           description: Job could not be updated.
         "404":
-          content: {}
           description: Job not found.
       security:
       - bearerAuth: []
@@ -1154,7 +1145,6 @@ paths:
                 $ref: '#/components/schemas/SingleUserMessage'
           description: User created successfully
         "403":
-          content: {}
           description: Username already exists
       security:
       - bearerAuth: []
@@ -1223,7 +1213,6 @@ paths:
                 $ref: '#/components/schemas/SingleUserMessage'
           description: The user with that id could not be found.
         "401":
-          content: {}
           description: Your token is invalid or expired
       security:
       - bearerAuth: []
@@ -2444,6 +2433,7 @@ components:
         pid:
           description: The process ID of the worker process.
           type: integer
+      type: object
     BusyThreadCountMessage_object:
       example:
         hosts:
@@ -2462,6 +2452,7 @@ components:
           items:
             $ref: '#/components/schemas/BusyThreadCountMessage_object_hosts'
           type: array
+      type: object
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

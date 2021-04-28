@@ -17,7 +17,7 @@ import JobStat from './JobStat';
 /**
  * The JobStatMessage model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/JobStatMessage
- * @version 2.5.1
+ * @version 2.6.0
  */
 class JobStatMessage {
     /**

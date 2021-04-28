@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import bjr4py
-from bjr4py.models.job_in import JobIn  # noqa: E501
-from bjr4py.rest import ApiException
+from bjr4py.model.job_in import JobIn
+
 
 class TestJobIn(unittest.TestCase):
     """JobIn unit test stubs"""
@@ -28,34 +24,11 @@ class TestJobIn(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test JobIn
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = bjr4py.models.job_in.JobIn()  # noqa: E501
-        if include_optional :
-            return JobIn(
-                name = '0', 
-                cron = '0', 
-                command = '0', 
-                timezone = '0', 
-                enabled = True, 
-                tags = '0', 
-                success_callback = '0', 
-                failure_callback = '0'
-            )
-        else :
-            return JobIn(
-                name = '0',
-                cron = '0',
-                command = '0',
-        )
-
     def testJobIn(self):
         """Test JobIn"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = JobIn()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

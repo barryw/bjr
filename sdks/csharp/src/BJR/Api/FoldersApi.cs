@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using RestSharp;
 using BJR.Client;
 using BJR.Model;
@@ -100,7 +101,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        JobArrayMessage GetFolderJobs (int id, int perPage = default(int), int page = default(int));
+        JobArrayMessage GetFolderJobs (int id, int? perPage = default(int?), int? page = default(int?));
 
         /// <summary>
         /// Return list of jobs in a folder
@@ -113,7 +114,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        ApiResponse<JobArrayMessage> GetFolderJobsWithHttpInfo (int id, int perPage = default(int), int page = default(int));
+        ApiResponse<JobArrayMessage> GetFolderJobsWithHttpInfo (int id, int? perPage = default(int?), int? page = default(int?));
         /// <summary>
         /// Return paginated list of all folders
         /// </summary>
@@ -124,7 +125,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>FolderArrayMessage</returns>
-        FolderArrayMessage GetFolders (int perPage = default(int), int page = default(int));
+        FolderArrayMessage GetFolders (int? perPage = default(int?), int? page = default(int?));
 
         /// <summary>
         /// Return paginated list of all folders
@@ -136,7 +137,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of FolderArrayMessage</returns>
-        ApiResponse<FolderArrayMessage> GetFoldersWithHttpInfo (int perPage = default(int), int page = default(int));
+        ApiResponse<FolderArrayMessage> GetFoldersWithHttpInfo (int? perPage = default(int?), int? page = default(int?));
         /// <summary>
         /// Update an existing folder
         /// </summary>
@@ -173,8 +174,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="expression"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleFolderMessage</returns>
-        System.Threading.Tasks.Task<SingleFolderMessage> CreateFolderAsync (string name, string expression);
+        System.Threading.Tasks.Task<SingleFolderMessage> CreateFolderAsync (string name, string expression, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Create a new Folder
@@ -185,8 +187,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="expression"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleFolderMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> CreateFolderAsyncWithHttpInfo (string name, string expression);
+        System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> CreateFolderWithHttpInfoAsync (string name, string expression, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete an existing folder
         /// </summary>
@@ -195,8 +198,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleFolderMessage</returns>
-        System.Threading.Tasks.Task<SingleFolderMessage> DeleteFolderAsync (int id);
+        System.Threading.Tasks.Task<SingleFolderMessage> DeleteFolderAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Delete an existing folder
@@ -206,8 +210,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleFolderMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> DeleteFolderAsyncWithHttpInfo (int id);
+        System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> DeleteFolderWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Return a single folder
         /// </summary>
@@ -216,8 +221,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleFolderMessage</returns>
-        System.Threading.Tasks.Task<SingleFolderMessage> GetFolderAsync (int id);
+        System.Threading.Tasks.Task<SingleFolderMessage> GetFolderAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Return a single folder
@@ -227,8 +233,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleFolderMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> GetFolderAsyncWithHttpInfo (int id);
+        System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> GetFolderWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Return list of jobs in a folder
         /// </summary>
@@ -239,8 +246,9 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobArrayMessage</returns>
-        System.Threading.Tasks.Task<JobArrayMessage> GetFolderJobsAsync (int id, int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<JobArrayMessage> GetFolderJobsAsync (int id, int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Return list of jobs in a folder
@@ -252,8 +260,9 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetFolderJobsAsyncWithHttpInfo (int id, int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetFolderJobsWithHttpInfoAsync (int id, int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Return paginated list of all folders
         /// </summary>
@@ -263,8 +272,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of FolderArrayMessage</returns>
-        System.Threading.Tasks.Task<FolderArrayMessage> GetFoldersAsync (int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<FolderArrayMessage> GetFoldersAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Return paginated list of all folders
@@ -275,8 +285,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (FolderArrayMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FolderArrayMessage>> GetFoldersAsyncWithHttpInfo (int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<FolderArrayMessage>> GetFoldersWithHttpInfoAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update an existing folder
         /// </summary>
@@ -287,8 +298,9 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="name"> (optional)</param>
         /// <param name="expression"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleFolderMessage</returns>
-        System.Threading.Tasks.Task<SingleFolderMessage> UpdateFolderAsync (int id, string name = default(string), string expression = default(string));
+        System.Threading.Tasks.Task<SingleFolderMessage> UpdateFolderAsync (int id, string name = default(string), string expression = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Update an existing folder
@@ -300,8 +312,9 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="name"> (optional)</param>
         /// <param name="expression"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleFolderMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> UpdateFolderAsyncWithHttpInfo (int id, string name = default(string), string expression = default(string));
+        System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> UpdateFolderWithHttpInfoAsync (int id, string name = default(string), string expression = default(string), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -497,10 +510,11 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="expression"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleFolderMessage</returns>
-        public async System.Threading.Tasks.Task<SingleFolderMessage> CreateFolderAsync (string name, string expression)
+        public async System.Threading.Tasks.Task<SingleFolderMessage> CreateFolderAsync (string name, string expression, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleFolderMessage> localVarResponse = await CreateFolderAsyncWithHttpInfo(name, expression);
+             ApiResponse<SingleFolderMessage> localVarResponse = await CreateFolderWithHttpInfoAsync(name, expression, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -511,8 +525,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="name"></param>
         /// <param name="expression"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleFolderMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> CreateFolderAsyncWithHttpInfo (string name, string expression)
+        public async System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> CreateFolderWithHttpInfoAsync (string name, string expression, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -555,7 +570,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -647,10 +662,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleFolderMessage</returns>
-        public async System.Threading.Tasks.Task<SingleFolderMessage> DeleteFolderAsync (int id)
+        public async System.Threading.Tasks.Task<SingleFolderMessage> DeleteFolderAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleFolderMessage> localVarResponse = await DeleteFolderAsyncWithHttpInfo(id);
+             ApiResponse<SingleFolderMessage> localVarResponse = await DeleteFolderWithHttpInfoAsync(id, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -660,8 +676,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleFolderMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> DeleteFolderAsyncWithHttpInfo (int id)
+        public async System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> DeleteFolderWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -700,7 +717,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -792,10 +809,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleFolderMessage</returns>
-        public async System.Threading.Tasks.Task<SingleFolderMessage> GetFolderAsync (int id)
+        public async System.Threading.Tasks.Task<SingleFolderMessage> GetFolderAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleFolderMessage> localVarResponse = await GetFolderAsyncWithHttpInfo(id);
+             ApiResponse<SingleFolderMessage> localVarResponse = await GetFolderWithHttpInfoAsync(id, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -805,8 +823,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleFolderMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> GetFolderAsyncWithHttpInfo (int id)
+        public async System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> GetFolderWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -845,7 +864,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -868,7 +887,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        public JobArrayMessage GetFolderJobs (int id, int perPage = default(int), int page = default(int))
+        public JobArrayMessage GetFolderJobs (int id, int? perPage = default(int?), int? page = default(int?))
         {
              ApiResponse<JobArrayMessage> localVarResponse = GetFolderJobsWithHttpInfo(id, perPage, page);
              return localVarResponse.Data;
@@ -882,7 +901,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        public ApiResponse<JobArrayMessage> GetFolderJobsWithHttpInfo (int id, int perPage = default(int), int page = default(int))
+        public ApiResponse<JobArrayMessage> GetFolderJobsWithHttpInfo (int id, int? perPage = default(int?), int? page = default(int?))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -945,10 +964,11 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobArrayMessage</returns>
-        public async System.Threading.Tasks.Task<JobArrayMessage> GetFolderJobsAsync (int id, int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<JobArrayMessage> GetFolderJobsAsync (int id, int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<JobArrayMessage> localVarResponse = await GetFolderJobsAsyncWithHttpInfo(id, perPage, page);
+             ApiResponse<JobArrayMessage> localVarResponse = await GetFolderJobsWithHttpInfoAsync(id, perPage, page, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -960,8 +980,9 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetFolderJobsAsyncWithHttpInfo (int id, int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetFolderJobsWithHttpInfoAsync (int id, int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1002,7 +1023,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1024,7 +1045,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>FolderArrayMessage</returns>
-        public FolderArrayMessage GetFolders (int perPage = default(int), int page = default(int))
+        public FolderArrayMessage GetFolders (int? perPage = default(int?), int? page = default(int?))
         {
              ApiResponse<FolderArrayMessage> localVarResponse = GetFoldersWithHttpInfo(perPage, page);
              return localVarResponse.Data;
@@ -1037,7 +1058,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of FolderArrayMessage</returns>
-        public ApiResponse<FolderArrayMessage> GetFoldersWithHttpInfo (int perPage = default(int), int page = default(int))
+        public ApiResponse<FolderArrayMessage> GetFoldersWithHttpInfo (int? perPage = default(int?), int? page = default(int?))
         {
 
             var localVarPath = "/folder_api";
@@ -1095,10 +1116,11 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of FolderArrayMessage</returns>
-        public async System.Threading.Tasks.Task<FolderArrayMessage> GetFoldersAsync (int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<FolderArrayMessage> GetFoldersAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<FolderArrayMessage> localVarResponse = await GetFoldersAsyncWithHttpInfo(perPage, page);
+             ApiResponse<FolderArrayMessage> localVarResponse = await GetFoldersWithHttpInfoAsync(perPage, page, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1109,8 +1131,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (FolderArrayMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<FolderArrayMessage>> GetFoldersAsyncWithHttpInfo (int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<FolderArrayMessage>> GetFoldersWithHttpInfoAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/folder_api";
@@ -1147,7 +1170,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1247,10 +1270,11 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="name"> (optional)</param>
         /// <param name="expression"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleFolderMessage</returns>
-        public async System.Threading.Tasks.Task<SingleFolderMessage> UpdateFolderAsync (int id, string name = default(string), string expression = default(string))
+        public async System.Threading.Tasks.Task<SingleFolderMessage> UpdateFolderAsync (int id, string name = default(string), string expression = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleFolderMessage> localVarResponse = await UpdateFolderAsyncWithHttpInfo(id, name, expression);
+             ApiResponse<SingleFolderMessage> localVarResponse = await UpdateFolderWithHttpInfoAsync(id, name, expression, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1262,8 +1286,9 @@ namespace BJR.Api
         /// <param name="id"></param>
         /// <param name="name"> (optional)</param>
         /// <param name="expression"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleFolderMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> UpdateFolderAsyncWithHttpInfo (int id, string name = default(string), string expression = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<SingleFolderMessage>> UpdateFolderWithHttpInfoAsync (int id, string name = default(string), string expression = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1304,7 +1329,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

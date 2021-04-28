@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**total_busy** | **Integer** | The total number of busy workers across all pods/hosts. | [optional] 
-**hosts** | [**Array&lt;BusyThreadCountMessageObjectHosts&gt;**](BusyThreadCountMessageObjectHosts.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **total_busy** | **Integer** | The total number of busy workers across all pods/hosts. | [optional] |
+| **hosts** | [**Array&lt;BusyThreadCountMessageObjectHosts&gt;**](BusyThreadCountMessageObjectHosts.md) |  | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'BJR'
+require 'bjr4r'
 
-instance = BJR::BusyThreadCountMessageObject.new(total_busy: null,
-                                 hosts: null)
+instance = BJR::BusyThreadCountMessageObject.new(
+  total_busy: null,
+  hosts: null
+)
 ```
-
 

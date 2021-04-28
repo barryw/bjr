@@ -56,139 +56,139 @@
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property cron (base name: "cron")', function() {
       // uncomment below and update the code to test the property cron
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property enabled (base name: "enabled")', function() {
       // uncomment below and update the code to test the property enabled
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property command (base name: "command")', function() {
       // uncomment below and update the code to test the property command
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property lastRun (base name: "last_run")', function() {
       // uncomment below and update the code to test the property lastRun
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property nextRun (base name: "next_run")', function() {
       // uncomment below and update the code to test the property nextRun
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property running (base name: "running")', function() {
       // uncomment below and update the code to test the property running
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property timezone (base name: "timezone")', function() {
       // uncomment below and update the code to test the property timezone
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property tags (base name: "tags")', function() {
       // uncomment below and update the code to test the property tags
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property createdAt (base name: "created_at")', function() {
       // uncomment below and update the code to test the property createdAt
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property updatedAt (base name: "updated_at")', function() {
       // uncomment below and update the code to test the property updatedAt
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property successCallback (base name: "success_callback")', function() {
       // uncomment below and update the code to test the property successCallback
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property failureCallback (base name: "failure_callback")', function() {
       // uncomment below and update the code to test the property failureCallback
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property avgRunDuration (base name: "avg_run_duration")', function() {
       // uncomment below and update the code to test the property avgRunDuration
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property maxRunDuration (base name: "max_run_duration")', function() {
       // uncomment below and update the code to test the property maxRunDuration
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property minRunDuration (base name: "min_run_duration")', function() {
       // uncomment below and update the code to test the property minRunDuration
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property avgRunDurationTrend (base name: "avg_run_duration_trend")', function() {
       // uncomment below and update the code to test the property avgRunDurationTrend
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property avgRunLag (base name: "avg_run_lag")', function() {
       // uncomment below and update the code to test the property avgRunLag
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property maxRunLag (base name: "max_run_lag")', function() {
       // uncomment below and update the code to test the property maxRunLag
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property minRunLag (base name: "min_run_lag")', function() {
       // uncomment below and update the code to test the property minRunLag
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 
     it('should have the property avgRunLagTrend (base name: "avg_run_lag_trend")', function() {
       // uncomment below and update the code to test the property avgRunLagTrend
-      //var instane = new Bjr4js.SingleJob();
+      //var instance = new Bjr4js.SingleJob();
       //expect(instance).to.be();
     });
 

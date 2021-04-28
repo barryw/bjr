@@ -15,20 +15,53 @@ Method | HTTP request | Description
 
 ## CreateFolder
 
-> SingleFolderMessage CreateFolder(ctx, name, expression)
+> SingleFolderMessage CreateFolder(ctx).Name(name).Expression(expression).Execute()
 
 Create a new Folder
 
-Create a new Folder
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string | 
+    expression := "expression_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.FoldersApi.CreateFolder(context.Background()).Name(name).Expression(expression).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FoldersApi.CreateFolder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateFolder`: SingleFolderMessage
+    fmt.Fprintf(os.Stdout, "Response from `FoldersApi.CreateFolder`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateFolderRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string**|  | 
-**expression** | **string**|  | 
+ **name** | **string** |  | 
+ **expression** | **string** |  | 
 
 ### Return type
 
@@ -50,19 +83,55 @@ Name | Type | Description  | Notes
 
 ## DeleteFolder
 
-> SingleFolderMessage DeleteFolder(ctx, id)
+> SingleFolderMessage DeleteFolder(ctx, id).Execute()
 
 Delete an existing folder
 
-Delete an existing folder
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.FoldersApi.DeleteFolder(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FoldersApi.DeleteFolder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteFolder`: SingleFolderMessage
+    fmt.Fprintf(os.Stdout, "Response from `FoldersApi.DeleteFolder`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32**|  | 
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteFolderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -84,19 +153,55 @@ Name | Type | Description  | Notes
 
 ## GetFolder
 
-> SingleFolderMessage GetFolder(ctx, id)
+> SingleFolderMessage GetFolder(ctx, id).Execute()
 
 Return a single folder
 
-Return a single folder
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.FoldersApi.GetFolder(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FoldersApi.GetFolder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetFolder`: SingleFolderMessage
+    fmt.Fprintf(os.Stdout, "Response from `FoldersApi.GetFolder`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32**|  | 
+**id** | **int32** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetFolderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
@@ -118,31 +223,59 @@ Name | Type | Description  | Notes
 
 ## GetFolderJobs
 
-> JobArrayMessage GetFolderJobs(ctx, id, optional)
+> JobArrayMessage GetFolderJobs(ctx, id).PerPage(perPage).Page(page).Execute()
 
 Return list of jobs in a folder
 
-Return list of jobs in a folder
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | 
+    perPage := int32(56) // int32 |  (optional)
+    page := int32(56) // int32 |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.FoldersApi.GetFolderJobs(context.Background(), id).PerPage(perPage).Page(page).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FoldersApi.GetFolderJobs``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetFolderJobs`: JobArrayMessage
+    fmt.Fprintf(os.Stdout, "Response from `FoldersApi.GetFolderJobs`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32**|  | 
- **optional** | ***GetFolderJobsOpts** | optional parameters | nil if no parameters
+**id** | **int32** |  | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a GetFolderJobsOpts struct
+Other parameters are passed through a pointer to a apiGetFolderJobsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **perPage** | **optional.Int32**|  | 
- **page** | **optional.Int32**|  | 
+ **perPage** | **int32** |  | 
+ **page** | **int32** |  | 
 
 ### Return type
 
@@ -164,29 +297,53 @@ Name | Type | Description  | Notes
 
 ## GetFolders
 
-> FolderArrayMessage GetFolders(ctx, optional)
+> FolderArrayMessage GetFolders(ctx).PerPage(perPage).Page(page).Execute()
 
 Return paginated list of all folders
 
-Return paginated list of all folders
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    perPage := int32(56) // int32 |  (optional)
+    page := int32(56) // int32 |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.FoldersApi.GetFolders(context.Background()).PerPage(perPage).Page(page).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FoldersApi.GetFolders``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetFolders`: FolderArrayMessage
+    fmt.Fprintf(os.Stdout, "Response from `FoldersApi.GetFolders`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetFoldersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***GetFoldersOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetFoldersOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **optional.Int32**|  | 
- **page** | **optional.Int32**|  | 
+ **perPage** | **int32** |  | 
+ **page** | **int32** |  | 
 
 ### Return type
 
@@ -208,31 +365,59 @@ Name | Type | Description  | Notes
 
 ## UpdateFolder
 
-> SingleFolderMessage UpdateFolder(ctx, id, optional)
+> SingleFolderMessage UpdateFolder(ctx, id).Name(name).Expression(expression).Execute()
 
 Update an existing folder
 
-Update an existing folder
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int32(56) // int32 | 
+    name := "name_example" // string |  (optional)
+    expression := "expression_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.FoldersApi.UpdateFolder(context.Background(), id).Name(name).Expression(expression).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FoldersApi.UpdateFolder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateFolder`: SingleFolderMessage
+    fmt.Fprintf(os.Stdout, "Response from `FoldersApi.UpdateFolder`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32**|  | 
- **optional** | ***UpdateFolderOpts** | optional parameters | nil if no parameters
+**id** | **int32** |  | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UpdateFolderOpts struct
+Other parameters are passed through a pointer to a apiUpdateFolderRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **name** | **optional.String**|  | 
- **expression** | **optional.String**|  | 
+ **name** | **string** |  | 
+ **expression** | **string** |  | 
 
 ### Return type
 

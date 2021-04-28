@@ -1,64 +1,83 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.7
+
+// ignore_for_file: unused_import
+
 import 'dart:async';
-import 'dart:io';
-import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 
-import 'package:BJR/model/auth_out.dart';
 import 'package:BJR/model/auth_in.dart';
+import 'package:BJR/model/auth_out.dart';
 
 class AuthenticationApi {
-    final Dio _dio;
-    Serializers _serializers;
 
-    AuthenticationApi(this._dio, this._serializers);
+  final Dio _dio;
 
-        /// Authenticates a user and returns a token
-        ///
-        /// Authenticates a user and returns a token
-        Future<Response<AuthOut>>authenticateUser({ AuthIn authIn,CancelToken cancelToken, Map<String, String> headers,}) async {
+  final Serializers _serializers;
 
-        String _path = "/authenticate";
+  const AuthenticationApi(this._dio, this._serializers);
 
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
+  /// Authenticates a user and returns a token
+  ///
+  /// Authenticates a user and returns a token
+  Future<Response<AuthOut>> authenticateUser({ 
+    AuthIn authIn,
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/authenticate',
+      method: 'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
 
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
+    dynamic _bodyData;
 
-        List<String> contentTypes = ["application/json"];
+    const _type = FullType(AuthIn);
+    _bodyData = _serializers.serialize(authIn, specifiedType: _type);
 
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
 
-            var serializedBody = _serializers.serialize(authIn);
-            var jsonauthIn = json.encode(serializedBody);
-            bodyData = jsonauthIn;
+    const _responseType = FullType(AuthOut);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as AuthOut;
 
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'post'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
+    return Response<AuthOut>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
 
-        var serializer = _serializers.serializerForType(AuthOut);
-        var data = _serializers.deserializeWith<AuthOut>(serializer, response.data);
-
-            return Response<AuthOut>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        }
+}

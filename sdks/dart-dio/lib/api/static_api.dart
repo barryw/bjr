@@ -1,152 +1,208 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.7
+
+// ignore_for_file: unused_import
+
 import 'dart:async';
-import 'dart:io';
-import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 
-import 'package:BJR/model/timezone_message.dart';
-import 'package:BJR/model/tag_message.dart';
 import 'package:BJR/model/server_version.dart';
+import 'package:BJR/model/tag_message.dart';
+import 'package:BJR/model/timezone_message.dart';
 
 class StaticApi {
-    final Dio _dio;
-    Serializers _serializers;
 
-    StaticApi(this._dio, this._serializers);
+  final Dio _dio;
 
-        /// Get tags
-        ///
-        /// Retrieves the list of tags that are currently in use for the authenticated user.
-        Future<Response<TagMessage>>getTags({ int perPage,int page,CancelToken cancelToken, Map<String, String> headers,}) async {
+  final Serializers _serializers;
 
-        String _path = "/tags";
+  const StaticApi(this._dio, this._serializers);
 
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
+  /// Get tags
+  ///
+  /// Retrieves the list of tags that are currently in use for the authenticated user.
+  Future<Response<TagMessage>> getTags({ 
+    int perPage,
+    int page,
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/tags',
+      method: 'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      queryParameters: <String, dynamic>{
+        if (perPage != null) r'per_page': perPage,
+        if (page != null) r'page': page,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
 
-                queryParams[r'per_page'] = perPage;
-                queryParams[r'page'] = page;
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
+    dynamic _bodyData;
 
-        List<String> contentTypes = [];
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
 
+    const _responseType = FullType(TagMessage);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as TagMessage;
 
+    return Response<TagMessage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
 
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'get'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
+  /// Get timezones
+  ///
+  /// Get the list of acceptable timezone names.
+  Future<Response<TimezoneMessage>> getTimezones({ 
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/timezones',
+      method: 'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
 
-        var serializer = _serializers.serializerForType(TagMessage);
-        var data = _serializers.deserializeWith<TagMessage>(serializer, response.data);
+    dynamic _bodyData;
 
-            return Response<TagMessage>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        /// Get timezones
-        ///
-        /// Get the list of acceptable timezone names.
-        Future<Response<TimezoneMessage>>getTimezones({ CancelToken cancelToken, Map<String, String> headers,}) async {
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
 
-        String _path = "/timezones";
+    const _responseType = FullType(TimezoneMessage);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as TimezoneMessage;
 
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
+    return Response<TimezoneMessage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
 
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
+  /// Server version
+  ///
+  /// The BJR server version
+  Future<Response<ServerVersion>> getVersion({ 
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/version',
+      method: 'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
 
-        List<String> contentTypes = [];
+    dynamic _bodyData;
 
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
 
+    const _responseType = FullType(ServerVersion);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as ServerVersion;
 
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'get'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
+    return Response<ServerVersion>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
 
-        var serializer = _serializers.serializerForType(TimezoneMessage);
-        var data = _serializers.deserializeWith<TimezoneMessage>(serializer, response.data);
-
-            return Response<TimezoneMessage>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        /// Server version
-        ///
-        /// The BJR server version
-        Future<Response<ServerVersion>>getVersion({ CancelToken cancelToken, Map<String, String> headers,}) async {
-
-        String _path = "/version";
-
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
-
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
-
-        List<String> contentTypes = [];
-
-
-
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'get'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
-
-        var serializer = _serializers.serializerForType(ServerVersion);
-        var data = _serializers.deserializeWith<ServerVersion>(serializer, response.data);
-
-            return Response<ServerVersion>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        }
+}

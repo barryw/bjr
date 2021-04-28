@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -69,7 +69,7 @@ namespace BJR.Model
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
-        
+
         /// <summary>
         /// The object&#39;s primary key. This uniquely identifies the object in the system.
         /// </summary>
@@ -193,14 +193,14 @@ namespace BJR.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

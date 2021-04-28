@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -70,8 +70,8 @@ namespace BJR.Test
         public void GetTagsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //int perPage = null;
-            //int page = null;
+            //int? perPage = null;
+            //int? page = null;
             //var response = instance.GetTags(perPage, page);
             //Assert.IsInstanceOf(typeof(TagMessage), response, "response is TagMessage");
         }

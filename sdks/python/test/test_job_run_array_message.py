@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,14 +8,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import bjr4py
-from bjr4py.models.job_run_array_message import JobRunArrayMessage  # noqa: E501
-from bjr4py.rest import ApiException
+from bjr4py.model.job_run_array import JobRunArray
+globals()['JobRunArray'] = JobRunArray
+from bjr4py.model.job_run_array_message import JobRunArrayMessage
+
 
 class TestJobRunArrayMessage(unittest.TestCase):
     """JobRunArrayMessage unit test stubs"""
@@ -28,44 +26,11 @@ class TestJobRunArrayMessage(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test JobRunArrayMessage
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = bjr4py.models.job_run_array_message.JobRunArrayMessage()  # noqa: E501
-        if include_optional :
-            return JobRunArrayMessage(
-                message = '0', 
-                is_error = True, 
-                object_type = '0', 
-                status_code = 56, 
-                object = [
-                    bjr4py.models.single_job_run.SingleJobRun(
-                        id = 56, 
-                        success = True, 
-                        return_code = 56, 
-                        error_message = '0', 
-                        stdout = '0', 
-                        stderr = '0', 
-                        start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        end_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        scheduled_start_time = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        schedule_diff_in_seconds = 56, 
-                        job_id = 56, 
-                        is_manual = True, 
-                        created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                        updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
-                    ]
-            )
-        else :
-            return JobRunArrayMessage(
-        )
-
     def testJobRunArrayMessage(self):
         """Test JobRunArrayMessage"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = JobRunArrayMessage()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using RestSharp;
 using BJR.Client;
 using BJR.Model;
@@ -73,7 +74,7 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        JobArrayMessage RecentJobs (int count = default(int));
+        JobArrayMessage RecentJobs (int? count = default(int?));
 
         /// <summary>
         /// List of recent jobs
@@ -84,7 +85,7 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        ApiResponse<JobArrayMessage> RecentJobsWithHttpInfo (int count = default(int));
+        ApiResponse<JobArrayMessage> RecentJobsWithHttpInfo (int? count = default(int?));
         /// <summary>
         /// Job statistics by day
         /// </summary>
@@ -98,7 +99,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by day
@@ -113,7 +114,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string));
         /// <summary>
         /// Job statistics by hour
         /// </summary>
@@ -127,7 +128,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by hour
@@ -142,7 +143,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string));
         /// <summary>
         /// Job statistics by minute
         /// </summary>
@@ -156,7 +157,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByMinute (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        JobStatMessage StatsByMinute (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by minute
@@ -171,7 +172,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string));
         /// <summary>
         /// Job statistics by week
         /// </summary>
@@ -185,7 +186,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string));
 
         /// <summary>
         /// Job statistics by week
@@ -200,7 +201,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string));
         /// <summary>
         /// Todays Stats
         /// </summary>
@@ -231,7 +232,7 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        JobArrayMessage UpcomingJobs (int count = default(int));
+        JobArrayMessage UpcomingJobs (int? count = default(int?));
 
         /// <summary>
         /// List of upcoming jobs
@@ -242,7 +243,7 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        ApiResponse<JobArrayMessage> UpcomingJobsWithHttpInfo (int count = default(int));
+        ApiResponse<JobArrayMessage> UpcomingJobsWithHttpInfo (int? count = default(int?));
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -252,8 +253,9 @@ namespace BJR.Api
         /// Retrieve the count of busy workers across worker pods/nodes
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of BusyThreadCountMessage</returns>
-        System.Threading.Tasks.Task<BusyThreadCountMessage> GetBusyThreadCountAsync ();
+        System.Threading.Tasks.Task<BusyThreadCountMessage> GetBusyThreadCountAsync (CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Retrieve the count of busy workers across worker pods/nodes
@@ -262,8 +264,9 @@ namespace BJR.Api
         /// Retrieve the count of busy workers across worker pods/nodes
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (BusyThreadCountMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BusyThreadCountMessage>> GetBusyThreadCountAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<BusyThreadCountMessage>> GetBusyThreadCountWithHttpInfoAsync (CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Quiesce a single worker pod/node
         /// </summary>
@@ -272,8 +275,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of GenericMessage</returns>
-        System.Threading.Tasks.Task<GenericMessage> QuiesceNodeAsync (string host);
+        System.Threading.Tasks.Task<GenericMessage> QuiesceNodeAsync (string host, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Quiesce a single worker pod/node
@@ -283,8 +287,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (GenericMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GenericMessage>> QuiesceNodeAsyncWithHttpInfo (string host);
+        System.Threading.Tasks.Task<ApiResponse<GenericMessage>> QuiesceNodeWithHttpInfoAsync (string host, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List of recent jobs
         /// </summary>
@@ -293,8 +298,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobArrayMessage</returns>
-        System.Threading.Tasks.Task<JobArrayMessage> RecentJobsAsync (int count = default(int));
+        System.Threading.Tasks.Task<JobArrayMessage> RecentJobsAsync (int? count = default(int?), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// List of recent jobs
@@ -304,8 +310,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> RecentJobsAsyncWithHttpInfo (int count = default(int));
+        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> RecentJobsWithHttpInfoAsync (int? count = default(int?), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Job statistics by day
         /// </summary>
@@ -318,8 +325,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Job statistics by day
@@ -333,8 +341,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayWithHttpInfoAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Job statistics by hour
         /// </summary>
@@ -347,8 +356,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Job statistics by hour
@@ -362,8 +372,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourWithHttpInfoAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Job statistics by minute
         /// </summary>
@@ -376,8 +387,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Job statistics by minute
@@ -391,8 +403,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteWithHttpInfoAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Job statistics by week
         /// </summary>
@@ -405,8 +418,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobStatMessage</returns>
-        System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Job statistics by week
@@ -420,8 +434,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string));
+        System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekWithHttpInfoAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Todays Stats
         /// </summary>
@@ -430,8 +445,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of TodaysStatsMessage</returns>
-        System.Threading.Tasks.Task<TodaysStatsMessage> TodaysStatsAsync (string timezone = default(string));
+        System.Threading.Tasks.Task<TodaysStatsMessage> TodaysStatsAsync (string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Todays Stats
@@ -441,8 +457,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (TodaysStatsMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TodaysStatsMessage>> TodaysStatsAsyncWithHttpInfo (string timezone = default(string));
+        System.Threading.Tasks.Task<ApiResponse<TodaysStatsMessage>> TodaysStatsWithHttpInfoAsync (string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List of upcoming jobs
         /// </summary>
@@ -451,8 +468,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobArrayMessage</returns>
-        System.Threading.Tasks.Task<JobArrayMessage> UpcomingJobsAsync (int count = default(int));
+        System.Threading.Tasks.Task<JobArrayMessage> UpcomingJobsAsync (int? count = default(int?), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// List of upcoming jobs
@@ -462,8 +480,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> UpcomingJobsAsyncWithHttpInfo (int count = default(int));
+        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> UpcomingJobsWithHttpInfoAsync (int? count = default(int?), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -645,10 +664,11 @@ namespace BJR.Api
         /// Retrieve the count of busy workers across worker pods/nodes Retrieve the count of busy workers across worker pods/nodes
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of BusyThreadCountMessage</returns>
-        public async System.Threading.Tasks.Task<BusyThreadCountMessage> GetBusyThreadCountAsync ()
+        public async System.Threading.Tasks.Task<BusyThreadCountMessage> GetBusyThreadCountAsync (CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<BusyThreadCountMessage> localVarResponse = await GetBusyThreadCountAsyncWithHttpInfo();
+             ApiResponse<BusyThreadCountMessage> localVarResponse = await GetBusyThreadCountWithHttpInfoAsync(cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -657,8 +677,9 @@ namespace BJR.Api
         /// Retrieve the count of busy workers across worker pods/nodes Retrieve the count of busy workers across worker pods/nodes
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (BusyThreadCountMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<BusyThreadCountMessage>> GetBusyThreadCountAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<BusyThreadCountMessage>> GetBusyThreadCountWithHttpInfoAsync (CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/job_server_api/busy_thread_count";
@@ -693,7 +714,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -785,10 +806,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of GenericMessage</returns>
-        public async System.Threading.Tasks.Task<GenericMessage> QuiesceNodeAsync (string host)
+        public async System.Threading.Tasks.Task<GenericMessage> QuiesceNodeAsync (string host, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<GenericMessage> localVarResponse = await QuiesceNodeAsyncWithHttpInfo(host);
+             ApiResponse<GenericMessage> localVarResponse = await QuiesceNodeWithHttpInfoAsync(host, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -798,8 +820,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="host">The hostname of the worker pod/node to quiesce</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (GenericMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GenericMessage>> QuiesceNodeAsyncWithHttpInfo (string host)
+        public async System.Threading.Tasks.Task<ApiResponse<GenericMessage>> QuiesceNodeWithHttpInfoAsync (string host, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'host' is set
             if (host == null)
@@ -838,7 +861,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -859,7 +882,7 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        public JobArrayMessage RecentJobs (int count = default(int))
+        public JobArrayMessage RecentJobs (int? count = default(int?))
         {
              ApiResponse<JobArrayMessage> localVarResponse = RecentJobsWithHttpInfo(count);
              return localVarResponse.Data;
@@ -871,7 +894,7 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        public ApiResponse<JobArrayMessage> RecentJobsWithHttpInfo (int count = default(int))
+        public ApiResponse<JobArrayMessage> RecentJobsWithHttpInfo (int? count = default(int?))
         {
 
             var localVarPath = "/job_server_api/recent_jobs";
@@ -927,10 +950,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobArrayMessage</returns>
-        public async System.Threading.Tasks.Task<JobArrayMessage> RecentJobsAsync (int count = default(int))
+        public async System.Threading.Tasks.Task<JobArrayMessage> RecentJobsAsync (int? count = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<JobArrayMessage> localVarResponse = await RecentJobsAsyncWithHttpInfo(count);
+             ApiResponse<JobArrayMessage> localVarResponse = await RecentJobsWithHttpInfoAsync(count, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -940,8 +964,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> RecentJobsAsyncWithHttpInfo (int count = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> RecentJobsWithHttpInfoAsync (int? count = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/job_server_api/recent_jobs";
@@ -977,7 +1002,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1002,7 +1027,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public JobStatMessage StatsByDay (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string))
         {
              ApiResponse<JobStatMessage> localVarResponse = StatsByDayWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
@@ -1018,7 +1043,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public ApiResponse<JobStatMessage> StatsByDayWithHttpInfo (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/daily_job_stats";
@@ -1082,10 +1107,11 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByDayAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByDayAsyncWithHttpInfo(startDate, endDate, perPage, page, timezone);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByDayWithHttpInfoAsync(startDate, endDate, perPage, page, timezone, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1099,8 +1125,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByDayWithHttpInfoAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/job_server_api/daily_job_stats";
@@ -1140,7 +1167,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1165,7 +1192,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public JobStatMessage StatsByHour (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string))
         {
              ApiResponse<JobStatMessage> localVarResponse = StatsByHourWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
@@ -1181,7 +1208,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public ApiResponse<JobStatMessage> StatsByHourWithHttpInfo (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/hourly_job_stats";
@@ -1245,10 +1272,11 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByHourAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByHourAsyncWithHttpInfo(startDate, endDate, perPage, page, timezone);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByHourWithHttpInfoAsync(startDate, endDate, perPage, page, timezone, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1262,8 +1290,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByHourWithHttpInfoAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/job_server_api/hourly_job_stats";
@@ -1303,7 +1332,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1328,7 +1357,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByMinute (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public JobStatMessage StatsByMinute (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string))
         {
              ApiResponse<JobStatMessage> localVarResponse = StatsByMinuteWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
@@ -1344,7 +1373,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public ApiResponse<JobStatMessage> StatsByMinuteWithHttpInfo (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/minutely_job_stats";
@@ -1408,10 +1437,11 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByMinuteAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByMinuteAsyncWithHttpInfo(startDate, endDate, perPage, page, timezone);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByMinuteWithHttpInfoAsync(startDate, endDate, perPage, page, timezone, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1425,8 +1455,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByMinuteWithHttpInfoAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/job_server_api/minutely_job_stats";
@@ -1466,7 +1497,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1491,7 +1522,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>JobStatMessage</returns>
-        public JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public JobStatMessage StatsByWeek (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string))
         {
              ApiResponse<JobStatMessage> localVarResponse = StatsByWeekWithHttpInfo(startDate, endDate, perPage, page, timezone);
              return localVarResponse.Data;
@@ -1507,7 +1538,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobStatMessage</returns>
-        public ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public ApiResponse<JobStatMessage> StatsByWeekWithHttpInfo (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string))
         {
 
             var localVarPath = "/job_server_api/weekly_job_stats";
@@ -1571,10 +1602,11 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobStatMessage</returns>
-        public async System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public async System.Threading.Tasks.Task<JobStatMessage> StatsByWeekAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<JobStatMessage> localVarResponse = await StatsByWeekAsyncWithHttpInfo(startDate, endDate, perPage, page, timezone);
+             ApiResponse<JobStatMessage> localVarResponse = await StatsByWeekWithHttpInfoAsync(startDate, endDate, perPage, page, timezone, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1588,8 +1620,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobStatMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekAsyncWithHttpInfo (string startDate = default(string), string endDate = default(string), int perPage = default(int), int page = default(int), string timezone = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<JobStatMessage>> StatsByWeekWithHttpInfoAsync (string startDate = default(string), string endDate = default(string), int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/job_server_api/weekly_job_stats";
@@ -1629,7 +1662,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1718,10 +1751,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of TodaysStatsMessage</returns>
-        public async System.Threading.Tasks.Task<TodaysStatsMessage> TodaysStatsAsync (string timezone = default(string))
+        public async System.Threading.Tasks.Task<TodaysStatsMessage> TodaysStatsAsync (string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<TodaysStatsMessage> localVarResponse = await TodaysStatsAsyncWithHttpInfo(timezone);
+             ApiResponse<TodaysStatsMessage> localVarResponse = await TodaysStatsWithHttpInfoAsync(timezone, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1731,8 +1765,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (TodaysStatsMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TodaysStatsMessage>> TodaysStatsAsyncWithHttpInfo (string timezone = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<TodaysStatsMessage>> TodaysStatsWithHttpInfoAsync (string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/job_server_api/todays_stats";
@@ -1768,7 +1803,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1789,7 +1824,7 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        public JobArrayMessage UpcomingJobs (int count = default(int))
+        public JobArrayMessage UpcomingJobs (int? count = default(int?))
         {
              ApiResponse<JobArrayMessage> localVarResponse = UpcomingJobsWithHttpInfo(count);
              return localVarResponse.Data;
@@ -1801,7 +1836,7 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        public ApiResponse<JobArrayMessage> UpcomingJobsWithHttpInfo (int count = default(int))
+        public ApiResponse<JobArrayMessage> UpcomingJobsWithHttpInfo (int? count = default(int?))
         {
 
             var localVarPath = "/job_server_api/upcoming_jobs";
@@ -1857,10 +1892,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobArrayMessage</returns>
-        public async System.Threading.Tasks.Task<JobArrayMessage> UpcomingJobsAsync (int count = default(int))
+        public async System.Threading.Tasks.Task<JobArrayMessage> UpcomingJobsAsync (int? count = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<JobArrayMessage> localVarResponse = await UpcomingJobsAsyncWithHttpInfo(count);
+             ApiResponse<JobArrayMessage> localVarResponse = await UpcomingJobsWithHttpInfoAsync(count, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1870,8 +1906,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="count">The number of jobs to return (max 20) (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> UpcomingJobsAsyncWithHttpInfo (int count = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> UpcomingJobsWithHttpInfoAsync (int? count = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/job_server_api/upcoming_jobs";
@@ -1907,7 +1944,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

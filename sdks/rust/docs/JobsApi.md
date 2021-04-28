@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_job**](JobsApi.md#create_job) | **Post** /job_api | Creates a job
-[**delete_job**](JobsApi.md#delete_job) | **Delete** /job_api/{id} | Deletes a job
-[**get_job**](JobsApi.md#get_job) | **Get** /job_api/{id} | Retrieves a single job
-[**get_job_runs**](JobsApi.md#get_job_runs) | **Get** /job_api/{id}/runs | Retrieve the runs for a job
-[**get_jobs**](JobsApi.md#get_jobs) | **Get** /job_api | Retrieves jobs
-[**job_occurrences**](JobsApi.md#job_occurrences) | **Get** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
-[**run_job_now**](JobsApi.md#run_job_now) | **Post** /job_api/{id}/run_now | Run a job now
-[**update_job**](JobsApi.md#update_job) | **Put** /job_api/{id} | Updates a single job
+[**create_job**](JobsApi.md#create_job) | **post** /job_api | Creates a job
+[**delete_job**](JobsApi.md#delete_job) | **delete** /job_api/{id} | Deletes a job
+[**get_job**](JobsApi.md#get_job) | **get** /job_api/{id} | Retrieves a single job
+[**get_job_runs**](JobsApi.md#get_job_runs) | **get** /job_api/{id}/runs | Retrieve the runs for a job
+[**get_jobs**](JobsApi.md#get_jobs) | **get** /job_api | Retrieves jobs
+[**job_occurrences**](JobsApi.md#job_occurrences) | **get** /job_api/{id}/occurrences/{end_date} | Upcoming job occurrences
+[**run_job_now**](JobsApi.md#run_job_now) | **post** /job_api/{id}/run_now | Run a job now
+[**update_job**](JobsApi.md#update_job) | **put** /job_api/{id} | Updates a single job
 
 
 

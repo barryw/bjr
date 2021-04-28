@@ -1,4 +1,5 @@
 # BJR.Model.FolderArrayMessage
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **create_job**
-> SingleJobMessage create_job(job_in=job_in)
+> SingleJobMessage create_job()
 
 Creates a job
 
@@ -25,10 +25,11 @@ Creates a job
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import jobs_api
+from bjr4py.model.single_job_message import SingleJobMessage
+from bjr4py.model.job_in import JobIn
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -49,22 +50,34 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobsApi(api_client)
-    job_in = bjr4py.JobIn() # JobIn |  (optional)
+    api_instance = jobs_api.JobsApi(api_client)
+    job_in = JobIn(
+        name="name_example",
+        cron="cron_example",
+        command="command_example",
+        timezone="timezone_example",
+        enabled=True,
+        tags="tags_example",
+        success_callback="success_callback_example",
+        failure_callback="failure_callback_example",
+    ) # JobIn |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Creates a job
         api_response = api_instance.create_job(job_in=job_in)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobsApi->create_job: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job_in** | [**JobIn**](JobIn.md)|  | [optional] 
+ **job_in** | [**JobIn**](JobIn.md)|  | [optional]
 
 ### Return type
 
@@ -78,6 +91,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -99,10 +113,10 @@ Deletes a job
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import jobs_api
+from bjr4py.model.single_job_message import SingleJobMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -123,22 +137,24 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobsApi(api_client)
-    id = 56 # int | 
+    api_instance = jobs_api.JobsApi(api_client)
+    id = 1 # int | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Deletes a job
         api_response = api_instance.delete_job(id)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobsApi->delete_job: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
+ **id** | **int**|  |
 
 ### Return type
 
@@ -152,6 +168,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -173,10 +190,10 @@ Retrieves a single job
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import jobs_api
+from bjr4py.model.single_job_message import SingleJobMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -197,22 +214,24 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobsApi(api_client)
-    id = 56 # int | 
+    api_instance = jobs_api.JobsApi(api_client)
+    id = 1 # int | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Retrieves a single job
         api_response = api_instance.get_job(id)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobsApi->get_job: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
+ **id** | **int**|  |
 
 ### Return type
 
@@ -227,6 +246,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -236,7 +256,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job_runs**
-> JobRunArrayMessage get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date, timezone=timezone)
+> JobRunArrayMessage get_job_runs(id)
 
 Retrieve the runs for a job
 
@@ -246,10 +266,10 @@ Retrieve the runs for a job
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import jobs_api
+from bjr4py.model.job_run_array_message import JobRunArrayMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -270,34 +290,45 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobsApi(api_client)
-    id = 56 # int | 
-per_page = 56 # int |  (optional)
-page = 56 # int |  (optional)
-succeeded = True # bool |  (optional)
-start_date = 'start_date_example' # str |  (optional)
-end_date = 'end_date_example' # str |  (optional)
-timezone = 'timezone_example' # str |  (optional)
+    api_instance = jobs_api.JobsApi(api_client)
+    id = 1 # int | 
+    per_page = 1 # int |  (optional)
+    page = 1 # int |  (optional)
+    succeeded = True # bool |  (optional)
+    start_date = "start_date_example" # str |  (optional)
+    end_date = "end_date_example" # str |  (optional)
+    timezone = "timezone_example" # str |  (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Retrieve the runs for a job
+        api_response = api_instance.get_job_runs(id)
+        pprint(api_response)
+    except bjr4py.ApiException as e:
+        print("Exception when calling JobsApi->get_job_runs: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Retrieve the runs for a job
         api_response = api_instance.get_job_runs(id, per_page=per_page, page=page, succeeded=succeeded, start_date=start_date, end_date=end_date, timezone=timezone)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobsApi->get_job_runs: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **per_page** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
- **succeeded** | **bool**|  | [optional] 
- **start_date** | **str**|  | [optional] 
- **end_date** | **str**|  | [optional] 
- **timezone** | **str**|  | [optional] 
+ **id** | **int**|  |
+ **per_page** | **int**|  | [optional]
+ **page** | **int**|  | [optional]
+ **succeeded** | **bool**|  | [optional]
+ **start_date** | **str**|  | [optional]
+ **end_date** | **str**|  | [optional]
+ **timezone** | **str**|  | [optional]
 
 ### Return type
 
@@ -312,6 +343,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -320,7 +352,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_jobs**
-> JobArrayMessage get_jobs(expression=expression, timezone=timezone, per_page=per_page, page=page)
+> JobArrayMessage get_jobs()
 
 Retrieves jobs
 
@@ -330,10 +362,10 @@ Retrieves jobs
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import jobs_api
+from bjr4py.model.job_array_message import JobArrayMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -354,28 +386,31 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobsApi(api_client)
-    expression = 'expression_example' # str | A search expression to filter jobs. (optional)
-timezone = 'timezone_example' # str |  (optional)
-per_page = 56 # int |  (optional)
-page = 56 # int |  (optional)
+    api_instance = jobs_api.JobsApi(api_client)
+    expression = "expression_example" # str | A search expression to filter jobs. (optional)
+    timezone = "timezone_example" # str |  (optional)
+    per_page = 1 # int |  (optional)
+    page = 1 # int |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Retrieves jobs
         api_response = api_instance.get_jobs(expression=expression, timezone=timezone, per_page=per_page, page=page)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobsApi->get_jobs: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expression** | **str**| A search expression to filter jobs. | [optional] 
- **timezone** | **str**|  | [optional] 
- **per_page** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **expression** | **str**| A search expression to filter jobs. | [optional]
+ **timezone** | **str**|  | [optional]
+ **per_page** | **int**|  | [optional]
+ **page** | **int**|  | [optional]
 
 ### Return type
 
@@ -390,6 +425,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -398,7 +434,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **job_occurrences**
-> OccurrenceMessage job_occurrences(id, end_date, per_page=per_page, page=page, timezone=timezone)
+> OccurrenceMessage job_occurrences(id, end_date)
 
 Upcoming job occurrences
 
@@ -408,10 +444,10 @@ Retrieves a list of upcoming occurrences for a job
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import jobs_api
+from bjr4py.model.occurrence_message import OccurrenceMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -432,30 +468,41 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobsApi(api_client)
-    id = 56 # int | The id of the job to retrieve occurrences for
-end_date = 'end_date_example' # str | The date to retrieve occurrences up to
-per_page = 56 # int |  (optional)
-page = 56 # int |  (optional)
-timezone = 'timezone_example' # str |  (optional)
+    api_instance = jobs_api.JobsApi(api_client)
+    id = 1 # int | The id of the job to retrieve occurrences for
+    end_date = "end_date_example" # str | The date to retrieve occurrences up to
+    per_page = 1 # int |  (optional)
+    page = 1 # int |  (optional)
+    timezone = "timezone_example" # str |  (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Upcoming job occurrences
+        api_response = api_instance.job_occurrences(id, end_date)
+        pprint(api_response)
+    except bjr4py.ApiException as e:
+        print("Exception when calling JobsApi->job_occurrences: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Upcoming job occurrences
         api_response = api_instance.job_occurrences(id, end_date, per_page=per_page, page=page, timezone=timezone)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobsApi->job_occurrences: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| The id of the job to retrieve occurrences for | 
- **end_date** | **str**| The date to retrieve occurrences up to | 
- **per_page** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
- **timezone** | **str**|  | [optional] 
+ **id** | **int**| The id of the job to retrieve occurrences for |
+ **end_date** | **str**| The date to retrieve occurrences up to |
+ **per_page** | **int**|  | [optional]
+ **page** | **int**|  | [optional]
+ **timezone** | **str**|  | [optional]
 
 ### Return type
 
@@ -469,6 +516,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -489,10 +537,9 @@ Queues a job to run now
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import jobs_api
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -513,21 +560,23 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobsApi(api_client)
-    id = 56 # int | The id of the job to execute now
+    api_instance = jobs_api.JobsApi(api_client)
+    id = 1 # int | The id of the job to execute now
 
+    # example passing only required values which don't have defaults set
     try:
         # Run a job now
         api_instance.run_job_now(id)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobsApi->run_job_now: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| The id of the job to execute now | 
+ **id** | **int**| The id of the job to execute now |
 
 ### Return type
 
@@ -542,6 +591,7 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -552,7 +602,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_job**
-> SingleJobMessage update_job(id, job_in=job_in)
+> SingleJobMessage update_job(id)
 
 Updates a single job
 
@@ -562,10 +612,11 @@ Updates a single job
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import jobs_api
+from bjr4py.model.single_job_message import SingleJobMessage
+from bjr4py.model.job_in import JobIn
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -586,24 +637,44 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.JobsApi(api_client)
-    id = 56 # int | 
-job_in = bjr4py.JobIn() # JobIn |  (optional)
+    api_instance = jobs_api.JobsApi(api_client)
+    id = 1 # int | 
+    job_in = JobIn(
+        name="name_example",
+        cron="cron_example",
+        command="command_example",
+        timezone="timezone_example",
+        enabled=True,
+        tags="tags_example",
+        success_callback="success_callback_example",
+        failure_callback="failure_callback_example",
+    ) # JobIn |  (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Updates a single job
+        api_response = api_instance.update_job(id)
+        pprint(api_response)
+    except bjr4py.ApiException as e:
+        print("Exception when calling JobsApi->update_job: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Updates a single job
         api_response = api_instance.update_job(id, job_in=job_in)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling JobsApi->update_job: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **job_in** | [**JobIn**](JobIn.md)|  | [optional] 
+ **id** | **int**|  |
+ **job_in** | [**JobIn**](JobIn.md)|  | [optional]
 
 ### Return type
 
@@ -617,6 +688,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

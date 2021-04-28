@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -33,7 +33,7 @@ namespace BJR.Client
         /// </summary>
         /// <value>The base path</value>
         String GetBasePath();
-        
+
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
         /// </summary>

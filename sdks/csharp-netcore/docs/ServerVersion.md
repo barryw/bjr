@@ -1,4 +1,5 @@
 # BJR.Model.ServerVersion
+
 ## Properties
 
 Name | Type | Description | Notes

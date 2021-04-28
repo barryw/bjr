@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -47,7 +47,7 @@ namespace BJR.Model
             this.IsError = isError;
             this.StatusCode = statusCode;
         }
-        
+
         /// <summary>
         /// The JWT authentication token. This must be passed in the Authorization header on subsequent requests.
         /// </summary>
@@ -99,14 +99,14 @@ namespace BJR.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

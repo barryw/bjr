@@ -82,6 +82,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -161,6 +162,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -242,6 +244,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -256,7 +259,7 @@ Name | Type | Description  | Notes
 
 ## GetJobRuns
 
-> JobRunArrayMessage GetJobRuns (int id, int perPage = null, int page = null, bool succeeded = null, string startDate = null, string endDate = null, string timezone = null)
+> JobRunArrayMessage GetJobRuns (int id, int? perPage = null, int? page = null, bool? succeeded = null, string startDate = null, string endDate = null, string timezone = null)
 
 Retrieve the runs for a job
 
@@ -283,9 +286,9 @@ namespace Example
 
             var apiInstance = new JobsApi(Configuration.Default);
             var id = 56;  // int | 
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
-            var succeeded = true;  // bool |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
+            var succeeded = true;  // bool? |  (optional) 
             var startDate = startDate_example;  // string |  (optional) 
             var endDate = endDate_example;  // string |  (optional) 
             var timezone = timezone_example;  // string |  (optional) 
@@ -313,9 +316,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
- **succeeded** | **bool**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
+ **succeeded** | **bool?**|  | [optional] 
  **startDate** | **string**|  | [optional] 
  **endDate** | **string**|  | [optional] 
  **timezone** | **string**|  | [optional] 
@@ -333,6 +336,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -346,7 +350,7 @@ Name | Type | Description  | Notes
 
 ## GetJobs
 
-> JobArrayMessage GetJobs (string expression = null, string timezone = null, int perPage = null, int page = null)
+> JobArrayMessage GetJobs (string expression = null, string timezone = null, int? perPage = null, int? page = null)
 
 Retrieves jobs
 
@@ -374,8 +378,8 @@ namespace Example
             var apiInstance = new JobsApi(Configuration.Default);
             var expression = expression_example;  // string | A search expression to filter jobs. (optional) 
             var timezone = timezone_example;  // string |  (optional) 
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
 
             try
             {
@@ -401,8 +405,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **expression** | **string**| A search expression to filter jobs. | [optional] 
  **timezone** | **string**|  | [optional] 
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
 
 ### Return type
 
@@ -417,6 +421,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -430,7 +435,7 @@ Name | Type | Description  | Notes
 
 ## JobOccurrences
 
-> OccurrenceMessage JobOccurrences (int id, string endDate, int perPage = null, int page = null, string timezone = null)
+> OccurrenceMessage JobOccurrences (int id, string endDate, int? perPage = null, int? page = null, string timezone = null)
 
 Upcoming job occurrences
 
@@ -458,8 +463,8 @@ namespace Example
             var apiInstance = new JobsApi(Configuration.Default);
             var id = 56;  // int | The id of the job to retrieve occurrences for
             var endDate = endDate_example;  // string | The date to retrieve occurrences up to
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
             var timezone = timezone_example;  // string |  (optional) 
 
             try
@@ -486,8 +491,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| The id of the job to retrieve occurrences for | 
  **endDate** | **string**| The date to retrieve occurrences up to | 
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
  **timezone** | **string**|  | [optional] 
 
 ### Return type
@@ -502,6 +507,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -580,6 +586,7 @@ void (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -662,6 +669,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

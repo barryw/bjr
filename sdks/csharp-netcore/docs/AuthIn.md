@@ -1,4 +1,5 @@
 # BJR.Model.AuthIn
+
 ## Properties
 
 Name | Type | Description | Notes

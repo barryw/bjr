@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using RestSharp;
 using BJR.Client;
 using BJR.Model;
@@ -102,7 +103,7 @@ namespace BJR.Api
         /// <param name="endDate"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>JobRunArrayMessage</returns>
-        JobRunArrayMessage GetJobRuns (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string));
+        JobRunArrayMessage GetJobRuns (int id, int? perPage = default(int?), int? page = default(int?), bool? succeeded = default(bool?), string startDate = default(string), string endDate = default(string), string timezone = default(string));
 
         /// <summary>
         /// Retrieve the runs for a job
@@ -119,7 +120,7 @@ namespace BJR.Api
         /// <param name="endDate"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobRunArrayMessage</returns>
-        ApiResponse<JobRunArrayMessage> GetJobRunsWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string));
+        ApiResponse<JobRunArrayMessage> GetJobRunsWithHttpInfo (int id, int? perPage = default(int?), int? page = default(int?), bool? succeeded = default(bool?), string startDate = default(string), string endDate = default(string), string timezone = default(string));
         /// <summary>
         /// Retrieves jobs
         /// </summary>
@@ -132,7 +133,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        JobArrayMessage GetJobs (string expression = default(string), string timezone = default(string), int perPage = default(int), int page = default(int));
+        JobArrayMessage GetJobs (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?));
 
         /// <summary>
         /// Retrieves jobs
@@ -146,7 +147,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string expression = default(string), string timezone = default(string), int perPage = default(int), int page = default(int));
+        ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?));
         /// <summary>
         /// Upcoming job occurrences
         /// </summary>
@@ -160,7 +161,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>OccurrenceMessage</returns>
-        OccurrenceMessage JobOccurrences (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string));
+        OccurrenceMessage JobOccurrences (int id, string endDate, int? perPage = default(int?), int? page = default(int?), string timezone = default(string));
 
         /// <summary>
         /// Upcoming job occurrences
@@ -175,7 +176,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of OccurrenceMessage</returns>
-        ApiResponse<OccurrenceMessage> JobOccurrencesWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string));
+        ApiResponse<OccurrenceMessage> JobOccurrencesWithHttpInfo (int id, string endDate, int? perPage = default(int?), int? page = default(int?), string timezone = default(string));
         /// <summary>
         /// Run a job now
         /// </summary>
@@ -230,8 +231,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="jobIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleJobMessage</returns>
-        System.Threading.Tasks.Task<SingleJobMessage> CreateJobAsync (JobIn jobIn = default(JobIn));
+        System.Threading.Tasks.Task<SingleJobMessage> CreateJobAsync (JobIn jobIn = default(JobIn), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Creates a job
@@ -241,8 +243,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="jobIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> CreateJobAsyncWithHttpInfo (JobIn jobIn = default(JobIn));
+        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> CreateJobWithHttpInfoAsync (JobIn jobIn = default(JobIn), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a job
         /// </summary>
@@ -251,8 +254,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleJobMessage</returns>
-        System.Threading.Tasks.Task<SingleJobMessage> DeleteJobAsync (int id);
+        System.Threading.Tasks.Task<SingleJobMessage> DeleteJobAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes a job
@@ -262,8 +266,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> DeleteJobAsyncWithHttpInfo (int id);
+        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> DeleteJobWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieves a single job
         /// </summary>
@@ -272,8 +277,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleJobMessage</returns>
-        System.Threading.Tasks.Task<SingleJobMessage> GetJobAsync (int id);
+        System.Threading.Tasks.Task<SingleJobMessage> GetJobAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Retrieves a single job
@@ -283,8 +289,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> GetJobAsyncWithHttpInfo (int id);
+        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> GetJobWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieve the runs for a job
         /// </summary>
@@ -299,8 +306,9 @@ namespace BJR.Api
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobRunArrayMessage</returns>
-        System.Threading.Tasks.Task<JobRunArrayMessage> GetJobRunsAsync (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string));
+        System.Threading.Tasks.Task<JobRunArrayMessage> GetJobRunsAsync (int id, int? perPage = default(int?), int? page = default(int?), bool? succeeded = default(bool?), string startDate = default(string), string endDate = default(string), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Retrieve the runs for a job
@@ -316,8 +324,9 @@ namespace BJR.Api
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobRunArrayMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobRunArrayMessage>> GetJobRunsAsyncWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string));
+        System.Threading.Tasks.Task<ApiResponse<JobRunArrayMessage>> GetJobRunsWithHttpInfoAsync (int id, int? perPage = default(int?), int? page = default(int?), bool? succeeded = default(bool?), string startDate = default(string), string endDate = default(string), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieves jobs
         /// </summary>
@@ -329,8 +338,9 @@ namespace BJR.Api
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobArrayMessage</returns>
-        System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string expression = default(string), string timezone = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Retrieves jobs
@@ -343,8 +353,9 @@ namespace BJR.Api
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string expression = default(string), string timezone = default(string), int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsWithHttpInfoAsync (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Upcoming job occurrences
         /// </summary>
@@ -357,8 +368,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of OccurrenceMessage</returns>
-        System.Threading.Tasks.Task<OccurrenceMessage> JobOccurrencesAsync (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string));
+        System.Threading.Tasks.Task<OccurrenceMessage> JobOccurrencesAsync (int id, string endDate, int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Upcoming job occurrences
@@ -372,8 +384,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (OccurrenceMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OccurrenceMessage>> JobOccurrencesAsyncWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string));
+        System.Threading.Tasks.Task<ApiResponse<OccurrenceMessage>> JobOccurrencesWithHttpInfoAsync (int id, string endDate, int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Run a job now
         /// </summary>
@@ -382,8 +395,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The id of the job to execute now</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task RunJobNowAsync (int id);
+        System.Threading.Tasks.Task RunJobNowAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Run a job now
@@ -393,8 +407,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The id of the job to execute now</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> RunJobNowAsyncWithHttpInfo (int id);
+        System.Threading.Tasks.Task<ApiResponse<Object>> RunJobNowWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Updates a single job
         /// </summary>
@@ -404,8 +419,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="jobIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleJobMessage</returns>
-        System.Threading.Tasks.Task<SingleJobMessage> UpdateJobAsync (int id, JobIn jobIn = default(JobIn));
+        System.Threading.Tasks.Task<SingleJobMessage> UpdateJobAsync (int id, JobIn jobIn = default(JobIn), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Updates a single job
@@ -416,8 +432,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="jobIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> UpdateJobAsyncWithHttpInfo (int id, JobIn jobIn = default(JobIn));
+        System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> UpdateJobWithHttpInfoAsync (int id, JobIn jobIn = default(JobIn), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -611,10 +628,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="jobIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleJobMessage</returns>
-        public async System.Threading.Tasks.Task<SingleJobMessage> CreateJobAsync (JobIn jobIn = default(JobIn))
+        public async System.Threading.Tasks.Task<SingleJobMessage> CreateJobAsync (JobIn jobIn = default(JobIn), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleJobMessage> localVarResponse = await CreateJobAsyncWithHttpInfo(jobIn);
+             ApiResponse<SingleJobMessage> localVarResponse = await CreateJobWithHttpInfoAsync(jobIn, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -624,8 +642,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="jobIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> CreateJobAsyncWithHttpInfo (JobIn jobIn = default(JobIn))
+        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> CreateJobWithHttpInfoAsync (JobIn jobIn = default(JobIn), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/job_api";
@@ -669,7 +688,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -761,10 +780,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleJobMessage</returns>
-        public async System.Threading.Tasks.Task<SingleJobMessage> DeleteJobAsync (int id)
+        public async System.Threading.Tasks.Task<SingleJobMessage> DeleteJobAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleJobMessage> localVarResponse = await DeleteJobAsyncWithHttpInfo(id);
+             ApiResponse<SingleJobMessage> localVarResponse = await DeleteJobWithHttpInfoAsync(id, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -774,8 +794,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> DeleteJobAsyncWithHttpInfo (int id)
+        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> DeleteJobWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -814,7 +835,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -906,10 +927,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleJobMessage</returns>
-        public async System.Threading.Tasks.Task<SingleJobMessage> GetJobAsync (int id)
+        public async System.Threading.Tasks.Task<SingleJobMessage> GetJobAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleJobMessage> localVarResponse = await GetJobAsyncWithHttpInfo(id);
+             ApiResponse<SingleJobMessage> localVarResponse = await GetJobWithHttpInfoAsync(id, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -919,8 +941,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> GetJobAsyncWithHttpInfo (int id)
+        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> GetJobWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -959,7 +982,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -986,7 +1009,7 @@ namespace BJR.Api
         /// <param name="endDate"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>JobRunArrayMessage</returns>
-        public JobRunArrayMessage GetJobRuns (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string))
+        public JobRunArrayMessage GetJobRuns (int id, int? perPage = default(int?), int? page = default(int?), bool? succeeded = default(bool?), string startDate = default(string), string endDate = default(string), string timezone = default(string))
         {
              ApiResponse<JobRunArrayMessage> localVarResponse = GetJobRunsWithHttpInfo(id, perPage, page, succeeded, startDate, endDate, timezone);
              return localVarResponse.Data;
@@ -1004,7 +1027,7 @@ namespace BJR.Api
         /// <param name="endDate"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of JobRunArrayMessage</returns>
-        public ApiResponse<JobRunArrayMessage> GetJobRunsWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string))
+        public ApiResponse<JobRunArrayMessage> GetJobRunsWithHttpInfo (int id, int? perPage = default(int?), int? page = default(int?), bool? succeeded = default(bool?), string startDate = default(string), string endDate = default(string), string timezone = default(string))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1075,10 +1098,11 @@ namespace BJR.Api
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobRunArrayMessage</returns>
-        public async System.Threading.Tasks.Task<JobRunArrayMessage> GetJobRunsAsync (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string))
+        public async System.Threading.Tasks.Task<JobRunArrayMessage> GetJobRunsAsync (int id, int? perPage = default(int?), int? page = default(int?), bool? succeeded = default(bool?), string startDate = default(string), string endDate = default(string), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<JobRunArrayMessage> localVarResponse = await GetJobRunsAsyncWithHttpInfo(id, perPage, page, succeeded, startDate, endDate, timezone);
+             ApiResponse<JobRunArrayMessage> localVarResponse = await GetJobRunsWithHttpInfoAsync(id, perPage, page, succeeded, startDate, endDate, timezone, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1094,8 +1118,9 @@ namespace BJR.Api
         /// <param name="startDate"> (optional)</param>
         /// <param name="endDate"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobRunArrayMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobRunArrayMessage>> GetJobRunsAsyncWithHttpInfo (int id, int perPage = default(int), int page = default(int), bool succeeded = default(bool), string startDate = default(string), string endDate = default(string), string timezone = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<JobRunArrayMessage>> GetJobRunsWithHttpInfoAsync (int id, int? perPage = default(int?), int? page = default(int?), bool? succeeded = default(bool?), string startDate = default(string), string endDate = default(string), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1140,7 +1165,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1164,7 +1189,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>JobArrayMessage</returns>
-        public JobArrayMessage GetJobs (string expression = default(string), string timezone = default(string), int perPage = default(int), int page = default(int))
+        public JobArrayMessage GetJobs (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?))
         {
              ApiResponse<JobArrayMessage> localVarResponse = GetJobsWithHttpInfo(expression, timezone, perPage, page);
              return localVarResponse.Data;
@@ -1179,7 +1204,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of JobArrayMessage</returns>
-        public ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string expression = default(string), string timezone = default(string), int perPage = default(int), int page = default(int))
+        public ApiResponse<JobArrayMessage> GetJobsWithHttpInfo (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?))
         {
 
             var localVarPath = "/job_api";
@@ -1241,10 +1266,11 @@ namespace BJR.Api
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of JobArrayMessage</returns>
-        public async System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string expression = default(string), string timezone = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<JobArrayMessage> GetJobsAsync (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<JobArrayMessage> localVarResponse = await GetJobsAsyncWithHttpInfo(expression, timezone, perPage, page);
+             ApiResponse<JobArrayMessage> localVarResponse = await GetJobsWithHttpInfoAsync(expression, timezone, perPage, page, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1257,8 +1283,9 @@ namespace BJR.Api
         /// <param name="timezone"> (optional)</param>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (JobArrayMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsAsyncWithHttpInfo (string expression = default(string), string timezone = default(string), int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<JobArrayMessage>> GetJobsWithHttpInfoAsync (string expression = default(string), string timezone = default(string), int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/job_api";
@@ -1297,7 +1324,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1322,7 +1349,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>OccurrenceMessage</returns>
-        public OccurrenceMessage JobOccurrences (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string))
+        public OccurrenceMessage JobOccurrences (int id, string endDate, int? perPage = default(int?), int? page = default(int?), string timezone = default(string))
         {
              ApiResponse<OccurrenceMessage> localVarResponse = JobOccurrencesWithHttpInfo(id, endDate, perPage, page, timezone);
              return localVarResponse.Data;
@@ -1338,7 +1365,7 @@ namespace BJR.Api
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
         /// <returns>ApiResponse of OccurrenceMessage</returns>
-        public ApiResponse<OccurrenceMessage> JobOccurrencesWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string))
+        public ApiResponse<OccurrenceMessage> JobOccurrencesWithHttpInfo (int id, string endDate, int? perPage = default(int?), int? page = default(int?), string timezone = default(string))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1408,10 +1435,11 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of OccurrenceMessage</returns>
-        public async System.Threading.Tasks.Task<OccurrenceMessage> JobOccurrencesAsync (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string))
+        public async System.Threading.Tasks.Task<OccurrenceMessage> JobOccurrencesAsync (int id, string endDate, int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<OccurrenceMessage> localVarResponse = await JobOccurrencesAsyncWithHttpInfo(id, endDate, perPage, page, timezone);
+             ApiResponse<OccurrenceMessage> localVarResponse = await JobOccurrencesWithHttpInfoAsync(id, endDate, perPage, page, timezone, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1425,8 +1453,9 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <param name="timezone"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (OccurrenceMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<OccurrenceMessage>> JobOccurrencesAsyncWithHttpInfo (int id, string endDate, int perPage = default(int), int page = default(int), string timezone = default(string))
+        public async System.Threading.Tasks.Task<ApiResponse<OccurrenceMessage>> JobOccurrencesWithHttpInfoAsync (int id, string endDate, int? perPage = default(int?), int? page = default(int?), string timezone = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1472,7 +1501,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1562,10 +1591,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The id of the job to execute now</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task RunJobNowAsync (int id)
+        public async System.Threading.Tasks.Task RunJobNowAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
-             await RunJobNowAsyncWithHttpInfo(id);
+             await RunJobNowWithHttpInfoAsync(id, cancellationToken);
 
         }
 
@@ -1574,8 +1604,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The id of the job to execute now</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RunJobNowAsyncWithHttpInfo (int id)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> RunJobNowWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1613,7 +1644,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1717,10 +1748,11 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="jobIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleJobMessage</returns>
-        public async System.Threading.Tasks.Task<SingleJobMessage> UpdateJobAsync (int id, JobIn jobIn = default(JobIn))
+        public async System.Threading.Tasks.Task<SingleJobMessage> UpdateJobAsync (int id, JobIn jobIn = default(JobIn), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleJobMessage> localVarResponse = await UpdateJobAsyncWithHttpInfo(id, jobIn);
+             ApiResponse<SingleJobMessage> localVarResponse = await UpdateJobWithHttpInfoAsync(id, jobIn, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1731,8 +1763,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="jobIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleJobMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> UpdateJobAsyncWithHttpInfo (int id, JobIn jobIn = default(JobIn))
+        public async System.Threading.Tasks.Task<ApiResponse<SingleJobMessage>> UpdateJobWithHttpInfoAsync (int id, JobIn jobIn = default(JobIn), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1780,7 +1813,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

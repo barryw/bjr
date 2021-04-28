@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -108,8 +108,8 @@ namespace BJR.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int id = null;
-            //int perPage = null;
-            //int page = null;
+            //int? perPage = null;
+            //int? page = null;
             //var response = instance.GetFolderJobs(id, perPage, page);
             //Assert.IsInstanceOf(typeof(JobArrayMessage), response, "response is JobArrayMessage");
         }
@@ -121,8 +121,8 @@ namespace BJR.Test
         public void GetFoldersTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //int perPage = null;
-            //int page = null;
+            //int? perPage = null;
+            //int? page = null;
             //var response = instance.GetFolders(perPage, page);
             //Assert.IsInstanceOf(typeof(FolderArrayMessage), response, "response is FolderArrayMessage");
         }

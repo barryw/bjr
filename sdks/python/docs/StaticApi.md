@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **get_tags**
-> TagMessage get_tags(per_page=per_page, page=page)
+> TagMessage get_tags()
 
 Get tags
 
@@ -20,10 +20,10 @@ Retrieves the list of tags that are currently in use for the authenticated user.
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import static_api
+from bjr4py.model.tag_message import TagMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -44,24 +44,27 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.StaticApi(api_client)
-    per_page = 56 # int |  (optional)
-page = 56 # int |  (optional)
+    api_instance = static_api.StaticApi(api_client)
+    per_page = 1 # int |  (optional)
+    page = 1 # int |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Get tags
         api_response = api_instance.get_tags(per_page=per_page, page=page)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling StaticApi->get_tags: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **per_page** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **per_page** | **int**|  | [optional]
+ **page** | **int**|  | [optional]
 
 ### Return type
 
@@ -75,6 +78,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -94,10 +98,10 @@ Get the list of acceptable timezone names.
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import static_api
+from bjr4py.model.timezone_message import TimezoneMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -118,15 +122,17 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.StaticApi(api_client)
-    
+    api_instance = static_api.StaticApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Get timezones
         api_response = api_instance.get_timezones()
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling StaticApi->get_timezones: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -143,6 +149,7 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -161,10 +168,10 @@ The BJR server version
 ### Example
 
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import static_api
+from bjr4py.model.server_version import ServerVersion
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -176,15 +183,17 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.StaticApi(api_client)
-    
+    api_instance = static_api.StaticApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
     try:
         # Server version
         api_response = api_instance.get_version()
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling StaticApi->get_version: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -201,6 +210,7 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using RestSharp;
 using BJR.Client;
 using BJR.Model;
@@ -97,7 +98,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>UserArrayMessage</returns>
-        UserArrayMessage GetUsers (int perPage = default(int), int page = default(int));
+        UserArrayMessage GetUsers (int? perPage = default(int?), int? page = default(int?));
 
         /// <summary>
         /// Retrieves users
@@ -109,7 +110,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of UserArrayMessage</returns>
-        ApiResponse<UserArrayMessage> GetUsersWithHttpInfo (int perPage = default(int), int page = default(int));
+        ApiResponse<UserArrayMessage> GetUsersWithHttpInfo (int? perPage = default(int?), int? page = default(int?));
         /// <summary>
         /// Update a single user
         /// </summary>
@@ -143,8 +144,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleUserMessage</returns>
-        System.Threading.Tasks.Task<SingleUserMessage> CreateUserAsync (UserNewIn userNewIn = default(UserNewIn));
+        System.Threading.Tasks.Task<SingleUserMessage> CreateUserAsync (UserNewIn userNewIn = default(UserNewIn), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Creates a user
@@ -154,8 +156,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> CreateUserAsyncWithHttpInfo (UserNewIn userNewIn = default(UserNewIn));
+        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> CreateUserWithHttpInfoAsync (UserNewIn userNewIn = default(UserNewIn), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a user
         /// </summary>
@@ -164,8 +167,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleUserMessage</returns>
-        System.Threading.Tasks.Task<SingleUserMessage> DeleteUserAsync (int id);
+        System.Threading.Tasks.Task<SingleUserMessage> DeleteUserAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes a user
@@ -175,8 +179,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> DeleteUserAsyncWithHttpInfo (int id);
+        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> DeleteUserWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieve a single user
         /// </summary>
@@ -185,8 +190,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleUserMessage</returns>
-        System.Threading.Tasks.Task<SingleUserMessage> GetUserAsync (int id);
+        System.Threading.Tasks.Task<SingleUserMessage> GetUserAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Retrieve a single user
@@ -196,8 +202,9 @@ namespace BJR.Api
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> GetUserAsyncWithHttpInfo (int id);
+        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> GetUserWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieves users
         /// </summary>
@@ -207,8 +214,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of UserArrayMessage</returns>
-        System.Threading.Tasks.Task<UserArrayMessage> GetUsersAsync (int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<UserArrayMessage> GetUsersAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Retrieves users
@@ -219,8 +227,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (UserArrayMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserArrayMessage>> GetUsersAsyncWithHttpInfo (int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<UserArrayMessage>> GetUsersWithHttpInfoAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update a single user
         /// </summary>
@@ -230,8 +239,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="userUpdateIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleUserMessage</returns>
-        System.Threading.Tasks.Task<SingleUserMessage> UpdateUserAsync (int id, UserUpdateIn userUpdateIn = default(UserUpdateIn));
+        System.Threading.Tasks.Task<SingleUserMessage> UpdateUserAsync (int id, UserUpdateIn userUpdateIn = default(UserUpdateIn), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Update a single user
@@ -242,8 +252,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="userUpdateIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> UpdateUserAsyncWithHttpInfo (int id, UserUpdateIn userUpdateIn = default(UserUpdateIn));
+        System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> UpdateUserWithHttpInfoAsync (int id, UserUpdateIn userUpdateIn = default(UserUpdateIn), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -437,10 +448,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleUserMessage</returns>
-        public async System.Threading.Tasks.Task<SingleUserMessage> CreateUserAsync (UserNewIn userNewIn = default(UserNewIn))
+        public async System.Threading.Tasks.Task<SingleUserMessage> CreateUserAsync (UserNewIn userNewIn = default(UserNewIn), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleUserMessage> localVarResponse = await CreateUserAsyncWithHttpInfo(userNewIn);
+             ApiResponse<SingleUserMessage> localVarResponse = await CreateUserWithHttpInfoAsync(userNewIn, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -450,8 +462,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="userNewIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> CreateUserAsyncWithHttpInfo (UserNewIn userNewIn = default(UserNewIn))
+        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> CreateUserWithHttpInfoAsync (UserNewIn userNewIn = default(UserNewIn), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/user_api";
@@ -495,7 +508,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -587,10 +600,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleUserMessage</returns>
-        public async System.Threading.Tasks.Task<SingleUserMessage> DeleteUserAsync (int id)
+        public async System.Threading.Tasks.Task<SingleUserMessage> DeleteUserAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleUserMessage> localVarResponse = await DeleteUserAsyncWithHttpInfo(id);
+             ApiResponse<SingleUserMessage> localVarResponse = await DeleteUserWithHttpInfoAsync(id, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -600,8 +614,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> DeleteUserAsyncWithHttpInfo (int id)
+        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> DeleteUserWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -640,7 +655,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -732,10 +747,11 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleUserMessage</returns>
-        public async System.Threading.Tasks.Task<SingleUserMessage> GetUserAsync (int id)
+        public async System.Threading.Tasks.Task<SingleUserMessage> GetUserAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleUserMessage> localVarResponse = await GetUserAsyncWithHttpInfo(id);
+             ApiResponse<SingleUserMessage> localVarResponse = await GetUserWithHttpInfoAsync(id, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -745,8 +761,9 @@ namespace BJR.Api
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> GetUserAsyncWithHttpInfo (int id)
+        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> GetUserWithHttpInfoAsync (int id, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -785,7 +802,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -807,7 +824,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>UserArrayMessage</returns>
-        public UserArrayMessage GetUsers (int perPage = default(int), int page = default(int))
+        public UserArrayMessage GetUsers (int? perPage = default(int?), int? page = default(int?))
         {
              ApiResponse<UserArrayMessage> localVarResponse = GetUsersWithHttpInfo(perPage, page);
              return localVarResponse.Data;
@@ -820,7 +837,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of UserArrayMessage</returns>
-        public ApiResponse<UserArrayMessage> GetUsersWithHttpInfo (int perPage = default(int), int page = default(int))
+        public ApiResponse<UserArrayMessage> GetUsersWithHttpInfo (int? perPage = default(int?), int? page = default(int?))
         {
 
             var localVarPath = "/user_api";
@@ -878,10 +895,11 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of UserArrayMessage</returns>
-        public async System.Threading.Tasks.Task<UserArrayMessage> GetUsersAsync (int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<UserArrayMessage> GetUsersAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<UserArrayMessage> localVarResponse = await GetUsersAsyncWithHttpInfo(perPage, page);
+             ApiResponse<UserArrayMessage> localVarResponse = await GetUsersWithHttpInfoAsync(perPage, page, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -892,8 +910,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (UserArrayMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserArrayMessage>> GetUsersAsyncWithHttpInfo (int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<UserArrayMessage>> GetUsersWithHttpInfoAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/user_api";
@@ -930,7 +949,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1034,10 +1053,11 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="userUpdateIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SingleUserMessage</returns>
-        public async System.Threading.Tasks.Task<SingleUserMessage> UpdateUserAsync (int id, UserUpdateIn userUpdateIn = default(UserUpdateIn))
+        public async System.Threading.Tasks.Task<SingleUserMessage> UpdateUserAsync (int id, UserUpdateIn userUpdateIn = default(UserUpdateIn), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SingleUserMessage> localVarResponse = await UpdateUserAsyncWithHttpInfo(id, userUpdateIn);
+             ApiResponse<SingleUserMessage> localVarResponse = await UpdateUserWithHttpInfoAsync(id, userUpdateIn, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1048,8 +1068,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="userUpdateIn"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SingleUserMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> UpdateUserAsyncWithHttpInfo (int id, UserUpdateIn userUpdateIn = default(UserUpdateIn))
+        public async System.Threading.Tasks.Task<ApiResponse<SingleUserMessage>> UpdateUserWithHttpInfoAsync (int id, UserUpdateIn userUpdateIn = default(UserUpdateIn), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1097,7 +1118,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AuthIn model module.
  * @module io.barrywalker.bjr/io.barrywalker.bjr.model/AuthIn
- * @version 2.5.1
+ * @version 2.6.0
  */
 class AuthIn {
     /**

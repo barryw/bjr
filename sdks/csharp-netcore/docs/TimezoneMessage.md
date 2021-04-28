@@ -1,4 +1,5 @@
 # BJR.Model.TimezoneMessage
+
 ## Properties
 
 Name | Type | Description | Notes

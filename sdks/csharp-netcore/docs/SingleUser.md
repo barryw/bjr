@@ -1,4 +1,5 @@
 # BJR.Model.SingleUser
+
 ## Properties
 
 Name | Type | Description | Notes

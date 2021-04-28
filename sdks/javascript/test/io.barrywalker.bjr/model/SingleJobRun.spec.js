@@ -56,85 +56,85 @@
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property returnCode (base name: "return_code")', function() {
       // uncomment below and update the code to test the property returnCode
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property errorMessage (base name: "error_message")', function() {
       // uncomment below and update the code to test the property errorMessage
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property stdout (base name: "stdout")', function() {
       // uncomment below and update the code to test the property stdout
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property stderr (base name: "stderr")', function() {
       // uncomment below and update the code to test the property stderr
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property startTime (base name: "start_time")', function() {
       // uncomment below and update the code to test the property startTime
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property endTime (base name: "end_time")', function() {
       // uncomment below and update the code to test the property endTime
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property scheduledStartTime (base name: "scheduled_start_time")', function() {
       // uncomment below and update the code to test the property scheduledStartTime
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property scheduleDiffInSeconds (base name: "schedule_diff_in_seconds")', function() {
       // uncomment below and update the code to test the property scheduleDiffInSeconds
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property jobId (base name: "job_id")', function() {
       // uncomment below and update the code to test the property jobId
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property isManual (base name: "is_manual")', function() {
       // uncomment below and update the code to test the property isManual
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property createdAt (base name: "created_at")', function() {
       // uncomment below and update the code to test the property createdAt
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 
     it('should have the property updatedAt (base name: "updated_at")', function() {
       // uncomment below and update the code to test the property updatedAt
-      //var instane = new Bjr4js.SingleJobRun();
+      //var instance = new Bjr4js.SingleJobRun();
       //expect(instance).to.be();
     });
 

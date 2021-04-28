@@ -9,15 +9,15 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getBusyThreadCount**](JobServerApi.md#getBusyThreadCount) | **get** /job_server_api/busy_thread_count | Retrieve the count of busy workers across worker pods/nodes
-[**quiesceNode**](JobServerApi.md#quiesceNode) | **post** /job_server_api/quiesce_worker | Quiesce a single worker pod/node
-[**recentJobs**](JobServerApi.md#recentJobs) | **get** /job_server_api/recent_jobs | List of recent jobs
-[**statsByDay**](JobServerApi.md#statsByDay) | **get** /job_server_api/daily_job_stats | Job statistics by day
-[**statsByHour**](JobServerApi.md#statsByHour) | **get** /job_server_api/hourly_job_stats | Job statistics by hour
-[**statsByMinute**](JobServerApi.md#statsByMinute) | **get** /job_server_api/minutely_job_stats | Job statistics by minute
-[**statsByWeek**](JobServerApi.md#statsByWeek) | **get** /job_server_api/weekly_job_stats | Job statistics by week
-[**todaysStats**](JobServerApi.md#todaysStats) | **get** /job_server_api/todays_stats | Todays Stats
-[**upcomingJobs**](JobServerApi.md#upcomingJobs) | **get** /job_server_api/upcoming_jobs | List of upcoming jobs
+[**getBusyThreadCount**](JobServerApi.md#getbusythreadcount) | **get** /job_server_api/busy_thread_count | Retrieve the count of busy workers across worker pods/nodes
+[**quiesceNode**](JobServerApi.md#quiescenode) | **post** /job_server_api/quiesce_worker | Quiesce a single worker pod/node
+[**recentJobs**](JobServerApi.md#recentjobs) | **get** /job_server_api/recent_jobs | List of recent jobs
+[**statsByDay**](JobServerApi.md#statsbyday) | **get** /job_server_api/daily_job_stats | Job statistics by day
+[**statsByHour**](JobServerApi.md#statsbyhour) | **get** /job_server_api/hourly_job_stats | Job statistics by hour
+[**statsByMinute**](JobServerApi.md#statsbyminute) | **get** /job_server_api/minutely_job_stats | Job statistics by minute
+[**statsByWeek**](JobServerApi.md#statsbyweek) | **get** /job_server_api/weekly_job_stats | Job statistics by week
+[**todaysStats**](JobServerApi.md#todaysstats) | **get** /job_server_api/todays_stats | Todays Stats
+[**upcomingJobs**](JobServerApi.md#upcomingjobs) | **get** /job_server_api/upcoming_jobs | List of upcoming jobs
 
 
 # **getBusyThreadCount**
@@ -40,7 +40,7 @@ try {
     var result = api_instance.getBusyThreadCount();
     print(result);
 } catch (e) {
-    print("Exception when calling JobServerApi->getBusyThreadCount: $e\n");
+    print('Exception when calling JobServerApi->getBusyThreadCount: $e\n');
 }
 ```
 
@@ -83,7 +83,7 @@ try {
     var result = api_instance.quiesceNode(host);
     print(result);
 } catch (e) {
-    print("Exception when calling JobServerApi->quiesceNode: $e\n");
+    print('Exception when calling JobServerApi->quiesceNode: $e\n');
 }
 ```
 
@@ -91,7 +91,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **host** | **String**| The hostname of the worker pod/node to quiesce | [default to null]
+ **host** | **String**| The hostname of the worker pod/node to quiesce | 
 
 ### Return type
 
@@ -129,7 +129,7 @@ try {
     var result = api_instance.recentJobs(count);
     print(result);
 } catch (e) {
-    print("Exception when calling JobServerApi->recentJobs: $e\n");
+    print('Exception when calling JobServerApi->recentJobs: $e\n');
 }
 ```
 
@@ -137,7 +137,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **count** | **int**| The number of jobs to return (max 20) | [optional] [default to null]
+ **count** | **int**| The number of jobs to return (max 20) | [optional] 
 
 ### Return type
 
@@ -179,7 +179,7 @@ try {
     var result = api_instance.statsByDay(startDate, endDate, perPage, page, timezone);
     print(result);
 } catch (e) {
-    print("Exception when calling JobServerApi->statsByDay: $e\n");
+    print('Exception when calling JobServerApi->statsByDay: $e\n');
 }
 ```
 
@@ -187,11 +187,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | **String**| The start date from which to get daily metrics from | [optional] [default to null]
- **endDate** | **String**| The end date from which to get daily metrics from | [optional] [default to null]
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
- **timezone** | **String**|  | [optional] [default to null]
+ **startDate** | **String**| The start date from which to get daily metrics from | [optional] 
+ **endDate** | **String**| The end date from which to get daily metrics from | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -233,7 +233,7 @@ try {
     var result = api_instance.statsByHour(startDate, endDate, perPage, page, timezone);
     print(result);
 } catch (e) {
-    print("Exception when calling JobServerApi->statsByHour: $e\n");
+    print('Exception when calling JobServerApi->statsByHour: $e\n');
 }
 ```
 
@@ -241,11 +241,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | **String**| The start date from which to get hourly metrics from | [optional] [default to null]
- **endDate** | **String**| The end date from which to get hourly metrics from | [optional] [default to null]
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
- **timezone** | **String**|  | [optional] [default to null]
+ **startDate** | **String**| The start date from which to get hourly metrics from | [optional] 
+ **endDate** | **String**| The end date from which to get hourly metrics from | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -287,7 +287,7 @@ try {
     var result = api_instance.statsByMinute(startDate, endDate, perPage, page, timezone);
     print(result);
 } catch (e) {
-    print("Exception when calling JobServerApi->statsByMinute: $e\n");
+    print('Exception when calling JobServerApi->statsByMinute: $e\n');
 }
 ```
 
@@ -295,11 +295,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | **String**| The start date from which to get minutely metrics from | [optional] [default to null]
- **endDate** | **String**| The end date from which to get minutely metrics from | [optional] [default to null]
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
- **timezone** | **String**|  | [optional] [default to null]
+ **startDate** | **String**| The start date from which to get minutely metrics from | [optional] 
+ **endDate** | **String**| The end date from which to get minutely metrics from | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -341,7 +341,7 @@ try {
     var result = api_instance.statsByWeek(startDate, endDate, perPage, page, timezone);
     print(result);
 } catch (e) {
-    print("Exception when calling JobServerApi->statsByWeek: $e\n");
+    print('Exception when calling JobServerApi->statsByWeek: $e\n');
 }
 ```
 
@@ -349,11 +349,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | **String**| The start date from which to get weekly metrics from | [optional] [default to null]
- **endDate** | **String**| The end date from which to get weekly metrics from | [optional] [default to null]
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
- **timezone** | **String**|  | [optional] [default to null]
+ **startDate** | **String**| The start date from which to get weekly metrics from | [optional] 
+ **endDate** | **String**| The end date from which to get weekly metrics from | [optional] 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -391,7 +391,7 @@ try {
     var result = api_instance.todaysStats(timezone);
     print(result);
 } catch (e) {
-    print("Exception when calling JobServerApi->todaysStats: $e\n");
+    print('Exception when calling JobServerApi->todaysStats: $e\n');
 }
 ```
 
@@ -399,7 +399,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **timezone** | **String**|  | [optional] [default to null]
+ **timezone** | **String**|  | [optional] 
 
 ### Return type
 
@@ -437,7 +437,7 @@ try {
     var result = api_instance.upcomingJobs(count);
     print(result);
 } catch (e) {
-    print("Exception when calling JobServerApi->upcomingJobs: $e\n");
+    print('Exception when calling JobServerApi->upcomingJobs: $e\n');
 }
 ```
 
@@ -445,7 +445,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **count** | **int**| The number of jobs to return (max 20) | [optional] [default to null]
+ **count** | **int**| The number of jobs to return (max 20) | [optional] 
 
 ### Return type
 

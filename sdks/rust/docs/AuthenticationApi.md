@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**authenticate_user**](AuthenticationApi.md#authenticate_user) | **Post** /authenticate | Authenticates a user and returns a token
+[**authenticate_user**](AuthenticationApi.md#authenticate_user) | **post** /authenticate | Authenticates a user and returns a token
 
 
 

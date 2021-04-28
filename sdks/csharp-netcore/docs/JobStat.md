@@ -1,4 +1,5 @@
 # BJR.Model.JobStat
+
 ## Properties
 
 Name | Type | Description | Notes

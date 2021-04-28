@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -107,9 +107,9 @@ namespace BJR.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int id = null;
-            //int perPage = null;
-            //int page = null;
-            //bool succeeded = null;
+            //int? perPage = null;
+            //int? page = null;
+            //bool? succeeded = null;
             //string startDate = null;
             //string endDate = null;
             //string timezone = null;
@@ -126,8 +126,8 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string expression = null;
             //string timezone = null;
-            //int perPage = null;
-            //int page = null;
+            //int? perPage = null;
+            //int? page = null;
             //var response = instance.GetJobs(expression, timezone, perPage, page);
             //Assert.IsInstanceOf(typeof(JobArrayMessage), response, "response is JobArrayMessage");
         }
@@ -141,8 +141,8 @@ namespace BJR.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int id = null;
             //string endDate = null;
-            //int perPage = null;
-            //int page = null;
+            //int? perPage = null;
+            //int? page = null;
             //string timezone = null;
             //var response = instance.JobOccurrences(id, endDate, perPage, page, timezone);
             //Assert.IsInstanceOf(typeof(OccurrenceMessage), response, "response is OccurrenceMessage");

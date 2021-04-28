@@ -79,6 +79,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -157,6 +158,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -238,6 +240,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -253,7 +256,7 @@ Name | Type | Description  | Notes
 
 ## GetUsers
 
-> UserArrayMessage GetUsers (int perPage = null, int page = null)
+> UserArrayMessage GetUsers (int? perPage = null, int? page = null)
 
 Retrieves users
 
@@ -279,8 +282,8 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new UsersApi(Configuration.Default);
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
 
             try
             {
@@ -304,8 +307,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
 
 ### Return type
 
@@ -319,6 +322,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -399,6 +403,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

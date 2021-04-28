@@ -9,12 +9,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createFolder**](FoldersApi.md#createFolder) | **post** /folder_api | Create a new Folder
-[**deleteFolder**](FoldersApi.md#deleteFolder) | **delete** /folder_api/{id} | Delete an existing folder
-[**getFolder**](FoldersApi.md#getFolder) | **get** /folder_api/{id} | Return a single folder
-[**getFolderJobs**](FoldersApi.md#getFolderJobs) | **get** /folder_api/{id}/jobs | Return list of jobs in a folder
-[**getFolders**](FoldersApi.md#getFolders) | **get** /folder_api | Return paginated list of all folders
-[**updateFolder**](FoldersApi.md#updateFolder) | **put** /folder_api/{id} | Update an existing folder
+[**createFolder**](FoldersApi.md#createfolder) | **post** /folder_api | Create a new Folder
+[**deleteFolder**](FoldersApi.md#deletefolder) | **delete** /folder_api/{id} | Delete an existing folder
+[**getFolder**](FoldersApi.md#getfolder) | **get** /folder_api/{id} | Return a single folder
+[**getFolderJobs**](FoldersApi.md#getfolderjobs) | **get** /folder_api/{id}/jobs | Return list of jobs in a folder
+[**getFolders**](FoldersApi.md#getfolders) | **get** /folder_api | Return paginated list of all folders
+[**updateFolder**](FoldersApi.md#updatefolder) | **put** /folder_api/{id} | Update an existing folder
 
 
 # **createFolder**
@@ -39,7 +39,7 @@ try {
     var result = api_instance.createFolder(name, expression);
     print(result);
 } catch (e) {
-    print("Exception when calling FoldersApi->createFolder: $e\n");
+    print('Exception when calling FoldersApi->createFolder: $e\n');
 }
 ```
 
@@ -47,8 +47,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**|  | [default to null]
- **expression** | **String**|  | [default to null]
+ **name** | **String**|  | 
+ **expression** | **String**|  | 
 
 ### Return type
 
@@ -86,7 +86,7 @@ try {
     var result = api_instance.deleteFolder(id);
     print(result);
 } catch (e) {
-    print("Exception when calling FoldersApi->deleteFolder: $e\n");
+    print('Exception when calling FoldersApi->deleteFolder: $e\n');
 }
 ```
 
@@ -94,7 +94,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
+ **id** | **int**|  | 
 
 ### Return type
 
@@ -132,7 +132,7 @@ try {
     var result = api_instance.getFolder(id);
     print(result);
 } catch (e) {
-    print("Exception when calling FoldersApi->getFolder: $e\n");
+    print('Exception when calling FoldersApi->getFolder: $e\n');
 }
 ```
 
@@ -140,7 +140,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
+ **id** | **int**|  | 
 
 ### Return type
 
@@ -180,7 +180,7 @@ try {
     var result = api_instance.getFolderJobs(id, perPage, page);
     print(result);
 } catch (e) {
-    print("Exception when calling FoldersApi->getFolderJobs: $e\n");
+    print('Exception when calling FoldersApi->getFolderJobs: $e\n');
 }
 ```
 
@@ -188,9 +188,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
+ **id** | **int**|  | 
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -229,7 +229,7 @@ try {
     var result = api_instance.getFolders(perPage, page);
     print(result);
 } catch (e) {
-    print("Exception when calling FoldersApi->getFolders: $e\n");
+    print('Exception when calling FoldersApi->getFolders: $e\n');
 }
 ```
 
@@ -237,8 +237,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -278,7 +278,7 @@ try {
     var result = api_instance.updateFolder(id, name, expression);
     print(result);
 } catch (e) {
-    print("Exception when calling FoldersApi->updateFolder: $e\n");
+    print('Exception when calling FoldersApi->updateFolder: $e\n');
 }
 ```
 
@@ -286,9 +286,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
- **name** | **String**|  | [optional] [default to null]
- **expression** | **String**|  | [optional] [default to null]
+ **id** | **int**|  | 
+ **name** | **String**|  | [optional] 
+ **expression** | **String**|  | [optional] 
 
 ### Return type
 

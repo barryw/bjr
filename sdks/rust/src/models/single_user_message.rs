@@ -26,7 +26,7 @@ pub struct SingleUserMessage {
     #[serde(rename = "status_code", skip_serializing_if = "Option::is_none")]
     pub status_code: Option<i32>,
     #[serde(rename = "object", skip_serializing_if = "Option::is_none")]
-    pub object: Option<crate::models::SingleUser>,
+    pub object: Option<Box<crate::models::SingleUser>>,
 }
 
 impl SingleUserMessage {

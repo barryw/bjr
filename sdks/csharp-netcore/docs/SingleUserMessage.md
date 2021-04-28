@@ -1,4 +1,5 @@
 # BJR.Model.SingleUserMessage
+
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,5 @@
 # BJR.Model.JobIn
+
 ## Properties
 
 Name | Type | Description | Notes

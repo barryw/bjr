@@ -4,5 +4,5 @@
   "modelPackage": "io.barrywalker.bjr.model",
   "projectDescription": "BJR Client SDK for Javascript",
   "projectName": "bjr4js",
-  "projectVersion": "2.5.1"
+  "projectVersion": "2.6.0"
 }

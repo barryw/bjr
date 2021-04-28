@@ -1,4 +1,5 @@
 # BJR.Model.BusyThreadCountMessage
+
 ## Properties
 
 Name | Type | Description | Notes

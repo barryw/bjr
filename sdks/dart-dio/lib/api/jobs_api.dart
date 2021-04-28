@@ -1,377 +1,546 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.7
+
+// ignore_for_file: unused_import
+
 import 'dart:async';
-import 'dart:io';
-import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 
-import 'package:BJR/model/single_job_message.dart';
-import 'package:BJR/model/occurrence_message.dart';
-import 'package:BJR/model/job_run_array_message.dart';
-import 'package:BJR/model/job_in.dart';
 import 'package:BJR/model/job_array_message.dart';
+import 'package:BJR/model/job_in.dart';
+import 'package:BJR/model/job_run_array_message.dart';
+import 'package:BJR/model/occurrence_message.dart';
+import 'package:BJR/model/single_job_message.dart';
 
 class JobsApi {
-    final Dio _dio;
-    Serializers _serializers;
-
-    JobsApi(this._dio, this._serializers);
-
-        /// Creates a job
-        ///
-        /// Creates a job
-        Future<Response<SingleJobMessage>>createJob({ JobIn jobIn,CancelToken cancelToken, Map<String, String> headers,}) async {
-
-        String _path = "/job_api";
-
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
-
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
-
-        List<String> contentTypes = ["application/json"];
-
-
-            var serializedBody = _serializers.serialize(jobIn);
-            var jsonjobIn = json.encode(serializedBody);
-            bodyData = jsonjobIn;
-
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'post'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
-
-        var serializer = _serializers.serializerForType(SingleJobMessage);
-        var data = _serializers.deserializeWith<SingleJobMessage>(serializer, response.data);
-
-            return Response<SingleJobMessage>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        /// Deletes a job
-        ///
-        /// Deletes a job
-        Future<Response<SingleJobMessage>>deleteJob(int id,{ CancelToken cancelToken, Map<String, String> headers,}) async {
-
-        String _path = "/job_api/{id}".replaceAll("{" r'id' "}", id.toString());
-
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
-
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
-
-        List<String> contentTypes = [];
-
-
-
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'delete'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
-
-        var serializer = _serializers.serializerForType(SingleJobMessage);
-        var data = _serializers.deserializeWith<SingleJobMessage>(serializer, response.data);
-
-            return Response<SingleJobMessage>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        /// Retrieves a single job
-        ///
-        /// Retrieves a single job
-        Future<Response<SingleJobMessage>>getJob(int id,{ CancelToken cancelToken, Map<String, String> headers,}) async {
-
-        String _path = "/job_api/{id}".replaceAll("{" r'id' "}", id.toString());
-
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
-
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
-
-        List<String> contentTypes = [];
-
-
-
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'get'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
-
-        var serializer = _serializers.serializerForType(SingleJobMessage);
-        var data = _serializers.deserializeWith<SingleJobMessage>(serializer, response.data);
-
-            return Response<SingleJobMessage>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        /// Retrieve the runs for a job
-        ///
-        /// Retrieve the runs for a job
-        Future<Response<JobRunArrayMessage>>getJobRuns(int id,{ int perPage,int page,bool succeeded,String startDate,String endDate,String timezone,CancelToken cancelToken, Map<String, String> headers,}) async {
-
-        String _path = "/job_api/{id}/runs".replaceAll("{" r'id' "}", id.toString());
-
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
-
-                queryParams[r'per_page'] = perPage;
-                queryParams[r'page'] = page;
-                queryParams[r'succeeded'] = succeeded;
-                queryParams[r'start_date'] = startDate;
-                queryParams[r'end_date'] = endDate;
-                queryParams[r'timezone'] = timezone;
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
-
-        List<String> contentTypes = [];
-
-
-
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'get'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
-
-        var serializer = _serializers.serializerForType(JobRunArrayMessage);
-        var data = _serializers.deserializeWith<JobRunArrayMessage>(serializer, response.data);
-
-            return Response<JobRunArrayMessage>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        /// Retrieves jobs
-        ///
-        /// Retrieves jobs
-        Future<Response<JobArrayMessage>>getJobs({ String expression,String timezone,int perPage,int page,CancelToken cancelToken, Map<String, String> headers,}) async {
-
-        String _path = "/job_api";
-
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
-
-                queryParams[r'expression'] = expression;
-                queryParams[r'timezone'] = timezone;
-                queryParams[r'per_page'] = perPage;
-                queryParams[r'page'] = page;
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
-
-        List<String> contentTypes = [];
-
-
-
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'get'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
-
-        var serializer = _serializers.serializerForType(JobArrayMessage);
-        var data = _serializers.deserializeWith<JobArrayMessage>(serializer, response.data);
-
-            return Response<JobArrayMessage>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        /// Upcoming job occurrences
-        ///
-        /// Retrieves a list of upcoming occurrences for a job
-        Future<Response<OccurrenceMessage>>jobOccurrences(int id,String endDate,{ int perPage,int page,String timezone,CancelToken cancelToken, Map<String, String> headers,}) async {
-
-        String _path = "/job_api/{id}/occurrences/{end_date}".replaceAll("{" r'id' "}", id.toString()).replaceAll("{" r'end_date' "}", endDate.toString());
-
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
-
-                queryParams[r'per_page'] = perPage;
-                queryParams[r'page'] = page;
-                queryParams[r'timezone'] = timezone;
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
-
-        List<String> contentTypes = [];
-
-
-
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'get'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
-
-        var serializer = _serializers.serializerForType(OccurrenceMessage);
-        var data = _serializers.deserializeWith<OccurrenceMessage>(serializer, response.data);
-
-            return Response<OccurrenceMessage>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        /// Run a job now
-        ///
-        /// Queues a job to run now
-        Future<Response>runJobNow(int id,{ CancelToken cancelToken, Map<String, String> headers,}) async {
-
-        String _path = "/job_api/{id}/run_now".replaceAll("{" r'id' "}", id.toString());
-
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
-
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
-
-        List<String> contentTypes = [];
-
-
-
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'post'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            );
-            }
-        /// Updates a single job
-        ///
-        /// Updates a single job
-        Future<Response<SingleJobMessage>>updateJob(int id,{ JobIn jobIn,CancelToken cancelToken, Map<String, String> headers,}) async {
-
-        String _path = "/job_api/{id}".replaceAll("{" r'id' "}", id.toString());
-
-        Map<String, dynamic> queryParams = {};
-        Map<String, String> headerParams = Map.from(headers ?? {});
-        dynamic bodyData;
-
-        queryParams.removeWhere((key, value) => value == null);
-        headerParams.removeWhere((key, value) => value == null);
-
-        List<String> contentTypes = ["application/json"];
-
-
-            var serializedBody = _serializers.serialize(jobIn);
-            var jsonjobIn = json.encode(serializedBody);
-            bodyData = jsonjobIn;
-
-            return _dio.request(
-            _path,
-            queryParameters: queryParams,
-            data: bodyData,
-            options: Options(
-            method: 'put'.toUpperCase(),
-            headers: headerParams,
-            contentType: contentTypes.isNotEmpty ? contentTypes[0] : "application/json",
-            ),
-            cancelToken: cancelToken,
-            ).then((response) {
-
-        var serializer = _serializers.serializerForType(SingleJobMessage);
-        var data = _serializers.deserializeWith<SingleJobMessage>(serializer, response.data);
-
-            return Response<SingleJobMessage>(
-                data: data,
-                headers: response.headers,
-                request: response.request,
-                redirects: response.redirects,
-                statusCode: response.statusCode,
-                statusMessage: response.statusMessage,
-                extra: response.extra,
-            );
-            });
-            }
-        }
+
+  final Dio _dio;
+
+  final Serializers _serializers;
+
+  const JobsApi(this._dio, this._serializers);
+
+  /// Creates a job
+  ///
+  /// Creates a job
+  Future<Response<SingleJobMessage>> createJob({ 
+    JobIn jobIn,
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/job_api',
+      method: 'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    dynamic _bodyData;
+
+    const _type = FullType(JobIn);
+    _bodyData = _serializers.serialize(jobIn, specifiedType: _type);
+
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
+
+    const _responseType = FullType(SingleJobMessage);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as SingleJobMessage;
+
+    return Response<SingleJobMessage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Deletes a job
+  ///
+  /// Deletes a job
+  Future<Response<SingleJobMessage>> deleteJob(
+    int id, { 
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/job_api/{id}'.replaceAll('{' r'id' '}', id.toString()),
+      method: 'DELETE',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    dynamic _bodyData;
+
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
+
+    const _responseType = FullType(SingleJobMessage);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as SingleJobMessage;
+
+    return Response<SingleJobMessage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Retrieves a single job
+  ///
+  /// Retrieves a single job
+  Future<Response<SingleJobMessage>> getJob(
+    int id, { 
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/job_api/{id}'.replaceAll('{' r'id' '}', id.toString()),
+      method: 'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    dynamic _bodyData;
+
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
+
+    const _responseType = FullType(SingleJobMessage);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as SingleJobMessage;
+
+    return Response<SingleJobMessage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Retrieve the runs for a job
+  ///
+  /// Retrieve the runs for a job
+  Future<Response<JobRunArrayMessage>> getJobRuns(
+    int id, { 
+    int perPage,
+    int page,
+    bool succeeded,
+    String startDate,
+    String endDate,
+    String timezone,
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/job_api/{id}/runs'.replaceAll('{' r'id' '}', id.toString()),
+      method: 'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      queryParameters: <String, dynamic>{
+        if (perPage != null) r'per_page': perPage,
+        if (page != null) r'page': page,
+        if (succeeded != null) r'succeeded': succeeded,
+        if (startDate != null) r'start_date': startDate,
+        if (endDate != null) r'end_date': endDate,
+        if (timezone != null) r'timezone': timezone,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    dynamic _bodyData;
+
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
+
+    const _responseType = FullType(JobRunArrayMessage);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as JobRunArrayMessage;
+
+    return Response<JobRunArrayMessage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Retrieves jobs
+  ///
+  /// Retrieves jobs
+  Future<Response<JobArrayMessage>> getJobs({ 
+    String expression,
+    String timezone,
+    int perPage,
+    int page,
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/job_api',
+      method: 'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      queryParameters: <String, dynamic>{
+        if (expression != null) r'expression': expression,
+        if (timezone != null) r'timezone': timezone,
+        if (perPage != null) r'per_page': perPage,
+        if (page != null) r'page': page,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    dynamic _bodyData;
+
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
+
+    const _responseType = FullType(JobArrayMessage);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as JobArrayMessage;
+
+    return Response<JobArrayMessage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Upcoming job occurrences
+  ///
+  /// Retrieves a list of upcoming occurrences for a job
+  Future<Response<OccurrenceMessage>> jobOccurrences(
+    int id,
+    String endDate, { 
+    int perPage,
+    int page,
+    String timezone,
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/job_api/{id}/occurrences/{end_date}'.replaceAll('{' r'id' '}', id.toString()).replaceAll('{' r'end_date' '}', endDate.toString()),
+      method: 'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      queryParameters: <String, dynamic>{
+        if (perPage != null) r'per_page': perPage,
+        if (page != null) r'page': page,
+        if (timezone != null) r'timezone': timezone,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    dynamic _bodyData;
+
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
+
+    const _responseType = FullType(OccurrenceMessage);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as OccurrenceMessage;
+
+    return Response<OccurrenceMessage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Run a job now
+  ///
+  /// Queues a job to run now
+  Future<Response<void>> runJobNow(
+    int id, { 
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/job_api/{id}/run_now'.replaceAll('{' r'id' '}', id.toString()),
+      method: 'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    dynamic _bodyData;
+
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
+
+    return _response;
+  }
+
+  /// Updates a single job
+  ///
+  /// Updates a single job
+  Future<Response<SingleJobMessage>> updateJob(
+    int id, { 
+    JobIn jobIn,
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/job_api/{id}'.replaceAll('{' r'id' '}', id.toString()),
+      method: 'PUT',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'name': 'bearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: [
+        'application/json',
+      ].first,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    dynamic _bodyData;
+
+    const _type = FullType(JobIn);
+    _bodyData = _serializers.serialize(jobIn, specifiedType: _type);
+
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
+
+    const _responseType = FullType(SingleJobMessage);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as SingleJobMessage;
+
+    return Response<SingleJobMessage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+}

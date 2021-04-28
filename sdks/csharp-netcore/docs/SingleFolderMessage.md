@@ -1,4 +1,5 @@
 # BJR.Model.SingleFolderMessage
+
 ## Properties
 
 Name | Type | Description | Notes

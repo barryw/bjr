@@ -1,4 +1,5 @@
 # BJR.Model.JobStatMessage
+
 ## Properties
 
 Name | Type | Description | Notes

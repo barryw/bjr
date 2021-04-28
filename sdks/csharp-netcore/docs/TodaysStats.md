@@ -1,4 +1,5 @@
 # BJR.Model.TodaysStats
+
 ## Properties
 
 Name | Type | Description | Notes

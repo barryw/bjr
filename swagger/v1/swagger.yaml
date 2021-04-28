@@ -1013,13 +1013,10 @@ paths:
       responses:
         '200':
           description: Job queued to execute
-          content: {}
         '404':
           description: Job not found
-          content: {}
         '409':
           description: Job is already running
-          content: {}
   "/job_api/{id}/occurrences/{end_date}":
     get:
       summary: Upcoming job occurrences
@@ -1075,7 +1072,6 @@ paths:
                 "$ref": "#/components/schemas/OccurrenceMessage"
         '404':
           description: Job not found
-          content: {}
   "/job_api":
     post:
       summary: Creates a job
@@ -1095,10 +1091,8 @@ paths:
                 "$ref": "#/components/schemas/SingleJobMessage"
         '400':
           description: Invalid timezone name.
-          content: {}
         '422':
           description: A job with this name already exists.
-          content: {}
       requestBody:
         content:
           application/json:
@@ -1235,10 +1229,8 @@ paths:
                 "$ref": "#/components/schemas/SingleJobMessage"
         '422':
           description: Job could not be updated.
-          content: {}
         '404':
           description: Job not found.
-          content: {}
       requestBody:
         content:
           application/json:
@@ -1301,7 +1293,6 @@ paths:
                 "$ref": "#/components/schemas/SingleJobMessage"
         '404':
           description: Job not found.
-          content: {}
   "/job_server_api/quiesce_worker":
     post:
       summary: Quiesce a single worker pod/node
@@ -1766,7 +1757,6 @@ paths:
                 "$ref": "#/components/schemas/SingleUserMessage"
         '403':
           description: Username already exists
-          content: {}
       requestBody:
         content:
           application/json:
@@ -1836,7 +1826,6 @@ paths:
                 "$ref": "#/components/schemas/SingleUserMessage"
         '401':
           description: Your token is invalid or expired
-          content: {}
     delete:
       summary: Deletes a user
       description: Deletes a user. Only root users can delete other users.

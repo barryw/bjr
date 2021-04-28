@@ -79,6 +79,7 @@ This endpoint does not need any parameter.
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -158,6 +159,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -172,7 +174,7 @@ Name | Type | Description  | Notes
 
 ## RecentJobs
 
-> JobArrayMessage RecentJobs (int count = null)
+> JobArrayMessage RecentJobs (int? count = null)
 
 List of recent jobs
 
@@ -198,7 +200,7 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new JobServerApi(Configuration.Default);
-            var count = 56;  // int | The number of jobs to return (max 20) (optional) 
+            var count = 56;  // int? | The number of jobs to return (max 20) (optional) 
 
             try
             {
@@ -222,7 +224,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **count** | **int**| The number of jobs to return (max 20) | [optional] 
+ **count** | **int?**| The number of jobs to return (max 20) | [optional] 
 
 ### Return type
 
@@ -236,6 +238,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -251,7 +254,7 @@ Name | Type | Description  | Notes
 
 ## StatsByDay
 
-> JobStatMessage StatsByDay (string startDate = null, string endDate = null, int perPage = null, int page = null, string timezone = null)
+> JobStatMessage StatsByDay (string startDate = null, string endDate = null, int? perPage = null, int? page = null, string timezone = null)
 
 Job statistics by day
 
@@ -279,8 +282,8 @@ namespace Example
             var apiInstance = new JobServerApi(Configuration.Default);
             var startDate = startDate_example;  // string | The start date from which to get daily metrics from (optional) 
             var endDate = endDate_example;  // string | The end date from which to get daily metrics from (optional) 
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
             var timezone = timezone_example;  // string |  (optional) 
 
             try
@@ -307,8 +310,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| The start date from which to get daily metrics from | [optional] 
  **endDate** | **string**| The end date from which to get daily metrics from | [optional] 
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
  **timezone** | **string**|  | [optional] 
 
 ### Return type
@@ -324,6 +327,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -337,7 +341,7 @@ Name | Type | Description  | Notes
 
 ## StatsByHour
 
-> JobStatMessage StatsByHour (string startDate = null, string endDate = null, int perPage = null, int page = null, string timezone = null)
+> JobStatMessage StatsByHour (string startDate = null, string endDate = null, int? perPage = null, int? page = null, string timezone = null)
 
 Job statistics by hour
 
@@ -365,8 +369,8 @@ namespace Example
             var apiInstance = new JobServerApi(Configuration.Default);
             var startDate = startDate_example;  // string | The start date from which to get hourly metrics from (optional) 
             var endDate = endDate_example;  // string | The end date from which to get hourly metrics from (optional) 
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
             var timezone = timezone_example;  // string |  (optional) 
 
             try
@@ -393,8 +397,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| The start date from which to get hourly metrics from | [optional] 
  **endDate** | **string**| The end date from which to get hourly metrics from | [optional] 
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
  **timezone** | **string**|  | [optional] 
 
 ### Return type
@@ -410,6 +414,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -423,7 +428,7 @@ Name | Type | Description  | Notes
 
 ## StatsByMinute
 
-> JobStatMessage StatsByMinute (string startDate = null, string endDate = null, int perPage = null, int page = null, string timezone = null)
+> JobStatMessage StatsByMinute (string startDate = null, string endDate = null, int? perPage = null, int? page = null, string timezone = null)
 
 Job statistics by minute
 
@@ -451,8 +456,8 @@ namespace Example
             var apiInstance = new JobServerApi(Configuration.Default);
             var startDate = startDate_example;  // string | The start date from which to get minutely metrics from (optional) 
             var endDate = endDate_example;  // string | The end date from which to get minutely metrics from (optional) 
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
             var timezone = timezone_example;  // string |  (optional) 
 
             try
@@ -479,8 +484,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| The start date from which to get minutely metrics from | [optional] 
  **endDate** | **string**| The end date from which to get minutely metrics from | [optional] 
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
  **timezone** | **string**|  | [optional] 
 
 ### Return type
@@ -496,6 +501,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -509,7 +515,7 @@ Name | Type | Description  | Notes
 
 ## StatsByWeek
 
-> JobStatMessage StatsByWeek (string startDate = null, string endDate = null, int perPage = null, int page = null, string timezone = null)
+> JobStatMessage StatsByWeek (string startDate = null, string endDate = null, int? perPage = null, int? page = null, string timezone = null)
 
 Job statistics by week
 
@@ -537,8 +543,8 @@ namespace Example
             var apiInstance = new JobServerApi(Configuration.Default);
             var startDate = startDate_example;  // string | The start date from which to get weekly metrics from (optional) 
             var endDate = endDate_example;  // string | The end date from which to get weekly metrics from (optional) 
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
             var timezone = timezone_example;  // string |  (optional) 
 
             try
@@ -565,8 +571,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startDate** | **string**| The start date from which to get weekly metrics from | [optional] 
  **endDate** | **string**| The end date from which to get weekly metrics from | [optional] 
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
  **timezone** | **string**|  | [optional] 
 
 ### Return type
@@ -581,6 +587,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -660,6 +667,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -673,7 +681,7 @@ Name | Type | Description  | Notes
 
 ## UpcomingJobs
 
-> JobArrayMessage UpcomingJobs (int count = null)
+> JobArrayMessage UpcomingJobs (int? count = null)
 
 List of upcoming jobs
 
@@ -699,7 +707,7 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new JobServerApi(Configuration.Default);
-            var count = 56;  // int | The number of jobs to return (max 20) (optional) 
+            var count = 56;  // int? | The number of jobs to return (max 20) (optional) 
 
             try
             {
@@ -723,7 +731,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **count** | **int**| The number of jobs to return (max 20) | [optional] 
+ **count** | **int?**| The number of jobs to return (max 20) | [optional] 
 
 ### Return type
 
@@ -737,6 +745,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

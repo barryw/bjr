@@ -12,29 +12,53 @@ Method | HTTP request | Description
 
 ## GetTags
 
-> TagMessage GetTags(ctx, optional)
+> TagMessage GetTags(ctx).PerPage(perPage).Page(page).Execute()
 
 Get tags
 
-Retrieves the list of tags that are currently in use for the authenticated user.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    perPage := int32(56) // int32 |  (optional)
+    page := int32(56) // int32 |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StaticApi.GetTags(context.Background()).PerPage(perPage).Page(page).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticApi.GetTags``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetTags`: TagMessage
+    fmt.Fprintf(os.Stdout, "Response from `StaticApi.GetTags`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTagsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***GetTagsOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetTagsOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **perPage** | **optional.Int32**|  | 
- **page** | **optional.Int32**|  | 
+ **perPage** | **int32** |  | 
+ **page** | **int32** |  | 
 
 ### Return type
 
@@ -56,15 +80,46 @@ Name | Type | Description  | Notes
 
 ## GetTimezones
 
-> TimezoneMessage GetTimezones(ctx, )
+> TimezoneMessage GetTimezones(ctx).Execute()
 
 Get timezones
 
-Get the list of acceptable timezone names.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StaticApi.GetTimezones(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticApi.GetTimezones``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetTimezones`: TimezoneMessage
+    fmt.Fprintf(os.Stdout, "Response from `StaticApi.GetTimezones`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTimezonesRequest struct via the builder pattern
+
 
 ### Return type
 
@@ -86,15 +141,46 @@ This endpoint does not need any parameter.
 
 ## GetVersion
 
-> ServerVersion GetVersion(ctx, )
+> ServerVersion GetVersion(ctx).Execute()
 
 Server version
 
-The BJR server version
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.StaticApi.GetVersion(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticApi.GetVersion``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetVersion`: ServerVersion
+    fmt.Fprintf(os.Stdout, "Response from `StaticApi.GetVersion`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVersionRequest struct via the builder pattern
+
 
 ### Return type
 

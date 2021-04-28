@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_user**](UsersApi.md#create_user) | **Post** /user_api | Creates a user
-[**delete_user**](UsersApi.md#delete_user) | **Delete** /user_api/{id} | Deletes a user
-[**get_user**](UsersApi.md#get_user) | **Get** /user_api/{id} | Retrieve a single user
-[**get_users**](UsersApi.md#get_users) | **Get** /user_api | Retrieves users
-[**update_user**](UsersApi.md#update_user) | **Put** /user_api/{id} | Update a single user
+[**create_user**](UsersApi.md#create_user) | **post** /user_api | Creates a user
+[**delete_user**](UsersApi.md#delete_user) | **delete** /user_api/{id} | Deletes a user
+[**get_user**](UsersApi.md#get_user) | **get** /user_api/{id} | Retrieve a single user
+[**get_users**](UsersApi.md#get_users) | **get** /user_api | Retrieves users
+[**update_user**](UsersApi.md#update_user) | **put** /user_api/{id} | Update a single user
 
 
 

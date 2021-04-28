@@ -56,13 +56,13 @@
 
     it('should have the property totalBusy (base name: "total_busy")', function() {
       // uncomment below and update the code to test the property totalBusy
-      //var instane = new Bjr4js.BusyThreadCountMessageObject();
+      //var instance = new Bjr4js.BusyThreadCountMessageObject();
       //expect(instance).to.be();
     });
 
     it('should have the property hosts (base name: "hosts")', function() {
       // uncomment below and update the code to test the property hosts
-      //var instane = new Bjr4js.BusyThreadCountMessageObject();
+      //var instance = new Bjr4js.BusyThreadCountMessageObject();
       //expect(instance).to.be();
     });
 

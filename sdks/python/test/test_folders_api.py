@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,20 +8,17 @@
 """
 
 
-from __future__ import absolute_import
-
 import unittest
 
 import bjr4py
 from bjr4py.api.folders_api import FoldersApi  # noqa: E501
-from bjr4py.rest import ApiException
 
 
 class TestFoldersApi(unittest.TestCase):
     """FoldersApi unit test stubs"""
 
     def setUp(self):
-        self.api = bjr4py.api.folders_api.FoldersApi()  # noqa: E501
+        self.api = FoldersApi()  # noqa: E501
 
     def tearDown(self):
         pass

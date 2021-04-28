@@ -56,49 +56,49 @@
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instane = new Bjr4js.JobIn();
+      //var instance = new Bjr4js.JobIn();
       //expect(instance).to.be();
     });
 
     it('should have the property cron (base name: "cron")', function() {
       // uncomment below and update the code to test the property cron
-      //var instane = new Bjr4js.JobIn();
+      //var instance = new Bjr4js.JobIn();
       //expect(instance).to.be();
     });
 
     it('should have the property command (base name: "command")', function() {
       // uncomment below and update the code to test the property command
-      //var instane = new Bjr4js.JobIn();
+      //var instance = new Bjr4js.JobIn();
       //expect(instance).to.be();
     });
 
     it('should have the property timezone (base name: "timezone")', function() {
       // uncomment below and update the code to test the property timezone
-      //var instane = new Bjr4js.JobIn();
+      //var instance = new Bjr4js.JobIn();
       //expect(instance).to.be();
     });
 
     it('should have the property enabled (base name: "enabled")', function() {
       // uncomment below and update the code to test the property enabled
-      //var instane = new Bjr4js.JobIn();
+      //var instance = new Bjr4js.JobIn();
       //expect(instance).to.be();
     });
 
     it('should have the property tags (base name: "tags")', function() {
       // uncomment below and update the code to test the property tags
-      //var instane = new Bjr4js.JobIn();
+      //var instance = new Bjr4js.JobIn();
       //expect(instance).to.be();
     });
 
     it('should have the property successCallback (base name: "success_callback")', function() {
       // uncomment below and update the code to test the property successCallback
-      //var instane = new Bjr4js.JobIn();
+      //var instance = new Bjr4js.JobIn();
       //expect(instance).to.be();
     });
 
     it('should have the property failureCallback (base name: "failure_callback")', function() {
       // uncomment below and update the code to test the property failureCallback
-      //var instane = new Bjr4js.JobIn();
+      //var instance = new Bjr4js.JobIn();
       //expect(instance).to.be();
     });
 

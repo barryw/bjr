@@ -2,6 +2,7 @@
 
 # JobStat
 
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -18,10 +19,10 @@ Name | Type | Description | Notes
 **maxJobLag** | **Integer** | The maximum job lag in seconds. |  [optional]
 **minJobLag** | **Integer** | The minimum job lag in seconds. |  [optional]
 **period** | **String** | The runtime period. |  [optional]
-**startDt** | [**OffsetDateTime**](OffsetDateTime.md) | The period start date. |  [optional]
-**endDt** | [**OffsetDateTime**](OffsetDateTime.md) | The period end date. |  [optional]
-**createdAt** | [**OffsetDateTime**](OffsetDateTime.md) | The date the record was created. |  [optional]
-**updatedAt** | [**OffsetDateTime**](OffsetDateTime.md) | The date the record was last updated. |  [optional]
+**startDt** | **OffsetDateTime** | The period start date. |  [optional]
+**endDt** | **OffsetDateTime** | The period end date. |  [optional]
+**createdAt** | **OffsetDateTime** | The date the record was created. |  [optional]
+**updatedAt** | **OffsetDateTime** | The date the record was last updated. |  [optional]
 
 
 

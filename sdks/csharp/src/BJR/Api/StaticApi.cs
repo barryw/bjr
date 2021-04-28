@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using RestSharp;
 using BJR.Client;
 using BJR.Model;
@@ -34,7 +35,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>TagMessage</returns>
-        TagMessage GetTags (int perPage = default(int), int page = default(int));
+        TagMessage GetTags (int? perPage = default(int?), int? page = default(int?));
 
         /// <summary>
         /// Get tags
@@ -46,7 +47,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of TagMessage</returns>
-        ApiResponse<TagMessage> GetTagsWithHttpInfo (int perPage = default(int), int page = default(int));
+        ApiResponse<TagMessage> GetTagsWithHttpInfo (int? perPage = default(int?), int? page = default(int?));
         /// <summary>
         /// Get timezones
         /// </summary>
@@ -96,8 +97,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of TagMessage</returns>
-        System.Threading.Tasks.Task<TagMessage> GetTagsAsync (int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<TagMessage> GetTagsAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get tags
@@ -108,8 +110,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (TagMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsAsyncWithHttpInfo (int perPage = default(int), int page = default(int));
+        System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsWithHttpInfoAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get timezones
         /// </summary>
@@ -117,8 +120,9 @@ namespace BJR.Api
         /// Get the list of acceptable timezone names.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of TimezoneMessage</returns>
-        System.Threading.Tasks.Task<TimezoneMessage> GetTimezonesAsync ();
+        System.Threading.Tasks.Task<TimezoneMessage> GetTimezonesAsync (CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get timezones
@@ -127,8 +131,9 @@ namespace BJR.Api
         /// Get the list of acceptable timezone names.
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (TimezoneMessage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTimezonesAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTimezonesWithHttpInfoAsync (CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Server version
         /// </summary>
@@ -136,8 +141,9 @@ namespace BJR.Api
         /// The BJR server version
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ServerVersion</returns>
-        System.Threading.Tasks.Task<ServerVersion> GetVersionAsync ();
+        System.Threading.Tasks.Task<ServerVersion> GetVersionAsync (CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Server version
@@ -146,8 +152,9 @@ namespace BJR.Api
         /// The BJR server version
         /// </remarks>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (ServerVersion)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ServerVersion>> GetVersionAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<ServerVersion>> GetVersionWithHttpInfoAsync (CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -266,7 +273,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>TagMessage</returns>
-        public TagMessage GetTags (int perPage = default(int), int page = default(int))
+        public TagMessage GetTags (int? perPage = default(int?), int? page = default(int?))
         {
              ApiResponse<TagMessage> localVarResponse = GetTagsWithHttpInfo(perPage, page);
              return localVarResponse.Data;
@@ -279,7 +286,7 @@ namespace BJR.Api
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
         /// <returns>ApiResponse of TagMessage</returns>
-        public ApiResponse<TagMessage> GetTagsWithHttpInfo (int perPage = default(int), int page = default(int))
+        public ApiResponse<TagMessage> GetTagsWithHttpInfo (int? perPage = default(int?), int? page = default(int?))
         {
 
             var localVarPath = "/tags";
@@ -337,10 +344,11 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of TagMessage</returns>
-        public async System.Threading.Tasks.Task<TagMessage> GetTagsAsync (int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<TagMessage> GetTagsAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<TagMessage> localVarResponse = await GetTagsAsyncWithHttpInfo(perPage, page);
+             ApiResponse<TagMessage> localVarResponse = await GetTagsWithHttpInfoAsync(perPage, page, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -351,8 +359,9 @@ namespace BJR.Api
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="perPage"> (optional)</param>
         /// <param name="page"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (TagMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsAsyncWithHttpInfo (int perPage = default(int), int page = default(int))
+        public async System.Threading.Tasks.Task<ApiResponse<TagMessage>> GetTagsWithHttpInfoAsync (int? perPage = default(int?), int? page = default(int?), CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/tags";
@@ -389,7 +398,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -474,10 +483,11 @@ namespace BJR.Api
         /// Get timezones Get the list of acceptable timezone names.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of TimezoneMessage</returns>
-        public async System.Threading.Tasks.Task<TimezoneMessage> GetTimezonesAsync ()
+        public async System.Threading.Tasks.Task<TimezoneMessage> GetTimezonesAsync (CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<TimezoneMessage> localVarResponse = await GetTimezonesAsyncWithHttpInfo();
+             ApiResponse<TimezoneMessage> localVarResponse = await GetTimezonesWithHttpInfoAsync(cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -486,8 +496,9 @@ namespace BJR.Api
         /// Get timezones Get the list of acceptable timezone names.
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (TimezoneMessage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTimezonesAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<TimezoneMessage>> GetTimezonesWithHttpInfoAsync (CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/timezones";
@@ -522,7 +533,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -601,10 +612,11 @@ namespace BJR.Api
         /// Server version The BJR server version
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ServerVersion</returns>
-        public async System.Threading.Tasks.Task<ServerVersion> GetVersionAsync ()
+        public async System.Threading.Tasks.Task<ServerVersion> GetVersionAsync (CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<ServerVersion> localVarResponse = await GetVersionAsyncWithHttpInfo();
+             ApiResponse<ServerVersion> localVarResponse = await GetVersionWithHttpInfoAsync(cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -613,8 +625,9 @@ namespace BJR.Api
         /// Server version The BJR server version
         /// </summary>
         /// <exception cref="BJR.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (ServerVersion)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ServerVersion>> GetVersionAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<ServerVersion>> GetVersionWithHttpInfoAsync (CancellationToken cancellationToken = default(CancellationToken))
         {
 
             var localVarPath = "/version";
@@ -643,7 +656,7 @@ namespace BJR.Api
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

@@ -1,5 +1,6 @@
 # ServerVersion
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

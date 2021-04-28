@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,14 +8,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import bjr4py
-from bjr4py.models.single_user_message import SingleUserMessage  # noqa: E501
-from bjr4py.rest import ApiException
+from bjr4py.model.single_user import SingleUser
+globals()['SingleUser'] = SingleUser
+from bjr4py.model.single_user_message import SingleUserMessage
+
 
 class TestSingleUserMessage(unittest.TestCase):
     """SingleUserMessage unit test stubs"""
@@ -28,32 +26,11 @@ class TestSingleUserMessage(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test SingleUserMessage
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = bjr4py.models.single_user_message.SingleUserMessage()  # noqa: E501
-        if include_optional :
-            return SingleUserMessage(
-                message = '0', 
-                is_error = True, 
-                object_type = '0', 
-                status_code = 56, 
-                object = bjr4py.models.single_user.SingleUser(
-                    id = 56, 
-                    username = '0', 
-                    created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                    updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), )
-            )
-        else :
-            return SingleUserMessage(
-        )
-
     def testSingleUserMessage(self):
         """Test SingleUserMessage"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = SingleUserMessage()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

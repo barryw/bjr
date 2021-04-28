@@ -9,11 +9,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createUser**](UsersApi.md#createUser) | **post** /user_api | Creates a user
-[**deleteUser**](UsersApi.md#deleteUser) | **delete** /user_api/{id} | Deletes a user
-[**getUser**](UsersApi.md#getUser) | **get** /user_api/{id} | Retrieve a single user
-[**getUsers**](UsersApi.md#getUsers) | **get** /user_api | Retrieves users
-[**updateUser**](UsersApi.md#updateUser) | **put** /user_api/{id} | Update a single user
+[**createUser**](UsersApi.md#createuser) | **post** /user_api | Creates a user
+[**deleteUser**](UsersApi.md#deleteuser) | **delete** /user_api/{id} | Deletes a user
+[**getUser**](UsersApi.md#getuser) | **get** /user_api/{id} | Retrieve a single user
+[**getUsers**](UsersApi.md#getusers) | **get** /user_api | Retrieves users
+[**updateUser**](UsersApi.md#updateuser) | **put** /user_api/{id} | Update a single user
 
 
 # **createUser**
@@ -37,7 +37,7 @@ try {
     var result = api_instance.createUser(userNewIn);
     print(result);
 } catch (e) {
-    print("Exception when calling UsersApi->createUser: $e\n");
+    print('Exception when calling UsersApi->createUser: $e\n');
 }
 ```
 
@@ -83,7 +83,7 @@ try {
     var result = api_instance.deleteUser(id);
     print(result);
 } catch (e) {
-    print("Exception when calling UsersApi->deleteUser: $e\n");
+    print('Exception when calling UsersApi->deleteUser: $e\n');
 }
 ```
 
@@ -91,7 +91,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
+ **id** | **int**|  | 
 
 ### Return type
 
@@ -129,7 +129,7 @@ try {
     var result = api_instance.getUser(id);
     print(result);
 } catch (e) {
-    print("Exception when calling UsersApi->getUser: $e\n");
+    print('Exception when calling UsersApi->getUser: $e\n');
 }
 ```
 
@@ -137,7 +137,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
+ **id** | **int**|  | 
 
 ### Return type
 
@@ -176,7 +176,7 @@ try {
     var result = api_instance.getUsers(perPage, page);
     print(result);
 } catch (e) {
-    print("Exception when calling UsersApi->getUsers: $e\n");
+    print('Exception when calling UsersApi->getUsers: $e\n');
 }
 ```
 
@@ -184,8 +184,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **perPage** | **int**|  | [optional] [default to null]
- **page** | **int**|  | [optional] [default to null]
+ **perPage** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -224,7 +224,7 @@ try {
     var result = api_instance.updateUser(id, userUpdateIn);
     print(result);
 } catch (e) {
-    print("Exception when calling UsersApi->updateUser: $e\n");
+    print('Exception when calling UsersApi->updateUser: $e\n');
 }
 ```
 
@@ -232,7 +232,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | [default to null]
+ **id** | **int**|  | 
  **userUpdateIn** | [**UserUpdateIn**](UserUpdateIn.md)|  | [optional] 
 
 ### Return type

@@ -1,4 +1,5 @@
 # BJR.Model.JobRunArrayMessage
+
 ## Properties
 
 Name | Type | Description | Notes

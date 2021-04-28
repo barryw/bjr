@@ -1,13 +1,23 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.7
+
+// ignore_for_file: unused_import
+
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:time_machine/time_machine.dart';
 
 class OffsetDateSerializer implements PrimitiveSerializer<OffsetDate> {
+
+  const OffsetDateSerializer();
+
   @override
   Iterable<Type> get types => BuiltList<Type>([OffsetDate]);
 
   @override
-  String get wireName => "OffsetDate";
+  String get wireName => 'OffsetDate';
 
   @override
   OffsetDate deserialize(Serializers serializers, Object serialized,
@@ -24,11 +34,14 @@ class OffsetDateSerializer implements PrimitiveSerializer<OffsetDate> {
 }
 
 class OffsetDateTimeSerializer implements PrimitiveSerializer<OffsetDateTime> {
+
+  const OffsetDateTimeSerializer();
+
   @override
   Iterable<Type> get types => BuiltList<Type>([OffsetDateTime]);
 
   @override
-  String get wireName => "OffsetDateTime";
+  String get wireName => 'OffsetDateTime';
 
   @override
   OffsetDateTime deserialize(Serializers serializers, Object serialized,

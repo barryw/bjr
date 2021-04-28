@@ -23,10 +23,10 @@ Create a new Folder
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import folders_api
+from bjr4py.model.single_folder_message import SingleFolderMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -47,24 +47,26 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.FoldersApi(api_client)
-    name = 'name_example' # str | 
-expression = 'expression_example' # str | 
+    api_instance = folders_api.FoldersApi(api_client)
+    name = "name_example" # str | 
+    expression = "expression_example" # str | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Create a new Folder
         api_response = api_instance.create_folder(name, expression)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling FoldersApi->create_folder: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  | 
- **expression** | **str**|  | 
+ **name** | **str**|  |
+ **expression** | **str**|  |
 
 ### Return type
 
@@ -78,6 +80,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -98,10 +101,10 @@ Delete an existing folder
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import folders_api
+from bjr4py.model.single_folder_message import SingleFolderMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -122,22 +125,24 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.FoldersApi(api_client)
-    id = 56 # int | 
+    api_instance = folders_api.FoldersApi(api_client)
+    id = 1 # int | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Delete an existing folder
         api_response = api_instance.delete_folder(id)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling FoldersApi->delete_folder: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
+ **id** | **int**|  |
 
 ### Return type
 
@@ -151,6 +156,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -171,10 +177,10 @@ Return a single folder
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import folders_api
+from bjr4py.model.single_folder_message import SingleFolderMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -195,22 +201,24 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.FoldersApi(api_client)
-    id = 56 # int | 
+    api_instance = folders_api.FoldersApi(api_client)
+    id = 1 # int | 
 
+    # example passing only required values which don't have defaults set
     try:
         # Return a single folder
         api_response = api_instance.get_folder(id)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling FoldersApi->get_folder: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
+ **id** | **int**|  |
 
 ### Return type
 
@@ -225,6 +233,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -234,7 +243,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_folder_jobs**
-> JobArrayMessage get_folder_jobs(id, per_page=per_page, page=page)
+> JobArrayMessage get_folder_jobs(id)
 
 Return list of jobs in a folder
 
@@ -244,10 +253,11 @@ Return list of jobs in a folder
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import folders_api
+from bjr4py.model.job_array_message import JobArrayMessage
+from bjr4py.model.single_job_message import SingleJobMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -268,26 +278,37 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.FoldersApi(api_client)
-    id = 56 # int | 
-per_page = 56 # int |  (optional)
-page = 56 # int |  (optional)
+    api_instance = folders_api.FoldersApi(api_client)
+    id = 1 # int | 
+    per_page = 1 # int |  (optional)
+    page = 1 # int |  (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Return list of jobs in a folder
+        api_response = api_instance.get_folder_jobs(id)
+        pprint(api_response)
+    except bjr4py.ApiException as e:
+        print("Exception when calling FoldersApi->get_folder_jobs: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Return list of jobs in a folder
         api_response = api_instance.get_folder_jobs(id, per_page=per_page, page=page)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling FoldersApi->get_folder_jobs: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **per_page** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **id** | **int**|  |
+ **per_page** | **int**|  | [optional]
+ **page** | **int**|  | [optional]
 
 ### Return type
 
@@ -302,6 +323,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -311,7 +333,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_folders**
-> FolderArrayMessage get_folders(per_page=per_page, page=page)
+> FolderArrayMessage get_folders()
 
 Return paginated list of all folders
 
@@ -321,10 +343,10 @@ Return paginated list of all folders
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import folders_api
+from bjr4py.model.folder_array_message import FolderArrayMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -345,24 +367,27 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.FoldersApi(api_client)
-    per_page = 56 # int |  (optional)
-page = 56 # int |  (optional)
+    api_instance = folders_api.FoldersApi(api_client)
+    per_page = 1 # int |  (optional)
+    page = 1 # int |  (optional)
 
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Return paginated list of all folders
         api_response = api_instance.get_folders(per_page=per_page, page=page)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling FoldersApi->get_folders: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **per_page** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **per_page** | **int**|  | [optional]
+ **page** | **int**|  | [optional]
 
 ### Return type
 
@@ -377,6 +402,7 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -385,7 +411,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_folder**
-> SingleFolderMessage update_folder(id, name=name, expression=expression)
+> SingleFolderMessage update_folder(id)
 
 Update an existing folder
 
@@ -395,10 +421,10 @@ Update an existing folder
 
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
-from __future__ import print_function
 import time
 import bjr4py
-from bjr4py.rest import ApiException
+from bjr4py.api import folders_api
+from bjr4py.model.single_folder_message import SingleFolderMessage
 from pprint import pprint
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
@@ -419,26 +445,37 @@ configuration = bjr4py.Configuration(
 # Enter a context with an instance of the API client
 with bjr4py.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = bjr4py.FoldersApi(api_client)
-    id = 56 # int | 
-name = 'name_example' # str |  (optional)
-expression = 'expression_example' # str |  (optional)
+    api_instance = folders_api.FoldersApi(api_client)
+    id = 1 # int | 
+    name = "name_example" # str |  (optional)
+    expression = "expression_example" # str |  (optional)
 
+    # example passing only required values which don't have defaults set
+    try:
+        # Update an existing folder
+        api_response = api_instance.update_folder(id)
+        pprint(api_response)
+    except bjr4py.ApiException as e:
+        print("Exception when calling FoldersApi->update_folder: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
     try:
         # Update an existing folder
         api_response = api_instance.update_folder(id, name=name, expression=expression)
         pprint(api_response)
-    except ApiException as e:
+    except bjr4py.ApiException as e:
         print("Exception when calling FoldersApi->update_folder: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **name** | **str**|  | [optional] 
- **expression** | **str**|  | [optional] 
+ **id** | **int**|  |
+ **name** | **str**|  | [optional]
+ **expression** | **str**|  | [optional]
 
 ### Return type
 
@@ -452,6 +489,7 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

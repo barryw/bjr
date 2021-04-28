@@ -2,20 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **Integer** |  | [optional] 
-**name** | **String** |  | [optional] 
-**taggings_count** | **Integer** |  | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **taggings_count** | **Integer** |  | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'BJR'
+require 'bjr4r'
 
-instance = BJR::Tag.new(id: null,
-                                 name: null,
-                                 taggings_count: null)
+instance = BJR::Tag.new(
+  id: null,
+  name: null,
+  taggings_count: null
+)
 ```
-
 

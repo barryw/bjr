@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import bjr4py
-from bjr4py.models.todays_stats import TodaysStats  # noqa: E501
-from bjr4py.rest import ApiException
+from bjr4py.model.todays_stats import TodaysStats
+
 
 class TestTodaysStats(unittest.TestCase):
     """TodaysStats unit test stubs"""
@@ -28,43 +24,11 @@ class TestTodaysStats(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test TodaysStats
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = bjr4py.models.todays_stats.TodaysStats()  # noqa: E501
-        if include_optional :
-            return TodaysStats(
-                total_jobs = 56, 
-                total_jobs_trend = 1.337, 
-                enabled_jobs = 56, 
-                enabled_jobs_trend = 1.337, 
-                run_jobs = 56, 
-                run_jobs_trend = 1.337, 
-                failed_jobs = 56, 
-                failed_jobs_trend = 1.337, 
-                avg_job_runtime = 1.337, 
-                avg_job_runtime_trend = 1.337, 
-                max_job_runtime = 1.337, 
-                max_job_runtime_trend = 1.337, 
-                min_job_runtime = 1.337, 
-                min_job_runtime_trend = 1.337, 
-                avg_job_lag = 1.337, 
-                avg_job_lag_trend = 1.337, 
-                max_job_lag = 1.337, 
-                max_job_lag_trend = 1.337, 
-                min_job_lag = 1.337, 
-                min_job_lag_trend = 1.337
-            )
-        else :
-            return TodaysStats(
-        )
-
     def testTodaysStats(self):
         """Test TodaysStats"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = TodaysStats()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

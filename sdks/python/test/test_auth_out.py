@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import bjr4py
-from bjr4py.models.auth_out import AuthOut  # noqa: E501
-from bjr4py.rest import ApiException
+from bjr4py.model.auth_out import AuthOut
+
 
 class TestAuthOut(unittest.TestCase):
     """AuthOut unit test stubs"""
@@ -28,28 +24,11 @@ class TestAuthOut(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test AuthOut
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = bjr4py.models.auth_out.AuthOut()  # noqa: E501
-        if include_optional :
-            return AuthOut(
-                auth_token = '0', 
-                user_id = 56, 
-                message = '0', 
-                is_error = True, 
-                status_code = 56
-            )
-        else :
-            return AuthOut(
-        )
-
     def testAuthOut(self):
         """Test AuthOut"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = AuthOut()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

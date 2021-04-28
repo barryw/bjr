@@ -1,4 +1,5 @@
 # BJR.Model.OccurrenceMessage
+
 ## Properties
 
 Name | Type | Description | Notes

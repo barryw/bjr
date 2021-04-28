@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## GetTags
 
-> TagMessage GetTags (int perPage = null, int page = null)
+> TagMessage GetTags (int? perPage = null, int? page = null)
 
 Get tags
 
@@ -38,8 +38,8 @@ namespace Example
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new StaticApi(Configuration.Default);
-            var perPage = 56;  // int |  (optional) 
-            var page = 56;  // int |  (optional) 
+            var perPage = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
 
             try
             {
@@ -63,8 +63,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **perPage** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **perPage** | **int?**|  | [optional] 
+ **page** | **int?**|  | [optional] 
 
 ### Return type
 
@@ -78,6 +78,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -153,6 +154,7 @@ This endpoint does not need any parameter.
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -223,6 +225,7 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

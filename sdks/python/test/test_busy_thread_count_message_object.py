@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,14 +8,14 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import bjr4py
-from bjr4py.models.busy_thread_count_message_object import BusyThreadCountMessageObject  # noqa: E501
-from bjr4py.rest import ApiException
+from bjr4py.model.busy_thread_count_message_object_hosts import BusyThreadCountMessageObjectHosts
+globals()['BusyThreadCountMessageObjectHosts'] = BusyThreadCountMessageObjectHosts
+from bjr4py.model.busy_thread_count_message_object import BusyThreadCountMessageObject
+
 
 class TestBusyThreadCountMessageObject(unittest.TestCase):
     """BusyThreadCountMessageObject unit test stubs"""
@@ -28,30 +26,11 @@ class TestBusyThreadCountMessageObject(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test BusyThreadCountMessageObject
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = bjr4py.models.busy_thread_count_message_object.BusyThreadCountMessageObject()  # noqa: E501
-        if include_optional :
-            return BusyThreadCountMessageObject(
-                total_busy = 56, 
-                hosts = [
-                    bjr4py.models.busy_thread_count_message_object_hosts.BusyThreadCountMessage_object_hosts(
-                        name = '0', 
-                        busy = 56, 
-                        pid = 56, )
-                    ]
-            )
-        else :
-            return BusyThreadCountMessageObject(
-        )
-
     def testBusyThreadCountMessageObject(self):
         """Test BusyThreadCountMessageObject"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = BusyThreadCountMessageObject()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

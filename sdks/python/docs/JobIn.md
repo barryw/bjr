@@ -1,5 +1,6 @@
 # JobIn
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

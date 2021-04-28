@@ -1,5 +1,6 @@
 # SingleUserMessage
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

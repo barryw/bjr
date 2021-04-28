@@ -56,13 +56,13 @@
 
     it('should have the property password (base name: "password")', function() {
       // uncomment below and update the code to test the property password
-      //var instane = new Bjr4js.UserUpdateIn();
+      //var instance = new Bjr4js.UserUpdateIn();
       //expect(instance).to.be();
     });
 
     it('should have the property passwordConfirmation (base name: "password_confirmation")', function() {
       // uncomment below and update the code to test the property passwordConfirmation
-      //var instane = new Bjr4js.UserUpdateIn();
+      //var instance = new Bjr4js.UserUpdateIn();
       //expect(instance).to.be();
     });
 

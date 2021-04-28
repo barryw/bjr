@@ -56,25 +56,25 @@
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instane = new Bjr4js.SingleUser();
+      //var instance = new Bjr4js.SingleUser();
       //expect(instance).to.be();
     });
 
     it('should have the property username (base name: "username")', function() {
       // uncomment below and update the code to test the property username
-      //var instane = new Bjr4js.SingleUser();
+      //var instance = new Bjr4js.SingleUser();
       //expect(instance).to.be();
     });
 
     it('should have the property createdAt (base name: "created_at")', function() {
       // uncomment below and update the code to test the property createdAt
-      //var instane = new Bjr4js.SingleUser();
+      //var instance = new Bjr4js.SingleUser();
       //expect(instance).to.be();
     });
 
     it('should have the property updatedAt (base name: "updated_at")', function() {
       // uncomment below and update the code to test the property updatedAt
-      //var instane = new Bjr4js.SingleUser();
+      //var instance = new Bjr4js.SingleUser();
       //expect(instance).to.be();
     });
 

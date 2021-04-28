@@ -1,4 +1,5 @@
 # BJR.Model.UserArrayMessage
+
 ## Properties
 
 Name | Type | Description | Notes

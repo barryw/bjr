@@ -56,31 +56,31 @@
 
     it('should have the property authToken (base name: "auth_token")', function() {
       // uncomment below and update the code to test the property authToken
-      //var instane = new Bjr4js.AuthOut();
+      //var instance = new Bjr4js.AuthOut();
       //expect(instance).to.be();
     });
 
     it('should have the property userId (base name: "user_id")', function() {
       // uncomment below and update the code to test the property userId
-      //var instane = new Bjr4js.AuthOut();
+      //var instance = new Bjr4js.AuthOut();
       //expect(instance).to.be();
     });
 
     it('should have the property message (base name: "message")', function() {
       // uncomment below and update the code to test the property message
-      //var instane = new Bjr4js.AuthOut();
+      //var instance = new Bjr4js.AuthOut();
       //expect(instance).to.be();
     });
 
     it('should have the property isError (base name: "is_error")', function() {
       // uncomment below and update the code to test the property isError
-      //var instane = new Bjr4js.AuthOut();
+      //var instance = new Bjr4js.AuthOut();
       //expect(instance).to.be();
     });
 
     it('should have the property statusCode (base name: "status_code")', function() {
       // uncomment below and update the code to test the property statusCode
-      //var instane = new Bjr4js.AuthOut();
+      //var instance = new Bjr4js.AuthOut();
       //expect(instance).to.be();
     });
 

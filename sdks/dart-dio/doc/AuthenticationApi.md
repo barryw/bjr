@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**authenticateUser**](AuthenticationApi.md#authenticateUser) | **post** /authenticate | Authenticates a user and returns a token
+[**authenticateUser**](AuthenticationApi.md#authenticateuser) | **post** /authenticate | Authenticates a user and returns a token
 
 
 # **authenticateUser**
@@ -30,7 +30,7 @@ try {
     var result = api_instance.authenticateUser(authIn);
     print(result);
 } catch (e) {
-    print("Exception when calling AuthenticationApi->authenticateUser: $e\n");
+    print('Exception when calling AuthenticationApi->authenticateUser: $e\n');
 }
 ```
 

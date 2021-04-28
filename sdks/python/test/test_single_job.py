@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     BJR API V1
 
@@ -10,14 +8,12 @@
 """
 
 
-from __future__ import absolute_import
-
+import sys
 import unittest
-import datetime
 
 import bjr4py
-from bjr4py.models.single_job import SingleJob  # noqa: E501
-from bjr4py.rest import ApiException
+from bjr4py.model.single_job import SingleJob
+
 
 class TestSingleJob(unittest.TestCase):
     """SingleJob unit test stubs"""
@@ -28,48 +24,11 @@ class TestSingleJob(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test SingleJob
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = bjr4py.models.single_job.SingleJob()  # noqa: E501
-        if include_optional :
-            return SingleJob(
-                id = 56, 
-                name = '0', 
-                cron = '0', 
-                enabled = True, 
-                command = '0', 
-                last_run = '0', 
-                next_run = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                success = True, 
-                running = True, 
-                timezone = '0', 
-                tags = [
-                    '0'
-                    ], 
-                created_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                updated_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
-                success_callback = '0', 
-                failure_callback = '0', 
-                avg_run_duration = 1.337, 
-                max_run_duration = 1.337, 
-                min_run_duration = 1.337, 
-                avg_run_duration_trend = 1.337, 
-                avg_run_lag = 1.337, 
-                max_run_lag = 1.337, 
-                min_run_lag = 1.337, 
-                avg_run_lag_trend = 1.337
-            )
-        else :
-            return SingleJob(
-        )
-
     def testSingleJob(self):
         """Test SingleJob"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # FIXME: construct object with mandatory attributes with example values
+        # model = SingleJob()  # noqa: E501
+        pass
 
 
 if __name__ == '__main__':

@@ -1,14 +1,20 @@
 name: BJR
-version: 2.5.1
+version: 2.6.0
 description: BJR Client SDK for Dart
+homepage: homepage
+authors:
+  - 'Barry Walker <barrywalker@gmail.com>'
+
 environment:
-    sdk: ">=2.3.0 <3.0.0"
+  sdk: '>=2.7.0 <3.0.0'
+
 dependencies:
-    dio: ^3.0.4
-    built_value: ^6.8.2
-    built_collection: ^4.2.2
-    time_machine: ^0.9.12
+  dio: '^3.0.9'
+  built_value: '>=7.1.0 <8.0.0'
+  built_collection: '>=4.3.2 <5.0.0'
+  time_machine: '^0.9.12'
+
 dev_dependencies:
-    built_value_generator: ^6.8.2
-    build_runner: ^1.7.1
-    test: 1.6.5
+  built_value_generator: '>=7.1.0 <8.0.0'
+  build_runner: any
+  test: '>=1.3.0 <1.16.0'

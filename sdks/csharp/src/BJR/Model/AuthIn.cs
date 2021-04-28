@@ -1,4 +1,4 @@
-/* 
+/*
  * BJR API V1
  *
  * API specification for the BJR job server.
@@ -51,7 +51,7 @@ namespace BJR.Model
             {
                 this.Username = username;
             }
-            
+
             // to ensure "password" is required (not null)
             if (password == null)
             {
@@ -61,21 +61,21 @@ namespace BJR.Model
             {
                 this.Password = password;
             }
-            
+
         }
-        
+
         /// <summary>
         /// The username of the user to authenticate as
         /// </summary>
         /// <value>The username of the user to authenticate as</value>
-        [DataMember(Name="username", EmitDefaultValue=false)]
+        [DataMember(Name="username", EmitDefaultValue=true)]
         public string Username { get; set; }
 
         /// <summary>
         /// The password of the user to authenticate as
         /// </summary>
         /// <value>The password of the user to authenticate as</value>
-        [DataMember(Name="password", EmitDefaultValue=false)]
+        [DataMember(Name="password", EmitDefaultValue=true)]
         public string Password { get; set; }
 
         /// <summary>
@@ -91,14 +91,14 @@ namespace BJR.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
