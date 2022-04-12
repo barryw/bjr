@@ -1,4 +1,4 @@
-FROM ruby:2.6.6-slim
+FROM ruby:2.6.9-slim
 
 MAINTAINER Barry Walker <barrywalker@gmail.com>
 
