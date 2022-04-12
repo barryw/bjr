@@ -10,7 +10,7 @@ gem 'rails', '~> 5.2.0'
 gem 'redis', '~> 4.0'
 
 gem 'oj'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3' 
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
