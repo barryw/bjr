@@ -6,11 +6,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.9'
 
 gem 'mysql2', '>= 0.4.4'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.8.1'
 gem 'redis', '~> 4.0'
 
 gem 'oj'
-gem 'puma', '~> 4.3' 
+gem 'puma'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
