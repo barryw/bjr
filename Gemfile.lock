@@ -129,7 +129,7 @@ GEM
     multi_xml (0.6.0)
     mysql2 (0.5.3)
     nio4r (2.5.8)
-    nokogiri (1.13.8)
+    nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     oj (3.13.11)
@@ -301,7 +301,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
 
 RUBY VERSION
-   ruby 2.6.9p207
+   ruby 2.6.10p210
 
 BUNDLED WITH
    2.3.22
