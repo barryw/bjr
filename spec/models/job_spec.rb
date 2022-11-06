@@ -307,13 +307,13 @@ RSpec.describe Job, type: :model do
     job1.compute_run_stats
     job1.reload
 
-    expect(job1.avg_run_duration).to be_within(0.0001).of(210.0)
-    expect(job1.max_run_duration).to be_within(0.0001).of(480.0)
-    expect(job1.min_run_duration).to be_within(0.0001).of(60.0)
-    expect(job1.avg_run_duration_trend).to be_within(0.0001).of(132.0)
-    expect(job1.avg_run_lag).to be_within(0.0001).of(40.6667)
-    expect(job1.max_run_lag).to be_within(0.0001).of(62.0)
-    expect(job1.min_run_lag).to be_within(0.0001).of(0)
-    expect(job1.avg_run_lag_trend).to be_within(0.0001).of(1.0)
+    expect(job1.avg_run_duration).to be_within(0.001).of(210.0)
+    expect(job1.max_run_duration).to be_within(0.001).of(480.0)
+    expect(job1.min_run_duration).to be_within(0.001).of(60.0)
+    expect(job1.avg_run_duration_trend).to be_within(0.001).of(132.0)
+    expect(job1.avg_run_lag).to be_within(0.001).of(40.6667)
+    expect(job1.max_run_lag).to be_within(0.001).of(62.0)
+    expect(job1.min_run_lag).to be_within(0.001).of(0)
+    expect(job1.avg_run_lag_trend).to be_within(0.001).of(1.0)
   end
 end
